@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "name": "佛学本体论",
+    "version": "1.0.0",
+    "description": "基于大正藏的完整佛学知识本体，覆盖义理、经典、宗派、人物、圣众、文化外延六大维度",
+    "layers": [
+      "L0_元模型层",
+      "L1_教理本体层",
+      "L2_义理范畴层",
+      "L3_宗派体系层",
+      "L4_文本载体层",
+      "L5_人物传承层",
+      "L6_信仰文化外延层"
+    ]
+  },
+  "classes": {
+    "L1_教理本体类": {
+      "concept": {
+        "label": "教理核心概念",
+        "description": "佛学最顶层的形而上学核心概念",
+        "properties": ["id", "name", "alias", "definition", "sutra_source", "sect_interpretation", "modern_interpretation"]
+      }
+    },
+    "L2_义理范畴类": {
+      "doctrine": {
+        "label": "义理范畴",
+        "description": "佛学核心修行与分析框架",
+        "properties": ["id", "name", "alias", "structure", "definition", "sutra_source", "evolution", "sect_view"]
+      }
+    },
+    "L3_宗派体系类": {
+      "sect": {
+        "label": "佛教宗派",
+        "description": "汉传、藏传、南传各宗派",
+        "properties": ["id", "name", "alias", "founder", "found_time", "found_place", "core_sutra", "core_doctrine", "panjiao_system", "inheritance"]
+      },
+      "panjiao": {
+        "label": "判教体系",
+        "description": "各宗派对佛陀教法的分类与判摄体系",
+        "properties": ["id", "sect_id", "name", "levels", "content", "representative"]
+      }
+    },
+    "L4_文本载体类": {
+      "sutra": {
+        "label": "佛经",
+        "description": "经藏典籍",
+        "properties": ["id", "taisho_id", "name", "alias", "category", "volume_count", "translator", "translate_time", "translate_place", "core_content", "core_concept", "keban_structure", "translations", "commentaries"]
+      },
+      "vinaya": {
+        "label": "律典",
+        "description": "律藏典籍",
+        "properties": ["id", "taisho_id", "name", "alias", "category", "volume_count", "translator", "translate_time", "core_content"]
+      },
+      "sastra": {
+        "label": "论典",
+        "description": "论藏典籍",
+        "properties": ["id", "taisho_id", "name", "alias", "category", "volume_count", "author", "write_time", "core_content", "core_concept"]
+      },
+      "commentary": {
+        "label": "注疏",
+        "description": "历代祖师对经论的注释",
+        "properties": ["id", "name", "author", "write_time", "target_sutra", "core_content", "keban_structure"]
+      },
+      "translation": {
+        "label": "译本",
+        "description": "同一部经的不同译本",
+        "properties": ["id", "sutra_id", "name", "translator", "translate_time", "translate_place", "volume_count", "text_length", "differences"]
+      }
+    },
+    "L5_人物传承类": {
+      "buddha": {
+        "label": "佛陀",
+        "description": "佛教中的佛陀",
+        "properties": ["id", "name", "sanskrit_name", "alias", "era", "place", "core_teachings", "sutra_records", "symbol", "mantra"]
+      },
+      "bodhisattva": {
+        "label": "菩萨",
+        "description": "大乘佛教菩萨",
+        "properties": ["id", "name", "sanskrit_name", "alias", "vow", "pure_land", "sutra_records", "symbol", "mantra", "representative_sutra"]
+      },
+      "arhat": {
+        "label": "阿罗汉/尊者",
+        "description": "声闻乘圣者",
+        "properties": ["id", "name", "sanskrit_name", "alias", "achievements", "discipleship", "sutra_records", "symbol"]
+      },
+      "master": {
+        "label": "历代祖师高僧",
+        "description": "佛教史上的译经师、论师、宗派祖师",
+        "properties": ["id", "name", "secular_name", "era", "birth_place", "sect", "achievements", "works", "inheritance", "stories"]
+      },
+      "modern_scholar": {
+        "label": "现代佛教学者",
+        "description": "近现代佛学研究学者",
+        "properties": ["id", "name", "era", "research_field", "works", "core_view"]
+      }
+    },
+    "L6_信仰文化外延类": {
+      "deity": {
+        "label": "护法/诸天",
+        "description": "护法神、天龙八部、诸天",
+        "properties": ["id", "name", "alias", "origin", "duty", "sutra_records", "symbol", "mantra"]
+      },
+      "folk_figure": {
+        "label": "民间信仰人物",
+        "description": "济公、布袋和尚等民间化的佛教人物",
+        "properties": ["id", "name", "secular_name", "era", "origin", "stories", "folk_image", "cultural_influence"]
+      },
+      "cultural_element": {
+        "label": "文化外延元素",
+        "description": "佛教相关的文学、艺术、民俗元素",
+        "properties": ["id", "name", "category", "origin", "content", "cultural_influence"]
+      }
+    }
+  },
+  "relations": {
+    "义理关系类": [
+      {"id": "sheshu", "label": "摄属", "inverse": "包含", "description": "A概念摄属于B体系，如五蕴摄属于三科"},
+      {"id": "duipo", "label": "对破", "inverse": "被对破", "description": "A概念对破B邪见，如中观对破有见与空见"},
+      {"id": "xiangji", "label": "相即", "inverse": "相即", "description": "A与B相即不二，如烦恼即菩提、生死即涅槃"},
+      {"id": "cidi", "label": "次第", "inverse": "前置", "description": "A是B的修行次第前置，如信是进的前置"},
+      {"id": "quanshi", "label": "诠释", "inverse": "被诠释", "description": "A论典诠释B经义，如《大智度论》诠释《大般若经》"},
+      {"id": "yanshen", "label": "衍生", "inverse": "源出", "description": "B概念由A概念衍生发展而来"},
+      {"id": "duili", "label": "对立", "inverse": "对立", "description": "A与B是对立的两种见地"},
+      {"id": "tongyi", "label": "同一", "inverse": "同一", "description": "A与B是同一概念的不同译名或表述"}
+    ],
+    "经典关系类": [
+      {"id": "yichu", "label": "译出", "inverse": "由...译出", "from": "master", "to": "sutra", "description": "A译师译出B经典"},
+      {"id": "yiyi", "label": "异译", "inverse": "异译", "from": "sutra", "to": "sutra", "description": "A与B是同一部经的不同译本"},
+      {"id": "zhushu", "label": "注疏", "inverse": "被注疏", "from": "commentary", "to": "sutra", "description": "A注疏是B经的注释"},
+      {"id": "yinjing", "label": "引用", "inverse": "被引用", "description": "A论典引用B经的文句"},
+      {"id": "shuyu", "label": "属于", "inverse": "包含", "from": "sutra", "to": "category", "description": "A经属于B部类"},
+      {"id": "chengjiu", "label": "成就", "inverse": "所依", "description": "法门依经典而成就"}
+    ],
+    "宗派关系类": [
+      {"id": "chuangli", "label": "创立", "inverse": "由...创立", "from": "master", "to": "sect", "description": "A祖师创立B宗派"},
+      {"id": "yijing", "label": "依经", "inverse": "为...所依", "from": "sect", "to": "sutra", "description": "A宗派以B经为核心根本经典"},
+      {"id": "chuancheng", "label": "传承", "inverse": "传于", "from": "master", "to": "master", "description": "A法师传法于B法师"},
+      {"id": "panshe", "label": "判摄", "inverse": "被判为", "from": "sect", "to": "sutra", "description": "A宗派将B经判摄为某一时教"},
+      {"id": "fenqi", "label": "分歧", "inverse": "分歧", "from": "sect", "to": "sect", "description": "A与B宗派在某义理上存在分歧"}
+    ],
+    "人物关系类": [
+      {"id": "dishi", "label": "师徒", "inverse": "师徒", "from": "master", "to": "master", "description": "A是B的师父/弟子"},
+      {"id": "huahua", "label": "化现", "inverse": "化现为", "description": "A佛菩萨化现为B人物（如观音化现济公）"},
+      {"id": "hufa", "label": "护持", "inverse": "护法", "from": "deity", "to": "dharma", "description": "A护法护持B法门/宗派"}
+    ],
+    "概念-经典关系类": [
+      {"id": "chujing", "label": "出自", "inverse": "宣说", "from": "concept", "to": "sutra", "description": "A概念最早出自B经"},
+      {"id": "zhengming", "label": "证明", "inverse": "佐证", "from": "sutra", "to": "concept", "description": "A经文证明B概念的正确性"}
+    ]
+  }
+}

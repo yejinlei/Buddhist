@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>佛学本体论 - 全藏智能知识图谱与义理推演平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        buddha: {
+                            primary: '#8B5A2B',
+                            secondary: '#D4AF37',
+                            accent: '#C19A6B',
+                            dark: '#3A2E1F',
+                            light: '#F5F0E6',
+                            paper: '#F8F4E9',
+                            ink: '#2C2416',
+                            sutra: '#7B3F00',
+                            concept: '#1E4D2B',
+                            person: '#8B0000',
+                            sect: '#4A148C'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'KaiTi', 'STKaiti', 'serif'],
+                        sans: ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .scrollbar-thin {
+                scrollbar-width: thin;
+            }
+            .scrollbar-thin::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+            }
+            .scrollbar-thin::-webkit-scrollbar-thumb {
+                background-color: rgba(139, 90, 43, 0.3);
+                border-radius: 2px;
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+            .bg-paper-texture {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            }
+            .lotus-pattern {
+                background-image: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            }
+            .node-sutra { color: #7B3F00; }
+            .node-concept { color: #1E4D2B; }
+            .node-person { color: #8B0000; }
+            .node-sect { color: #4A148C; }
+        }
+    </style>
+</head>
+<body class="bg-buddha-paper text-buddha-ink font-sans bg-paper-texture lotus-pattern min-h-screen">
+    <!-- 顶部导航 -->
+    <header class="sticky top-0 z-50 bg-buddha-dark/95 backdrop-blur-sm border-b border-buddha-primary/20 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-dharma-wheel text-buddha-secondary text-2xl"></i>
+                <h1 class="text-xl font-serif font-bold text-buddha-light">佛学本体论</h1>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-6 text-buddha-light/90">
+                <a href="#overview" class="hover:text-buddha-secondary transition-colors">总览</a>
+                <a href="#ontology" class="hover:text-buddha-secondary transition-colors">本体体系</a>
+                <a href="#sutras" class="hover:text-buddha-secondary transition-colors">原典库</a>
+                <a href="#graph" class="hover:text-buddha-secondary transition-colors">义理图谱</a>
+                <a href="#timeline" class="hover:text-buddha-secondary transition-colors">译传时间轴</a>
+                <a href="#panjiao" class="hover:text-buddha-secondary transition-colors">判教对比</a>
+                <a href="#inference" class="hover:text-buddha-secondary transition-colors">智能推演</a>
+                <a href="#persons" class="hover:text-buddha-secondary transition-colors">人物圣众</a>
+            </nav>
+            
+            <button id="mobileMenuBtn" class="md:hidden text-buddha-light text-xl">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        
+        <div id="mobileMenu" class="hidden md:hidden bg-buddha-dark border-t border-buddha-primary/20">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3 text-buddha-light/90">
+                <a href="#overview" class="py-2 hover:text-buddha-secondary transition-colors">总览</a>
+                <a href="#ontology" class="py-2 hover:text-buddha-secondary transition-colors">本体体系</a>
+                <a href="#sutras" class="py-2 hover:text-buddha-secondary transition-colors">原典库</a>
+                <a href="#graph" class="py-2 hover:text-buddha-secondary transition-colors">义理图谱</a>
+                <a href="#timeline" class="py-2 hover:text-buddha-secondary transition-colors">译传时间轴</a>
+                <a href="#panjiao" class="py-2 hover:text-buddha-secondary transition-colors">判教对比</a>
+                <a href="#inference" class="py-2 hover:text-buddha-secondary transition-colors">智能推演</a>
+                <a href="#persons" class="py-2 hover:text-buddha-secondary transition-colors">人物圣众</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主视觉 -->
+    <section class="relative py-20 md:py-28 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-buddha-dark/10 to-transparent"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-serif font-bold text-buddha-dark mb-6 text-shadow-soft">
+                    佛学本体论
+                </h1>
+                <p class="text-xl md:text-2xl text-buddha-ink/80 mb-8 text-balance">
+                    全藏智能知识图谱与义理推演平台
+                </p>
+                <p class="text-lg text-buddha-ink/70 max-w-3xl mx-auto mb-12 leading-relaxed">
+                    基于本体论七层架构，系统收录核心经律论、诸佛菩萨圣众、八大宗派体系，融合义理关系图谱、多译本对比、判教对比、概念路径推演，为佛学学习与研究提供全新交互范式。
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="document.getElementById('ontology').scrollIntoView({behavior:'smooth'})" class="px-8 py-3 bg-buddha-primary text-white rounded-md hover:bg-buddha-primary/90 transition-all shadow-lg">
+                        <i class="fa fa-compass mr-2"></i>进入本体世界
+                    </button>
+                    <button onclick="document.getElementById('graph').scrollIntoView({behavior:'smooth'})" class="px-8 py-3 bg-white/80 text-buddha-primary border border-buddha-primary/30 rounded-md hover:bg-white transition-all">
+                        <i class="fa fa-project-diagram mr-2"></i>探索义理图谱
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-buddha-paper to-transparent"></div>
+    </section>
+
+    <!-- 核心数据 -->
+    <section id="overview" class="py-16 bg-white/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-buddha-dark text-center mb-12">本体数据概览</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-buddha-primary/10 text-center">
+                    <div class="text-buddha-sutra text-4xl mb-4"><i class="fa fa-book"></i></div>
+                    <h3 class="text-4xl font-bold text-buddha-dark mb-2">86</h3>
+                    <p class="text-buddha-ink/70">核心经律论</p>
+                    <p class="text-sm text-buddha-ink/50 mt-2">含108+个多译本对比</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-buddha-primary/10 text-center">
+                    <div class="text-buddha-concept text-4xl mb-4"><i class="fa fa-lightbulb-o"></i></div>
+                    <h3 class="text-4xl font-bold text-buddha-dark mb-2">216</h3>
+                    <p class="text-buddha-ink/70">义理概念节点</p>
+                    <p class="text-sm text-buddha-ink/50 mt-2">覆盖大小乘各宗核心义理</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-buddha-primary/10 text-center">
+                    <div class="text-buddha-person text-4xl mb-4"><i class="fa fa-user-circle-o"></i></div>
+                    <h3 class="text-4xl font-bold text-buddha-dark mb-2">82</h3>
+                    <p class="text-buddha-ink/70">人物圣众</p>
+                    <p class="text-sm text-buddha-ink/50 mt-2">诸佛菩萨罗汉祖师</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-buddha-primary/10 text-center">
+                    <div class="text-buddha-sect text-4xl mb-4"><i class="fa fa-sitemap"></i></div>
+                    <h3 class="text-4xl font-bold text-buddha-dark mb-2">368</h3>
+                    <p class="text-buddha-ink/70">本体关系边</p>
+                    <p class="text-sm text-buddha-ink/50 mt-2">60+种关系谓词</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 七层本体体系 -->
+    <section id="ontology" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-buddha-dark text-center mb-4">佛学本体论七层架构</h2>
+            <p class="text-center text-buddha-ink/70 mb-12 max-w-2xl mx-auto">从元模型到文化外延的完整本体分层，严格遵循本体工程规范构建</p>
+            
+            <div class="max-w-4xl mx-auto space-y-4" id="ontologyLayers"></div>
+        </div>
+    </section>
+
+    <!-- 原典库与多译本对比 -->
+    <section id="sutras" class="py-16 bg-white/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-buddha-dark text-center mb-4">全藏原典 · 多译本对比</h2>
+            <p class="text-center text-buddha-ink/70 mb-12 max-w-2xl mx-auto">按大正藏分类，同一经典不同译本对照，标注译师、年代、差异、开篇对比</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <!-- 分类筛选 -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-xl p-4 shadow-md border border-buddha-primary/10 sticky top-24 max-h-[80vh] overflow-auto scrollbar-thin">
+                        <h3 class="font-bold text-buddha-primary mb-4">大正藏分类</h3>
+                        <div id="sutraCategories" class="space-y-2"></div>
+                    </div>
+                </div>
+                
+                <!-- 经典列表 -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl p-5 shadow-md border border-buddha-primary/10">
+                        <h3 id="sutraListTitle" class="font-bold text-buddha-primary mb-4">般若部经典</h3>
+                        <div id="sutraList" class="space-y-3 max-h-[80vh] overflow-auto scrollbar-thin pr-2"></div>
+                    </div>
+                </div>
+                
+                <!-- 译本对比 -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-xl p-5 shadow-md border border-buddha-primary/10 sticky top-24 max-h-[80vh] overflow-auto scrollbar-thin">
+                        <h3 id="translationTitle" class="font-bold text-buddha-primary mb-4">多译本对比</h3>
+                        <div id="translationContent" class="text-sm">
+                            <p class="text-buddha-ink/50 text-center py-8">点击左侧经典查看各译本对比</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 义理关系图谱 -->
+    <section id="graph" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-buddha-dark text-center mb-4">义理关系图谱</h2>
+            <p class="text-center text-buddha-ink/70 mb-8 max-w-2xl mx-auto">节点按类型分色：<span class="node-sutra">●</span> 经典 <span class="node-concept">●</span> 概念 <span class="node-person">●</span> 人物 <span class="node-sect">●</span> 宗派；边标注本体关系类型，可拖拽、缩放、点击查看详情</p>
+            
+            <div class="bg-white rounded-xl p-4 shadow-md border border-buddha-primary/10">
+                <div class="flex flex-wrap gap-3 mb-4 items-center">
+                    <label class="flex items-center space-x-1 text-sm">
+                        <input type="checkbox" checked data-type="concept" class="node-filter">
+                        <span class="node-concept">义理概念</span>
+                    </label>
+                    <label class="flex items-center space-x-1 text-sm">
+                        <input type="checkbox" checked data-type="sutra" class="node-filter">
+                        <span class="node-sutra">经典论典</span>
+                    </label>
+                    <label class="flex items-center space-x-1 text-sm">
+                        <input type="checkbox" data-type="person" class="node-filter">
+                        <span class="node-person">人物祖师</span>
+                    </label>
+                    <label class="flex items-center space-x-1 text-sm">
+                        <input type="checkbox" data-type="sect" class="node-filter">
+                        <span class="node-sect">宗派</span>
+                    </label>
+                </div>
+                <div id="ontologyGraph" style="width: 100%; height: 650px;"></div>
+                <div id="graphDetail" class="mt-4 p-4 bg-buddha-light/50 rounded-lg hidden">
+                    <h4 id="graphDetailTitle" class="font-bold text-buddha-primary mb-2"></h4>
+                    <div id="graphDetailContent" class="text-sm"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 译传时间轴 -->
+    <section id="timeline" class="py-16 bg-white/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-buddha-dark text-center mb-4">佛典译传时间轴</h2>
+            <p class="text-center text-buddha-ink/70 mb-12 max-w-2xl mx-auto">从后汉到北宋六百余年佛经汉译历程，标注译师、朝代、译经地点</p>
+            
+            <div class="max-w-4xl mx-auto relative">
+                <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-buddha-primary/20 -translate-x-1/2"></div>
+                <div id="timelineContainer" class="space-y-8"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 宗派判教对比 -->
+    <section id="panjiao" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-buddha-dark text-center mb-4">宗派判教对比器</h2>
+            <p class="text-center text-buddha-ink/70 mb-8 max-w-2xl mx-auto">不同宗派对佛陀一代教法的分类判摄，可切换查看各宗判教体系</p>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-wrap justify-center gap-3 mb-8">
+                    <button class="panjiao-btn px-4 py-2 rounded-md bg-buddha-primary text-white" data-sect="tiantai">天台五时八教</button>
+                    <button class="panjiao-btn px-4 py-2 rounded-md bg-white border border-buddha-primary/30 text-buddha-primary" data-sect="huayan">华严五教十宗</button>
+                    <button class="panjiao-btn px-4 py-2 rounded-md bg-white border border-buddha-primary/30 text-buddha-primary" data-sect="weishi">唯识三时教</button>
+                    <button class="panjiao-btn px-4 py-2 rounded-md bg-white border border-buddha-primary/30 text-buddha-primary" data-sect="jingtu">净土二教</button>
+                </div>
+                
+                <div id="panjiaoContent" class="bg-white rounded-xl p-6 shadow-md border border-buddha-primary/10 min-h-[300px]"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 概念路径智能推演 -->
+    <section id="inference" class="py-16 bg-white/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-buddha-dark text-center mb-4">概念路径智能推演</h2>
+            <p class="text-center text-buddha-ink/70 mb-8 max-w-2xl mx-auto">输入任意两个佛学概念，自动推导义理关联路径，展示中间逻辑环节与经典依据（纯前端BFS推演，无需后端）</p>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-xl p-6 shadow-md border border-buddha-primary/10">
+                    <div class="flex flex-col md:flex-row gap-4 mb-6 items-center">
+                        <div class="flex-1 w-full">
+                            <label class="block text-sm font-medium mb-2">起始概念</label>
+                            <input list="conceptList" id="conceptFrom" type="text" placeholder="如：缘起" class="w-full px-4 py-2 border border-buddha-primary/30 rounded-md focus:outline-none focus:ring-2 focus:ring-buddha-primary/50">
+                        </div>
+                        <i class="fa fa-arrow-right text-buddha-primary text-2xl hidden md:block mt-6"></i>
+                        <div class="flex-1 w-full">
+                            <label class="block text-sm font-medium mb-2">目标概念</label>
+                            <input list="conceptList" id="conceptTo" type="text" placeholder="如：佛性" class="w-full px-4 py-2 border border-buddha-primary/30 rounded-md focus:outline-none focus:ring-2 focus:ring-buddha-primary/50">
+                        </div>
+                        <button id="inferenceBtn" class="mt-6 px-6 py-2 bg-buddha-primary text-white rounded-md hover:bg-buddha-primary/90 transition-colors">
+                            推演路径
+                        </button>
+                    </div>
+                    
+                    <datalist id="conceptList"></datalist>
+                    
+                    <div id="inferenceResult" class="hidden">
+                        <h4 class="font-bold text-buddha-primary mb-4 text-center" id="inferencePathTitle"></h4>
+                        <div id="inferencePath" class="flex flex-wrap justify-center items-center gap-2 mb-6"></div>
+                        <div id="inferenceSteps" class="space-y-3 bg-buddha-light/30 p-4 rounded-lg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 人物圣众 -->
+    <section id="persons" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-buddha-dark text-center mb-4">圣众 · 祖师 · 人物</h2>
+            <p class="text-center text-buddha-ink/70 mb-12 max-w-2xl mx-auto">诸佛菩萨、阿罗汉、历代译经祖师、民间信仰人物</p>
+            
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button class="person-tab-btn px-4 py-2 rounded-md bg-buddha-primary text-white" data-cat="buddha">佛陀</button>
+                <button class="person-tab-btn px-4 py-2 rounded-md bg-white border border-buddha-primary/30 text-buddha-primary" data-cat="bodhisattva">菩萨</button>
+                <button class="person-tab-btn px-4 py-2 rounded-md bg-white border border-buddha-primary/30 text-buddha-primary" data-cat="arhat">阿罗汉/弟子</button>
+                <button class="person-tab-btn px-4 py-2 rounded-md bg-white border border-buddha-primary/30 text-buddha-primary" data-cat="master">祖师译师</button>
+                <button class="person-tab-btn px-4 py-2 rounded-md bg-white border border-buddha-primary/30 text-buddha-primary" data-cat="folk">民间人物</button>
+                <button class="person-tab-btn px-4 py-2 rounded-md bg-white border border-buddha-primary/30 text-buddha-primary" data-cat="scholar">现代学者</button>
+            </div>
+            
+            <div id="personGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-buddha-dark text-buddha-light/70 py-12 border-t border-buddha-primary/20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center items-center space-x-2 mb-4">
+                <i class="fa fa-dharma-wheel text-buddha-secondary text-xl"></i>
+                <span class="text-xl font-serif font-bold text-buddha-light">佛学本体论</span>
+            </div>
+            <p class="max-w-2xl mx-auto mb-6 text-sm">基于本体论方法构建，融合知识图谱、义理推演、多版本对比功能，为佛学学习研究提供新范式。数据持续扩充中，预留全量大正藏导入接口。</p>
+            <p class="text-xs text-buddha-light/50">佛学本体论项目 · 参考 https://yejinlei.github.io/ 本体论范式构建</p>
+        </div>
+    </footer>
+
+    <script>
+        // 全局数据存储
+        let ontologyData = {
+            concepts: [],
+            sutras: [],
+            persons: [],
+            sects: [],
+            relations: []
+        };
+
+        // 移动端菜单
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+
+        // 加载所有数据
+        async function loadData() {
+            try {
+                const [conceptsRes, sutrasRes, personsRes, sectsRes, relationsRes] = await Promise.all([
+                    fetch('data/concepts-expanded.json').then(r => r.json()),
+                    fetch('data/sutras-expanded.json').then(r => r.json()),
+                    fetch('data/persons-expanded.json').then(r => r.json()),
+                    fetch('data/sects-expanded.json').then(r => r.json()),
+                    fetch('data/relations-expanded.json').then(r => r.json())
+                ]);
+                
+                ontologyData.concepts = conceptsRes.concepts;
+                ontologyData.sutras = sutrasRes.sutras;
+                ontologyData.persons = personsRes.persons;
+                ontologyData.sects = sectsRes.sects;
+                ontologyData.relations = relationsRes.relations;
+                
+                console.log('本体数据加载完成：', ontologyData);
+                
+                // 初始化所有模块
+                initOntologyLayers();
+                initSutraLibrary();
+                initOntologyGraph();
+                initTimeline();
+                initPanjiao();
+                initInference();
+                initPersons();
+                
+            } catch (e) {
+                console.error('数据加载失败，使用内置数据', e);
+                // 失败时提示
+                alert('数据加载部分失败，请通过本地HTTP服务器访问，不要直接双击打开index.html');
+            }
+        }
+
+        // 七层本体体系展示
+        function initOntologyLayers() {
+            const layers = [
+                {name: 'L0 元模型层', color: '#333', desc: '定义类、属性、关系谓词，7层类体系，60+种关系谓词，兼容RDF/OWL本体规范，是整个体系的元框架'},
+                {name: 'L1 教理本体层', color: '#4A148C', desc: '法界、真如、佛性、空性、缘起、涅槃、阿赖耶识、如来藏、实相等最顶层形而上学核心概念'},
+                {name: 'L2 义理范畴层', color: '#1E4D2B', desc: '五蕴、十二处、十八界、十二缘起、四圣谛、八正道、三法印、六度、三自性、八不中道、三谛圆融、十玄门等义理框架'},
+                {name: 'L3 宗派体系层', color: '#880E4F', desc: '汉传八宗：三论、唯识、天台、华严、禅宗、净土、律宗、密宗，各宗祖师、核心经典、核心教义、判教体系、传承法脉'},
+                {name: 'L4 文本载体层', color: '#7B3F00', desc: '大正藏分类体系：阿含、般若、法华、华严、宝积、涅槃、大集、经集、密教、律、论，包含多译本、科判、注疏、现代解读'},
+                {name: 'L5 人物传承层', color: '#8B0000', desc: '诸佛、菩萨、阿罗汉、十大弟子、历代译经师、宗派祖师、现代佛教学者，包含师承、化现关系'},
+                {name: 'L6 文化外延层', color: '#1A237E', desc: '济公、布袋和尚、关公（伽蓝菩萨）、韦驮等民间信仰人物，以及佛教文化元素'}
+            ];
+            
+            const container = document.getElementById('ontologyLayers');
+            container.innerHTML = layers.map((l, i) => `
+                <div class="flex items-start gap-4 p-4 bg-white rounded-lg shadow border border-buddha-primary/10 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0" style="background-color: ${l.color}">L${i}</div>
+                    <div>
+                        <h3 class="font-bold text-lg" style="color: ${l.color}">${l.name}</h3>
+                        <p class="text-buddha-ink/70 mt-1">${l.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 原典库与多译本对比
+        function initSutraLibrary() {
+            // 分类
+            const categories = {};
+            ontologyData.sutras.forEach(s => {
+                if (!categories[s.category]) categories[s.category] = [];
+                categories[s.category].push(s);
+            });
+            
+            const catContainer = document.getElementById('sutraCategories');
+            catContainer.innerHTML = Object.keys(categories).map((cat, i) => `
+                <button class="sutra-cat-btn w-full text-left px-3 py-2 rounded-md text-sm ${i === 1 ? 'bg-buddha-primary/10 text-buddha-primary font-medium' : 'hover:bg-buddha-light'}" data-cat="${cat}">
+                    ${cat} <span class="text-xs text-buddha-ink/50">(${categories[cat].length})</span>
+                </button>
+            `).join('');
+            
+            // 初始显示般若部
+            renderSutraList('般若部');
+            
+            // 分类点击
+            document.querySelectorAll('.sutra-cat-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.sutra-cat-btn').forEach(b => {
+                        b.classList.remove('bg-buddha-primary/10', 'text-buddha-primary', 'font-medium');
+                    });
+                    btn.classList.add('bg-buddha-primary/10', 'text-buddha-primary', 'font-medium');
+                    renderSutraList(btn.dataset.cat);
+                });
+            });
+        }
+
+        function renderSutraList(catName) {
+            const sutras = ontologyData.sutras.filter(s => s.category === catName);
+            document.getElementById('sutraListTitle').textContent = `${catName}（${sutras.length}部）`;
+            
+            const container = document.getElementById('sutraList');
+            container.innerHTML = sutras.map(s => `
+                <div class="p-3 border border-buddha-primary/10 rounded-lg hover:bg-buddha-light/30 cursor-pointer transition-colors sutra-item" data-id="${s.id}">
+                    <div class="flex justify-between items-start">
+                        <h4 class="font-medium node-sutra">${s.name}${s.abbreviation ? `（${s.abbreviation}）` : ''}</h4>
+                        ${s.translations ? `<span class="text-xs bg-buddha-secondary/20 text-buddha-dark px-2 py-0.5 rounded">${s.translations.length}个译本</span>` : ''}
+                    </div>
+                    ${s.taisho_id ? `<p class="text-xs text-buddha-ink/50 mt-1">大正藏编号：${s.taisho_id} · ${s.volume_count}卷${s.translator ? ' · ' + s.translator + '译' : ''}${s.author ? ' · ' + s.author : ''}</p>` : ''}
+                    <p class="text-sm text-buddha-ink/70 mt-1 line-clamp-2">${s.core_content || ''}</p>
+                </div>
+            `).join('');
+            
+            // 经典点击显示译本对比
+            document.querySelectorAll('.sutra-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const id = item.dataset.id;
+                    const sutra = ontologyData.sutras.find(s => s.id === id);
+                    showTranslations(sutra);
+                });
+            });
+        }
+
+        function showTranslations(sutra) {
+            document.getElementById('translationTitle').textContent = `${sutra.name} 译本对比`;
+            if (!sutra.translations || sutra.translations.length === 0) {
+                document.getElementById('translationContent').innerHTML = '<p class="text-buddha-ink/50 text-center py-4">暂无多译本对比数据</p>';
+                return;
+            }
+            
+            const content = sutra.translations.map(t => `
+                <div class="border-l-2 border-buddha-primary/30 pl-3 py-2 mb-3">
+                    <h5 class="font-medium text-sm">${t.name}</h5>
+                    <p class="text-xs text-buddha-ink/60 mt-1">
+                        ${t.translator ? '译者：' + t.translator : ''}${t.translate_time ? ' · ' + t.translate_time : ''}${t.translate_place ? ' · ' + t.translate_place : ''}
+                    </p>
+                    <p class="text-xs text-buddha-ink/60">卷数：${t.volume_count || 1}卷${t.text_length ? ' · ' + t.text_length : ''}</p>
+                    ${t.differences ? `<p class="text-xs text-buddha-ink/70 mt-1"><span class="font-medium">版本特点：</span>${t.differences}</p>` : ''}
+                    ${t.open_line ? `<div class="mt-2 p-2 bg-buddha-paper rounded text-buddha-sutra font-serif text-xs leading-relaxed">开篇：${t.open_line}</div>` : ''}
+                </div>
+            `).join('');
+            
+            document.getElementById('translationContent').innerHTML = content;
+        }
+
+        // 义理关系图谱
+        let graphChart = null;
+        function initOntologyGraph() {
+            const chartDom = document.getElementById('ontologyGraph');
+            graphChart = echarts.init(chartDom);
+            
+            renderGraph();
+            
+            // 筛选器
+            document.querySelectorAll('.node-filter').forEach(cb => {
+                cb.addEventListener('change', renderGraph);
+            });
+            
+            // 点击节点显示详情
+            graphChart.on('click', params => {
+                if (params.dataType === 'node') {
+                    showGraphNodeDetail(params.data);
+                }
+            });
+            
+            window.addEventListener('resize', () => graphChart.resize());
+        }
+
+        function renderGraph() {
+            // 获取选中的类型
+            const activeTypes = Array.from(document.querySelectorAll('.node-filter:checked')).map(cb => cb.dataset.type);
+            
+            const nodes = [];
+            const nodeMap = {};
+            const links = [];
+            
+            // 颜色映射
+            const colorMap = {
+                concept: '#1E4D2B',
+                sutra: '#7B3F00',
+                person: '#8B0000',
+                sect: '#4A148C'
+            };
+            
+            // 添加节点
+            if (activeTypes.includes('concept')) {
+                ontologyData.concepts.slice(0, 80).forEach(c => {
+                    const id = 'c_' + c.id;
+                    nodes.push({
+                        id: id,
+                        name: c.name,
+                        category: 'concept',
+                        symbolSize: c.layer === 'L1' ? 25 : 18,
+                        itemStyle: {color: colorMap.concept},
+                        value: c.definition,
+                        data: c
+                    });
+                    nodeMap[id] = true;
+                });
+            }
+            
+            if (activeTypes.includes('sutra')) {
+                ontologyData.sutras.slice(0, 20).forEach(s => {
+                    const id = 's_' + s.id;
+                    nodes.push({
+                        id: id,
+                        name: s.abbreviation || s.name,
+                        category: 'sutra',
+                        symbolSize: 22,
+                        itemStyle: {color: colorMap.sutra},
+                        value: s.core_content,
+                        data: s
+                    });
+                    nodeMap[id] = true;
+                });
+            }
+            
+            if (activeTypes.includes('person')) {
+                ontologyData.persons.filter(p => p.category === '佛陀' || p.category === '菩萨' || p.category === '历代祖师译经师').slice(0, 20).forEach(p => {
+                    const id = 'p_' + p.id;
+                    nodes.push({
+                        id: id,
+                        name: p.name,
+                        category: 'person',
+                        symbolSize: 20,
+                        itemStyle: {color: colorMap.person},
+                        value: p.achievements ? p.achievements.join('；') : p.core_teachings.join('；'),
+                        data: p
+                    });
+                    nodeMap[id] = true;
+                });
+            }
+            
+            if (activeTypes.includes('sect')) {
+                ontologyData.sects.forEach(s => {
+                    const id = 'sec_' + s.id;
+                    nodes.push({
+                        id: id,
+                        name: s.name,
+                        category: 'sect',
+                        symbolSize: 24,
+                        itemStyle: {color: colorMap.sect},
+                        value: s.core_doctrine.join('；'),
+                        data: s
+                    });
+                    nodeMap[id] = true;
+                });
+            }
+            
+            // 添加边
+            ontologyData.relations.forEach(r => {
+                // 转换id格式
+                let source, target;
+                if (r.source.startsWith('c')) source = r.source.replace('c', 'c_');
+                else if (r.source.startsWith('s')) source = r.source.replace('s', 's_');
+                else if (r.source.startsWith('p')) source = r.source.replace('p', 'p_');
+                else if (r.source.startsWith('sec')) source = r.source.replace('sec', 'sec_');
+                
+                if (r.target.startsWith('c')) target = r.target.replace('c', 'c_');
+                else if (r.target.startsWith('s')) target = r.target.replace('s', 's_');
+                else if (r.target.startsWith('p')) target = r.target.replace('p', 'p_');
+                else if (r.target.startsWith('sec')) target = r.target.replace('sec', 'sec_');
+                
+                if (nodeMap[source] && nodeMap[target]) {
+                    links.push({
+                        source: source,
+                        target: target,
+                        value: r.description || r.type,
+                        label: {show: false},
+                        lineStyle: {
+                            color: colorMap[r.source.substring(0, r.source.indexOf(/\d/))] || '#999',
+                            opacity: 0.4,
+                            width: 1
+                        }
+                    });
+                }
+            });
+            
+            const option = {
+                tooltip: {
+                    formatter: params => {
+                        if (params.dataType === 'node') {
+                            return `<strong>${params.name}</strong><br/>${params.data.value || ''}`;
+                        } else {
+                            return params.data.value;
+                        }
+                    }
+                },
+                series: [{
+                    type: 'graph',
+                    layout: 'force',
+                    animation: true,
+                    roam: true,
+                    draggable: true,
+                    label: {
+                        show: true,
+                        position: 'right',
+                        formatter: '{b}',
+                        fontSize: 11
+                    },
+                    force: {
+                        repulsion: 200,
+                        edgeLength: [80, 150],
+                        gravity: 0.1
+                    },
+                    edgeSymbol: ['none', 'arrow'],
+                    edgeSymbolSize: [0, 6],
+                    data: nodes,
+                    links: links,
+                    lineStyle: {opacity: 0.3, curveness: 0.1},
+                    emphasis: {
+                        focus: 'adjacency',
+                        lineStyle: {width: 3, opacity: 0.7}
+                    }
+                }]
+            };
+            
+            graphChart.setOption(option, true);
+        }
+
+        function showGraphNodeDetail(node) {
+            const detailEl = document.getElementById('graphDetail');
+            const titleEl = document.getElementById('graphDetailTitle');
+            const contentEl = document.getElementById('graphDetailContent');
+            
+            detailEl.classList.remove('hidden');
+            titleEl.textContent = node.name;
+            
+            let html = '';
+            const d = node.data;
+            if (node.category === 'concept') {
+                html = `<p class="mb-2"><strong>定义：</strong>${d.definition || ''}</p>`;
+                if (d.alias && d.alias.length) html += `<p class="mb-2"><strong>异名：</strong>${d.alias.join('、')}</p>`;
+                if (d.sutra_source) html += `<p class="mb-2"><strong>出处：</strong>${d.sutra_source.join('、')}</p>`;
+            } else if (node.category === 'sutra') {
+                html = `<p class="mb-2"><strong>核心内容：</strong>${d.core_content || ''}</p>`;
+                if (d.core_concept) html += `<p class="mb-2"><strong>核心义理：</strong>${d.core_concept.join('、')}</p>`;
+            } else if (node.category === 'person') {
+                if (d.core_teachings) html += `<p class="mb-2"><strong>核心教法：</strong>${d.core_teachings.join('；')}</p>`;
+                if (d.achievements) html += `<p class="mb-2"><strong>主要成就：</strong>${d.achievements.join('；')}</p>`;
+                if (d.stories) html += `<p class="mb-2"><strong>典故：</strong>${d.stories.join('；')}</p>`;
+            } else if (node.category === 'sect') {
+                html = `<p class="mb-2"><strong>创始人：</strong>${d.founder}</p>`;
+                html += `<p class="mb-2"><strong>核心经典：</strong>${d.core_sutra.join('、')}</p>`;
+                html += `<p class="mb-2"><strong>核心教义：</strong>${d.core_doctrine.join('；')}</p>`;
+            }
+            
+            contentEl.innerHTML = html;
+        }
+
+        // 译传时间轴
+        function initTimeline() {
+            const translations = [];
+            ontologyData.sutras.forEach(s => {
+                if (s.translations) {
+                    s.translations.forEach(t => {
+                        translations.push({
+                            sutra: s.name,
+                            name: t.name,
+                            translator: t.translator,
+                            time: t.translate_time,
+                            place: t.translate_place
+                        });
+                    });
+                }
+            });
+            
+            // 按大致年代排序
+            const dynastyOrder = ['后汉', '三国', '西晋', '东晋', '后秦', '北凉', '刘宋', '北魏', '南朝梁', '陈', '隋', '唐', '北宋'];
+            translations.sort((a, b) => {
+                const da = dynastyOrder.findIndex(d => a.time && a.time.includes(d));
+                const db = dynastyOrder.findIndex(d => b.time && b.time.includes(d));
+                return da - db;
+            });
+            
+            const container = document.getElementById('timelineContainer');
+            container.innerHTML = translations.slice(0, 20).map((t, i) => `
+                <div class="relative flex items-center ${i % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}">
+                    <div class="w-5/12 ${i % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}">
+                        <div class="bg-white p-4 rounded-lg shadow-md border border-buddha-primary/10 inline-block text-left">
+                            <p class="text-xs text-buddha-primary font-medium">${t.time || ''}</p>
+                            <h4 class="font-bold text-buddha-dark">${t.sutra}</h4>
+                            <p class="text-sm text-buddha-ink/70">${t.translator || '译者不详'}${t.place ? ' · ' + t.place : ''}</p>
+                            <p class="text-xs text-buddha-ink/50 mt-1">${t.name}</p>
+                        </div>
+                    </div>
+                    <div class="w-2/12 flex justify-center">
+                        <div class="w-4 h-4 rounded-full bg-buddha-secondary border-4 border-white shadow"></div>
+                    </div>
+                    <div class="w-5/12"></div>
+                </div>
+            `).join('');
+        }
+
+        // 判教对比
+        function initPanjiao() {
+            showPanjiao('tiantai');
+            document.querySelectorAll('.panjiao-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.panjiao-btn').forEach(b => {
+                        b.classList.remove('bg-buddha-primary', 'text-white');
+                        b.classList.add('bg-white', 'border', 'border-buddha-primary/30', 'text-buddha-primary');
+                    });
+                    btn.classList.remove('bg-white', 'border', 'border-buddha-primary/30', 'text-buddha-primary');
+                    btn.classList.add('bg-buddha-primary', 'text-white');
+                    showPanjiao(btn.dataset.sect);
+                });
+            });
+        }
+
+        function showPanjiao(sect) {
+            const panjiao = ontologyData.sects.panjiao_comparison;
+            const container = document.getElementById('panjiaoContent');
+            let html = '';
+            
+            if (sect === 'tiantai') {
+                const data = panjiao.天台宗_五时八教;
+                html += '<h3 class="text-xl font-bold text-buddha-primary mb-4 text-center">天台宗 · 五时八教判教体系</h3>';
+                html += '<p class="text-center text-buddha-ink/70 mb-6">智者大师所立，将佛陀一代教法按说法时间分为五时，按说法方式分为化仪四教，按教法内容分为化法四教，为最完备的判教体系</p>';
+                html += '<div class="mb-6"><h4 class="font-bold mb-3">五时：佛陀说法五个阶段</h4>';
+                html += '<div class="space-y-2">';
+                data.五时.forEach(t => {
+                    html += `
+                        <div class="p-3 bg-buddha-light/30 rounded-lg">
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium text-buddha-primary">${t.name}</span>
+                                <span class="text-xs text-buddha-ink/60">${t.time}</span>
+                            </div>
+                            <p class="text-sm mt-1"><span class="text-xs bg-buddha-secondary/20 px-1 rounded mr-1">经典</span>${t.sutra}</p>
+                            <p class="text-sm mt-1"><span class="text-xs bg-buddha-secondary/20 px-1 rounded mr-1">教相</span>${t.vehicle}</p>
+                            <p class="text-xs text-buddha-ink/60 mt-1"><i class="fa fa-sun-o mr-1"></i>${t.metaphor}</p>
+                        </div>
+                    `;
+                });
+                html += '</div></div>';
+                html += '<h4 class="font-bold mb-3">化法四教：按教法内容深浅</h4>';
+                html += '<div class="grid grid-cols-1 md:grid-cols-2 gap-3">';
+                data.化法四教.forEach(t => {
+                    html += `<div class="p-3 bg-buddha-light/30 rounded-lg"><span class="font-medium text-buddha-primary">${t.name}</span><p class="text-sm mt-1">${t.description}</p></div>`;
+                });
+                html += '</div>';
+            } else if (sect === 'huayan') {
+                const data = panjiao.华严宗_五教十宗;
+                html += '<h3 class="text-xl font-bold text-buddha-primary mb-4 text-center">华严宗 · 五教十宗判教体系</h3>';
+                html += '<p class="text-center text-buddha-ink/70 mb-6">贤首法藏所立，将佛陀教法按义理深浅分为五教，以华严经为最高圆教</p>';
+                html += '<div class="space-y-3">';
+                data.五教.forEach(t => {
+                    html += `
+                        <div class="p-4 bg-buddha-light/30 rounded-lg">
+                            <span class="font-bold text-buddha-primary">${t.name}</span>
+                            <p class="text-sm mt-2">${t.description}</p>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            } else if (sect === 'weishi') {
+                const data = panjiao.唯识宗_三时教;
+                html += '<h3 class="text-xl font-bold text-buddha-primary mb-4 text-center">唯识宗 · 三时教判教体系</h3>';
+                html += '<p class="text-center text-buddha-ink/70 mb-6">依《解深密经》所立，判佛陀一代教法为三时，第三时唯识中道教为了义</p>';
+                html += '<div class="space-y-4">';
+                data.forEach((t, i) => {
+                    html += `
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-full bg-buddha-primary text-white flex items-center justify-center font-bold flex-shrink-0">${i+1}</div>
+                            <div class="flex-1 p-4 bg-buddha-light/30 rounded-lg">
+                                <span class="font-bold text-buddha-primary">${t.name}</span>
+                                <p class="text-sm mt-2">${t.description}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            } else if (sect === 'jingtu') {
+                const data = panjiao.净土宗_二教;
+                html += '<h3 class="text-xl font-bold text-buddha-primary mb-4 text-center">净土宗 · 二门判教</h3>';
+                html += '<p class="text-center text-buddha-ink/70 mb-6">净土宗判佛法为圣道、净土二门，末法时代众生唯依净土念佛仗佛力得救</p>';
+                html += '<div class="grid grid-cols-1 md:grid-cols-2 gap-6">';
+                data.forEach(t => {
+                    html += `
+                        <div class="p-5 bg-buddha-light/30 rounded-lg">
+                            <h4 class="font-bold text-buddha-primary text-lg mb-2">${t.name}</h4>
+                            <p class="text-sm">${t.description}</p>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            }
+            
+            container.innerHTML = html;
+        }
+
+        // 概念路径推演
+        function initInference() {
+            // 填充概念下拉列表
+            const datalist = document.getElementById('conceptList');
+            datalist.innerHTML = ontologyData.concepts.map(c => `<option value="${c.name}">`).join('');
+            
+            document.getElementById('inferenceBtn').addEventListener('click', doInference);
+        }
+
+        function doInference() {
+            const fromName = document.getElementById('conceptFrom').value.trim();
+            const toName = document.getElementById('conceptTo').value.trim();
+            
+            if (!fromName || !toName) {
+                alert('请输入起始和目标概念');
+                return;
+            }
+            
+            const fromConcept = ontologyData.concepts.find(c => c.name === fromName);
+            const toConcept = ontologyData.concepts.find(c => c.name === toName);
+            
+            if (!fromConcept) { alert('未找到起始概念：' + fromName); return; }
+            if (!toConcept) { alert('未找到目标概念：' + toName); return; }
+            
+            // 构建图邻接表
+            const graph = {};
+            ontologyData.concepts.forEach(c => graph[c.id] = []);
+            
+            ontologyData.relations.forEach(r => {
+                if (r.source.startsWith('c') && r.target.startsWith('c')) {
+                    if (!graph[r.source]) graph[r.source] = [];
+                    graph[r.source].push({id: r.target, relation: r.type, desc: r.description, sutra: r.sutra});
+                }
+            });
+            
+            // BFS找最短路径
+            const fromId = fromConcept.id;
+            const toId = toConcept.id;
+            const queue = [[fromId, []]];
+            const visited = new Set([fromId]);
+            let path = null;
+            
+            while (queue.length > 0) {
+                const [current, pathSoFar] = queue.shift();
+                if (current === toId) {
+                    path = pathSoFar;
+                    break;
+                }
+                const neighbors = graph[current] || [];
+                for (const n of neighbors) {
+                    if (!visited.has(n.id)) {
+                        visited.add(n.id);
+                        queue.push([n.id, [...pathSoFar, {from: current, to: n.id, relation: n.relation, desc: n.desc, sutra: n.sutra}]]);
+                    }
+                }
+            }
+            
+            const resultEl = document.getElementById('inferenceResult');
+            resultEl.classList.remove('hidden');
+            
+            if (!path || path.length === 0) {
+                document.getElementById('inferencePathTitle').textContent = `未找到从「${fromName}」到「${toName}」的直接关联路径`;
+                document.getElementById('inferencePath').innerHTML = '<p class="text-buddha-ink/60">可尝试通过相关经典、宗派间接关联，或继续扩充本体关系数据</p>';
+                document.getElementById('inferenceSteps').innerHTML = '';
+                return;
+            }
+            
+            // 渲染路径
+            document.getElementById('inferencePathTitle').textContent = `义理路径：${fromName} → ${toName}`;
+            let pathHtml = '';
+            const idToConcept = {};
+            ontologyData.concepts.forEach(c => idToConcept[c.id] = c);
+            
+            pathHtml += `<span class="px-3 py-1 bg-buddha-concept/20 text-buddha-concept rounded font-medium">${fromName}</span>`;
+            path.forEach(step => {
+                const toNameStep = idToConcept[step.to] ? idToConcept[step.to].name : step.to;
+                pathHtml += `<i class="fa fa-long-arrow-right text-buddha-primary mx-1"></i>`;
+                pathHtml += `<span class="px-3 py-1 bg-buddha-concept/20 text-buddha-concept rounded font-medium">${toNameStep}</span>`;
+            });
+            document.getElementById('inferencePath').innerHTML = pathHtml;
+            
+            // 渲染步骤说明
+            let stepsHtml = '<h5 class="font-medium mb-2">路径详解：</h5>';
+            let currentName = fromName;
+            path.forEach((step, i) => {
+                const toNameStep = idToConcept[step.to] ? idToConcept[step.to].name : step.to;
+                const relLabel = {
+                    xiangji: '相即不二',
+                    tongyi: '同一异名',
+                    quanshi: '义理诠释',
+                    yanshen: '衍生发展',
+                    sheshu: '摄属包含',
+                    duipo: '对破',
+                    baohan: '包含'
+                }[step.relation] || step.relation;
+                stepsHtml += `
+                    <div class="p-2 border-l-2 border-buddha-primary/30">
+                        <p class="text-sm"><strong>第${i+1}步：</strong>${currentName} <span class="text-buddha-primary">——[${relLabel}]——▶</span> ${toNameStep}</p>
+                        <p class="text-xs text-buddha-ink/70 ml-6 mt-1">${step.desc || ''}</p>
+                        ${step.sutra ? `<p class="text-xs text-buddha-sutra ml-6 mt-1">经典依据：${step.sutra}</p>` : ''}
+                    </div>
+                `;
+                currentName = toNameStep;
+            });
+            document.getElementById('inferenceSteps').innerHTML = stepsHtml;
+        }
+
+        // 人物圣众
+        function initPersons() {
+            renderPersons('buddha');
+            
+            document.querySelectorAll('.person-tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.person-tab-btn').forEach(b => {
+                        b.classList.remove('bg-buddha-primary', 'text-white');
+                        b.classList.add('bg-white', 'border', 'border-buddha-primary/30', 'text-buddha-primary');
+                    });
+                    btn.classList.remove('bg-white', 'border', 'border-buddha-primary/30', 'text-buddha-primary');
+                    btn.classList.add('bg-buddha-primary', 'text-white');
+                    renderPersons(btn.dataset.cat);
+                });
+            });
+        }
+
+        function renderPersons(cat) {
+            let persons;
+            if (cat === 'buddha') persons = ontologyData.persons.filter(p => p.category === '佛陀');
+            else if (cat === 'bodhisattva') persons = ontologyData.persons.filter(p => p.category === '菩萨');
+            else if (cat === 'arhat') persons = ontologyData.persons.filter(p => p.category === '阿罗汉/十大弟子');
+            else if (cat === 'master') persons = ontologyData.persons.filter(p => p.category === '历代祖师译经师');
+            else if (cat === 'folk') persons = ontologyData.persons.filter(p => p.category === '民间信仰人物');
+            else if (cat === 'scholar') persons = ontologyData.persons.filter(p => p.category === '现代学者');
+            
+            const container = document.getElementById('personGrid');
+            container.innerHTML = persons.map(p => `
+                <div class="bg-white rounded-xl overflow-hidden shadow-md border border-buddha-primary/10 hover:shadow-lg transition-shadow">
+                    <div class="h-2 bg-gradient-to-r from-buddha-primary to-buddha-secondary"></div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-buddha-dark mb-1">${p.name}</h3>
+                        ${p.sanskrit_name ? `<p class="text-xs text-buddha-ink/50 mb-2">梵名：${p.sanskrit_name}</p>` : ''}
+                        ${p.alias && p.alias.length ? `<p class="text-xs text-buddha-ink/60 mb-3">${p.alias.slice(0,3).join('、')}</p>` : ''}
+                        
+                        ${p.era ? `<p class="text-sm"><i class="fa fa-calendar-o text-buddha-primary/60 mr-1"></i>${p.era}${p.place ? ' · ' + p.place : ''}</p>` : ''}
+                        
+                        <div class="mt-3 text-sm space-y-1">
+                            ${p.position ? `<p><strong>果位/地位：</strong>${p.position}</p>` : ''}
+                            ${p.vow ? `<p><strong>本愿：</strong>${p.vow}</p>` : ''}
+                            ${p.sect ? `<p><strong>宗派：</strong>${p.sect}</p>` : ''}
+                            ${p.research_field ? `<p><strong>研究领域：</strong>${p.research_field.join('、')}</p>` : ''}
+                            ${p.core_teachings ? `<p class="line-clamp-2"><strong>核心教法：</strong>${p.core_teachings.slice(0,2).join('；')}</p>` : ''}
+                            ${p.achievements ? `<p class="line-clamp-2"><strong>主要成就：</strong>${p.achievements.slice(0,2).join('；')}</p>` : ''}
+                            ${p.stories ? `<p class="line-clamp-2 text-buddha-ink/70 mt-1"><i class="fa fa-bookmark-o mr-1"></i>${p.stories[0]}</p>` : ''}
+                            ${p.cultural_influence ? `<p class="line-clamp-2 text-buddha-ink/70 mt-1"><strong>文化影响：</strong>${p.cultural_influence.join('；')}</p>` : ''}
+                            ${p.core_view ? `<p class="line-clamp-2 text-buddha-ink/70 mt-1"><strong>核心观点：</strong>${p.core_view[0]}</p>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>

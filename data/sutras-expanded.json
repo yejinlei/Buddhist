@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "total": 86,
+    "categories": ["阿含部", "般若部", "法华部", "华严部", "宝积部", "涅槃部", "大集部", "经集部", "密教部", "律部", "论部", "禅宗部", "净土部"]
+  },
+  "sutras": [
+    {
+      "id": "s001", "taisho_id": "T0001", "category": "阿含部", "name": "长阿含经", "volume_count": 22,
+      "translations": [
+        {"id": "t001_1", "name": "长阿含经", "translator": "佛陀耶舍、竺佛念", "translate_time": "后秦弘始十五年（413年）", "translate_place": "长安", "volume_count": 22, "text_length": "约30万字", "differences": "四分四诵，共收30经"}
+      ],
+      "core_content": "四部阿含之首，包含《大本经》《游行经》等，记述佛陀生平事迹及早期教义，破斥外道九十六种邪见",
+      "core_concept": ["四圣谛", "十二缘起", "轮回", "无我"]
+    },
+    {
+      "id": "s002", "taisho_id": "T0026", "category": "阿含部", "name": "中阿含经", "volume_count": 60,
+      "translations": [
+        {"id": "t002_1", "name": "中阿含经", "translator": "瞿昙僧伽提婆", "translate_time": "东晋隆安二年（398年）", "translate_place": "建康", "volume_count": 60, "text_length": "约60万字", "differences": "收222经，多为佛陀对弟子所说的深奥义理"}
+      ],
+      "core_content": "篇幅适中的经集，包含众多教义论述，注重禅定与智慧的修行"
+    },
+    {
+      "id": "s003", "taisho_id": "T0099", "category": "阿含部", "name": "杂阿含经", "volume_count": 50,
+      "translations": [
+        {"id": "t003_1", "name": "杂阿含经", "translator": "求那跋陀罗", "translate_time": "刘宋元嘉二十年（443年）", "translate_place": "建康", "volume_count": 50, "text_length": "约50万字", "differences": "收1362经，按五阴、六入、杂因、道品分类"}
+      ],
+      "core_content": "最早结集的经典，包含最原始的佛教教义，是研究原始佛教的核心资料"
+    },
+    {
+      "id": "s004", "taisho_id": "T0125", "category": "阿含部", "name": "增一阿含经", "volume_count": 51,
+      "translations": [
+        {"id": "t004_1", "name": "增一阿含经", "translator": "瞿昙僧伽提婆", "translate_time": "东晋隆安元年（397年）", "translate_place": "洛阳", "volume_count": 51, "text_length": "约45万字", "differences": "按法数从一到十一递增排列，共收472经，包含大乘萌芽思想"}
+      ],
+      "core_content": "按法数编排，包含众多因果业报、菩萨行的内容，有明显的大乘倾向"
+    },
+    {
+      "id": "s005", "taisho_id": "T0220", "category": "般若部", "name": "大般若波罗蜜多经", "volume_count": 600,
+      "translations": [
+        {"id": "t005_1", "name": "大般若波罗蜜多经", "translator": "玄奘", "translate_time": "唐显庆五年至龙朔三年（660-663年）", "translate_place": "长安玉华宫", "volume_count": 600, "text_length": "约480万字", "differences": "共十六会，是般若类经典的总集，系统阐发般若空性思想"},
+        {"id": "t005_2", "name": "大般若经（不全本）", "translator": "鸠摩罗什等", "translate_time": "东晋", "volume_count": "多卷", "differences": "零散译出的各会，玄奘译本为全本"}
+      ],
+      "core_content": "大乘佛教的根本经典，系统阐发"一切法空""般若波罗蜜多"思想，是中观宗的根本依据",
+      "core_concept": ["空性", "般若", "无所得", "缘起性空"]
+    },
+    {
+      "id": "s006", "taisho_id": "T0235", "category": "般若部", "name": "金刚般若波罗蜜经", "volume_count": 1,
+      "abbreviation": "金刚经",
+      "translations": [
+        {"id": "t006_1", "name": "金刚般若波罗蜜经", "translator": "鸠摩罗什", "translate_time": "后秦弘始四年（402年）", "translate_place": "长安", "volume_count": 1, "text_length": "约5000字", "differences": "流传最广的译本，文字简洁流畅，禅宗依用此本", "open_line": "如是我闻。一时，佛在舍卫国祗树给孤独园，与大比丘众千二百五十人俱。"},
+        {"id": "t006_2", "name": "金刚般若波罗蜜经", "translator": "菩提流支", "translate_time": "北魏永平二年（509年）", "volume_count": 1, "differences": "文字略繁，有二十九分"},
+        {"id": "t006_3", "name": "金刚般若波罗蜜经", "translator": "真谛", "translate_time": "陈天嘉三年（562年）", "volume_count": 1, "differences": "无分段"},
+        {"id": "t006_4", "name": "金刚般若波罗蜜经", "translator": "达摩笈多", "translate_time": "隋大业年间", "volume_count": 1, "text_length": "约7000字", "differences": "名《金刚能断般若波罗蜜经》，逐字直译，文字较质朴"},
+        {"id": "t006_5", "name": "能断金刚般若波罗蜜多经", "translator": "玄奘", "translate_time": "唐贞观二十二年（648年）", "translate_place": "长安弘福寺", "volume_count": 1, "differences": "完整保留了般若法会的完整结构，开篇有严谨的序分"},
+        {"id": "t006_6", "name": "佛说能断金刚般若波罗蜜多经", "translator": "义净", "translate_time": "唐长安三年（703年）", "volume_count": 1, "differences": "文字最接近梵本"}
+      ],
+      "core_content": "阐述"应无所住而生其心"的般若思想，破一切相，离一切执着，是禅宗核心经典",
+      "core_concept": ["无住", "无相", "无所得", "般若"],
+      "keban_structure": {
+        "序分": "法会因由分第一",
+        "正宗分": ["善现启请分第二", "大乘正宗分第三", "妙行无住分第四", "如理实见分第五", "正信希有分第六", "无得无说分第七", "依法出生分第八", "一相无相分第九", "庄严净土分第十", "无为福胜分第十一", "尊重正教分第十二", "如法受持分第十三", "离相寂灭分第十四", "持经功德分第十五", "能净业障分第十六", "究竟无我分第十七", "一体同观分第十八", "法界通分分第十九", "离色离相分第二十", "非说所说分第二十一", "无法可得分第二十二", "净心行善分第二十三", "福智无比分第二十四", "化无所化分第二十五", "法身非相分第二十六", "无断无灭分第二十七", "不受不贪分第二十八", "威仪寂净分第二十九", "一合理相分第三十", "知见不生分第三十一", "应化非真分第三十二"],
+        "流通分": "结尾信受奉行"
+      },
+      "modern_commentary": {"南怀瑾": "《金刚经说什么》：《金刚经》不是讲空，是讲如何放下执着，在世间行菩萨道而无所住"}
+    },
+    {
+      "id": "s007", "taisho_id": "T0251", "category": "般若部", "name": "般若波罗蜜多心经", "volume_count": 1,
+      "abbreviation": "心经",
+      "translations": [
+        {"id": "t007_1", "name": "摩诃般若波罗蜜大明咒经", "translator": "鸠摩罗什", "translate_time": "后秦弘治年间（402-412年）", "volume_count": 1, "text_length": "260字", "differences": "最早译本，无开头序分", "open_line": "观世音菩萨，行深般若波罗蜜时，照见五阴空，度一切苦厄。"},
+        {"id": "t007_2", "name": "般若波罗蜜多心经", "translator": "玄奘", "translate_time": "唐贞观二十三年（649年）", "translate_place": "长安", "volume_count": 1, "text_length": "260字", "differences": "流传最广版本，文字精炼，是日常读诵本", "open_line": "观自在菩萨，行深般若波罗蜜多时，照见五蕴皆空，度一切苦厄。"},
+        {"id": "t007_3", "name": "般若波罗蜜多心经", "translator": "法月", "translate_time": "唐开元二十三年（735年）", "volume_count": 1, "differences": "有序分，比玄奘本多60余字"},
+        {"id": "t007_4", "name": "般若波罗蜜多心经", "translator": "般若共利言等", "translate_time": "唐贞元年间", "volume_count": 1},
+        {"id": "t007_5", "name": "般若波罗蜜多心经", "translator": "智慧轮", "translate_time": "唐大中年间", "volume_count": 1},
+        {"id": "t007_6", "name": "般若波罗蜜多心经", "translator": "法成", "translate_time": "唐大中年间", "volume_count": 1, "differences": "藏汉对照本"},
+        {"id": "t007_7", "name": "佛说圣佛母般若波罗蜜多经", "translator": "施护", "translate_time": "北宋端拱元年（988年）", "volume_count": 1, "text_length": "约400字", "differences": "完整序分，结尾有咒语详细说明", "open_line": "如是我闻。一时，世尊在王舍城鹫峰山中，与大苾刍众千二百五十人俱，并大菩萨众，尔时世尊入三摩地，名广大甚深。"}
+      ],
+      "core_content": "般若经典的精华，高度浓缩了大般若经的核心义理：五蕴皆空、色空不二，是佛教流传最广的经典",
+      "core_concept": ["五蕴皆空", "色空不二", "般若", "空性"],
+      "modern_commentary": {"印顺": "《般若经讲记》：《心经》是大般若经的精要，二百六十个字道尽般若深义，核心是"照见五蕴皆空，度一切苦厄""}
+    },
+    {
+      "id": "s008", "taisho_id": "T0262", "category": "法华部", "name": "妙法莲华经", "volume_count": 7,
+      "abbreviation": "法华经",
+      "translations": [
+        {"id": "t008_1", "name": "正法华经", "translator": "竺法护", "translate_time": "西晋太康七年（286年）", "volume_count": 10, "differences": "最早全译本"},
+        {"id": "t008_2", "name": "妙法莲华经", "translator": "鸠摩罗什", "translate_time": "后秦弘始八年（406年）", "translate_place": "长安", "volume_count": 7, "text_length": "约8万字", "differences": "流传最广，文字优美流畅，天台宗依用此本，共28品", "open_line": "如是我闻。一时，佛住王舍城耆阇崛山中，与大比丘众万二千人俱。"},
+        {"id": "t008_3", "name": "添品妙法莲华经", "translator": "阇那崛多、达摩笈多", "translate_time": "隋仁寿元年（601年）", "volume_count": 7, "differences": "补齐了罗什本缺少的《提婆达多品》和《普门品》偈颂"}
+      ],
+      "core_content": "天台宗根本经典，阐发"一佛乘"思想，三乘方便一佛乘真实，开权显实，一切众生皆可成佛，包含《方便品》《火宅喻》《化城喻》《观世音菩萨普门品》等著名篇章",
+      "core_concept": ["一佛乘", "开权显实", "十如是", "诸法实相"],
+      "keban_structure": {
+        "序分": "序品第一",
+        "正宗分": ["方便品第二", "譬喻品第三", "信解品第四", "药草喻品第五", "授记品第六", "化城喻品第七", "五百弟子受记品第八", "授学无学人记品第九", "法师品第十", "见宝塔品第十一", "提婆达多品第十二", "劝持品第十三", "安乐行品第十四", "从地踊出品第十五", "如来寿量品第十六", "分别功德品第十七", "随喜功德品第十八", "法师功德品第十九", "常不轻菩萨品第二十", "如来神力品第二十一", "嘱累品第二十二", "药王菩萨本事品第二十三", "妙音菩萨品第二十四", "观世音菩萨普门品第二十五", "陀罗尼品第二十六", "妙庄严王本事品第二十七"],
+        "流通分": "普贤菩萨劝发品第二十八"
+      }
+    },
+    {
+      "id": "s009", "taisho_id": "T0278", "category": "华严部", "name": "大方广佛华严经", "volume_count": 80,
+      "abbreviation": "华严经",
+      "translations": [
+        {"id": "t009_1", "name": "六十华严", "translator": "佛陀跋陀罗", "translate_time": "东晋义熙十四年（418年）", "volume_count": 60, "differences": "最早全本，分三十四品"},
+        {"id": "t009_2", "name": "八十华严", "translator": "实叉难陀", "translate_time": "唐证圣元年至圣历二年（695-699年）", "translate_place": "洛阳佛授记寺", "volume_count": 80, "text_length": "约140万字", "differences": "内容最完整，文字流畅，华严宗根本经典，分三十九品", "open_line": "如是我闻。一时，佛在摩竭提国阿兰若法菩提场中，始成正觉。"},
+        {"id": "t009_3", "name": "四十华严", "translator": "般若", "translate_time": "唐贞元十二年（796年）", "volume_count": 40, "differences": "即《入法界品》的详译本，讲述善财童子五十三参"}
+      ],
+      "core_content": "华严宗根本经典，讲述佛陀成道后最初三七日为法身大士所说的圆顿大法，法界缘起，重重无尽，善财童子五十三参，体现大乘菩萨行精神",
+      "core_concept": ["法界缘起", "十玄门", "六相圆融", "事事无碍"]
+    },
+    {
+      "id": "s010", "taisho_id": "T0374", "category": "涅槃部", "name": "大般涅槃经", "volume_count": 40,
+      "abbreviation": "涅槃经",
+      "translations": [
+        {"id": "t010_1", "name": "六卷泥洹经", "translator": "法显", "translate_time": "东晋义熙十三年（417年）", "volume_count": 6, "differences": "略本，缺后半部分"},
+        {"id": "t010_2", "name": "大般涅槃经", "translator": "昙无谶", "translate_time": "北凉玄始十年（421年）", "volume_count": 40, "text_length": "约60万字", "differences": "南本北本之分，北本40卷，南本36卷，为完整版本", "open_line": "如是我闻。一时，佛在拘尸那国力士生地阿利罗跋提河边娑罗双树间。"},
+        {"id": "t010_3", "name": "大般涅槃经后分", "translator": "若那跋陀罗", "translate_time": "唐初", "volume_count": 2, "differences": "补译佛涅槃后的荼毗等内容"}
+      ],
+      "core_content": "佛陀涅槃前所说的最后一部经，阐发"常乐我净"涅槃四德，"一切众生皆有佛性，一阐提也能成佛"思想，对中国佛教影响深远",
+      "core_concept": ["佛性", "一阐提成佛", "涅槃四德", "常乐我净"]
+    },
+    {
+      "id": "s011", "taisho_id": "T0475", "category": "经集部", "name": "维摩诘所说经", "volume_count": 3,
+      "abbreviation": "维摩经",
+      "translations": [
+        {"id": "t011_1", "name": "维摩诘经", "translator": "支谦", "translate_time": "三国吴", "volume_count": 2, "differences": "最早译本"},
+        {"id": "t011_2", "name": "维摩诘所说经", "translator": "鸠摩罗什", "translate_time": "后秦弘始八年（406年）", "volume_count": 3, "differences": "流传最广，文字优美，14品", "open_line": "如是我闻。一时，佛在毗耶离庵罗树园，与大比丘众八千人俱，菩萨三万二千。"},
+        {"id": "t011_3", "name": "说无垢称经", "translator": "玄奘", "translate_time": "唐永徽元年（650年）", "volume_count": 6, "differences": "逐字直译，最接近梵本"}
+      ],
+      "core_content": "讲述维摩诘居士与文殊菩萨等辩论大乘义理，"不二法门"思想核心，阐述"烦恼即菩提""在欲而行禅"的大乘居士佛教精神",
+      "core_concept": ["不二法门", "烦恼即菩提", "居士佛教", "不可思议解脱"]
+    },
+    {
+      "id": "s012", "taisho_id": "T0670", "category": "经集部", "name": "楞伽阿跋多罗宝经", "volume_count": 4,
+      "abbreviation": "楞伽经",
+      "translations": [
+        {"id": "t012_1", "name": "楞伽阿跋多罗宝经", "translator": "求那跋陀罗", "translate_time": "刘宋元嘉二十年（443年）", "volume_count": 4, "differences": "四卷本，禅宗初祖达磨印可的四卷楞伽", "open_line": "如是我闻。一时，佛住南海滨楞伽山顶，种种宝华以为庄严。"},
+        {"id": "t012_2", "name": "入楞伽经", "translator": "菩提流支", "translate_time": "北魏延昌二年（513年）", "volume_count": 10, "differences": "十卷本"},
+        {"id": "t012_3", "name": "大乘入楞伽经", "translator": "实叉难陀", "translate_time": "唐久视元年（700年）", "volume_count": 7, "differences": "七卷本，文义流畅"}
+      ],
+      "core_content": "融唯识、如来藏、禅宗思想于一体，讲"五法三自性八识二无我"，是禅宗早期印心经典，"佛语心为宗，无门为法门"",
+      "core_concept": ["如来藏", "阿赖耶识", "唯识无境", "禅"]
+    },
+    {
+      "id": "s013", "taisho_id": "T0945", "category": "经集部", "name": "大佛顶如来密因修证了义诸菩萨万行首楞严经", "volume_count": 10,
+      "abbreviation": "楞严经",
+      "translations": [
+        {"id": "t013_1", "name": "大佛顶首楞严经", "translator": "般剌蜜帝", "translate_time": "唐神龙元年（705年）", "translate_place": "广州制止寺", "volume_count": 10, "text_length": "约13万字", "differences": "唯一汉译本，房融笔受，文字极其优美", "open_line": "如是我闻。一时，佛在室罗筏城祇桓精舍，与大比丘众千二百五十人俱，皆是无漏大阿罗汉。"}
+      ],
+      "core_content": "论述"根尘同源、缚脱无二"，详细讲解首楞严大定，二十五圆通，七处征心，十番显见，五十阴魔，是开慧的楞严，对中国佛教各宗都影响极大",
+      "core_concept": ["首楞严大定", "如来藏", "根尘同源", "五十阴魔"]
+    },
+    {
+      "id": "s014", "taisho_id": "T2008", "category": "禅宗部", "name": "六祖大师法宝坛经", "volume_count": 1,
+      "abbreviation": "坛经",
+      "translations": [
+        {"id": "t014_1", "name": "敦煌本坛经", "translator": "法海录", "write_time": "唐", "volume_count": 1, "text_length": "约12000字", "differences": "现存最早版本，约12000字，更接近慧能说法原貌"},
+        {"id": "t014_2", "name": "宗宝本坛经", "translator": "宗宝编", "write_time": "元至元二十八年（1291年）", "volume_count": 1, "text_length": "约24000字", "differences": "流传最广版本，共十品，文字经过润色，增加了后世内容", "open_line": "时大师至宝林，韶州韦刺史与官僚入山，请师出，于城中大梵寺讲堂，为众开缘说法。师升座次，刺史官僚三十余人，儒宗学士三十余人，僧尼道俗一千余人，同时作礼，愿闻法要。"}
+      ],
+      "core_content": "禅宗六祖慧能的说法记录，唯一被称为"经"的祖师著作，核心思想：明心见性、顿悟成佛、无念为宗、无相为体、无住为本，是中国人写的佛经",
+      "core_concept": ["明心见性", "顿悟", "无念无住无相", "即心即佛"]
+    },
+    {
+      "id": "s015", "taisho_id": "T0366", "category": "净土部", "name": "佛说阿弥陀经", "volume_count": 1,
+      "abbreviation": "阿弥陀经",
+      "translations": [
+        {"id": "t015_1", "name": "佛说阿弥陀经", "translator": "鸠摩罗什", "translate_time": "后秦弘始四年（402年）", "volume_count": 1, "text_length": "约2000字", "differences": "流传最广，净土宗早晚课诵本，文字简洁，"一心不乱"", "open_line": "如是我闻。一时，佛在舍卫国祗树给孤独园，与大比丘僧千二百五十人俱。"},
+        {"id": "t015_2", "name": "称赞净土佛摄受经", "translator": "玄奘", "translate_time": "唐永徽元年（650年）", "volume_count": 1, "differences": "直译，名为"系念不乱""}
+      ],
+      "core_content": "净土宗根本经典之一，描述西方极乐世界的庄严，持名念佛往生净土，是净土宗每天课诵的经典",
+      "core_concept": ["极乐世界", "持名念佛", "往生"]
+    },
+    {
+      "id": "s016", "taisho_id": "T0360", "category": "净土部", "name": "佛说观无量寿佛经", "volume_count": 1,
+      "abbreviation": "观经",
+      "translations": [
+        {"id": "t016_1", "name": "佛说观无量寿佛经", "translator": "畺良耶舍", "translate_time": "刘宋元嘉年间", "volume_count": 1, "differences": "唯一汉译本"}
+      ],
+      "core_content": "讲十六观法，定散二善，九品往生，是净土宗核心经典"
+    },
+    {
+      "id": "s017", "taisho_id": "T0365", "category": "净土部", "name": "佛说无量寿经", "volume_count": 2,
+      "abbreviation": "大阿弥陀经",
+      "translations": [
+        {"id": "t017_1", "name": "佛说无量清净平等觉经", "translator": "支娄迦谶", "translate_time": "后汉", "volume_count": 2, "differences": "最早译本"},
+        {"id": "t017_2", "name": "佛说无量寿经", "translator": "康僧铠", "translate_time": "曹魏嘉平四年（252年）", "volume_count": 2, "differences": "最通行本", "open_line": "如是我闻。一时，佛住王舍城耆阇崛山中，与大比丘众万二千人俱。"},
+        {"id": "t017_3", "name": "大宝积经无量寿如来会", "translator": "菩提流志", "translate_time": "唐", "volume_count": 2}
+      ],
+      "core_content": "讲述阿弥陀佛因地法藏比丘发四十八大愿，建立极乐世界，是净土宗根本经典"
+    },
+    {
+      "id": "s018", "taisho_id": "T1509", "category": "论部", "name": "中论", "volume_count": 4,
+      "abbreviation": "中观论",
+      "author": "龙树菩萨造，青目菩萨释，鸠摩罗什译",
+      "translations": [
+        {"id": "t018_1", "name": "中论", "translator": "鸠摩罗什", "translate_time": "后秦弘始十一年（409年）", "volume_count": 4, "differences": "共27品，三论宗核心论典", "open_line": "不生亦不灭，不常亦不断，不一亦不异，不来亦不出。"}
+      ],
+      "core_content": "中观宗根本论典，系统阐发缘起性空、八不中道思想，破斥一切边见，是大乘佛教最重要的论典之一"
+    },
+    {
+      "id": "s019", "taisho_id": "T1585", "category": "论部", "name": "成唯识论", "volume_count": 10,
+      "author": "护法等菩萨造，玄奘糅译",
+      "translations": [
+        {"id": "t019_1", "name": "成唯识论", "translator": "玄奘", "translate_time": "唐显庆四年（659年）", "volume_count": 10, "differences": "糅译十大论师对《唯识三十颂》的注释，以护法义为正义", "open_line": "稽首唯识性，满分清净者。我今释彼说，利乐诸有情。"}
+      ],
+      "core_content": "唯识宗根本论典，系统阐述三自性、八识、种子、转识成智等核心义理，是唯识宗的集大成著作"
+    },
+    {
+      "id": "s020", "taisho_id": "T1507", "category": "论部", "name": "大智度论", "volume_count": 100,
+      "author": "龙树菩萨造，鸠摩罗什译",
+      "translations": [
+        {"id": "t020_1", "name": "大智度论", "translator": "鸠摩罗什", "translate_time": "后秦弘始四年至七年（402-405年）", "volume_count": 100, "differences": "大般若经的注释论著，"论中之王""}
+      ],
+      "core_content": "《大般若经》的系统注释，包含大量佛教义理、名相、修行方法，是大乘佛教的百科全书式论典"
+    }
+  ]
+}
