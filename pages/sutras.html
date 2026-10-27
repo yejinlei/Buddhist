@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>佛经原文库 - 佛学本体论</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                colors: {
+                    buddha: { primary:'#8B5A2B', secondary:'#D4AF37', dark:'#3A2E1F', light:'#F5F0E6', paper:'#F8F4E9', ink:'#2C2416' }
+                }
+            }}
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bg-paper-texture{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");}
+            .sutra-text{font-family:'Noto Serif SC','Source Han Serif',serif;line-height:2.2;font-size:18px;letter-spacing:0.02em;}
+        }
+    </style>
+</head>
+<body class="bg-buddha-paper text-buddha-ink bg-paper-texture min-h-screen">
+    <!-- 顶部 -->
+    <header class="sticky top-0 z-40 bg-buddha-dark/95 backdrop-blur-sm border-b border-buddha-primary/20 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="../index.html" class="text-buddha-light hover:text-buddha-secondary"><i class="fa fa-arrow-left mr-1"></i>返回首页</a>
+                <h1 class="text-xl font-serif font-bold text-buddha-light flex items-center">
+                    <i class="fa fa-book text-buddha-secondary mr-2"></i>佛经原文库
+                </h1>
+                <span id="totalInfo" class="text-sm text-buddha-light/60 hidden md:inline"></span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button id="compareToggle" class="px-3 py-1 text-sm bg-buddha-primary/20 text-buddha-light rounded hover:bg-buddha-primary/40 hidden">
+                    <i class="fa fa-columns mr-1"></i>多译本对比
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-0 flex flex-col md:flex-row h-[calc(100vh-60px)]">
+        <!-- 左侧：经目 -->
+        <aside id="sidebar" class="md:w-80 w-full md:border-r border-buddha-primary/20 overflow-hidden flex flex-col bg-white/40">
+            <div class="p-4 border-b border-buddha-primary/10 space-y-3">
+                <input id="searchInput" type="text" placeholder="搜索经名、译师..." class="w-full px-3 py-2 rounded border border-buddha-primary/30 bg-white focus:outline-none focus:border-buddha-primary text-sm">
+                <div class="flex space-x-2">
+                    <select id="seriesFilter" class="flex-1 px-2 py-1 rounded border border-buddha-primary/30 bg-white text-sm">
+                        <option value="">全部部类</option>
+                    </select>
+                    <select id="dynastyFilter" class="flex-1 px-2 py-1 rounded border border-buddha-primary/30 bg-white text-sm">
+                        <option value="">全部朝代</option>
+                    </select>
+                </div>
+            </div>
+            <div id="sutraList" class="flex-1 overflow-auto scrollbar-thin p-2 space-y-1"></div>
+            <div class="p-3 text-xs text-buddha-ink/50 border-t border-buddha-primary/10 bg-white/60">
+                原文来源：CBETA 大正藏（公共领域）<br>每本经以独立JSON文件存储于 <code>sutras/</code> 目录
+            </div>
+        </aside>
+
+        <!-- 中间：正文阅读 -->
+        <main id="reader" class="flex-1 overflow-auto scrollbar-thin">
+            <div id="readerWelcome" class="h-full flex flex-col items-center justify-center text-buddha-ink/50 p-8">
+                <i class="fa fa-book text-6xl mb-6 text-buddha-primary/30"></i>
+                <h2 class="text-2xl font-serif mb-3">请从左侧选择一部经典阅读</h2>
+                <p class="text-center max-w-md">所有经典按大正藏编号收录，每本独立文件存储，支持按部类、朝代筛选检索；点击「多译本对比」可并置同经异译本。</p>
+            </div>
+            <article id="sutraContent" class="hidden max-w-3xl mx-auto p-8 sutra-text"></article>
+        </main>
+
+        <!-- 右侧：多译本对比（可选） -->
+        <aside id="comparePane" class="hidden md:w-[420px] md:border-l border-buddha-primary/20 bg-white/60 flex-col overflow-hidden">
+            <div class="p-4 border-b border-buddha-primary/10 flex justify-between items-center bg-buddha-light/30">
+                <h3 class="font-bold text-buddha-primary"><i class="fa fa-columns mr-1"></i>多译本对比</h3>
+                <button id="closeCompare" class="text-buddha-ink/50 hover:text-buddha-primary"><i class="fa fa-times"></i></button>
+            </div>
+            <div id="compareContent" class="flex-1 overflow-auto scrollbar-thin p-4 space-y-6 text-sm sutra-text"></div>
+        </aside>
+    </div>
+
+<script>
+let SUTRAS_INDEX = null;
+let SUTRA_CACHE = {};
+let CURRENT_ID = null;
+
+async function loadIndex(){
+    const r = await fetch('../sutras/index.json');
+    SUTRAS_INDEX = await r.json();
+    document.getElementById('totalInfo').textContent = `共 ${SUTRAS_INDEX.total} 部 · ${SUTRAS_INDEX.total_chars.toLocaleString()} 字`;
+    populateFilters();
+    renderList(SUTRAS_INDEX.list);
+}
+
+function populateFilters(){
+    const s = document.getElementById('seriesFilter');
+    [...new Set(SUTRAS_INDEX.list.map(x=>x.series).filter(Boolean))].sort().forEach(v=>{
+        s.insertAdjacentHTML('beforeend',`<option value="${v}">${v}</option>`);
+    });
+    const d = document.getElementById('dynastyFilter');
+    [...new Set(SUTRAS_INDEX.list.map(x=>x.dynasty).filter(Boolean))].sort().forEach(v=>{
+        d.insertAdjacentHTML('beforeend',`<option value="${v}">${v}</option>`);
+    });
+}
+
+function renderList(list){
+    const el = document.getElementById('sutraList');
+    el.innerHTML = '';
+    list.forEach(item=>{
+        const active = item.id===CURRENT_ID ? 'bg-buddha-primary/20 border-l-4 border-buddha-primary' : 'hover:bg-buddha-primary/10 border-l-4 border-transparent';
+        el.insertAdjacentHTML('beforeend',`
+            <div class="px-3 py-2 cursor-pointer rounded ${active}" data-id="${item.id}" data-file="${item.file}">
+                <div class="font-medium text-sm">${item.title}</div>
+                <div class="text-xs text-buddha-ink/60 mt-0.5">
+                    <span class="inline-block px-1.5 py-0.5 bg-buddha-secondary/20 rounded text-buddha-primary mr-1">${item.taisho}</span>
+                    ${item.dynasty}·${item.translator}
+                </div>
+                <div class="text-xs text-buddha-ink/40 mt-0.5">${item.series} · ${item.chars}字 · ${item.chapters}段</div>
+            </div>
+        `);
+    });
+    el.querySelectorAll('[data-id]').forEach(n=>{
+        n.onclick=()=>openSutra(n.dataset.file,n.dataset.id);
+    });
+}
+
+function applyFilters(){
+    const q = document.getElementById('searchInput').value.trim();
+    const se = document.getElementById('seriesFilter').value;
+    const dy = document.getElementById('dynastyFilter').value;
+    let list = SUTRAS_INDEX.list;
+    if(q) list=list.filter(x=>x.title.includes(q)||x.alt_title.includes(q)||x.translator.includes(q)||x.taisho.includes(q));
+    if(se) list=list.filter(x=>x.series===se);
+    if(dy) list=list.filter(x=>x.dynasty===dy);
+    renderList(list);
+}
+
+async function loadSutra(file){
+    if(SUTRA_CACHE[file]) return SUTRA_CACHE[file];
+    const r = await fetch('../sutras/'+file);
+    const d = await r.json();
+    SUTRA_CACHE[file]=d;
+    return d;
+}
+
+async function openSutra(file,id){
+    CURRENT_ID=id;
+    renderList(document.getElementById('searchInput').value||document.getElementById('seriesFilter').value||document.getElementById('dynastyFilter').value?document.querySelectorAll('#sutraList > div').length:SUTRAS_INDEX.list.length&&applyFilter(),undefined);
+    applyFilters();
+    const d = await loadSutra(file);
+    document.getElementById('readerWelcome').classList.add('hidden');
+    const c = document.getElementById('sutraContent');
+    c.classList.remove('hidden');
+    let html = `
+        <header class="mb-8 pb-6 border-b-2 border-buddha-primary/30">
+            <h1 class="text-3xl font-bold text-buddha-dark mb-2">${d.title}</h1>
+            ${d.alt_title?`<p class="text-lg text-buddha-ink/60 mb-3">又名：${d.alt_title}</p>`:''}
+            <div class="flex flex-wrap gap-3 text-sm">
+                <span class="px-2 py-1 bg-buddha-secondary/20 text-buddha-primary rounded"><i class="fa fa-hashtag mr-1"></i>${d.taisho}</span>
+                <span class="px-2 py-1 bg-buddha-light rounded"><i class="fa fa-folder-o mr-1"></i>${d.series}</span>
+                <span class="px-2 py-1 bg-buddha-light rounded"><i class="fa fa-user-o mr-1"></i>${d.dynasty}·${d.translator} 译</span>
+                <span class="px-2 py-1 bg-buddha-light rounded"><i class="fa fa-scroll-o mr-1"></i>共${d.juan}卷</span>
+                <span class="px-2 py-1 bg-buddha-light rounded"><i class="fa fa-font mr-1"></i>${d.chars.toLocaleString()}字</span>
+            </div>
+            ${d.compare?`<div class="mt-3 p-3 bg-buddha-secondary/10 rounded text-sm text-buddha-primary"><i class="fa fa-info-circle mr-1"></i>${d.compare}</div>`:''}
+        </header>
+        <nav class="mb-8 p-4 bg-white/60 rounded-lg border border-buddha-primary/10">
+            <div class="text-xs text-buddha-ink/50 mb-2">品目导航</div>
+            <div class="flex flex-wrap gap-2">
+                ${d.content.map((ch,i)=>`<a href="#ch-${i}" class="px-2 py-1 text-sm hover:bg-buddha-primary/20 rounded border border-buddha-primary/20">${ch.chapter}</a>`).join('')}
+            </div>
+        </nav>
+        <div class="space-y-10">
+    `;
+    d.content.forEach((ch,i)=>{
+        html += `<section id="ch-${i}">
+            <h2 class="text-xl font-bold text-buddha-primary mb-4 pb-2 border-b border-dashed border-buddha-primary/30">${ch.chapter}</h2>
+            <div class="whitespace-pre-wrap">${ch.text}</div>
+        </section>`;
+    });
+    html += '</div>';
+    c.innerHTML = html;
+    c.scrollTop=0;
+
+    // 检查是否有同经异译本，显示对比按钮
+    const baseTitle = d.title.replace(/[·:：（）()]/g,'').replace(/译本$/,'').replace(/鸠摩罗什|玄奘|法月|般若共利言|施护|法成|智慧轮|支谦|实叉难陀|竺法护|康僧铠|鸠摩罗什/g,'').trim();
+    const variants = SUTRAS_INDEX.list.filter(x=>{
+        const t=x.title.replace(/[·:：（）()]/g,'').replace(/译本$/,'').replace(/鸠摩罗什|玄奘|法月|般若共利言|施护|法成|智慧轮|支谦|实叉难陀|竺法护|康僧铠/g,'').trim();
+        return t.includes(baseTitle.slice(0,2))||d.alt_title&&x.title.includes(d.alt_title.slice(0,2))||x.alt_title&&x.alt_title.includes(d.title.slice(0,2));
+    });
+    if(variants.length>1){
+        document.getElementById('compareToggle').classList.remove('hidden');
+        document.getElementById('compareToggle').onclick=()=>showCompare(variants,d.id);
+    } else {
+        document.getElementById('compareToggle').classList.add('hidden');
+    }
+}
+
+async function showCompare(variants, currentId){
+    const pane = document.getElementById('comparePane');
+    pane.classList.remove('hidden');
+    pane.classList.add('flex');
+    const cc = document.getElementById('compareContent');
+    cc.innerHTML='<div class="text-buddha-ink/50 text-center py-8"><i class="fa fa-spinner fa-spin mr-2"></i>加载译本...</div>';
+    let html='';
+    for(const v of variants){
+        const d = await loadSutra(v.file);
+        const active = v.id===currentId?'border-2 border-buddha-primary':'border border-buddha-primary/20';
+        html += `<div class="bg-white/80 rounded p-3 ${active}">
+            <div class="font-bold text-buddha-primary mb-1">${d.title}</div>
+            <div class="text-xs text-buddha-ink/60 mb-2">${d.dynasty}·${d.translator} · ${d.chars}字 · ${d.taisho}</div>
+            <div class="max-h-64 overflow-auto scrollbar-thin">
+                ${d.content.slice(0,2).map(ch=>`<div class="mb-3"><div class="text-xs font-bold text-buddha-primary/70 mb-1">${ch.chapter}</div><div class="whitespace-pre-wrap text-[15px] leading-relaxed">${ch.text.length>800?ch.text.slice(0,800)+'...':ch.text}</div></div>`).join('')}
+            </div>
+            <button class="mt-2 w-full py-1 text-xs border border-buddha-primary/30 rounded hover:bg-buddha-primary/10" onclick="document.querySelector('[data-id=\\'${v.id}\\']').click()">打开全文</button>
+        </div>`;
+    }
+    cc.innerHTML=html;
+}
+
+document.getElementById('closeCompare').onclick=()=>{
+    document.getElementById('comparePane').classList.add('hidden');
+    document.getElementById('comparePane').classList.remove('flex');
+};
+document.getElementById('searchInput').addEventListener('input',applyFilters);
+document.getElementById('seriesFilter').addEventListener('change',applyFilters);
+document.getElementById('dynastyFilter').addEventListener('change',applyFilters);
+document.getElementById('mobileMenuBtn')&&document.getElementById('mobileMenuBtn').onclick=()=>{}; // placeholder
+
+loadIndex();
+</script>
+</body>
+</html>
