@@ -1,0 +1,3 @@
+.xmlcache/
+__pycache__/
+*.pyc

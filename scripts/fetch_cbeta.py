@@ -19,11 +19,17 @@ RAW = 'https://raw.githubusercontent.com/cbeta-org/xml-p5/master'
 API = 'https://api.github.com/repos/cbeta-org/xml-p5/contents'
 META = 'https://cbdata.dila.edu.tw/stable/works'
 NS = {'t': 'http://www.tei-c.org/ns/1.0', 'cb': 'http://www.cbeta.org/ns/1.0'}
+import os
+TOKEN = os.environ.get('GITHUB_TOKEN', '')
+MANIFEST = Path('/tmp/cbeta_manifest.json')
 
-def http(url, binary=False, retry=3):
+def http(url, binary=False, retry=3, auth=False):
     for i in range(retry):
         try:
-            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            h = {'User-Agent': 'Mozilla/5.0'}
+            if auth and TOKEN:
+                h['Authorization'] = f'Bearer {TOKEN}'
+            req = urllib.request.Request(url, headers=h)
             data = urllib.request.urlopen(req, timeout=60).read()
             return data if binary else data.decode('utf-8', 'ignore')
         except Exception as e:
@@ -31,15 +37,27 @@ def http(url, binary=False, retry=3):
                 raise
             time.sleep(2)
 
+def build_manifest():
+    """构建并缓存全部册->经号清单（用 git tree 单次拉取，避免多次 API 调用）"""
+    if MANIFEST.exists():
+        return json.loads(MANIFEST.read_text())
+    tree = json.loads(http(API.replace('/contents', '/git/trees') + '/master?recursive=1', auth=True))
+    man = {}
+    for item in tree.get('tree', []):
+        p = item['path']
+        if p.startswith('T/') and p.endswith('.xml'):
+            parts = p.split('/')
+            if len(parts) == 3:
+                man.setdefault(parts[1], []).append(parts[2])
+    MANIFEST.write_text(json.dumps(man, ensure_ascii=False))
+    return man
+
 def list_volumes():
-    """列举 T 藏全部册目录"""
-    txt = http(API + '/T?ref=master')
-    return [x['name'] for x in json.loads(txt) if x['type'] == 'dir']
+    return list(build_manifest().keys())
 
 def list_works(vol):
-    """列举某册下全部经号 XML"""
-    txt = http(f'{API}/T/{vol}?ref=master')
-    return [x['name'] for x in json.loads(txt) if x['name'].endswith('.xml')]
+    man = build_manifest()
+    return man.get(vol, [])
 
 def get_meta(work):
     """从 CBETA 元数据 API 取经目信息"""
