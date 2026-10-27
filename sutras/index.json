@@ -1,24 +1,7 @@
 {
-  "source": "CBETA 大正藏（Taisho Tripitaka）·公共领域",
-  "total": 11,
-  "total_chars": 18106,
-  "series_list": [
-    "华严部",
-    "宝积部·净土类",
-    "经集部",
-    "般若部",
-    "般若部·异译本",
-    "阿含部"
-  ],
-  "translator_list": [
-    "安世高",
-    "法月",
-    "玄奘",
-    "竺法护",
-    "般若",
-    "迦叶摩腾、竺法兰",
-    "鸠摩罗什"
-  ],
+  "source": "CBETA 大正藏",
+  "total": 12,
+  "total_chars": 270215,
   "list": [
     {
       "id": "amituo_jiumo",
@@ -31,8 +14,7 @@
       "juan": 1,
       "chars": 2207,
       "chapters": 5,
-      "file": "amituo_jiumo.json",
-      "compare": ""
+      "file": "amituo_jiumo.json"
     },
     {
       "id": "bada_renjue",
@@ -45,8 +27,7 @@
       "juan": 1,
       "chars": 453,
       "chapters": 1,
-      "file": "bada_renjue.json",
-      "compare": ""
+      "file": "bada_renjue.json"
     },
     {
       "id": "fo_yijiao",
@@ -59,8 +40,7 @@
       "juan": 1,
       "chars": 2131,
       "chapters": 6,
-      "file": "fo_yijiao.json",
-      "compare": ""
+      "file": "fo_yijiao.json"
     },
     {
       "id": "jingang_jiumo",
@@ -73,8 +53,7 @@
       "juan": 1,
       "chars": 6423,
       "chapters": 32,
-      "file": "jingang_jiumo.json",
-      "compare": ""
+      "file": "jingang_jiumo.json"
     },
     {
       "id": "puxian_xingyuan",
@@ -87,8 +66,7 @@
       "juan": 1,
       "chars": 710,
       "chapters": 2,
-      "file": "puxian_xingyuan.json",
-      "compare": ""
+      "file": "puxian_xingyuan.json"
     },
     {
       "id": "sishi_erzhang",
@@ -101,8 +79,20 @@
       "juan": 1,
       "chars": 2749,
       "chapters": 42,
-      "file": "sishi_erzhang.json",
-      "compare": ""
+      "file": "sishi_erzhang.json"
+    },
+    {
+      "id": "t0221",
+      "title": "放光般若經",
+      "alt_title": "放光般若經",
+      "taisho": "T0221",
+      "series": "般若部類",
+      "translator": "西晉 無羅叉譯",
+      "dynasty": "西晉",
+      "juan": 20,
+      "chars": 252109,
+      "chapters": 20,
+      "file": "t0221.json"
     },
     {
       "id": "xinjing_fayue",
@@ -115,8 +105,7 @@
       "juan": 1,
       "chars": 377,
       "chapters": 1,
-      "file": "xinjing_fayue.json",
-      "compare": "般若共利言译本与玄奘本最为接近，法月本咒语较长，包含八大菩萨名"
+      "file": "xinjing_fayue.json"
     },
     {
       "id": "xinjing_jiumo",
@@ -129,8 +118,7 @@
       "juan": 1,
       "chars": 360,
       "chapters": 1,
-      "file": "xinjing_jiumo.json",
-      "compare": "与玄奘译本对照：罗什本短，玄奘本完整；咒语略有差异"
+      "file": "xinjing_jiumo.json"
     },
     {
       "id": "xinjing_xuanzang",
@@ -143,8 +131,7 @@
       "juan": 1,
       "chars": 331,
       "chapters": 1,
-      "file": "xinjing_xuanzang.json",
-      "compare": ""
+      "file": "xinjing_xuanzang.json"
     },
     {
       "id": "yaoshi_xuanzang",
@@ -157,8 +144,7 @@
       "juan": 1,
       "chars": 1497,
       "chapters": 4,
-      "file": "yaoshi_xuanzang.json",
-      "compare": ""
+      "file": "yaoshi_xuanzang.json"
     },
     {
       "id": "yulan_pen",
@@ -171,8 +157,7 @@
       "juan": 1,
       "chars": 868,
       "chapters": 1,
-      "file": "yulan_pen.json",
-      "compare": ""
+      "file": "yulan_pen.json"
     }
   ]
 }
