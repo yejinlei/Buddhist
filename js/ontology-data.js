@@ -2189,7 +2189,7 @@ const ontologyData = {
       "description": "靠阿弥陀佛愿力他力救度，持名念佛往生净土，是易行道，三根普被，末法众生唯一出路"
     }
   ]
-}
+},
   core_sutras: [
   {
     "id": "s001",
