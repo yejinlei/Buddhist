@@ -827,7 +827,8 @@ async function loadExtras() {
                 if(t.category && !['人物','地名','人物圣众','护法诸天'].includes(t.category) && t.name.length>=2 && t.name.length<=8) DICT_AUTO_SET.add(t.name);
             });
         }
-        if (currentSutra && (NOTES[currentSutra.id] || (KEPAN && KEPAN[currentSutra.id]))) { loadedChapters = 0; const c = document.getElementById('sutra-text'); if (c) c.innerHTML = ''; if (c) loadMoreChapters(); }
+        // 词典/注解/繁简映射就绪后，重新渲染当前经文，确保简体显示与词条标注完整
+        if (currentSutra) { loadedChapters = 0; const c = document.getElementById('sutra-text'); if (c) c.innerHTML = ''; if (c) loadMoreChapters(); }
         // 更新科判按钮状态
         updateKepanBtn();
     } catch (e) { console.warn('注解/词典加载失败', e); }
@@ -886,12 +887,15 @@ function linkDictTerms(simpText, origText) {
             if (DICT_AUTO_SET.has(seg) && DICT_MAP.has(seg)) { matched = DICT_MAP.get(seg); matchLen = L; break; }
         }
         if (matched) {
-            const chunk = origText.substr(i, matchLen);
+            const chunk = simpText.substr(i, matchLen);
             out.push(`<span class="dict-term" data-term="${esc(matched.name)}" title="点击查词典：${esc(matched.name)}">${esc(chunk)}</span>`);
             i += matchLen;
         } else {
-            out.push(esc(origText[i]));
-            i += 1;
+            // 按码点取字符：非 BMP 生僻字（如 𫄨）由代理对组成，若按码元取会拆散成乱码
+            let ch = simpText.charAt(i);
+            if (ch >= '\uD800' && ch <= '\uDBFF' && i + 1 < n) ch = simpText.substr(i, 2);
+            out.push(esc(ch));
+            i += ch.length;
         }
     }
     return out.join('');
@@ -922,16 +926,16 @@ function renderParagraph(p) {
             seg.push({s:h.s, e:h.e, isNote:true, a:h.a});
             cur = h.e;
         });
-        if (cur < p.length) seg.push({s:cur, e:p.length, isNote:false});
+        if (cur < simp.length) seg.push({s:cur, e:simp.length, isNote:false});
     } else {
-        seg.push({s:0, e:p.length, isNote:false});
+        seg.push({s:0, e:simp.length, isNote:false});
     }
 
     // 第二步：每个片段内：若是注片段加学者标记；否则应用词典词条自动链接
     let out = '';
     seg.forEach(part => {
-        const partOrig = p.slice(part.s, part.e);
         const partSimp = simp.slice(part.s, part.e);
+        const partOrig = p.slice(part.s, Math.min(part.e, p.length)) || partSimp;
         if (part.isNote) {
             out += `<span class="scholar-hi">${linkDictTerms(partSimp, partOrig)}</span>`;
             out += `<sup class="scholar-mark" data-note="${encodeURIComponent(JSON.stringify(part.a))}" title="查看学者解读">注</sup>`;
@@ -962,8 +966,11 @@ function showNote(json) {
           out.push(`<span class="dict-term-in-note" data-term="${esc(matched.name)}">${esc(text.substr(i,matchLen))}</span>`);
           i += matchLen;
         } else {
-          out.push(esc(text[i]));
-          i += 1;
+          // 按码点取字符，避免拆散非 BMP 字符的代理对
+          let ch = text.charAt(i);
+          if (ch >= '\uD800' && ch <= '\uDBFF' && i + 1 < text.length) ch = text.substr(i, 2);
+          out.push(esc(ch));
+          i += ch.length;
         }
       }
       return out.join('');
@@ -1409,6 +1416,7 @@ async function loadSutra(meta) {
     }
 
     currentSutra = sutraData;
+    window.currentSutra = sutraData;   // 供读经辅助读取原文（繁体模式）
     // 读经辅助重置（切换新经时重新抓取原文）
     if(window.__readingAid && window.__readingAid.reset) window.__readingAid.reset();
     // 补一下归一化字段（sutraData 来自单经 JSON，没有 _dynasty/_trans）

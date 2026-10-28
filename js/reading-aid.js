@@ -173,12 +173,12 @@
   function getOrigTrad(pid){
     if(_origTextMap.has(pid)) return _origTextMap.get(pid);
     if(!window.currentSutra) return null;
-    const m = pid.match(/c(\d+)_p(\d+)/);
+    const m = pid.match(/c(\d+)-p(\d+)/);
     if(!m){ _origTextMap.set(pid,null); return null; }
     const ci = parseInt(m[1]), pi = parseInt(m[2]);
     const chap = window.currentSutra.content && window.currentSutra.content[ci];
     if(!chap){ _origTextMap.set(pid,null); return null; }
-    const paras = (chap.text||'').split(/\n+/).map(x=>x.trim()).filter(Boolean);
+    const paras = (chap.text||'').split(/\n+/).filter(Boolean).map(x=>x.trim());
     const raw = paras[pi] || null;
     _origTextMap.set(pid, raw);
     return raw;
