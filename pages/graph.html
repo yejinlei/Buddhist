@@ -13,17 +13,23 @@
     <script src="../js/vendor/echarts.min.js"></script>
     <script src="../js/ontology-graph-data.js"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .view-tab {padding:8px 18px;border-radius:8px 8px 0 0;cursor:pointer;font-weight:600;border:1px solid transparent;border-bottom:none;background:#f5f0e6;color:#8b6f47;transition:all .15s;}
+        .view-tab.active {background:#fff;color:#8b2500;border-color:#e0c896;}
+        .kepan-select {padding:6px 12px;border:1px solid #e0c896;border-radius:6px;background:#fff;font-size:13px;max-width:70vw;}
+        .legend-dot {display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:4px;vertical-align:middle;}
+    </style>
 </head>
 <body class="bg-buddha-paper text-buddha-dark">
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             <a href="../index.html" class="text-xl font-bold text-buddha-primary">🏛️ 佛学本体论</a>
-            <div class="flex gap-4 text-xs flex-wrap">
+            <div class="hidden md:flex gap-4 text-xs">
                 <a href="../index.html" class="hover:text-buddha-secondary">首页</a>
                 <a href="categories.html" class="hover:text-buddha-secondary">部类总览</a>
                 <a href="sutras.html" class="hover:text-buddha-secondary">全藏经文库</a>
                 <a href="search.html" class="hover:text-buddha-secondary">全文检索</a>
-            <a href="dict.html" class="hover:text-yellow-400">佛学词典</a>
+                <a href="dict.html" class="hover:text-yellow-400">佛学词典</a>
                 <a href="parallel.html" class="hover:text-buddha-secondary">异译对照</a>
                 <a href="graph.html" class="text-buddha-primary font-bold">义理图谱</a>
                 <a href="kepan.html" class="hover:text-buddha-secondary">科判导航</a>
@@ -32,44 +38,133 @@
                 <a href="timeline.html" class="hover:text-buddha-secondary">译传时间轴</a>
                 <a href="translation.html" class="hover:text-buddha-secondary">佛典译学</a>
             </div>
+            <button id="mobileMenuBtn" class="md:hidden text-2xl">☰</button>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden px-4 pb-3 flex flex-col gap-2 text-sm border-t border-stone-200">
+            <a href="../index.html" class="py-1">首页</a>
+            <a href="categories.html" class="py-1">部类总览</a>
+            <a href="sutras.html" class="py-1">全藏经文库</a>
+            <a href="search.html" class="py-1">全文检索</a>
+            <a href="dict.html" class="py-1">佛学词典</a>
+            <a href="parallel.html" class="py-1">异译对照</a>
+            <a href="graph.html" class="py-1 text-buddha-primary font-bold">义理图谱</a>
+            <a href="kepan.html" class="py-1">科判导航</a>
+            <a href="panjiao.html" class="py-1">宗派判教</a>
+            <a href="inference.html" class="py-1">概念推演</a>
+            <a href="timeline.html" class="py-1">译传时间轴</a>
+            <a href="translation.html" class="py-1">佛典译学</a>
         </div>
     </nav>
-    <main class="max-w-7xl mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-buddha-primary mb-4">🕸️ 义理关系图谱</h1>
-        <p class="mb-4 text-buddha-dark/70">共收录概念、人物、宗派、部类、经典五类节点，支持拖拽缩放，点击节点查看详情</p>
-        <div class="flex gap-4 mb-4 flex-wrap">
-            <label class="flex items-center gap-1"><input type="checkbox" checked data-type="concept" class="graph-filter"> 义理概念</label>
-            <label class="flex items-center gap-1"><input type="checkbox" checked data-type="sutra" class="graph-filter"> 经典</label>
-            <label class="flex items-center gap-1"><input type="checkbox" checked data-type="person" class="graph-filter"> 人物</label>
-            <label class="flex items-center gap-1"><input type="checkbox" checked data-type="sect" class="graph-filter"> 宗派</label>
-            <label class="flex items-center gap-1"><input type="checkbox" checked data-type="category" class="graph-filter"> 部类</label>
+    <main class="max-w-7xl mx-auto px-4 py-6">
+        <h1 class="text-3xl font-bold text-buddha-primary mb-2">🕸️ 义理 · 科判 关系图谱</h1>
+        <p class="mb-4 text-buddha-dark/70 text-sm" id="graphDesc">共收录义理概念、人物、宗派、部类、经典五类节点，支持拖拽缩放，点击节点查看详情；切换到"科判图谱"可查看某部经的三分科判树形结构</p>
+
+        <!-- 视图切换 tab -->
+        <div class="flex gap-1 border-b border-stone-200 mb-0">
+            <div class="view-tab active" data-view="ontology">🕸️ 义理图谱</div>
+            <div class="view-tab" data-view="kepan">📐 科判图谱</div>
         </div>
-        <div id="graphChart" style="width:100%;height:75vh;background:white;border-radius:8px;"></div>
+
+        <!-- 义理图谱过滤器 -->
+        <div id="ontologyControls" class="flex gap-3 flex-wrap py-3 bg-white px-4 rounded-b-lg border border-t-0 border-stone-200">
+            <label class="flex items-center gap-1 text-sm"><input type="checkbox" checked data-type="concept" class="graph-filter"> 义理概念</label>
+            <label class="flex items-center gap-1 text-sm"><input type="checkbox" checked data-type="sutra" class="graph-filter"> 经典</label>
+            <label class="flex items-center gap-1 text-sm"><input type="checkbox" checked data-type="person" class="graph-filter"> 人物</label>
+            <label class="flex items-center gap-1 text-sm"><input type="checkbox" checked data-type="sect" class="graph-filter"> 宗派</label>
+            <label class="flex items-center gap-1 text-sm"><input type="checkbox" checked data-type="category" class="graph-filter"> 部类</label>
+        </div>
+
+        <!-- 科判图谱控制栏 -->
+        <div id="kepanControls" class="hidden flex gap-3 flex-wrap items-center py-3 bg-white px-4 rounded-b-lg border border-t-0 border-stone-200">
+            <label class="text-sm font-semibold text-buddha-dark/80">选择经典：</label>
+            <select id="kepanSutraSelect" class="kepan-select"></select>
+            <span class="text-xs text-stone-500">
+                <span class="legend-dot" style="background:#DAA520"></span>经名根
+                <span class="legend-dot" style="background:#B8860B;margin-left:8px;"></span>三大科（序/正/流）
+                <span class="legend-dot" style="background:#2E7D32;margin-left:8px;"></span>分科
+                <span class="legend-dot" style="background:#81C784;margin-left:8px;"></span>细目
+            </span>
+            <span id="kepanStat" class="text-xs text-stone-500 ml-auto"></span>
+        </div>
+
+        <div id="graphChart" style="width:100%;height:75vh;background:white;border-radius:0 0 8px 8px;border:1px solid #e7dfc8;border-top:none;"></div>
         <div id="detail" class="mt-4 p-4 bg-white rounded-lg shadow hidden"></div>
     </main>
+
     <script>
+        /* ========== 通用：跨页数据 ========== */
         const chart = echarts.init(document.getElementById('graphChart'));
         const colorMap = {concept:'#1E4D2B',sutra:'#8B2500',buddha:'#DAA520',bodhisattva:'#DB7093',arhat:'#9370DB',master:'#2F4F4F',scholar:'#20B2AA',folk:'#CD853F',sect:'#4A148C',category:'#5D4037'};
         const nameMap = {concept:'义理概念',sutra:'经典',buddha:'佛',bodhisattva:'菩萨',arhat:'阿罗汉',master:'祖师译师',scholar:'学者',folk:'民间人物',sect:'宗派',category:'部类'};
         let CROSS = null;
+        let KEPAN_DATA = null;
+        let CUR_VIEW = 'ontology';
+
         async function getCross(){
           if(!CROSS){
             try{
               const r = await fetch('../data/cross-links.json');
               CROSS = await r.json();
-              // 经名→sid索引（从 sutra_to_parallel 和 kepan_to_sutra 收集经id集合）
               CROSS._sutraIds = new Set();
               if(CROSS.kepan_to_sutra) Object.values(CROSS.kepan_to_sutra).forEach(k=>CROSS._sutraIds.add(k.sutra_id));
               if(CROSS.sutra_to_parallel) Object.keys(CROSS.sutra_to_parallel).forEach(s=>CROSS._sutraIds.add(s));
+              // 反向索引
+              CROSS._notesByKepan = {}; CROSS._termsByKepan = {};
+              if(CROSS.note_to_kepan){
+                Object.entries(CROSS.note_to_kepan).forEach(([nid,ks])=>{
+                  ks.forEach(k=>{
+                    if(!CROSS._notesByKepan[k.kepan_id]) CROSS._notesByKepan[k.kepan_id]=[];
+                    const nmeta=(CROSS.note_to_sutras && CROSS.note_to_sutras[nid])||[{}];
+                    CROSS._notesByKepan[k.kepan_id].push({note_id:nid,...nmeta[0]});
+                  });
+                });
+              }
+              if(CROSS.term_to_kepan){
+                Object.entries(CROSS.term_to_kepan).forEach(([t,ks])=>{
+                  ks.forEach(k=>{
+                    if(!CROSS._termsByKepan[k.kepan_id]) CROSS._termsByKepan[k.kepan_id]=[];
+                    CROSS._termsByKepan[k.kepan_id].push(t);
+                  });
+                });
+              }
             }catch(e){ console.warn('cross-links加载失败',e); CROSS={}; }
           }
           return CROSS;
         }
 
-        function render() {
+        async function getKepan(){
+          if(!KEPAN_DATA){
+            try{
+              const r = await fetch('../kepan/core.json',{cache:'no-cache'});
+              KEPAN_DATA = await r.json();
+            }catch(e){ console.warn('科判数据加载失败',e); KEPAN_DATA={}; }
+          }
+          return KEPAN_DATA;
+        }
+
+        /* ========== 视图切换 ========== */
+        document.querySelectorAll('.view-tab').forEach(t=>{
+          t.addEventListener('click',()=>{
+            document.querySelectorAll('.view-tab').forEach(x=>x.classList.remove('active'));
+            t.classList.add('active');
+            CUR_VIEW = t.dataset.view;
+            document.getElementById('ontologyControls').classList.toggle('hidden', CUR_VIEW!=='ontology');
+            document.getElementById('kepanControls').classList.toggle('hidden', CUR_VIEW!=='kepan');
+            if(CUR_VIEW==='ontology'){
+              document.getElementById('graphDesc').textContent = '共收录义理概念、人物、宗派、部类、经典五类节点，支持拖拽缩放，点击节点查看详情；切换到"科判图谱"可查看某部经的三分科判树形结构';
+              renderOntology();
+            }else{
+              document.getElementById('graphDesc').textContent = '选择一部经典查看其三分科判树形结构（序分→正宗分→流通分）；节点颜色表示层级，悬停/点击节点可查看原文摘要、相关词条与学者解读';
+              initKepanSelect();
+              renderKepan();
+            }
+          });
+        });
+
+        /* ========== 义理图谱 ========== */
+        function renderOntology() {
             const types = Array.from(document.querySelectorAll('.graph-filter:checked')).map(c=>c.dataset.type);
             const nodes = [], nodeMap = {}, links = [];
-            const typeToClass = {concept:'concept', person: n=>n.class, sect:'sect', category:'category', sutra:'sutra'};
             ontologyGraphData.nodes.forEach(n=>{
                 let include = false, catName, size=20, color='#666';
                 if (n.type==='concept' && types.includes('concept')) { include=true; catName='concept'; size = n.layer==='L1'?28:20; color=colorMap.concept; }
@@ -80,93 +175,288 @@
                 if (include) {
                     const gid = n.type+'_'+n.id;
                     nodes.push({id:gid, name:n.name, category:catName, symbolSize:size, itemStyle:{color}, data:n});
-                    nodeMap[n.id] = gid;
+                    nodeMap[gid] = gid;
                 }
             });
-
             ontologyGraphData.edges.forEach(r=>{
-                if (nodeMap[r.source] && nodeMap[r.target]) {
-                    links.push({source:nodeMap[r.source], target:nodeMap[r.target], label:{show:false,formatter:r.label,fontSize:10},lineStyle:{width:1.2,opacity:0.6,curveness:0.1},data:r});
+                const s = (r.sourceType||'concept')+'_'+r.source;
+                const t = (r.targetType||'concept')+'_'+r.target;
+                if (nodeMap[s] && nodeMap[t]) {
+                    links.push({source:s, target:t, label:{show:false,formatter:r.label,fontSize:10},lineStyle:{width:1.2,opacity:0.6,curveness:0.1},data:r});
                 }
             });
             const cats = Object.keys(colorMap).map(k=>({name:nameMap[k]||k,itemStyle:{color:colorMap[k]}}));
-            chart.setOption({tooltip:{formatter:p=>p.dataType==='node'?`<b>${p.name}</b><br/>${p.data.data.definition||p.data.data.core_doctrine||p.data.data.translator||''}`:`<b>${p.data.data.label}</b>`},legend:[{data:cats.map(c=>c.name),top:10}],series:[{type:'graph',layout:'force',data:nodes,links:links,categories:cats,roam:true,draggable:true,label:{show:true,position:'right',fontSize:11},force:{repulsion:350,edgeLength:[80,160],gravity:0.1},emphasis:{focus:'adjacency',lineStyle:{width:3}}}]},true);
+            chart.setOption({tooltip:{formatter:p=>p.dataType==='node'?`<b>${p.name}</b><br/>${p.data.data.definition||p.data.data.core_doctrine||p.data.data.translator||''}`:`<b>${p.data.data?(p.data.data.label||''):''}</b>`},legend:[{data:cats.map(c=>c.name),top:10,type:'scroll'}],series:[{type:'graph',layout:'force',data:nodes,links:links,categories:cats,roam:true,draggable:true,label:{show:true,position:'right',fontSize:11},force:{repulsion:350,edgeLength:[80,160],gravity:0.1},emphasis:{focus:'adjacency',lineStyle:{width:3}}}],animationDurationUpdate:400},true);
         }
+
         chart.on('click', async p=>{
             if (p.dataType==='node') {
-                const d = p.data.data;
-                const cross = await getCross();
-                const name = p.name;
-                // 查词典链接（概念/人物/经论/宗派类节点在词典中存在）
-                const dictLink = `<a href="dict.html?q=${encodeURIComponent(name)}" target="_blank" style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:6px;text-decoration:none;font-size:13px;"><i class="fa fa-book"></i> 佛学大词典查「${name}」</a>`;
-                // 经文出处（只在concept类节点找）
-                const sutraLinks = (cross.term_to_sutras && cross.term_to_sutras[name]) || [];
-                let sutraHtml = '';
-                if(sutraLinks.length){
-                  sutraHtml = `<div style="margin-top:8px"><div style="font-size:13px;color:#6b5b4a;margin-bottom:4px"><i class="fa fa-book"></i> <b>经文出处</b>（点击定位经文段落）：</div><div style="display:flex;flex-wrap:wrap;gap:6px">`;
-                  sutraLinks.slice(0,5).forEach(s=>{
-                    const anchor = (s.anchor||'').slice(0,10);
-                    sutraHtml += `<a href="sutras.html?load=${s.sutra_id}#:~:text=${encodeURIComponent(anchor)}" target="_blank" style="padding:4px 10px;background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;border-radius:6px;text-decoration:none;font-size:12px;">《${s.sutra_title||s.sutra_id}》${s.chapter?'·'+s.chapter:''}</a>`;
-                  });
-                  sutraHtml += `</div></div>`;
+                if (CUR_VIEW==='ontology') {
+                    await handleOntoClick(p);
+                } else {
+                    await handleKepanClick(p);
                 }
-                // 学者观点
-                const noteLinks = (cross.term_to_notes && cross.term_to_notes[name]) || [];
-                let noteHtml = '';
-                if(noteLinks.length){
-                  const seen = new Set();
-                  const uniq = noteLinks.filter(n=>{
-                    const k=n.scholar+'|'+(n.anchor||'');
-                    if(seen.has(k)) return false;
-                    seen.add(k); return true;
-                  }).slice(0,4);
-                  noteHtml = `<div style="margin-top:8px"><div style="font-size:13px;color:#6b5b4a;margin-bottom:4px"><i class="fa fa-user"></i> <b>学者解读</b>：</div><div style="display:flex;flex-wrap:wrap;gap:6px">`;
-                  uniq.forEach(n=>{
-                    noteHtml += `<a href="sutras.html?load=${n.sutra_id}#:~:text=${encodeURIComponent((n.anchor||'').slice(0,10))}" target="_blank" style="padding:4px 10px;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;border-radius:6px;text-decoration:none;font-size:12px;">${n.scholar||'学者'}《${n.work||''}》</a>`;
-                  });
-                  noteHtml += `</div></div>`;
-                }
-                // 科判关联
-                const kepanLinks = (cross.term_to_kepan && cross.term_to_kepan[name]) || [];
-                let kepanHtml = '';
-                if(kepanLinks.length){
-                  kepanHtml = `<div style="margin-top:8px"><div style="font-size:13px;color:#6b5b4a;margin-bottom:4px"><i class="fa fa-sitemap"></i> <b>相关科判</b>：</div><div style="display:flex;flex-wrap:wrap;gap:6px">`;
-                  kepanLinks.slice(0,4).forEach(k=>{
-                    kepanHtml += `<a href="kepan.html?sid=${k.sutra_id}&node=${encodeURIComponent(k.kepan_id)}" target="_blank" style="padding:4px 10px;background:#f5e9d0;color:#7b3f00;border:1px solid #e0c896;border-radius:6px;text-decoration:none;font-size:12px;">《${k.sutra_id}》· ${k.title}</a>`;
-                  });
-                  kepanHtml += `</div></div>`;
-                }
-                // 若是sutra节点，直接给打开经文/科判/异译的入口
-                let sutraDirectHtml = '';
-                if(d.type==='sutra' && d.sutra_id){
-                  const sid = d.sutra_id;
-                  sutraDirectHtml = `<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">
-                    <a href="sutras.html?load=${sid}" target="_blank" style="padding:6px 12px;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:6px;text-decoration:none;font-size:13px;"><i class="fa fa-book"></i> 打开经文</a>
-                    <a href="kepan.html?sid=${sid}" target="_blank" style="padding:6px 12px;background:#f5e9d0;color:#7b3f00;border:1px solid #e0c896;border-radius:6px;text-decoration:none;font-size:13px;"><i class="fa fa-sitemap"></i> 本科判</a>`;
-                  if(cross.sutra_to_parallel && cross.sutra_to_parallel[sid]){
-                    const g = cross.sutra_to_parallel[sid][0];
-                    sutraDirectHtml += `<a href="parallel.html?grp=${encodeURIComponent(g.group_name)}" target="_blank" style="padding:6px 12px;background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;border-radius:6px;text-decoration:none;font-size:13px;"><i class="fa fa-exchange"></i> 异译对照</a>`;
-                  }
-                  sutraDirectHtml += `</div>`;
-                }
-                const typeLabel = nameMap[d.class||d.type] || (d.type==='concept'?'义理概念':d.type);
-                document.getElementById('detail').classList.remove('hidden');
-                document.getElementById('detail').innerHTML = `<h3 class="font-bold text-lg text-buddha-primary mb-1">${name} <span style="font-size:12px;font-weight:normal;color:#a8a29e;margin-left:6px;">[${typeLabel}]</span></h3>
-                  <div class="text-sm text-stone-700 leading-relaxed mb-2">${d.definition||d.core_doctrine||d.translator||''}</div>
-                  <div style="display:flex;flex-wrap:wrap;gap:6px">${dictLink}</div>
-                  ${sutraDirectHtml}
-                  ${sutraHtml}
-                  ${kepanHtml}
-                  ${noteHtml}
-                `;
             }
         });
-        // 预先后台加载cross-links
-        getCross();
-        document.querySelectorAll('.graph-filter').forEach(c=>c.addEventListener('change',render));
+
+        async function handleOntoClick(p){
+            const d = p.data.data;
+            const cross = await getCross();
+            const name = p.name;
+            const dictLink = `<a href="dict.html?q=${encodeURIComponent(name)}" target="_blank" style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:6px;text-decoration:none;font-size:13px;">📖 佛学大词典查「${name}」</a>`;
+            const sutraLinks = (cross.term_to_sutras && cross.term_to_sutras[name]) || [];
+            let sutraHtml = '';
+            if(sutraLinks.length){
+              sutraHtml = `<div class="mt-2 text-sm"><div class="text-stone-600 mb-1">📖 <b>经文出处</b>（点击定位经文段落）：</div><div class="flex flex-wrap gap-1">`;
+              sutraLinks.slice(0,5).forEach(s=>{
+                const anchor=(s.anchor||'').slice(0,10);
+                sutraHtml += `<a href="sutras.html?load=${s.sutra_id}#:~:text=${encodeURIComponent(anchor)}" target="_blank" class="px-2 py-1 bg-green-50 text-green-800 border border-green-200 rounded text-xs no-underline">《${s.sutra_title||s.sutra_id}》${s.chapter?'·'+s.chapter:''}</a>`;
+              });
+              sutraHtml += `</div></div>`;
+            }
+            const noteLinks = (cross.term_to_notes && cross.term_to_notes[name]) || [];
+            let noteHtml = '';
+            if(noteLinks.length){
+              const seen=new Set();
+              const uniq=noteLinks.filter(n=>{const k=n.scholar+'|'+(n.anchor||'');if(seen.has(k))return false;seen.add(k);return true;}).slice(0,4);
+              noteHtml = `<div class="mt-2 text-sm"><div class="text-stone-600 mb-1">👤 <b>学者解读</b>：</div><div class="flex flex-wrap gap-1">`;
+              uniq.forEach(n=>{
+                noteHtml += `<a href="sutras.html?load=${n.sutra_id}#:~:text=${encodeURIComponent((n.anchor||'').slice(0,10))}" target="_blank" class="px-2 py-1 bg-blue-50 text-blue-800 border border-blue-200 rounded text-xs no-underline">${n.scholar||'学者'}《${n.work||''}》</a>`;
+              });
+              noteHtml += `</div></div>`;
+            }
+            const kepanLinks = (cross.term_to_kepan && cross.term_to_kepan[name]) || [];
+            let kepanHtml = '';
+            if(kepanLinks.length){
+              kepanHtml = `<div class="mt-2 text-sm"><div class="text-stone-600 mb-1">📐 <b>相关科判</b>：</div><div class="flex flex-wrap gap-1">`;
+              kepanLinks.slice(0,4).forEach(k=>{
+                kepanHtml += `<a href="kepan.html?sid=${k.sutra_id}&node=${encodeURIComponent(k.kepan_id)}" target="_blank" class="px-2 py-1 bg-amber-50 text-amber-800 border border-amber-200 rounded text-xs no-underline">《${k.sutra_id}》· ${k.title}</a>`;
+              });
+              kepanHtml += `</div></div>`;
+            }
+            let sutraDirectHtml = '';
+            if(d.type==='sutra' && d.sutra_id){
+              const sid = d.sutra_id;
+              sutraDirectHtml = `<div class="mt-2 flex flex-wrap gap-2">
+                <a href="sutras.html?load=${sid}" target="_blank" class="px-3 py-1 bg-yellow-50 text-yellow-900 border border-yellow-200 rounded text-xs no-underline">📖 打开经文</a>
+                <a href="kepan.html?sid=${sid}" target="_blank" class="px-3 py-1 bg-amber-50 text-amber-900 border border-amber-200 rounded text-xs no-underline">📐 本科判</a>`;
+              if(cross.sutra_to_parallel && cross.sutra_to_parallel[sid]){
+                const g = cross.sutra_to_parallel[sid][0];
+                sutraDirectHtml += `<a href="parallel.html?grp=${encodeURIComponent(g.group_name)}" target="_blank" class="px-3 py-1 bg-blue-50 text-blue-900 border border-blue-200 rounded text-xs no-underline">🔄 异译对照</a>`;
+              }
+              sutraDirectHtml += `</div>`;
+            }
+            const typeLabel = nameMap[d.class||d.type] || (d.type==='concept'?'义理概念':d.type);
+            document.getElementById('detail').classList.remove('hidden');
+            document.getElementById('detail').innerHTML = `<h3 class="font-bold text-lg text-buddha-primary mb-1">${name} <span class="text-xs font-normal text-stone-500 ml-1">[${typeLabel}]</span></h3>
+              <div class="text-sm text-stone-700 leading-relaxed mb-2">${d.definition||d.core_doctrine||d.translator||''}</div>
+              <div class="flex flex-wrap gap-2">${dictLink}</div>
+              ${sutraDirectHtml}
+              ${sutraHtml}
+              ${kepanHtml}
+              ${noteHtml}`;
+        }
+
+        /* ========== 科判图谱 ========== */
+        let KEPAN_SID = null;
+
+        async function initKepanSelect(){
+          const kd = await getKepan();
+          const sel = document.getElementById('kepanSutraSelect');
+          if(sel.options.length>0) return;
+          const entries = Object.entries(kd).sort((a,b)=>(a[1].title||a[0]).localeCompare(b[1].title||b[0],'zh'));
+          entries.forEach(([sid,s])=>{
+            const opt=document.createElement('option');
+            opt.value=sid;
+            opt.textContent = (s.title||sid) + ` (${sid})`;
+            sel.appendChild(opt);
+          });
+          // 默认选 t0251 心经
+          sel.value = 't0251';
+          KEPAN_SID = 't0251';
+          sel.addEventListener('change', ()=>{ KEPAN_SID=sel.value; renderKepan(); });
+        }
+
+        // 递归构建ECharts tree数据
+        function buildKepanTree(sid, sutra){
+          let nodeCount=0, leafCount=0;
+          function walk(item, depth, parentPath){
+            nodeCount++;
+            const fullPath = parentPath ? parentPath+' → '+item.name : item.name;
+            const kepanId = sid+'__'+item.name;
+            const isRoot = depth===0;
+            const isBig = depth<=1;  // 经名根 / 三大科
+            const isMid = depth===2; // 分科
+            let color='#81C784';
+            let size=10;
+            if(isRoot){ color='#DAA520'; size=36; }
+            else if(item.type==='序分'||item.type==='正宗分'||item.type==='流通分'||depth===1){ color='#B8860B'; size=24; }
+            else if(isMid){ color='#2E7D32'; size=16; }
+            else { color='#81C784'; size=10; leafCount++; }
+
+            const quote = item.content || item.position || item.description || '';
+            const children = (item.children||[]).map(c=>walk(c, depth+1, fullPath));
+            if(children.length===0 && depth>1) leafCount++;
+            return {
+              name: item.name,
+              _sid: sid,
+              _sutraTitle: sutra.title,
+              _kepanId: kepanId,
+              _fullPath: fullPath,
+              _quote: quote,
+              _depth: depth,
+              _type: item.type||(depth===1?'大科':(depth===2?'分科':'细目')),
+              _juan: item.juan||'',
+              children: children,
+              itemStyle: {color: color, borderColor:'#fff', borderWidth: isRoot?2:1},
+              symbolSize: size,
+              label: {
+                position: isRoot ? 'inside' : (depth<=2?'right':'right'),
+                fontSize: isRoot?15:(isBig?13:(isMid?11:9)),
+                fontWeight: isRoot?'bold':(isBig?600:400),
+                color: isRoot?'#fff':(item.type==='正宗分'?'#8b4513':'#333')
+              }
+            };
+          }
+          const children = (sutra.kepan||[]).map(c=>walk(c,1,c.name));
+          const root = {
+            name: sutra.title||sid,
+            _sid: sid,
+            _sutraTitle: sutra.title,
+            _kepanId: sid+'__root',
+            _fullPath: sutra.title,
+            _quote: sutra.title,
+            _depth: 0,
+            _type: 'root',
+            children,
+            itemStyle:{color:'#DAA520',borderColor:'#fff',borderWidth:2},
+            symbolSize:36,
+            label:{position:'inside',fontSize:15,fontWeight:'bold',color:'#fff'}
+          };
+          return {tree:root, nodeCount: nodeCount+1, leafCount};
+        }
+
+        async function renderKepan(){
+          const kd = await getKepan();
+          await getCross();
+          if(!KEPAN_SID) KEPAN_SID='t0251';
+          const sutra = kd[KEPAN_SID];
+          if(!sutra){ document.getElementById('kepanStat').textContent=''; return; }
+          const {tree,nodeCount} = buildKepanTree(KEPAN_SID, sutra);
+          const parallelGrp = (CROSS.sutra_to_parallel && CROSS.sutra_to_parallel[KEPAN_SID]) ? CROSS.sutra_to_parallel[KEPAN_SID][0].group_name : null;
+          const stat = `共 ${nodeCount} 个科判节点 · ${sutra.kepan.length} 大科`;
+          document.getElementById('kepanStat').textContent = stat;
+
+          chart.setOption({
+            tooltip:{
+              trigger:'item',
+              formatter: p=>{
+                const d=p.data;
+                if(!d._fullPath) return d.name;
+                let html = `<b style="color:#8b2500;">${d._fullPath}</b>`;
+                if(d._quote) html += `<br/><span style="color:#555;font-size:12px;">${d._quote.slice(0,100)}${d._quote.length>100?'…':''}</span>`;
+                if(d._type!=='root') html += `<br/><span style="color:#888;font-size:11px;">层级：${d._type}${d._juan?' · 卷'+d._juan:''}</span>`;
+                return html;
+              }
+            },
+            legend:[{show:false}],
+            series:[{
+              type:'tree',
+              data:[tree],
+              top:'3%', left:'15%', bottom:'3%', right:'18%',
+              symbol:'circle',
+              edgeShape:'polyline',
+              edgeForkPosition:'63%',
+              initialTreeDepth: 3,
+              roam:true,
+              expandAndCollapse:true,
+              lineStyle:{color:'#b8a078',width:1.2,curveness:0.2},
+              label:{position:'right',fontSize:11},
+              leaves:{label:{fontSize:10,color:'#555'},itemStyle:{color:'#81C784'}},
+              emphasis:{focus:'descendant',itemStyle:{shadowBlur:8,shadowColor:'rgba(184,134,11,0.5)'}},
+              animationDuration:500,
+              animationDurationUpdate:600
+            }]
+          },true);
+          // 点击根节点展示总览
+          handleKepanClick({data:tree});
+        }
+
+        async function handleKepanClick(p){
+          const d = p.data;
+          if(!d._sid) return;
+          await getCross();
+          const sid = d._sid;
+          const sutraTitle = d._sutraTitle;
+          const kepanId = d._kepanId;
+          const fullPath = d._fullPath;
+          const quote = d._quote;
+          const type = d._type;
+
+          // 经文出处（kepan_to_sutra匹配）
+          const km = CROSS.kepan_to_sutra && CROSS.kepan_to_sutra[kepanId];
+          let quoteHtml = '';
+          if(quote){
+            quoteHtml = `<div class="bg-amber-50/60 border-l-4 border-amber-500 pl-3 py-2 my-2 text-stone-700 text-sm leading-relaxed">"${quote}"</div>`;
+          }
+          let actions = `<div class="flex flex-wrap gap-2 mt-2">
+              <a href="sutras.html?load=${sid}" target="_blank" class="px-3 py-1 bg-yellow-50 text-yellow-900 border border-yellow-200 rounded text-xs no-underline">📖 打开经文</a>
+              <a href="kepan.html?sid=${sid}${type!=='root'?'&node='+encodeURIComponent(kepanId):''}" target="_blank" class="px-3 py-1 bg-amber-50 text-amber-900 border border-amber-200 rounded text-xs no-underline">📐 科判页定位</a>`;
+          if(CROSS.sutra_to_parallel && CROSS.sutra_to_parallel[sid]){
+            const g=CROSS.sutra_to_parallel[sid][0];
+            actions += `<a href="parallel.html?grp=${encodeURIComponent(g.group_name)}" target="_blank" class="px-3 py-1 bg-blue-50 text-blue-900 border border-blue-200 rounded text-xs no-underline">🔄 异译对照</a>`;
+          }
+          actions += `<a href="dict.html" target="_blank" class="px-3 py-1 bg-orange-50 text-orange-900 border border-orange-200 rounded text-xs no-underline">📚 佛学词典</a></div>`;
+
+          // 相关词条
+          let termsHtml = '';
+          const terms = (CROSS._termsByKepan && CROSS._termsByKepan[kepanId]) || [];
+          if(terms.length){
+            termsHtml = `<div class="mt-3 text-sm"><div class="text-stone-600 mb-1">🔗 <b>相关义理词条</b>：</div><div class="flex flex-wrap gap-1">`;
+            terms.slice(0,10).forEach(t=>{
+              termsHtml += `<a href="dict.html?q=${encodeURIComponent(t)}" target="_blank" class="px-2 py-1 bg-orange-50 text-orange-800 border border-orange-200 rounded text-xs no-underline">${t}</a>`;
+            });
+            termsHtml += `</div></div>`;
+          }
+
+          // 学者解读
+          let notesHtml = '';
+          const notes = (CROSS._notesByKepan && CROSS._notesByKepan[kepanId]) || [];
+          if(notes.length){
+            notesHtml = `<div class="mt-2 text-sm"><div class="text-stone-600 mb-1">👤 <b>学者解读</b>：</div><div class="flex flex-wrap gap-1">`;
+            notes.slice(0,4).forEach(n=>{
+              notesHtml += `<a href="sutras.html?load=${n.sutra_id}#:~:text=${encodeURIComponent((n.anchor||'').slice(0,10))}" target="_blank" class="px-2 py-1 bg-blue-50 text-blue-800 border border-blue-200 rounded text-xs no-underline">${n.scholar||'学者'}${n.work?'《'+n.work+'》':''}</a>`;
+            });
+            notesHtml += `</div></div>`;
+          }
+
+          let rootInfo = '';
+          if(type==='root'){
+            rootInfo = `<div class="text-sm text-stone-600 mt-2">这是整部《${sutraTitle}》的科判树，根节点向外辐射三大科（序分/正宗分/流通分）。点击任意节点可查看该分科的原文摘要、相关词条与学者解读；滚轮缩放、拖拽平移画布。</div>`;
+          }
+
+          document.getElementById('detail').classList.remove('hidden');
+          document.getElementById('detail').innerHTML = `
+            <h3 class="font-bold text-lg text-buddha-primary mb-1">${fullPath.split(' → ').pop()} <span class="text-xs font-normal text-stone-500 ml-1">[${type==='root'?'《'+sutraTitle+'》·科判根节点':type}]</span></h3>
+            ${type!=='root'?`<div class="text-xs text-stone-500">路径：${fullPath}</div>`:''}
+            ${quoteHtml}
+            ${rootInfo}
+            ${actions}
+            ${termsHtml}
+            ${notesHtml}
+          `;
+        }
+
+        /* ========== 初始化 ========== */
+        document.querySelectorAll('.graph-filter').forEach(c=>c.addEventListener('change',()=>{ if(CUR_VIEW==='ontology') renderOntology(); }));
         window.addEventListener('resize',()=>chart.resize());
-        render();
+
+        // 移动汉堡
+        const mbtn=document.getElementById('mobileMenuBtn');
+        if(mbtn){ mbtn.addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden')); }
+
+        getCross();
+        renderOntology();
     </script>
-    <script src="../js/mobile-nav.js"></script>
 </body>
 </html>
