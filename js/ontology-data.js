@@ -2074,7 +2074,7 @@ const ontologyData = {
     "core_doctrine": "三密相应，即身成佛",
     "period": "唐代"
   }
-],,
+],
   panjiao_comparison: {
   "天台宗_五时八教": {
     "五时": [
