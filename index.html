@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="js/ontology-data.js"></script>
     
     <script>
         tailwind.config = {
@@ -526,152 +527,161 @@
             window.addEventListener('resize', () => graphChart.resize());
         }
 
-        function renderGraph() {
-            // 获取选中的类型
+                function renderGraph() {
             const activeTypes = Array.from(document.querySelectorAll('.node-filter:checked')).map(cb => cb.dataset.type);
             
             const nodes = [];
             const nodeMap = {};
             const links = [];
             
-            // 颜色映射
             const colorMap = {
                 concept: '#1E4D2B',
-                sutra: '#7B3F00',
-                person: '#8B0000',
-                sect: '#4A148C'
+                sutra: '#8B2500',
+                buddha: '#DAA520',
+                bodhisattva: '#DB7093',
+                arhat: '#9370DB',
+                master: '#2F4F4F',
+                scholar: '#20B2AA',
+                folk: '#CD853F',
+                sect: '#4A148C',
+                category: '#5D4037'
+            };
+            const nameMap = {
+                concept: '义理概念', sutra: '经典', buddha: '佛', bodhisattva: '菩萨',
+                arhat: '阿罗汉', master: '祖师/译师', scholar: '学者', folk: '民间人物',
+                sect: '宗派', category: '部类'
             };
             
-            // 添加节点
+            // 添加概念节点
             if (activeTypes.includes('concept')) {
-                ontologyData.concepts.slice(0, 80).forEach(c => {
+                ontologyData.concepts.forEach(c => {
                     const id = 'c_' + c.id;
                     nodes.push({
-                        id: id,
-                        name: c.name,
-                        category: 'concept',
-                        symbolSize: c.layer === 'L1' ? 25 : 18,
+                        id: id, name: c.name, category: 'concept',
+                        symbolSize: c.layer === 'L1' ? 28 : 20,
                         itemStyle: {color: colorMap.concept},
-                        value: c.definition,
                         data: c
                     });
-                    nodeMap[id] = true;
+                    nodeMap[id] = c;
                 });
             }
             
-            if (activeTypes.includes('sutra')) {
-                ontologyData.sutras.slice(0, 20).forEach(s => {
-                    const id = 's_' + s.id;
-                    nodes.push({
-                        id: id,
-                        name: s.abbreviation || s.name,
-                        category: 'sutra',
-                        symbolSize: 22,
-                        itemStyle: {color: colorMap.sutra},
-                        value: s.core_content,
-                        data: s
-                    });
-                    nodeMap[id] = true;
-                });
-            }
-            
+            // 添加人物节点
             if (activeTypes.includes('person')) {
-                ontologyData.persons.filter(p => p.category === '佛陀' || p.category === '菩萨' || p.category === '历代祖师译经师').slice(0, 20).forEach(p => {
+                ontologyData.persons.forEach(p => {
                     const id = 'p_' + p.id;
                     nodes.push({
-                        id: id,
-                        name: p.name,
-                        category: 'person',
-                        symbolSize: 20,
-                        itemStyle: {color: colorMap.person},
-                        value: p.achievements ? p.achievements.join('；') : p.core_teachings.join('；'),
+                        id: id, name: p.name, category: p.class,
+                        symbolSize: p.class === 'buddha' ? 30 : (p.class === 'bodhisattva' ? 25 : 20),
+                        itemStyle: {color: colorMap[p.class] || '#666'},
                         data: p
                     });
-                    nodeMap[id] = true;
+                    nodeMap[id] = p;
                 });
             }
             
+            // 添加宗派节点
             if (activeTypes.includes('sect')) {
                 ontologyData.sects.forEach(s => {
-                    const id = 'sec_' + s.id;
+                    const id = 's_' + s.id;
                     nodes.push({
-                        id: id,
-                        name: s.name,
-                        category: 'sect',
-                        symbolSize: 24,
+                        id: id, name: s.name, category: 'sect',
+                        symbolSize: 28,
                         itemStyle: {color: colorMap.sect},
-                        value: s.core_doctrine.join('；'),
                         data: s
                     });
-                    nodeMap[id] = true;
+                    nodeMap[id] = s;
                 });
             }
             
-            // 添加边
-            ontologyData.relations.forEach(r => {
-                // 转换id格式
-                let source, target;
-                if (r.source.startsWith('c')) source = r.source.replace('c', 'c_');
-                else if (r.source.startsWith('s')) source = r.source.replace('s', 's_');
-                else if (r.source.startsWith('p')) source = r.source.replace('p', 'p_');
-                else if (r.source.startsWith('sec')) source = r.source.replace('sec', 'sec_');
-                
-                if (r.target.startsWith('c')) target = r.target.replace('c', 'c_');
-                else if (r.target.startsWith('s')) target = r.target.replace('s', 's_');
-                else if (r.target.startsWith('p')) target = r.target.replace('p', 'p_');
-                else if (r.target.startsWith('sec')) target = r.target.replace('sec', 'sec_');
-                
-                if (nodeMap[source] && nodeMap[target]) {
-                    links.push({
-                        source: source,
-                        target: target,
-                        value: r.description || r.type,
-                        label: {show: false},
-                        lineStyle: {
-                            color: colorMap[r.source.substring(0, r.source.indexOf(/\d/))] || '#999',
-                            opacity: 0.4,
-                            width: 1
-                        }
+            // 添加部类节点
+            if (activeTypes.includes('category')) {
+                ontologyData.categories.forEach(c => {
+                    const id = 'ca_' + c.id;
+                    nodes.push({
+                        id: id, name: c.name, category: 'category',
+                        symbolSize: Math.min(15 + c.count/8, 50),
+                        itemStyle: {color: colorMap.category},
+                        data: c
                     });
+                    nodeMap[id] = c;
+                });
+            }
+            
+            // 添加经典节点
+            if (activeTypes.includes('sutra')) {
+                ontologyData.sutras.forEach(s => {
+                    const id = 'su_' + s.id;
+                    nodes.push({
+                        id: id, name: s.name, category: 'sutra',
+                        symbolSize: s.word_count > 100000 ? 22 : 16,
+                        itemStyle: {color: colorMap.sutra},
+                        data: s
+                    });
+                    nodeMap[id] = s;
+                });
+            }
+            
+            // 添加边，统一转换节点id前缀
+            function getNodeId(type, rawId) {
+                const prefix = {concept:'c_', person:'p_', sect:'s_', category:'ca_', sutra:'su_'};
+                // 判断原始id前缀
+                if (rawId.startsWith('c')) return 'c_' + rawId;
+                if (rawId.startsWith('p')) return 'p_' + rawId;
+                if (rawId.startsWith('sect')) return 's_' + rawId;
+                if (rawId.startsWith('cat_')) return 'ca_' + rawId;
+                if (rawId.startsWith('t')) return 'su_' + rawId;
+                return rawId;
+            }
+            
+            ontologyData.relations.forEach(r => {
+                const sId = getNodeId('', r.source);
+                const tId = getNodeId('', r.target);
+                if (nodeMap[sId.split('_').slice(1).join('_')] || nodes.some(n => n.id === sId)) {
+                    if (nodeMap[tId.split('_').slice(1).join('_')] || nodes.some(n => n.id === tId)) {
+                        if (nodes.some(n => n.id === sId) && nodes.some(n => n.id === tId)) {
+                            links.push({
+                                source: sId,
+                                target: tId,
+                                label: {show: false, formatter: r.label, fontSize: 10},
+                                lineStyle: {width: 1.2, opacity: 0.6, curveness: 0.1},
+                                data: r
+                            });
+                        }
+                    }
                 }
             });
+            
+            const categories = Object.keys(colorMap).map(k => ({name: nameMap[k] || k, itemStyle: {color: colorMap[k]}}));
             
             const option = {
                 tooltip: {
                     formatter: params => {
                         if (params.dataType === 'node') {
-                            return `<strong>${params.name}</strong><br/>${params.data.value || ''}`;
+                            const d = params.data.data;
+                            let html = `<div class="font-bold text-lg mb-1">${params.name}</div>`;
+                            if (d.definition) html += `<div>${d.definition}</div>`;
+                            if (d.core_doctrine) html += `<div>核心教义：${d.core_doctrine}</div>`;
+                            if (d.translator) html += `<div>译者：${d.translator}</div>`;
+                            if (d.count) html += `<div>本类共 ${d.count} 部经</div>`;
+                            return html;
                         } else {
-                            return params.data.value;
+                            return `<b>${params.data.data.label}</b><br/>${params.data.data.description || ''}`;
                         }
                     }
                 },
+                legend: [{data: categories.map(c => c.name), top: 10, textStyle: {fontSize: 12}}],
                 series: [{
                     type: 'graph',
                     layout: 'force',
-                    animation: true,
-                    roam: true,
-                    draggable: true,
-                    label: {
-                        show: true,
-                        position: 'right',
-                        formatter: '{b}',
-                        fontSize: 11
-                    },
-                    force: {
-                        repulsion: 200,
-                        edgeLength: [80, 150],
-                        gravity: 0.1
-                    },
-                    edgeSymbol: ['none', 'arrow'],
-                    edgeSymbolSize: [0, 6],
                     data: nodes,
                     links: links,
-                    lineStyle: {opacity: 0.3, curveness: 0.1},
-                    emphasis: {
-                        focus: 'adjacency',
-                        lineStyle: {width: 3, opacity: 0.7}
-                    }
+                    categories: categories,
+                    roam: true,
+                    draggable: true,
+                    label: {show: true, position: 'right', fontSize: 11},
+                    force: {repulsion: 300, edgeLength: [80, 150], gravity: 0.1},
+                    emphasis: {focus: 'adjacency', lineStyle: {width: 3}}
                 }]
             };
             

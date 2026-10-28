@@ -1,1 +1,20 @@
-{"id": "t2180", "taisho": "T2180", "title": "法相宗章疏", "translator": "日本 平祚錄", "vol": "", "juan": 1, "chars": 25, "content": [{"chapter": "法相宗章疏", "text": "已上大乘經疏。\n已上大乘論疏。\n已上大唐祖師所造。"}]}
+{
+  "id": "t2180",
+  "taisho": "T2180",
+  "title": "法相宗章疏",
+  "translator": "日本 平祚錄",
+  "vol": "T55",
+  "juan": 1,
+  "chars": 25,
+  "content": [
+    {
+      "chapter": "法相宗章疏",
+      "text": "已上大乘經疏。\n已上大乘論疏。\n已上大唐祖師所造。"
+    }
+  ],
+  "category": "事彙部类",
+  "time_from": 914,
+  "official_char_count": 1704,
+  "actual_char_count": 0,
+  "juan_count": 1
+}

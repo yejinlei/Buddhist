@@ -1,1 +1,20 @@
-{"id": "t2179", "taisho": "T2179", "title": "三論宗章疏", "translator": "日本 安遠錄", "vol": "", "juan": 1, "chars": 7, "content": [{"chapter": "論疏", "text": "已上六十九部。"}]}
+{
+  "id": "t2179",
+  "taisho": "T2179",
+  "title": "三論宗章疏",
+  "translator": "日本 安遠錄",
+  "vol": "T55",
+  "juan": 1,
+  "chars": 7,
+  "content": [
+    {
+      "chapter": "論疏",
+      "text": "已上六十九部。"
+    }
+  ],
+  "category": "事彙部类",
+  "time_from": 914,
+  "official_char_count": 776,
+  "actual_char_count": 0,
+  "juan_count": 1
+}

@@ -1,1 +1,20 @@
-{"id": "t2178", "taisho": "T2178", "title": "天台宗章疏", "translator": "日本 玄日錄", "vol": "", "juan": 1, "chars": 12, "content": [{"chapter": "天台宗章疏", "text": "百八十一部六百四十二卷。"}]}
+{
+  "id": "t2178",
+  "taisho": "T2178",
+  "title": "天台宗章疏",
+  "translator": "日本 玄日錄",
+  "vol": "T55",
+  "juan": 1,
+  "chars": 12,
+  "content": [
+    {
+      "chapter": "天台宗章疏",
+      "text": "百八十一部六百四十二卷。"
+    }
+  ],
+  "category": "事彙部类",
+  "time_from": 914,
+  "official_char_count": 1583,
+  "actual_char_count": 0,
+  "juan_count": 1
+}
