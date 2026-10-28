@@ -65,7 +65,7 @@
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-    <script src="../js/ontology-data.js"></script>
+    <script src="../js/ontology-graph-data.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-buddha-paper text-buddha-dark">
@@ -105,7 +105,8 @@
         </div>
     </main>
     <script>
-        const concepts = ontologyGraphData.concepts;
+        // 从nodes数组中按type筛选出各类节点
+        const concepts = ontologyGraphData.nodes.filter(n=>n.type==='concept');
         const startSel = document.getElementById('start');
         const endSel = document.getElementById('end');
         concepts.forEach(c=>{
@@ -117,14 +118,14 @@
 
         // 建图
         const graph = {};
-        ontologyGraphData.relations.forEach(r=>{
+        ontologyGraphData.edges.forEach(r=>{
             if (!graph[r.source]) graph[r.source] = [];
             if (!graph[r.target]) graph[r.target] = [];
-            graph[r.source].push({to:r.target, label:r.label, desc:r.description});
-            graph[r.target].push({to:r.source, label:r.label, desc:r.description});
+            graph[r.source].push({to:r.target, label:r.label, desc:r.desc||r.label});
+            graph[r.target].push({to:r.source, label:r.label, desc:r.desc||r.label});
         });
         const nameMap = {};
-        [...ontologyGraphData.concepts, ...ontologyGraphData.sects, ...ontologyGraphData.sutras, ...ontologyGraphData.persons, ...ontologyGraphData.categories].forEach(n=>nameMap[n.id]=n.name||n.name);
+        ontologyGraphData.nodes.forEach(n=>nameMap[n.id]=n.name);
 
         function bfs(start, end) {
             const q = [[start, []]];

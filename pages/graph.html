@@ -65,7 +65,7 @@
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-    <script src="../js/ontology-data.js"></script>
+    <script src="../js/ontology-graph-data.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-buddha-paper text-buddha-dark">
@@ -104,26 +104,29 @@
         function render() {
             const types = Array.from(document.querySelectorAll('.graph-filter:checked')).map(c=>c.dataset.type);
             const nodes = [], nodeMap = {}, links = [];
-            if (types.includes('concept')) ontologyGraphData.concepts.forEach(c=>{const id='c_'+c.id;nodes.push({id,name:c.name,category:'concept',symbolSize:c.layer==='L1'?28:20,itemStyle:{color:colorMap.concept},data:c});nodeMap[id]=c;});
-            if (types.includes('person')) ontologyGraphData.persons.forEach(p=>{const id='p_'+p.id;nodes.push({id,name:p.name,category:p.class,symbolSize:p.class==='buddha'?30:p.class==='bodhisattva'?25:20,itemStyle:{color:colorMap[p.class]||'#666'},data:p});nodeMap[id]=p;});
-            if (types.includes('sect')) ontologyGraphData.sects.forEach(s=>{const id='s_'+s.id;nodes.push({id,name:s.name,category:'sect',symbolSize:28,itemStyle:{color:colorMap.sect},data:s});nodeMap[id]=s;});
-            if (types.includes('category')) ontologyGraphData.categories.forEach(c=>{const id='ca_'+c.id;nodes.push({id,name:c.name,category:'category',symbolSize:Math.min(15+c.count/8,50),itemStyle:{color:colorMap.category},data:c});nodeMap[id]=c;});
-            if (types.includes('sutra')) ontologyGraphData.sutras.forEach(s=>{const id='su_'+s.id;nodes.push({id,name:s.name,category:'sutra',symbolSize:s.word_count>100000?22:16,itemStyle:{color:colorMap.sutra},data:s});nodeMap[id]=s;});
+            // 从nodes数组按type筛选
+            const typeToClass = {concept:'concept', person: n=>n.class, sect:'sect', category:'category', sutra:'sutra'};
+            ontologyGraphData.nodes.forEach(n=>{
+                let include = false, catName, size=20, color='#666';
+                if (n.type==='concept' && types.includes('concept')) { include=true; catName='concept'; size = n.layer==='L1'?28:20; color=colorMap.concept; }
+                else if (n.type==='person' && types.includes('person')) { include=true; catName = n.class; size = n.class==='buddha'?30:n.class==='bodhisattva'?25:20; color = colorMap[n.class]||'#666'; }
+                else if (n.type==='sect' && types.includes('sect')) { include=true; catName='sect'; size=28; color=colorMap.sect; }
+                else if (n.type==='category' && types.includes('category')) { include=true; catName='category'; size=25; color=colorMap.category; }
+                else if (n.type==='sutra' && types.includes('sutra')) { include=true; catName='sutra'; size=18; color=colorMap.sutra; }
+                if (include) {
+                    const gid = n.type+'_'+n.id;
+                    nodes.push({id:gid, name:n.name, category:catName, symbolSize:size, itemStyle:{color}, data:n});
+                    nodeMap[n.id] = gid;
+                }
+            });
 
-            function gid(raw) {
-                if (raw.startsWith('c')) return 'c_'+raw;
-                if (raw.startsWith('p')) return 'p_'+raw;
-                if (raw.startsWith('sect')) return 's_'+raw;
-                if (raw.startsWith('cat_')) return 'ca_'+raw;
-                if (raw.startsWith('t')) return 'su_'+raw;
-                return raw;
-            }
-            ontologyGraphData.relations.forEach(r=>{
-                const s=gid(r.source), t=gid(r.target);
-                if (nodes.some(n=>n.id===s)&&nodes.some(n=>n.id===t)) links.push({source:s,target:t,label:{show:false,formatter:r.label,fontSize:10},lineStyle:{width:1.2,opacity:0.6,curveness:0.1},data:r});
+            ontologyGraphData.edges.forEach(r=>{
+                if (nodeMap[r.source] && nodeMap[r.target]) {
+                    links.push({source:nodeMap[r.source], target:nodeMap[r.target], label:{show:false,formatter:r.label,fontSize:10},lineStyle:{width:1.2,opacity:0.6,curveness:0.1},data:r});
+                }
             });
             const cats = Object.keys(colorMap).map(k=>({name:nameMap[k]||k,itemStyle:{color:colorMap[k]}}));
-            chart.setOption({tooltip:{formatter:p=>p.dataType==='node'?`<b>${p.name}</b><br/>${p.data.data.definition||p.data.data.core_doctrine||p.data.data.translator||''}`:`<b>${p.data.data.label}</b><br/>${p.data.data.description||''}`},legend:[{data:cats.map(c=>c.name),top:10}],series:[{type:'graph',layout:'force',data:nodes,links:links,categories:cats,roam:true,draggable:true,label:{show:true,position:'right',fontSize:11},force:{repulsion:350,edgeLength:[80,160],gravity:0.1},emphasis:{focus:'adjacency',lineStyle:{width:3}}}]},true);
+            chart.setOption({tooltip:{formatter:p=>p.dataType==='node'?`<b>${p.name}</b><br/>${p.data.data.definition||p.data.data.core_doctrine||p.data.data.translator||''}`:`<b>${p.data.data.label}</b>`},legend:[{data:cats.map(c=>c.name),top:10}],series:[{type:'graph',layout:'force',data:nodes,links:links,categories:cats,roam:true,draggable:true,label:{show:true,position:'right',fontSize:11},force:{repulsion:350,edgeLength:[80,160],gravity:0.1},emphasis:{focus:'adjacency',lineStyle:{width:3}}}]},true);
         }
         chart.on('click', p=>{
             if (p.dataType==='node') {
