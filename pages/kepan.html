@@ -17,54 +17,37 @@
                             dark: '#3A2E1F',
                             light: '#F5F0E6',
                             paper: '#F8F4E9',
-                            ink: '#2C2416',
-                            sutra: '#7B3F00',
-                            concept: '#1E4D2B',
-                            person: '#8B0000',
-                            sect: '#4A148C'
+                            ink: '#2C2416'
                         }
                     },
                     fontFamily: {
-                        serif: ['"Noto Serif SC"', 'KaiTi', 'STKaiti', 'serif'],
-                        sans: ['"Noto Sans SC"', 'sans-serif']
+                        serif: ['"Noto Serif SC"', 'KaiTi', 'STKaiti', 'serif']
                     }
                 }
             }
         }
     </script>
-    
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .scrollbar-thin {
-                scrollbar-width: thin;
-            }
-            .scrollbar-thin::-webkit-scrollbar {
-                width: 4px;
-                height: 4px;
-            }
-            .scrollbar-thin::-webkit-scrollbar-thumb {
-                background-color: rgba(139, 90, 43, 0.3);
-                border-radius: 2px;
-            }
-            .text-balance {
-                text-wrap: balance;
-            }
-            .bg-paper-texture {
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-            }
-            .lotus-pattern {
-                background-image: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
-            }
-            .node-sutra { color: #7B3F00; }
-            .node-concept { color: #1E4D2B; }
-            .node-person { color: #8B0000; }
-            .node-sect { color: #4A148C; }
-        }
-    </style>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .kepan-tree ul { list-style: none; padding-left: 1.25rem; border-left: 2px dashed rgba(139,90,43,0.2); margin-left: 0.5rem; margin-top: 0.25rem; }
+        .kepan-tree li { position: relative; padding: 0.15rem 0; }
+        .kepan-tree li::before {
+            content: ''; position: absolute; left: -1.25rem; top: 0.85rem;
+            width: 0.8rem; height: 2px; background: rgba(139,90,43,0.3);
+        }
+        .node-row { display: flex; align-items: flex-start; gap: 0.4rem; padding: 0.3rem 0.5rem; border-radius: 6px; cursor: pointer; }
+        .node-row:hover { background: rgba(212,175,55,0.1); }
+        .node-xu  { background: linear-gradient(90deg, rgba(34,139,34,0.08), transparent); border-left: 3px solid #228B22; }
+        .node-zheng { background: linear-gradient(90deg, rgba(139,90,43,0.12), transparent); border-left: 3px solid #8B5A2B; }
+        .node-liu  { background: linear-gradient(90deg, rgba(30,58,138,0.08), transparent); border-left: 3px solid #1E3A8A; }
+        .node-sub  { background: rgba(139,90,43,0.04); }
+        .toggle { width: 1.2rem; flex-shrink: 0; text-align: center; color: #8B5A2B; user-select: none; line-height: 1.4; }
+        .collapsed > ul { display: none; }
+        .collapsed .toggle::before { content: '▶'; font-size: 0.7rem; }
+        .expanded .toggle::before { content: '▼'; font-size: 0.7rem; }
+        .leaf .toggle::before { content: '·'; color: #bbb; font-size: 0.9rem; }
+        .search-hit { background: rgba(212,175,55,0.25); font-weight: bold; }
+    </style>
 </head>
 <body class="bg-buddha-paper text-buddha-dark">
     <nav class="bg-white shadow-md sticky top-0 z-50">
@@ -74,62 +57,141 @@
                 <a href="../index.html" class="hover:text-buddha-secondary">首页</a>
                 <a href="sutras.html" class="hover:text-buddha-secondary">全藏经文库</a>
                 <a href="kepan.html" class="text-buddha-primary font-bold">科判导航</a>
-                <a href="../index.html#graph" class="hover:text-buddha-secondary">义理图谱</a>
-                <a href="../index.html#translation" class="hover:text-buddha-secondary">译学</a>
-                <a href="../index.html#panjiao" class="hover:text-buddha-secondary">宗派判教</a>
-                <a href="../index.html#inference" class="hover:text-buddha-secondary">概念推演</a>
-                <a href="../index.html#timeline" class="hover:text-buddha-secondary">译传时间轴</a>
+                <a href="graph.html" class="hover:text-buddha-secondary">义理图谱</a>
+                <a href="translation.html" class="hover:text-buddha-secondary">佛典译学</a>
+                <a href="panjiao.html" class="hover:text-buddha-secondary">宗派判教</a>
+                <a href="inference.html" class="hover:text-buddha-secondary">概念推演</a>
+                <a href="timeline.html" class="hover:text-buddha-secondary">译传时间轴</a>
             </div>
         </div>
     </nav>
-    <main class="max-w-6xl mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-buddha-primary mb-2">📚 佛经科判树形导航</h1>
-        <p class="text-buddha-dark/70 mb-8">传统佛经三分科判结构：序分（缘起）→正宗分（核心教义）→流通分（结劝流传）</p>
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="md:col-span-1">
-                <h3 class="font-bold mb-3 text-lg">选择经典</h3>
-                <div id="sutraList" class="space-y-2"></div>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-buddha-primary mb-2 font-serif">📚 佛经科判树形导航</h1>
+        <p class="text-buddha-dark/70 mb-6">传统佛经三分科判：<span class="text-green-700 font-semibold">序分</span>（缘起）→<span class="text-amber-700 font-semibold">正宗分</span>（核心教义）→<span class="text-blue-800 font-semibold">流通分</span>（结劝流传）。共收录 <span id="cnt" class="text-buddha-primary font-bold">0</span> 部核心经典，点击节点可展开/折叠。</p>
+
+        <div class="grid lg:grid-cols-[320px_1fr] gap-6">
+            <div>
+                <input id="search" placeholder="🔍 搜索经名 / 内容关键词..." class="w-full mb-3 px-3 py-2 rounded border border-buddha-light/60 bg-white text-sm focus:outline-none focus:border-buddha-primary" />
+                <div id="sutraList" class="space-y-1 overflow-y-auto max-h-[70vh] pr-2"></div>
             </div>
-            <div class="md:col-span-2">
-                <div id="kepanContainer" class="bg-white rounded-lg shadow p-6">
-                    <p class="text-buddha-dark/60">请从左侧选择一部经典查看科判</p>
+            <div>
+                <div id="kepanContainer" class="bg-white rounded-lg shadow p-6 min-h-[60vh]">
+                    <p class="text-buddha-dark/60">请从左侧选择一部经典查看完整科判结构</p>
                 </div>
             </div>
         </div>
     </main>
+
     <script>
-        fetch('../kepan/core.json').then(r=>r.json()).then(data => {
-            const list = document.getElementById('sutraList');
-            const container = document.getElementById('kepanContainer');
-            Object.keys(data).forEach(tid => {
+    (function(){
+        const list = document.getElementById('sutraList');
+        const container = document.getElementById('kepanContainer');
+        const search = document.getElementById('search');
+        let data = {};
+
+        function nodeTypeClass(t) {
+            if (t === '序分') return 'node-xu';
+            if (t === '正宗分') return 'node-zheng';
+            if (t === '流通分') return 'node-liu';
+            return 'node-sub';
+        }
+
+        function hasChildren(n){ return n.children && n.children.length > 0; }
+
+        function renderNode(n, depth){
+            const isLeaf = !hasChildren(n);
+            const state = isLeaf ? 'leaf' : (depth < 2 ? 'expanded' : 'collapsed');
+            let html = `<li class="${state}" data-name="${(n.name||'').replace(/"/g,'&quot;')}">`;
+            html += `<div class="node-row ${n.type ? nodeTypeClass(n.type) : ''}">`;
+            html += `<span class="toggle" onclick="event.stopPropagation(); this.parentElement.parentElement.classList.toggle('collapsed'); this.parentElement.parentElement.classList.toggle('expanded');"></span>`;
+            html += `<div class="flex-1">`;
+            html += `<div class="font-semibold text-sm" style="color:#3A2E1F">${n.name || ''}</div>`;
+            const desc = n.description || n.desc || n.content || (n.juan ? `卷${n.juan}·${n.position||''}` : '');
+            if (desc) {
+                const shortDesc = desc.length > 400 ? desc.slice(0, 400) + '…' : desc;
+                html += `<div class="text-xs mt-1 leading-relaxed text-buddha-dark/75">${shortDesc}</div>`;
+            }
+            html += `</div></div>`;
+            if (hasChildren(n)) {
+                html += '<ul>';
+                n.children.forEach(c => html += renderNode(c, depth+1));
+                html += '</ul>';
+            }
+            html += '</li>';
+            return html;
+        }
+
+        function renderKepan(sutra){
+            let html = `<div class="mb-4 pb-4 border-b border-buddha-light/60">`;
+            html += `<h2 class="text-2xl font-bold text-buddha-primary font-serif mb-1">${sutra.title}</h2>`;
+            const meta = [];
+            if (sutra.taisho) meta.push(`<span class="px-2 py-0.5 bg-buddha-light/50 rounded text-xs">${sutra.taisho}</span>`);
+            if (sutra.translator) meta.push(`<span class="text-sm text-buddha-dark/80">译者：${sutra.translator}</span>`);
+            if (sutra.juan) meta.push(`<span class="text-sm">${sutra.juan}卷</span>`);
+            if (sutra.pin) meta.push(`<span class="text-sm">${sutra.pin}品</span>`);
+            if (sutra.hui) meta.push(`<span class="text-sm">${sutra.hui}会</span>`);
+            if (sutra.description) html += `<p class="text-sm text-buddha-dark/70 mt-2 leading-relaxed">${sutra.description}</p>`;
+            html += `<div class="flex flex-wrap items-center gap-3 mt-2">${meta.join('')}</div>`;
+            html += `</div><ul class="kepan-tree text-sm">`;
+            (sutra.kepan||[]).forEach(n => html += renderNode(n, 0));
+            html += '</ul>';
+            container.innerHTML = html;
+            // 默认展开 序/正/流 三分，第二层以下折叠；点击行即可展开/折叠
+            container.querySelectorAll('.node-row').forEach(row => {
+                row.addEventListener('click', e => {
+                    const li = row.parentElement;
+                    if (li.classList.contains('leaf')) return;
+                    li.classList.toggle('collapsed');
+                    li.classList.toggle('expanded');
+                });
+            });
+        }
+
+        function buildList(filter){
+            list.innerHTML = '';
+            const keys = Object.keys(data).sort();
+            let count = 0;
+            keys.forEach(tid => {
                 const s = data[tid];
+                const text = (s.title + ' ' + (s.translator||'') + ' ' + (s.description||'')).toLowerCase();
+                if (filter && !text.includes(filter.toLowerCase())) return;
+                count++;
                 const btn = document.createElement('button');
-                btn.className = 'w-full text-left p-3 rounded hover:bg-buddha-light/50 transition-colors border border-buddha-light/50';
-                btn.textContent = s.title;
-                btn.onclick = () => renderKepan(s);
+                btn.className = 'w-full text-left p-2.5 rounded hover:bg-buddha-light/50 transition-colors border border-buddha-light/40 text-sm flex flex-col gap-0.5';
+                btn.dataset.tid = tid;
+                let top = `<span class="font-semibold text-buddha-ink">${s.title}</span>`;
+                let sub = `<span class="text-xs text-buddha-dark/60">${s.taisho||''} · ${s.translator||''} · ${s.juan?s.juan+'卷':''}${s.pin?s.pin+'品':''}</span>`;
+                btn.innerHTML = top + sub;
+                btn.onclick = () => {
+                    list.querySelectorAll('button').forEach(b => b.classList.remove('bg-buddha-secondary/20','border-buddha-secondary'));
+                    btn.classList.add('bg-buddha-secondary/20','border-buddha-secondary');
+                    renderKepan(s);
+                };
                 list.appendChild(btn);
             });
-
-            function renderKepan(sutra) {
-                let html = `<h2 class="text-2xl font-bold text-buddha-primary mb-4">${sutra.title} · 三分科判</h2>`;
-                function renderNode(node, depth=0) {
-                    let h = `<div class="ml-${depth*4} mb-2">`;
-                    const color = node.type === '序分' ? 'bg-green-50 border-green-200' :
-                                  node.type === '正宗分' ? 'bg-buddha-light/50 border-buddha-primary/30' :
-                                  'bg-blue-50 border-blue-200';
-                    h += `<div class="p-2 rounded border ${color}">`;
-                    h += `<div class="font-bold">${node.name}</div>`;
-                    if (node.description) h += `<div class="text-sm text-buddha-dark/70 mt-1">${node.description}</div>`;
-                    if (node.content) h += `<div class="text-sm mt-1 leading-relaxed">${node.content}</div>`;
-                    h += `</div>`;
-                    if (node.children) node.children.forEach(c => h += renderNode(c, depth+1));
-                    h += `</div>`;
-                    return h;
-                }
-                sutra.kepan.forEach(n => html += renderNode(n));
-                container.innerHTML = html;
+            document.getElementById('cnt').textContent = Object.keys(data).length;
+            if (count === 0) {
+                list.innerHTML = '<p class="text-sm text-buddha-dark/60 p-3">没有匹配的经典</p>';
             }
+        }
+
+        let searchTimer;
+        search.addEventListener('input', () => {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(()=>buildList(search.value.trim()), 150);
         });
+
+        fetch('../kepan/core.json', {cache:'no-cache'}).then(r=>r.json()).then(d => {
+            data = d;
+            buildList('');
+            // 默认显示第一部
+            const first = list.querySelector('button');
+            if (first) first.click();
+        }).catch(e => {
+            container.innerHTML = '<p class="text-red-600">科判数据加载失败：' + e.message + '</p>';
+        });
+    })();
     </script>
 </body>
 </html>

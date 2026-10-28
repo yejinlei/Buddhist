@@ -39,7 +39,25 @@ BASES = [
 ]
 NS = {'t': 'http://www.tei-c.org/ns/1.0'}
 META_API = 'https://cbdata.dila.edu.tw/stable/works?work='
-SKIP = {'note', 'rdg', 'witness', 'app', 'witDetail', 'lem', 'rdgGrp'}
+SKIP_STRUCT = {'rdg', 'witness', 'app', 'witDetail', 'lem', 'rdgGrp',
+        'lb', 'pb', 'anchor', 'space', 'milestone', 'caesura',
+        'graphic', 'figure', 'docNumber'}
+
+# 标题/正文块标签
+HEAD_TAGS = {'head', 'jhead', 'mulu', 'jl_title', 'byline', 'jl_byline', 'fan'}
+BLOCK_TAGS = {'p', 'l', 'item', 'list', 'lg', 'jl_juan', 'yin', 'zi', 'div', 't', 'tt', 'term'}
+
+
+def is_skip_note(e):
+    place = e.get('place') or e.get('{http://www.cbeta.org/ns/1.0}place') or ''
+    resp = e.get('resp') or ''
+    ntype = e.get('type') or e.get('{http://www.cbeta.org/ns/1.0}type') or ''
+    corresp = e.get('corresp') or ''
+    if resp or corresp:
+        return True
+    if ntype and ntype not in ('inline', 'comm'):
+        return True
+    return False
 
 
 def log(msg):
@@ -53,7 +71,12 @@ def log(msg):
 
 
 def clean(t):
-    return re.sub(r'\s+', '', t or '')
+    if not t:
+        return ''
+    t = t.replace('\u3000', ' ')
+    t = re.sub(r'[ \t]+', '', t)
+    t = re.sub(r'\n+', '\n', t)
+    return t.strip()
 
 
 # ---------------- 清单 ----------------
@@ -143,7 +166,11 @@ def extract(e):
         parts.append(e.text)
     for ch in e:
         tg = ch.tag.split('}')[-1]
-        if tg not in SKIP:
+        if tg in SKIP_STRUCT:
+            pass
+        elif tg == 'note' and is_skip_note(ch):
+            pass
+        else:
             parts.append(extract(ch))
         if ch.tail:
             parts.append(ch.tail)
@@ -186,25 +213,39 @@ def parse_tei(xml_bytes):
                 chapters.append({'chapter': cur_title or '正文', 'text': txt})
         cur_parts.clear()
 
-    for elem in body.iter():
-        tg = elem.tag.split('}')[-1]
+    def walk(e):
+        nonlocal cur_title
+        tg = e.tag.split('}')[-1]
+        if tg in SKIP_STRUCT:
+            return
+        if tg == 'note' and is_skip_note(e):
+            return
         if tg == 'juan':
             flush()
-            n = clean(elem.get('n') or '')
-            cur_title = f'卷{n}' if n else '正文'
-        elif tg in ('head', 'jhead'):
-            h = clean(''.join(elem.itertext()))
-            if h and len(h) < 80:
+            n = clean(e.get('n') or '')
+            cur_title = f'卷{n}' if n else (cur_title or '正文')
+            for ch in e:
+                walk(ch)
+            return
+        if tg in HEAD_TAGS:
+            h = clean(extract(e))
+            if h and len(h) < 120:
                 flush()
-                cur_title = h
-        elif tg == 'p':
-            t = clean(extract(elem))
+                if tg in ('head', 'jhead', 'byline', 'jl_byline', 'fan'):
+                    cur_title = h
+                else:
+                    cur_parts.append('【' + h + '】')
+            for ch in e:
+                walk(ch)
+            return
+        if tg in BLOCK_TAGS:
+            t = clean(extract(e))
             if t:
                 cur_parts.append(t)
-        elif tg == 'l':
-            t = clean(extract(elem))
-            if t:
-                cur_parts.append(t)
+            return
+        for ch in e:
+            walk(ch)
+    walk(body)
     flush()
     if not chapters:
         return None
