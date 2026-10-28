@@ -106,3 +106,51 @@
   text-overflow: ellipsis;
 }
 #toc-panel a:hover { background: rgba(184, 134, 11, 0.14); }
+
+/* === 科判弹窗样式 === */
+.kepan-panel {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+.kepan-node {
+  margin: 8px 0;
+  padding-left: 18px;
+  border-left: 2px solid rgba(139, 69, 19, 0.2);
+}
+.kepan-name {
+  font-weight: 600;
+  color: #6b3410;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.kepan-type {
+  display: inline-block;
+  background: linear-gradient(135deg, #c49a6c, #a06b3a);
+  color: #fff;
+  font-size: 11px;
+  padding: 1px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+.kepan-desc {
+  color: #8a6d42;
+  font-size: 13px;
+  margin-top: 2px;
+  line-height: 1.7;
+}
+.kepan-content {
+  color: #5c3c1a;
+  background: rgba(196, 154, 108, 0.1);
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin: 4px 0 6px;
+  line-height: 1.7;
+  font-family: serif;
+}
+.kepan-children {
+  margin-top: 4px;
+}

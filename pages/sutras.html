@@ -156,6 +156,7 @@ let allSutras = [];
 let currentSutra = null;
 let loadedChapters = 0;
 let NOTES = {};   // 学者注解：sutra_id -> {anchors:[...]}
+let KEPAN = null; // 科判数据
 let H2S = {};     // 繁->简单字映射
 let DICT_TERMS = null;
 let DICT_MAP = new Map();
@@ -431,19 +432,62 @@ function toSimp(s){ return [...(s||'')].map(c => H2S[c] || c).join(''); }
 
 async function loadExtras() {
     try {
-        const [n, h, d] = await Promise.all([
+        const [n, h, d, k] = await Promise.all([
             fetch('../data/scholar-notes.json?' + Date.now()).then(r => r.json()),
             fetch('../sutras/hant2simp.json').then(r => r.json()),
-            fetch('../data/buddhist_dict.json?' + Date.now()).then(r => r.json())
+            fetch('../data/buddhist_dict.json?' + Date.now()).then(r => r.json()),
+            fetch('../kepan/core.json?' + Date.now()).then(r => r.json()).catch(()=>null)
         ]);
         H2S = h || {};
+        KEPAN = k || null;
         (n.notes || []).forEach(x => { NOTES[x.sutra_id] = x; });
         if (d && d.terms) {
             DICT_TERMS = d.terms;
             d.terms.forEach(t => { if(t.name && t.name.length >= 2) { DICT_MAP.set(t.name, t); if(t.name.length > DICT_MAX_LEN) DICT_MAX_LEN = Math.min(t.name.length, 10); } });
         }
-        if (currentSutra && NOTES[currentSutra.id]) { loadedChapters = 0; const c = document.getElementById('sutra-text'); if (c) c.innerHTML = ''; if (c) loadMoreChapters(); }
+        if (currentSutra && (NOTES[currentSutra.id] || (KEPAN && KEPAN[currentSutra.id]))) { loadedChapters = 0; const c = document.getElementById('sutra-text'); if (c) c.innerHTML = ''; if (c) loadMoreChapters(); }
+        // 更新科判按钮状态
+        updateKepanBtn();
     } catch (e) { console.warn('注解/词典加载失败', e); }
+}
+
+function updateKepanBtn() {
+    const btn = document.getElementById('btn-kepan');
+    if (!btn) return;
+    if (KEPAN && currentSutra && KEPAN[currentSutra.id]) {
+        btn.style.display = '';
+        btn.title = '本科判：' + KEPAN[currentSutra.id].title;
+    } else {
+        btn.style.display = 'none';
+    }
+}
+
+// 科判弹窗渲染
+function showKepanPanel() {
+    if (!KEPAN || !currentSutra || !KEPAN[currentSutra.id]) return;
+    const k = KEPAN[currentSutra.id];
+    function render(items) {
+        return items.map(item => {
+            const t = item.type ? `<span class="kepan-type">${item.type}</span>` : '';
+            const c = item.content ? `<div class="kepan-content">${esc(item.content)}</div>` : '';
+            const d = item.description ? `<div class="kepan-desc">${esc(item.description)}</div>` : '';
+            const ch = item.children ? `<div class="kepan-children">${render(item.children)}</div>` : '';
+            return `<div class="kepan-node"><div class="kepan-name">${t}${esc(item.name)}</div>${d}${c}${ch}</div>`;
+        }).join('');
+    }
+    const modal = document.createElement('div');
+    modal.className = 'modal-backdrop';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;display:flex;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto;';
+    modal.innerHTML = `
+        <div style="background:#fdfbf5;border-radius:14px;max-width:780px;width:100%;padding:28px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+            <button id="close-kepan-modal" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:28px;cursor:pointer;color:#6b5a3a;">×</button>
+            <h2 style="color:#6b3410;font-size:24px;margin:0 0 6px;font-family:serif;">📐 本科判结构</h2>
+            <div style="color:#8a6d42;margin-bottom:16px;font-size:14px;">${esc(k.title)}${k.author ? ' · ' + esc(k.author) : ''}</div>
+            <div class="kepan-panel">${render(k.kepan)}</div>
+        </div>`;
+    document.body.appendChild(modal);
+    document.getElementById('close-kepan-modal').onclick = () => modal.remove();
+    modal.onclick = e => { if(e.target===modal) modal.remove(); };
 }
 
 // 将段落中词典词条自动加下划线可点击
@@ -698,6 +742,7 @@ async function loadSutra(meta) {
 
     currentSutra = sutraData;
     loadedChapters = 0;
+    updateKepanBtn();
     // 渲染经文头部信息
     contentArea.innerHTML = `
         <div class="mb-8 pb-6 border-b-2 border-primary/20">
@@ -718,6 +763,7 @@ async function loadSutra(meta) {
             <button data-fs="lg">大</button>
             <button data-fs="xl">特大</button>
             <button id="bookmark-btn" title="添加书签" style="margin-left:.5rem"><i class="fa fa-bookmark"></i> <span class="rt-label">书签</span></button>
+            <button id="btn-kepan" title="本科判结构" style="display:none;margin-left:.3rem"><i class="fa fa-sitemap"></i> <span class="rt-label">科判</span></button>
             <button id="study-btn" title="我的收藏与笔记"><i class="fa fa-star"></i> <span class="rt-label">学术工具</span></button>
             <span class="rt-label" id="read-progress" style="margin-left:auto"></span>
         </div>
@@ -885,6 +931,7 @@ document.querySelectorAll('#study-sidebar .sb-tabs button').forEach(b=>{
   b.addEventListener('click', ()=>switchTab(b.dataset.tab));
 });
 document.getElementById('bookmark-btn')?.addEventListener('click', addBookmark);
+document.getElementById('btn-kepan')?.addEventListener('click', showKepanPanel);
 
 // ===== 手机端：左侧经目可折叠 =====
 (function () {
