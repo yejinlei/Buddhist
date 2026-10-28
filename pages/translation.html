@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>佛典译学 · 佛学本体论</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: "Microsoft YaHei", sans-serif; background: linear-gradient(180deg,#f5f0e8 0%,#fff 100%); }
+    .tab-active { background: #8b0000 !important; color: white !important; }
+    .section-card { background: white; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); padding: 24px; margin-bottom: 20px; }
+    .timeline-item { position: relative; padding-left: 30px; border-left: 2px solid #8b0000; margin-bottom: 30px; }
+    .timeline-dot { position: absolute; left: -9px; top: 0; width: 16px; height: 16px; background: #d4af37; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px #8b0000; }
+    .theory-card { border-left: 4px solid #d4af37; padding: 16px 20px; background: #fdfaf3; margin-bottom: 16px; border-radius: 0 8px 8px 0; }
+    .compare-col { background: #f8f5f0; border-radius: 8px; padding: 20px; border-top: 4px solid #b22222; }
+    .item-row { padding: 12px 0; border-bottom: 1px solid #eee; }
+    .item-row:last-child { border-bottom: none; }
+  </style>
+</head>
+<body>
+  <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="../index.html" class="text-xl font-bold text-red-800">佛学本体论</a>
+      <div class="flex gap-6 text-sm">
+        <a href="../index.html" class="text-gray-600 hover:text-red-800">首页</a>
+        <a href="sutras.html" class="text-gray-600 hover:text-red-800">大藏经</a>
+        <a href="graph.html" class="text-gray-600 hover:text-red-800">义理图谱</a>
+        <a href="kepan.html" class="text-gray-600 hover:text-red-800">科判导航</a>
+        <a href="panjiao.html" class="text-gray-600 hover:text-red-800">判教对比</a>
+        <a href="inference.html" class="text-gray-600 hover:text-red-800">概念推演</a>
+        <a href="timeline.html" class="text-gray-600 hover:text-red-800">译传时间轴</a>
+        <a href="translation.html" class="text-red-800 font-semibold">佛典译学</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-red-800 mb-6 text-center">佛典译学 · 翻译标准体系</h1>
+    <p class="text-center text-gray-600 mb-8">佛经翻译从「文质之争」到「信达雅」，历经千年实践形成的多层次翻译理论体系</p>
+
+    <!-- Tab切换 -->
+    <div class="flex justify-center gap-2 mb-8 flex-wrap">
+      <button onclick="switchTab('standards')" id="tab-standards" class="tab-active px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium">翻译标准体系</button>
+      <button onclick="switchTab('schools')" id="tab-schools" class="px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium">翻译风格流派</button>
+      <button onclick="switchTab('timeline')" id="tab-timeline" class="px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium">译论演进历程</button>
+      <button onclick="switchTab('modern')" id="tab-modern" class="px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium">现代启示</button>
+    </div>
+
+    <!-- 翻译标准体系 -->
+    <div id="panel-standards" class="tab-panel">
+      <div class="section-card">
+        <h2 class="text-2xl font-bold text-red-800 mb-4">📜 核心翻译理论</h2>
+        
+        <div class="theory-card">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">文质之争 <span class="text-sm text-gray-500 ml-2">汉魏两晋</span></h3>
+          <p class="text-gray-700 mb-2">中国佛经翻译史上最早的风格争论：「文」派主张译文应修饰文采、符合汉语表达习惯，「质」派主张严格忠实原文、保留梵文质朴风貌。</p>
+          <p class="text-gray-600 text-sm">代表人物：支谦（文派）、维只难（质派）</p>
+        </div>
+
+        <div class="theory-card">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">五失本三不易 <span class="text-sm text-gray-500 ml-2">前秦 · 道安</span></h3>
+          <p class="text-gray-700 mb-3">中国最早系统的佛经翻译理论，核心是：在承认必须做形式调整的前提下，力求忠实原旨，反对过度中国化。</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-white p-4 rounded border border-amber-100">
+              <h4 class="font-semibold text-amber-800 mb-2">五失本（允许的五种形式调整）</h4>
+              <div class="text-sm text-gray-700 space-y-1">
+                <div>1. 改梵文倒装语序为汉语正常语序</div>
+                <div>2. 梵文质朴，加汉语修饰词以顺文采</div>
+                <div>3. 删减梵文颂文中的重复咏叹</div>
+                <div>4. 删除义理重复的连类赘语</div>
+                <div>5. 调整叙事结构，将前置补叙归位</div>
+              </div>
+            </div>
+            <div class="bg-white p-4 rounded border border-amber-100">
+              <h4 class="font-semibold text-amber-800 mb-2">三不易（翻译三重困难）</h4>
+              <div class="text-sm text-gray-700 space-y-1">
+                <div>1. 古今时俗差异，改古以适今难</div>
+                <div>2. 佛陀微言大义，传与凡愚受众难</div>
+                <div>3. 阿难结集尚且慎重，后世凡夫传译难</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="theory-card">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">八备十条 <span class="text-sm text-gray-500 ml-2">隋 · 彦琮《辩正论》</span></h3>
+          <p class="text-gray-700 mb-3">历史上首个对译者素养和翻译技术的系统要求，唐宋译场曾以此标准选拔译经人才。</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-white p-4 rounded border border-amber-100">
+              <h4 class="font-semibold text-amber-800 mb-2">八备（译者素养）</h4>
+              <div class="text-sm text-gray-700 space-y-1">
+                <div>1. 诚心爱法，志愿益人，不惮久时</div>
+                <div>2. 将践觉场，先牢戒足，不染讥恶</div>
+                <div>3. 筌晓三藏，义贯两乘，不苦闇滞</div>
+                <div>4. 旁涉坟史，工缀典词，不过鲁拙</div>
+                <div>5. 襟抱平恕，器量虚融，不好专执</div>
+                <div>6. 沈于道术，澹于名利，不欲高衒</div>
+                <div>7. 要识梵言，乃闲正译，不坠彼学</div>
+                <div>8. 薄阅苍雅，粗谙篆隶，不昧此文</div>
+              </div>
+            </div>
+            <div class="bg-white p-4 rounded border border-amber-100">
+              <h4 class="font-semibold text-amber-800 mb-2">十条（翻译技术规范）</h4>
+              <div class="text-sm text-gray-700 space-y-1">
+                <div>涉及句韵、问答、名义、品题、教门等翻译技术细节</div>
+                <div>是中国最早的翻译操作手册</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="theory-card">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">五种不翻 <span class="text-sm text-gray-500 ml-2">唐 · 玄奘</span></h3>
+          <p class="text-gray-700 mb-3">玄奘提出的音译原则，规定五种情形下保留梵文原音不做意译，沿用至今。</p>
+          <div class="space-y-3">
+            <div class="bg-white p-3 rounded border border-amber-100">
+              <div class="font-semibold text-amber-800">① 秘密故不翻</div>
+              <div class="text-sm text-gray-700">咒语类（陀罗尼、大悲咒、楞严咒等），意译会破坏加持力，如「陀罗尼」不译为「总持」</div>
+            </div>
+            <div class="bg-white p-3 rounded border border-amber-100">
+              <div class="font-semibold text-amber-800">② 含多义故不翻</div>
+              <div class="text-sm text-gray-700">一词含多义，中文无法对应，如「薄伽梵」含六义（自在、炽盛、端严、名称、吉祥、尊贵），不意译</div>
+            </div>
+            <div class="bg-white p-3 rounded border border-amber-100">
+              <div class="font-semibold text-amber-800">③ 此无故不翻</div>
+              <div class="text-sm text-gray-700">中土无此事物，如「阎浮提」「庵摩罗果」「迦楼罗」，保留音译</div>
+            </div>
+            <div class="bg-white p-3 rounded border border-amber-100">
+              <div class="font-semibold text-amber-800">④ 顺古故不翻</div>
+              <div class="text-sm text-gray-700">沿用前人约定俗成的音译，不另造新译，如「阿耨多罗三藐三菩提」自汉译以来已通行</div>
+            </div>
+            <div class="bg-white p-3 rounded border border-amber-100">
+              <div class="font-semibold text-amber-800">⑤ 生善故不翻</div>
+              <div class="text-sm text-gray-700">音译能引发恭敬心，如「般若」音译能生尊重，译为「智慧」则显得轻浅</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="theory-card">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">信达雅 <span class="text-sm text-gray-500 ml-2">清 · 严复《天演论》</span></h3>
+          <p class="text-gray-700 mb-3">虽非专为佛经翻译而创，但成为后世衡量所有翻译（包括佛经）的通用标准：</p>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded border border-amber-100 text-center">
+              <div class="text-2xl font-bold text-red-800 mb-2">信</div>
+              <div class="text-sm text-gray-700">忠实原文，不增不减，准确传达原意</div>
+            </div>
+            <div class="bg-white p-4 rounded border border-amber-100 text-center">
+              <div class="text-2xl font-bold text-red-800 mb-2">达</div>
+              <div class="text-sm text-gray-700">通顺明白，符合目标语言表达习惯，读者易于理解</div>
+            </div>
+            <div class="bg-white p-4 rounded border border-amber-100 text-center">
+              <div class="text-2xl font-bold text-red-800 mb-2">雅</div>
+              <div class="text-sm text-gray-700">文辞得体，兼具文采与庄重感</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 翻译风格流派 -->
+    <div id="panel-schools" class="tab-panel hidden">
+      <div class="section-card">
+        <h2 class="text-2xl font-bold text-red-800 mb-6">🎭 两大翻译风格流派</h2>
+        <p class="text-gray-600 mb-6">佛经翻译史上始终存在意译与直译两种风格的张力，分别以鸠摩罗什（旧译）和玄奘（新译）为代表，二者服务于不同目的，各有不可替代的价值。</p>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="compare-col">
+            <h3 class="text-xl font-bold text-red-800 mb-4">🌳 旧译 · 意译派 · 鸠摩罗什</h3>
+            <div class="space-y-3">
+              <div class="item-row">
+                <div class="font-semibold text-gray-800">风格主张</div>
+                <div class="text-gray-700">「曲从方言，趣不乖本」：在忠实原文义理的前提下，用符合汉语习惯和审美的方式重新表达</div>
+              </div>
+              <div class="item-row">
+                <div class="font-semibold text-gray-800">特点</div>
+                <div class="text-gray-700">译文简洁优美，文采斐然，流畅自然，适合诵读和传播</div>
+              </div>
+              <div class="item-row">
+                <div class="font-semibold text-gray-800">代表译作</div>
+                <div class="text-gray-700">《金刚经》《妙法莲华经》《维摩诘经》《阿弥陀经》《中论》《大智度论》</div>
+              </div>
+              <div class="item-row">
+                <div class="font-semibold text-gray-800">经典译文示例</div>
+                <div class="text-gray-700 italic p-3 bg-white rounded border">「一切有为法，如梦幻泡影，如露亦如电，应作如是观」——《金刚经》</div>
+              </div>
+              <div class="item-row">
+                <div class="font-semibold text-gray-800">形象比喻</div>
+                <div class="text-gray-700">像「园丁」，让佛经在汉语文化土壤里扎根、开花、结果</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="compare-col" style="border-top-color: #2c5282;">
+            <h3 class="text-xl font-bold text-blue-800 mb-4">🏛️ 新译 · 直译派 · 玄奘</h3>
+            <div class="space-y-3">
+              <div class="item-row">
+                <div class="font-semibold text-gray-800">风格主张</div>
+                <div class="text-gray-700">「既需求真，又需喻俗」：力求精确忠实于梵文原典，开创严谨的「新译」风格</div>
+              </div>
+              <div class="item-row">
+                <div class="font-semibold text-gray-800">特点</div>
+                <div class="text-gray-700">译文严谨准确，逐字逐句对应梵文，学术可靠性高，建立了完整的译场制度</div>
+              </div>
+              <div class="item-row">
+                <div class="font-semibold text-gray-800">代表译作</div>
+                <div class="text-gray-700">《大般若经》600卷、《成唯识论》《瑜伽师地论》《俱舍论》《心经》（玄奘本）</div>
+              </div>
+              <div class="item-row">
+                <div class="font-semibold text-gray-800">经典译文示例</div>
+                <div class="text-gray-700 italic p-3 bg-white rounded border">「诸和合所为，如星翳灯幻，露泡梦电云，应作如是观」——《能断金刚般若波罗蜜多经》</div>
+              </div>
+              <div class="item-row">
+                <div class="font-semibold text-gray-800">形象比喻</div>
+                <div class="text-gray-700">像「博物馆馆长」，尽可能完整、准确地保存原典面貌，为学术研究提供可靠文本</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 译论演进 -->
+    <div id="panel-timeline" class="tab-panel hidden">
+      <div class="section-card">
+        <h2 class="text-2xl font-bold text-red-800 mb-6">📅 译论演进时间轴</h2>
+        <div class="pl-4">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3 class="text-lg font-semibold text-gray-800">汉魏时期 · 文质之争</h3>
+            <div class="text-gray-600 mb-1">约148-316年</div>
+            <p class="text-gray-700">安世高、支娄迦谶开启译经事业，支谦与维只难展开文质之争，奠定风格分野基础</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3 class="text-lg font-semibold text-gray-800">前秦 · 道安「五失本三不易」</h3>
+            <div class="text-gray-600 mb-1">312-385年</div>
+            <p class="text-gray-700">中国第一个系统的翻译理论，提出翻译中不可避免的形式调整与核心困难，反对随意删改</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3 class="text-lg font-semibold text-gray-800">后秦 · 鸠摩罗什意译派</h3>
+            <div class="text-gray-600 mb-1">344-413年</div>
+            <p class="text-gray-700">旧译代表，重译大量般若经论，译文优美流畅，成为汉传佛教流传最广的译本</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3 class="text-lg font-semibold text-gray-800">隋代 · 彦琮「八备十条」</h3>
+            <div class="text-gray-600 mb-1">557-610年</div>
+            <p class="text-gray-700">首部译者素养与翻译技术规范，为唐宋国立译场建立人才选拔标准</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3 class="text-lg font-semibold text-gray-800">唐代 · 玄奘「五种不翻」</h3>
+            <div class="text-gray-600 mb-1">602-664年</div>
+            <p class="text-gray-700">新译代表，建立完备译场制度，提出音译原则，翻译经论75部1335卷，严谨直译开创一代新风</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3 class="text-lg font-semibold text-gray-800">清末 · 严复「信达雅」</h3>
+            <div class="text-gray-600 mb-1">1854-1921年</div>
+            <p class="text-gray-700">在《天演论》译例言中提出「信达雅」三原则，成为中国翻译理论的通用标准，被后世用于衡量佛典翻译</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 现代启示 -->
+    <div id="panel-modern" class="tab-panel hidden">
+      <div class="section-card">
+        <h2 class="text-2xl font-bold text-red-800 mb-6">💡 对现代翻译的启示</h2>
+        <div class="theory-card">
+          <p class="text-gray-700 mb-4 leading-relaxed">佛经翻译千年实践对现代翻译最重要的启示在于：<strong>翻译本质上不仅是语言转换，更是跨文化对话</strong>。从道安到玄奘，从「文质之争」到「信达雅」，整个中国佛典翻译史始终在处理同一对核心矛盾：</p>
+          <div class="grid md:grid-cols-2 gap-6 my-6">
+            <div class="bg-white p-5 rounded-lg border border-amber-200 text-center">
+              <div class="text-xl font-bold text-red-800 mb-2">忠实原典 ↔ 通顺本土化</div>
+              <div class="text-gray-600">如何既保留原文的精神与准确性，又让译入语读者自然理解？</div>
+            </div>
+            <div class="bg-white p-5 rounded-lg border border-blue-200 text-center">
+              <div class="text-xl font-bold text-blue-800 mb-2">原汁原味 ↔ 归化适配</div>
+              <div class="text-gray-600">如何在不破坏原文特质的前提下，让异域文化在本土落地生根？</div>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-4 leading-relaxed">现代翻译理论中的「归化」与「异化」之争，其实早在一千多年前的佛经翻译中就已有极为深刻的实践与讨论：</p>
+          <ul class="space-y-3 text-gray-700 pl-4">
+            <li>✅ <strong>鸠摩罗什的「曲从方言，趣不乖本」</strong>，就是现代翻译理论中的「归化」策略——让读者贴近译文，用目标文化的表达方式传达原意</li>
+            <li>✅ <strong>玄奘的严谨直译、五种不翻</strong>，就是现代翻译理论中的「异化」策略——保留原文的异质性，让译文贴近原作者，让读者感受异域文化的真实面貌</li>
+            <li>✅ <strong>道安「五失本三不易」</strong>早已指出：完全逐字直译会导致「言辞句质，义理不显」，而过度自由意译则会「失本」，必须在二者之间寻找平衡</li>
+            <li>✅ 伟大的翻译从来不是极端选择某一边，而是在张力中找到恰当的平衡点——这正是佛经翻译留给今天最珍贵的经验</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+      document.querySelectorAll('[id^="tab-"]').forEach(t => t.classList.remove('tab-active'));
+      document.getElementById('panel-' + tabName).classList.remove('hidden');
+      document.getElementById('tab-' + tabName).classList.add('tab-active');
+    }
+  </script>
+</body>
+</html>
