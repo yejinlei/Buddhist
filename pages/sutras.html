@@ -11,13 +11,14 @@ tailwind.config={theme:{extend:{colors:{buddha:{primary:'#8B5A2B',secondary:'#D4
 </script>
 <style>
 body{font-family:"Noto Serif SC","Source Han Serif SC",serif;background:#F8F4E9;}
-.sutra-text p{text-indent:2em;line-height:2;margin:0.8em 0;font-size:17px;}
+.sutra-text p{text-indent:2em;line-height:2;margin:0.8em 0;font-size:17px;white-space: pre-wrap;}
 .vol-tag{display:inline-block;padding:2px 8px;border-radius:4px;background:#8B5A2B;color:white;font-size:12px;margin-right:6px;}
 .cat-tag{display:inline-block;padding:2px 8px;border-radius:4px;background:#D4AF37;color:#3A2E1F;font-size:12px;margin-right:6px;}
 .scroll-thin::-webkit-scrollbar{width:6px;height:6px;}
 .scroll-thin::-webkit-scrollbar-thumb{background:rgba(139,90,43,.3);border-radius:3px;}
 .filter-btn.active{background:#8B5A2B;color:white;}
 .chapter-title{font-weight:bold;font-size:18px;color:#8B5A2B;margin-top:2rem;padding-bottom:0.5rem;border-bottom:1px solid #D4AF37;}
+.loading{text-align:center;padding:2rem;color:#8B5A2B;}
 </style>
 </head>
 <body class="text-buddha-dark">
@@ -32,11 +33,13 @@ body{font-family:"Noto Serif SC","Source Han Serif SC",serif;background:#F8F4E9;
       <span class="text-white/70">全藏原典</span>
     </div>
     <nav class="flex gap-4 text-sm">
-      <a href="index.html" class="hover:text-buddha-secondary">首页</a>
-      <a href="ontology.html" class="hover:text-buddha-secondary">本体体系</a>
+      <a href="../index.html" class="hover:text-buddha-secondary">首页</a>
       <a href="graph.html" class="hover:text-buddha-secondary">义理图谱</a>
+      <a href="translation.html" class="hover:text-buddha-secondary">佛典译学</a>
+      <a href="kepan.html" class="hover:text-buddha-secondary">科判导航</a>
+      <a href="panjiao.html" class="hover:text-buddha-secondary">判教对比</a>
+      <a href="inference.html" class="hover:text-buddha-secondary">概念推演</a>
       <a href="timeline.html" class="hover:text-buddha-secondary">译传时间轴</a>
-      <a href="compare.html" class="hover:text-buddha-secondary">判教对比</a>
     </nav>
   </div>
 </header>
@@ -48,7 +51,7 @@ body{font-family:"Noto Serif SC","Source Han Serif SC",serif;background:#F8F4E9;
       <h3 class="font-bold text-buddha-primary mb-3 flex items-center gap-2">
         <i class="fa fa-book"></i>
         <span>大正藏经目</span>
-        <span id="totalBadge" class="ml-auto text-xs bg-buddha-primary/10 text-buddha-primary px-2 py-0.5 rounded"></span>
+        <span id="totalBadge" class="ml-auto text-xs bg-buddha-primary/10 text-buddha-primary px-2 py-0.5 rounded">加载中</span>
       </h3>
       
       <div class="mb-3">
@@ -72,7 +75,9 @@ body{font-family:"Noto Serif SC","Source Han Serif SC",serif;background:#F8F4E9;
         </div>
       </div>
       
-      <div id="sutraList" class="space-y-1 text-sm"></div>
+      <div id="sutraList" class="space-y-1 text-sm">
+        <div class="loading">正在加载经目...</div>
+      </div>
     </div>
   </aside>
   
@@ -85,30 +90,8 @@ body{font-family:"Noto Serif SC","Source Han Serif SC",serif;background:#F8F4E9;
         从左侧选择一部经典开始阅读。当前已收录
         <span class="text-buddha-primary font-bold" id="welcomeCount">加载中</span>部
         共<span class="text-buddha-primary font-bold" id="welcomeChars">加载中</span>，
-        数据来自 <a href="https://www.cbeta.org/" target="_blank" class="text-blue-600 underline">CBETA</a>，持续扩充中。
+        数据来自 <a href="https://www.cbeta.org/" target="_blank" class="text-blue-600 underline">CBETA</a> 电子佛典。
       </p>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-3xl mx-auto mt-6 text-sm">
-        <div class="p-3 bg-buddha-paper rounded">
-          <div class="font-bold text-buddha-primary">阿含部</div>
-          <div class="text-xs text-buddha-dark/60" id="cat1Count">-</div>
-        </div>
-        <div class="p-3 bg-buddha-paper rounded">
-          <div class="font-bold text-buddha-primary">般若部</div>
-          <div class="text-xs text-buddha-dark/60" id="cat2Count">-</div>
-        </div>
-        <div class="p-3 bg-buddha-paper rounded">
-          <div class="font-bold text-buddha-primary">法华·华严</div>
-          <div class="text-xs text-buddha-dark/60" id="cat3Count">-</div>
-        </div>
-        <div class="p-3 bg-buddha-paper rounded">
-          <div class="font-bold text-buddha-primary">律·论</div>
-          <div class="text-xs text-buddha-dark/60" id="cat4Count">-</div>
-        </div>
-        <div class="p-3 bg-buddha-paper rounded">
-          <div class="font-bold text-buddha-primary">密教·禅宗</div>
-          <div class="text-xs text-buddha-dark/60" id="cat5Count">-</div>
-        </div>
-      </div>
     </div>
     
     <div id="sutraContent" class="hidden bg-white rounded-lg shadow p-8">
@@ -117,7 +100,6 @@ body{font-family:"Noto Serif SC","Source Han Serif SC",serif;background:#F8F4E9;
         <div class="flex flex-wrap items-center gap-2 text-sm text-buddha-dark/70">
           <span id="sutraId"></span>
           <span id="sutraVol"></span>
-          <span id="sutraCat"></span>
           <span id="sutraTranslator"></span>
           <span id="sutraJuanCount"></span>
           <span id="sutraChars" class="ml-auto"></span>
@@ -132,42 +114,66 @@ body{font-family:"Noto Serif SC","Source Han Serif SC",serif;background:#F8F4E9;
 let allSutras = [];
 let currentFilter = { cat: '', vol: '', search: '' };
 
+// 从实际JSON文件动态加载经目元数据
+async function buildIndex() {
+  // 生成t0001到t2920的经号列表（大正藏T01-T55, T85范围）
+  const ids = [];
+  // 正藏T01-T55
+  for (let n = 1; n <= 2200; n++) {
+    ids.push('t' + String(n).padStart(4, '0'));
+  }
+  // 古逸部T85
+  for (let n = 2731; n <= 2920; n++) {
+    ids.push('t' + String(n).padStart(4, '0'));
+  }
+  
+  // 并发加载元数据（只取头部）
+  const results = [];
+  const batchSize = 50;
+  for (let i = 0; i < ids.length; i += batchSize) {
+    const batch = ids.slice(i, i+batchSize);
+    const batchResults = await Promise.allSettled(batch.map(async id => {
+      try {
+        const res = await fetch(`../sutras/${id}.json`);
+        if (!res.ok) return null;
+        const data = await res.json();
+        // 只提取列表需要的元数据，不加载正文
+        return {
+          id: data.id || id,
+          title: data.title,
+          translator: data.translator,
+          vol: data.vol || (data.taisho ? data.taisho.substr(0,3) : ''),
+          chars: data.chars || data.actual_char_count || 0,
+          juan: data.juan || data.juan_count || 0,
+          category: data.category || '其他'
+        };
+      } catch(e) { return null; }
+    }));
+    batchResults.forEach(r => { if (r.status === 'fulfilled' && r.value) results.push(r.value); });
+  }
+  
+  allSutras = results;
+  return allSutras;
+}
+
 async function loadIndex() {
-  const res = await fetch('../sutras/index.json');
-  allSutras = await res.json();
+  await buildIndex();
   
   // 统计总字数
-  const totalChars = allSutras.reduce((sum, s) => sum + (s.actual_char_count || 0), 0);
+  const totalChars = allSutras.reduce((sum, s) => sum + (s.chars || 0), 0);
   document.getElementById('welcomeCount').textContent = allSutras.length;
   document.getElementById('welcomeChars').textContent = (totalChars / 10000).toFixed(0) + '万字';
   document.getElementById('totalBadge').textContent = allSutras.length + '部';
   
-  // 部类统计
-  const catStats = {
-    '阿含部类': 0, '般若部类': 0, '法華部类': 0, '華嚴部类': 0,
-    '律部类': 0, '論集部类': 0, '中觀部类': 0, '瑜伽部类': 0,
-    '禪宗部类': 0, '密教部类': 0, '淨土宗部类': 0
-  };
-  allSutras.forEach(s => {
-    const cat = s.category || '';
-    Object.keys(catStats).forEach(c => {
-      if (cat.startsWith(c)) catStats[c]++;
-    });
-  });
-  document.getElementById('cat1Count').textContent = catStats['阿含部类'] + '部';
-  document.getElementById('cat2Count').textContent = catStats['般若部类'] + '部';
-  document.getElementById('cat3Count').textContent = catStats['法華部类'] + catStats['華嚴部类'] + '部';
-  document.getElementById('cat4Count').textContent = catStats['律部类'] + catStats['論集部类'] + catStats['中觀部类'] + catStats['瑜伽部类'] + '部';
-  document.getElementById('cat5Count').textContent = catStats['密教部类'] + catStats['禪宗部类'] + catStats['淨土宗部类'] + '部';
-  
   // 生成部类筛选器
   const mainCats = {};
   allSutras.forEach(s => {
-    const cat = (s.category || '未分类').split(',')[0].replace('類', '类');
+    const cat = s.category || '未分类';
     mainCats[cat] = (mainCats[cat] || 0) + 1;
   });
   const catContainer = document.getElementById('catFilters');
   Object.entries(mainCats).sort((a,b) => b[1]-a[1]).forEach(([cat, cnt]) => {
+    if (!cat) return;
     const btn = document.createElement('button');
     btn.className = 'filter-btn px-2 py-1 rounded border border-buddha-primary/30 hover:bg-buddha-primary/10';
     btn.dataset.cat = cat;
@@ -179,8 +185,8 @@ async function loadIndex() {
   // 生成册号筛选器
   const vols = {};
   allSutras.forEach(s => {
-    const vol = s.vol || '未分册';
-    vols[vol] = (vols[vol] || 0) + 1;
+    const vol = s.vol || '';
+    if (vol) vols[vol] = (vols[vol] || 0) + 1;
   });
   const volContainer = document.getElementById('volFilters');
   Object.keys(vols).sort().forEach(vol => {
@@ -218,7 +224,7 @@ function setFilter(type, value) {
 function renderList() {
   const search = currentFilter.search.toLowerCase();
   const filtered = allSutras.filter(s => {
-    const matchCat = !currentFilter.cat || (s.category || '').startsWith(currentFilter.cat.replace('类', '類'));
+    const matchCat = !currentFilter.cat || (s.category || '') === currentFilter.cat;
     const matchVol = !currentFilter.vol || (s.vol || '') === currentFilter.vol;
     const matchSearch = !search || 
       (s.title || '').toLowerCase().includes(search) ||
@@ -239,8 +245,8 @@ function renderList() {
         <span class="text-buddha-primary/70">${s.id.toUpperCase()}</span>
         <span>·</span>
         <span>${s.translator || '失译'}</span>
-        ${s.juan_count ? `<span>· ${s.juan_count}卷</span>` : ''}
-        <span class="ml-auto">${((s.actual_char_count||0)/10000).toFixed(1)}万字</span>
+        ${s.juan ? `<span>· ${s.juan}卷</span>` : ''}
+        <span class="ml-auto">${((s.chars||0)/10000).toFixed(1)}万字</span>
       </div>
     `;
     item.onclick = () => loadSutra(s.id);
@@ -259,29 +265,49 @@ async function loadSutra(id) {
   document.getElementById('welcome').classList.add('hidden');
   document.getElementById('sutraContent').classList.remove('hidden');
   
+  // 显示加载中
+  const textContainer = document.getElementById('sutraText');
+  textContainer.innerHTML = '<div class="loading">正在加载经文正文...</div>';
+  
   const res = await fetch(`../sutras/${id}.json`);
   const sutra = await res.json();
   
-  document.getElementById('sutraTitle').textContent = sutra.title;
-  document.getElementById('sutraId').innerHTML = `<span class="vol-tag">${sutra.id.toUpperCase()}</span>`;
-  document.getElementById('sutraVol').innerHTML = sutra.vol ? `<span>📖 ${sutra.vol}</span>` : '';
-  document.getElementById('sutraCat').innerHTML = sutra.category ? `<span class="cat-tag">${sutra.category}</span>` : '';
-  document.getElementById('sutraTranslator').textContent = sutra.translator || '失译';
-  document.getElementById('sutraJuanCount').textContent = sutra.juan_count ? `${sutra.juan_count}卷` : '';
-  document.getElementById('sutraChars').textContent = `${(sutra.actual_char_count/10000).toFixed(2)}万字`;
+  // 适配实际数据格式
+  const title = sutra.title;
+  const sutraId = sutra.id || id;
+  const vol = sutra.vol || (sutra.taisho ? sutra.taisho.substr(0,3) : '');
+  const translator = sutra.translator || '失译';
+  const juan = sutra.juan || sutra.juan_count || 0;
+  const chars = sutra.chars || sutra.actual_char_count || 0;
+  const content = sutra.content || sutra.chapters || [];
   
-  const textContainer = document.getElementById('sutraText');
+  document.getElementById('sutraTitle').textContent = title;
+  document.getElementById('sutraId').innerHTML = `<span class="vol-tag">${sutraId.toUpperCase()}</span>`;
+  document.getElementById('sutraVol').innerHTML = vol ? `<span>📖 ${vol}</span>` : '';
+  document.getElementById('sutraTranslator').textContent = translator;
+  document.getElementById('sutraJuanCount').textContent = juan ? `${juan}卷` : '';
+  document.getElementById('sutraChars').textContent = chars ? `${(chars/10000).toFixed(2)}万字` : '';
+  
   textContainer.innerHTML = '';
-  sutra.chapters.forEach(ch => {
-    if (ch.title) {
+  if (content.length === 0) {
+    textContainer.innerHTML = '<div class="text-center py-8 text-buddha-dark/50">该经正文加载中...</div>';
+    return;
+  }
+  
+  content.forEach(ch => {
+    const chTitle = ch.chapter || ch.title;
+    const chText = ch.text || ch.content;
+    if (chTitle) {
       const h = document.createElement('div');
       h.className = 'chapter-title';
-      h.textContent = ch.title;
+      h.textContent = chTitle;
       textContainer.appendChild(h);
     }
-    const p = document.createElement('p');
-    p.textContent = ch.content;
-    textContainer.appendChild(p);
+    if (chText) {
+      const p = document.createElement('p');
+      p.textContent = chText;
+      textContainer.appendChild(p);
+    }
   });
   
   window.scrollTo(0, 0);
@@ -292,7 +318,10 @@ document.getElementById('searchInput').addEventListener('input', (e) => {
   renderList();
 });
 
-loadIndex();
+// 页面加载完成后开始建索引
+loadIndex().catch(err => {
+  document.getElementById('sutraList').innerHTML = `<div class="text-red-600 p-2">加载失败：${err.message}</div>`;
+});
 </script>
 </body>
 </html>
