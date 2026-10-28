@@ -160,7 +160,8 @@ let KEPAN = null; // 科判数据
 let H2S = {};     // 繁->简单字映射
 let DICT_TERMS = null;
 let DICT_MAP = new Map();
-let DICT_MAX_LEN = 6;
+let DICT_AUTO_SET = new Set(); // 自动划线用的词条（不含人物/地名/太通用词）
+let DICT_MAX_LEN = 8;
 const CHAPTERS_PER_PAGE = 10; // 每次加载10章（大约几卷）
 
 // ===== 学术工具：收藏/笔记/引用/书签 =====
@@ -432,18 +433,32 @@ function toSimp(s){ return [...(s||'')].map(c => H2S[c] || c).join(''); }
 
 async function loadExtras() {
     try {
-        const [n, h, d, k] = await Promise.all([
+        const [n, h, d, k, autoTerms] = await Promise.all([
             fetch('../data/scholar-notes.json?' + Date.now()).then(r => r.json()),
             fetch('../sutras/hant2simp.json').then(r => r.json()),
             fetch('../data/buddhist_dict.json?' + Date.now()).then(r => r.json()),
-            fetch('../kepan/core.json?' + Date.now()).then(r => r.json()).catch(()=>null)
+            fetch('../kepan/core.json?' + Date.now()).then(r => r.json()).catch(()=>null),
+            fetch('../data/dict_autoterms.json?' + Date.now()).then(r => r.json()).catch(()=>null)
         ]);
         H2S = h || {};
         KEPAN = k || null;
         (n.notes || []).forEach(x => { NOTES[x.sutra_id] = x; });
         if (d && d.terms) {
             DICT_TERMS = d.terms;
-            d.terms.forEach(t => { if(t.name && t.name.length >= 2) { DICT_MAP.set(t.name, t); if(t.name.length > DICT_MAX_LEN) DICT_MAX_LEN = Math.min(t.name.length, 10); } });
+            d.terms.forEach(t => {
+                if(t.name && t.name.length >= 2 && t.name.length <= 12) {
+                    DICT_MAP.set(t.name, t);
+                    if(t.name.length > DICT_MAX_LEN) DICT_MAX_LEN = Math.min(t.name.length, 10);
+                }
+            });
+        }
+        if (autoTerms && Array.isArray(autoTerms)) {
+            autoTerms.forEach(w => { if(w && w.length>=2 && w.length<=8) DICT_AUTO_SET.add(w); });
+        } else {
+            // 兜底：若未加载到autoterms，所有非人物非地名词条都可识别
+            DICT_TERMS && DICT_TERMS.forEach(t => {
+                if(t.category && !['人物','地名'].includes(t.category) && t.name.length>=2 && t.name.length<=8) DICT_AUTO_SET.add(t.name);
+            });
         }
         if (currentSutra && (NOTES[currentSutra.id] || (KEPAN && KEPAN[currentSutra.id]))) { loadedChapters = 0; const c = document.getElementById('sutra-text'); if (c) c.innerHTML = ''; if (c) loadMoreChapters(); }
         // 更新科判按钮状态
@@ -490,23 +505,22 @@ function showKepanPanel() {
     modal.onclick = e => { if(e.target===modal) modal.remove(); };
 }
 
-// 将段落中词典词条自动加下划线可点击
+// 将段落中词典词条自动加下划线可点击（仅对 DICT_AUTO_SET 中的术语词加下划线，避免人物名/地名全部划线）
 function linkDictTerms(simpText, origText) {
-    // simpText 是已转简体的文本，origText 是原文（繁简逐字对齐）
     if (!DICT_MAP || !DICT_MAP.size) return origText;
     const n = simpText.length;
     const out = [];
     let i = 0;
     while (i < n) {
         let matched = null, matchLen = 0;
-        // 从长到短尝试匹配（最长 DICT_MAX_LEN 字）
+        // 从长到短尝试匹配
         for (let L = Math.min(DICT_MAX_LEN, n - i); L >= 2; L--) {
             const seg = simpText.substr(i, L);
-            if (DICT_MAP.has(seg)) { matched = DICT_MAP.get(seg); matchLen = L; break; }
+            if (DICT_AUTO_SET.has(seg) && DICT_MAP.has(seg)) { matched = DICT_MAP.get(seg); matchLen = L; break; }
         }
         if (matched) {
             const chunk = origText.substr(i, matchLen);
-            out.push(`<span class="dict-term" data-term="${esc(matched.name)}" title="点击查词典：${esc(matched.name)}（${matched.type||'术语'}）">${esc(chunk)}</span>`);
+            out.push(`<span class="dict-term" data-term="${esc(matched.name)}" title="点击查词典：${esc(matched.name)}">${esc(chunk)}</span>`);
             i += matchLen;
         } else {
             out.push(esc(origText[i]));
@@ -862,21 +876,22 @@ function showDictTerm(termName, anchorEl) {
     const term = DICT_MAP.get(termName);
     const pop = document.getElementById('dict-pop');
     if (!term) { pop.classList.add('hidden'); return; }
+    const catName = term.category || '术语';
+    const def = term.definition || term.desc || '暂无详细释义';
     pop.innerHTML = `
         <span class="dt-close" onclick="closeDict()">×</span>
-        <div><span class="dt-name">${esc(term.name)}</span><span class="dt-type">${term.type||'术语'}</span></div>
-        <div class="dt-desc">${esc(term.desc||'暂无释义')}</div>
-        <div class="text-right mt-2"><a href="dict.html" target="_blank" class="text-xs text-primary hover:underline">在大词典中查看 →</a></div>
+        <div><span class="dt-name">${esc(term.name)}</span><span class="dt-type">${esc(catName)}</span></div>
+        <div class="dt-desc">${esc(def.length>240 ? def.slice(0,240)+'…' : def)}</div>
+        <div class="text-right mt-2"><a href="dict.html?q=${encodeURIComponent(term.name)}" target="_blank" class="text-xs text-amber-700 hover:underline">在大词典中查看 →</a></div>
     `;
     pop.classList.remove('hidden');
     // 定位
     const rect = anchorEl.getBoundingClientRect();
     let top = rect.bottom + window.scrollY + 6;
     let left = rect.left + window.scrollX;
-    // 防止超出右侧
-    const popW = 320;
+    const popW = 340;
     if (left + popW > window.scrollX + window.innerWidth - 10) left = window.scrollX + window.innerWidth - popW - 10;
-    if (top + 200 > window.scrollY + window.innerHeight) top = rect.top + window.scrollY - 200;
+    if (top + 240 > window.scrollY + window.innerHeight) top = rect.top + window.scrollY - 240;
     pop.style.top = top + 'px';
     pop.style.left = Math.max(10, left) + 'px';
 }
