@@ -162,6 +162,7 @@ let DICT_TERMS = null;
 let DICT_MAP = new Map();
 let DICT_AUTO_SET = new Set(); // 自动划线用的词条（不含人物/地名/太通用词）
 let DICT_MAX_LEN = 8;
+let CROSS = null; // 跨页关联数据，懒加载
 const CHAPTERS_PER_PAGE = 10; // 每次加载10章（大约几卷）
 
 // ===== 学术工具：收藏/笔记/引用/书签 =====
@@ -175,7 +176,92 @@ let notes = LS_get(LS_NOTE);
 let bookmarks = LS_get(LS_BM);
 let curSBtab = 'fav';
 
-function paraId(sutraId, chapIdx, pIdx) { return `${sutraId}_c${chapIdx}_p${pIdx}`; }
+// ===== 跨页关联 =====
+let CROSS_LOADED = false;
+async function ensureCrossLoaded(){
+  if(!CROSS){
+    try{
+      const r = await fetch('../data/cross-links.json');
+      CROSS = await r.json();
+      // 按sutra_id建立科判索引方便查找
+      if(CROSS.kepan_to_sutra){
+        CROSS._kepanBySutra = {};
+        Object.values(CROSS.kepan_to_sutra).forEach(k=>{
+          if(!CROSS._kepanBySutra[k.sutra_id]) CROSS._kepanBySutra[k.sutra_id] = [];
+          CROSS._kepanBySutra[k.sutra_id].push(k);
+        });
+      }
+      CROSS_LOADED = true;
+    }catch(e){
+      console.warn('跨页关联加载失败', e);
+      CROSS = {};
+      CROSS_LOADED = true;
+    }
+  }
+  return CROSS;
+}
+
+// 异译本提示条
+function updateParallelBar(){
+  const bar = document.getElementById('parallel-bar');
+  if(!bar || !currentSutra || !CROSS) return;
+  const parallels = (CROSS.sutra_to_parallel && CROSS.sutra_to_parallel[currentSutra.id]) || [];
+  if(!parallels.length){ bar.innerHTML = ''; return; }
+  const g = parallels[0]; // 通常一部经只在一个异译组
+  bar.innerHTML = `<div class="mt-3 p-3 bg-amber-100/70 border border-amber-300 rounded-lg flex items-center flex-wrap gap-2 text-sm">
+    <i class="fa fa-exchange text-amber-700"></i>
+    <span class="text-amber-900"><b>${g.group_name}</b> 共有 <b>${parallels.length}</b> 个译本：</span>
+    ${parallels.map(p=>{
+      const isSelf = p.translator === currentSutra.translator;
+      return `<span class="text-amber-800 ${isSelf?'font-bold':''}">${p.translator||''}${isSelf?'（当前）':''}</span>`;
+    }).join(' · ')}
+    <a href="parallel.html?grp=${encodeURIComponent(g.group_name)}" target="_blank" class="ml-2 text-amber-700 hover:underline">打开段级对照 →</a>
+  </div>`;
+}
+
+// 段末加所属科判小标签
+function annotateParaKepanTags(){
+  if(!CROSS || !currentSutra) return;
+  const sutraKepan = (CROSS._kepanBySutra && CROSS._kepanBySutra[currentSutra.id]) || [];
+  if(!sutraKepan.length) return;
+  // 对每个科判节点，quote在段落里出现就给该段加标签
+  const wraps = document.querySelectorAll('.para-wrap');
+  wraps.forEach(wrap => {
+    const p = wrap.querySelector('.sutra-content');
+    if(!p) return;
+    const ptxt = p.textContent;
+    const hits = [];
+    sutraKepan.forEach(k=>{
+      if(!k.quote) return;
+      // 截取科判原文前20字作为匹配key
+      const key = k.quote.replace(/\s+/g,'').slice(0, Math.min(20, k.quote.length));
+      if(key && ptxt.replace(/\s+/g,'').includes(key)){
+        hits.push(k);
+      }
+    });
+    if(hits.length){
+      // 去重
+      const seen = new Set();
+      const tags = [];
+      hits.forEach(h=>{
+        if(!seen.has(h.kepan_id)){
+          seen.add(h.kepan_id);
+          tags.push(h);
+        }
+      });
+      const tagHtml = `<span class="kepan-tag-wrap" style="margin-left:8px;display:inline-flex;gap:4px;flex-wrap:wrap;">${
+        tags.slice(0,3).map(t=>`<a class="kepan-pill" href="kepan.html?sid=${currentSutra.id}&node=${encodeURIComponent(t.kepan_id)}" target="_blank" title="${(t.path||t.title).replace(/"/g,'&quot;')}"><i class="fa fa-sitemap"></i> ${t.title}</a>`).join('')
+      }</span>`;
+      const tools = wrap.querySelector('.para-tools');
+      if(tools){
+        // 在工具按钮前插入标签
+        tools.insertAdjacentHTML('beforebegin', tagHtml);
+      }
+    }
+  });
+}
+
+
 
 function getParaText(pid) {
   const el = document.getElementById(pid);
@@ -578,14 +664,38 @@ function renderParagraph(p) {
 function showNote(json) {
     const a = JSON.parse(decodeURIComponent(json));
     const box = document.getElementById('note-pop');
+    // 学者注内容自动添加词典链接
+    const linkify = (text)=>{
+      if(!text) return '';
+      // 用 linkDictTerms 同样算法做简单词链
+      const out = [];
+      let i=0;
+      while(i<text.length){
+        let matched = null, matchLen=1;
+        for(let L=DICT_MAX_LEN; L>=2; L--){
+          if(i+L > text.length) continue;
+          const seg = text.substr(i, L);
+          if(DICT_AUTO_SET.has(seg) && DICT_MAP.has(seg)){ matched = DICT_MAP.get(seg); matchLen=L; break; }
+        }
+        if(matched){
+          out.push(`<span class="dict-term-in-note" data-term="${esc(matched.name)}">${esc(text.substr(i,matchLen))}</span>`);
+          i += matchLen;
+        } else {
+          out.push(esc(text[i]));
+          i += 1;
+        }
+      }
+      return out.join('');
+    };
     box.innerHTML = `<div class="flex justify-between items-start mb-2">
             <div class="text-sm text-primary font-bold">「${a.text}」· 学者解读</div>
             <button onclick="document.getElementById('note-pop').classList.add('hidden')" class="text-ink/40 hover:text-primary">✕</button>
         </div>` +
         (a.scholars || []).map(s => `<div class="mb-2 pb-2 border-b border-paper last:border-0">
-            <div class="text-sm font-bold text-ink">${s.name} <span class="text-xs font-normal text-ink/50">${s.work || ''}</span></div>
-            <div class="text-sm text-ink/75 leading-relaxed mt-1">${s.note}</div>
-        </div>`).join('');
+            <div class="text-sm font-bold text-ink">${esc(s.name)} <span class="text-xs font-normal text-ink/50">${esc(s.work || '')}</span></div>
+            <div class="text-sm text-ink/75 leading-relaxed mt-1">${linkify(s.note)}</div>
+        </div>`).join('') +
+        `<div class="mt-2 pt-2 border-t border-paper text-xs text-stone-500"><i class="fa fa-lightbulb-o"></i> 提示：棕色虚线下划线为佛学名词，点击可查词典</div>`;
     box.classList.remove('hidden');
 }
 const CACHE_KEY = 'sutra_cache_';
@@ -757,8 +867,14 @@ async function loadSutra(meta) {
     currentSutra = sutraData;
     loadedChapters = 0;
     updateKepanBtn();
+    // 加载跨页关联数据（若未加载）
+    ensureCrossLoaded().then(()=>{
+      // 数据到位后给段加科判标签（等DOM渲染完）
+      setTimeout(annotateParaKepanTags, 200);
+      updateParallelBar();
+    });
     // 渲染经文头部信息
-    contentArea.innerHTML = `
+    let headerHtml = `
         <div class="mb-8 pb-6 border-b-2 border-primary/20">
             <h1 class="text-3xl font-bold text-ink mb-2">${sutraData.title || sutraData.sutra_title}</h1>
             <div class="flex gap-4 text-sm text-ink/70 flex-wrap">
@@ -767,8 +883,11 @@ async function loadSutra(meta) {
                 <span>📚 ${sutraData.vol}册 · ${sutraData.juan_count || sutraData.content.length}卷</span>
                 <span>📖 ${sutraData.category || ''}</span>
                 <span>✍️ ${(sutraData.word_count||sutraData.content.reduce((sum,c)=>sum+(c.text||'').length,0)).toLocaleString()} 字</span>
-            </div>
-        </div>
+            </div>`;
+    // 异译对照提示条（由ensureCross加载后updateParallelBar更新，先占位）
+    headerHtml += `<div id="parallel-bar"></div>`;
+    headerHtml += `</div>`;
+    contentArea.innerHTML = headerHtml + `
         <div class="read-toolbar">
             <button id="toc-toggle" title="章节目录"><i class="fa fa-list-ul"></i> <span class="rt-label">章节目录</span></button>
             <span class="rt-label" style="margin-left:.5rem">字号</span>
@@ -838,6 +957,8 @@ function loadMoreChapters() {
         textContainer.appendChild(chapDiv);
     }
     loadedChapters = end;
+    // 给新加载的段落标注科判标签
+    if(window.CROSS_LOADED) annotateParaKepanTags();
     // 更新阅读进度
     const progEl = document.getElementById('read-progress');
     if(progEl) progEl.textContent = `已读 ${loadedChapters}/${currentSutra.content.length} 章`;
@@ -865,7 +986,7 @@ document.addEventListener('click', e => {
     const mk = e.target.closest('.scholar-mark');
     if (mk && mk.dataset.note) showNote(mk.dataset.note);
     // 点击划线的佛学名词 → 弹出词典
-    const dt = e.target.closest('.dict-term');
+    const dt = e.target.closest('.dict-term, .dict-term-in-note');
     if (dt && dt.dataset.term) { showDictTerm(dt.dataset.term, dt); e.stopPropagation(); return; }
     // 点击其他区域关闭词典
     if (!e.target.closest('#dict-pop')) closeDict();

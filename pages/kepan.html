@@ -30,6 +30,14 @@
         .expanded .toggle::before { content: '▼'; font-size: 0.7rem; }
         .leaf .toggle::before { content: '·'; color: #bbb; font-size: 0.9rem; }
         .search-hit { background: rgba(212,175,55,0.25); font-weight: bold; }
+        .node-meta-row { display:flex; flex-wrap:wrap; gap:6px; margin-top:5px; align-items:center; }
+        .node-link { display:inline-flex; align-items:center; gap:3px; padding:2px 8px; font-size:11px; border-radius:10px; text-decoration:none; cursor:pointer; }
+        .node-link.sutra-go { background:#fef3c7; color:#92400e; border:1px solid #fde68a; }
+        .node-link.sutra-go:hover { background:#fde68a; }
+        .node-link.term-go { background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; }
+        .node-link.term-go:hover { background:#a7f3d0; }
+        .node-link.note-go { background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; }
+        .node-link.note-go:hover { background:#bfdbfe; }
     </style>
 </head>
 <body class="bg-buddha-paper text-buddha-dark">
@@ -76,6 +84,40 @@
         const container = document.getElementById('kepanContainer');
         const search = document.getElementById('search');
         let data = {};
+        let CROSS = null;
+        let CUR_SID = null;
+
+        async function getCross(){
+          if(!CROSS){
+            try{
+              const r = await fetch('../data/cross-links.json');
+              CROSS = await r.json();
+              // 反向索引：kepan_id → notes/terms
+              CROSS._notesByKepan = {};
+              if(CROSS.note_to_kepan){
+                Object.entries(CROSS.note_to_kepan).forEach(([nid, ks])=>{
+                  ks.forEach(k=>{
+                    if(!CROSS._notesByKepan[k.kepan_id]) CROSS._notesByKepan[k.kepan_id]=[];
+                    // note_to_sutras 补全信息
+                    const nmeta = (CROSS.note_to_sutras && CROSS.note_to_sutras[nid]) || [{}];
+                    CROSS._notesByKepan[k.kepan_id].push({note_id:nid, ...nmeta[0]});
+                  });
+                });
+              }
+              // 反向索引：kepan_id → terms
+              CROSS._termsByKepan = {};
+              if(CROSS.term_to_kepan){
+                Object.entries(CROSS.term_to_kepan).forEach(([t, ks])=>{
+                  ks.forEach(k=>{
+                    if(!CROSS._termsByKepan[k.kepan_id]) CROSS._termsByKepan[k.kepan_id]=[];
+                    CROSS._termsByKepan[k.kepan_id].push(t);
+                  });
+                });
+              }
+            }catch(e){ console.warn('cross-links加载失败', e); CROSS = {}; }
+          }
+          return CROSS;
+        }
 
         function nodeTypeClass(t) {
             if (t === '序分') return 'node-xu';
@@ -86,18 +128,50 @@
 
         function hasChildren(n){ return n.children && n.children.length > 0; }
 
+        function buildNodeMeta(nodeId, content){
+            if(!CROSS || !CUR_SID) return '';
+            const kid = `${CUR_SID}__${nodeId}`;
+            const parts = [];
+            // 1) 经文跳转
+            const sutraAnchor = content ? content.slice(0, 20) : '';
+            if(sutraAnchor){
+              parts.push(`<a class="node-link sutra-go" href="sutras.html?load=${CUR_SID}#:~:text=${encodeURIComponent(sutraAnchor)}" target="_blank" title="在经文阅读页定位此段"><i class="fa fa-book"></i> 查经文</a>`);
+            }
+            // 2) 相关词条（最多3个）
+            const terms = (CROSS._termsByKepan && CROSS._termsByKepan[kid]) || [];
+            terms.slice(0,3).forEach(t=>{
+              parts.push(`<a class="node-link term-go" href="dict.html?q=${encodeURIComponent(t)}" target="_blank" title="在词典中查：${t}"><i class="fa fa-bookmark"></i> ${t}</a>`);
+            });
+            // 3) 学者观点
+            const notes = (CROSS._notesByKepan && CROSS._notesByKepan[kid]) || [];
+            if(notes.length){
+              parts.push(`<a class="node-link note-go" href="sutras.html?load=${CUR_SID}" target="_blank" title="${notes.length}位学者对此段的解读"><i class="fa fa-user"></i> 学者解读${notes.length>1?'·'+notes.length+'位':''}</a>`);
+            }
+            return parts.length ? `<div class="node-meta-row">${parts.join('')}</div>` : '';
+        }
+
         function renderNode(n, depth){
             const isLeaf = !hasChildren(n);
             const state = isLeaf ? 'leaf' : (depth < 2 ? 'expanded' : 'collapsed');
-            let html = `<li class="${state}" data-name="${(n.name||'').replace(/"/g,'&quot;')}">`;
+            const nid = n.name || '';
+            const content = n.content || n.quote || '';
+            let html = `<li class="${state}" data-name="${nid.replace(/"/g,'&quot;')}" data-kid="${(CUR_SID+'__'+nid).replace(/"/g,'&quot;')}">`;
             html += `<div class="node-row ${n.type ? nodeTypeClass(n.type) : ''}">`;
             html += `<span class="toggle" onclick="event.stopPropagation(); this.parentElement.parentElement.classList.toggle('collapsed'); this.parentElement.parentElement.classList.toggle('expanded');"></span>`;
             html += `<div class="flex-1">`;
             html += `<div class="font-semibold text-sm" style="color:#3A2E1F">${n.name || ''}</div>`;
-            const desc = n.description || n.desc || n.content || (n.juan ? `卷${n.juan}·${n.position||''}` : '');
+            const desc = n.description || n.desc || '';
             if (desc) {
-                const shortDesc = desc.length > 400 ? desc.slice(0, 400) + '…' : desc;
-                html += `<div class="text-xs mt-1 leading-relaxed text-buddha-dark/75">${shortDesc}</div>`;
+                html += `<div class="text-xs mt-1 leading-relaxed text-buddha-dark/75">${desc.length>300?desc.slice(0,300)+'…':desc}</div>`;
+            }
+            if (content) {
+                const shortC = content.length > 120 ? content.slice(0,120)+'…' : content;
+                html += `<div class="text-xs mt-1 leading-relaxed" style="color:#5c3c1a;background:rgba(196,154,108,0.1);padding:4px 8px;border-radius:4px;font-family:serif;">${shortC}</div>`;
+            }
+            // 插入互链元数据行（科判节点互链）
+            html += buildNodeMeta(nid, content);
+            if (n.juan) {
+                html += `<div class="text-xs text-buddha-dark/50 mt-1">卷${n.juan}${n.position?' · '+n.position:''}</div>`;
             }
             html += `</div></div>`;
             if (hasChildren(n)) {
@@ -109,30 +183,83 @@
             return html;
         }
 
-        function renderKepan(sutra){
+        async function renderKepan(sutra, targetNodeId){
+            CUR_SID = Object.keys(data).find(k => data[k] === sutra) || null;
             let html = `<div class="mb-4 pb-4 border-b border-buddha-light/60">`;
             html += `<h2 class="text-2xl font-bold text-buddha-primary font-serif mb-1">${sutra.title}</h2>`;
             const meta = [];
             if (sutra.taisho) meta.push(`<span class="px-2 py-0.5 bg-buddha-light/50 rounded text-xs">${sutra.taisho}</span>`);
             if (sutra.translator) meta.push(`<span class="text-sm text-buddha-dark/80">译者：${sutra.translator}</span>`);
             if (sutra.juan) meta.push(`<span class="text-sm">${sutra.juan}卷</span>`);
-            if (sutra.pin) meta.push(`<span class="text-sm">${sutra.pin}品</span>`);
-            if (sutra.hui) meta.push(`<span class="text-sm">${sutra.hui}会</span>`);
+            // 增加：打开经文 按钮
+            if(CUR_SID) meta.push(`<a href="sutras.html?load=${CUR_SID}" target="_blank" class="text-sm text-amber-700 hover:underline"><i class="fa fa-book"></i> 打开经文阅读</a>`);
+            // 增加：异译对照 按钮
+            if(CROSS && CROSS.sutra_to_parallel && CROSS.sutra_to_parallel[CUR_SID]){
+              const g = CROSS.sutra_to_parallel[CUR_SID][0];
+              meta.push(`<a href="parallel.html?grp=${encodeURIComponent(g.group_name)}" target="_blank" class="text-sm text-blue-700 hover:underline"><i class="fa fa-exchange"></i> 异译对照</a>`);
+            }
             if (sutra.description) html += `<p class="text-sm text-buddha-dark/70 mt-2 leading-relaxed">${sutra.description}</p>`;
             html += `<div class="flex flex-wrap items-center gap-3 mt-2">${meta.join('')}</div>`;
-            html += `</div><ul class="kepan-tree text-sm">`;
+            html += `</div><ul class="kepan-tree text-sm" id="kepanRoot">`;
             (sutra.kepan||[]).forEach(n => html += renderNode(n, 0));
             html += '</ul>';
+            // 等待跨页数据加载
+            await getCross();
+            // 如果跨页数据是后加载的，重新渲染一遍以填充互链meta
+            if(CROSS && !container.dataset.crossReady){
+              container.dataset.crossReady = '1';
+              // 重新渲染（因为buildNodeMeta依赖CROSS）
+              html = `<div class="mb-4 pb-4 border-b border-buddha-light/60">`;
+              html += `<h2 class="text-2xl font-bold text-buddha-primary font-serif mb-1">${sutra.title}</h2>`;
+              const meta2 = [];
+              if (sutra.taisho) meta2.push(`<span class="px-2 py-0.5 bg-buddha-light/50 rounded text-xs">${sutra.taisho}</span>`);
+              if (sutra.translator) meta2.push(`<span class="text-sm text-buddha-dark/80">译者：${sutra.translator}</span>`);
+              if (sutra.juan) meta2.push(`<span class="text-sm">${sutra.juan}卷</span>`);
+              if(CUR_SID) meta2.push(`<a href="sutras.html?load=${CUR_SID}" target="_blank" class="text-sm text-amber-700 hover:underline"><i class="fa fa-book"></i> 打开经文阅读</a>`);
+              if(CROSS.sutra_to_parallel && CROSS.sutra_to_parallel[CUR_SID]){
+                const g = CROSS.sutra_to_parallel[CUR_SID][0];
+                meta2.push(`<a href="parallel.html?grp=${encodeURIComponent(g.group_name)}" target="_blank" class="text-sm text-blue-700 hover:underline"><i class="fa fa-exchange"></i> 异译对照</a>`);
+              }
+              if (sutra.description) html += `<p class="text-sm text-buddha-dark/70 mt-2 leading-relaxed">${sutra.description}</p>`;
+              html += `<div class="flex flex-wrap items-center gap-3 mt-2">${meta2.join('')}</div>`;
+              html += `</div><ul class="kepan-tree text-sm" id="kepanRoot">`;
+              (sutra.kepan||[]).forEach(n => html += renderNode(n, 0));
+              html += '</ul>';
+            }
             container.innerHTML = html;
-            // 默认展开 序/正/流 三分，第二层以下折叠；点击行即可展开/折叠
+            // 默认展开
             container.querySelectorAll('.node-row').forEach(row => {
                 row.addEventListener('click', e => {
+                    if(e.target.closest('a')) return; // 点击链接不展开折叠
                     const li = row.parentElement;
                     if (li.classList.contains('leaf')) return;
                     li.classList.toggle('collapsed');
                     li.classList.toggle('expanded');
                 });
             });
+            // 定位到目标节点
+            if(targetNodeId){
+              setTimeout(()=>{
+                const tgt = container.querySelector(`[data-kid="${targetNodeId.replace(/"/g,'')}"]`);
+                if(tgt){
+                  // 展开所有父
+                  let p = tgt.parentElement;
+                  while(p && p !== container){
+                    if(p.classList && p.classList.contains('collapsed')){
+                      p.classList.remove('collapsed');
+                      p.classList.add('expanded');
+                    }
+                    p = p.parentElement;
+                  }
+                  tgt.scrollIntoView({behavior:'smooth', block:'center'});
+                  const row = tgt.querySelector('.node-row');
+                  if(row){
+                    row.style.background = 'rgba(217,119,6,0.2)';
+                    setTimeout(()=>{ row.style.background = ''; }, 2000);
+                  }
+                }
+              }, 100);
+            }
         }
 
         function buildList(filter){
@@ -169,12 +296,26 @@
             searchTimer = setTimeout(()=>buildList(search.value.trim()), 150);
         });
 
-        fetch('../kepan/core.json', {cache:'no-cache'}).then(r=>r.json()).then(d => {
+        fetch('../kepan/core.json', {cache:'no-cache'}).then(r=>r.json()).then(async d => {
             data = d;
             buildList('');
-            // 默认显示第一部
-            const first = list.querySelector('button');
-            if (first) first.click();
+            // 等待跨页数据加载完成再渲染默认/目标经，确保互链meta显示
+            await getCross();
+            // 支持 ?sid=xxx&node=xxx
+            const p = new URLSearchParams(location.search);
+            const targetSid = p.get('sid');
+            const targetNode = p.get('node');
+            let selectedBtn = null;
+            if(targetSid && data[targetSid]){
+              selectedBtn = list.querySelector(`button[data-tid="${targetSid}"]`);
+            }
+            if(!selectedBtn) selectedBtn = list.querySelector('button');
+            if(selectedBtn) {
+              selectedBtn.click();
+              // click是同步的，但renderKepan是async，需要取sid
+              const tid = selectedBtn.dataset.tid;
+              if(data[tid]) renderKepan(data[tid], targetNode);
+            }
         }).catch(e => {
             container.innerHTML = '<p class="text-red-600">科判数据加载失败：' + e.message + '</p>';
         });

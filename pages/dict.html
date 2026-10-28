@@ -30,7 +30,7 @@
 .loading-hint { text-align:center; padding:40px; color:#a8a29e; }
 .modal-mask { display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:9999; align-items:center; justify-content:center; padding:16px; }
 .modal-mask.show { display:flex; }
-.modal-box { background:#fffaf0; max-width:680px; width:100%; max-height:80vh; overflow-y:auto; border-radius:16px; padding:32px; position:relative; box-shadow:0 20px 60px rgba(0,0,0,.3); }
+.modal-box { background:#fffaf0; max-width:760px; width:100%; max-height:85vh; overflow-y:auto; border-radius:16px; padding:32px; position:relative; box-shadow:0 20px 60px rgba(0,0,0,.3); }
 .modal-close { position:absolute; top:16px; right:20px; font-size:28px; color:#a8a29e; cursor:pointer; background:none; border:none; }
 .modal-close:hover { color:#78716c; }
 .modal-word { font-family:'Noto Serif SC',serif; font-size:32px; font-weight:700; color:#7c2d12; margin-bottom:8px; }
@@ -40,6 +40,14 @@
 .modal-related a:hover { background:#fde68a; }
 .dict-stats { display:flex; gap:16px; flex-wrap:wrap; font-size:13px; color:#fef3c7; }
 .dict-stats span { display:flex; align-items:center; gap:4px; }
+.xlink-section { margin-top:14px; border-top:1px dashed #fcd34d; padding-top:12px; }
+.xlink-title { font-size:13px; color:#92400e; font-weight:600; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+.xlink-item { display:block; padding:8px 12px; margin-bottom:6px; background:#fffbeb; border:1px solid #fde68a; border-radius:8px; font-size:14px; color:#44403c; cursor:pointer; transition:all .15s; text-decoration:none; }
+.xlink-item:hover { background:#fef3c7; border-color:#d97706; }
+.xlink-item .xlink-src { font-size:11px; color:#a16207; margin-top:3px; }
+.xlink-item .xlink-quote { font-size:13px; color:#78350f; font-style:italic; margin-top:4px; padding-left:8px; border-left:2px solid #fcd34d; }
+.xlink-empty { font-size:13px; color:#a8a29e; font-style:italic; }
+.xlink-loading { font-size:13px; color:#a16207; }
 </style>
 </head>
 <body class="bg-amber-50 min-h-screen">
@@ -143,6 +151,25 @@
 <div id="mCat"></div>
 <div class="modal-def" id="mDef"></div>
 <div class="dict-src" id="mSrc"></div>
+
+<!-- 跨页关联：经文出处 -->
+<div class="xlink-section" id="xSutrasBox">
+<div class="xlink-title"><i class="fa fa-book"></i> 经文出处</div>
+<div id="xSutras" class="xlink-loading">加载中…</div>
+</div>
+
+<!-- 跨页关联：科判节点 -->
+<div class="xlink-section" id="xKepanBox">
+<div class="xlink-title"><i class="fa fa-sitemap"></i> 相关科判</div>
+<div id="xKepan" class="xlink-loading">加载中…</div>
+</div>
+
+<!-- 跨页关联：学者观点 -->
+<div class="xlink-section" id="xNotesBox">
+<div class="xlink-title"><i class="fa fa-user-circle"></i> 学者解读</div>
+<div id="xNotes" class="xlink-loading">加载中…</div>
+</div>
+
 <div class="modal-related" id="mRel"></div>
 </div>
 </div>
@@ -156,9 +183,23 @@
 let DICT = null;
 let TERMS = [];
 let FIRST_CHAR = {};
+let CROSS = null;  // 跨页关联数据，懒加载
 let CUR_CAT = 'all';
 let CUR_CHAR = null;
 let CUR_Q = '';
+
+async function getCross(){
+  if(!CROSS){
+    try{
+      const r = await fetch('../data/cross-links.json');
+      CROSS = await r.json();
+    }catch(e){
+      console.warn('cross-links加载失败', e);
+      CROSS = {};
+    }
+  }
+  return CROSS;
+}
 
 const CAT_NAMES = {
   '名相术语':'名相术语', '人物':'人物圣众', '经论':'经论典籍', '中国宗派':'汉传宗派',
@@ -310,14 +351,20 @@ function findTerm(name){
   return TERMS.find(t=>t.name===name);
 }
 
-function openTerm(name){
+async function openTerm(name){
   const t = findTerm(name);
   if(!t) return;
   document.getElementById('mWord').textContent = t.name;
   document.getElementById('mCat').innerHTML = `<span class="dict-cat">${CAT_NAMES[t.category]||t.category}</span>`;
   document.getElementById('mDef').textContent = t.definition||'暂无详细释义';
   document.getElementById('mSrc').innerHTML = '<i class="fa fa-book"></i> '+ (t.source||'佛学大辞典');
-  // 相关词条：同首字+同分类
+  
+  // 先清空三个互链区为loading
+  document.getElementById('xSutras').innerHTML = '<span class="xlink-loading">加载中…</span>';
+  document.getElementById('xKepan').innerHTML = '<span class="xlink-loading">加载中…</span>';
+  document.getElementById('xNotes').innerHTML = '<span class="xlink-loading">加载中…</span>';
+
+  // 相关词条：同分类+相关定义提及
   const rel = TERMS.filter(o=>o!==t && o.category===t.category && (o.name[0]===t.name[0] || (t.definition&&t.definition.includes(o.name)))).slice(0,8);
   const relBox = document.getElementById('mRel');
   if(rel.length){
@@ -327,6 +374,77 @@ function openTerm(name){
     relBox.innerHTML = '';
   }
   document.getElementById('modal').classList.add('show');
+  
+  // 懒加载跨页关联
+  const cross = await getCross();
+  renderXSutras(t.name, cross);
+  renderXKepan(t.name, cross);
+  renderXNotes(t.name, cross);
+}
+
+function sutraTitleOf(sid, cross){
+  // 先从sutras.json/ontology-data里可能有，但这里简单取id显示
+  return sid;
+}
+
+function renderXSutras(term, cross){
+  const box = document.getElementById('xSutras');
+  const list = (cross.term_to_sutras && cross.term_to_sutras[term]) || [];
+  if(!list.length){
+    box.innerHTML = '<div class="xlink-empty">暂无经文出处关联</div>';
+    return;
+  }
+  box.innerHTML = list.slice(0,6).map(s=>{
+    const anchor = (s.anchor||'').replace(/[<>]/g,'');
+    return `<a class="xlink-item" href="sutras.html?load=${s.sutra_id}#:~:text=${encodeURIComponent(anchor.slice(0,10))}" target="_blank">
+  <div><i class="fa fa-bookmark-o"></i> <b>${s.sutra_title || s.sutra_id}</b> <span style="color:#a16207;font-size:12px;margin-left:6px;">${s.chapter||''}</span></div>
+  <div class="xlink-quote">…${anchor.slice(0,60)}…</div>
+  <div class="xlink-src">来源：${s.source==='scholar_note'?'学者注':'科判'} · 点此打开经文</div>
+</a>`;
+  }).join('');
+}
+
+function renderXKepan(term, cross){
+  const box = document.getElementById('xKepan');
+  const list = (cross.term_to_kepan && cross.term_to_kepan[term]) || [];
+  if(!list.length){
+    box.innerHTML = '<div class="xlink-empty">暂无科判关联</div>';
+    return;
+  }
+  box.innerHTML = list.slice(0,5).map(k=>{
+    const q = (k.quote||'').replace(/[<>]/g,'');
+    return `<a class="xlink-item" href="kepan.html?sid=${k.sutra_id}&node=${encodeURIComponent(k.kepan_id)}" target="_blank">
+  <div><i class="fa fa-sitemap"></i> <b>${k.title}</b> <span style="color:#a16207;font-size:12px;">${k.path||''}</span></div>
+  ${q?`<div class="xlink-quote">${q.slice(0,60)}</div>`:''}
+  <div class="xlink-src">《${k.sutra_id}》科判 · 点此查看</div>
+</a>`;
+  }).join('');
+}
+
+function renderXNotes(term, cross){
+  const box = document.getElementById('xNotes');
+  const list = (cross.term_to_notes && cross.term_to_notes[term]) || [];
+  if(!list.length){
+    box.innerHTML = '<div class="xlink-empty">暂无学者解读关联</div>';
+    return;
+  }
+  // 按学者去重
+  const seen = new Set();
+  const uniq = [];
+  for(const n of list){
+    const k = n.scholar+'|'+(n.anchor||'');
+    if(!seen.has(k)){ seen.add(k); uniq.push(n); }
+    if(uniq.length>=5) break;
+  }
+  box.innerHTML = uniq.map(n=>{
+    const noteTxt = (n.note||'').replace(/[<>]/g,'');
+    const anchor = (n.anchor||'').replace(/[<>]/g,'');
+    return `<a class="xlink-item" href="sutras.html?load=${n.sutra_id}#:~:text=${encodeURIComponent(anchor.slice(0,10))}" target="_blank">
+  <div><i class="fa fa-user"></i> <b>${n.scholar||'学者'}</b> <span style="color:#a16207;font-size:12px;">${n.work||''}</span></div>
+  <div style="font-size:13px;color:#78350f;margin-top:3px;">关于「${anchor}」：${noteTxt.slice(0,80)}${noteTxt.length>80?'…':''}</div>
+  <div class="xlink-src">点此打开经文对应段落</div>
+</a>`;
+  }).join('');
 }
 function closeModal(){ document.getElementById('modal').classList.remove('show'); }
 document.getElementById('modal').addEventListener('click', e=>{

@@ -154,3 +154,25 @@
 .kepan-children {
   margin-top: 4px;
 }
+
+/* 段末科判标签胶囊 */
+.kepan-tag-wrap { vertical-align: middle; display:inline-flex; gap:4px; flex-wrap:wrap; margin-left:6px; }
+.kepan-pill {
+  display:inline-block;
+  padding:1px 8px;
+  font-size:11px;
+  background:#f5e9d0;
+  color:#7b3f00;
+  border:1px solid #e0c896;
+  border-radius:12px;
+  text-decoration:none;
+  white-space:nowrap;
+  cursor:pointer;
+}
+.kepan-pill:hover { background:#e6d0a0; color:#5b2a00; }
+.kepan-pill i { margin-right:3px; font-size:10px; }
+
+/* 学者注弹窗中词典自动链接 */
+#note-pop .dict-term-in-note { color:#92400e; cursor:pointer; border-bottom:1px dashed #d97706; }
+#note-pop .dict-term-in-note:hover { color:#d97706; }
+#dict-pop .dict-link { color:#92400e; cursor:pointer; text-decoration:underline; }

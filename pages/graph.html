@@ -51,11 +51,24 @@
         const chart = echarts.init(document.getElementById('graphChart'));
         const colorMap = {concept:'#1E4D2B',sutra:'#8B2500',buddha:'#DAA520',bodhisattva:'#DB7093',arhat:'#9370DB',master:'#2F4F4F',scholar:'#20B2AA',folk:'#CD853F',sect:'#4A148C',category:'#5D4037'};
         const nameMap = {concept:'义理概念',sutra:'经典',buddha:'佛',bodhisattva:'菩萨',arhat:'阿罗汉',master:'祖师译师',scholar:'学者',folk:'民间人物',sect:'宗派',category:'部类'};
+        let CROSS = null;
+        async function getCross(){
+          if(!CROSS){
+            try{
+              const r = await fetch('../data/cross-links.json');
+              CROSS = await r.json();
+              // 经名→sid索引（从 sutra_to_parallel 和 kepan_to_sutra 收集经id集合）
+              CROSS._sutraIds = new Set();
+              if(CROSS.kepan_to_sutra) Object.values(CROSS.kepan_to_sutra).forEach(k=>CROSS._sutraIds.add(k.sutra_id));
+              if(CROSS.sutra_to_parallel) Object.keys(CROSS.sutra_to_parallel).forEach(s=>CROSS._sutraIds.add(s));
+            }catch(e){ console.warn('cross-links加载失败',e); CROSS={}; }
+          }
+          return CROSS;
+        }
 
         function render() {
             const types = Array.from(document.querySelectorAll('.graph-filter:checked')).map(c=>c.dataset.type);
             const nodes = [], nodeMap = {}, links = [];
-            // 从nodes数组按type筛选
             const typeToClass = {concept:'concept', person: n=>n.class, sect:'sect', category:'category', sutra:'sutra'};
             ontologyGraphData.nodes.forEach(n=>{
                 let include = false, catName, size=20, color='#666';
@@ -79,13 +92,77 @@
             const cats = Object.keys(colorMap).map(k=>({name:nameMap[k]||k,itemStyle:{color:colorMap[k]}}));
             chart.setOption({tooltip:{formatter:p=>p.dataType==='node'?`<b>${p.name}</b><br/>${p.data.data.definition||p.data.data.core_doctrine||p.data.data.translator||''}`:`<b>${p.data.data.label}</b>`},legend:[{data:cats.map(c=>c.name),top:10}],series:[{type:'graph',layout:'force',data:nodes,links:links,categories:cats,roam:true,draggable:true,label:{show:true,position:'right',fontSize:11},force:{repulsion:350,edgeLength:[80,160],gravity:0.1},emphasis:{focus:'adjacency',lineStyle:{width:3}}}]},true);
         }
-        chart.on('click', p=>{
+        chart.on('click', async p=>{
             if (p.dataType==='node') {
                 const d = p.data.data;
+                const cross = await getCross();
+                const name = p.name;
+                // 查词典链接（概念/人物/经论/宗派类节点在词典中存在）
+                const dictLink = `<a href="dict.html?q=${encodeURIComponent(name)}" target="_blank" style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:6px;text-decoration:none;font-size:13px;"><i class="fa fa-book"></i> 佛学大词典查「${name}」</a>`;
+                // 经文出处（只在concept类节点找）
+                const sutraLinks = (cross.term_to_sutras && cross.term_to_sutras[name]) || [];
+                let sutraHtml = '';
+                if(sutraLinks.length){
+                  sutraHtml = `<div style="margin-top:8px"><div style="font-size:13px;color:#6b5b4a;margin-bottom:4px"><i class="fa fa-book"></i> <b>经文出处</b>（点击定位经文段落）：</div><div style="display:flex;flex-wrap:wrap;gap:6px">`;
+                  sutraLinks.slice(0,5).forEach(s=>{
+                    const anchor = (s.anchor||'').slice(0,10);
+                    sutraHtml += `<a href="sutras.html?load=${s.sutra_id}#:~:text=${encodeURIComponent(anchor)}" target="_blank" style="padding:4px 10px;background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;border-radius:6px;text-decoration:none;font-size:12px;">《${s.sutra_title||s.sutra_id}》${s.chapter?'·'+s.chapter:''}</a>`;
+                  });
+                  sutraHtml += `</div></div>`;
+                }
+                // 学者观点
+                const noteLinks = (cross.term_to_notes && cross.term_to_notes[name]) || [];
+                let noteHtml = '';
+                if(noteLinks.length){
+                  const seen = new Set();
+                  const uniq = noteLinks.filter(n=>{
+                    const k=n.scholar+'|'+(n.anchor||'');
+                    if(seen.has(k)) return false;
+                    seen.add(k); return true;
+                  }).slice(0,4);
+                  noteHtml = `<div style="margin-top:8px"><div style="font-size:13px;color:#6b5b4a;margin-bottom:4px"><i class="fa fa-user"></i> <b>学者解读</b>：</div><div style="display:flex;flex-wrap:wrap;gap:6px">`;
+                  uniq.forEach(n=>{
+                    noteHtml += `<a href="sutras.html?load=${n.sutra_id}#:~:text=${encodeURIComponent((n.anchor||'').slice(0,10))}" target="_blank" style="padding:4px 10px;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;border-radius:6px;text-decoration:none;font-size:12px;">${n.scholar||'学者'}《${n.work||''}》</a>`;
+                  });
+                  noteHtml += `</div></div>`;
+                }
+                // 科判关联
+                const kepanLinks = (cross.term_to_kepan && cross.term_to_kepan[name]) || [];
+                let kepanHtml = '';
+                if(kepanLinks.length){
+                  kepanHtml = `<div style="margin-top:8px"><div style="font-size:13px;color:#6b5b4a;margin-bottom:4px"><i class="fa fa-sitemap"></i> <b>相关科判</b>：</div><div style="display:flex;flex-wrap:wrap;gap:6px">`;
+                  kepanLinks.slice(0,4).forEach(k=>{
+                    kepanHtml += `<a href="kepan.html?sid=${k.sutra_id}&node=${encodeURIComponent(k.kepan_id)}" target="_blank" style="padding:4px 10px;background:#f5e9d0;color:#7b3f00;border:1px solid #e0c896;border-radius:6px;text-decoration:none;font-size:12px;">《${k.sutra_id}》· ${k.title}</a>`;
+                  });
+                  kepanHtml += `</div></div>`;
+                }
+                // 若是sutra节点，直接给打开经文/科判/异译的入口
+                let sutraDirectHtml = '';
+                if(d.type==='sutra' && d.sutra_id){
+                  const sid = d.sutra_id;
+                  sutraDirectHtml = `<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">
+                    <a href="sutras.html?load=${sid}" target="_blank" style="padding:6px 12px;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:6px;text-decoration:none;font-size:13px;"><i class="fa fa-book"></i> 打开经文</a>
+                    <a href="kepan.html?sid=${sid}" target="_blank" style="padding:6px 12px;background:#f5e9d0;color:#7b3f00;border:1px solid #e0c896;border-radius:6px;text-decoration:none;font-size:13px;"><i class="fa fa-sitemap"></i> 本科判</a>`;
+                  if(cross.sutra_to_parallel && cross.sutra_to_parallel[sid]){
+                    const g = cross.sutra_to_parallel[sid][0];
+                    sutraDirectHtml += `<a href="parallel.html?grp=${encodeURIComponent(g.group_name)}" target="_blank" style="padding:6px 12px;background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;border-radius:6px;text-decoration:none;font-size:13px;"><i class="fa fa-exchange"></i> 异译对照</a>`;
+                  }
+                  sutraDirectHtml += `</div>`;
+                }
+                const typeLabel = nameMap[d.class||d.type] || (d.type==='concept'?'义理概念':d.type);
                 document.getElementById('detail').classList.remove('hidden');
-                document.getElementById('detail').innerHTML = `<h3 class="font-bold text-lg text-buddha-primary mb-2">${p.name}</h3><div>${d.definition||d.core_doctrine||d.translator||''}</div>`;
+                document.getElementById('detail').innerHTML = `<h3 class="font-bold text-lg text-buddha-primary mb-1">${name} <span style="font-size:12px;font-weight:normal;color:#a8a29e;margin-left:6px;">[${typeLabel}]</span></h3>
+                  <div class="text-sm text-stone-700 leading-relaxed mb-2">${d.definition||d.core_doctrine||d.translator||''}</div>
+                  <div style="display:flex;flex-wrap:wrap;gap:6px">${dictLink}</div>
+                  ${sutraDirectHtml}
+                  ${sutraHtml}
+                  ${kepanHtml}
+                  ${noteHtml}
+                `;
             }
         });
+        // 预先后台加载cross-links
+        getCross();
         document.querySelectorAll('.graph-filter').forEach(c=>c.addEventListener('change',render));
         window.addEventListener('resize',()=>chart.resize());
         render();
