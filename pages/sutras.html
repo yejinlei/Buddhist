@@ -667,6 +667,93 @@ function jumpToPara(pid) {
   } else go();
 }
 
+// ===== 白话文翻译 =====
+const BAIHUA_KEY = 'buddhist_show_baihua';
+let showBaihua = false;
+try { showBaihua = localStorage.getItem(BAIHUA_KEY) === '1'; } catch(e) {}
+let baihuaData = null;
+
+async function toggleBaihua() {
+    showBaihua = !showBaihua;
+    try { localStorage.setItem(BAIHUA_KEY, showBaihua?'1':'0'); } catch(e) {}
+    const btn = document.getElementById('btn-baihua');
+    if (btn) btn.classList.toggle('active', showBaihua);
+    if (showBaihua) {
+        if (!baihuaData) await loadBaihua(currentSutra.id);
+        applyBaihua();
+    } else {
+        removeBaihua();
+    }
+}
+
+async function loadBaihua(tid) {
+    try {
+        const r = await fetch(`../data/modern-translation/${tid}.json`);
+        if (r.ok) {
+            baihuaData = await r.json();
+        } else {
+            baihuaData = null;
+        }
+    } catch(e) { baihuaData = null; }
+}
+
+function applyBaihua() {
+    if (!baihuaData) {
+        // 无白话数据
+        const tip = document.createElement('div');
+        tip.className = 'baihua-tip';
+        tip.id = 'baihua-tip';
+        tip.innerHTML = '📘 本经白话翻译正在整理中。目前已提供白话：<b>心经、金刚经、阿弥陀经、八大人觉经、佛遗教经</b>。';
+        const textEl = document.getElementById('sutra-text');
+        if (textEl) textEl.insertBefore(tip, textEl.firstChild);
+        return;
+    }
+    const textEl = document.getElementById('sutra-text');
+    if (!textEl) return;
+    // 移除旧的，重新插入
+    removeBaihua();
+
+    // 先加导读卡
+    if (baihuaData.intro) {
+        const intro = document.createElement('div');
+        intro.className = 'baihua-intro';
+        intro.id = 'baihua-intro';
+        intro.innerHTML = `<div class="baihua-head">📘 白话导读${baihuaData.title?` · ${esc(baihuaData.title)}`:''}</div>
+            <div class="baihua-intro-text">${esc(baihuaData.intro)}</div>`;
+        textEl.insertBefore(intro, textEl.firstChild);
+    }
+
+    // 全经文本用于匹配位置
+    const allParas = textEl.querySelectorAll('.sutra-content');
+    const translations = baihuaData.translations || [];
+    translations.forEach((tr, idx) => {
+        const preview = (tr.original_preview || '').replace(/\s+/g,'');
+        // 找最匹配的段落
+        let target = null;
+        for (const p of allParas) {
+            const pt = (p.textContent || '').replace(/\s+/g,'');
+            if (pt.includes(preview.slice(0,12)) || preview.includes(pt.slice(0,12))) { target = p; break; }
+        }
+        // 没有精确匹配就按位置比例找
+        if (!target && allParas.length) {
+            const ratio = idx / Math.max(1, translations.length-1);
+            const ti = Math.min(allParas.length-1, Math.round(ratio * (allParas.length-1)));
+            target = allParas[ti];
+        }
+        if (target) {
+            const card = document.createElement('div');
+            card.className = 'baihua-card';
+            const sect = tr.section ? `<div class="baihua-section">${esc(tr.section)}</div>` : '';
+            card.innerHTML = `${sect}<div class="baihua-text">${esc(tr.modern || '')}</div>`;
+            target.after(card);
+        }
+    });
+}
+
+function removeBaihua() {
+    document.querySelectorAll('.baihua-card,.baihua-intro,.baihua-tip').forEach(el => el.remove());
+}
+
 // ===== 阅读增强：字号调节与章节目录 =====
 const FS_KEY = 'buddhist_read_fs';
 let curFs = 'md';
@@ -1361,6 +1448,7 @@ async function loadSutra(meta) {
             <button data-fs="md" class="active">中</button>
             <button data-fs="lg">大</button>
             <button data-fs="xl">特大</button>
+            <button id="btn-baihua" title="白话文翻译/导读" class="${showBaihua?'active':''}"><i class="fa fa-book"></i> <span class="rt-label">白话</span></button>
             <button id="bookmark-btn" title="添加书签" style="margin-left:.5rem"><i class="fa fa-bookmark"></i> <span class="rt-label">书签</span></button>
             <button id="btn-kepan" title="本科判结构" style="display:none;margin-left:.3rem"><i class="fa fa-sitemap"></i> <span class="rt-label">科判</span></button>
             <button id="study-btn" title="我的收藏与笔记"><i class="fa fa-star"></i> <span class="rt-label">学术工具</span></button>
@@ -1378,6 +1466,16 @@ async function loadSutra(meta) {
     document.querySelectorAll('.read-toolbar button[data-fs]').forEach(b =>
         b.addEventListener('click', () => applyFs(b.dataset.fs)));
     applyFs(curFs);
+    // 白话按钮
+    document.getElementById('btn-baihua')?.addEventListener('click', toggleBaihua);
+    // 若默认开启白话
+    if (showBaihua) {
+        (async () => {
+            await loadBaihua(currentSutra.id);
+            // 等章节首屏加载后再插入
+            setTimeout(applyBaihua, 500);
+        })();
+    }
     // 先加载前N章
     loadMoreChapters();
     // 监听滚动，懒加载更多章节
