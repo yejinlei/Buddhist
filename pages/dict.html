@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>佛学大词典 - 佛学本体论</title>
+    <link rel="stylesheet" href="../css/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <style>
+        body { font-family: -apple-system, "Noto Serif SC", "Songti SC", serif; background-color: #F5F0E1; color: #2C1810; }
+        .nav-active { background-color: rgba(184,134,11,0.25); }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-thumb { background: #d4c8b0; border-radius: 3px; }
+        .hit { color: #B8860B; font-weight: 700; background: rgba(184,134,11,0.12); padding: 0 2px; border-radius: 2px; }
+        .term-card { border-left: 3px solid #B8860B; }
+        .term-card:hover { background: rgba(139,69,19,.04); border-left-color: #8B4513; }
+        .tag-type { background: rgba(139,69,19,0.08); color: #8B4513; font-size: 11px; padding: 2px 8px; border-radius: 10px; }
+        .char-btn { padding: 4px 10px; border: 1px solid rgba(139,69,19,0.2); border-radius: 6px; font-size: 13px; cursor: pointer; }
+        .char-btn:hover { background: rgba(184,134,11,0.15); border-color: #B8860B; }
+        .char-btn.active { background: #B8860B; color: white; border-color: #B8860B; }
+        .type-tab { padding: 6px 14px; border-radius: 20px; font-size: 13px; cursor: pointer; border: 1px solid rgba(139,69,19,0.2); }
+        .type-tab.active { background: #8B4513; color: white; border-color: #8B4513; }
+        .dict-header { background: linear-gradient(135deg, #8B4513 0%, #B8860B 100%); color: #F5F0E1; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="bg-ink text-paper py-4 px-6 flex items-center gap-6 sticky top-0 z-50 flex-wrap" style="background-color:#3E2723;">
+        <a href="../index.html" class="text-xl font-bold flex items-center gap-2" style="color:#DAA520;"><i class="fa fa-book"></i> 佛学本体论</a>
+        <span class="text-paper/60">|</span>
+        <a href="dict.html" class="text-paper font-medium nav-active" style="background-color:rgba(184,134,11,0.25);">佛学大词典</a>
+        <div class="ml-auto flex gap-4 text-sm text-paper/80 flex-wrap">
+            <a href="../index.html" class="hover:text-yellow-400">首页</a>
+            <a href="categories.html" class="hover:text-yellow-400">部类总览</a>
+            <a href="sutras.html" class="hover:text-yellow-400">全藏原典</a>
+            <a href="search.html" class="hover:text-yellow-400">全文检索</a>
+            <a href="dict.html" class="hover:text-yellow-400">佛学词典</a>
+            <a href="parallel.html" class="hover:text-yellow-400">异译对照</a>
+            <a href="graph.html" class="hover:text-yellow-400">义理图谱</a>
+            <a href="kepan.html" class="hover:text-yellow-400">科判导航</a>
+            <a href="panjiao.html" class="hover:text-yellow-400">判教对比</a>
+            <a href="inference.html" class="hover:text-yellow-400">概念推演</a>
+            <a href="timeline.html" class="hover:text-yellow-400">译传时间轴</a>
+            <a href="translation.html" class="hover:text-yellow-400">佛典译学</a>
+        </div>
+    </nav>
+
+    <!-- 顶部词典头 -->
+    <div class="dict-header py-8 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h1 class="text-3xl font-bold mb-2"><i class="fa fa-book mr-2"></i>佛学大词典</h1>
+            <p class="opacity-90 text-sm mb-5">丁福保《佛学大辞典》精选 · 义理概念 · 名数法相 · 人物圣众 · 经论要籍 · 宗派源流</p>
+            <div class="relative max-w-2xl">
+                <input id="q" type="text" placeholder="输入要查询的词条，如：般若、佛性、涅槃、明心见性、六波罗蜜…"
+                       class="w-full rounded-full px-6 py-3 pl-12 text-ink text-lg focus:outline-none focus:ring-4 focus:ring-yellow-300/40"
+                       style="background:#F5F0E1;">
+                <i class="fa fa-search absolute left-5 top-1/2 -translate-y-1/2 text-ink/50 text-lg"></i>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-4 text-xs">
+                <span class="opacity-70">热门：</span>
+                <a href="javascript:void(0)" onclick="quickSearch('佛')" class="opacity-90 hover:text-white hover:underline">佛</a>
+                <span class="opacity-50">·</span>
+                <a href="javascript:void(0)" onclick="quickSearch('菩萨')" class="opacity-90 hover:text-white hover:underline">菩萨</a>
+                <span class="opacity-50">·</span>
+                <a href="javascript:void(0)" onclick="quickSearch('般若')" class="opacity-90 hover:text-white hover:underline">般若</a>
+                <span class="opacity-50">·</span>
+                <a href="javascript:void(0)" onclick="quickSearch('涅槃')" class="opacity-90 hover:text-white hover:underline">涅槃</a>
+                <span class="opacity-50">·</span>
+                <a href="javascript:void(0)" onclick="quickSearch('四谛')" class="opacity-90 hover:text-white hover:underline">四谛</a>
+                <span class="opacity-50">·</span>
+                <a href="javascript:void(0)" onclick="quickSearch('六度')" class="opacity-90 hover:text-white hover:underline">六度</a>
+                <span class="opacity-50">·</span>
+                <a href="javascript:void(0)" onclick="quickSearch('五蕴')" class="opacity-90 hover:text-white hover:underline">五蕴</a>
+                <span class="opacity-50">·</span>
+                <a href="javascript:void(0)" onclick="quickSearch('十二因缘')" class="opacity-90 hover:text-white hover:underline">十二因缘</a>
+                <span class="opacity-50">·</span>
+                <a href="javascript:void(0)" onclick="quickSearch('明心见性')" class="opacity-90 hover:text-white hover:underline">明心见性</a>
+                <span class="opacity-50">·</span>
+                <a href="javascript:void(0)" onclick="quickSearch('南无阿弥陀佛')" class="opacity-90 hover:text-white hover:underline">南无阿弥陀佛</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 py-6">
+        <!-- 类型过滤 -->
+        <div class="flex flex-wrap gap-2 items-center mb-4" id="type-filter">
+            <span class="text-sm text-ink/60">分类：</span>
+            <span class="type-tab active" data-type="">全部</span>
+        </div>
+
+        <!-- 首字索引 -->
+        <div class="mb-4">
+            <div class="text-sm text-ink/60 mb-2">按部首首字检索：</div>
+            <div id="char-bar" class="flex flex-wrap gap-1"></div>
+        </div>
+
+        <!-- 状态区 -->
+        <div id="stat" class="text-sm text-ink/60 mb-4"></div>
+
+        <!-- 随机推荐 / 结果 -->
+        <div id="results" class="space-y-3"></div>
+    </div>
+
+    <footer class="text-center text-ink/50 text-xs py-8 border-t border-ink/10 mt-8">
+        佛学大词典 · 基于丁福保《佛学大辞典》及佛学本体库整理 · 共 <span id="total">0</span> 词条
+    </footer>
+
+<script>
+let TERMS = [];
+let currentType = '';
+let currentChar = '';
+let currentQuery = '';
+
+async function boot() {
+    try {
+        const res = await fetch('../data/buddhist_dict.json');
+        const data = await res.json();
+        TERMS = data.terms;
+        document.getElementById('total').textContent = data.meta.total;
+
+        // 构建类型过滤
+        const types = {};
+        TERMS.forEach(t => { types[t.type] = (types[t.type]||0)+1; });
+        const tf = document.getElementById('type-filter');
+        Object.entries(types).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
+            const el = document.createElement('span');
+            el.className='type-tab';
+            el.dataset.type = k;
+            el.textContent = `${k} (${v})`;
+            el.onclick = ()=>{ currentType = k; document.querySelectorAll('.type-tab').forEach(x=>x.classList.remove('active')); el.classList.add('active'); render(); };
+            tf.appendChild(el);
+        });
+        // 全部tab绑定
+        tf.querySelector('[data-type=""]').onclick = ()=>{ currentType=''; document.querySelectorAll('.type-tab').forEach(x=>x.classList.remove('active')); tf.querySelector('[data-type=""]').classList.add('active'); render(); };
+
+        // 首字索引
+        const chSet = {};
+        TERMS.forEach(t => { if(t.name) chSet[t.name[0]] = (chSet[t.name[0]]||0)+1; });
+        const chBar = document.getElementById('char-bar');
+        const allBtn = document.createElement('span');
+        allBtn.className='char-btn active'; allBtn.textContent='全部'; allBtn.onclick=()=>{currentChar=''; document.querySelectorAll('.char-btn').forEach(x=>x.classList.remove('active')); allBtn.classList.add('active'); render();};
+        chBar.appendChild(allBtn);
+        Object.keys(chSet).sort((a,b)=>chSet[b]-chSet[a]).forEach(ch=>{
+            const b = document.createElement('span');
+            b.className='char-btn'; b.textContent=`${ch} (${chSet[ch]})`;
+            b.onclick = ()=>{ currentChar=ch; document.querySelectorAll('.char-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); document.getElementById('q').value=''; currentQuery=''; render(); };
+            chBar.appendChild(b);
+        });
+
+        // 搜索
+        document.getElementById('q').addEventListener('input', e=>{ currentQuery = e.target.value.trim(); currentChar=''; document.querySelectorAll('.char-btn').forEach(x=>x.classList.remove('active')); chBar.querySelector('.char-btn').classList.add('active'); render(); });
+
+        // 初始随机推荐
+        render();
+    } catch(e) {
+        document.getElementById('results').innerHTML = `<div class="text-red-700 p-4">词典加载失败，请通过本地HTTP服务器访问。${e.message}</div>`;
+    }
+}
+
+function quickSearch(q) {
+    document.getElementById('q').value = q;
+    currentQuery = q; currentChar='';
+    document.querySelectorAll('.char-btn').forEach(x=>x.classList.remove('active'));
+    document.querySelector('#char-bar .char-btn').classList.add('active');
+    render();
+    document.getElementById('q').focus();
+}
+
+function highlight(text, q) {
+    if (!q) return escapeHtml(text);
+    const esc = escapeHtml(text);
+    const eq = escapeHtml(q).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    return esc.replace(new RegExp(eq, 'g'), m=>`<span class="hit">${m}</span>`);
+}
+
+function escapeHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function render() {
+    let list = TERMS;
+    // 过滤
+    if (currentType) list = list.filter(t=>t.type===currentType);
+    if (currentChar) list = list.filter(t=>t.name && t.name[0]===currentChar);
+    if (currentQuery) {
+        const q = currentQuery.toLowerCase();
+        list = list.filter(t => t.name.toLowerCase().includes(q) || (t.desc||'').toLowerCase().includes(q));
+        // 按精确匹配开头优先
+        list.sort((a,b)=>{
+            const aStarts = a.name.startsWith(currentQuery) ? 0 : 1;
+            const bStarts = b.name.startsWith(currentQuery) ? 0 : 1;
+            if (aStarts !== bStarts) return aStarts - bStarts;
+            return a.name.localeCompare(b.name, 'zh-CN');
+        });
+    } else {
+        list = list.slice().sort((a,b)=>a.name.localeCompare(b.name,'zh-CN'));
+    }
+
+    // 状态
+    const stat = document.getElementById('stat');
+    if (currentQuery) {
+        stat.innerHTML = `<i class="fa fa-search mr-1"></i>检索"<b>${escapeHtml(currentQuery)}</b>"，共找到 <b class="text-primary" style="color:#B8860B;">${list.length}</b> 条结果`;
+    } else if (currentChar) {
+        stat.innerHTML = `<i class="fa fa-list-ul mr-1"></i>"<b>${currentChar}</b>" 部词条，共 <b style="color:#B8860B;">${list.length}</b> 条`;
+    } else {
+        stat.innerHTML = `📖 共收录 <b style="color:#B8860B;">${list.length}</b> 条佛学词条。输入关键词或点按首字、分类浏览。`;
+    }
+
+    // 空态：无搜索词时显示推荐
+    const results = document.getElementById('results');
+    if (list.length === 0) {
+        results.innerHTML = `<div class="text-center py-10 text-ink/50"><i class="fa fa-search text-3xl mb-3 block opacity-40"></i>未找到相关词条，换个关键词试试？</div>`;
+        return;
+    }
+    // 超过200条只显示前200
+    let shown = list;
+    let more = '';
+    if (list.length > 200 && !currentQuery) {
+        shown = list.slice(0, 200);
+        more = `<div class="text-center text-sm text-ink/50 py-4">仅显示前 200 条，请使用搜索或分类筛选查看更多</div>`;
+    }
+
+    results.innerHTML = shown.map(t => `
+        <div class="term-card bg-white/70 rounded-lg p-4 cursor-pointer" onclick="showDetail('${encodeURIComponent(t.name)}')">
+            <div class="flex items-baseline gap-3 mb-1 flex-wrap">
+                <span class="text-xl font-bold text-ink">${highlight(t.name, currentQuery)}</span>
+                <span class="tag-type">${t.type||'术语'}</span>
+                ${t.layer?`<span class="text-xs text-ink/50">${t.layer}</span>`:''}
+                <span class="text-xs text-ink/40 ml-auto">${t.source||''}</span>
+            </div>
+            <div class="text-ink/80 leading-relaxed">${highlight(t.desc||'', currentQuery)}</div>
+        </div>
+    `).join('') + more;
+}
+
+function showDetail(nameEnc) {
+    const name = decodeURIComponent(nameEnc);
+    const t = TERMS.find(x=>x.name===name);
+    if (!t) return;
+    // 弹窗显示详情
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4';
+    modal.onclick = e=>{ if(e.target===modal) modal.remove(); };
+    modal.innerHTML = `
+        <div class="bg-paper rounded-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 shadow-2xl" style="background:#FAF6EB;">
+            <div class="flex items-start justify-between mb-3">
+                <div>
+                    <h2 class="text-2xl font-bold text-ink">${escapeHtml(t.name)}</h2>
+                    <div class="flex gap-2 mt-1">
+                        <span class="tag-type">${t.type||'术语'}</span>
+                        ${t.layer?`<span class="text-xs text-ink/50 px-2 py-1">${t.layer}</span>`:''}
+                    </div>
+                </div>
+                <button onclick="this.closest('.fixed').remove()" class="text-ink/40 hover:text-ink text-2xl leading-none">&times;</button>
+            </div>
+            <div class="border-t border-ink/10 pt-4 mb-4">
+                <p class="text-ink leading-loose text-base">${escapeHtml(t.desc||'')}</p>
+            </div>
+            <div class="text-xs text-ink/40 border-t border-ink/10 pt-3">来源：${escapeHtml(t.source||'佛学大词典')}</div>
+            ${renderRelated(t)}
+        </div>`;
+    document.body.appendChild(modal);
+}
+
+function renderRelated(t) {
+    // 相关词条：描述中包含其他词条名
+    if (!t.desc) return '';
+    const related = TERMS.filter(x => x.name !== t.name && t.desc.includes(x.name)).slice(0,10);
+    if (!related.length) return '';
+    return `<div class="mt-4 pt-3 border-t border-ink/10">
+        <div class="text-xs text-ink/60 mb-2">📎 相关词条：</div>
+        <div class="flex flex-wrap gap-2">
+            ${related.map(r=>`<a href="javascript:void(0)" onclick="document.querySelector('.fixed').remove();quickSearch('${r.name.replace(/'/g,"\\'")}')" class="text-sm px-2 py-1 rounded" style="background:rgba(184,134,11,0.1);color:#8B4513;">${r.name}</a>`).join('')}
+        </div>
+    </div>`;
+}
+
+boot();
+</script>
+</body>
+</html>
