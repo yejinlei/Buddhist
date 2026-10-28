@@ -2,7 +2,13 @@
   "meta": {
     "title": "佛经翻译理论本体",
     "description": "汉文佛典翻译理论与风格流派的结构化本体，涵盖从早期『文质之争』到近代『信达雅』的完整标准体系，以及旧译/新译两大风格流派与现代翻译理论的映射关系。",
-    "layers": ["翻译标准体系", "译者素养要求", "音译原则", "风格流派", "现代翻译理论映射"],
+    "layers": [
+      "翻译标准体系",
+      "译者素养要求",
+      "音译原则",
+      "风格流派",
+      "现代翻译理论映射"
+    ],
     "note": "佛经翻译标准并非一套固定不变的单一准则，而是在长期实践中逐步形成的多层次体系。"
   },
   "standards": [
@@ -25,7 +31,7 @@
       "name": "五失本三不易",
       "category": "系统理论",
       "proposer": "道安",
-      "proposer_id": "master-daoan",
+      "proposer_id": "p401",
       "era": "前秦（约382年）",
       "source": "《摩诃钵罗若波罗蜜经抄序》",
       "order": 2,
@@ -57,7 +63,7 @@
       "name": "八备十条",
       "category": "译者素养",
       "proposer": "彦琮",
-      "proposer_id": "master-yancong",
+      "proposer_id": "p402",
       "era": "隋代",
       "source": "《辩正论》",
       "order": 3,
@@ -93,7 +99,7 @@
       "name": "五种不翻",
       "category": "音译原则",
       "proposer": "玄奘",
-      "proposer_id": "master-xuanzang",
+      "proposer_id": "p307",
       "era": "唐代",
       "order": 4,
       "summary": "玄奘提出的音译原则：五种情形下保留梵文原音，不做意译。此说由周敦义《翻译名义序》总结为『五不翻』。",
@@ -110,11 +116,31 @@
         }
       ],
       "examples": [
-        {"word": "般若", "type": "生善故不翻", "note": "译作『智慧』则失庄重恭敬"},
-        {"word": "薄伽梵", "type": "含多义故不翻", "note": "含自在、炽盛、端严、名称、吉祥、尊贵六义"},
-        {"word": "阎浮提", "type": "此无故不翻", "note": "中土无此树此洲"},
-        {"word": "阿耨多罗三藐三菩提", "type": "顺古故不翻", "note": "古译既立，不宜新翻"},
-        {"word": "陀罗尼", "type": "秘密故不翻", "note": "咒语存音，持诵得加持"}
+        {
+          "word": "般若",
+          "type": "生善故不翻",
+          "note": "译作『智慧』则失庄重恭敬"
+        },
+        {
+          "word": "薄伽梵",
+          "type": "含多义故不翻",
+          "note": "含自在、炽盛、端严、名称、吉祥、尊贵六义"
+        },
+        {
+          "word": "阎浮提",
+          "type": "此无故不翻",
+          "note": "中土无此树此洲"
+        },
+        {
+          "word": "阿耨多罗三藐三菩提",
+          "type": "顺古故不翻",
+          "note": "古译既立，不宜新翻"
+        },
+        {
+          "word": "陀罗尼",
+          "type": "秘密故不翻",
+          "note": "咒语存音，持诵得加持"
+        }
       ],
       "significance": "确立了佛典翻译中音译与意译的分界原则，是梵汉翻译史上影响深远的规范。"
     },
@@ -123,7 +149,7 @@
       "name": "信达雅",
       "category": "通用准则",
       "proposer": "严复",
-      "proposer_id": "master-yanfu",
+      "proposer_id": "p405",
       "era": "清末（1898年）",
       "source": "《天演论·译例言》",
       "order": 5,
@@ -146,7 +172,7 @@
       "id": "ts-jiuyi",
       "name": "旧译（意译派）",
       "representative": "鸠摩罗什",
-      "representative_id": "master-kumarajiva",
+      "representative_id": "p305",
       "era": "后秦",
       "orientation": "意译",
       "motto": "曲从方言，趣不乖本",
@@ -158,13 +184,18 @@
         "典范：「一切有为法，如梦幻泡影」"
       ],
       "metaphor": "如园丁，让佛经在汉语土壤里开花",
-      "representative_works": ["《金刚经》", "《法华经》", "《维摩诘经》", "《中论》"]
+      "representative_works": [
+        "《金刚经》",
+        "《法华经》",
+        "《维摩诘经》",
+        "《中论》"
+      ]
     },
     {
       "id": "ts-xinyi",
       "name": "新译（直译派）",
       "representative": "玄奘",
-      "representative_id": "master-xuanzang",
+      "representative_id": "p307",
       "era": "唐",
       "orientation": "直译",
       "motto": "求真求实，不失本旨",
@@ -176,7 +207,12 @@
         "建立『五种不翻』音译原则"
       ],
       "metaphor": "如博物馆馆长，尽可能完整保存原典面貌",
-      "representative_works": ["《大般若经》", "《瑜伽师地论》", "《成唯识论》", "《俱舍论》"]
+      "representative_works": [
+        "《大般若经》",
+        "《瑜伽师地论》",
+        "《成唯识论》",
+        "《俱舍论》"
+      ]
     }
   ],
   "modern_theories": [
@@ -194,20 +230,80 @@
     }
   ],
   "chronology": [
-    {"year": "汉魏", "event": "文质之争兴起，支谦、道安各主文质"},
-    {"year": "382", "event": "道安提出『五失本三不易』，中国最早译论"},
-    {"year": "401", "event": "鸠摩罗什长安译经，确立旧译意译风格"},
-    {"year": "隋", "event": "彦琮《辩正论》提出『八备十条』译者标准"},
-    {"year": "645", "event": "玄奘归国，开创新译直译风格，立『五种不翻』"},
-    {"year": "1898", "event": "严复《天演论》提出『信达雅』，汇通古今"}
+    {
+      "year": "汉魏",
+      "event": "文质之争兴起，支谦、道安各主文质"
+    },
+    {
+      "year": "382",
+      "event": "道安提出『五失本三不易』，中国最早译论"
+    },
+    {
+      "year": "401",
+      "event": "鸠摩罗什长安译经，确立旧译意译风格"
+    },
+    {
+      "year": "隋",
+      "event": "彦琮《辩正论》提出『八备十条』译者标准"
+    },
+    {
+      "year": "645",
+      "event": "玄奘归国，开创新译直译风格，立『五种不翻』"
+    },
+    {
+      "year": "1898",
+      "event": "严复《天演论》提出『信达雅』，汇通古今"
+    }
   ],
   "relations": [
-    {"source": "tt-wenzhi", "target": "tt-wushiben", "type": "chengxian", "label": "承先启后", "description": "文质之争是道安『五失本三不易』的思想前导"},
-    {"source": "tt-wushiben", "target": "tt-babei", "type": "fazhan", "label": "发展", "description": "由翻译的困难转向对译者素养的系统要求"},
-    {"source": "tt-babei", "target": "tt-wuzhongbufan", "type": "xubian", "label": "续补", "description": "从人的素养细化到具体音译技术规范"},
-    {"source": "tt-wuzhongbufan", "target": "tt-xindaya", "type": "huayan", "label": "汇演", "description": "融通为近代『信达雅』通用准则"},
-    {"source": "ts-jiuyi", "target": "ts-xinyi", "type": "duibi", "label": "对举", "description": "意译与直译两大风格流派并列"},
-    {"source": "ts-jiuyi", "target": "mt-guihua", "type": "xiangying", "label": "对应", "description": "旧译意译与归化理论相呼应"},
-    {"source": "ts-xinyi", "target": "mt-yihua", "type": "xiangying", "label": "对应", "description": "新译直译与异化理论相呼应"}
+    {
+      "source": "tt-wenzhi",
+      "target": "tt-wushiben",
+      "type": "chengxian",
+      "label": "承先启后",
+      "description": "文质之争是道安『五失本三不易』的思想前导"
+    },
+    {
+      "source": "tt-wushiben",
+      "target": "tt-babei",
+      "type": "fazhan",
+      "label": "发展",
+      "description": "由翻译的困难转向对译者素养的系统要求"
+    },
+    {
+      "source": "tt-babei",
+      "target": "tt-wuzhongbufan",
+      "type": "xubian",
+      "label": "续补",
+      "description": "从人的素养细化到具体音译技术规范"
+    },
+    {
+      "source": "tt-wuzhongbufan",
+      "target": "tt-xindaya",
+      "type": "huayan",
+      "label": "汇演",
+      "description": "融通为近代『信达雅』通用准则"
+    },
+    {
+      "source": "ts-jiuyi",
+      "target": "ts-xinyi",
+      "type": "duibi",
+      "label": "对举",
+      "description": "意译与直译两大风格流派并列"
+    },
+    {
+      "source": "ts-jiuyi",
+      "target": "mt-guihua",
+      "type": "xiangying",
+      "label": "对应",
+      "description": "旧译意译与归化理论相呼应"
+    },
+    {
+      "source": "ts-xinyi",
+      "target": "mt-yihua",
+      "type": "xiangying",
+      "label": "对应",
+      "description": "新译直译与异化理论相呼应"
+    }
   ]
 }
