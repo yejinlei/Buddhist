@@ -254,24 +254,23 @@
     }
     // 按位置排序
     marks.sort((a,b)=>a.s-b.s);
-    // 第二步：从后向前拼接
+    // 第二步：从前往后拼接，严格保持原文顺序
     let out = '';
-    let cur = text.length;
-    for(let i=marks.length-1; i>=0; i--){
-      const m = marks[i];
-      if(m.e > cur) continue; // 重叠跳过
-      const before = text.slice(m.e, cur);
+    let cur = 0;
+    for(const m of marks){
+      if(m.s < cur) continue; // 与已处理区间重叠，跳过
+      out += text.slice(cur, m.s);
       const mid = text.slice(m.s, m.e);
       if(m.type==='vern'){
-        out = before + `<span class="vern-term" data-baihua="${esc_attr(VERN[m.word])}">${mid}</span>` + out;
+        out += `<span class="vern-term" data-baihua="${esc_attr(VERN[m.word])}">${mid}</span>`;
       } else if(m.type==='pron'){
         const py = PRON[m.word];
         const py_short = py.split('（')[0]; // 去括号注释
-        out = before + `<ruby class="reading-pinyin">${mid}<rt>${esc_attr(py_short)}</rt></ruby>` + out;
+        out += `<ruby class="reading-pinyin">${mid}<rt>${esc_attr(py_short)}</rt></ruby>`;
       }
-      cur = m.s;
+      cur = m.e;
     }
-    out = text.slice(0,cur) + out;
+    out += text.slice(cur);
     return out;
   }
 
