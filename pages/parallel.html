@@ -49,7 +49,6 @@
         <a href="parallel.html" class="text-paper font-medium nav-active">异译对照</a>
         <div class="ml-auto flex gap-4 text-sm text-paper/80 flex-wrap">
             <a href="../index.html" class="hover:text-gold">首页</a>
-            <a href="categories.html" class="hover:text-gold">部类总览</a>
             <a href="sutras.html" class="hover:text-gold">全藏原典</a>
             <a href="search.html" class="hover:text-gold">全文检索</a>
             <a href="dict.html" class="hover:text-yellow-400">佛学词典</a>
@@ -114,7 +113,7 @@
                 // 组内含全部对齐版本
                 let allIn = true;
                 for (const vid of mids) if (!ids.has(vid)) { allIn=false; break; }
-                if (allIn && mids.size >= 2) return { key, m };
+                if (allIn && mids.size >= 2) return { key: m.file || m.group_id, m };
             }
             return null;
         }
@@ -229,7 +228,7 @@
                 let seg = segCache[g._segKey];
                 if (!seg) {
                     try {
-                        const r = await fetch(`../data/segment_alignments/${g._segKey}.json?v=3`);
+                        const r = await fetch(`../data/segment_alignments/${g._segKey}${g._segKey.endsWith('.json')?'':'.json'}?v=3`);
                         seg = await r.json();
                         segCache[g._segKey] = seg;
                     } catch(e) { seg = null; }
@@ -381,17 +380,22 @@
             const rows = seg.alignments.map(a => {
                 const cells = orderedIds.map(id => {
                     const ref = (a.refs||{})[id];
-                    if (!ref) return `<div class="seg-cell empty">— 无对应 —</div>`;
-                    const chIdx = ref.chapter_idx;
-                    const chap = chapArrs[id][chIdx];
-                    if (!chap) return `<div class="seg-cell empty">— 章节缺失 —</div>`;
-                    const title = chap.title || `第${chIdx+1}章`;
-                    const preview = chap.paras.slice(0,3).map(p=>esc(p.slice(0,30)+(p.length>30?'…':''))).join(' / ');
-                    return `<div class="seg-cell" data-sid="${id}" data-chapter="${chIdx}" title="点击定位到${esc(title)}">
-                        <div class="seg-chapter" style="background:transparent;padding:0;border:0;">📖 ${esc(title)}</div>
-                        <div class="text-xs text-ink/50 mt-1 text-indent:0">${chap.paras.length}段 · ${chap.paras.reduce((s,p)=>s+p.length,0)}字</div>
-                        <div class="text-xs text-ink/40 mt-1 text-indent:0 italic">${esc(preview)}...</div>
-                    </div>`;
+                    if (!ref || (Array.isArray(ref) && ref.length===0)) return `<div class="seg-cell empty">— 无对应 —</div>`;
+                    // 新格式：ref 是数组，每项 {title, para_count, preview}
+                    if (Array.isArray(ref) && ref.length>0 && typeof ref[0] === 'object' && ref[0].title) {
+                        const r = ref[0];
+                        return `<div class="seg-cell chap-cell" data-sid="${id}" data-idx="${a.id-1}" title="点击查看该节内容">
+                            <div class="seg-chapter" style="background:transparent;padding:0;border:0;">📖 ${esc(r.title)}</div>
+                            <div class="text-xs text-ink/50 mt-1">${r.para_count||'—'}段</div>
+                            <div class="text-xs text-ink/40 mt-1 italic">${esc((r.preview||'').slice(0,40))}${(r.preview||'').length>40?'…':''}</div>
+                        </div>`;
+                    }
+                    // 段级旧格式：ref 是数字数组（段落索引）
+                    if (Array.isArray(ref) && ref.every(x=>typeof x==='number')) {
+                        // 段级不在这里渲染，应走 renderSegmentView
+                        return `<div class="seg-cell empty">— 段级数据 —</div>`;
+                    }
+                    return `<div class="seg-cell empty">— 无对应 —</div>`;
                 }).join('');
                 return `<div class="seg-row" data-row="${a.id}" style="grid-template-columns: 40px repeat(${nCols}, minmax(0,1fr));">
                     <div class="flex items-start justify-end pr-1 pt-1"><span class="seg-num">§${a.id}</span></div>
@@ -406,10 +410,9 @@
                 const cell = e.target.closest('.seg-cell');
                 if (!cell || cell.classList.contains('empty')) return;
                 const sid = cell.dataset.sid;
-                const chIdx = cell.dataset.chapter;
-                if (sid && chIdx !== undefined) {
-                    // 跳转到sutras.html并定位章
-                    window.open(`sutras.html?load=${sid}#chap-${chIdx}`, '_blank');
+                if (sid) {
+                    // 打开对应经在读经页
+                    window.open(`sutras.html?load=${sid}`, '_blank');
                 }
             });
         }

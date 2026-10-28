@@ -116,6 +116,28 @@
         .vol-chunk { margin-bottom:8px; }
         .vol-chunk-title { font-size:12px; color:#8B4513; padding:3px 6px; font-weight:600; }
         .vol-sutras { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:4px; }
+        /* ===== 部类总览（与全藏原典合并） ===== */
+        .ov-summary { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin:0 0 18px; }
+        .ov-card { background:#fff; border:1px solid #e5d9c3; border-radius:10px; padding:8px 20px; text-align:center; min-width:96px; }
+        .ov-card .n { font-size:22px; font-weight:700; color:#B8860B; }
+        .ov-card .l { font-size:12px; color:#8B4513; }
+        .ov-tree-head { display:flex; align-items:center; gap:10px; padding:11px 15px; background:linear-gradient(90deg,#fdf8ec,#fff); border:1px solid #e5d9c3; border-radius:12px; cursor:pointer; margin-bottom:6px; user-select:none; transition:all .15s; }
+        .ov-tree-head:hover { background:#f5ecd0; box-shadow:0 4px 12px rgba(139,69,19,.08); }
+        .ov-tree-head .t-caret { transition:transform .18s; font-size:11px; color:#B8860B; width:14px; flex-shrink:0; }
+        .ov-tree-head.open .t-caret { transform:rotate(90deg); }
+        .ov-tree-head .t-ico { font-size:20px; }
+        .ov-tree-head .t-name { flex:1; font-weight:700; color:#3E2723; font-size:16px; }
+        .ov-tree-head .t-desc { font-size:12px; color:#8B4513; font-weight:400; margin-left:6px; }
+        .ov-tree-head .t-cnt { font-size:12px; color:#8B4513; background:rgba(184,134,11,.12); border-radius:8px; padding:2px 10px; font-weight:600; }
+        .ov-tree-body { margin:0 0 14px 18px; padding:10px 14px; border-left:2px solid #e5d9c3; background:#fffdf7; border-radius:0 8px 8px 0; }
+        .ov-tree-body.collapsed { display:none; }
+        .ov-vol { margin-bottom:10px; }
+        .ov-vol-title { font-size:13px; color:#8B4513; padding:4px 8px; font-weight:600; border-bottom:1px dashed #e5d9c3; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
+        .ov-vol-title .v-cnt { margin-left:auto; font-size:11px; font-weight:400; opacity:.8; }
+        .ov-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:4px; }
+        .ov-link { display:block; padding:5px 8px; border-radius:6px; font-size:13px; color:#3E2723; text-decoration:none; transition:all .12s; border:1px solid transparent; cursor:pointer; }
+        .ov-link:hover { background:rgba(184,134,11,.1); border-color:#e5d9c3; color:#8B4513; }
+        .ov-link .m { font-size:11px; color:#8B4513; opacity:.65; margin-left:4px; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -128,7 +150,6 @@
         <a href="sutras.html" class="text-paper font-medium hover:text-gold nav-active">全藏原典</a>
         <div class="ml-auto flex gap-4 text-sm text-paper/80 flex-wrap">
             <a href="../index.html" class="hover:text-gold">首页</a>
-            <a href="categories.html" class="hover:text-gold">部类总览</a>
             <a href="sutras.html" class="hover:text-gold">全藏原典</a>
             <a href="search.html" class="hover:text-gold">全文检索</a>
             <a href="dict.html" class="hover:text-yellow-400">佛学词典</a>
@@ -874,6 +895,77 @@ function showNote(json) {
 const CACHE_KEY = 'sutra_cache_';
 const CACHE_EXPIRY = 7 * 24 * 60 * 60 * 1000; // 缓存7天
 
+// ===== 部类总览（「部类总览」与「全藏原典」合并后的默认视图） =====
+const OV_ICO = {
+  '阿含部类':'📜','本缘部类':'🌱','般若部类':'✨','法华部类':'🪷','华严部类':'🌌','宝积部类':'💎','涅槃部类':'🔥','大集部类':'📚',
+  '经集部类':'📖','律部类':'⚖️','毗昙部类':'🔍','中观部类':'☯️','瑜伽部类':'🧘','论集部类':'📝','史传部类':'🏛️','事汇部类':'🗂️',
+  '密教部类':'🕉️','净土宗部类':'🌸','禅宗部类':'🧘‍♂️','敦煌写本部类':'📜'
+};
+const OV_DESC = {
+  '阿含部类':'根本圣典 · 四阿含','本缘部类':'本生·因缘·譬喻','般若部类':'般若系空典','法华部类':'一乘妙法',
+  '华严部类':'圆教大法','宝积部类':'菩萨宝积','涅槃部类':'常住佛性','大集部类':'方等大集',
+  '经集部类':'诸经丛集','律部类':'戒律三藏','毗昙部类':'说一切有部','中观部类':'龙树空宗',
+  '瑜伽部类':'唯识法相','论集部类':'诸论撰述','史传部类':'僧传·史地','事汇部类':'佛学类书',
+  '密教部类':'真言密典','净土宗部类':'极乐往生','禅宗部类':'祖师语录','敦煌写本部类':'敦煌遗书'
+};
+let OV_OPEN = new Set();
+const OV_LS = 'fo_overview_open_v1';
+function ovLoad(){ try{ const s=localStorage.getItem(OV_LS); if(s) JSON.parse(s).forEach(k=>OV_OPEN.add(k)); }catch(e){} }
+function ovSave(){ try{ localStorage.setItem(OV_LS, JSON.stringify([...OV_OPEN])); }catch(e){} }
+
+function renderOverview(){
+  const el = document.getElementById('content-area');
+  if(!el || !TREE.length) return;
+  const total = allSutras.length;
+  const chars = allSutras.reduce((n,s)=>n+(s.word_count||s.chars||0),0);
+  const volSet = new Set(allSutras.map(s=>s.vol).filter(Boolean));
+  if(!OV_OPEN.size) TREE.slice(0,2).forEach(t=>OV_OPEN.add(t.cat));
+  let h = `<div class="ov-wrap">
+    <div class="text-center mb-4">
+      <h1 class="text-3xl font-bold text-ink mb-2">大正藏部类总览</h1>
+      <p class="text-ink/60 text-sm">按 ${TREE.length} 大部类聚合浏览 · 点击部类展开，点击经名直接在右侧阅读</p>
+    </div>
+    <div class="ov-summary">
+      <div class="ov-card"><div class="n">${total.toLocaleString()}</div><div class="l">部经典</div></div>
+      <div class="ov-card"><div class="n">${(chars/10000).toFixed(0)}万</div><div class="l">字原文</div></div>
+      <div class="ov-card"><div class="n">${volSet.size}</div><div class="l">大正藏册</div></div>
+    </div>`;
+  TREE.forEach(t=>{
+    const open = OV_OPEN.has(t.cat);
+    const label = t.cat.replace(/部类$/,'');
+    h += `<div class="ov-tree-head${open?' open':''}" data-ovcat="${t.cat}">
+      <span class="t-caret">▶</span>
+      <span class="t-ico">${OV_ICO[t.cat]||'📚'}</span>
+      <span class="t-name">${label}部<span class="t-desc">${OV_DESC[t.cat]||''}</span></span>
+      <span class="t-cnt">${t.total} 部</span>
+    </div>
+    <div class="ov-tree-body${open?'':' collapsed'}" data-ovbody="${t.cat}">`;
+    t.vols.forEach(v=>{
+      h += `<div class="ov-vol"><div class="ov-vol-title">📚 ${v.vol}<span class="v-cnt">${v.list.length} 部</span></div><div class="ov-grid">`;
+      v.list.forEach(s=>{
+        h += `<a class="ov-link" data-ovid="${s.id}"><span>${s.title}</span><span class="m">${(s._trans&&s._trans!=='失译')?String(s._trans).substring(0,4):''}</span></a>`;
+      });
+      h += `</div></div>`;
+    });
+    h += `</div>`;
+  });
+  h += `</div>`;
+  el.innerHTML = h;
+  el.querySelectorAll('.ov-tree-head').forEach(hd=>{
+    hd.addEventListener('click', ()=>{
+      const c = hd.dataset.ovcat;
+      if(OV_OPEN.has(c)) OV_OPEN.delete(c); else OV_OPEN.add(c);
+      ovSave(); renderOverview();
+    });
+  });
+  el.querySelectorAll('.ov-link').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      const s = allSutras.find(x=>x.id===a.dataset.ovid);
+      if(s) loadSutra(s);
+    });
+  });
+}
+
 // 1. 页面加载时只拉轻量索引（478KB，秒开）
 async function loadLightIndex() {
     const res = await fetch('../sutras/index-light.json?' + Date.now());
@@ -884,10 +976,12 @@ async function loadLightIndex() {
     initFilters();
     // 支持 ?load=文件名 直接打开指定经文（部类总览 / 全文检索跳转）
     const loadParam = new URLSearchParams(location.search).get('load');
+    let opened = false;
     if (loadParam) {
         const hit = allSutras.find(s => s.file === loadParam || s.id === loadParam || (s.id + '.json') === loadParam);
-        if (hit) loadSutra(hit);
+        if (hit) { loadSutra(hit); opened = true; }
     }
+    if (!opened) { ovLoad(); renderOverview(); }
 }
 
 // 2. 部类名归一 & 经目树构建
@@ -1005,10 +1099,7 @@ function buildCatalog(){
   });
   TRANS_MAP = {};
   Object.keys(trMap).forEach(d=>{
-    TRANS_MAP[d] = [...trMap[d]].sort((a,b)=>{
-      if(a==='失译') return 1; if(b==='失译') return -1;
-      return trMap[d].get(b) - trMap[d].get(a) || a.localeCompare(b,'zh');
-    });
+    TRANS_MAP[d] = [...trMap[d]];
   });
   // 译者计数
   const trCount = {};
@@ -1263,6 +1354,7 @@ async function loadSutra(meta) {
     headerHtml += `</div>`;
     contentArea.innerHTML = headerHtml + `
         <div class="read-toolbar">
+            <button id="btn-overview" title="返回部类总览"><i class="fa fa-th-large"></i> <span class="rt-label">部类总览</span></button>
             <button id="toc-toggle" title="章节目录"><i class="fa fa-list-ul"></i> <span class="rt-label">章节目录</span></button>
             <span class="rt-label" style="margin-left:.5rem">字号</span>
             <button data-fs="sm">小</button>
@@ -1278,6 +1370,7 @@ async function loadSutra(meta) {
         <div id="sutra-text" class="sutra-container"></div>
     `;
     // 绑定阅读工具条
+    document.getElementById('btn-overview')?.addEventListener('click', () => { renderOverview(); window.scrollTo({top:0,behavior:'smooth'}); });
     document.getElementById('toc-toggle')?.addEventListener('click', () => {
         buildToc();
         document.getElementById('toc-panel')?.classList.toggle('hidden');

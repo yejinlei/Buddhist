@@ -1,630 +1,770 @@
 [
   {
-    "group_id": "般若波羅蜜多心經_t0251_t0253",
+    "file": "般若波羅蜜多心經_t0251_t0253_t0255_t0254.json",
+    "group_id": "t0251_t0253_t0255_t0254",
     "group_title": "般若波羅蜜多心經",
     "mode": "segment",
-    "n_alignments": 36,
-    "n_versions": 4,
+    "n_alignments": 3,
     "versions": [
       {
-        "id": "t0253",
-        "translator": "唐 般若共利言等譯",
-        "title": "般若波羅蜜多心經"
-      },
-      {
         "id": "t0251",
+        "title": "般若波羅蜜多心經",
         "translator": "唐 玄奘譯",
-        "title": "般若波羅蜜多心經"
+        "dynasty": "",
+        "n_paras": 41
       },
       {
-        "id": "t0254",
-        "translator": "唐 智慧輪譯",
-        "title": "般若波羅蜜多心經"
+        "id": "t0253",
+        "title": "般若波羅蜜多心經",
+        "translator": "唐 般若共利言等譯",
+        "dynasty": "",
+        "n_paras": 33
       },
       {
         "id": "t0255",
+        "title": "般若波羅蜜多心經",
         "translator": "唐 法成譯",
-        "title": "般若波羅蜜多心經"
+        "dynasty": "",
+        "n_paras": 35
+      },
+      {
+        "id": "t0254",
+        "title": "般若波羅蜜多心經",
+        "translator": "唐 智慧輪譯",
+        "dynasty": "",
+        "n_paras": 33
       }
     ]
   },
   {
-    "group_id": "大般涅槃經_t0007_t0374",
+    "file": "大般涅槃經_t0007_t0374_t0375.json",
+    "group_id": "t0007_t0374_t0375",
     "group_title": "大般涅槃經",
     "mode": "chapter",
-    "n_alignments": 11,
-    "n_versions": 3,
+    "n_alignments": 34,
     "versions": [
       {
         "id": "t0007",
+        "title": "大般涅槃經",
         "translator": "東晉 法顯譯",
-        "title": "大般涅槃經"
+        "dynasty": "",
+        "n_paras": 1036
       },
       {
         "id": "t0374",
+        "title": "大般涅槃經",
         "translator": "北涼 曇無讖譯",
-        "title": "大般涅槃經"
+        "dynasty": "",
+        "n_paras": 19322
       },
       {
         "id": "t0375",
+        "title": "大般涅槃經",
         "translator": "宋 慧嚴等依泥洹經加之",
-        "title": "大般涅槃經"
+        "dynasty": "",
+        "n_paras": 20882
       }
     ]
   },
   {
-    "group_id": "雜譬喻經_t0204_t0205",
+    "file": "雜譬喻經_t0204_t0205_t0207.json",
+    "group_id": "t0204_t0205_t0207",
     "group_title": "雜譬喻經",
     "mode": "segment",
-    "n_alignments": 203,
-    "n_versions": 3,
+    "n_alignments": 12,
     "versions": [
       {
         "id": "t0204",
+        "title": "雜譬喻經",
         "translator": "後漢 支婁迦讖譯",
-        "title": "雜譬喻經"
-      },
-      {
-        "id": "t0207",
-        "translator": "道略集",
-        "title": "雜譬喻經"
+        "dynasty": "",
+        "n_paras": 184
       },
       {
         "id": "t0205",
-        "translator": "失译",
-        "title": "雜譬喻經"
+        "title": "雜譬喻經",
+        "translator": "失譯",
+        "dynasty": "",
+        "n_paras": 549
+      },
+      {
+        "id": "t0207",
+        "title": "雜譬喻經",
+        "translator": "道略集",
+        "dynasty": "",
+        "n_paras": 480
       }
     ]
   },
   {
-    "group_id": "大方廣佛華嚴經_t0278_t0279",
+    "file": "大方廣佛華嚴經_t0278_t0279_t0293.json",
+    "group_id": "t0278_t0279_t0293",
     "group_title": "大方廣佛華嚴經",
     "mode": "chapter",
-    "n_alignments": 80,
-    "n_versions": 3,
+    "n_alignments": 28,
     "versions": [
       {
-        "id": "t0293",
-        "translator": "唐 般若譯",
-        "title": "大方廣佛華嚴經"
-      },
-      {
         "id": "t0278",
+        "title": "大方廣佛華嚴經",
         "translator": "東晉 佛馱跋陀羅譯",
-        "title": "大方廣佛華嚴經"
+        "dynasty": "",
+        "n_paras": 13616
       },
       {
         "id": "t0279",
+        "title": "大方廣佛華嚴經",
         "translator": "唐 實叉難陀譯",
-        "title": "大方廣佛華嚴經"
+        "dynasty": "",
+        "n_paras": 16986
+      },
+      {
+        "id": "t0293",
+        "title": "大方廣佛華嚴經",
+        "translator": "唐 般若譯",
+        "dynasty": "",
+        "n_paras": 5875
       }
     ]
   },
   {
-    "group_id": "月燈三昧經_t0640_t0641",
+    "file": "月燈三昧經_t0640_t0641_t0639.json",
+    "group_id": "t0640_t0641_t0639",
     "group_title": "月燈三昧經",
-    "mode": "segment",
-    "n_alignments": 367,
-    "n_versions": 3,
+    "mode": "chapter",
+    "n_alignments": 8,
     "versions": [
       {
         "id": "t0640",
+        "title": "佛說月燈三昧經",
         "translator": "劉宋 先公譯",
-        "title": "佛說月燈三昧經"
+        "dynasty": "",
+        "n_paras": 164
       },
       {
         "id": "t0641",
+        "title": "佛說月燈三昧經",
         "translator": "劉宋 先公譯",
-        "title": "佛說月燈三昧經"
+        "dynasty": "",
+        "n_paras": 402
       },
       {
         "id": "t0639",
+        "title": "月燈三昧經",
         "translator": "高齊 那連提耶舍譯",
-        "title": "月燈三昧經"
+        "dynasty": "",
+        "n_paras": 3281
       }
     ]
   },
   {
-    "group_id": "佛頂尊勝陀羅尼經_t0967_t0968",
+    "file": "佛頂尊勝陀羅尼經_t0967_t0968_t0971.json",
+    "group_id": "t0967_t0968_t0971",
     "group_title": "佛頂尊勝陀羅尼經",
     "mode": "segment",
-    "n_alignments": 131,
-    "n_versions": 3,
+    "n_alignments": 7,
     "versions": [
       {
-        "id": "t0971",
-        "translator": "唐 義淨譯",
-        "title": "佛說佛頂尊勝陀羅尼經"
+        "id": "t0967",
+        "title": "佛頂尊勝陀羅尼經",
+        "translator": "唐 佛陀波利譯",
+        "dynasty": "",
+        "n_paras": 143
       },
       {
         "id": "t0968",
+        "title": "佛頂尊勝陀羅尼經",
         "translator": "唐 杜行顗譯",
-        "title": "佛頂尊勝陀羅尼經"
+        "dynasty": "",
+        "n_paras": 81
       },
       {
-        "id": "t0967",
-        "translator": "唐 佛陀波利譯",
-        "title": "佛頂尊勝陀羅尼經"
+        "id": "t0971",
+        "title": "佛說佛頂尊勝陀羅尼經",
+        "translator": "唐 義淨譯",
+        "dynasty": "",
+        "n_paras": 117
       }
     ]
   },
   {
-    "group_id": "攝大乘論釋_t1595_t1597",
+    "file": "攝大乘論釋_t1595_t1597_t1598.json",
+    "group_id": "t1595_t1597_t1598",
     "group_title": "攝大乘論釋",
     "mode": "chapter",
-    "n_alignments": 19,
-    "n_versions": 3,
+    "n_alignments": 14,
     "versions": [
       {
+        "id": "t1595",
+        "title": "攝大乘論釋",
+        "translator": "世親菩薩釋 陳 真諦譯",
+        "dynasty": "",
+        "n_paras": 8767
+      },
+      {
         "id": "t1597",
+        "title": "攝大乘論釋",
         "translator": "世親菩薩造 唐 玄奘譯",
-        "title": "攝大乘論釋"
+        "dynasty": "",
+        "n_paras": 3549
       },
       {
         "id": "t1598",
+        "title": "攝大乘論釋",
         "translator": "無性菩薩造 唐 玄奘譯",
-        "title": "攝大乘論釋"
-      },
-      {
-        "id": "t1595",
-        "translator": "世親菩薩釋 陳 真諦譯",
-        "title": "攝大乘論釋"
+        "dynasty": "",
+        "n_paras": 4215
       }
     ]
   },
   {
-    "group_id": "雜阿含經_t0101_t0099",
+    "file": "雜阿含經_t0101_t0099.json",
+    "group_id": "t0101_t0099",
     "group_title": "雜阿含經",
     "mode": "chapter",
-    "n_alignments": 8,
-    "n_versions": 2,
+    "n_alignments": 40,
     "versions": [
       {
         "id": "t0101",
-        "translator": "失译",
-        "title": "雜阿含經"
+        "title": "雜阿含經",
+        "translator": "失譯",
+        "dynasty": "",
+        "n_paras": 428
       },
       {
         "id": "t0099",
+        "title": "雜阿含經",
         "translator": "劉宋 求那跋陀羅譯",
-        "title": "雜阿含經"
+        "dynasty": "",
+        "n_paras": 24046
       }
     ]
   },
   {
-    "group_id": "法句經_t2901_t0210",
+    "file": "法句經_t2901_t0210.json",
+    "group_id": "t2901_t0210",
     "group_title": "法句經",
-    "mode": "chapter",
-    "n_alignments": 8,
-    "n_versions": 2,
+    "mode": "segment",
+    "n_alignments": 42,
     "versions": [
       {
         "id": "t2901",
+        "title": "法句經",
         "translator": "",
-        "title": "法句經"
+        "dynasty": "",
+        "n_paras": 634
       },
       {
         "id": "t0210",
+        "title": "法句經",
         "translator": "法救撰 吳 維祇難等譯",
-        "title": "法句經"
+        "dynasty": "",
+        "n_paras": 735
       }
     ]
   },
   {
-    "group_id": "金剛般若波羅蜜經_t0235_t0237",
+    "file": "金剛般若波羅蜜經_t0235_t0237.json",
+    "group_id": "t0235_t0237",
     "group_title": "金剛般若波羅蜜經",
     "mode": "segment",
-    "n_alignments": 460,
-    "n_versions": 2,
+    "n_alignments": 3,
     "versions": [
       {
         "id": "t0235",
+        "title": "金剛般若波羅蜜經",
         "translator": "後秦 鳩摩羅什譯",
-        "title": "金剛般若波羅蜜經"
+        "dynasty": "",
+        "n_paras": 446
       },
       {
         "id": "t0237",
+        "title": "金剛般若波羅蜜經",
         "translator": "陳 真諦譯",
-        "title": "金剛般若波羅蜜經"
+        "dynasty": "",
+        "n_paras": 580
       }
     ]
   },
   {
-    "group_id": "須賴經_t0328_t0329",
+    "file": "須賴經_t0328_t0329.json",
+    "group_id": "t0328_t0329",
     "group_title": "須賴經",
     "mode": "segment",
-    "n_alignments": 534,
-    "n_versions": 2,
+    "n_alignments": 8,
     "versions": [
       {
-        "id": "t0329",
-        "translator": "前涼 支施崙譯",
-        "title": "佛說須賴經"
+        "id": "t0328",
+        "title": "佛說須賴經",
+        "translator": "曹魏 白延譯",
+        "dynasty": "",
+        "n_paras": 266
       },
       {
-        "id": "t0328",
-        "translator": "曹魏 白延譯",
-        "title": "佛說須賴經"
+        "id": "t0329",
+        "title": "佛說須賴經",
+        "translator": "前涼 支施崙譯",
+        "dynasty": "",
+        "n_paras": 402
       }
     ]
   },
   {
-    "group_id": "須摩提菩薩經_t0334_t0335",
+    "file": "須摩提菩薩經_t0334_t0335.json",
+    "group_id": "t0334_t0335",
     "group_title": "須摩提菩薩經",
     "mode": "segment",
-    "n_alignments": 343,
-    "n_versions": 2,
+    "n_alignments": 3,
     "versions": [
       {
         "id": "t0334",
+        "title": "佛說須摩提菩薩經",
         "translator": "西晉 竺法護譯",
-        "title": "佛說須摩提菩薩經"
+        "dynasty": "",
+        "n_paras": 139
       },
       {
         "id": "t0335",
+        "title": "佛說須摩提菩薩經",
         "translator": "姚秦 鳩摩羅什譯",
-        "title": "佛說須摩提菩薩經"
+        "dynasty": "",
+        "n_paras": 192
       }
     ]
   },
   {
-    "group_id": "虛空藏菩薩神呪經_t0406_t0407",
+    "file": "虛空藏菩薩神呪經_t0406_t0407.json",
+    "group_id": "t0406_t0407",
     "group_title": "虛空藏菩薩神呪經",
     "mode": "segment",
-    "n_alignments": 307,
-    "n_versions": 2,
+    "n_alignments": 9,
     "versions": [
       {
-        "id": "t0407",
-        "translator": "宋 曇摩蜜多譯",
-        "title": "虛空藏菩薩神呪經"
+        "id": "t0406",
+        "title": "虛空藏菩薩神呪經",
+        "translator": "失譯",
+        "dynasty": "",
+        "n_paras": 233
       },
       {
-        "id": "t0406",
-        "translator": "失译",
-        "title": "虛空藏菩薩神呪經"
+        "id": "t0407",
+        "title": "虛空藏菩薩神呪經",
+        "translator": "宋 曇摩蜜多譯",
+        "dynasty": "",
+        "n_paras": 209
       }
     ]
   },
   {
-    "group_id": "般舟三昧經_t0417_t0418",
+    "file": "般舟三昧經_t0417_t0418.json",
+    "group_id": "t0417_t0418",
     "group_title": "般舟三昧經",
     "mode": "segment",
-    "n_alignments": 732,
-    "n_versions": 2,
+    "n_alignments": 4,
     "versions": [
       {
         "id": "t0417",
+        "title": "佛說般舟三昧經",
         "translator": "後漢 支婁迦讖譯",
-        "title": "佛說般舟三昧經"
+        "dynasty": "",
+        "n_paras": 317
       },
       {
         "id": "t0418",
+        "title": "般舟三昧經",
         "translator": "後漢 支婁迦讖譯",
-        "title": "般舟三昧經"
+        "dynasty": "",
+        "n_paras": 891
       }
     ]
   },
   {
-    "group_id": "佛名經_t0441_t0440",
+    "file": "佛名經_t0441_t0440.json",
+    "group_id": "t0441_t0440",
     "group_title": "佛名經",
     "mode": "chapter",
-    "n_alignments": 32,
-    "n_versions": 2,
+    "n_alignments": 8,
     "versions": [
-      {
-        "id": "t0440",
-        "translator": "元魏 菩提流支譯",
-        "title": "佛說佛名經"
-      },
       {
         "id": "t0441",
+        "title": "佛說佛名經",
         "translator": "",
-        "title": "佛說佛名經"
+        "dynasty": "",
+        "n_paras": 2727
+      },
+      {
+        "id": "t0440",
+        "title": "佛說佛名經",
+        "translator": "元魏 菩提流支譯",
+        "dynasty": "",
+        "n_paras": 866
       }
     ]
   },
   {
-    "group_id": "彌勒下生成佛經_t0454_t0455",
+    "file": "彌勒下生成佛經_t0454_t0455.json",
+    "group_id": "t0454_t0455",
     "group_title": "彌勒下生成佛經",
     "mode": "segment",
-    "n_alignments": 209,
-    "n_versions": 2,
+    "n_alignments": 7,
     "versions": [
-      {
-        "id": "t0455",
-        "translator": "唐 義淨譯",
-        "title": "佛說彌勒下生成佛經"
-      },
       {
         "id": "t0454",
+        "title": "佛說彌勒下生成佛經",
         "translator": "後秦 鳩摩羅什譯",
-        "title": "佛說彌勒下生成佛經"
-      }
-    ]
-  },
-  {
-    "group_id": "大乘密嚴經_t0681_t0682",
-    "group_title": "大乘密嚴經",
-    "mode": "chapter",
-    "n_alignments": 11,
-    "n_versions": 2,
-    "versions": [
-      {
-        "id": "t0682",
-        "translator": "唐 不空譯",
-        "title": "大乘密嚴經"
+        "dynasty": "",
+        "n_paras": 90
       },
       {
-        "id": "t0681",
-        "translator": "唐 地婆訶羅譯",
-        "title": "大乘密嚴經"
+        "id": "t0455",
+        "title": "佛說彌勒下生成佛經",
+        "translator": "唐 義淨譯",
+        "dynasty": "",
+        "n_paras": 105
       }
     ]
   },
   {
-    "group_id": "大乘四法經_t0772_t0774",
+    "file": "大乘密嚴經_t0681_t0682.json",
+    "group_id": "t0681_t0682",
+    "group_title": "大乘密嚴經",
+    "mode": "chapter",
+    "n_alignments": 8,
+    "versions": [
+      {
+        "id": "t0681",
+        "title": "大乘密嚴經",
+        "translator": "唐 地婆訶羅譯",
+        "dynasty": "",
+        "n_paras": 1043
+      },
+      {
+        "id": "t0682",
+        "title": "大乘密嚴經",
+        "translator": "唐 不空譯",
+        "dynasty": "",
+        "n_paras": 941
+      }
+    ]
+  },
+  {
+    "file": "大乘四法經_t0772_t0774.json",
+    "group_id": "t0772_t0774",
     "group_title": "大乘四法經",
     "mode": "segment",
-    "n_alignments": 17,
-    "n_versions": 2,
+    "n_alignments": 5,
     "versions": [
       {
         "id": "t0772",
+        "title": "大乘四法經",
         "translator": "唐 地婆訶羅譯",
-        "title": "大乘四法經"
+        "dynasty": "",
+        "n_paras": 9
       },
       {
         "id": "t0774",
+        "title": "大乘四法經",
         "translator": "唐 實叉難陀譯",
-        "title": "大乘四法經"
+        "dynasty": "",
+        "n_paras": 253
       }
     ]
   },
   {
-    "group_id": "金剛頂一切如來真實攝大乘現證_t0874_t0865",
+    "file": "金剛頂一切如來真實攝_t0874_t0865.json",
+    "group_id": "t0874_t0865",
     "group_title": "金剛頂一切如來真實攝大乘現證大教王經",
-    "mode": "chapter",
-    "n_alignments": 8,
-    "n_versions": 2,
+    "mode": "segment",
+    "n_alignments": 18,
     "versions": [
       {
-        "id": "t0865",
+        "id": "t0874",
+        "title": "金剛頂一切如來真實攝大乘現證大教王經",
         "translator": "唐 不空譯",
-        "title": "金剛頂一切如來真實攝大乘現證大教王經"
+        "dynasty": "",
+        "n_paras": 284
       },
       {
-        "id": "t0874",
+        "id": "t0865",
+        "title": "金剛頂一切如來真實攝大乘現證大教王經",
         "translator": "唐 不空譯",
-        "title": "金剛頂一切如來真實攝大乘現證大教王經"
+        "dynasty": "",
+        "n_paras": 410
       }
     ]
   },
   {
-    "group_id": "孔雀王呪經_t0988_t0984",
+    "file": "孔雀王呪經_t0988_t0984.json",
+    "group_id": "t0988_t0984",
     "group_title": "孔雀王呪經",
     "mode": "segment",
-    "n_alignments": 264,
-    "n_versions": 2,
+    "n_alignments": 4,
     "versions": [
       {
         "id": "t0988",
+        "title": "孔雀王呪經",
         "translator": "姚秦 鳩摩羅什譯",
-        "title": "孔雀王呪經"
+        "dynasty": "",
+        "n_paras": 61
       },
       {
         "id": "t0984",
+        "title": "孔雀王呪經",
         "translator": "梁 僧伽婆羅譯",
-        "title": "孔雀王呪經"
+        "dynasty": "",
+        "n_paras": 456
       }
     ]
   },
   {
-    "group_id": "大金色孔雀王呪經_t0986_t0987",
+    "file": "大金色孔雀王呪經_t0986_t0987.json",
+    "group_id": "t0986_t0987",
     "group_title": "大金色孔雀王呪經",
     "mode": "segment",
-    "n_alignments": 132,
-    "n_versions": 2,
+    "n_alignments": 5,
     "versions": [
       {
         "id": "t0986",
-        "translator": "失译",
-        "title": "大金色孔雀王呪經"
+        "title": "大金色孔雀王呪經",
+        "translator": "失譯",
+        "dynasty": "",
+        "n_paras": 25
       },
       {
         "id": "t0987",
-        "translator": "失译",
-        "title": "佛說大金色孔雀王呪經"
+        "title": "佛說大金色孔雀王呪經",
+        "translator": "失譯",
+        "dynasty": "",
+        "n_paras": 56
       }
     ]
   },
   {
-    "group_id": "大雲輪請雨經_t0991_t0989",
+    "file": "大雲輪請雨經_t0991_t0989.json",
+    "group_id": "t0991_t0989",
     "group_title": "大雲輪請雨經",
     "mode": "segment",
-    "n_alignments": 146,
-    "n_versions": 2,
+    "n_alignments": 4,
     "versions": [
       {
-        "id": "t0989",
-        "translator": "唐 不空譯",
-        "title": "大雲輪請雨經"
+        "id": "t0991",
+        "title": "大雲輪請雨經",
+        "translator": "隋 那連提耶舍譯",
+        "dynasty": "",
+        "n_paras": 172
       },
       {
-        "id": "t0991",
-        "translator": "隋 那連提耶舍譯",
-        "title": "大雲輪請雨經"
+        "id": "t0989",
+        "title": "大雲輪請雨經",
+        "translator": "唐 不空譯",
+        "dynasty": "",
+        "n_paras": 81
       }
     ]
   },
   {
-    "group_id": "出生無邊門陀羅尼經_t1009_t1018",
+    "file": "出生無邊門陀羅尼經_t1009_t1018.json",
+    "group_id": "t1009_t1018",
     "group_title": "出生無邊門陀羅尼經",
     "mode": "segment",
-    "n_alignments": 443,
-    "n_versions": 2,
+    "n_alignments": 5,
     "versions": [
       {
         "id": "t1009",
+        "title": "出生無邊門陀羅尼經",
         "translator": "唐 不空譯",
-        "title": "出生無邊門陀羅尼經"
+        "dynasty": "",
+        "n_paras": 172
       },
       {
         "id": "t1018",
+        "title": "出生無邊門陀羅尼經",
         "translator": "唐 智嚴譯",
-        "title": "出生無邊門陀羅尼經"
+        "dynasty": "",
+        "n_paras": 263
       }
     ]
   },
   {
-    "group_id": "毘沙門天王經_t1244_t1245",
+    "file": "毘沙門天王經_t1244_t1245.json",
+    "group_id": "t1244_t1245",
     "group_title": "毘沙門天王經",
     "mode": "segment",
-    "n_alignments": 81,
-    "n_versions": 2,
+    "n_alignments": 5,
     "versions": [
       {
         "id": "t1244",
+        "title": "毘沙門天王經",
         "translator": "唐 不空譯",
-        "title": "毘沙門天王經"
+        "dynasty": "",
+        "n_paras": 56
       },
       {
         "id": "t1245",
+        "title": "佛說毘沙門天王經",
         "translator": "宋 法天譯",
-        "title": "佛說毘沙門天王經"
+        "dynasty": "",
+        "n_paras": 85
       }
     ]
   },
   {
-    "group_id": "菩薩戒本_t1500_t1501",
+    "file": "菩薩戒本_t1500_t1501.json",
+    "group_id": "t1500_t1501",
     "group_title": "菩薩戒本",
     "mode": "segment",
-    "n_alignments": 292,
-    "n_versions": 2,
+    "n_alignments": 11,
     "versions": [
       {
         "id": "t1500",
+        "title": "菩薩戒本",
         "translator": "慈氏菩薩說 北涼 曇無讖譯",
-        "title": "菩薩戒本"
+        "dynasty": "",
+        "n_paras": 174
       },
       {
         "id": "t1501",
+        "title": "菩薩戒本",
         "translator": "彌勒菩薩說 唐 玄奘譯",
-        "title": "菩薩戒本"
+        "dynasty": "",
+        "n_paras": 198
       }
     ]
   },
   {
-    "group_id": "菩薩善戒經_t1582_t1583",
+    "file": "菩薩善戒經_t1582_t1583.json",
+    "group_id": "t1582_t1583",
     "group_title": "菩薩善戒經",
-    "mode": "segment",
-    "n_alignments": 641,
-    "n_versions": 2,
-    "versions": [
-      {
-        "id": "t1583",
-        "translator": "劉宋 求那跋摩譯",
-        "title": "菩薩善戒經"
-      },
-      {
-        "id": "t1582",
-        "translator": "劉宋 求那跋摩譯",
-        "title": "菩薩善戒經"
-      }
-    ]
-  },
-  {
-    "group_id": "攝大乘論_t1592_t1593",
-    "group_title": "攝大乘論",
     "mode": "chapter",
     "n_alignments": 8,
-    "n_versions": 2,
+    "versions": [
+      {
+        "id": "t1582",
+        "title": "菩薩善戒經",
+        "translator": "劉宋 求那跋摩譯",
+        "dynasty": "",
+        "n_paras": 3291
+      },
+      {
+        "id": "t1583",
+        "title": "菩薩善戒經",
+        "translator": "劉宋 求那跋摩譯",
+        "dynasty": "",
+        "n_paras": 280
+      }
+    ]
+  },
+  {
+    "file": "攝大乘論_t1592_t1593.json",
+    "group_id": "t1592_t1593",
+    "group_title": "攝大乘論",
+    "mode": "segment",
+    "n_alignments": 67,
     "versions": [
       {
         "id": "t1592",
+        "title": "攝大乘論",
         "translator": "阿僧伽作 後魏 佛陀扇多譯",
-        "title": "攝大乘論"
+        "dynasty": "",
+        "n_paras": 1005
       },
       {
         "id": "t1593",
+        "title": "攝大乘論",
         "translator": "無著菩薩造 陳 真諦譯",
-        "title": "攝大乘論"
+        "dynasty": "",
+        "n_paras": 1278
       }
     ]
   },
   {
-    "group_id": "大乘法界無差別論_t1626_t1627",
+    "file": "大乘法界無差別論_t1626_t1627.json",
+    "group_id": "t1626_t1627",
     "group_title": "大乘法界無差別論",
     "mode": "segment",
-    "n_alignments": 187,
-    "n_versions": 2,
+    "n_alignments": 11,
     "versions": [
-      {
-        "id": "t1627",
-        "translator": "堅慧菩薩造 唐 提雲般若譯",
-        "title": "大乘法界無差別論"
-      },
       {
         "id": "t1626",
+        "title": "大乘法界無差別論",
         "translator": "堅慧菩薩造 唐 提雲般若等譯",
-        "title": "大乘法界無差別論"
+        "dynasty": "",
+        "n_paras": 144
+      },
+      {
+        "id": "t1627",
+        "title": "大乘法界無差別論",
+        "translator": "堅慧菩薩造 唐 提雲般若譯",
+        "dynasty": "",
+        "n_paras": 162
       }
     ]
   },
   {
-    "group_id": "大乘起信論_t1666_t1667",
+    "file": "大乘起信論_t1666_t1667.json",
+    "group_id": "t1666_t1667",
     "group_title": "大乘起信論",
     "mode": "segment",
-    "n_alignments": 473,
-    "n_versions": 2,
+    "n_alignments": 18,
     "versions": [
-      {
-        "id": "t1667",
-        "translator": "馬鳴菩薩造 唐 實叉難陀譯",
-        "title": "大乘起信論"
-      },
       {
         "id": "t1666",
+        "title": "大乘起信論",
         "translator": "馬鳴菩薩造 梁 真諦譯",
-        "title": "大乘起信論"
+        "dynasty": "",
+        "n_paras": 553
+      },
+      {
+        "id": "t1667",
+        "title": "大乘起信論",
+        "translator": "馬鳴菩薩造 唐 實叉難陀譯",
+        "dynasty": "",
+        "n_paras": 426
       }
     ]
   },
   {
-    "group_id": "觀心論_t2833_t1920",
+    "file": "觀心論_t2833_t1920.json",
+    "group_id": "t2833_t1920",
     "group_title": "觀心論",
     "mode": "segment",
-    "n_alignments": 301,
-    "n_versions": 2,
+    "n_alignments": 31,
     "versions": [
       {
-        "id": "t1920",
-        "translator": "隋 智顗述",
-        "title": "觀心論"
+        "id": "t2833",
+        "title": "觀心論",
+        "translator": "",
+        "dynasty": "",
+        "n_paras": 470
       },
       {
-        "id": "t2833",
-        "translator": "",
-        "title": "觀心論"
+        "id": "t1920",
+        "title": "觀心論",
+        "translator": "隋 智顗述",
+        "dynasty": "",
+        "n_paras": 143
       }
     ]
   },
   {
-    "group_id": "護身命經_t2865_t2866",
+    "file": "護身命經_t2865_t2866.json",
+    "group_id": "t2865_t2866",
     "group_title": "護身命經",
     "mode": "segment",
-    "n_alignments": 208,
-    "n_versions": 2,
+    "n_alignments": 7,
     "versions": [
       {
-        "id": "t2866",
-        "translator": "",
-        "title": "護身命經"
+        "id": "t2865",
+        "title": "護身命經",
+        "translator": "界　比丘道真",
+        "dynasty": "",
+        "n_paras": 194
       },
       {
-        "id": "t2865",
-        "translator": "界　比丘道真",
-        "title": "護身命經"
+        "id": "t2866",
+        "title": "護身命經",
+        "translator": "",
+        "dynasty": "",
+        "n_paras": 152
       }
     ]
   }

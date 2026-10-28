@@ -11,17 +11,30 @@
     <link rel="stylesheet" href="../css/mobile.css">
     <link rel="stylesheet" href="../css/tailwind-fixes.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .tl-item { position: relative; }
+        .tl-dot { position: absolute; left: -2.6rem; top: 1.1rem; width: 14px; height: 14px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 2px #8B4513; }
+        .tl-era-印度 { background: #B8860B; }
+        .tl-era-汉魏 { background: #A0522D; }
+        .tl-era-两晋 { background: #CD853F; }
+        .tl-era-南北朝 { background: #D2691E; }
+        .tl-era-隋唐 { background: #8B0000; }
+        .tl-era-宋 { background: #556B2F; }
+        .tl-era-明清 { background: #4682B4; }
+        .tl-era-近现代 { background: #708090; }
+        .era-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; color: #fff; margin-right: 6px; vertical-align: middle; }
+    </style>
 </head>
 <body class="bg-buddha-paper text-buddha-dark">
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             <a href="../index.html" class="text-xl font-bold text-buddha-primary">🏛️ 佛学本体论</a>
-            <div class="flex gap-4 text-xs flex-wrap">
+            <div class="hidden md:flex gap-4 text-xs">
                 <a href="../index.html" class="hover:text-buddha-secondary">首页</a>
                 <a href="categories.html" class="hover:text-buddha-secondary">部类总览</a>
-                <a href="sutras.html" class="hover:text-buddha-secondary">全藏经文库</a>
+                <a href="sutras.html" class="hover:text-buddha-secondary">全藏原典</a>
                 <a href="search.html" class="hover:text-buddha-secondary">全文检索</a>
-            <a href="dict.html" class="hover:text-yellow-400">佛学词典</a>
+                <a href="dict.html" class="hover:text-yellow-600">佛学词典</a>
                 <a href="parallel.html" class="hover:text-buddha-secondary">异译对照</a>
                 <a href="graph.html" class="hover:text-buddha-secondary">义理图谱</a>
                 <a href="kepan.html" class="hover:text-buddha-secondary">科判导航</a>
@@ -30,78 +43,102 @@
                 <a href="timeline.html" class="text-buddha-primary font-bold">译传时间轴</a>
                 <a href="translation.html" class="hover:text-buddha-secondary">佛典译学</a>
             </div>
+            <button id="mobile-menu-btn" class="md:hidden text-2xl">☰</button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-4 py-2 space-y-2 text-sm">
+            <a href="../index.html" class="block py-1">首页</a>
+            <a href="categories.html" class="block py-1">部类总览</a>
+            <a href="sutras.html" class="block py-1">全藏原典</a>
+            <a href="search.html" class="block py-1">全文检索</a>
+            <a href="dict.html" class="block py-1">佛学词典</a>
+            <a href="parallel.html" class="block py-1">异译对照</a>
+            <a href="graph.html" class="block py-1">义理图谱</a>
+            <a href="kepan.html" class="block py-1">科判导航</a>
+            <a href="panjiao.html" class="block py-1">宗派判教</a>
+            <a href="inference.html" class="block py-1">概念推演</a>
+            <a href="timeline.html" class="block py-1 font-bold text-buddha-primary">译传时间轴</a>
+            <a href="translation.html" class="block py-1">佛典译学</a>
         </div>
     </nav>
     <main class="max-w-4xl mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-buddha-primary mb-2">📜 佛典汉译时间轴</h1>
-        <p class="text-buddha-dark/70 mb-8">从东汉到北宋九百年佛经汉译史</p>
-        <div class="relative border-l-2 border-buddha-primary/30 ml-4 pl-8 space-y-8">
-            <div class="relative">
-                <div class="absolute -left-10 w-4 h-4 bg-buddha-primary rounded-full"></div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <div class="text-buddha-primary font-bold text-lg">公元67年 · 东汉</div>
-                    <div class="font-semibold">迦叶摩腾、竺法兰 · 白马寺译经</div>
-                    <div class="text-sm text-buddha-dark/70 mt-1">中国最早的佛经翻译，译出《四十二章经》，佛教正式传入中国</div>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -left-10 w-4 h-4 bg-buddha-primary rounded-full"></div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <div class="text-buddha-primary font-bold text-lg">公元148-180年 · 东汉</div>
-                    <div class="font-semibold">安世高译经</div>
-                    <div class="text-sm text-buddha-dark/70 mt-1">安息国太子安世高来华，译出《安般守意经》等小乘禅经35部40卷</div>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -left-10 w-4 h-4 bg-buddha-primary rounded-full"></div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <div class="text-buddha-primary font-bold text-lg">公元384年 · 东晋</div>
-                    <div class="font-semibold">鸠摩罗什 · 长安逍遥园译经</div>
-                    <div class="text-sm text-buddha-dark/70 mt-1">四大译经师之首，译出《般若》《法华》《金刚》《中论》等74部384卷，大乘中观思想系统传入中国</div>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -left-10 w-4 h-4 bg-buddha-primary rounded-full"></div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <div class="text-buddha-primary font-bold text-lg">公元399-412年 · 东晋</div>
-                    <div class="font-semibold">法显西行求法</div>
-                    <div class="text-sm text-buddha-dark/70 mt-1">从长安出发，历经西域三十余国到印度，取回梵本，译出《大般泥洹经》《摩诃僧祇律》，著《佛国记》</div>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -left-10 w-4 h-4 bg-buddha-primary rounded-full"></div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <div class="text-buddha-primary font-bold text-lg">公元629-645年 · 唐代</div>
-                    <div class="font-semibold">玄奘西行求法</div>
-                    <div class="text-sm text-buddha-dark/70 mt-1">西行十七年，历经百余国，到印度那烂陀寺求学，回国后译出经论75部1335卷，包括《大般若经》《成唯识论》，开创唯识宗</div>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -left-10 w-4 h-4 bg-buddha-primary rounded-full"></div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <div class="text-buddha-primary font-bold text-lg">公元671-695年 · 唐代</div>
-                    <div class="font-semibold">义净西行求法</div>
-                    <div class="text-sm text-buddha-dark/70 mt-1">从海路到印度，留学那烂陀寺11年，回国后译出《华严经》（八十卷本）《金光明最胜王经》等61部260卷</div>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -left-10 w-4 h-4 bg-buddha-primary rounded-full"></div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <div class="text-buddha-primary font-bold text-lg">公元716-774年 · 唐代</div>
-                    <div class="font-semibold">开元三大士 · 善无畏、金刚智、不空</div>
-                    <div class="text-sm text-buddha-dark/70 mt-1">印度密宗高僧来华，译出《大日经》《金刚顶经》，建立密宗传承，不空为三朝国师，译出密教经典111部143卷</div>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -left-10 w-4 h-4 bg-buddha-primary rounded-full"></div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <div class="text-buddha-primary font-bold text-lg">公元980-1000年 · 北宋</div>
-                    <div class="font-semibold">宋代译经院 · 施护、法天、天息灾</div>
-                    <div class="text-sm text-buddha-dark/70 mt-1">官方设立译经院，印度高僧来华系统翻译最后一批梵本，译出大乘经论200余部，汉译佛经事业基本完成</div>
-                </div>
-            </div>
+        <h1 class="text-3xl font-bold text-buddha-primary mb-2">📜 佛典汉译与传承时间轴</h1>
+        <p class="text-buddha-dark/70 mb-2">从释迦牟尼佛在世到近现代 · 2500 年佛法传灯</p>
+        <div class="flex flex-wrap gap-2 mb-6 text-xs">
+            <span class="era-badge tl-era-印度">印度源流</span>
+            <span class="era-badge tl-era-汉魏">汉魏初传</span>
+            <span class="era-badge tl-era-两晋">两晋般若</span>
+            <span class="era-badge tl-era-南北朝">南北朝学派</span>
+            <span class="era-badge tl-era-隋唐">隋唐创宗</span>
+            <span class="era-badge tl-era-宋">宋代以后</span>
+            <span class="era-badge tl-era-明清">明清融合</span>
+            <span class="era-badge tl-era-近现代">近现代</span>
+        </div>
+        <div class="relative border-l-2 border-buddha-primary/30 ml-6 pl-8 space-y-5" id="tl-root">
         </div>
     </main>
+
+    <script>
+    const EVENTS = [
+        { year: -565, end: -486, era: '印度', title: '释迦牟尼佛住世', desc: '释迦牟尼佛（约公元前565-前486年）生于迦毗罗卫国，二十九岁出家，三十五岁于菩提伽耶成道，说法四十九年，谈经三百余会，八十岁于拘尸那城娑罗双树林入涅槃。' },
+        { year: -486, era: '印度', title: '第一次结集 · 王舍城', desc: '佛灭后第一夏，大迦叶召集阿难等五百阿罗汉于王舍城七叶窟结集法藏，阿难诵出"经"（法），优波离诵出"律"，佛教经典首次系统整理。' },
+        { year: -386, era: '印度', title: '第二次结集 · 毗舍离', desc: '佛灭百年，跋耆族比丘提出十条新戒律，耶舍长老召集七百比丘于毗舍离结集，判定十事非法。僧团因戒律分歧开始分化，进入部派佛教时期。' },
+        { year: -250, era: '印度', title: '阿育王护法 · 第三次结集', desc: '孔雀王朝阿育王皈依佛教，于华氏城召集第三次结集，目犍连子帝须为上座，整理论藏，派出九路使团向印度各地及邻国传播佛法，佛教从区域宗教走向世界宗教。' },
+        { year: -240, era: '印度', title: '佛教传入斯里兰卡', desc: '阿育王子摩哂陀长老将佛教传入狮子国（今斯里兰卡），巴利语三藏在此传承，成为南传上座部佛教的根据地。' },
+        { year: 67, era: '汉魏', title: '白马驮经 · 迦叶摩腾、竺法兰', desc: '东汉明帝夜梦金人，遣蔡愔等赴西域求法，遇迦叶摩腾、竺法兰以白马驮经像至洛阳，次年建白马寺。二师于寺中译出《四十二章经》——中国第一部汉译佛经，佛教正式传入汉地。' },
+        { year: 148, end: 180, era: '汉魏', title: '安世高来洛阳 · 译小乘禅数', desc: '安息国太子安世高（安清）于汉桓帝建和二年至洛阳，是中国第一位系统译经师，二十余年间译出《安般守意经》《阴持入经》等35部40卷，所译为小乘上座部"禅数"之学。' },
+        { year: 178, era: '汉魏', title: '支娄迦谶译大乘般若', desc: '月氏国沙门支娄迦谶（支谶）至洛阳，译出《道行般若经》《般舟三昧经》《首楞严经》等14部27卷，为大乘般若学最早传入汉地者。' },
+        { year: 250, era: '汉魏', title: '朱士行 · 汉土第一个受戒比丘', desc: '魏颍川人朱士行于洛阳依羯磨法受戒出家，为汉地真正沙门之始。后因觉般若经梵本不全，于甘露五年西渡至于阗求梵本，八十岁遣弟子送回洛阳，由无罗叉译出《放光般若经》。' },
+        { year: 223, end: 253, era: '汉魏', title: '支谦、康僧会建业弘法', desc: '三国时支谦（月氏后裔）南下东吴，译出《维摩诘经》《大阿弥陀经》等88部118卷；康僧会于建业（今南京）建初寺，译《六度集经》，江南佛法自此兴起。' },
+        { year: 266, end: 308, era: '两晋', title: '竺法护 · 敦煌菩萨', desc: '月氏裔沙门竺法护（昙摩罗刹）通三十六国语言，随师西行取梵本，自西晋泰始至永嘉四十余年间译出《正法华经》《光赞般若》《弥勒成佛经》等154部309卷，大乘要籍系统入华。' },
+        { year: 384, era: '两晋', title: '鸠摩罗什至长安', desc: '姚秦弘始三年，鸠摩罗什（344-413）被迎入长安逍遥园西明阁，设译场，弟子僧肇、道生、僧睿等八百人参与，十一年间译出《大品般若》《金刚经》《法华经》《维摩诘经》《中论》《百论》《十二门论》《大智度论》等74部384卷，译笔信达雅，创"旧译"典范，大乘中观由此弘传，三论、天台、成实诸宗皆依之立宗。' },
+        { year: 399, end: 412, era: '两晋', title: '法显西行 · 第一位到印度取经的汉僧', desc: '东晋隆安三年，65岁的法显从长安出发，经西域过葱岭至印度，遍历三十余国，携《摩诃僧祇律》《大般泥洹经》等梵本由海路归国，译出佛经六部二十四卷，并撰《佛国记》（历游天竺记传）一卷，为中国僧人西行求法之先驱。' },
+        { year: 401, end: 412, era: '两晋', title: '慧远 · 庐山莲社', desc: '道安弟子慧远（334-416）入庐山，结白莲社，倡念佛求生西方，著《沙门不敬王者论》维护僧团独立，为净土宗初祖；邀请佛陀跋陀罗译出《修行方便禅经》《达磨多罗禅经》。' },
+        { year: 414, end: 421, era: '南北朝', title: '昙无谶 · 译《大般涅槃经》', desc: '中天竺沙门昙无谶在北凉姑臧译出《大般涅槃经》40卷（北本），宣说"一切众生皆有佛性""一阐提亦可成佛"，义学震动，南北涅槃师辈出，竺道生因孤明先发"一阐提皆得成佛"被摈，后经本南传，果符谶言。' },
+        { year: 420, era: '南北朝', title: '佛陀跋陀罗 · 译《华严经》', desc: '天竺禅师佛陀跋陀罗（觉贤）应慧远之请入庐山，后至建康道场寺译出晋译《华严经》60卷（六十华严），开华严学之源；又译《摩诃僧祇律》《达摩多罗禅经》。' },
+        { year: 508, era: '南北朝', title: '菩提流支来华 · 译《十地经论》', desc: '北天竺三藏菩提流支至洛阳，宣武帝为立永宁寺译场，译出《十地经论》《金刚仙论》《入楞伽经》等，地论宗由此兴起，《楞伽经》后为禅宗印心要典。' },
+        { year: 548, era: '南北朝', title: '真谛三藏 · 译《摄大乘论》', desc: '西天竺沙门真谛（499-569）于南朝译出《摄大乘论》《俱舍论》《大乘起信论》（题马鸣造，真谛译）等64部278卷，为摄论宗、俱舍宗宗师，是南北朝最重要译师之一。' },
+        { year: 575, era: '南北朝', title: '智顗 · 天台宗立宗', desc: '智者大师智顗（538-597）入天台山，述《法华文句》《法华玄义》《摩诃止观》（天台三大部），创"五时八教"判教体系，立"一心三观""一念三千"圆融教义，为中国第一个独立佛教宗派——天台宗的实际创始人。' },
+        { year: 629, end: 645, era: '隋唐', title: '玄奘西行取经 · 大唐三藏', desc: '贞观元年玄奘（602-664）从长安私渡出关，历经艰险抵印度那烂陀寺，从戒贤论师学唯识，又遍游五天竺，于曲女城辩论大会声震五印。贞观十九年归国，太宗礼遇于慈恩寺设译经院，19年间译出《大般若经》600卷、《瑜伽师地论》《成唯识论》《俱舍论》《心经》等75部1335卷，译笔精准，称"新译"，创唯识宗（法相宗），口述《大唐西域记》十二卷。' },
+        { year: 671, end: 695, era: '隋唐', title: '义净西行 · 译律典', desc: '范阳沙门义净（635-713）从广州取海路至印度，留学那烂陀寺十一年，游历三十余国，证圣元年归国，带回梵本400余部，译出《金光明最胜王经》《根本说一切有部毗奈耶》等61部260卷，为律藏系统传译之最，著《南海寄归内法传》《大唐西域求法高僧传》。' },
+        { year: 695, era: '隋唐', title: '实叉难陀 · 译八十华严', desc: '于阗沙门实叉难陀（652-710）应武则天之请来洛阳，重译《大方广佛华严经》80卷（八十华严），比旧译（六十）更完备；又译《大乘入楞伽经》《地藏菩萨本愿经》等。' },
+        { year: 716, end: 774, era: '隋唐', title: '开元三大士 · 密宗建立', desc: '善无畏（637-735）、金刚智（669-741）、不空（705-774）三位印度密教大师相继入唐，称"开元三大士"。善无畏译《大日经》（胎藏界），金刚智译《金刚顶瑜伽中略出念诵经》，不空（师子国人）为三朝国师，译出《金刚顶经》《仁王护国般若经》等111部143卷，密宗（真言宗）正式成立。一行（683-727）从善无畏学，制《大衍历》，著《大日经疏》。' },
+        { year: 700, end: 900, era: '隋唐', title: '六祖慧能 · 禅宗兴盛', desc: '达摩（西来初祖）→慧可→僧璨→道信→弘忍（五祖）→慧能（638-713，六祖）于曹溪传顿教法门，弟子法海集《六祖坛经》（汉文佛经中唯一被尊为"经"的祖师著作）。后衍出五家七宗：临济、曹洞、沩仰、云门、法眼；北宗神秀（606-706）为渐教，南宗顿门终成汉传佛教主流。马祖道一、百丈怀海立丛林清规，禅院制度成熟。' },
+        { year: 800, era: '隋唐', title: '澄观、宗密 · 华严集大成', desc: '清凉澄观（738-839）述《华严经大疏》80卷，为华严四祖；圭峰宗密（780-841）兼传华严与禅，倡"教禅一致"，著《原人论》《禅源诸诠集》，融合各宗。华严经从杜顺初祖，经智俨、法藏、澄观、宗密，理论体系完整建立。' },
+        { year: 845, era: '隋唐', title: '会昌法难 · 唐武宗毁佛', desc: '唐武宗李炎崇道抑佛，会昌五年下敕废佛，毁寺4600余所、招提兰若4万余所，还俗僧尼26万余人，收良田数千万顷，佛经大量散失，除禅宗、净土因深入民间幸免于难外，各宗皆受重创，是汉传佛教由盛转衰的转折点。' },
+        { year: 980, end: 1020, era: '宋', title: '宋代译经院 · 最后一波官办译经', desc: '宋太宗太平兴国七年设译经院于开封太平兴国寺，召印度僧天息灾、施护、法天等开译，至仁宗景祐年间，五十余年间译出大乘经论250余部470余卷，多为密教典籍。因印度佛教已近尾声，梵本来源渐绝，汉译佛经事业至此基本完成。' },
+        { year: 1000, end: 1300, era: '宋', title: '宋代以后 · 大藏经刻印', desc: '宋太祖开宝四年（971）敕雕《开宝藏》，为中国第一部刻本大藏经，此后历代官私刻藏不断：辽《契丹藏》、金《赵城金藏》、宋《崇宁藏》《碛砂藏》、元《普宁藏》、明《洪武南藏》《永乐北藏》《嘉兴藏》、清《乾隆大藏经》（龙藏），高丽、日本亦多次雕藏，汉传佛典借雕版印刷广泛流通。' },
+        { year: 1200, end: 1300, era: '宋', title: '净土宗汇流 · 诸宗归净', desc: '经会昌法难与五代战乱，义学诸宗衰微，禅宗临济、曹洞两宗独盛，永明延寿（904-975）著《宗镜录》百卷，倡禅净双修。入宋以后，天台、华严中兴有限，持名念佛法门因简便易行，渐成各宗共修之业，净土宗成为民间佛教主流。' },
+        { year: 1271, end: 1368, era: '宋', title: '元代 · 藏传佛教传入汉地', desc: '元世祖忽必烈尊萨迦派八思巴为帝师，藏传佛教（喇嘛教）传入内地，汉藏佛教开始深度交流；同时白云宗、白莲教等民间佛教结社活跃。' },
+        { year: 1400, end: 1700, era: '明清', title: '明清 · 融合渗透与民间化', desc: '明太祖朱元璋出身沙门，规范僧团制度；明成祖永乐帝敕刻北藏，封藏传噶玛巴大宝法王。明末四大师（云栖袾宏、紫柏真可、憨山德清、蕅益智旭）倡诸宗融合、三教合一。清代皇帝多崇喇嘛教，雍正帝自号圆明居士，亲编《御选语录》；民间佛教深入民俗，观音、弥陀、地藏、弥勒信仰普及，宝卷善书流行。' },
+        { year: 1900, era: '近现代', title: '清末民国 · 敦煌藏经洞发现', desc: '1900年王圆箓发现敦煌莫高窟藏经洞，封存900余年的5万余卷六朝至宋初写本文书重见天日，包括大量古佚经、禅宗早期文献、三阶教典籍等，震惊国际学界，催生世界性的"敦煌学"。同年八国联军侵华，战乱中文物大量流失英、法、俄、日。' },
+        { year: 1912, end: 1949, era: '近现代', title: '近代佛教复兴 · 人间佛教', desc: '杨文会（1837-1911）在南京创立金陵刻经处，开近代佛教复兴先河，门下欧阳竟无、太虚、章太炎等。太虚大师（1890-1947）倡导"人生佛教"（后演为"人间佛教"），推动僧伽教育改革，创办武昌佛学院、汉藏教理院。虚云老和尚（1840-1959）一身兼嗣禅宗五宗法脉，重兴祖庭数十处；印光（1861-1940）专弘净土；弘一（1880-1942，李叔同）出家修律；印顺导师（1906-2005）以现代学术方法重新阐释印度佛教本义，著《印度之佛教》《佛法概论》。' },
+        { year: 1950, end: 2000, era: '近现代', title: '当代 · 两岸传承与世界传播', desc: '大陆"文革"中佛教遭受冲击，改革开放后恢复寺院、重兴佛学院（中国佛学院、闽南佛学院等），《中华大藏经》（汉文部分）1984年起陆续编纂出版。台湾印顺、圣严、星云、证严等法师将"人间佛教"发扬光大，佛光山、法鼓山、慈济功德会、中台禅寺影响遍及全球。日本、韩国保有汉传传统，越南佛教属汉传系；藏传佛教借由流亡海外在欧美广泛传播。CBETA电子佛典（1998年起）将大正藏数字化公开，开启佛典研究的数字时代。' },
+    ];
+
+    const root = document.getElementById('tl-root');
+    root.innerHTML = EVENTS.map(ev => {
+        const yearText = ev.end ? `公元前${-ev.year}年—公元前${-ev.end}年`
+                       : ev.year < 0 ? `公元前${-ev.year}年前后`
+                       : ev.end ? `公元${ev.year}—${ev.end}年`
+                       : `公元${ev.year}年`;
+        const eraClass = {
+            '印度':'tl-era-印度','汉魏':'tl-era-汉魏','两晋':'tl-era-两晋',
+            '南北朝':'tl-era-南北朝','隋唐':'tl-era-隋唐','宋':'tl-era-宋',
+            '明清':'tl-era-明清','近现代':'tl-era-近现代'
+        }[ev.era] || 'tl-era-隋唐';
+        return `<div class="tl-item">
+            <div class="tl-dot ${eraClass}"></div>
+            <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex flex-wrap items-baseline gap-2">
+                    <span class="era-badge ${eraClass}">${ev.era}</span>
+                    <span class="text-buddha-primary font-bold text-base">${yearText}</span>
+                </div>
+                <div class="font-semibold text-lg mt-1">${ev.title}</div>
+                <div class="text-sm text-buddha-dark/80 mt-2 leading-relaxed">${ev.desc}</div>
+            </div>
+        </div>`;
+    }).join('');
+    </script>
     <script src="../js/mobile-nav.js"></script>
 </body>
 </html>
