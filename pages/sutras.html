@@ -176,6 +176,9 @@ let notes = LS_get(LS_NOTE);
 let bookmarks = LS_get(LS_BM);
 let curSBtab = 'fav';
 
+// 段落唯一 ID：经号-章序-段序（用于收藏/笔记/引用定位）
+function paraId(sutraId, chapIdx, paraIdx){ return `${sutraId}-c${chapIdx}-p${paraIdx}`; }
+
 // ===== 跨页关联 =====
 let CROSS_LOADED = false;
 async function ensureCrossLoaded(){
@@ -543,7 +546,7 @@ async function loadExtras() {
         } else {
             // 兜底：若未加载到autoterms，所有非人物非地名词条都可识别
             DICT_TERMS && DICT_TERMS.forEach(t => {
-                if(t.category && !['人物','地名'].includes(t.category) && t.name.length>=2 && t.name.length<=8) DICT_AUTO_SET.add(t.name);
+                if(t.category && !['人物','地名','人物圣众','护法诸天'].includes(t.category) && t.name.length>=2 && t.name.length<=8) DICT_AUTO_SET.add(t.name);
             });
         }
         if (currentSutra && (NOTES[currentSutra.id] || (KEPAN && KEPAN[currentSutra.id]))) { loadedChapters = 0; const c = document.getElementById('sutra-text'); if (c) c.innerHTML = ''; if (c) loadMoreChapters(); }
