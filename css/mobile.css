@@ -1,0 +1,281 @@
+/* ===== 全站移动端适配补丁 ===== */
+
+/* 防止横向滚动 */
+html, body {
+  overflow-x: hidden;
+}
+img, video, iframe, pre, table {
+  max-width: 100%;
+}
+
+/* 全局触控目标放大 */
+button, a.btn, .char-btn, .type-tab, .font-size-btn,
+.tool-btn, .page-btn, #dict-pop, #note-pop {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* —— 导航栏移动适配（子页面统一）—— */
+@media (max-width: 767px) {
+  .site-nav {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+  }
+  .site-nav .nav-brand {
+    font-size: 17px !important;
+  }
+  .site-nav .nav-sep {
+    display: none;
+  }
+  .site-nav .nav-links {
+    display: none !important; /* 手机端隐藏横排 */
+  }
+  .mobile-menu-btn {
+    display: inline-flex !important;
+  }
+}
+@media (min-width: 768px) {
+  .mobile-menu-btn {
+    display: none !important;
+  }
+  #mobileNavPanel {
+    display: none !important;
+  }
+}
+
+/* 移动端抽屉菜单 */
+#mobileNavPanel {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 260px;
+  max-width: 80vw;
+  height: 100vh;
+  background: #3E2723;
+  z-index: 200;
+  padding: 60px 20px 20px;
+  overflow-y: auto;
+  transition: right .28s ease;
+  box-shadow: -2px 0 16px rgba(0,0,0,.25);
+}
+#mobileNavPanel.open {
+  right: 0;
+}
+#mobileNavMask {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 199;
+  opacity: 0; pointer-events: none;
+  transition: opacity .28s ease;
+}
+#mobileNavMask.open {
+  opacity: 1; pointer-events: auto;
+}
+#mobileNavPanel a {
+  display: block;
+  color: #F5F0E1;
+  padding: 13px 8px;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(218,165,32,.15);
+  min-height: 44px;
+}
+#mobileNavPanel a.nav-active {
+  color: #DAA520;
+  font-weight: 600;
+  background: rgba(218,165,32,.1);
+  border-radius: 6px;
+  padding-left: 14px;
+}
+#mobileNavClose {
+  position: absolute;
+  top: 14px; right: 16px;
+  color: #F5F0E1;
+  font-size: 22px;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: 0; cursor: pointer;
+}
+
+/* —— 经文阅读页移动端适配 —— */
+@media (max-width: 767px) {
+  /* 页面主布局：手机端改成上下结构 */
+  body > .max-w-7xl.flex {
+    flex-direction: column !important;
+    padding: 12px !important;
+    gap: 0 !important;
+  }
+  /* 标题区 */
+  .sutra-header h1 {
+    font-size: 22px !important;
+  }
+  .sutra-meta {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  /* 读经工具栏：允许换行 */
+  .reading-toolbar {
+    flex-wrap: wrap;
+    gap: 6px !important;
+    padding: 8px 10px !important;
+  }
+  .reading-toolbar .rt-group {
+    gap: 4px !important;
+  }
+  .reading-toolbar button {
+    padding: 8px 10px !important;
+    font-size: 13px !important;
+  }
+  .rt-label { display: none; } /* 手机端隐藏"字号""章节"等标签，只留图标 */
+  
+  /* 正文字体和行距 */
+  .sutra-content {
+    font-size: 17px !important; /* 手机默认偏大，便于阅读 */
+    line-height: 2 !important;
+    padding: 16px 4px !important;
+  }
+  .sutra-content p {
+    margin-bottom: .9em !important;
+    text-indent: 2em;
+  }
+  
+  /* 章节目录弹窗：手机端全屏覆盖 */
+  #toc-panel {
+    position: fixed !important;
+    top: 0 !important; left: 0 !important;
+    width: 100vw !important; height: 100vh !important;
+    max-width: none !important;
+    border-radius: 0 !important;
+    padding: 54px 16px 20px !important;
+    z-index: 150;
+    background: #fffaf0 !important;
+    max-height: 100vh !important;
+  }
+  #toc-panel a { padding: 14px 10px !important; font-size: 16px !important; min-height: 44px; border-bottom: 1px solid #f0e6d0; }
+  /* 学术工具侧栏：手机端全屏 */
+  #study-sidebar {
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+  /* 词典/笔记弹窗：左右铺满 */
+  #dict-pop {
+    position: fixed !important;
+    left: 10px !important; right: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    max-width: none !important;
+    width: auto !important;
+    z-index: 190 !important;
+  }
+  #note-pop {
+    left: 10px !important; right: 10px !important;
+    bottom: 20px !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: 70vh !important;
+  }
+  /* 段落末尾工具按钮：手机端常显（不再只在hover时显示） */
+  .para-wrap .para-tools { display: inline-flex !important; position: static !important; margin-left: 6px !important; box-shadow: none !important; background: transparent !important; }
+  .para-wrap .para-tools button { font-size: 16px !important; padding: 4px 8px !important; min-width: 36px !important; min-height: 36px !important; }
+  .para-wrap { display: flow-root; }
+  /* 经文内容区 */
+  #content-area { padding: 14px !important; }
+  /* 左侧经目折叠按钮间距 */
+  #sutra-list-toggle { margin-top: 0; }
+  .w-72.flex-shrink-0 { width: 100% !important; flex-shrink: 1 !important; margin-bottom: 12px; }
+  .w-72.flex-shrink-0 > div { position: static !important; max-height: 60vh !important; }
+  
+  /* 经文库列表页：卡片紧凑 */
+  .sutra-card { padding: 12px !important; }
+  .sutra-card h3 { font-size: 16px !important; }
+  
+  /* 筛选栏折行 */
+  .filter-bar { flex-wrap: wrap; gap: 6px !important; padding: 10px !important; }
+  .filter-bar select, .filter-bar input {
+    font-size: 14px !important;
+    min-height: 38px;
+  }
+}
+
+/* —— 首页移动端 —— */
+@media (max-width: 767px) {
+  .hero-title { font-size: 32px !important; }
+  .hero-subtitle { font-size: 15px !important; padding: 0 12px; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+  .stat-card { padding: 18px 12px !important; }
+  .stat-num { font-size: 32px !important; }
+  .stat-label { font-size: 13px !important; }
+  .stat-desc { font-size: 12px !important; }
+  .ontology-layer { padding: 16px !important; }
+  .layer-num { width: 44px !important; height: 44px !important; font-size: 16px !important; }
+  .layer-body h3 { font-size: 16px !important; }
+  .layer-body p { font-size: 14px !important; }
+  .hero-actions { flex-direction: column; gap: 10px !important; padding: 0 20px; }
+  .hero-actions a { width: 100%; text-align: center; }
+}
+
+/* —— 词典页移动端 —— */
+@media (max-width: 767px) {
+  .dict-search-row { flex-wrap: wrap; gap: 8px !important; padding: 14px 12px !important; }
+  .dict-search-row input { font-size: 16px !important; /* iOS不自动放大 */ }
+  .dict-type-tabs { flex-wrap: wrap; gap: 6px !important; padding: 0 12px 12px; }
+  .char-index { padding: 8px 12px !important; gap: 4px !important; }
+  .char-btn { padding: 8px 10px !important; font-size: 14px !important; min-width: 36px; }
+  .dict-list { padding: 12px !important; }
+  .term-card { padding: 12px !important; }
+  .term-card h3 { font-size: 16px !important; }
+  .term-card p { font-size: 14px !important; }
+}
+
+/* —— 异译对照页移动端：卡片横滑 —— */
+@media (max-width: 767px) {
+  .parallel-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    gap: 12px !important;
+    padding: 12px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .parallel-card {
+    flex: 0 0 88vw !important;
+    scroll-snap-align: center;
+    min-width: 0 !important;
+  }
+  .parallel-header { padding: 14px !important; }
+  .parallel-header h3 { font-size: 15px !important; }
+  .parallel-body {
+    max-height: 70vh !important;
+    font-size: 15px !important;
+    line-height: 1.9 !important;
+    padding: 14px !important;
+  }
+  .parallel-body p { padding: 10px 8px !important; margin: 0 !important; border-bottom: 1px dashed #e5d9c3; }
+  .parallel-group-tabs { flex-wrap: wrap; gap: 6px !important; padding: 10px 12px !important; }
+  .parallel-group-tabs button { font-size: 13px !important; padding: 8px 12px !important; }
+}
+
+/* —— 通用页移动端（部类/检索/图谱/科判等）—— */
+@media (max-width: 767px) {
+  .page-title { font-size: 22px !important; padding: 20px 16px 10px !important; }
+  .page-subtitle { font-size: 13px !important; padding: 0 16px; }
+  .content-grid, .card-grid { grid-template-columns: 1fr !important; gap: 12px !important; padding: 12px !important; }
+  .card, .panel { padding: 14px !important; }
+  /* 部类页 */
+  .category-card h2 { font-size: 18px !important; }
+  .cat-sutra-list { max-height: 240px !important; }
+  /* 检索页 */
+  #search-input { font-size: 16px !important; }
+  .result-item { padding: 12px !important; }
+  /* 时间轴 */
+  .timeline-item { padding-left: 28px !important; }
+  .timeline-item::before { left: 8px !important; }
+  /* 科判/图谱画布容器 */
+  #graph-canvas, #kepan-tree { height: 60vh !important; }
+  /* 表格 */
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* iOS点击高亮去除 */
+* { -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }

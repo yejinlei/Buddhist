@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/tailwind.min.css">
     <link rel="stylesheet" href="../css/tailwind-extra.css">
     <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" href="../css/tailwind-fixes.css">
     <style>
         body { font-family: -apple-system, "Noto Serif SC", "Songti SC", serif; background-color: #F5F0E1; color: #2C1810; }
         .nav-active { background-color: rgba(184,134,11,0.2); }
@@ -17,6 +19,13 @@
         .scholar-mark { color:#B8860B; cursor:pointer; font-size:.68em; vertical-align:super; margin:0 2px; font-weight:700; }
         .dict-term { color:#8B4513; border-bottom:1px dashed #B8860B; cursor:pointer; transition:background .15s; }
         .dict-term:hover { background: rgba(184,134,11,.15); border-bottom-style:solid; }
+        .para-wrap { position: relative; }
+        .para-tools { position:absolute; right:2px; top:2px; display:none; gap:2px; background:rgba(255,255,255,.95); border-radius:4px; padding:2px; box-shadow:0 1px 4px rgba(0,0,0,.1); z-index:5; }
+        .para-wrap:hover .para-tools { display:inline-flex; }
+        .para-tools button { background:none; border:0; font-size:13px; padding:4px 6px; cursor:pointer; color:#8B4513; border-radius:3px; min-width:28px; min-height:28px; }
+        .para-tools button:hover { background:rgba(184,134,11,.15); }
+        .para-tools .on { color:#DAA520; }
+        .note-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:#DAA520; margin-left:3px; vertical-align:middle; }
         #note-pop { position:fixed; right:20px; bottom:20px; width:340px; max-width:calc(100vw - 40px); max-height:60vh; overflow:auto; background:#fff; border:1px solid #e5d9c3; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.12); padding:16px; z-index:80; }
         #dict-pop { position:absolute; background:#fff; border:1px solid #e5d9c3; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.15); padding:14px 16px; max-width:320px; z-index:90; font-size:14px; line-height:1.7; }
         #dict-pop .dt-name { font-size:16px; font-weight:700; color:#2C1810; margin-right:8px; }
@@ -25,6 +34,36 @@
         #dict-pop .dt-close { position:absolute; top:6px; right:10px; color:#999; cursor:pointer; font-size:18px; line-height:1; }
         #dict-pop .dt-close:hover { color:#333; }
         #dict-pop .dict-hint { text-align:center; color:#999; font-size:12px; padding:10px 8px; }
+        /* 学术工具侧栏 */
+        #study-sidebar { position:fixed; top:0; right:-400px; width:380px; max-width:88vw; height:100vh; background:#fffaf0; z-index:180; box-shadow:-4px 0 20px rgba(0,0,0,.2); transition:right .28s ease; display:flex; flex-direction:column; }
+        #study-sidebar.open { right:0; }
+        #study-sidebar-mask { position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:179; opacity:0; pointer-events:none; transition:opacity .28s ease; }
+        #study-sidebar-mask.open { opacity:1; pointer-events:auto; }
+        #study-sidebar .sb-head { padding:14px 16px; border-bottom:1px solid #e5d9c3; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(135deg,#8B4513,#B8860B); color:#F5F0E1; }
+        #study-sidebar .sb-head h3 { font-size:17px; font-weight:600; margin:0; }
+        #study-sidebar .sb-head button { background:none; border:0; color:#F5F0E1; font-size:22px; cursor:pointer; min-width:40px; min-height:40px; }
+        #study-sidebar .sb-tabs { display:flex; border-bottom:1px solid #e5d9c3; }
+        #study-sidebar .sb-tabs button { flex:1; padding:12px 4px; background:none; border:0; border-bottom:2px solid transparent; font-size:14px; cursor:pointer; color:#3E2723; }
+        #study-sidebar .sb-tabs button.active { border-bottom-color:#B8860B; color:#B8860B; font-weight:600; }
+        #study-sidebar .sb-body { flex:1; overflow-y:auto; padding:12px; }
+        .sb-item { padding:10px 8px; border-bottom:1px solid #f0e6d0; }
+        .sb-item .sb-sutra { font-size:12px; color:#8B4513; margin-bottom:4px; }
+        .sb-item .sb-text { font-size:14px; line-height:1.6; color:#2C1810; margin-bottom:6px; max-height:4.8em; overflow:hidden; }
+        .sb-item .sb-note { font-size:13px; color:#5c4033; background:#fff8e7; padding:8px; border-radius:6px; border-left:3px solid #B8860B; }
+        .sb-item .sb-actions { margin-top:6px; display:flex; gap:8px; }
+        .sb-item .sb-actions button { background:none; border:0; color:#8B4513; font-size:12px; cursor:pointer; padding:4px 8px; border-radius:4px; }
+        .sb-item .sb-actions button:hover { background:rgba(184,134,11,.12); }
+        .sb-empty { text-align:center; color:#999; padding:40px 20px; font-size:14px; }
+        .read-toolbar { display:flex; align-items:center; gap:8px; padding:10px 12px; background:#fdf8ec; border-radius:8px; border:1px solid #e5d9c3; margin-bottom:12px; flex-wrap:wrap; }
+        .read-toolbar button { padding:6px 12px; border:1px solid #d4c8b0; background:#fff; border-radius:6px; cursor:pointer; font-size:14px; color:#3E2723; }
+        .read-toolbar button:hover { background:#f5ecd0; border-color:#B8860B; }
+        .read-toolbar button.active { background:#B8860B; color:#fff; border-color:#B8860B; }
+        .rt-label { font-size:13px; color:#8B4513; }
+        #toc-panel { background:#fff; border:1px solid #e5d9c3; border-radius:8px; padding:8px 0; max-height:50vh; overflow-y:auto; box-shadow:0 4px 16px rgba(0,0,0,.08); }
+        #toc-panel a { display:block; padding:8px 14px; font-size:14px; color:#3E2723; text-decoration:none; border-bottom:1px solid #f5ecd9; }
+        #toc-panel a:hover { background:#fdf8ec; color:#B8860B; }
+        .sutra-container { max-width:880px; margin:0 auto; }
+        .sutra-content { font-size:16px; line-height:2; color:#2C1810; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -53,6 +92,21 @@
 
     <div id="note-pop" class="hidden"></div>
     <div id="dict-pop" class="hidden"></div>
+
+    <!-- 学术工具侧栏 -->
+    <div id="study-sidebar-mask"></div>
+    <div id="study-sidebar">
+        <div class="sb-head">
+            <h3><i class="fa fa-star"></i> 我的学术工具</h3>
+            <button id="sb-close" aria-label="关闭"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="sb-tabs">
+            <button data-tab="fav" class="active">⭐ 收藏 <span id="fav-count" class="text-xs opacity-70"></span></button>
+            <button data-tab="note">📝 笔记 <span id="note-count" class="text-xs opacity-70"></span></button>
+            <button data-tab="bm">🔖 书签 <span id="bm-count" class="text-xs opacity-70"></span></button>
+        </div>
+        <div class="sb-body" id="sb-body"></div>
+    </div>
 
     <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
         <!-- 左侧经目 -->
@@ -108,6 +162,229 @@ let DICT_MAP = new Map();
 let DICT_MAX_LEN = 6;
 const CHAPTERS_PER_PAGE = 10; // 每次加载10章（大约几卷）
 
+// ===== 学术工具：收藏/笔记/引用/书签 =====
+const LS_FAV = 'buddhist_favs';
+const LS_NOTE = 'buddhist_notes';
+const LS_BM = 'buddhist_bookmarks';
+function LS_get(k){ try{ return JSON.parse(localStorage.getItem(k)||'[]'); }catch(e){return [];} }
+function LS_set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+let favs = LS_get(LS_FAV);
+let notes = LS_get(LS_NOTE);
+let bookmarks = LS_get(LS_BM);
+let curSBtab = 'fav';
+
+function paraId(sutraId, chapIdx, pIdx) { return `${sutraId}_c${chapIdx}_p${pIdx}`; }
+
+function getParaText(pid) {
+  const el = document.getElementById(pid);
+  return el ? el.textContent.trim().replace(/\s+/g,' ') : '';
+}
+function getSutraTitle() {
+  return currentSutra ? (currentSutra.title || currentSutra.sutra_title || currentSutra.id) : '';
+}
+function getTranslator() {
+  return currentSutra ? (currentSutra.translator || '失译') : '';
+}
+
+function toggleFav(pid) {
+  const idx = favs.findIndex(f => f.pid === pid);
+  if (idx >= 0) { favs.splice(idx,1); }
+  else {
+    favs.unshift({
+      pid, sutra: currentSutra.id, sutraTitle: getSutraTitle(),
+      text: getParaText(pid).slice(0,80), ts: Date.now()
+    });
+  }
+  LS_set(LS_FAV, favs);
+  updateParaUI(pid);
+  if (curSBtab==='fav') renderSB();
+}
+
+function openNoteEditor(pid) {
+  const existing = notes.find(n => n.pid === pid);
+  const txt = prompt('写笔记：\n（留空则删除该段笔记）', existing ? existing.note : '');
+  if (txt === null) return;
+  if (txt.trim() === '') {
+    notes = notes.filter(n => n.pid !== pid);
+  } else {
+    if (existing) existing.note = txt;
+    else notes.unshift({
+      pid, sutra: currentSutra.id, sutraTitle: getSutraTitle(),
+      text: getParaText(pid).slice(0,80), note: txt, ts: Date.now()
+    });
+  }
+  LS_set(LS_NOTE, notes);
+  updateParaUI(pid);
+  if (curSBtab==='note') renderSB();
+}
+
+function citePara(pid) {
+  const paraText = getParaText(pid);
+  const sutraId = currentSutra ? (currentSutra.id || '').toUpperCase() : '';
+  const title = getSutraTitle();
+  const trans = getTranslator();
+  // §段号 = cN_pN → 简化显示
+  const m = pid.match(/_c(\d+)_p(\d+)/);
+  const seg = m ? `§${parseInt(m[1])+1}.${parseInt(m[2])+1}` : '';
+  const cite = `"${paraText.slice(0,60)}${paraText.length>60?'…':''}" ——《${title}》（${trans}译），${sutraId}，${seg}`;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(cite).then(()=>toast('✅ 引用已复制：' + cite.slice(0,40)+'…'))
+      .catch(()=>fallbackCopy(cite));
+  } else fallbackCopy(cite);
+}
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); toast('✅ 引用已复制'); }catch(e){alert(text);}
+  ta.remove();
+}
+let toastTimer;
+function toast(msg) {
+  let t = document.getElementById('buddha-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'buddha-toast';
+    t.style.cssText='position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:rgba(62,39,35,.92);color:#fff;padding:10px 18px;border-radius:22px;font-size:14px;z-index:300;box-shadow:0 4px 16px rgba(0,0,0,.25);max-width:80vw;';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg; t.style.opacity='1';
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>{ t.style.transition='opacity .4s'; t.style.opacity='0'; },1800);
+}
+
+function addBookmark() {
+  if (!currentSutra) return;
+  const sutraId = currentSutra.id;
+  const chap = loadedChapters > 0 ? Math.min(loadedChapters-1, (currentSutra.content||[]).length-1) : 0;
+  const scrollY = window.scrollY;
+  // 每经只保留一个书签，覆盖旧的
+  bookmarks = bookmarks.filter(b => b.sutra !== sutraId);
+  bookmarks.unshift({
+    sutra: sutraId, sutraTitle: getSutraTitle(), chap, scrollY, ts: Date.now()
+  });
+  LS_set(LS_BM, bookmarks);
+  toast('🔖 已添加书签（当前位置）');
+  updateBookmarkBtn();
+  if (curSBtab==='bm') renderSB();
+}
+
+function gotoBookmark(b) {
+  const hit = allSutras.find(s => s.id === b.sutra || s.file === b.sutra+'.json');
+  if (hit) {
+    closeSB();
+    loadSutra(hit).then(()=>{
+      setTimeout(()=>{ window.scrollTo({top:b.scrollY||0, behavior:'smooth'}); },300);
+    });
+  }
+}
+function delItem(list, key, pid, storageKey){
+  const arr = (list==='fav')?favs:(list==='note'?notes:bookmarks);
+  const idx = arr.findIndex(x=>x[key]===pid);
+  if (idx>=0){ arr.splice(idx,1); LS_set(storageKey,arr); renderSB(); updateParaUI(pid); }
+}
+function updateBookmarkBtn() {
+  const btn = document.getElementById('bookmark-btn');
+  if (!btn || !currentSutra) return;
+  const has = bookmarks.some(b => b.sutra === currentSutra.id);
+  btn.classList.toggle('active', has);
+  btn.title = has ? '已加书签（点击更新位置）' : '添加书签';
+}
+function updateParaUI(pid) {
+  const el = document.getElementById(pid);
+  if (!el) return;
+  const favBtn = el.querySelector('.pt-fav');
+  const noteBtn = el.querySelector('.pt-note');
+  if (favBtn) {
+    const on = favs.some(f=>f.pid===pid);
+    favBtn.classList.toggle('on', on);
+    favBtn.innerHTML = on ? '★' : '☆';
+    favBtn.title = on ? '取消收藏' : '收藏该段';
+  }
+  if (noteBtn) {
+    const on = notes.some(n=>n.pid===pid);
+    noteBtn.classList.toggle('on', on);
+    noteBtn.innerHTML = on ? '📝<span class="note-dot"></span>' : '📝';
+    noteBtn.title = on ? '编辑笔记' : '添加笔记';
+  }
+}
+function openSB() { document.getElementById('study-sidebar').classList.add('open'); document.getElementById('study-sidebar-mask').classList.add('open'); document.body.style.overflow='hidden'; renderSB(); }
+function closeSB() { document.getElementById('study-sidebar').classList.remove('open'); document.getElementById('study-sidebar-mask').classList.remove('open'); document.body.style.overflow=''; }
+function switchTab(tab) {
+  curSBtab = tab;
+  document.querySelectorAll('#study-sidebar .sb-tabs button').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+  renderSB();
+}
+function renderSB() {
+  const body = document.getElementById('sb-body');
+  document.getElementById('fav-count').textContent = favs.length ? `(${favs.length})` : '';
+  document.getElementById('note-count').textContent = notes.length ? `(${notes.length})` : '';
+  document.getElementById('bm-count').textContent = bookmarks.length ? `(${bookmarks.length})` : '';
+  let html = '';
+  if (curSBtab==='fav') {
+    if (!favs.length) html = '<div class="sb-empty">还没有收藏<br><br>段落末尾的 ☆ 按钮即可收藏</div>';
+    else favs.forEach(f=>{
+      html += `<div class="sb-item">
+        <div class="sb-sutra">📜 ${f.sutraTitle} · ${(f.sutra||'').toUpperCase()}</div>
+        <div class="sb-text">"${f.text}…"</div>
+        <div class="sb-actions">
+          <button onclick="jumpToPara('${f.pid}')"><i class="fa fa-arrow-right"></i> 跳转</button>
+          <button onclick="delItem('fav','pid','${f.pid}',LS_FAV)"><i class="fa fa-trash"></i> 删除</button>
+        </div></div>`;
+    });
+  } else if (curSBtab==='note') {
+    if (!notes.length) html = '<div class="sb-empty">还没有笔记<br><br>段落末尾的 📝 按钮即可添加</div>';
+    else notes.forEach(n=>{
+      html += `<div class="sb-item">
+        <div class="sb-sutra">📜 ${n.sutraTitle} · ${(n.sutra||'').toUpperCase()}</div>
+        <div class="sb-text">"${n.text}…"</div>
+        <div class="sb-note">${(n.note||'').replace(/</g,'&lt;')}</div>
+        <div class="sb-actions">
+          <button onclick="jumpToPara('${n.pid}')"><i class="fa fa-arrow-right"></i> 跳转</button>
+          <button onclick="delItem('note','pid','${n.pid}',LS_NOTE)"><i class="fa fa-trash"></i> 删除</button>
+        </div></div>`;
+    });
+  } else {
+    if (!bookmarks.length) html = '<div class="sb-empty">还没有书签<br><br>工具栏「🔖 书签」记录阅读位置</div>';
+    else bookmarks.forEach(b=>{
+      html += `<div class="sb-item">
+        <div class="sb-sutra">🔖 ${b.sutraTitle} · ${(b.sutra||'').toUpperCase()}</div>
+        <div class="sb-text">第 ${b.chap+1} 章附近</div>
+        <div class="sb-actions">
+          <button onclick="gotoBookmark({sutra:'${b.sutra}',scrollY:${b.scrollY||0},chap:${b.chap||0}})"><i class="fa fa-arrow-right"></i> 继续阅读</button>
+          <button onclick="delItem('bm','sutra','${b.sutra}',LS_BM)"><i class="fa fa-trash"></i> 删除</button>
+        </div></div>`;
+    });
+  }
+  body.innerHTML = html;
+}
+function jumpToPara(pid) {
+  const [,sutra,c,p] = pid.match(/^(.+)_c(\d+)_p(\d+)$/) || [];
+  if (!sutra) return;
+  const needLoad = !currentSutra || currentSutra.id !== sutra;
+  const go = () => {
+    // 确保目标章节已加载
+    const chapIdx = parseInt(c);
+    const need = chapIdx + 1;
+    function ensure() {
+      if (loadedChapters < need && loadedChapters < currentSutra.content.length) {
+        loadMoreChapters();
+        setTimeout(ensure,80);
+      } else {
+        closeSB();
+        setTimeout(()=>{
+          const el = document.getElementById(pid);
+          if (el) { el.scrollIntoView({behavior:'smooth',block:'center'}); el.style.background='#fff4c4'; setTimeout(()=>el.style.background='',1500); }
+        },100);
+      }
+    }
+    ensure();
+  };
+  if (needLoad) {
+    const hit = allSutras.find(s=>s.id===sutra||s.file===sutra+'.json');
+    if (hit) loadSutra(hit).then(go);
+  } else go();
+}
+
 // ===== 阅读增强：字号调节与章节目录 =====
 const FS_KEY = 'buddhist_read_fs';
 let curFs = 'md';
@@ -118,6 +395,12 @@ function applyFs(fs){
     try { localStorage.setItem(FS_KEY, fs); } catch(e) {}
     const t = document.getElementById('sutra-text');
     if(t) t.dataset.fs = fs;
+    // 实际设置字号
+    const sizeMap = {sm:'15px', md:'16px', lg:'18px', xl:'20px'};
+    const lhMap = {sm:'1.9', md:'2', lg:'2.05', xl:'2.1'};
+    let styleEl = document.getElementById('dynamicFs');
+    if (!styleEl) { styleEl = document.createElement('style'); styleEl.id='dynamicFs'; document.head.appendChild(styleEl); }
+    styleEl.textContent = `.sutra-content{font-size:${sizeMap[fs]||'16px'} !important;line-height:${lhMap[fs]||'2'} !important;}`;
     document.querySelectorAll('.read-toolbar button[data-fs]').forEach(b =>
         b.classList.toggle('active', b.dataset.fs === fs));
 }
@@ -428,16 +711,18 @@ async function loadSutra(meta) {
             </div>
         </div>
         <div class="read-toolbar">
-            <button id="toc-toggle" title="章节目录">☰ 章节目录</button>
+            <button id="toc-toggle" title="章节目录"><i class="fa fa-list-ul"></i> <span class="rt-label">章节目录</span></button>
             <span class="rt-label" style="margin-left:.5rem">字号</span>
             <button data-fs="sm">小</button>
-            <button data-fs="md">中</button>
+            <button data-fs="md" class="active">中</button>
             <button data-fs="lg">大</button>
             <button data-fs="xl">特大</button>
+            <button id="bookmark-btn" title="添加书签" style="margin-left:.5rem"><i class="fa fa-bookmark"></i> <span class="rt-label">书签</span></button>
+            <button id="study-btn" title="我的收藏与笔记"><i class="fa fa-star"></i> <span class="rt-label">学术工具</span></button>
             <span class="rt-label" id="read-progress" style="margin-left:auto"></span>
         </div>
         <div id="toc-panel" class="hidden mb-4"></div>
-        <div id="sutra-text"></div>
+        <div id="sutra-text" class="sutra-container"></div>
     `;
     // 绑定阅读工具条
     document.getElementById('toc-toggle')?.addEventListener('click', () => {
@@ -470,9 +755,25 @@ function loadMoreChapters() {
         const chapDiv = document.createElement('div');
         chapDiv.id = 'chap-' + i;
         chapDiv.className = 'sutra-chapter';
+        const paras = (chap.text || '').split(/\n+/).filter(Boolean);
+        const parasHtml = paras.map((p, pIdx) => {
+            const trimmed = p.trim();
+            if (!trimmed) return '';
+            const pid = paraId(currentSutra.id, i, pIdx);
+            const hasFav = favs.some(f=>f.pid===pid);
+            const hasNote = notes.some(n=>n.pid===pid);
+            return `<div class="para-wrap" id="${pid}-wrap">
+                <p class="sutra-content" id="${pid}">${renderParagraph(trimmed)}</p>
+                <span class="para-tools">
+                    <button class="pt-fav ${hasFav?'on':''}" onclick="toggleFav('${pid}')" title="${hasFav?'取消收藏':'收藏'}">${hasFav?'★':'☆'}</button>
+                    <button class="pt-note ${hasNote?'on':''}" onclick="openNoteEditor('${pid}')" title="笔记">📝${hasNote?'<span class="note-dot"></span>':''}</button>
+                    <button onclick="citePara('${pid}')" title="复制引用">📋</button>
+                </span>
+            </div>`;
+        }).join('');
         chapDiv.innerHTML = `
             <div class="chapter-title">${chap.chapter || chap.title || ''}</div>
-            <div>${(chap.text || '').split(/\n+/).map(p => `<p class="sutra-content">${renderParagraph(p.trim())}</p>`).join('')}</div>
+            <div>${parasHtml}</div>
         `;
         textContainer.appendChild(chapDiv);
     }
@@ -576,9 +877,48 @@ document.addEventListener('mouseup', e => {
 document.addEventListener('mousedown', e => { if(!e.target.closest('#dict-sel-btn')) removeSelBtn(); });
 function removeSelBtn(){ const b=document.getElementById('dict-sel-btn'); if(b) b.remove(); }
 
+// ===== 学术工具按钮绑定 =====
+document.getElementById('study-btn')?.addEventListener('click', openSB);
+document.getElementById('sb-close')?.addEventListener('click', closeSB);
+document.getElementById('study-sidebar-mask')?.addEventListener('click', closeSB);
+document.querySelectorAll('#study-sidebar .sb-tabs button').forEach(b=>{
+  b.addEventListener('click', ()=>switchTab(b.dataset.tab));
+});
+document.getElementById('bookmark-btn')?.addEventListener('click', addBookmark);
+
+// ===== 手机端：左侧经目可折叠 =====
+(function () {
+  if (window.matchMedia('(min-width: 768px)').matches) return;
+  const left = document.querySelector('.w-72.flex-shrink-0');
+  const right = document.querySelector('.flex-1');
+  if (!left || !right) return;
+  // 包裹成上下结构
+  const parent = left.parentElement;
+  parent.classList.add('mobile-layout');
+  // 添加切换按钮
+  const toggle = document.createElement('button');
+  toggle.id = 'sutra-list-toggle';
+  toggle.innerHTML = '📖 经目 <i class="fa fa-chevron-down" style="font-size:11px"></i>';
+  toggle.style.cssText='display:block;width:100%;padding:10px;background:#8B4513;color:#F5F0E1;border:0;border-radius:8px;font-size:15px;margin-bottom:8px;cursor:pointer;';
+  parent.insertBefore(toggle, left);
+  left.style.display = 'none';
+  toggle.addEventListener('click', ()=>{
+    const open = left.style.display !== 'none';
+    left.style.display = open ? 'none' : 'block';
+    toggle.innerHTML = open ? '📖 经目 <i class="fa fa-chevron-down" style="font-size:11px"></i>' : '📖 收起经目 <i class="fa fa-chevron-up" style="font-size:11px"></i>';
+  });
+  // 选中经文后自动收起经目
+  document.addEventListener('click', e=>{
+    if (e.target.closest('#sutra-list a, #sutra-list .sutra-item')) {
+      setTimeout(()=>{ left.style.display='none'; toggle.innerHTML='📖 经目 <i class="fa fa-chevron-down" style="font-size:11px"></i>'; },100);
+    }
+  });
+})();
+
 // 启动
 loadExtras();
 loadLightIndex();
 </script>
+    <script src="../js/mobile-nav.js"></script>
 </body>
 </html>
