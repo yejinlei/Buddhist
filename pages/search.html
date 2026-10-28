@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全文检索 - 佛学本体论</title>
+    <link rel="stylesheet" href="../css/tailwind.min.css">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primary: '#8B4513', paper: '#F5F0E1', ink: '#2C1810', gold: '#B8860B', } } } }
+    </script>
+    <style>
+        body { font-family: -apple-system, "Noto Serif SC", "Songti SC", serif; background-color: #F5F0E1; color: #2C1810; }
+        .nav-active { background-color: rgba(184,134,11,0.2); }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-thumb { background: #d4c8b0; border-radius: 3px; }
+        .hit { color: #B8860B; font-weight: 700; }
+        .res-item:hover { border-color: #8B4513; background: rgba(139,69,19,.04); }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="bg-ink text-paper py-4 px-6 flex items-center gap-6 sticky top-0 z-50 flex-wrap">
+        <a href="../index.html" class="text-xl font-bold flex items-center gap-2 text-gold"><span>🍃</span> 佛学本体论</a>
+        <span class="text-paper/60">|</span>
+        <a href="search.html" class="text-paper font-medium nav-active">全文检索</a>
+        <div class="ml-auto flex gap-4 text-sm text-paper/80 flex-wrap">
+            <a href="../index.html" class="hover:text-gold">首页</a>
+            <a href="categories.html" class="hover:text-gold">部类总览</a>
+            <a href="sutras.html" class="hover:text-gold">全藏原典</a>
+            <a href="search.html" class="hover:text-gold">全文检索</a>
+            <a href="parallel.html" class="hover:text-gold">异译对照</a>
+            <a href="graph.html" class="hover:text-gold">义理图谱</a>
+            <a href="kepan.html" class="hover:text-gold">科判导航</a>
+            <a href="panjiao.html" class="hover:text-gold">判教对比</a>
+            <a href="inference.html" class="hover:text-gold">概念推演</a>
+            <a href="timeline.html" class="hover:text-gold">译传时间轴</a>
+            <a href="translation.html" class="hover:text-gold">佛典译学</a>
+        </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto px-4 py-8">
+        <div class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-ink mb-2">大藏经全文检索</h1>
+            <p class="text-ink/60 text-sm">在 2400+ 部佛典、约 8100 万字全文中检索义理词语 · <span id="idx-status" class="text-primary">正在准备索引…</span></p>
+        </div>
+
+        <div class="flex gap-2 mb-4">
+            <input id="q" type="text" placeholder="输入关键词，如：缘起、佛性、般若、明心见性、一念三千"
+                   class="flex-1 border border-primary/25 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-primary/30">
+            <button id="btn" class="bg-primary text-white px-8 rounded-lg hover:bg-primary/90 font-medium">检索</button>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-6 text-sm" id="hot"></div>
+        <div id="stat" class="text-sm text-ink/70 mb-3"></div>
+        <div id="results" class="space-y-2"></div>
+    </div>
+
+    <script>
+        // 词级精确索引（约400KB）+ 繁简映射（35KB）先加载；字级索引（约8.8MB）后台加载
+        let WORD = null, CHAR = null, H2S = null, ORDER = null, META = new Map();
+        let charReady = false;
+
+        async function boot() {
+            const st = document.getElementById('idx-status');
+            try {
+                const [w, h, m] = await Promise.all([
+                    fetch('../sutras/search-word-index.json').then(r => r.json()),
+                    fetch('../sutras/hant2simp.json').then(r => r.json()),
+                    fetch('../sutras/index-light.json').then(r => r.json())
+                ]);
+                WORD = w; H2S = h;
+                const list = Array.isArray(m) ? m : (m.sutras || []);
+                list.forEach(s => META.set(s.id, s));
+                st.textContent = '精确检索已就绪';
+                st.className = 'text-green-700';
+                // 后台加载字级索引
+                fetch('../sutras/search-order.json').then(r => r.json()).then(o => { ORDER = o; });
+                fetch('../sutras/search-index.json').then(r => r.json()).then(c => {
+                    CHAR = c; charReady = true;
+                    if (document.getElementById('idx-status').textContent.indexOf('就绪') < 0) return;
+                    document.getElementById('idx-status').textContent += ' · 模糊检索已就绪';
+                });
+            } catch (e) {
+                st.textContent = '索引加载失败';
+                st.className = 'text-red-600';
+            }
+        }
+
+        function toSimp(s) { return [...s].map(c => (H2S && H2S[c]) ? H2S[c] : c).join(''); }
+        function norm(s) { return (s || '').trim(); }
+
+        function search() {
+            const raw = norm(document.getElementById('q').value);
+            const q = toSimp(raw);
+            const stat = document.getElementById('stat');
+            const box = document.getElementById('results');
+            if (!q) { stat.textContent = ''; box.innerHTML = ''; return; }
+            if (!WORD) { stat.textContent = '索引尚未就绪，请稍候'; return; }
+
+            let ids = null, mode = '';
+            if (WORD[q] && WORD[q].length) { ids = WORD[q]; mode = '词级精确匹配'; }
+            else if (WORD[raw] && WORD[raw].length) { ids = WORD[raw]; mode = '词级精确匹配'; }
+            else if (charReady || CHAR) {
+                const chars = [...new Set([...q])].filter(c => /[\u4e00-\u9fff]/.test(c));
+                const cols = chars.map(c => CHAR && CHAR[c]).filter(Boolean);
+                if (cols.length) {
+                    let set = new Set(cols[0]);
+                    for (let i = 1; i < cols.length; i++) { const nx = new Set(); cols[i].forEach(x => { if (set.has(x)) nx.add(x); }); set = nx; }
+                    ids = [...set]; mode = '字级模糊匹配（含全部字）';
+                }
+            }
+            if (!ids) {
+                stat.innerHTML = `未找到与「<b>${raw}</b>」匹配的经文${charReady ? '' : '（模糊索引加载中…）'}`;
+                box.innerHTML = ''; return;
+            }
+            ids = ids.slice().sort((a, b) => {
+                const ma = META.get(ORDER ? ORDER[a] : a) || {}, mb = META.get(ORDER ? ORDER[b] : b) || {};
+                return (ma.word_count || ma.chars || 9e9) - (mb.word_count || mb.chars || 9e9);
+            });
+            stat.innerHTML = `「<b>${raw}</b>」— ${mode}，命中 <span class="text-primary font-bold">${ids.length}</span> 部经典`;
+            const top = ids.slice(0, 300);
+            box.innerHTML = top.map(i => {
+                const id = ORDER ? ORDER[i] : i;
+                const m = META.get(id) || {};
+                const title = m.title || id;
+                const file = m.file || (id + '.json');
+                return `<a href="sutras.html?load=${encodeURIComponent(file)}" class="res-item block bg-white border border-paper rounded-lg px-4 py-2.5 transition">
+                    <div class="flex items-baseline justify-between gap-3">
+                        <span class="font-medium text-ink">${title}</span>
+                        <span class="text-xs text-ink/45 flex-shrink-0">${(m.word_count||m.chars||0).toLocaleString()}字</span>
+                    </div>
+                    <div class="text-xs text-ink/50 mt-0.5">${m.vol||''} · ${m.category||''} · ${m.translator||'失译'}</div>
+                </a>`;
+            }).join('') + (ids.length > 300 ? `<div class="text-center text-ink/50 text-sm py-3">仅显示前 300 条，请使用更精确的关键词</div>` : '');
+        }
+
+        const HOT = ['缘起', '佛性', '般若', '空性', '真如', '涅槃', '菩提心', '明心见性', '一念三千', '法界缘起', '如来藏', '中道'];
+        document.getElementById('hot').innerHTML = HOT.map(h => `<button class="hot-btn px-3 py-1 rounded-full bg-white border border-paper hover:border-primary text-ink/70">${h}</button>`).join('');
+        document.querySelectorAll('.hot-btn').forEach(b => b.onclick = () => { document.getElementById('q').value = b.textContent; search(); });
+
+        document.getElementById('btn').onclick = search;
+        document.getElementById('q').addEventListener('keydown', e => { if (e.key === 'Enter') search(); });
+        boot();
+    </script>
+</body>
+</html>

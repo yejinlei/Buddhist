@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>佛学本体论 - 全藏智能知识图谱与义理推演平台</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/tailwind.min.css">
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     
@@ -80,7 +80,10 @@
             <nav class="hidden md:flex items-center space-x-6 text-buddha-light/90">
                 <a href="#overview" class="hover:text-buddha-secondary transition-colors">总览</a>
                 <a href="#ontology" class="hover:text-buddha-secondary transition-colors">本体体系</a>
-                <a href="#sutras" class="hover:text-buddha-secondary transition-colors">原典库</a>
+                <a href="pages/categories.html" class="hover:text-buddha-secondary">部类总览</a>
+                <a href="pages/sutras.html" class="hover:text-buddha-secondary">全藏原典</a>
+                <a href="pages/search.html" class="hover:text-buddha-secondary">全文检索</a>
+                <a href="pages/parallel.html" class="hover:text-buddha-secondary">异译对照</a>
                 <a href="#graph" class="hover:text-buddha-secondary transition-colors">义理图谱</a>
                 <a href="pages/kepan.html" class="hover:text-buddha-secondary">科判导航</a>
                 <a href="#timeline" class="hover:text-buddha-secondary transition-colors">译传时间轴</a>
@@ -99,9 +102,12 @@
             <div class="container mx-auto px-4 py-3 flex flex-col space-y-3 text-buddha-light/90">
                 <a href="#overview" class="py-2 hover:text-buddha-secondary transition-colors">总览</a>
                 <a href="#ontology" class="py-2 hover:text-buddha-secondary transition-colors">本体体系</a>
-                <a href="#sutras" class="py-2 hover:text-buddha-secondary transition-colors">原典库</a>
+                <a href="pages/categories.html" class="py-2 hover:text-buddha-secondary transition-colors">部类总览</a>
+                <a href="pages/sutras.html" class="py-2 hover:text-buddha-secondary transition-colors">全藏原典</a>
+                <a href="pages/search.html" class="py-2 hover:text-buddha-secondary transition-colors">全文检索</a>
+                <a href="pages/parallel.html" class="py-2 hover:text-buddha-secondary transition-colors">异译对照</a>
                 <a href="#graph" class="py-2 hover:text-buddha-secondary transition-colors">义理图谱</a>
-                <a href="pages/kepan.html" class="hover:text-buddha-secondary">科判导航</a>
+                <a href="pages/kepan.html" class="py-2 hover:text-buddha-secondary transition-colors">科判导航</a>
                 <a href="#timeline" class="py-2 hover:text-buddha-secondary transition-colors">译传时间轴</a>
                 <a href="#panjiao" class="py-2 hover:text-buddha-secondary transition-colors">判教对比</a>
                 <a href="#inference" class="py-2 hover:text-buddha-secondary transition-colors">智能推演</a>
@@ -429,7 +435,7 @@
             } catch (e) {
                 console.error('数据加载失败，使用内置数据', e);
                 // 失败时提示
-                alert('数据加载部分失败，请通过本地HTTP服务器访问，不要直接双击打开index.html');
+                console.warn('部分外部数据加载失败，使用内置数据', e);
             }
         }
 
@@ -811,7 +817,7 @@
         }
 
         function showPanjiao(sect) {
-            const panjiao = ontologyData.sects.panjiao_comparison;
+            const panjiao = ontologyData.panjiao_comparison;
             const container = document.getElementById('panjiaoContent');
             let html = '';
             

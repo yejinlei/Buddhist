@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>部类总览 - 佛学本体论</title>
+    <link rel="stylesheet" href="../css/tailwind.min.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#8B4513', paper: '#F5F0E1', ink: '#2C1810', gold: '#B8860B', } } }
+        }
+    </script>
+    <style>
+        body { font-family: -apple-system, "Noto Serif SC", "Songti SC", serif; background-color: #F5F0E1; color: #2C1810; }
+        .nav-active { background-color: rgba(184,134,11,0.2); }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-thumb { background: #d4c8b0; border-radius: 3px; }
+        .cat-card { transition: all .18s ease; }
+        .cat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,69,19,.16); }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="bg-ink text-paper py-4 px-6 flex items-center gap-6 sticky top-0 z-50 flex-wrap">
+        <a href="../index.html" class="text-xl font-bold flex items-center gap-2 text-gold"><span>🍃</span> 佛学本体论</a>
+        <span class="text-paper/60">|</span>
+        <a href="categories.html" class="text-paper font-medium nav-active">部类总览</a>
+        <div class="ml-auto flex gap-4 text-sm text-paper/80 flex-wrap">
+            <a href="../index.html" class="hover:text-gold">首页</a>
+            <a href="categories.html" class="hover:text-gold">部类总览</a>
+            <a href="sutras.html" class="hover:text-gold">全藏原典</a>
+            <a href="search.html" class="hover:text-gold">全文检索</a>
+            <a href="parallel.html" class="hover:text-gold">异译对照</a>
+            <a href="graph.html" class="hover:text-gold">义理图谱</a>
+            <a href="kepan.html" class="hover:text-gold">科判导航</a>
+            <a href="panjiao.html" class="hover:text-gold">判教对比</a>
+            <a href="inference.html" class="hover:text-gold">概念推演</a>
+            <a href="timeline.html" class="hover:text-gold">译传时间轴</a>
+            <a href="translation.html" class="hover:text-gold">佛典译学</a>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-ink mb-3">大正藏部类总览</h1>
+            <p class="text-ink/70">按 <span class="text-primary font-bold" id="cat-count">—</span> 大部类聚合浏览，
+                共 <span class="text-primary font-bold" id="sutra-total">—</span> 部经典 · <span id="chars-total">—</span> 字</p>
+            <input id="cat-search" type="text" placeholder="搜索部类或经名..." class="mt-5 w-80 max-w-full border border-primary/20 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/30">
+        </div>
+
+        <div id="cat-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+
+        <div id="panel" class="hidden mt-10 bg-white rounded-xl shadow-md p-6">
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
+                <h2 class="text-2xl font-bold text-ink"><span id="panel-title"></span>
+                    <span class="text-sm font-normal text-ink/50 ml-2" id="panel-sub"></span></h2>
+                <button id="panel-close" class="text-ink/50 hover:text-primary text-sm">收起 ✕</button>
+            </div>
+            <div id="panel-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"></div>
+        </div>
+    </div>
+
+    <script>
+        let ALL = [];
+        let CATS = [];
+        const CN_NUM = {};
+
+        async function load() {
+            const res = await fetch('../sutras/index-light.json?' + Date.now());
+            const raw = await res.json();
+            // 去掉少量早期手工条目（file 为拼音名的重复项），只保留经号条目 + 合并重复
+            const list = Array.isArray(raw) ? raw : (raw.sutras || []);
+            ALL = list.filter(s => s && s.id);
+            // 拆分复合部类：一部经可归入多个部类
+            const map = new Map();
+            ALL.forEach(s => {
+                const cats = String(s.category || '未分类').split(/[,，]/).map(x => x.trim()).filter(Boolean);
+                cats.forEach(c => {
+                    if (!map.has(c)) map.set(c, []);
+                    map.get(c).push(s);
+                });
+            });
+            CATS = [...map.entries()].map(([name, arr]) => ({ name, sutras: arr.sort((a,b)=>(a.vol||'').localeCompare(b.vol||'') || (a.title||'').localeCompare(b.title||'')) }))
+                .sort((a,b) => b.sutras.length - a.sutras.length);
+            document.getElementById('cat-count').textContent = CATS.length;
+            document.getElementById('sutra-total').textContent = ALL.length.toLocaleString();
+            const totalChars = ALL.reduce((n,s) => n + (s.word_count || s.chars || 0), 0);
+            document.getElementById('chars-total').textContent = totalChars.toLocaleString();
+            render();
+        }
+
+        function render() {
+            const kw = (document.getElementById('cat-search').value || '').trim();
+            const grid = document.getElementById('cat-grid');
+            const shown = CATS.filter(c => !kw || c.name.includes(kw) || c.sutras.some(s => (s.title||'').includes(kw)));
+            grid.innerHTML = shown.map(c => {
+                const top = c.sutras.slice(0,3).map(s => s.title).join('、');
+                const chars = c.sutras.reduce((n,s) => n + (s.word_count || s.chars || 0), 0);
+                return `<div class="cat-card bg-white rounded-xl shadow p-4 cursor-pointer" data-cat="${encodeURIComponent(c.name)}">
+                    <div class="flex items-baseline justify-between mb-2">
+                        <h3 class="text-lg font-bold text-primary">${c.name.replace(/部类$/,'')}</h3>
+                        <span class="text-xs text-ink/50">${c.sutras.length} 部</span>
+                    </div>
+                    <p class="text-xs text-ink/60 line-clamp-2 leading-relaxed" style="min-height:2.4em">${top}${c.sutras.length>3?'…':''}</p>
+                    <p class="text-xs text-ink/40 mt-2">约 ${(chars/10000).toFixed(0)} 万字</p>
+                </div>`;
+            }).join('') || `<div class="col-span-full text-center text-ink/50 py-10">未找到匹配的部类</div>`;
+            grid.querySelectorAll('.cat-card').forEach(el => el.onclick = () => openPanel(decodeURIComponent(el.dataset.cat)));
+        }
+
+        function openPanel(name) {
+            const c = CATS.find(x => x.name === name);
+            if (!c) return;
+            document.getElementById('panel-title').textContent = name;
+            document.getElementById('panel-sub').textContent = `共 ${c.sutras.length} 部`;
+            document.getElementById('panel-list').innerHTML = c.sutras.map(s => `
+                <a href="sutras.html?load=${encodeURIComponent(s.file||s.id)}" class="block border border-paper rounded-lg px-3 py-2 hover:border-primary hover:bg-primary/5">
+                    <div class="text-sm font-medium text-ink truncate">${s.title}</div>
+                    <div class="text-xs text-ink/50 mt-0.5">${s.vol||''} ${(s.translator||'').substring(0,10)} · ${(s.word_count||s.chars||0).toLocaleString()}字</div>
+                </a>`).join('');
+            const p = document.getElementById('panel');
+            p.classList.remove('hidden');
+            p.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        document.getElementById('panel-close').onclick = () => document.getElementById('panel').classList.add('hidden');
+        document.getElementById('cat-search').addEventListener('input', render);
+        load();
+    </script>
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>全藏原典 - 佛学本体论</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/tailwind.min.css">
     <script>
         tailwind.config = {
             theme: { extend: { colors: { primary: '#8B4513', paper: '#F5F0E1', ink: '#2C1810', gold: '#B8860B', } } }
@@ -21,6 +21,9 @@
         .nav-active { background-color: rgba(184,134,11,0.2); }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-thumb { background: #d4c8b0; border-radius: 3px; }
+        .scholar-hi { background: linear-gradient(transparent 62%, #f3e2a9 62%); }
+        .scholar-mark { color:#B8860B; cursor:pointer; font-size:.68em; vertical-align:super; margin:0 2px; font-weight:700; }
+        #note-pop { position:fixed; right:20px; bottom:20px; width:340px; max-width:calc(100vw - 40px); max-height:60vh; overflow:auto; background:#fff; border:1px solid #e5d9c3; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.12); padding:16px; z-index:80; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -31,16 +34,22 @@
         </a>
         <span class="text-paper/60">|</span>
         <a href="sutras.html" class="text-paper font-medium hover:text-gold nav-active">全藏原典</a>
-        <div class="ml-auto flex gap-5 text-paper/80">
+        <div class="ml-auto flex gap-4 text-sm text-paper/80 flex-wrap">
             <a href="../index.html" class="hover:text-gold">首页</a>
+            <a href="categories.html" class="hover:text-gold">部类总览</a>
+            <a href="sutras.html" class="hover:text-gold">全藏原典</a>
+            <a href="search.html" class="hover:text-gold">全文检索</a>
+            <a href="parallel.html" class="hover:text-gold">异译对照</a>
             <a href="graph.html" class="hover:text-gold">义理图谱</a>
-            <a href="trans.html" class="hover:text-gold">佛典译学</a>
             <a href="kepan.html" class="hover:text-gold">科判导航</a>
             <a href="panjiao.html" class="hover:text-gold">判教对比</a>
             <a href="inference.html" class="hover:text-gold">概念推演</a>
             <a href="timeline.html" class="hover:text-gold">译传时间轴</a>
+            <a href="translation.html" class="hover:text-gold">佛典译学</a>
         </div>
     </nav>
+
+    <div id="note-pop" class="hidden"></div>
 
     <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
         <!-- 左侧经目 -->
@@ -89,7 +98,65 @@
 let allSutras = [];
 let currentSutra = null;
 let loadedChapters = 0;
+let NOTES = {};   // 学者注解：sutra_id -> {anchors:[...]}
+let H2S = {};     // 繁->简单字映射
 const CHAPTERS_PER_PAGE = 10; // 每次加载10章（大约几卷）
+
+function esc(s){ return (s||'').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function toSimp(s){ return [...(s||'')].map(c => H2S[c] || c).join(''); }
+
+async function loadExtras() {
+    try {
+        const [n, h] = await Promise.all([
+            fetch('../data/scholar-notes.json?' + Date.now()).then(r => r.json()),
+            fetch('../sutras/hant2simp.json').then(r => r.json())
+        ]);
+        H2S = h || {};
+        (n.notes || []).forEach(x => { NOTES[x.sutra_id] = x; });
+        if (currentSutra && NOTES[currentSutra.id]) { loadedChapters = 0; const c = document.getElementById('sutra-text'); if (c) c.innerHTML = ''; if (c) loadMoreChapters(); }
+    } catch (e) { console.warn('注解/映射加载失败', e); }
+}
+
+// 渲染单段：繁简逐字对齐后高亮锚点句并插入「注」标记
+function renderParagraph(p) {
+    const noteSet = (currentSutra && NOTES[currentSutra.id]) ? NOTES[currentSutra.id] : null;
+    if (!noteSet || !p) return esc(p);
+    const simp = toSimp(p);
+    const hits = [];
+    noteSet.anchors.forEach(a => {
+        let from = 0, idx;
+        while ((idx = simp.indexOf(a.text, from)) !== -1) {
+            hits.push({ s: idx, e: idx + a.text.length, a });
+            from = idx + a.text.length;
+        }
+    });
+    if (!hits.length) return esc(p);
+    hits.sort((x, y) => x.s - y.s);
+    let out = '', cur = 0;
+    hits.forEach(h => {
+        if (h.s < cur) return;
+        out += esc(p.slice(cur, h.s));
+        out += `<span class="scholar-hi">${esc(p.slice(h.s, h.e))}</span>`;
+        out += `<sup class="scholar-mark" data-note="${encodeURIComponent(JSON.stringify(h.a))}" title="查看学者解读">注</sup>`;
+        cur = h.e;
+    });
+    out += esc(p.slice(cur));
+    return out;
+}
+
+function showNote(json) {
+    const a = JSON.parse(decodeURIComponent(json));
+    const box = document.getElementById('note-pop');
+    box.innerHTML = `<div class="flex justify-between items-start mb-2">
+            <div class="text-sm text-primary font-bold">「${a.text}」· 学者解读</div>
+            <button onclick="document.getElementById('note-pop').classList.add('hidden')" class="text-ink/40 hover:text-primary">✕</button>
+        </div>` +
+        (a.scholars || []).map(s => `<div class="mb-2 pb-2 border-b border-paper last:border-0">
+            <div class="text-sm font-bold text-ink">${s.name} <span class="text-xs font-normal text-ink/50">${s.work || ''}</span></div>
+            <div class="text-sm text-ink/75 leading-relaxed mt-1">${s.note}</div>
+        </div>`).join('');
+    box.classList.remove('hidden');
+}
 const CACHE_KEY = 'sutra_cache_';
 const CACHE_EXPIRY = 7 * 24 * 60 * 60 * 1000; // 缓存7天
 
@@ -103,6 +170,12 @@ async function loadLightIndex() {
     initFilters();
     renderSutraList(allSutras);
     document.getElementById('list-stats').textContent = `共 ${allSutras.length} 部经`;
+    // 支持 ?load=文件名 直接打开指定经文（部类总览 / 全文检索跳转）
+    const loadParam = new URLSearchParams(location.search).get('load');
+    if (loadParam) {
+        const hit = allSutras.find(s => s.file === loadParam || s.id === loadParam || (s.id + '.json') === loadParam);
+        if (hit) loadSutra(hit);
+    }
 }
 
 // 2. 初始化筛选器
@@ -289,7 +362,7 @@ function loadMoreChapters() {
         const chapDiv = document.createElement('div');
         chapDiv.innerHTML = `
             <div class="chapter-title">${chap.chapter || chap.title || ''}</div>
-            <div>${(chap.text || '').split(/\n+/).map(p => `<p class="sutra-content">${p.trim()}</p>`).join('')}</div>
+            <div>${(chap.text || '').split(/\n+/).map(p => `<p class="sutra-content">${renderParagraph(p.trim())}</p>`).join('')}</div>
         `;
         textContainer.appendChild(chapDiv);
     }
@@ -313,7 +386,14 @@ function loadMoreChapters() {
 
 document.getElementById('load-more-btn').addEventListener('click', loadMoreChapters);
 
+// 「注」标记点击 → 弹出学者解读
+document.addEventListener('click', e => {
+    const mk = e.target.closest('.scholar-mark');
+    if (mk && mk.dataset.note) showNote(mk.dataset.note);
+});
+
 // 启动
+loadExtras();
 loadLightIndex();
 </script>
 </body>

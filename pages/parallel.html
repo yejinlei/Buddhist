@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异译对照 - 佛学本体论</title>
+    <link rel="stylesheet" href="../css/tailwind.min.css">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primary: '#8B4513', paper: '#F5F0E1', ink: '#2C1810', gold: '#B8860B', } } } }
+    </script>
+    <style>
+        body { font-family: -apple-system, "Noto Serif SC", "Songti SC", serif; background-color: #F5F0E1; color: #2C1810; }
+        .nav-active { background-color: rgba(184,134,11,0.2); }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-thumb { background: #d4c8b0; border-radius: 3px; }
+        .group-item.active { background-color: rgba(139,69,19,.1); border-left: 3px solid #8B4513; }
+        .col-body { line-height: 2; font-size: .95rem; text-indent: 2em; }
+        .col-body .chap { font-weight: bold; color: #8B4513; text-indent: 0; margin: 1rem 0 .5rem; font-size: 1.02rem; border-bottom: 1px solid #e5d9c3; padding-bottom: .3rem; }
+        .col-wrap { max-height: 74vh; overflow-y: auto; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="bg-ink text-paper py-4 px-6 flex items-center gap-6 sticky top-0 z-50 flex-wrap">
+        <a href="../index.html" class="text-xl font-bold flex items-center gap-2 text-gold"><span>🍃</span> 佛学本体论</a>
+        <span class="text-paper/60">|</span>
+        <a href="parallel.html" class="text-paper font-medium nav-active">异译对照</a>
+        <div class="ml-auto flex gap-4 text-sm text-paper/80 flex-wrap">
+            <a href="../index.html" class="hover:text-gold">首页</a>
+            <a href="categories.html" class="hover:text-gold">部类总览</a>
+            <a href="sutras.html" class="hover:text-gold">全藏原典</a>
+            <a href="search.html" class="hover:text-gold">全文检索</a>
+            <a href="parallel.html" class="hover:text-gold">异译对照</a>
+            <a href="graph.html" class="hover:text-gold">义理图谱</a>
+            <a href="kepan.html" class="hover:text-gold">科判导航</a>
+            <a href="panjiao.html" class="hover:text-gold">判教对比</a>
+            <a href="inference.html" class="hover:text-gold">概念推演</a>
+            <a href="timeline.html" class="hover:text-gold">译传时间轴</a>
+            <a href="translation.html" class="hover:text-gold">佛典译学</a>
+        </div>
+    </nav>
+
+    <div class="max-w-[1500px] mx-auto px-4 py-6 flex gap-5">
+        <div class="w-72 flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-md p-4 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
+                <h2 class="text-lg font-bold text-ink mb-1 flex items-center gap-2"><span class="text-primary">📚</span>同经异译</h2>
+                <p class="text-xs text-ink/50 mb-3">共 <span id="grp-count" class="text-primary font-bold">—</span> 组，同部佛经的不同汉译本</p>
+                <input id="grp-search" type="text" placeholder="搜索经名..." class="w-full border border-primary/20 rounded-lg px-3 py-2 mb-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30">
+                <div id="grp-list" class="flex-1 overflow-y-auto text-sm space-y-1">
+                    <div class="text-center text-ink/50 py-8">加载中...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 min-w-0">
+            <div id="stage" class="bg-white rounded-xl shadow-md p-6 min-h-[70vh]">
+                <div class="text-center py-24">
+                    <div class="text-6xl mb-4 opacity-30">🔀</div>
+                    <h1 class="text-2xl font-bold text-ink mb-3">异译本逐部对照</h1>
+                    <p class="text-ink/70 mb-1">从左侧选择一组同经异译，即可并排对读不同译师的译本。</p>
+                    <p class="text-sm text-ink/50">例如《心经》玄奘 / 般若共利言 / 法成 / 智慧轮 四译并观。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let GROUPS = [];
+        const cache = {};
+
+        async function load() {
+            const res = await fetch('../ontology/parallel_translations.json?' + Date.now());
+            let d = await res.json();
+            if (d && d.groups) d = d.groups;
+            GROUPS = (d || []).filter(g => g && g.sutras && g.sutras.length >= 2 && !/疏|目錄|目录|禮懺|礼忏/.test(g.title || ''))
+                .sort((a,b) => b.sutras.length - a.sutras.length || (a.title||'').localeCompare(b.title||''));
+            document.getElementById('grp-count').textContent = GROUPS.length;
+            renderList();
+            if (GROUPS.length) openGroup(0);
+        }
+
+        function renderList() {
+            const kw = (document.getElementById('grp-search').value || '').trim();
+            const list = GROUPS.filter(g => !kw || (g.title||'').includes(kw) || g.sutras.some(s => (s.title||'').includes(kw)));
+            document.getElementById('grp-list').innerHTML = list.map(g =>
+                `<div class="group-item cursor-pointer rounded px-3 py-2 hover:bg-primary/5" data-idx="${GROUPS.indexOf(g)}">
+                    <div class="font-medium text-ink truncate">${g.title}</div>
+                    <div class="text-xs text-ink/50">${g.sutras.length} 译本</div>
+                </div>`).join('') || `<div class="text-center text-ink/50 py-6">无匹配</div>`;
+            document.querySelectorAll('.group-item').forEach(el => el.onclick = () => openGroup(+el.dataset.idx));
+        }
+
+        async function openGroup(idx) {
+            document.querySelectorAll('.group-item').forEach(el => el.classList.toggle('active', +el.dataset.idx === idx));
+            const g = GROUPS[idx];
+            const stage = document.getElementById('stage');
+            stage.innerHTML = `<div class="text-center py-16 text-ink/50">正在加载各译本正文…</div>`;
+            const cols = await Promise.all(g.sutras.map(async s => {
+                let data = cache[s.id];
+                if (!data) {
+                    try {
+                        const r = await fetch(`../sutras/${s.id}.json?v=3`);
+                        data = await r.json();
+                    } catch(e) { data = null; }
+                    cache[s.id] = data;
+                }
+                return { meta: s, data };
+            }));
+            const head = `<div class="mb-5">
+                <h1 class="text-2xl font-bold text-ink mb-1">${g.title}</h1>
+                <p class="text-sm text-ink/60">${g.sutras.length} 个汉译本并排对读 · 拖动各栏可独立滚动</p>
+            </div>`;
+            const grid = `<div class="grid gap-4" style="grid-template-columns: repeat(${Math.min(cols.length, 4)}, minmax(0,1fr))">` +
+                cols.map(c => {
+                    const m = c.meta, d = c.data;
+                    const chars = d && d.content ? d.content.reduce((n,x)=>n+(x.text||'').length,0) : (m.official_char_count||0);
+                    const body = d && d.content
+                        ? d.content.map(ch => `<div class="chap">${ch.chapter||''}</div><div class="col-body">${(ch.text||'').replace(/\n/g,'<br>')}</div>`).join('')
+                        : `<div class="text-ink/40 text-center py-10">该译本正文暂未收录</div>`;
+                    const yr = m.time_from ? `约${m.time_from}年` : '';
+                    return `<div class="border border-paper rounded-lg overflow-hidden flex flex-col">
+                        <div class="bg-primary/5 px-3 py-2 border-b border-paper">
+                            <div class="font-bold text-ink text-sm">${m.translator||'失译'}</div>
+                            <div class="text-xs text-ink/50 mt-0.5">${m.vol||''} ${yr} · ${chars.toLocaleString()}字</div>
+                        </div>
+                        <div class="col-wrap px-3 py-3">${body}</div>
+                    </div>`;
+                }).join('') + `</div>`;
+            stage.innerHTML = head + grid;
+        }
+
+        document.getElementById('grp-search').addEventListener('input', renderList);
+        load();
+    </script>
+</body>
+</html>
