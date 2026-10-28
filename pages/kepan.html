@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>佛经科判导航 - 佛学本体论</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-buddha-bg text-buddha-dark">
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="../index.html" class="text-xl font-bold text-buddha-primary">🏛️ 佛学本体论</a>
+            <div class="flex gap-6 text-sm">
+                <a href="../index.html" class="hover:text-buddha-secondary">首页</a>
+                <a href="sutras.html" class="hover:text-buddha-secondary">全藏经文库</a>
+                <a href="graph.html" class="hover:text-buddha-secondary">义理图谱</a>
+                <a href="kepan.html" class="text-buddha-primary font-bold">科判导航</a>
+                <a href="panjiao.html" class="hover:text-buddha-secondary">宗派判教</a>
+                <a href="inference.html" class="hover:text-buddha-secondary">概念推演</a>
+                <a href="timeline.html" class="hover:text-buddha-secondary">译传时间轴</a>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-buddha-primary mb-2">📚 佛经科判树形导航</h1>
+        <p class="text-buddha-dark/70 mb-8">传统佛经三分科判结构：序分（缘起）→正宗分（核心教义）→流通分（结劝流传）</p>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="md:col-span-1">
+                <h3 class="font-bold mb-3 text-lg">选择经典</h3>
+                <div id="sutraList" class="space-y-2"></div>
+            </div>
+            <div class="md:col-span-2">
+                <div id="kepanContainer" class="bg-white rounded-lg shadow p-6">
+                    <p class="text-buddha-dark/60">请从左侧选择一部经典查看科判</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        fetch('../kepan/core.json').then(r=>r.json()).then(data => {
+            const list = document.getElementById('sutraList');
+            const container = document.getElementById('kepanContainer');
+            Object.keys(data).forEach(tid => {
+                const s = data[tid];
+                const btn = document.createElement('button');
+                btn.className = 'w-full text-left p-3 rounded hover:bg-buddha-light/50 transition-colors border border-buddha-light/50';
+                btn.textContent = s.title;
+                btn.onclick = () => renderKepan(s);
+                list.appendChild(btn);
+            });
+
+            function renderKepan(sutra) {
+                let html = `<h2 class="text-2xl font-bold text-buddha-primary mb-4">${sutra.title} · 三分科判</h2>`;
+                function renderNode(node, depth=0) {
+                    let h = `<div class="ml-${depth*4} mb-2">`;
+                    const color = node.type === '序分' ? 'bg-green-50 border-green-200' :
+                                  node.type === '正宗分' ? 'bg-buddha-light/50 border-buddha-primary/30' :
+                                  'bg-blue-50 border-blue-200';
+                    h += `<div class="p-2 rounded border ${color}">`;
+                    h += `<div class="font-bold">${node.name}</div>`;
+                    if (node.description) h += `<div class="text-sm text-buddha-dark/70 mt-1">${node.description}</div>`;
+                    if (node.content) h += `<div class="text-sm mt-1 leading-relaxed">${node.content}</div>`;
+                    h += `</div>`;
+                    if (node.children) node.children.forEach(c => h += renderNode(c, depth+1));
+                    h += `</div>`;
+                    return h;
+                }
+                sutra.kepan.forEach(n => html += renderNode(n));
+                container.innerHTML = html;
+            }
+        });
+    </script>
+</body>
+</html>

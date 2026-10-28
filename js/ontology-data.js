@@ -3273,6 +3273,3289 @@ const ontologyData = {
       "target": "t1501",
       "label": "译出",
       "description": ""
+    },
+    {
+      "id": "r212",
+      "source": "c002",
+      "target": "t1564",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r213",
+      "source": "c005",
+      "target": "t1564",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r214",
+      "source": "c006",
+      "target": "t1564",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r215",
+      "source": "c007",
+      "target": "t1564",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r216",
+      "source": "c008",
+      "target": "t1564",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r217",
+      "source": "c009",
+      "target": "t1564",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r218",
+      "source": "c012",
+      "target": "t1564",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r219",
+      "source": "c001",
+      "target": "t1749",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r220",
+      "source": "c005",
+      "target": "t1749",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r221",
+      "source": "c012",
+      "target": "t1749",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r222",
+      "source": "c001",
+      "target": "t0026",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r223",
+      "source": "c005",
+      "target": "t0026",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r224",
+      "source": "c006",
+      "target": "t0026",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r225",
+      "source": "c007",
+      "target": "t0026",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r226",
+      "source": "c009",
+      "target": "t0026",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r227",
+      "source": "c010",
+      "target": "t0026",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r228",
+      "source": "c012",
+      "target": "t0026",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r229",
+      "source": "c001",
+      "target": "t0681",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r230",
+      "source": "c002",
+      "target": "t0681",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r231",
+      "source": "c004",
+      "target": "t0681",
+      "label": "宣讲",
+      "description": "此经宣讲阿赖耶识思想"
+    },
+    {
+      "id": "r232",
+      "source": "c005",
+      "target": "t0681",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r233",
+      "source": "c006",
+      "target": "t0681",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r234",
+      "source": "c012",
+      "target": "t0681",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r235",
+      "source": "c005",
+      "target": "t0991",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r236",
+      "source": "c001",
+      "target": "t0220",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r237",
+      "source": "c002",
+      "target": "t0220",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r238",
+      "source": "c003",
+      "target": "t0220",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r239",
+      "source": "c004",
+      "target": "t0220",
+      "label": "宣讲",
+      "description": "此经宣讲阿赖耶识思想"
+    },
+    {
+      "id": "r240",
+      "source": "c006",
+      "target": "t0220",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r241",
+      "source": "c007",
+      "target": "t0220",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r242",
+      "source": "c008",
+      "target": "t0220",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r243",
+      "source": "c009",
+      "target": "t0220",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r244",
+      "source": "c010",
+      "target": "t0220",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r245",
+      "source": "c011",
+      "target": "t0220",
+      "label": "宣讲",
+      "description": "此经宣讲三法印思想"
+    },
+    {
+      "id": "r246",
+      "source": "c012",
+      "target": "t0220",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r247",
+      "source": "c001",
+      "target": "t1920",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r248",
+      "source": "c005",
+      "target": "t1920",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r249",
+      "source": "c006",
+      "target": "t1920",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r250",
+      "source": "c012",
+      "target": "t1920",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r251",
+      "source": "c001",
+      "target": "t0278",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r252",
+      "source": "c002",
+      "target": "t0278",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r253",
+      "source": "c003",
+      "target": "t0278",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r254",
+      "source": "c005",
+      "target": "t0278",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r255",
+      "source": "c006",
+      "target": "t0278",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r256",
+      "source": "c007",
+      "target": "t0278",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r257",
+      "source": "c008",
+      "target": "t0278",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r258",
+      "source": "c009",
+      "target": "t0278",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r259",
+      "source": "c010",
+      "target": "t0278",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r260",
+      "source": "c012",
+      "target": "t0278",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r261",
+      "source": "c001",
+      "target": "t0874",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r262",
+      "source": "c004",
+      "target": "t0874",
+      "label": "宣讲",
+      "description": "此经宣讲阿赖耶识思想"
+    },
+    {
+      "id": "r263",
+      "source": "c005",
+      "target": "t0874",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r264",
+      "source": "c012",
+      "target": "t0874",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r265",
+      "source": "c005",
+      "target": "t2774",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r266",
+      "source": "c001",
+      "target": "t0865",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r267",
+      "source": "c002",
+      "target": "t0865",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r268",
+      "source": "c005",
+      "target": "t0865",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r269",
+      "source": "c012",
+      "target": "t0865",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r270",
+      "source": "c005",
+      "target": "t0263",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r271",
+      "source": "c006",
+      "target": "t0263",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r272",
+      "source": "c008",
+      "target": "t0263",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r273",
+      "source": "c009",
+      "target": "t0263",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r274",
+      "source": "c012",
+      "target": "t0263",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r275",
+      "source": "c005",
+      "target": "t2750",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r276",
+      "source": "c006",
+      "target": "t2750",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r277",
+      "source": "c005",
+      "target": "t0418",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r278",
+      "source": "c006",
+      "target": "t0418",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r279",
+      "source": "c012",
+      "target": "t0418",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r280",
+      "source": "c005",
+      "target": "t0255",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r281",
+      "source": "c012",
+      "target": "t0255",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r282",
+      "source": "c001",
+      "target": "t0310",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r283",
+      "source": "c002",
+      "target": "t0310",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r284",
+      "source": "c003",
+      "target": "t0310",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r285",
+      "source": "c005",
+      "target": "t0310",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r286",
+      "source": "c006",
+      "target": "t0310",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r287",
+      "source": "c007",
+      "target": "t0310",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r288",
+      "source": "c008",
+      "target": "t0310",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r289",
+      "source": "c009",
+      "target": "t0310",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r290",
+      "source": "c010",
+      "target": "t0310",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r291",
+      "source": "c011",
+      "target": "t0310",
+      "label": "宣讲",
+      "description": "此经宣讲三法印思想"
+    },
+    {
+      "id": "r292",
+      "source": "c012",
+      "target": "t0310",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r293",
+      "source": "c005",
+      "target": "t0205",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r294",
+      "source": "c006",
+      "target": "t0205",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r295",
+      "source": "c007",
+      "target": "t0205",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r296",
+      "source": "c012",
+      "target": "t0205",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r297",
+      "source": "c005",
+      "target": "t0253",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r298",
+      "source": "c012",
+      "target": "t0253",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r299",
+      "source": "c005",
+      "target": "t2855",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r300",
+      "source": "c012",
+      "target": "t2855",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r301",
+      "source": "c006",
+      "target": "t2794",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r302",
+      "source": "c012",
+      "target": "t2794",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r303",
+      "source": "c001",
+      "target": "t1752",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r304",
+      "source": "c005",
+      "target": "t1752",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r305",
+      "source": "c006",
+      "target": "t1752",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r306",
+      "source": "c008",
+      "target": "t1752",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r307",
+      "source": "c012",
+      "target": "t1752",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r308",
+      "source": "c005",
+      "target": "t0329",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r309",
+      "source": "c006",
+      "target": "t0329",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r310",
+      "source": "c012",
+      "target": "t0329",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r311",
+      "source": "c006",
+      "target": "t2796",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r312",
+      "source": "c005",
+      "target": "t1792",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r313",
+      "source": "c006",
+      "target": "t1792",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r314",
+      "source": "c009",
+      "target": "t1792",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r315",
+      "source": "c012",
+      "target": "t1792",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r316",
+      "source": "c001",
+      "target": "t2770",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r317",
+      "source": "c005",
+      "target": "t2770",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r318",
+      "source": "c006",
+      "target": "t2770",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r319",
+      "source": "c008",
+      "target": "t2770",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r320",
+      "source": "c012",
+      "target": "t2770",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r321",
+      "source": "c001",
+      "target": "t1509",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r322",
+      "source": "c002",
+      "target": "t1509",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r323",
+      "source": "c003",
+      "target": "t1509",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r324",
+      "source": "c005",
+      "target": "t1509",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r325",
+      "source": "c006",
+      "target": "t1509",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r326",
+      "source": "c007",
+      "target": "t1509",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r327",
+      "source": "c008",
+      "target": "t1509",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r328",
+      "source": "c009",
+      "target": "t1509",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r329",
+      "source": "c010",
+      "target": "t1509",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r330",
+      "source": "c011",
+      "target": "t1509",
+      "label": "宣讲",
+      "description": "此经宣讲三法印思想"
+    },
+    {
+      "id": "r331",
+      "source": "c012",
+      "target": "t1509",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r332",
+      "source": "c002",
+      "target": "t1757",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r333",
+      "source": "c005",
+      "target": "t1757",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r334",
+      "source": "c006",
+      "target": "t1757",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r335",
+      "source": "c007",
+      "target": "t1757",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r336",
+      "source": "c008",
+      "target": "t1757",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r337",
+      "source": "c010",
+      "target": "t1757",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r338",
+      "source": "c012",
+      "target": "t1757",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r339",
+      "source": "c012",
+      "target": "t0454",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r340",
+      "source": "c006",
+      "target": "t2745",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r341",
+      "source": "c009",
+      "target": "t2745",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r342",
+      "source": "c005",
+      "target": "t1760",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r343",
+      "source": "c001",
+      "target": "t1448",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r344",
+      "source": "c005",
+      "target": "t1448",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r345",
+      "source": "c006",
+      "target": "t1448",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r346",
+      "source": "c009",
+      "target": "t1448",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r347",
+      "source": "c010",
+      "target": "t1448",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r348",
+      "source": "c012",
+      "target": "t1448",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r349",
+      "source": "c001",
+      "target": "t0375",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r350",
+      "source": "c002",
+      "target": "t0375",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r351",
+      "source": "c003",
+      "target": "t0375",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r352",
+      "source": "c005",
+      "target": "t0375",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r353",
+      "source": "c006",
+      "target": "t0375",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r354",
+      "source": "c007",
+      "target": "t0375",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r355",
+      "source": "c008",
+      "target": "t0375",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r356",
+      "source": "c009",
+      "target": "t0375",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r357",
+      "source": "c010",
+      "target": "t0375",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r358",
+      "source": "c011",
+      "target": "t0375",
+      "label": "宣讲",
+      "description": "此经宣讲三法印思想"
+    },
+    {
+      "id": "r359",
+      "source": "c012",
+      "target": "t0375",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r360",
+      "source": "c001",
+      "target": "t1776",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r361",
+      "source": "c002",
+      "target": "t1776",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r362",
+      "source": "c003",
+      "target": "t1776",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r363",
+      "source": "c005",
+      "target": "t1776",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r364",
+      "source": "c006",
+      "target": "t1776",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r365",
+      "source": "c007",
+      "target": "t1776",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r366",
+      "source": "c008",
+      "target": "t1776",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r367",
+      "source": "c009",
+      "target": "t1776",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r368",
+      "source": "c012",
+      "target": "t1776",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r369",
+      "source": "c005",
+      "target": "t1244",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r370",
+      "source": "c001",
+      "target": "t1750",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r371",
+      "source": "c002",
+      "target": "t1750",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r372",
+      "source": "c005",
+      "target": "t1750",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r373",
+      "source": "c006",
+      "target": "t1750",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r374",
+      "source": "c012",
+      "target": "t1750",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r375",
+      "source": "c005",
+      "target": "t1759",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r376",
+      "source": "c006",
+      "target": "t1759",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r377",
+      "source": "c001",
+      "target": "t0440",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r378",
+      "source": "c005",
+      "target": "t0440",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r379",
+      "source": "c012",
+      "target": "t0440",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r380",
+      "source": "c005",
+      "target": "t2901",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r381",
+      "source": "c012",
+      "target": "t2901",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r382",
+      "source": "c001",
+      "target": "t0279",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r383",
+      "source": "c002",
+      "target": "t0279",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r384",
+      "source": "c005",
+      "target": "t0279",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r385",
+      "source": "c006",
+      "target": "t0279",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r386",
+      "source": "c007",
+      "target": "t0279",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r387",
+      "source": "c008",
+      "target": "t0279",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r388",
+      "source": "c009",
+      "target": "t0279",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r389",
+      "source": "c010",
+      "target": "t0279",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r390",
+      "source": "c011",
+      "target": "t0279",
+      "label": "宣讲",
+      "description": "此经宣讲三法印思想"
+    },
+    {
+      "id": "r391",
+      "source": "c012",
+      "target": "t0279",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r392",
+      "source": "c002",
+      "target": "t0221",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r393",
+      "source": "c005",
+      "target": "t0221",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r394",
+      "source": "c006",
+      "target": "t0221",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r395",
+      "source": "c007",
+      "target": "t0221",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r396",
+      "source": "c008",
+      "target": "t0221",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r397",
+      "source": "c009",
+      "target": "t0221",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r398",
+      "source": "c012",
+      "target": "t0221",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r399",
+      "source": "c005",
+      "target": "t0101",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r400",
+      "source": "c006",
+      "target": "t0101",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r401",
+      "source": "c007",
+      "target": "t0101",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r402",
+      "source": "c012",
+      "target": "t0101",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r403",
+      "source": "c005",
+      "target": "t2737",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r404",
+      "source": "c006",
+      "target": "t2737",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r405",
+      "source": "c012",
+      "target": "t2737",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r406",
+      "source": "c001",
+      "target": "t1598",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r407",
+      "source": "c002",
+      "target": "t1598",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r408",
+      "source": "c004",
+      "target": "t1598",
+      "label": "宣讲",
+      "description": "此经宣讲阿赖耶识思想"
+    },
+    {
+      "id": "r409",
+      "source": "c005",
+      "target": "t1598",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r410",
+      "source": "c006",
+      "target": "t1598",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r411",
+      "source": "c012",
+      "target": "t1598",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r412",
+      "source": "c005",
+      "target": "t0774",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r413",
+      "source": "c012",
+      "target": "t0774",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r414",
+      "source": "c006",
+      "target": "t1583",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r415",
+      "source": "c012",
+      "target": "t1583",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r416",
+      "source": "c001",
+      "target": "t1753",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r417",
+      "source": "c002",
+      "target": "t1753",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r418",
+      "source": "c005",
+      "target": "t1753",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r419",
+      "source": "c006",
+      "target": "t1753",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r420",
+      "source": "c012",
+      "target": "t1753",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r421",
+      "source": "c005",
+      "target": "t0204",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r422",
+      "source": "c012",
+      "target": "t0204",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r423",
+      "source": "c005",
+      "target": "t2789",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r424",
+      "source": "c006",
+      "target": "t2789",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r425",
+      "source": "c012",
+      "target": "t2789",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r426",
+      "source": "c002",
+      "target": "t1018",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r427",
+      "source": "c005",
+      "target": "t1018",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r428",
+      "source": "c006",
+      "target": "t1018",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r429",
+      "source": "c005",
+      "target": "t0407",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r430",
+      "source": "c012",
+      "target": "t0407",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r431",
+      "source": "c012",
+      "target": "t0251",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r432",
+      "source": "c012",
+      "target": "t2856",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r433",
+      "source": "c006",
+      "target": "t0772",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r434",
+      "source": "c001",
+      "target": "t2060",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r435",
+      "source": "c002",
+      "target": "t2060",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r436",
+      "source": "c003",
+      "target": "t2060",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r437",
+      "source": "c005",
+      "target": "t2060",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r438",
+      "source": "c006",
+      "target": "t2060",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r439",
+      "source": "c011",
+      "target": "t2060",
+      "label": "宣讲",
+      "description": "此经宣讲三法印思想"
+    },
+    {
+      "id": "r440",
+      "source": "c012",
+      "target": "t2060",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r441",
+      "source": "c002",
+      "target": "t1698",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r442",
+      "source": "c005",
+      "target": "t1698",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r443",
+      "source": "c006",
+      "target": "t1698",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r444",
+      "source": "c007",
+      "target": "t1698",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r445",
+      "source": "c012",
+      "target": "t1698",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r446",
+      "source": "c005",
+      "target": "t0417",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r447",
+      "source": "c012",
+      "target": "t0417",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r448",
+      "source": "c001",
+      "target": "t1582",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r449",
+      "source": "c002",
+      "target": "t1582",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r450",
+      "source": "c003",
+      "target": "t1582",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r451",
+      "source": "c005",
+      "target": "t1582",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r452",
+      "source": "c006",
+      "target": "t1582",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r453",
+      "source": "c007",
+      "target": "t1582",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r454",
+      "source": "c008",
+      "target": "t1582",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r455",
+      "source": "c009",
+      "target": "t1582",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r456",
+      "source": "c010",
+      "target": "t1582",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r457",
+      "source": "c011",
+      "target": "t1582",
+      "label": "宣讲",
+      "description": "此经宣讲三法印思想"
+    },
+    {
+      "id": "r458",
+      "source": "c012",
+      "target": "t1582",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r459",
+      "source": "c001",
+      "target": "t1666",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r460",
+      "source": "c002",
+      "target": "t1666",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r461",
+      "source": "c005",
+      "target": "t1666",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r462",
+      "source": "c006",
+      "target": "t1666",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r463",
+      "source": "c007",
+      "target": "t1666",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r464",
+      "source": "c012",
+      "target": "t1666",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r465",
+      "source": "c005",
+      "target": "t0210",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r466",
+      "source": "c006",
+      "target": "t0210",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r467",
+      "source": "c012",
+      "target": "t0210",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r468",
+      "source": "c005",
+      "target": "t2768",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r469",
+      "source": "c006",
+      "target": "t2768",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r470",
+      "source": "c007",
+      "target": "t2768",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r471",
+      "source": "c012",
+      "target": "t2768",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r472",
+      "source": "c001",
+      "target": "t2767",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r473",
+      "source": "c002",
+      "target": "t2767",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r474",
+      "source": "c004",
+      "target": "t2767",
+      "label": "宣讲",
+      "description": "此经宣讲阿赖耶识思想"
+    },
+    {
+      "id": "r475",
+      "source": "c005",
+      "target": "t2767",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r476",
+      "source": "c006",
+      "target": "t2767",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r477",
+      "source": "c012",
+      "target": "t2767",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r478",
+      "source": "c005",
+      "target": "t2788",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r479",
+      "source": "c006",
+      "target": "t2788",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r480",
+      "source": "c012",
+      "target": "t2788",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r481",
+      "source": "c001",
+      "target": "t1595",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r482",
+      "source": "c002",
+      "target": "t1595",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r483",
+      "source": "c003",
+      "target": "t1595",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r484",
+      "source": "c005",
+      "target": "t1595",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r485",
+      "source": "c006",
+      "target": "t1595",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r486",
+      "source": "c007",
+      "target": "t1595",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r487",
+      "source": "c009",
+      "target": "t1595",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r488",
+      "source": "c012",
+      "target": "t1595",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r489",
+      "source": "c012",
+      "target": "t0235",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r490",
+      "source": "c001",
+      "target": "t1627",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r491",
+      "source": "c002",
+      "target": "t1627",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r492",
+      "source": "c005",
+      "target": "t1627",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r493",
+      "source": "c005",
+      "target": "t0641",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r494",
+      "source": "c009",
+      "target": "t0641",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r495",
+      "source": "c012",
+      "target": "t0334",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r496",
+      "source": "c002",
+      "target": "t0475",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r497",
+      "source": "c005",
+      "target": "t0475",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r498",
+      "source": "c006",
+      "target": "t0475",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r499",
+      "source": "c008",
+      "target": "t0475",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r500",
+      "source": "c012",
+      "target": "t0475",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r501",
+      "source": "c001",
+      "target": "t1592",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r502",
+      "source": "c002",
+      "target": "t1592",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r503",
+      "source": "c005",
+      "target": "t1592",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r504",
+      "source": "c006",
+      "target": "t1592",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r505",
+      "source": "c012",
+      "target": "t1592",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r506",
+      "source": "c012",
+      "target": "t0988",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r507",
+      "source": "c002",
+      "target": "t2833",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r508",
+      "source": "c003",
+      "target": "t2833",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r509",
+      "source": "c012",
+      "target": "t2833",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r510",
+      "source": "c001",
+      "target": "t2749",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r511",
+      "source": "c005",
+      "target": "t2749",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r512",
+      "source": "c012",
+      "target": "t2749",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r513",
+      "source": "c005",
+      "target": "t0237",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r514",
+      "source": "c006",
+      "target": "t0237",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r515",
+      "source": "c012",
+      "target": "t0237",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r516",
+      "source": "c001",
+      "target": "t2854",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r517",
+      "source": "c012",
+      "target": "t2854",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r518",
+      "source": "c001",
+      "target": "t1708",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r519",
+      "source": "c002",
+      "target": "t1708",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r520",
+      "source": "c003",
+      "target": "t1708",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r521",
+      "source": "c004",
+      "target": "t1708",
+      "label": "宣讲",
+      "description": "此经宣讲阿赖耶识思想"
+    },
+    {
+      "id": "r522",
+      "source": "c005",
+      "target": "t1708",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r523",
+      "source": "c006",
+      "target": "t1708",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r524",
+      "source": "c007",
+      "target": "t1708",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r525",
+      "source": "c009",
+      "target": "t1708",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r526",
+      "source": "c012",
+      "target": "t1708",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r527",
+      "source": "c012",
+      "target": "t0335",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r528",
+      "source": "c005",
+      "target": "t0968",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r529",
+      "source": "c001",
+      "target": "t1593",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r530",
+      "source": "c002",
+      "target": "t1593",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r531",
+      "source": "c005",
+      "target": "t1593",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r532",
+      "source": "c006",
+      "target": "t1593",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r533",
+      "source": "c012",
+      "target": "t1593",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r534",
+      "source": "c002",
+      "target": "t0639",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r535",
+      "source": "c005",
+      "target": "t0639",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r536",
+      "source": "c006",
+      "target": "t0639",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r537",
+      "source": "c007",
+      "target": "t0639",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r538",
+      "source": "c010",
+      "target": "t0639",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r539",
+      "source": "c012",
+      "target": "t0639",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r540",
+      "source": "c005",
+      "target": "t0207",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r541",
+      "source": "c006",
+      "target": "t0207",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r542",
+      "source": "c012",
+      "target": "t0207",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r543",
+      "source": "c002",
+      "target": "t0262",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r544",
+      "source": "c005",
+      "target": "t0262",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r545",
+      "source": "c006",
+      "target": "t0262",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r546",
+      "source": "c008",
+      "target": "t0262",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r547",
+      "source": "c009",
+      "target": "t0262",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r548",
+      "source": "c012",
+      "target": "t0262",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r549",
+      "source": "c001",
+      "target": "t0682",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r550",
+      "source": "c002",
+      "target": "t0682",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r551",
+      "source": "c004",
+      "target": "t0682",
+      "label": "宣讲",
+      "description": "此经宣讲阿赖耶识思想"
+    },
+    {
+      "id": "r552",
+      "source": "c005",
+      "target": "t0682",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r553",
+      "source": "c006",
+      "target": "t0682",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r554",
+      "source": "c012",
+      "target": "t0682",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r555",
+      "source": "c005",
+      "target": "t1009",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r556",
+      "source": "c001",
+      "target": "t1746",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r557",
+      "source": "c005",
+      "target": "t1746",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r558",
+      "source": "c006",
+      "target": "t1746",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r559",
+      "source": "c012",
+      "target": "t1746",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r560",
+      "source": "c001",
+      "target": "t0293",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r561",
+      "source": "c002",
+      "target": "t0293",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r562",
+      "source": "c004",
+      "target": "t0293",
+      "label": "宣讲",
+      "description": "此经宣讲阿赖耶识思想"
+    },
+    {
+      "id": "r563",
+      "source": "c005",
+      "target": "t0293",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r564",
+      "source": "c006",
+      "target": "t0293",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r565",
+      "source": "c009",
+      "target": "t0293",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r566",
+      "source": "c010",
+      "target": "t0293",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r567",
+      "source": "c012",
+      "target": "t0293",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r568",
+      "source": "c001",
+      "target": "t1597",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r569",
+      "source": "c002",
+      "target": "t1597",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r570",
+      "source": "c004",
+      "target": "t1597",
+      "label": "宣讲",
+      "description": "此经宣讲阿赖耶识思想"
+    },
+    {
+      "id": "r571",
+      "source": "c005",
+      "target": "t1597",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r572",
+      "source": "c006",
+      "target": "t1597",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r573",
+      "source": "c012",
+      "target": "t1597",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r574",
+      "source": "c005",
+      "target": "t0984",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r575",
+      "source": "c006",
+      "target": "t1501",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r576",
+      "source": "c012",
+      "target": "t1501",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r577",
+      "source": "c005",
+      "target": "t2865",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r578",
+      "source": "c001",
+      "target": "t1667",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r579",
+      "source": "c002",
+      "target": "t1667",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r580",
+      "source": "c003",
+      "target": "t1667",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r581",
+      "source": "c004",
+      "target": "t1667",
+      "label": "宣讲",
+      "description": "此经宣讲阿赖耶识思想"
+    },
+    {
+      "id": "r582",
+      "source": "c005",
+      "target": "t1667",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r583",
+      "source": "c006",
+      "target": "t1667",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r584",
+      "source": "c012",
+      "target": "t1667",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r585",
+      "source": "c005",
+      "target": "t0909",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r586",
+      "source": "c002",
+      "target": "t2771",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r587",
+      "source": "c005",
+      "target": "t2771",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r588",
+      "source": "c007",
+      "target": "t2771",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r589",
+      "source": "c005",
+      "target": "t0328",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r590",
+      "source": "c012",
+      "target": "t0328",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r591",
+      "source": "c001",
+      "target": "t2741",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r592",
+      "source": "c002",
+      "target": "t2741",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r593",
+      "source": "c003",
+      "target": "t2741",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r594",
+      "source": "c005",
+      "target": "t2741",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r595",
+      "source": "c006",
+      "target": "t2741",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r596",
+      "source": "c007",
+      "target": "t2741",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r597",
+      "source": "c012",
+      "target": "t2741",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r598",
+      "source": "c005",
+      "target": "t0001",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r599",
+      "source": "c008",
+      "target": "t0001",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r600",
+      "source": "c009",
+      "target": "t0001",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r601",
+      "source": "c010",
+      "target": "t0001",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r602",
+      "source": "c012",
+      "target": "t0001",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r603",
+      "source": "c005",
+      "target": "t0989",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r604",
+      "source": "c001",
+      "target": "t0099",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r605",
+      "source": "c002",
+      "target": "t0099",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r606",
+      "source": "c005",
+      "target": "t0099",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r607",
+      "source": "c006",
+      "target": "t0099",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r608",
+      "source": "c007",
+      "target": "t0099",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r609",
+      "source": "c008",
+      "target": "t0099",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r610",
+      "source": "c009",
+      "target": "t0099",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r611",
+      "source": "c010",
+      "target": "t0099",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r612",
+      "source": "c011",
+      "target": "t0099",
+      "label": "宣讲",
+      "description": "此经宣讲三法印思想"
+    },
+    {
+      "id": "r613",
+      "source": "c012",
+      "target": "t0099",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r614",
+      "source": "c005",
+      "target": "t0474",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r615",
+      "source": "c006",
+      "target": "t0474",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r616",
+      "source": "c012",
+      "target": "t0474",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r617",
+      "source": "c012",
+      "target": "t2751",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r618",
+      "source": "c005",
+      "target": "t0640",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r619",
+      "source": "c012",
+      "target": "t0640",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r620",
+      "source": "c005",
+      "target": "t0007",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r621",
+      "source": "c006",
+      "target": "t0007",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r622",
+      "source": "c009",
+      "target": "t0007",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r623",
+      "source": "c010",
+      "target": "t0007",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r624",
+      "source": "c012",
+      "target": "t0007",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r625",
+      "source": "c005",
+      "target": "t2738",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r626",
+      "source": "c009",
+      "target": "t2738",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r627",
+      "source": "c012",
+      "target": "t2738",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r628",
+      "source": "c001",
+      "target": "t0374",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r629",
+      "source": "c002",
+      "target": "t0374",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r630",
+      "source": "c005",
+      "target": "t0374",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r631",
+      "source": "c006",
+      "target": "t0374",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r632",
+      "source": "c007",
+      "target": "t0374",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r633",
+      "source": "c008",
+      "target": "t0374",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r634",
+      "source": "c009",
+      "target": "t0374",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r635",
+      "source": "c010",
+      "target": "t0374",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r636",
+      "source": "c011",
+      "target": "t0374",
+      "label": "宣讲",
+      "description": "此经宣讲三法印思想"
+    },
+    {
+      "id": "r637",
+      "source": "c012",
+      "target": "t0374",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r638",
+      "source": "c001",
+      "target": "t1745",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r639",
+      "source": "c002",
+      "target": "t1745",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r640",
+      "source": "c005",
+      "target": "t1745",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r641",
+      "source": "c006",
+      "target": "t1745",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r642",
+      "source": "c012",
+      "target": "t1745",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r643",
+      "source": "c005",
+      "target": "t0254",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r644",
+      "source": "c012",
+      "target": "t0254",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r645",
+      "source": "c005",
+      "target": "t0406",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r646",
+      "source": "c006",
+      "target": "t0406",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r647",
+      "source": "c012",
+      "target": "t0406",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r648",
+      "source": "c001",
+      "target": "t0441",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r649",
+      "source": "c002",
+      "target": "t0441",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r650",
+      "source": "c003",
+      "target": "t0441",
+      "label": "宣讲",
+      "description": "此经宣讲佛性思想"
+    },
+    {
+      "id": "r651",
+      "source": "c005",
+      "target": "t0441",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r652",
+      "source": "c006",
+      "target": "t0441",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r653",
+      "source": "c007",
+      "target": "t0441",
+      "label": "宣讲",
+      "description": "此经宣讲五蕴思想"
+    },
+    {
+      "id": "r654",
+      "source": "c008",
+      "target": "t0441",
+      "label": "宣讲",
+      "description": "此经宣讲十二缘起思想"
+    },
+    {
+      "id": "r655",
+      "source": "c009",
+      "target": "t0441",
+      "label": "宣讲",
+      "description": "此经宣讲四圣谛思想"
+    },
+    {
+      "id": "r656",
+      "source": "c010",
+      "target": "t0441",
+      "label": "宣讲",
+      "description": "此经宣讲八正道思想"
+    },
+    {
+      "id": "r657",
+      "source": "c012",
+      "target": "t0441",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r658",
+      "source": "c001",
+      "target": "t1626",
+      "label": "宣讲",
+      "description": "此经宣讲法界思想"
+    },
+    {
+      "id": "r659",
+      "source": "c002",
+      "target": "t1626",
+      "label": "宣讲",
+      "description": "此经宣讲真如思想"
+    },
+    {
+      "id": "r660",
+      "source": "c005",
+      "target": "t1626",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r661",
+      "source": "c005",
+      "target": "t2766",
+      "label": "宣讲",
+      "description": "此经宣讲空性思想"
+    },
+    {
+      "id": "r662",
+      "source": "c006",
+      "target": "t2766",
+      "label": "宣讲",
+      "description": "此经宣讲缘起思想"
+    },
+    {
+      "id": "r663",
+      "source": "c012",
+      "target": "t2766",
+      "label": "宣讲",
+      "description": "此经宣讲六度思想"
+    },
+    {
+      "id": "r664",
+      "source": "p002",
+      "target": "p006",
+      "label": "胁侍",
+      "description": "观音菩萨为阿弥陀佛左胁侍"
+    },
+    {
+      "id": "r665",
+      "source": "p002",
+      "target": "p008",
+      "label": "胁侍",
+      "description": "大势至菩萨为阿弥陀佛右胁侍"
+    },
+    {
+      "id": "r666",
+      "source": "p001",
+      "target": "p004",
+      "label": "胁侍",
+      "description": "文殊菩萨为释迦牟尼佛左胁侍"
+    },
+    {
+      "id": "r667",
+      "source": "p001",
+      "target": "p005",
+      "label": "胁侍",
+      "description": "普贤菩萨为释迦牟尼佛右胁侍"
+    },
+    {
+      "id": "r668",
+      "source": "p003",
+      "target": "p007",
+      "label": "胁侍",
+      "description": "日光月光为药师佛胁侍"
+    },
+    {
+      "id": "r669",
+      "source": "p008",
+      "target": "p001",
+      "label": "当来下生",
+      "description": "弥勒菩萨当来下生成佛"
+    },
+    {
+      "id": "r670",
+      "source": "p001",
+      "target": "p009",
+      "label": "弟子",
+      "description": "是释迦牟尼佛十大弟子"
+    },
+    {
+      "id": "r671",
+      "source": "p001",
+      "target": "p010",
+      "label": "弟子",
+      "description": "是释迦牟尼佛十大弟子"
+    },
+    {
+      "id": "r672",
+      "source": "p001",
+      "target": "p011",
+      "label": "弟子",
+      "description": "是释迦牟尼佛十大弟子"
+    },
+    {
+      "id": "r673",
+      "source": "p001",
+      "target": "p012",
+      "label": "弟子",
+      "description": "是释迦牟尼佛十大弟子"
+    },
+    {
+      "id": "r674",
+      "source": "p009",
+      "target": "p010",
+      "label": "传法",
+      "description": "迦叶传法给阿难，为禅宗西天二祖"
+    },
+    {
+      "id": "r675",
+      "source": "p001",
+      "target": "t0001",
+      "label": "所说",
+      "description": "阿含经为释迦牟尼佛所说"
+    },
+    {
+      "id": "r676",
+      "source": "p002",
+      "target": "t0366",
+      "label": "所说",
+      "description": "阿弥陀经说阿弥陀佛极乐世界"
+    },
+    {
+      "id": "r677",
+      "source": "p006",
+      "target": "t0251",
+      "label": "说法",
+      "description": "心经为观自在菩萨所说"
+    },
+    {
+      "id": "r678",
+      "source": "p007",
+      "target": "t0412",
+      "label": "本愿",
+      "description": "地藏经说地藏菩萨本愿"
+    },
+    {
+      "id": "r679",
+      "source": "p020",
+      "target": "t0001",
+      "label": "化身",
+      "description": "济公为降龙罗汉转世"
+    },
+    {
+      "id": "r680",
+      "source": "p021",
+      "target": "p008",
+      "label": "化身",
+      "description": "布袋和尚为弥勒菩萨化身"
     }
   ]
 };

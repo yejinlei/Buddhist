@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>概念路径智能推演 - 佛学本体论</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="../js/ontology-data.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-buddha-bg text-buddha-dark">
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="../index.html" class="text-xl font-bold text-buddha-primary">🏛️ 佛学本体论</a>
+            <div class="flex gap-6 text-sm">
+                <a href="../index.html" class="hover:text-buddha-secondary">首页</a>
+                <a href="sutras.html" class="hover:text-buddha-secondary">全藏经文库</a>
+                <a href="graph.html" class="hover:text-buddha-secondary">义理图谱</a>
+                <a href="kepan.html" class="hover:text-buddha-secondary">科判导航</a>
+                <a href="panjiao.html" class="hover:text-buddha-secondary">宗派判教</a>
+                <a href="inference.html" class="text-buddha-primary font-bold">概念推演</a>
+                <a href="timeline.html" class="hover:text-buddha-secondary">译传时间轴</a>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-5xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-buddha-primary mb-2">🔍 概念路径智能推演</h1>
+        <p class="text-buddha-dark/70 mb-6">BFS算法自动推演两个概念之间的义理关联路径，展示逻辑环节与经典依据</p>
+        <div class="bg-white p-6 rounded-lg shadow mb-6">
+            <div class="flex gap-4 items-end flex-wrap">
+                <div>
+                    <label class="block text-sm mb-1">起点概念</label>
+                    <select id="start" class="border rounded p-2 min-w-40"></select>
+                </div>
+                <div class="text-2xl">→</div>
+                <div>
+                    <label class="block text-sm mb-1">终点概念</label>
+                    <select id="end" class="border rounded p-2 min-w-40"></select>
+                </div>
+                <button id="run" class="bg-buddha-primary text-white px-6 py-2 rounded hover:bg-buddha-dark transition-colors">推演路径</button>
+            </div>
+        </div>
+        <div id="result" class="bg-white p-6 rounded-lg shadow">
+            <p class="text-buddha-dark/60">请选择起点和终点概念，点击推演查看义理路径</p>
+        </div>
+    </main>
+    <script>
+        const concepts = ontologyData.concepts;
+        const startSel = document.getElementById('start');
+        const endSel = document.getElementById('end');
+        concepts.forEach(c=>{
+            startSel.innerHTML += `<option value="${c.id}">${c.name}</option>`;
+            endSel.innerHTML += `<option value="${c.id}">${c.name}</option>`;
+        });
+        startSel.value = 'c006'; // 缘起
+        endSel.value = 'c003'; // 佛性
+
+        // 建图
+        const graph = {};
+        ontologyData.relations.forEach(r=>{
+            if (!graph[r.source]) graph[r.source] = [];
+            if (!graph[r.target]) graph[r.target] = [];
+            graph[r.source].push({to:r.target, label:r.label, desc:r.description});
+            graph[r.target].push({to:r.source, label:r.label, desc:r.description});
+        });
+        const nameMap = {};
+        [...ontologyData.concepts, ...ontologyData.sects, ...ontologyData.sutras, ...ontologyData.persons, ...ontologyData.categories].forEach(n=>nameMap[n.id]=n.name||n.name);
+
+        function bfs(start, end) {
+            const q = [[start, []]];
+            const visited = new Set([start]);
+            while(q.length>0) {
+                const [node, path] = q.shift();
+                if (node === end) return path;
+                (graph[node]||[]).forEach(e=>{
+                    if (!visited.has(e.to)) {
+                        visited.add(e.to);
+                        q.push([e.to, [...path, e]]);
+                    }
+                });
+            }
+            return null;
+        }
+
+        document.getElementById('run').onclick = ()=>{
+            const s = startSel.value, e = endSel.value;
+            const path = bfs(s, e);
+            const res = document.getElementById('result');
+            if (!path) {
+                res.innerHTML = `<p class="text-red-600">未找到两个概念之间的路径</p>`;
+                return;
+            }
+            let html = `<h3 class="font-bold text-lg mb-4">推演路径：${nameMap[s]} → ${nameMap[e]}</h3><div class="flex items-center gap-2 flex-wrap mb-6">`;
+            html += `<span class="bg-buddha-primary text-white px-3 py-1 rounded-full">${nameMap[s]}</span>`;
+            path.forEach(step=>{
+                html += `<span class="text-buddha-dark/60">—[${step.label}]—</span><span class="bg-buddha-light px-3 py-1 rounded-full">${nameMap[step.to]||step.to}</span>`;
+            });
+            html += `</div><h4 class="font-bold mb-2">步骤详情：</h4><ul class="space-y-3">`;
+            let cur = s;
+            path.forEach((step,i)=>{
+                html += `<li class="border-l-2 border-buddha-primary pl-4"><span class="font-semibold">${i+1}. ${nameMap[cur]} → ${nameMap[step.to]}</span><div class="text-sm text-buddha-dark/70 mt-1">关系：${step.label}</div><div class="text-sm">${step.desc}</div></li>`;
+                cur = step.to;
+            });
+            html += `</ul>`;
+            res.innerHTML = html;
+        };
+    </script>
+</body>
+</html>

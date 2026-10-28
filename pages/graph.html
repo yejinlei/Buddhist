@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>义理关系图谱 - 佛学本体论</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="../js/ontology-data.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-buddha-bg text-buddha-dark">
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="../index.html" class="text-xl font-bold text-buddha-primary">🏛️ 佛学本体论</a>
+            <div class="flex gap-6 text-sm">
+                <a href="../index.html" class="hover:text-buddha-secondary">首页</a>
+                <a href="sutras.html" class="hover:text-buddha-secondary">全藏经文库</a>
+                <a href="graph.html" class="text-buddha-primary font-bold">义理图谱</a>
+                <a href="kepan.html" class="hover:text-buddha-secondary">科判导航</a>
+                <a href="panjiao.html" class="hover:text-buddha-secondary">宗派判教</a>
+                <a href="inference.html" class="hover:text-buddha-secondary">概念推演</a>
+                <a href="timeline.html" class="hover:text-buddha-secondary">译传时间轴</a>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-buddha-primary mb-4">🕸️ 义理关系图谱</h1>
+        <p class="mb-4 text-buddha-dark/70">共收录概念、人物、宗派、部类、经典五类节点，支持拖拽缩放，点击节点查看详情</p>
+        <div class="flex gap-4 mb-4 flex-wrap">
+            <label class="flex items-center gap-1"><input type="checkbox" checked data-type="concept" class="graph-filter"> 义理概念</label>
+            <label class="flex items-center gap-1"><input type="checkbox" checked data-type="sutra" class="graph-filter"> 经典</label>
+            <label class="flex items-center gap-1"><input type="checkbox" checked data-type="person" class="graph-filter"> 人物</label>
+            <label class="flex items-center gap-1"><input type="checkbox" checked data-type="sect" class="graph-filter"> 宗派</label>
+            <label class="flex items-center gap-1"><input type="checkbox" checked data-type="category" class="graph-filter"> 部类</label>
+        </div>
+        <div id="graphChart" style="width:100%;height:75vh;background:white;border-radius:8px;"></div>
+        <div id="detail" class="mt-4 p-4 bg-white rounded-lg shadow hidden"></div>
+    </main>
+    <script>
+        const chart = echarts.init(document.getElementById('graphChart'));
+        const colorMap = {concept:'#1E4D2B',sutra:'#8B2500',buddha:'#DAA520',bodhisattva:'#DB7093',arhat:'#9370DB',master:'#2F4F4F',scholar:'#20B2AA',folk:'#CD853F',sect:'#4A148C',category:'#5D4037'};
+        const nameMap = {concept:'义理概念',sutra:'经典',buddha:'佛',bodhisattva:'菩萨',arhat:'阿罗汉',master:'祖师译师',scholar:'学者',folk:'民间人物',sect:'宗派',category:'部类'};
+
+        function render() {
+            const types = Array.from(document.querySelectorAll('.graph-filter:checked')).map(c=>c.dataset.type);
+            const nodes = [], nodeMap = {}, links = [];
+            if (types.includes('concept')) ontologyData.concepts.forEach(c=>{const id='c_'+c.id;nodes.push({id,name:c.name,category:'concept',symbolSize:c.layer==='L1'?28:20,itemStyle:{color:colorMap.concept},data:c});nodeMap[id]=c;});
+            if (types.includes('person')) ontologyData.persons.forEach(p=>{const id='p_'+p.id;nodes.push({id,name:p.name,category:p.class,symbolSize:p.class==='buddha'?30:p.class==='bodhisattva'?25:20,itemStyle:{color:colorMap[p.class]||'#666'},data:p});nodeMap[id]=p;});
+            if (types.includes('sect')) ontologyData.sects.forEach(s=>{const id='s_'+s.id;nodes.push({id,name:s.name,category:'sect',symbolSize:28,itemStyle:{color:colorMap.sect},data:s});nodeMap[id]=s;});
+            if (types.includes('category')) ontologyData.categories.forEach(c=>{const id='ca_'+c.id;nodes.push({id,name:c.name,category:'category',symbolSize:Math.min(15+c.count/8,50),itemStyle:{color:colorMap.category},data:c});nodeMap[id]=c;});
+            if (types.includes('sutra')) ontologyData.sutras.forEach(s=>{const id='su_'+s.id;nodes.push({id,name:s.name,category:'sutra',symbolSize:s.word_count>100000?22:16,itemStyle:{color:colorMap.sutra},data:s});nodeMap[id]=s;});
+
+            function gid(raw) {
+                if (raw.startsWith('c')) return 'c_'+raw;
+                if (raw.startsWith('p')) return 'p_'+raw;
+                if (raw.startsWith('sect')) return 's_'+raw;
+                if (raw.startsWith('cat_')) return 'ca_'+raw;
+                if (raw.startsWith('t')) return 'su_'+raw;
+                return raw;
+            }
+            ontologyData.relations.forEach(r=>{
+                const s=gid(r.source), t=gid(r.target);
+                if (nodes.some(n=>n.id===s)&&nodes.some(n=>n.id===t)) links.push({source:s,target:t,label:{show:false,formatter:r.label,fontSize:10},lineStyle:{width:1.2,opacity:0.6,curveness:0.1},data:r});
+            });
+            const cats = Object.keys(colorMap).map(k=>({name:nameMap[k]||k,itemStyle:{color:colorMap[k]}}));
+            chart.setOption({tooltip:{formatter:p=>p.dataType==='node'?`<b>${p.name}</b><br/>${p.data.data.definition||p.data.data.core_doctrine||p.data.data.translator||''}`:`<b>${p.data.data.label}</b><br/>${p.data.data.description||''}`},legend:[{data:cats.map(c=>c.name),top:10}],series:[{type:'graph',layout:'force',data:nodes,links:links,categories:cats,roam:true,draggable:true,label:{show:true,position:'right',fontSize:11},force:{repulsion:350,edgeLength:[80,160],gravity:0.1},emphasis:{focus:'adjacency',lineStyle:{width:3}}}],true});
+        }
+        chart.on('click', p=>{
+            if (p.dataType==='node') {
+                const d = p.data.data;
+                document.getElementById('detail').classList.remove('hidden');
+                document.getElementById('detail').innerHTML = `<h3 class="font-bold text-lg text-buddha-primary mb-2">${p.name}</h3><div>${d.definition||d.core_doctrine||d.translator||''}</div>`;
+            }
+        });
+        document.querySelectorAll('.graph-filter').forEach(c=>c.addEventListener('change',render));
+        window.addEventListener('resize',()=>chart.resize());
+        render();
+    </script>
+</body>
+</html>

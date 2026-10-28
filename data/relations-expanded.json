@@ -51,7 +51,7 @@
     {"source": "s005", "target": "c005", "type": "chujing", "description": "大般若经系统阐述空性思想，空性思想的根本经典"},
     {"source": "s006", "target": "c005", "type": "chujing", "description": "金刚经核心是无住生心，阐发般若空性，离一切相"},
     {"source": "s007", "target": "c005", "type": "chujing", "description": "心经核心是五蕴皆空、色空不二，是般若思想的浓缩"},
-    {"source": "s007", "target": "c011", "type": "chujing", "description": "心经说"照见五蕴皆空"，以五蕴皆空为核心观法"},
+    {"source": "s007", "target": "c011", "type": "chujing", "description": "心经说“照见五蕴皆空”，以五蕴皆空为核心观法"},
     {"source": "s008", "target": "c009", "type": "chujing", "description": "法华经核心是诸法实相，十如是就是诸法实相"},
     {"source": "s008", "target": "c034", "type": "yijing", "description": "天台宗以法华经为根本，发展三谛圆融思想"},
     {"source": "s009", "target": "c001", "type": "chujing", "description": "华严经核心是法界缘起"},
