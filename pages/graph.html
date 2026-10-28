@@ -5,11 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>义理关系图谱 - 佛学本体论</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        buddha: {
+                            primary: '#8B5A2B',
+                            secondary: '#D4AF37',
+                            accent: '#C19A6B',
+                            dark: '#3A2E1F',
+                            light: '#F5F0E6',
+                            paper: '#F8F4E9',
+                            ink: '#2C2416',
+                            sutra: '#7B3F00',
+                            concept: '#1E4D2B',
+                            person: '#8B0000',
+                            sect: '#4A148C'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'KaiTi', 'STKaiti', 'serif'],
+                        sans: ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .scrollbar-thin {
+                scrollbar-width: thin;
+            }
+            .scrollbar-thin::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+            }
+            .scrollbar-thin::-webkit-scrollbar-thumb {
+                background-color: rgba(139, 90, 43, 0.3);
+                border-radius: 2px;
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+            .bg-paper-texture {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            }
+            .lotus-pattern {
+                background-image: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            }
+            .node-sutra { color: #7B3F00; }
+            .node-concept { color: #1E4D2B; }
+            .node-person { color: #8B0000; }
+            .node-sect { color: #4A148C; }
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <script src="../js/ontology-data.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="bg-buddha-bg text-buddha-dark">
+<body class="bg-buddha-paper text-buddha-dark">
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             <a href="../index.html" class="text-xl font-bold text-buddha-primary">🏛️ 佛学本体论</a>
@@ -45,11 +104,11 @@
         function render() {
             const types = Array.from(document.querySelectorAll('.graph-filter:checked')).map(c=>c.dataset.type);
             const nodes = [], nodeMap = {}, links = [];
-            if (types.includes('concept')) ontologyData.concepts.forEach(c=>{const id='c_'+c.id;nodes.push({id,name:c.name,category:'concept',symbolSize:c.layer==='L1'?28:20,itemStyle:{color:colorMap.concept},data:c});nodeMap[id]=c;});
-            if (types.includes('person')) ontologyData.persons.forEach(p=>{const id='p_'+p.id;nodes.push({id,name:p.name,category:p.class,symbolSize:p.class==='buddha'?30:p.class==='bodhisattva'?25:20,itemStyle:{color:colorMap[p.class]||'#666'},data:p});nodeMap[id]=p;});
-            if (types.includes('sect')) ontologyData.sects.forEach(s=>{const id='s_'+s.id;nodes.push({id,name:s.name,category:'sect',symbolSize:28,itemStyle:{color:colorMap.sect},data:s});nodeMap[id]=s;});
-            if (types.includes('category')) ontologyData.categories.forEach(c=>{const id='ca_'+c.id;nodes.push({id,name:c.name,category:'category',symbolSize:Math.min(15+c.count/8,50),itemStyle:{color:colorMap.category},data:c});nodeMap[id]=c;});
-            if (types.includes('sutra')) ontologyData.sutras.forEach(s=>{const id='su_'+s.id;nodes.push({id,name:s.name,category:'sutra',symbolSize:s.word_count>100000?22:16,itemStyle:{color:colorMap.sutra},data:s});nodeMap[id]=s;});
+            if (types.includes('concept')) ontologyGraphData.concepts.forEach(c=>{const id='c_'+c.id;nodes.push({id,name:c.name,category:'concept',symbolSize:c.layer==='L1'?28:20,itemStyle:{color:colorMap.concept},data:c});nodeMap[id]=c;});
+            if (types.includes('person')) ontologyGraphData.persons.forEach(p=>{const id='p_'+p.id;nodes.push({id,name:p.name,category:p.class,symbolSize:p.class==='buddha'?30:p.class==='bodhisattva'?25:20,itemStyle:{color:colorMap[p.class]||'#666'},data:p});nodeMap[id]=p;});
+            if (types.includes('sect')) ontologyGraphData.sects.forEach(s=>{const id='s_'+s.id;nodes.push({id,name:s.name,category:'sect',symbolSize:28,itemStyle:{color:colorMap.sect},data:s});nodeMap[id]=s;});
+            if (types.includes('category')) ontologyGraphData.categories.forEach(c=>{const id='ca_'+c.id;nodes.push({id,name:c.name,category:'category',symbolSize:Math.min(15+c.count/8,50),itemStyle:{color:colorMap.category},data:c});nodeMap[id]=c;});
+            if (types.includes('sutra')) ontologyGraphData.sutras.forEach(s=>{const id='su_'+s.id;nodes.push({id,name:s.name,category:'sutra',symbolSize:s.word_count>100000?22:16,itemStyle:{color:colorMap.sutra},data:s});nodeMap[id]=s;});
 
             function gid(raw) {
                 if (raw.startsWith('c')) return 'c_'+raw;
@@ -59,12 +118,12 @@
                 if (raw.startsWith('t')) return 'su_'+raw;
                 return raw;
             }
-            ontologyData.relations.forEach(r=>{
+            ontologyGraphData.relations.forEach(r=>{
                 const s=gid(r.source), t=gid(r.target);
                 if (nodes.some(n=>n.id===s)&&nodes.some(n=>n.id===t)) links.push({source:s,target:t,label:{show:false,formatter:r.label,fontSize:10},lineStyle:{width:1.2,opacity:0.6,curveness:0.1},data:r});
             });
             const cats = Object.keys(colorMap).map(k=>({name:nameMap[k]||k,itemStyle:{color:colorMap[k]}}));
-            chart.setOption({tooltip:{formatter:p=>p.dataType==='node'?`<b>${p.name}</b><br/>${p.data.data.definition||p.data.data.core_doctrine||p.data.data.translator||''}`:`<b>${p.data.data.label}</b><br/>${p.data.data.description||''}`},legend:[{data:cats.map(c=>c.name),top:10}],series:[{type:'graph',layout:'force',data:nodes,links:links,categories:cats,roam:true,draggable:true,label:{show:true,position:'right',fontSize:11},force:{repulsion:350,edgeLength:[80,160],gravity:0.1},emphasis:{focus:'adjacency',lineStyle:{width:3}}}],true});
+            chart.setOption({tooltip:{formatter:p=>p.dataType==='node'?`<b>${p.name}</b><br/>${p.data.data.definition||p.data.data.core_doctrine||p.data.data.translator||''}`:`<b>${p.data.data.label}</b><br/>${p.data.data.description||''}`},legend:[{data:cats.map(c=>c.name),top:10}],series:[{type:'graph',layout:'force',data:nodes,links:links,categories:cats,roam:true,draggable:true,label:{show:true,position:'right',fontSize:11},force:{repulsion:350,edgeLength:[80,160],gravity:0.1},emphasis:{focus:'adjacency',lineStyle:{width:3}}}]},true);
         }
         chart.on('click', p=>{
             if (p.dataType==='node') {

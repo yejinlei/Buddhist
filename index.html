@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-    <script src="js/ontology-data.js"></script>
     
     <script>
         tailwind.config = {
@@ -85,6 +84,7 @@
                 <a href="#graph" class="hover:text-buddha-secondary transition-colors">义理图谱</a>
                 <a href="pages/kepan.html" class="hover:text-buddha-secondary">科判导航</a>
                 <a href="#timeline" class="hover:text-buddha-secondary transition-colors">译传时间轴</a>
+                <a href="#translation" class="hover:text-buddha-secondary transition-colors">译学</a>
                 <a href="#panjiao" class="hover:text-buddha-secondary transition-colors">判教对比</a>
                 <a href="#inference" class="hover:text-buddha-secondary transition-colors">智能推演</a>
                 <a href="#persons" class="hover:text-buddha-secondary transition-colors">人物圣众</a>
@@ -155,7 +155,7 @@
                 </div>
                 <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-buddha-primary/10 text-center">
                     <div class="text-buddha-concept text-4xl mb-4"><i class="fa fa-lightbulb-o"></i></div>
-                    <h3 class="text-4xl font-bold text-buddha-dark mb-2">216</h3>
+                    <h3 class="text-4xl font-bold text-buddha-dark mb-2"><span id="conceptCount">216</span></h3>
                     <p class="text-buddha-ink/70">义理概念节点</p>
                     <p class="text-sm text-buddha-ink/50 mt-2">覆盖大小乘各宗核心义理</p>
                 </div>
@@ -167,7 +167,7 @@
                 </div>
                 <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-buddha-primary/10 text-center">
                     <div class="text-buddha-sect text-4xl mb-4"><i class="fa fa-sitemap"></i></div>
-                    <h3 class="text-4xl font-bold text-buddha-dark mb-2">368</h3>
+                    <h3 class="text-4xl font-bold text-buddha-dark mb-2"><span id="relationCount">368</span></h3>
                     <p class="text-buddha-ink/70">本体关系边</p>
                     <p class="text-sm text-buddha-ink/50 mt-2">60+种关系谓词</p>
                 </div>
@@ -269,6 +269,23 @@
     </section>
 
     <!-- 宗派判教对比 -->
+    <!-- 译学 · 佛经翻译理论本体 -->
+    <section id="translation" class="py-16 bg-white/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-buddha-dark text-center mb-4">译学 · 佛经翻译理论本体</h2>
+            <p class="text-center text-buddha-ink/70 mb-12 max-w-3xl mx-auto">佛经翻译标准并非一套固定不变的单一准则，而是在长期实践中逐步形成的多层次体系：从早期「文质之争」，到道安「五失本三不易」、彦琮「八备十条」、玄奘「五种不翻」，最终由严复「信达雅」总结为通用翻译准则</p>
+
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button class="tt-tab-btn px-4 py-2 rounded-md bg-buddha-primary text-white" data-tab="standards">翻译标准体系</button>
+                <button class="tt-tab-btn px-4 py-2 rounded-md bg-white border border-buddha-primary/30 text-buddha-primary" data-tab="styles">风格流派</button>
+                <button class="tt-tab-btn px-4 py-2 rounded-md bg-white border border-buddha-primary/30 text-buddha-primary" data-tab="chronology">译论演进</button>
+                <button class="tt-tab-btn px-4 py-2 rounded-md bg-white border border-buddha-primary/30 text-buddha-primary" data-tab="modern">现代映射</button>
+            </div>
+
+            <div id="ttContent" class="max-w-5xl mx-auto"></div>
+        </div>
+    </section>
+
     <section id="panjiao" class="py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-serif font-bold text-buddha-dark text-center mb-4">宗派判教对比器</h2>
@@ -371,19 +388,31 @@
         // 加载所有数据
         async function loadData() {
             try {
-                const [conceptsRes, sutrasRes, personsRes, sectsRes, relationsRes] = await Promise.all([
+                const [conceptsRes, sutrasRes, personsRes, sectsRes, relationsRes, translationRes] = await Promise.all([
                     fetch('data/concepts-expanded.json').then(r => r.json()),
                     fetch('data/sutras-expanded.json').then(r => r.json()),
                     fetch('data/persons-expanded.json').then(r => r.json()),
                     fetch('data/sects-expanded.json').then(r => r.json()),
-                    fetch('data/relations-expanded.json').then(r => r.json())
+                    fetch('data/relations-expanded.json').then(r => r.json()),
+                    fetch('data/translation-theory.json').then(r => r.json())
                 ]);
                 
                 ontologyData.concepts = conceptsRes.concepts;
                 ontologyData.sutras = sutrasRes.sutras;
                 ontologyData.persons = personsRes.persons;
                 ontologyData.sects = sectsRes.sects;
+                ontologyData.panjiao = (sectsRes && sectsRes.panjiao_comparison) || {};
                 ontologyData.relations = relationsRes.relations;
+                ontologyData.translation = translationRes;
+
+                // 由经典数据动态生成部类节点，供义理图谱使用
+                const catMap = {};
+                ontologyData.sutras.forEach(s => {
+                    const c = s.category || '其他';
+                    catMap[c] = (catMap[c] || 0) + 1;
+                });
+                ontologyData.categories = Object.keys(catMap).map((k, i) => ({ id: 'cat' + i, name: k, count: catMap[k] }));
+                updateOverview();
                 
                 console.log('本体数据加载完成：', ontologyData);
                 
@@ -395,6 +424,7 @@
                 initPanjiao();
                 initInference();
                 initPersons();
+                initTranslation();
                 
             } catch (e) {
                 console.error('数据加载失败，使用内置数据', e);
@@ -1019,6 +1049,126 @@
                     </div>
                 </div>
             `).join('');
+        }
+
+        // 概览统计动态更新
+        function updateOverview() {
+            const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+            set('sutraCount', '2425');
+            set('sutraChars', '全量大正藏 · 7880万字');
+            set('conceptCount', ontologyData.concepts.length);
+            set('personCount', ontologyData.persons.length);
+            set('relationCount', ontologyData.relations.length);
+        }
+
+        // 译学 · 佛经翻译理论
+        function initTranslation() {
+            renderTT('standards');
+            document.querySelectorAll('.tt-tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.tt-tab-btn').forEach(b => {
+                        b.classList.remove('bg-buddha-primary', 'text-white');
+                        b.classList.add('bg-white', 'border', 'border-buddha-primary/30', 'text-buddha-primary');
+                    });
+                    btn.classList.remove('bg-white', 'border', 'border-buddha-primary/30', 'text-buddha-primary');
+                    btn.classList.add('bg-buddha-primary', 'text-white');
+                    renderTT(btn.dataset.tab);
+                });
+            });
+        }
+
+        function renderTT(tab) {
+            const t = ontologyData.translation || {};
+            const box = document.getElementById('ttContent');
+            if (!box) return;
+            let html = '';
+
+            if (tab === 'standards') {
+                html += '<div class="space-y-6">';
+                (t.standards || []).forEach(s => {
+                    html += `
+                        <div class="bg-white rounded-xl shadow-md border border-buddha-primary/10 overflow-hidden">
+                            <div class="px-6 py-4 bg-buddha-light/40 border-b border-buddha-primary/10 flex flex-wrap items-center justify-between gap-2">
+                                <div>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-buddha-secondary/20 text-buddha-dark mr-2">${s.category || ''}</span>
+                                    <span class="text-xl font-bold text-buddha-dark">${s.name}</span>
+                                </div>
+                                <div class="text-sm text-buddha-ink/60">${s.proposer ? '提出者：' + s.proposer : ''}${s.era ? ' · ' + s.era : ''}</div>
+                            </div>
+                            <div class="px-6 py-4">
+                                ${s.source ? `<p class="text-xs text-buddha-ink/50 mb-2">出处：${s.source}</p>` : ''}
+                                <p class="text-sm text-buddha-ink/80 leading-relaxed">${s.summary || ''}</p>
+                                ${(s.details || []).map(d => `
+                                    <div class="mt-4">
+                                        <h5 class="font-bold text-buddha-primary mb-2">${d.title}</h5>
+                                        <ul class="space-y-1">
+                                            ${(d.items || []).map(it => `<li class="text-sm text-buddha-ink/80">· ${it}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                `).join('')}
+                                ${(s.examples || []).length ? `
+                                    <div class="mt-4">
+                                        <h5 class="font-bold text-buddha-primary mb-2">音译例证</h5>
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                            ${s.examples.map(e => `<div class="p-2 bg-buddha-paper rounded text-sm"><span class="font-medium text-buddha-sutra">${e.word}</span> <span class="text-xs text-buddha-ink/50">（${e.type}）</span><p class="text-xs text-buddha-ink/70 mt-1">${e.note}</p></div>`).join('')}
+                                        </div>
+                                    </div>` : ''}
+                                ${s.significance ? `<p class="mt-4 text-sm text-buddha-primary bg-buddha-secondary/10 rounded p-3"><strong>意义：</strong>${s.significance}</p>` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            } else if (tab === 'styles') {
+                html += '<div class="grid grid-cols-1 md:grid-cols-2 gap-6">';
+                (t.styles || []).forEach(st => {
+                    html += `
+                        <div class="bg-white rounded-xl shadow-md border border-buddha-primary/10 overflow-hidden">
+                            <div class="px-6 py-4 bg-gradient-to-r from-buddha-primary/10 to-buddha-secondary/10 border-b border-buddha-primary/10">
+                                <h3 class="text-xl font-bold text-buddha-dark">${st.name}</h3>
+                                <p class="text-sm text-buddha-ink/60 mt-1">代表：${st.representative} · ${st.era} · ${st.orientation}</p>
+                                ${st.motto ? `<p class="text-sm text-buddha-sutra mt-1">「${st.motto}」</p>` : ''}
+                            </div>
+                            <div class="px-6 py-4">
+                                <p class="text-sm text-buddha-ink/80 leading-relaxed">${st.definition}</p>
+                                <ul class="mt-3 space-y-1">
+                                    ${(st.characteristics || []).map(c => `<li class="text-sm text-buddha-ink/80">· ${c}</li>`).join('')}
+                                </ul>
+                                ${st.metaphor ? `<p class="mt-3 text-sm italic text-buddha-primary">${st.metaphor}</p>` : ''}
+                                ${(st.representative_works || []).length ? `<p class="mt-3 text-xs text-buddha-ink/60">代表译作：${st.representative_works.join('、')}</p>` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                html += '<p class="text-center text-sm text-buddha-ink/60 mt-6 max-w-3xl mx-auto">两者服务于不同目的，各有价值：旧译宜于流通诵持，新译长于义理考据。</p>';
+            } else if (tab === 'chronology') {
+                html += '<div class="relative border-l-2 border-buddha-primary/30 ml-4">';
+                (t.chronology || []).forEach(c => {
+                    html += `
+                        <div class="mb-8 ml-6 relative">
+                            <div class="absolute -left-[13px] top-1 w-4 h-4 rounded-full bg-buddha-secondary border-4 border-white shadow"></div>
+                            <span class="text-sm font-bold text-buddha-primary">${c.year}</span>
+                            <p class="text-sm text-buddha-ink/80 mt-1">${c.event}</p>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            } else if (tab === 'modern') {
+                html += '<div class="grid grid-cols-1 md:grid-cols-2 gap-6">';
+                (t.modern_theories || []).forEach(m => {
+                    html += `
+                        <div class="bg-white rounded-xl shadow-md border border-buddha-primary/10 p-6">
+                            <h3 class="text-lg font-bold text-buddha-dark mb-2">${m.name}</h3>
+                            <p class="text-sm text-buddha-ink/80 leading-relaxed">${m.definition}</p>
+                            <p class="mt-3 text-sm text-buddha-primary">↔ ${m.correspondence}</p>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                html += '<p class="text-center text-sm text-buddha-ink/60 mt-6 max-w-3xl mx-auto">翻译不仅是语言转换，更是文化对话。从道安到玄奘、从「文质」到「信达雅」，始终在解决「忠实」与「通顺」、「原汁原味」与「本土化」之间的张力；现代翻译理论中的「归化」与「异化」之争，早在佛经翻译中已有深刻实践。</p>';
+            }
+            box.innerHTML = html;
         }
 
         // 初始化
