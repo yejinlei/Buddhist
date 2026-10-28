@@ -15,8 +15,19 @@
         .nav-active { background-color: rgba(184,134,11,0.2); }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-thumb { background: #d4c8b0; border-radius: 3px; }
-        .hit { color: #B8860B; font-weight: 700; }
+        .hit { color: #B8860B; font-weight: 700; background: rgba(218,165,32,.15); padding:0 2px; border-radius:3px; }
         .res-item:hover { border-color: #8B4513; background: rgba(139,69,19,.04); }
+        .grp-head { display:flex; align-items:center; gap:8px; padding:10px 10px; margin-top:10px; background:linear-gradient(90deg,#fdf8ec,#fff); border:1px solid #e5d9c3; border-radius:10px; cursor:pointer; user-select:none; font-weight:600; color:#5c3317; }
+        .grp-head:hover { background:#f5ecd0; }
+        .grp-head .g-caret { transition:transform .15s; font-size:10px; color:#B8860B; width:12px; flex-shrink:0; }
+        .grp-head.open .g-caret { transform:rotate(90deg); }
+        .grp-head .g-name { flex:1; }
+        .grp-head .g-cnt { font-weight:400; font-size:12px; color:#8B4513; background:rgba(184,134,11,.12); border-radius:8px; padding:1px 8px; }
+        .grp-body { padding:4px 0 4px 14px; border-left:2px solid #e5d9c3; margin-left:10px; }
+        .grp-body.collapsed { display:none; }
+        .view-seg { display:inline-flex; border:1px solid #e5d9c3; border-radius:8px; overflow:hidden; font-size:13px; }
+        .view-seg button { padding:5px 12px; background:#fff; border:0; color:#3E2723; cursor:pointer; font-family:inherit; }
+        .view-seg button.active { background:#B8860B; color:#fff; font-weight:600; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -33,7 +44,7 @@
             <a href="parallel.html" class="hover:text-gold">异译对照</a>
             <a href="graph.html" class="hover:text-gold">义理图谱</a>
             <a href="kepan.html" class="hover:text-gold">科判导航</a>
-            <a href="panjiao.html" class="hover:text-gold">判教对比</a>
+            <a href="panjiao.html" class="hover:text-gold">宗派判教</a>
             <a href="inference.html" class="hover:text-gold">概念推演</a>
             <a href="timeline.html" class="hover:text-gold">译传时间轴</a>
             <a href="translation.html" class="hover:text-gold">佛典译学</a>
@@ -43,7 +54,7 @@
     <div class="max-w-5xl mx-auto px-4 py-8">
         <div class="text-center mb-6">
             <h1 class="text-3xl font-bold text-ink mb-2">大藏经全文检索</h1>
-            <p class="text-ink/60 text-sm">在 2400+ 部佛典、约 8100 万字全文中检索义理词语 · <span id="idx-status" class="text-primary">正在准备索引…</span></p>
+            <p class="text-ink/60 text-sm">在 2,400+ 部佛典、约 9,180 万字全文中检索义理词语 · <span id="idx-status" class="text-primary">正在准备索引…</span></p>
         </div>
 
         <div class="flex gap-2 mb-4">
@@ -51,8 +62,14 @@
                    class="flex-1 border border-primary/25 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-primary/30">
             <button id="btn" class="bg-primary text-white px-8 rounded-lg hover:bg-primary/90 font-medium">检索</button>
         </div>
-        <div class="flex flex-wrap gap-2 mb-6 text-sm" id="hot"></div>
-        <div id="stat" class="text-sm text-ink/70 mb-3"></div>
+        <div class="flex flex-wrap gap-2 mb-4 items-center text-sm" id="hot"></div>
+        <div class="flex items-center justify-between flex-wrap gap-3 mb-3">
+            <div id="stat" class="text-sm text-ink/70"></div>
+            <div class="view-seg" id="view-seg">
+                <button data-view="group" class="active">📂 按部类分组</button>
+                <button data-view="list">📋 平铺列表</button>
+            </div>
+        </div>
         <div id="results" class="space-y-2"></div>
     </div>
 
@@ -60,6 +77,19 @@
         // 词级精确索引（约400KB）+ 繁简映射（35KB）先加载；字级索引（约8.8MB）后台加载
         let WORD = null, CHAR = null, H2S = null, ORDER = null, META = new Map();
         let charReady = false;
+        let VIEW = 'group';
+        const COLLAPSE = new Set(); // 折叠的部类key
+        const TR_CH = {'經':'经','傳':'传','華':'华','論':'论','寶':'宝','積':'积','緣':'缘','淨':'净','禪':'禅','毘':'毗','曇':'昙','觀':'观','彙':'汇','寫':'写','嚴':'严'};
+        const CAT_SIMP = {'經集部类':'经集部类','史傳部类':'史传部类','華嚴部类':'华严部类','法華部类':'法华部类','論集部类':'论集部类','寶積部类':'宝积部类','本緣部类':'本缘部类','淨土宗部类':'净土宗部类','禪宗部类':'禅宗部类','毘曇部类':'毗昙部类','中觀部类':'中观部类','事彙部类':'事汇部类','敦煌寫本部类':'敦煌写本部类'};
+        const CAT_ORDER = ['阿含部类','本缘部类','般若部类','法华部类','华严部类','宝积部类','涅槃部类','大集部类','经集部类','律部类','毗昙部类','中观部类','瑜伽部类','论集部类','史传部类','事汇部类','密教部类','净土宗部类','禅宗部类','敦煌写本部类'];
+        function simpCh(s){ return String(s||'').replace(/[經傳華論寶積緣淨禪毘曇觀彙寫嚴]/g, c => TR_CH[c] || c); }
+        function simpCat(c){ return CAT_SIMP[c] || simpCh(c); }
+        function primaryCat(s){
+            const cs = String(s.category||'未分类').split(/[,，]/).map(x=>simpCat(x.trim())).filter(Boolean);
+            if(!cs.length) return '其他部类';
+            return cs.find(c=>c!=='敦煌写本部类') || cs[0];
+        }
+        function catLabel(c){ return c.replace(/部类$/,''); }
 
         async function boot() {
             const st = document.getElementById('idx-status');
@@ -74,12 +104,12 @@
                 list.forEach(s => META.set(s.id, s));
                 st.textContent = '精确检索已就绪';
                 st.className = 'text-green-700';
-                // 后台加载字级索引
                 fetch('../sutras/search-order.json').then(r => r.json()).then(o => { ORDER = o; });
                 fetch('../sutras/search-index.json').then(r => r.json()).then(c => {
                     CHAR = c; charReady = true;
-                    if (document.getElementById('idx-status').textContent.indexOf('就绪') < 0) return;
-                    document.getElementById('idx-status').textContent += ' · 模糊检索已就绪';
+                    if (document.getElementById('idx-status').textContent.indexOf('就绪') >= 0) {
+                        document.getElementById('idx-status').textContent += ' · 模糊检索已就绪';
+                    }
                 });
             } catch (e) {
                 st.textContent = '索引加载失败';
@@ -89,6 +119,21 @@
 
         function toSimp(s) { return [...s].map(c => (H2S && H2S[c]) ? H2S[c] : c).join(''); }
         function norm(s) { return (s || '').trim(); }
+
+        function renderItem(id){
+            const m = META.get(id) || {};
+            const title = m.title || id;
+            const file = m.file || (id + '.json');
+            const cat = primaryCat(m);
+            const dyTr = (m.translator||'失译').replace(/譯$/,'').replace(/译$/,'').trim();
+            return `<a href="sutras.html?load=${encodeURIComponent(file)}" class="res-item block bg-white border border-paper rounded-lg px-4 py-2.5 transition">
+                <div class="flex items-baseline justify-between gap-3">
+                    <span class="font-medium text-ink">${title}</span>
+                    <span class="text-xs text-ink/45 flex-shrink-0">${(m.word_count||m.chars||0).toLocaleString()}字</span>
+                </div>
+                <div class="text-xs text-ink/50 mt-0.5">${m.vol||''} · ${catLabel(cat)} · ${dyTr}</div>
+            </a>`;
+        }
 
         function search() {
             const raw = norm(document.getElementById('q').value);
@@ -114,25 +159,54 @@
                 stat.innerHTML = `未找到与「<b>${raw}</b>」匹配的经文${charReady ? '' : '（模糊索引加载中…）'}`;
                 box.innerHTML = ''; return;
             }
+            // 按字数排序
             ids = ids.slice().sort((a, b) => {
                 const ma = META.get(ORDER ? ORDER[a] : a) || {}, mb = META.get(ORDER ? ORDER[b] : b) || {};
                 return (ma.word_count || ma.chars || 9e9) - (mb.word_count || mb.chars || 9e9);
             });
-            stat.innerHTML = `「<b>${raw}</b>」— ${mode}，命中 <span class="text-primary font-bold">${ids.length}</span> 部经典`;
-            const top = ids.slice(0, 300);
-            box.innerHTML = top.map(i => {
-                const id = ORDER ? ORDER[i] : i;
-                const m = META.get(id) || {};
-                const title = m.title || id;
-                const file = m.file || (id + '.json');
-                return `<a href="sutras.html?load=${encodeURIComponent(file)}" class="res-item block bg-white border border-paper rounded-lg px-4 py-2.5 transition">
-                    <div class="flex items-baseline justify-between gap-3">
-                        <span class="font-medium text-ink">${title}</span>
-                        <span class="text-xs text-ink/45 flex-shrink-0">${(m.word_count||m.chars||0).toLocaleString()}字</span>
-                    </div>
-                    <div class="text-xs text-ink/50 mt-0.5">${m.vol||''} · ${m.category||''} · ${m.translator||'失译'}</div>
-                </a>`;
-            }).join('') + (ids.length > 300 ? `<div class="text-center text-ink/50 text-sm py-3">仅显示前 300 条，请使用更精确的关键词</div>` : '');
+            const topMeta = ids.slice(0, 300).map(i => META.get(ORDER ? ORDER[i] : i)).filter(Boolean);
+            stat.innerHTML = `「<b>${raw}</b>」— ${mode}，命中 <span class="text-primary font-bold">${ids.length}</span> 部经典${ids.length>300?'，仅展示前 300':''}`;
+
+            if(VIEW === 'list'){
+                box.innerHTML = topMeta.map(m => renderItem(m.id)).join('');
+                return;
+            }
+            // 按部类分组
+            const groups = new Map();
+            topMeta.forEach(m=>{
+                const c = primaryCat(m);
+                if(!groups.has(c)) groups.set(c, []);
+                groups.get(c).push(m);
+            });
+            const orderedCats = [...groups.keys()].sort((a,b)=>{
+                const ia=CAT_ORDER.indexOf(a), ib=CAT_ORDER.indexOf(b);
+                if(ia>=0&&ib>=0) return ia-ib;
+                if(ia>=0) return -1; if(ib>=0) return 1;
+                return groups.get(b).length - groups.get(a).length;
+            });
+            let html = '';
+            orderedCats.forEach(c=>{
+                const list = groups.get(c);
+                const key = 'g:'+c;
+                const collapsed = COLLAPSE.has(key);
+                html += `<div class="grp-head${collapsed?'':' open'}" data-key="${key}">
+                    <span class="g-caret">▶</span>
+                    <span class="g-name">${catLabel(c)}部</span>
+                    <span class="g-cnt">${list.length} 部</span>
+                </div>
+                <div class="grp-body${collapsed?' collapsed':''}" data-body="${key}">
+                    ${list.map(m=>renderItem(m.id)).join('')}
+                </div>`;
+            });
+            box.innerHTML = html;
+            box.querySelectorAll('.grp-head').forEach(h=>{
+                h.addEventListener('click', ()=>{
+                    const k = h.dataset.key;
+                    if(COLLAPSE.has(k)) COLLAPSE.delete(k); else COLLAPSE.add(k);
+                    h.classList.toggle('open');
+                    box.querySelector(`[data-body="${k}"]`).classList.toggle('collapsed');
+                });
+            });
         }
 
         const HOT = ['缘起', '佛性', '般若', '空性', '真如', '涅槃', '菩提心', '明心见性', '一念三千', '法界缘起', '如来藏', '中道'];
@@ -141,6 +215,13 @@
 
         document.getElementById('btn').onclick = search;
         document.getElementById('q').addEventListener('keydown', e => { if (e.key === 'Enter') search(); });
+        document.querySelectorAll('#view-seg button').forEach(b=>{
+            b.addEventListener('click', ()=>{
+                VIEW = b.dataset.view;
+                document.querySelectorAll('#view-seg button').forEach(x=>x.classList.toggle('active', x===b));
+                search();
+            });
+        });
         boot();
     </script>
     <script src="../js/mobile-nav.js"></script>

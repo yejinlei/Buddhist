@@ -88,6 +88,34 @@
         .tleaf .tl-meta { font-size:11px; color:rgba(44,24,16,.4); flex-shrink:0; }
         .tleaf .tl-tag { font-size:10px; color:#8B4513; background:rgba(139,69,19,.08); border-radius:6px; padding:0 5px; margin-left:4px; flex-shrink:0; }
         .flat-crumb { font-size:11px; color:#8B4513; margin-bottom:1px; }
+        /* ===== 筛选栏 ===== */
+        .filter-row { display:flex; gap:6px; margin-bottom:6px; }
+        .filter-row select { flex:1; padding:5px 6px; font-size:12px; border:1px solid #e5d9c3; border-radius:6px; background:#fff; color:#3E2723; font-family:inherit; cursor:pointer; }
+        .filter-row select:focus { outline:none; border-color:#B8860B; }
+        .filter-hint { font-size:11px; color:#8B4513; margin:-2px 0 4px; padding:2px 4px; background:#fdf8ec; border-radius:4px; }
+        .filter-chip { display:inline-flex; align-items:center; gap:3px; font-size:11px; background:rgba(184,134,11,.15); color:#8B4513; border-radius:10px; padding:1px 8px; margin:1px 2px; }
+        .filter-chip .x { cursor:pointer; font-weight:700; opacity:.6; }
+        .filter-chip .x:hover { opacity:1; }
+        /* ===== 检索结果分组 ===== */
+        .grp-head { display:flex; align-items:center; gap:8px; padding:10px 8px 6px; margin-top:8px; border-bottom:1px dashed #d4b88a; font-weight:600; color:#5c3317; cursor:pointer; user-select:none; }
+        .grp-head .g-caret { transition:transform .15s; font-size:10px; color:#B8860B; }
+        .grp-head.open .g-caret { transform:rotate(90deg); }
+        .grp-head .g-name { flex:1; }
+        .grp-head .g-cnt { font-weight:400; font-size:12px; color:#8B4513; background:rgba(184,134,11,.12); border-radius:8px; padding:0 8px; }
+        .grp-body { padding:2px 0; }
+        .grp-body.collapsed { display:none; }
+        /* ===== 部类总览树形 ===== */
+        .cat-tree-head { display:flex; align-items:center; gap:8px; padding:10px 14px; background:linear-gradient(90deg,#fdf8ec,#fff); border:1px solid #e5d9c3; border-radius:10px; cursor:pointer; margin-bottom:4px; user-select:none; }
+        .cat-tree-head:hover { background:#f5ecd0; }
+        .cat-tree-head .t-caret { transition:transform .15s; font-size:10px; color:#B8860B; width:12px; }
+        .cat-tree-head.open .t-caret { transform:rotate(90deg); }
+        .cat-tree-head .t-name { flex:1; font-weight:600; color:#3E2723; font-size:15px; }
+        .cat-tree-head .t-cnt { font-size:12px; color:#8B4513; background:rgba(184,134,11,.12); border-radius:8px; padding:1px 8px; }
+        .cat-tree-body { margin:0 0 10px 16px; padding:6px 10px; border-left:2px solid #e5d9c3; }
+        .cat-tree-body.collapsed { display:none; }
+        .vol-chunk { margin-bottom:8px; }
+        .vol-chunk-title { font-size:12px; color:#8B4513; padding:3px 6px; font-weight:600; }
+        .vol-sutras { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:4px; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -141,6 +169,11 @@
                     <span id="loading-status" class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">加载中</span>
                 </div>
                 <input id="search-input" type="text" placeholder="搜索经名 / 译者 / 经号..." class="w-full border border-primary/20 rounded-lg px-3 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary/30 text-sm">
+                <div class="filter-row">
+                    <select id="filter-dynasty"><option value="">全部朝代</option></select>
+                    <select id="filter-translator"><option value="">全部译者</option></select>
+                </div>
+                <div id="filter-active" class="mb-1"></div>
                 <div class="cat-seg mb-2">
                     <button class="cat-seg-btn active" data-mode="tree">🌳 树形目录</button>
                     <button class="cat-seg-btn" data-mode="flat">📋 平铺列表</button>
@@ -865,7 +898,15 @@ const CAT_SIMP = {
   '敦煌寫本部类':'敦煌写本部类'
 };
 const CAT_ORDER = ['阿含部类','本缘部类','般若部类','法华部类','华严部类','宝积部类','涅槃部类','大集部类','经集部类','律部类','毗昙部类','中观部类','瑜伽部类','论集部类','史传部类','事汇部类','密教部类','净土宗部类','禅宗部类','敦煌写本部类'];
-function simpCat(c){ return CAT_SIMP[c] || c; }
+// 朝代繁体归一 + 顺序
+const DYNASTY_SIMP = {
+  '後漢':'后汉','西晉':'西晋','東晉':'东晋','劉宋':'刘宋','元魏':'元魏','苻秦':'苻秦',
+  '大隋':'隋','趙宋':'宋','北涼':'北凉','蕭齊':'萧齐','蕭梁':'梁'
+};
+const DYNASTY_ORDER = ['后汉','吴','曹魏','西晋','东晋','苻秦','姚秦','北凉','萧齐','梁','刘宋','元魏','高齐','陈','隋','唐','周','宋','辽','金','元','明','清','失译'];
+const TR_CH = {'經':'经','傳':'传','華':'华','論':'论','寶':'宝','積':'积','緣':'缘','淨':'净','禪':'禅','毘':'毗','曇':'昙','觀':'观','彙':'汇','寫':'写','嚴':'严','後':'后','晉':'晋','東':'东','劉':'刘','趙':'赵','齊':'齐','蕭':'萧','涼':'凉','譯':'译','門':'门','實':'实','賢':'贤','難':'难','護':'护','義':'义','淨':'净','連':'连','揵':'揵','陀':'陀'};
+function simpCh(s){ return String(s||'').replace(/[經傳華論寶積緣淨禪毘曇觀彙寫嚴後晉東劉趙齊蕭涼譯]/g, ch => TR_CH[ch] || ch); }
+function simpCat(c){ return CAT_SIMP[c] || simpCh(c) || c; }
 function catsOf(s){ return String(s.category||'').split(/[,，]/).map(x=>x.trim()).filter(Boolean).map(simpCat); }
 function primaryCat(s){ const cs=catsOf(s); if(!cs.length) return '其他部类'; return cs.find(c=>c!=='敦煌写本部类') || cs[0]; }
 function extraCats(s){ const cs=catsOf(s); const p=primaryCat(s); return cs.filter(c=>c!==p); }
@@ -873,12 +914,62 @@ function catLabel(c){ return c.replace(/部类$/,''); }
 const TR_CAT = {'經':'经','傳':'传','華':'华','論':'论','寶':'宝','積':'积','緣':'缘','淨':'净','禪':'禅','毘':'毗','曇':'昙','觀':'观','彙':'汇','寫':'写','嚴':'严'};
 function simpAll(s){ return String(s||'').replace(/[經傳華論寶積緣淨禪毘曇觀彙寫嚴]/g, ch => TR_CAT[ch] || ch); }
 
+// 从 translator 字段解析"朝代 + 译师名"
+// translator 形如："唐 玄奘譯"、"西晉 竺法護譯"、"失譯"、"鸠摩罗什"，dynasty 可能已独立给
+function parseDynasty(s){
+  let d = simpCh(s.dynasty || '').trim();
+  let t = simpCh(s.translator || '').trim();
+  if(!t) t='失译';
+  if(!d){
+    // 从 translator 前缀尝试解析
+    const m = t.match(/^([^\s]{1,3}\s)/);
+    if(m){
+      const cand = m[1].trim();
+      if(['后汉','吴','曹魏','西晋','东晋','苻秦','姚秦','北凉','萧齐','梁','刘宋','元魏','高齐','陈','隋','唐','周','宋','辽','金','元','明','清'].includes(cand) || /^[\u4e00-\u9fff]{1,2}$/.test(cand) && cand.length<=2){
+        // 找匹配
+        const known = DYNASTY_ORDER.find(kd => kd.startsWith(cand) || cand.includes(kd));
+        if(known){ d=known; t=t.replace(m[1],'').trim(); }
+      }
+    }
+  }
+  if(!d) d='失译';
+  d = DYNASTY_SIMP[d] || d;
+  // 清理译师名里的"译"字
+  t = t.replace(/譯$/,'').replace(/译$/,'').trim();
+  return { dynasty: d, trans_name: t || '失译' };
+}
+
 let TREE = [];
 let VIEW_MODE = 'tree';
-const TREE_OPEN = new Set();
+const TREE_OPEN = new Set(); // 'c:阿含' / 'v:阿含|T01'，记忆持久化
+let DYNASTY_FILTER = '';
+let TRANS_FILTER = '';
+let DYNASTY_LIST = [];   // [{dynasty, name}]
+let TRANS_MAP = {};     // dynasty -> [translator names]
+const LS_OPEN_KEY = 'fo_tree_open_v2';
+
+function loadTreeState(){
+  try{
+    const s = localStorage.getItem(LS_OPEN_KEY);
+    if(s){
+      JSON.parse(s).forEach(k=>TREE_OPEN.add(k));
+    }
+  }catch(e){}
+}
+function saveTreeState(){
+  try{ localStorage.setItem(LS_OPEN_KEY, JSON.stringify([...TREE_OPEN])); }catch(e){}
+}
 
 function buildCatalog(){
+  // 先给每部经解析朝代/译者
+  allSutras.forEach(s=>{
+    const p = parseDynasty(s);
+    s._dynasty = p.dynasty;
+    s._trans = p.trans_name;
+  });
   const m = new Map();
+  const dySet = new Set();
+  const trMap = {}; // d -> Set(trans)
   allSutras.forEach(s=>{
     const cat = primaryCat(s);
     const vol = s.vol || '未分册';
@@ -886,6 +977,9 @@ function buildCatalog(){
     const vm = m.get(cat);
     if(!vm.has(vol)) vm.set(vol, []);
     vm.get(vol).push(s);
+    dySet.add(s._dynasty);
+    if(!trMap[s._dynasty]) trMap[s._dynasty] = new Set();
+    trMap[s._dynasty].add(s._trans);
   });
   const cats = [...m.keys()].sort((a,b)=>{
     const ia = CAT_ORDER.indexOf(a), ib = CAT_ORDER.indexOf(b);
@@ -901,12 +995,44 @@ function buildCatalog(){
     return { cat, total: [...vm.values()].reduce((n,a)=>n+a.length,0),
              vols: vols.map(v=>({ vol:v, list:vm.get(v) })) };
   });
+  // 朝代顺序
+  DYNASTY_LIST = [...dySet].sort((a,b)=>{
+    const ia=DYNASTY_ORDER.indexOf(a), ib=DYNASTY_ORDER.indexOf(b);
+    if(ia>=0 && ib>=0) return ia-ib;
+    if(ia>=0) return -1;
+    if(ib>=0) return 1;
+    return a.localeCompare(b,'zh');
+  });
+  TRANS_MAP = {};
+  Object.keys(trMap).forEach(d=>{
+    TRANS_MAP[d] = [...trMap[d]].sort((a,b)=>{
+      if(a==='失译') return 1; if(b==='失译') return -1;
+      return trMap[d].get(b) - trMap[d].get(a) || a.localeCompare(b,'zh');
+    });
+  });
+  // 译者计数
+  const trCount = {};
+  allSutras.forEach(s=>{ const k=s._dynasty+'|'+s._trans; trCount[k]=(trCount[k]||0)+1; });
+  Object.keys(TRANS_MAP).forEach(d=>{
+    TRANS_MAP[d].sort((a,b)=>{
+      if(a==='失译') return 1; if(b==='失译') return -1;
+      return (trCount[d+'|'+b]||0) - (trCount[d+'|'+a]||0) || a.localeCompare(b,'zh');
+    });
+  });
 }
 
 function matchKw(s, kw){
   return (s.title||'').toLowerCase().includes(kw)
+      || (s._trans||'').toLowerCase().includes(kw)
       || (s.translator||'').toLowerCase().includes(kw)
+      || (s._dynasty||'').includes(kw)
       || (s.id||'').toLowerCase().includes(kw);
+}
+
+function passFilter(s){
+  if(DYNASTY_FILTER && s._dynasty !== DYNASTY_FILTER) return false;
+  if(TRANS_FILTER && s._trans !== TRANS_FILTER) return false;
+  return true;
 }
 
 function leafEl(s, flat, showCrumb){
@@ -918,13 +1044,45 @@ function leafEl(s, flat, showCrumb){
   const crumb = showCrumb ? `<div class="flat-crumb">${catLabel(primaryCat(s))}部${s.vol?' · '+s.vol:''}</div>` : '';
   el.innerHTML = `${crumb}<div style="display:flex;justify-content:space-between;gap:6px;align-items:center" class="tl-row">
       <span class="tl-title">${s.title}${tags}</span>
-      <span class="tl-meta">${s.dynasty||''}${(s.translator||'').substring(0,4)}</span></div>`;
+      <span class="tl-meta">${s._dynasty&&s._dynasty!=='失译'?s._dynasty:''}${(s._trans&&s._trans!=='失译')?s._trans.substring(0,4):''}</span></div>`;
   el.addEventListener('click', ()=> loadSutra(s));
   return el;
 }
 
+function populateFilterSelects(){
+  const dySel = document.getElementById('filter-dynasty');
+  const trSel = document.getElementById('filter-translator');
+  dySel.innerHTML = '<option value="">全部朝代</option>' +
+    DYNASTY_LIST.map(d=>`<option value="${d}"${d===DYNASTY_FILTER?' selected':''}>${d==='失译'?'失译/佚名':d}</option>`).join('');
+  // 译者下拉：若选了朝代则只列该朝代，否则列top60
+  let list = [];
+  if(DYNASTY_FILTER){
+    list = TRANS_MAP[DYNASTY_FILTER] || [];
+  } else {
+    const cnt = {};
+    allSutras.forEach(s=>{ if(!TRANS_FILTER || s._trans===TRANS_FILTER) cnt[s._trans]=(cnt[s._trans]||0)+1; });
+    list = Object.keys(cnt).filter(t=>t!=='失译').sort((a,b)=>cnt[b]-cnt[a]).slice(0,80);
+  }
+  trSel.innerHTML = '<option value="">全部译者</option>' +
+    list.map(t=>`<option value="${t}"${t===TRANS_FILTER?' selected':''}>${t}</option>`).join('') +
+    (list.length===0 ? '' : '<option value="__shiyi__"'+(TRANS_FILTER==='失译'?' selected':'')+'>失译/佚名</option>');
+  // 渲染当前筛选chip
+  const chipBox = document.getElementById('filter-active');
+  const chips = [];
+  if(DYNASTY_FILTER) chips.push(`<span class="filter-chip">朝代：${DYNASTY_FILTER}<span class="x" data-f="d">×</span></span>`);
+  if(TRANS_FILTER) chips.push(`<span class="filter-chip">译者：${TRANS_FILTER}<span class="x" data-f="t">×</span></span>`);
+  chipBox.innerHTML = chips.join('');
+  chipBox.querySelectorAll('.x').forEach(b=>b.addEventListener('click',()=>{
+    if(b.dataset.f==='d'){ DYNASTY_FILTER=''; TRANS_FILTER=''; }
+    else { TRANS_FILTER=''; }
+    populateFilterSelects(); renderCatalog();
+  }));
+}
+
 function initFilters(){
+  loadTreeState();
   buildCatalog();
+  populateFilterSelects();
   document.querySelectorAll('.cat-seg-btn').forEach(b=>{
     b.addEventListener('click', ()=>{
       VIEW_MODE = b.dataset.mode;
@@ -936,14 +1094,24 @@ function initFilters(){
     VIEW_MODE = 'tree';
     document.querySelectorAll('.cat-seg-btn').forEach(x=>x.classList.toggle('active', x.dataset.mode==='tree'));
     TREE.forEach(t=>{ TREE_OPEN.add('c:'+t.cat); t.vols.forEach(v=>TREE_OPEN.add('v:'+t.cat+'|'+v.vol)); });
-    renderCatalog();
+    saveTreeState(); renderCatalog();
   });
   document.getElementById('tree-collapse').addEventListener('click', ()=>{
-    TREE_OPEN.clear(); renderCatalog();
+    TREE_OPEN.clear(); saveTreeState(); renderCatalog();
   });
   let searchTimer;
   document.getElementById('search-input').addEventListener('input', ()=>{
     clearTimeout(searchTimer); searchTimer = setTimeout(renderCatalog, 180);
+  });
+  document.getElementById('filter-dynasty').addEventListener('change', e=>{
+    DYNASTY_FILTER = e.target.value;
+    TRANS_FILTER = ''; // 切朝代重置译者
+    populateFilterSelects(); renderCatalog();
+  });
+  document.getElementById('filter-translator').addEventListener('change', e=>{
+    const v = e.target.value;
+    TRANS_FILTER = v==='__shiyi__' ? '失译' : v;
+    populateFilterSelects(); renderCatalog();
   });
   renderCatalog();
 }
@@ -954,38 +1122,60 @@ function renderCatalog(){
   container.innerHTML = '';
   const statsEl = document.getElementById('list-stats');
 
+  // 经筛选过滤
+  const filteredSutras = allSutras.filter(s => passFilter(s) && (!kw || matchKw(s, kw)));
+
   if(kw){
-    const hits = allSutras.filter(s => matchKw(s, kw));
-    if(!hits.length){ container.innerHTML = '<div class="text-center text-ink/50 py-8">未找到匹配的经典</div>'; }
-    else hits.slice(0,300).forEach(s => container.appendChild(leafEl(s, true, true)));
-    statsEl.textContent = `搜索「${kw}」命中 ${hits.length} 部经`;
+    if(!filteredSutras.length){ container.innerHTML = '<div class="text-center text-ink/50 py-8">未找到匹配的经典</div>'; }
+    else filteredSutras.slice(0,300).forEach(s => container.appendChild(leafEl(s, true, true)));
+    statsEl.textContent = `命中 ${filteredSutras.length} 部经${DYNASTY_FILTER||TRANS_FILTER?'（已筛选）':''}`;
     return;
   }
   if(VIEW_MODE === 'flat'){
-    allSutras.forEach(s => container.appendChild(leafEl(s, true, false)));
-    statsEl.textContent = `共 ${allSutras.length} 部经 · 平铺列表`;
+    filteredSutras.forEach(s => container.appendChild(leafEl(s, true, false)));
+    statsEl.textContent = `共 ${filteredSutras.length} 部经 · 平铺列表${DYNASTY_FILTER||TRANS_FILTER?'（已筛选）':''}`;
     return;
   }
+  // 树形：按筛选后的集合重建可见子集
+  let visibleTotal = 0;
   TREE.forEach(t=>{
-    const open = TREE_OPEN.has('c:'+t.cat);
+    // 此部类下，按筛选过滤后的册
+    const visibleVols = t.vols.map(v=>({...v, list:v.list.filter(passFilter)})).filter(v=>v.list.length>0);
+    if(!visibleVols.length) return;
+    const catTotal = visibleVols.reduce((n,v)=>n+v.list.length,0);
+    visibleTotal += catTotal;
+    // 若有筛选条件，自动展开该部类
+    const autoOpen = !!(DYNASTY_FILTER || TRANS_FILTER);
+    const open = autoOpen || TREE_OPEN.has('c:'+t.cat);
     const head = document.createElement('div');
     head.className = 'tcat' + (open ? ' open' : '');
-    head.innerHTML = `<span class="caret">▶</span><span class="truncate">${catLabel(t.cat)}部</span><span class="cnt">${t.total}</span>`;
-    head.addEventListener('click', ()=>{ open ? TREE_OPEN.delete('c:'+t.cat) : TREE_OPEN.add('c:'+t.cat); renderCatalog(); });
+    head.innerHTML = `<span class="caret">▶</span><span class="truncate">${catLabel(t.cat)}部</span><span class="cnt">${catTotal}</span>`;
+    head.addEventListener('click', ()=>{
+      const k='c:'+t.cat;
+      if(TREE_OPEN.has(k)) TREE_OPEN.delete(k); else TREE_OPEN.add(k);
+      saveTreeState(); renderCatalog();
+    });
     container.appendChild(head);
     if(!open) return;
-    t.vols.forEach(v=>{
+    visibleVols.forEach(v=>{
       const vkey = 'v:'+t.cat+'|'+v.vol;
-      const vopen = TREE_OPEN.has(vkey);
+      const vopen = autoOpen || TREE_OPEN.has(vkey);
       const vh = document.createElement('div');
       vh.className = 'tvol' + (vopen ? ' open' : '');
       vh.innerHTML = `<span class="caret">▶</span><span>${v.vol}</span><span class="cnt">${v.list.length}</span>`;
-      vh.addEventListener('click', ()=>{ vopen ? TREE_OPEN.delete(vkey) : TREE_OPEN.add(vkey); renderCatalog(); });
+      vh.addEventListener('click', (ev)=>{
+        ev.stopPropagation();
+        if(TREE_OPEN.has(vkey)) TREE_OPEN.delete(vkey); else TREE_OPEN.add(vkey);
+        saveTreeState(); renderCatalog();
+      });
       container.appendChild(vh);
       if(vopen) v.list.forEach(s => container.appendChild(leafEl(s, false, false)));
     });
   });
-  statsEl.textContent = `共 ${allSutras.length} 部经 · ${TREE.length} 大部类 · 点击部类逐级展开`;
+  if(!visibleTotal){
+    container.innerHTML = '<div class="text-center text-ink/50 py-8">当前筛选条件下无经典，请清空筛选</div>';
+  }
+  statsEl.textContent = `显示 ${visibleTotal} / ${allSutras.length} 部经 · ${TREE.length} 大部类 · 点击逐级展开`;
 }
 
 // 5. 加载单部经文（用户点击才加载，不预加载）
@@ -1041,6 +1231,12 @@ async function loadSutra(meta) {
     }
 
     currentSutra = sutraData;
+    // 补一下归一化字段（sutraData 来自单经 JSON，没有 _dynasty/_trans）
+    if(allSutras && allSutras.length){
+      const metaHit = allSutras.find(s=>s.id===sutraData.id);
+      if(metaHit){ sutraData._dynasty=metaHit._dynasty; sutraData._trans=metaHit._trans; }
+    }
+    if(!sutraData._dynasty){ const p=parseDynasty(sutraData); sutraData._dynasty=p.dynasty; sutraData._trans=p.trans_name; }
     loadedChapters = 0;
     updateKepanBtn();
     // 加载跨页关联数据（若未加载）
@@ -1055,7 +1251,7 @@ async function loadSutra(meta) {
             <h1 class="text-3xl font-bold text-ink mb-2">${sutraData.title || sutraData.sutra_title}</h1>
             <div class="flex gap-4 text-sm text-ink/70 flex-wrap">
                 <span>📜 ${sutraData.id?.toUpperCase()}</span>
-                <span>👤 ${sutraData.translator || '失译'}${sutraData.dynasty ? '（'+sutraData.dynasty+'）' : ''}</span>
+                <span>👤 ${(sutraData._trans||sutraData.translator||'失译')}${sutraData._dynasty&&sutraData._dynasty!=='失译'?'（'+sutraData._dynasty+'）':(sutraData.dynasty?'（'+sutraData.dynasty+'）':'')}</span>
                 <span>📚 ${sutraData.vol}册 · ${sutraData.juan_count || sutraData.content.length}卷</span>
                 <span>📖 ${simpAll(sutraData.category || '')}</span>
                 <span>✍️ ${(sutraData.word_count||sutraData.content.reduce((sum,c)=>sum+(c.text||'').length,0)).toLocaleString()} 字</span>
