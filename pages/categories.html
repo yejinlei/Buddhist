@@ -80,8 +80,15 @@
                     map.get(c).push(s);
                 });
             });
+            const CAT_ORDER = ['阿含部类','本缘部类','般若部类','法华部类','华严部类','宝积部类','涅槃部类','大集部类','经集部类','律部类','毗昙部类','中观部类','瑜伽部类','论集部类','史传部类','事汇部类','密教部类','净土宗部类','禅宗部类','敦煌写本部类'];
             CATS = [...map.entries()].map(([name, arr]) => ({ name, sutras: arr.sort((a,b)=>(a.vol||'').localeCompare(b.vol||'') || (a.title||'').localeCompare(b.title||'')) }))
-                .sort((a,b) => b.sutras.length - a.sutras.length);
+                .sort((a,b) => {
+                    const ia = CAT_ORDER.indexOf(a.name), ib = CAT_ORDER.indexOf(b.name);
+                    if (ia >= 0 && ib >= 0) return ia - ib;
+                    if (ia >= 0) return -1;
+                    if (ib >= 0) return 1;
+                    return b.sutras.length - a.sutras.length;
+                });
             document.getElementById('cat-count').textContent = CATS.length;
             document.getElementById('sutra-total').textContent = ALL.length.toLocaleString();
             const totalChars = ALL.reduce((n,s) => n + (s.word_count || s.chars || 0), 0);

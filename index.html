@@ -421,7 +421,7 @@
             
             const catContainer = document.getElementById('sutraCategories');
             catContainer.innerHTML = Object.keys(categories).map((cat, i) => `
-                <button class="sutra-cat-btn w-full text-left px-3 py-2 rounded-md text-sm ${i === 1 ? 'bg-buddha-primary/10 text-buddha-primary font-medium' : 'hover:bg-buddha-light'}" data-cat="${cat}">
+                <button class="sutra-cat-btn w-full text-left px-3 py-2 rounded-md text-sm ${cat === '般若部' ? 'bg-buddha-primary/10 text-buddha-primary font-medium' : 'hover:bg-buddha-light'}" data-cat="${cat}">
                     ${cat} <span class="text-xs text-buddha-ink/50">(${categories[cat].length})</span>
                 </button>
             `).join('');
@@ -1124,7 +1124,7 @@
         function updateOverview() {
             const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
             set('sutraCount', '2425');
-            set('sutraChars', '全量大正藏 · 7880万字');
+            set('sutraChars', '全量大正藏 · 9,183万字');
             set('conceptCount', ontologyData.concepts.length);
             set('personCount', ontologyData.persons.length);
             set('relationCount', ontologyData.relations.length);

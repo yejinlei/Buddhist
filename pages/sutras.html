@@ -64,6 +64,30 @@
         #toc-panel a:hover { background:#fdf8ec; color:#B8860B; }
         .sutra-container { max-width:880px; margin:0 auto; }
         .sutra-content { font-size:16px; line-height:2; color:#2C1810; }
+        /* ===== 经目树形目录 ===== */
+        .cat-seg { display:flex; border:1px solid #e5d9c3; border-radius:8px; overflow:hidden; }
+        .cat-seg-btn { flex:1; padding:6px 4px; background:#fff; border:0; font-size:12.5px; color:#3E2723; cursor:pointer; font-family:inherit; }
+        .cat-seg-btn.active { background:#B8860B; color:#fff; font-weight:600; }
+        .tree-mini-btn { flex:1; padding:4px 6px; background:#fdf8ec; border:1px solid #e5d9c3; border-radius:6px; color:#8B4513; cursor:pointer; font-size:12px; font-family:inherit; }
+        .tree-mini-btn:hover { background:#f5ecd0; }
+        .tcat { display:flex; align-items:center; gap:6px; padding:7px 8px; cursor:pointer; border-radius:6px; font-weight:600; color:#2C1810; user-select:none; }
+        .tcat:hover { background:rgba(184,134,11,.1); }
+        .tcat .caret { transition:transform .15s; font-size:10px; color:#B8860B; width:12px; flex-shrink:0; }
+        .tcat.open .caret { transform:rotate(90deg); }
+        .tcat .cnt { font-weight:400; font-size:11px; color:#8B4513; background:rgba(184,134,11,.12); border-radius:8px; padding:0 6px; margin-left:auto; flex-shrink:0; }
+        .tvol { display:flex; align-items:center; gap:6px; padding:5px 8px 5px 22px; cursor:pointer; border-radius:6px; font-size:13px; color:#5c4033; user-select:none; }
+        .tvol:hover { background:rgba(184,134,11,.08); }
+        .tvol .caret { transition:transform .15s; font-size:9px; color:#B8860B; width:10px; flex-shrink:0; }
+        .tvol.open .caret { transform:rotate(90deg); }
+        .tvol .cnt { font-weight:400; font-size:11px; color:#8B4513; margin-left:auto; flex-shrink:0; }
+        .tleaf { display:flex; justify-content:space-between; align-items:center; gap:6px; padding:5px 8px 5px 38px; cursor:pointer; border-radius:6px; font-size:13px; }
+        .tleaf:hover { background:rgba(184,134,11,.08); }
+        .tleaf.flat { padding-left:8px; }
+        .tleaf.sel { background:rgba(218,165,32,.22); }
+        .tleaf .tl-title { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .tleaf .tl-meta { font-size:11px; color:rgba(44,24,16,.4); flex-shrink:0; }
+        .tleaf .tl-tag { font-size:10px; color:#8B4513; background:rgba(139,69,19,.08); border-radius:6px; padding:0 5px; margin-left:4px; flex-shrink:0; }
+        .flat-crumb { font-size:11px; color:#8B4513; margin-bottom:1px; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -109,25 +133,23 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
-        <!-- 左侧经目 -->
+        <!-- 左侧经目（树形目录） -->
         <div class="w-72 flex-shrink-0">
             <div class="bg-white rounded-xl shadow-md p-4 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
-                <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center justify-between mb-3">
                     <h2 class="text-lg font-bold text-ink flex items-center gap-2"><span class="text-primary">📖</span>大正藏经目</h2>
                     <span id="loading-status" class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">加载中</span>
                 </div>
-                <input id="search-input" type="text" placeholder="搜索经名/译者/经号..." class="w-full border border-primary/20 rounded-lg px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-primary/30">
-                <div class="mb-3">
-                    <div class="text-sm text-ink/70 mb-1">按部类筛选：</div>
-                    <div id="category-filters" class="flex flex-wrap gap-1"></div>
+                <input id="search-input" type="text" placeholder="搜索经名 / 译者 / 经号..." class="w-full border border-primary/20 rounded-lg px-3 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary/30 text-sm">
+                <div class="cat-seg mb-2">
+                    <button class="cat-seg-btn active" data-mode="tree">🌳 树形目录</button>
+                    <button class="cat-seg-btn" data-mode="flat">📋 平铺列表</button>
                 </div>
-                <div class="mb-3">
-                    <div class="text-sm text-ink/70 mb-1">按册筛选：</div>
-                    <select id="vol-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-sm">
-                        <option value="">全部册</option>
-                    </select>
+                <div class="flex gap-1 mb-2 text-xs">
+                    <button id="tree-expand" class="tree-mini-btn">全部展开</button>
+                    <button id="tree-collapse" class="tree-mini-btn">全部折叠</button>
                 </div>
-                <div id="sutra-list" class="flex-1 overflow-y-auto text-sm">
+                <div id="sutra-tree" class="flex-1 overflow-y-auto text-sm pr-1">
                     <div class="text-center text-ink/50 py-8">正在加载经目...</div>
                 </div>
                 <div id="list-stats" class="text-xs text-ink/50 mt-2 pt-2 border-t border-paper"></div>
@@ -141,7 +163,7 @@
                     <div class="text-6xl mb-4 opacity-30">📜</div>
                     <h1 class="text-3xl font-bold text-ink mb-4">CBETA大正藏全文在线阅读</h1>
                     <p class="text-lg text-ink/70 mb-2">从左侧选择一部经典开始阅读。</p>
-                    <p class="text-ink/50">共收录 <span class="text-primary font-bold">2400+部</span> 佛典原文，总计约 7880 万字。</p>
+                    <p class="text-ink/50">共收录 <span class="text-primary font-bold">2,425 部</span> 佛典原文，总计约 <span class="text-primary font-bold">9,183 万字</span>。</p>
                     <p class="text-sm text-ink/40 mt-4">数据来自 CBETA 电子佛典，按经独立加载，秒开阅读。</p>
                 </div>
             </div>
@@ -827,8 +849,6 @@ async function loadLightIndex() {
     document.getElementById('loading-status').textContent = '已就绪';
     document.getElementById('loading-status').className = 'text-xs bg-green-100 text-green-700 px-2 py-1 rounded';
     initFilters();
-    renderSutraList(allSutras);
-    document.getElementById('list-stats').textContent = `共 ${allSutras.length} 部经`;
     // 支持 ?load=文件名 直接打开指定经文（部类总览 / 全文检索跳转）
     const loadParam = new URLSearchParams(location.search).get('load');
     if (loadParam) {
@@ -837,105 +857,143 @@ async function loadLightIndex() {
     }
 }
 
-// 2. 初始化筛选器
-function initFilters() {
-    // 部类筛选
-    const cats = [...new Set(allSutras.map(s => s.category).filter(Boolean))].sort();
-    const catContainer = document.getElementById('category-filters');
-    catContainer.innerHTML = `<button class="cat-btn px-2 py-1 rounded bg-primary text-white text-xs" data-cat="">全部</button>`;
-    cats.forEach(cat => {
-        const btn = document.createElement('button');
-        btn.className = 'cat-btn px-2 py-1 rounded bg-gray-100 hover:bg-primary/10 text-xs';
-        btn.dataset.cat = cat;
-        btn.textContent = cat.length > 6 ? cat.substring(0,5)+'…' : cat;
-        btn.title = cat;
-        catContainer.appendChild(btn);
-    });
-    catContainer.addEventListener('click', e => {
-        if(e.target.classList.contains('cat-btn')) {
-            document.querySelectorAll('.cat-btn').forEach(b => {
-                b.className = 'cat-btn px-2 py-1 rounded bg-gray-100 hover:bg-primary/10 text-xs';
-            });
-            e.target.className = 'cat-btn px-2 py-1 rounded bg-primary text-white text-xs';
-            applyFilters();
-        }
-    });
+// 2. 部类名归一 & 经目树构建
+const CAT_SIMP = {
+  '經集部类':'经集部类','史傳部类':'史传部类','華嚴部类':'华严部类','法華部类':'法华部类',
+  '論集部类':'论集部类','寶積部类':'宝积部类','本緣部类':'本缘部类','淨土宗部类':'净土宗部类',
+  '禪宗部类':'禅宗部类','毘曇部类':'毗昙部类','中觀部类':'中观部类','事彙部类':'事汇部类',
+  '敦煌寫本部类':'敦煌写本部类'
+};
+const CAT_ORDER = ['阿含部类','本缘部类','般若部类','法华部类','华严部类','宝积部类','涅槃部类','大集部类','经集部类','律部类','毗昙部类','中观部类','瑜伽部类','论集部类','史传部类','事汇部类','密教部类','净土宗部类','禅宗部类','敦煌写本部类'];
+function simpCat(c){ return CAT_SIMP[c] || c; }
+function catsOf(s){ return String(s.category||'').split(/[,，]/).map(x=>x.trim()).filter(Boolean).map(simpCat); }
+function primaryCat(s){ const cs=catsOf(s); if(!cs.length) return '其他部类'; return cs.find(c=>c!=='敦煌写本部类') || cs[0]; }
+function extraCats(s){ const cs=catsOf(s); const p=primaryCat(s); return cs.filter(c=>c!==p); }
+function catLabel(c){ return c.replace(/部类$/,''); }
+const TR_CAT = {'經':'经','傳':'传','華':'华','論':'论','寶':'宝','積':'积','緣':'缘','淨':'净','禪':'禅','毘':'毗','曇':'昙','觀':'观','彙':'汇','寫':'写','嚴':'严'};
+function simpAll(s){ return String(s||'').replace(/[經傳華論寶積緣淨禪毘曇觀彙寫嚴]/g, ch => TR_CAT[ch] || ch); }
 
-    // 册号筛选
-    const vols = [...new Set(allSutras.map(s => s.vol).filter(Boolean))].sort();
-    const volSelect = document.getElementById('vol-filter');
-    vols.forEach(v => {
-        const opt = document.createElement('option');
-        opt.value = v;
-        opt.textContent = v + '册';
-        volSelect.appendChild(opt);
-    });
-    volSelect.addEventListener('change', applyFilters);
+let TREE = [];
+let VIEW_MODE = 'tree';
+const TREE_OPEN = new Set();
 
-    // 搜索框：防抖
-    let searchTimer;
-    document.getElementById('search-input').addEventListener('input', e => {
-        clearTimeout(searchTimer);
-        searchTimer = setTimeout(applyFilters, 200);
-    });
+function buildCatalog(){
+  const m = new Map();
+  allSutras.forEach(s=>{
+    const cat = primaryCat(s);
+    const vol = s.vol || '未分册';
+    if(!m.has(cat)) m.set(cat, new Map());
+    const vm = m.get(cat);
+    if(!vm.has(vol)) vm.set(vol, []);
+    vm.get(vol).push(s);
+  });
+  const cats = [...m.keys()].sort((a,b)=>{
+    const ia = CAT_ORDER.indexOf(a), ib = CAT_ORDER.indexOf(b);
+    if(ia>=0 && ib>=0) return ia-ib;
+    if(ia>=0) return -1;
+    if(ib>=0) return 1;
+    return m.get(b).size - m.get(a).size;
+  });
+  TREE = cats.map(cat=>{
+    const vm = m.get(cat);
+    const vols = [...vm.keys()].sort();
+    vols.forEach(v=> vm.get(v).sort((a,b)=> String(a.id||'').localeCompare(String(b.id||''))));
+    return { cat, total: [...vm.values()].reduce((n,a)=>n+a.length,0),
+             vols: vols.map(v=>({ vol:v, list:vm.get(v) })) };
+  });
 }
 
-// 3. 渲染经目列表（分批渲染，避免卡顿）
-function renderSutraList(list) {
-    const container = document.getElementById('sutra-list');
-    container.innerHTML = '';
-    // 只渲染前200条，滚动时再渲染更多
-    const batchSize = 200;
-    let renderCount = Math.min(batchSize, list.length);
-    function renderBatch(start) {
-        const end = Math.min(start + batchSize, list.length);
-        for(let i = start; i < end; i++) {
-            const s = list[i];
-            const item = document.createElement('div');
-            item.className = 'py-1.5 px-2 rounded cursor-pointer hover:bg-primary/5 border-b border-gray-100 flex justify-between items-center sutra-item';
-            item.dataset.id = s.id;
-            item.innerHTML = `<span class="truncate">${s.title}</span><span class="text-xs text-ink/40 ml-2 flex-shrink-0">${s.dynasty||''}${s.translator?.substring(0,4)||''}</span>`;
-            item.addEventListener('click', () => loadSutra(s));
-            container.appendChild(item);
-        }
-    }
-    renderBatch(0);
-    // 滚动加载更多经目
-    container.addEventListener('scroll', () => {
-        if(container.scrollTop + container.clientHeight > container.scrollHeight - 100) {
-            if(renderCount < list.length) {
-                renderBatch(renderCount);
-                renderCount += batchSize;
-            }
-        }
-    });
+function matchKw(s, kw){
+  return (s.title||'').toLowerCase().includes(kw)
+      || (s.translator||'').toLowerCase().includes(kw)
+      || (s.id||'').toLowerCase().includes(kw);
 }
 
-// 4. 筛选逻辑
-function applyFilters() {
-    const keyword = document.getElementById('search-input').value.trim().toLowerCase();
-    const cat = document.querySelector('.cat-btn.bg-primary')?.dataset.cat || '';
-    const vol = document.getElementById('vol-filter').value;
-    let filtered = allSutras.filter(s => {
-        if(cat && s.category !== cat) return false;
-        if(vol && s.vol !== vol) return false;
-        if(keyword) {
-            const match = (s.title||'').toLowerCase().includes(keyword) 
-                || (s.translator||'').toLowerCase().includes(keyword)
-                || (s.id||'').toLowerCase().includes(keyword);
-            if(!match) return false;
-        }
-        return true;
+function leafEl(s, flat, showCrumb){
+  const el = document.createElement('div');
+  el.className = 'sutra-item tleaf' + (flat ? ' flat' : '');
+  el.dataset.id = s.id;
+  if(currentSutra && String(currentSutra.id||'').toLowerCase() === String(s.id||'').toLowerCase()) el.classList.add('sel');
+  const tags = extraCats(s).map(c=>`<span class="tl-tag">${catLabel(c)}</span>`).join('');
+  const crumb = showCrumb ? `<div class="flat-crumb">${catLabel(primaryCat(s))}部${s.vol?' · '+s.vol:''}</div>` : '';
+  el.innerHTML = `${crumb}<div style="display:flex;justify-content:space-between;gap:6px;align-items:center" class="tl-row">
+      <span class="tl-title">${s.title}${tags}</span>
+      <span class="tl-meta">${s.dynasty||''}${(s.translator||'').substring(0,4)}</span></div>`;
+  el.addEventListener('click', ()=> loadSutra(s));
+  return el;
+}
+
+function initFilters(){
+  buildCatalog();
+  document.querySelectorAll('.cat-seg-btn').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      VIEW_MODE = b.dataset.mode;
+      document.querySelectorAll('.cat-seg-btn').forEach(x=>x.classList.toggle('active', x===b));
+      renderCatalog();
     });
-    renderSutraList(filtered);
-    document.getElementById('list-stats').textContent = `显示 ${filtered.length} / ${allSutras.length} 部经`;
+  });
+  document.getElementById('tree-expand').addEventListener('click', ()=>{
+    VIEW_MODE = 'tree';
+    document.querySelectorAll('.cat-seg-btn').forEach(x=>x.classList.toggle('active', x.dataset.mode==='tree'));
+    TREE.forEach(t=>{ TREE_OPEN.add('c:'+t.cat); t.vols.forEach(v=>TREE_OPEN.add('v:'+t.cat+'|'+v.vol)); });
+    renderCatalog();
+  });
+  document.getElementById('tree-collapse').addEventListener('click', ()=>{
+    TREE_OPEN.clear(); renderCatalog();
+  });
+  let searchTimer;
+  document.getElementById('search-input').addEventListener('input', ()=>{
+    clearTimeout(searchTimer); searchTimer = setTimeout(renderCatalog, 180);
+  });
+  renderCatalog();
+}
+
+function renderCatalog(){
+  const container = document.getElementById('sutra-tree');
+  const kw = document.getElementById('search-input').value.trim().toLowerCase();
+  container.innerHTML = '';
+  const statsEl = document.getElementById('list-stats');
+
+  if(kw){
+    const hits = allSutras.filter(s => matchKw(s, kw));
+    if(!hits.length){ container.innerHTML = '<div class="text-center text-ink/50 py-8">未找到匹配的经典</div>'; }
+    else hits.slice(0,300).forEach(s => container.appendChild(leafEl(s, true, true)));
+    statsEl.textContent = `搜索「${kw}」命中 ${hits.length} 部经`;
+    return;
+  }
+  if(VIEW_MODE === 'flat'){
+    allSutras.forEach(s => container.appendChild(leafEl(s, true, false)));
+    statsEl.textContent = `共 ${allSutras.length} 部经 · 平铺列表`;
+    return;
+  }
+  TREE.forEach(t=>{
+    const open = TREE_OPEN.has('c:'+t.cat);
+    const head = document.createElement('div');
+    head.className = 'tcat' + (open ? ' open' : '');
+    head.innerHTML = `<span class="caret">▶</span><span class="truncate">${catLabel(t.cat)}部</span><span class="cnt">${t.total}</span>`;
+    head.addEventListener('click', ()=>{ open ? TREE_OPEN.delete('c:'+t.cat) : TREE_OPEN.add('c:'+t.cat); renderCatalog(); });
+    container.appendChild(head);
+    if(!open) return;
+    t.vols.forEach(v=>{
+      const vkey = 'v:'+t.cat+'|'+v.vol;
+      const vopen = TREE_OPEN.has(vkey);
+      const vh = document.createElement('div');
+      vh.className = 'tvol' + (vopen ? ' open' : '');
+      vh.innerHTML = `<span class="caret">▶</span><span>${v.vol}</span><span class="cnt">${v.list.length}</span>`;
+      vh.addEventListener('click', ()=>{ vopen ? TREE_OPEN.delete(vkey) : TREE_OPEN.add(vkey); renderCatalog(); });
+      container.appendChild(vh);
+      if(vopen) v.list.forEach(s => container.appendChild(leafEl(s, false, false)));
+    });
+  });
+  statsEl.textContent = `共 ${allSutras.length} 部经 · ${TREE.length} 大部类 · 点击部类逐级展开`;
 }
 
 // 5. 加载单部经文（用户点击才加载，不预加载）
 async function loadSutra(meta) {
     // 高亮当前选中
-    document.querySelectorAll('.sutra-item').forEach(i => i.classList.remove('bg-gold/10'));
-    document.querySelector(`[data-id="${meta.id}"]`)?.classList.add('bg-gold/10');
+    document.querySelectorAll('.sutra-item').forEach(i => i.classList.remove('sel'));
+    const curEl = document.querySelector(`[data-id="${meta.id}"]`);
+    if (curEl) { curEl.classList.add('sel'); curEl.scrollIntoView({block:'nearest'}); }
     
     // 先检查缓存
     const cacheKey = CACHE_KEY + meta.id;
@@ -999,7 +1057,7 @@ async function loadSutra(meta) {
                 <span>📜 ${sutraData.id?.toUpperCase()}</span>
                 <span>👤 ${sutraData.translator || '失译'}${sutraData.dynasty ? '（'+sutraData.dynasty+'）' : ''}</span>
                 <span>📚 ${sutraData.vol}册 · ${sutraData.juan_count || sutraData.content.length}卷</span>
-                <span>📖 ${sutraData.category || ''}</span>
+                <span>📖 ${simpAll(sutraData.category || '')}</span>
                 <span>✍️ ${(sutraData.word_count||sutraData.content.reduce((sum,c)=>sum+(c.text||'').length,0)).toLocaleString()} 字</span>
             </div>`;
     // 异译对照提示条（由ensureCross加载后updateParallelBar更新，先占位）
@@ -1210,7 +1268,7 @@ document.getElementById('btn-kepan')?.addEventListener('click', showKepanPanel);
   });
   // 选中经文后自动收起经目
   document.addEventListener('click', e=>{
-    if (e.target.closest('#sutra-list a, #sutra-list .sutra-item')) {
+    if (e.target.closest('#sutra-tree a, #sutra-tree .sutra-item')) {
       setTimeout(()=>{ left.style.display='none'; toggle.innerHTML='📖 经目 <i class="fa fa-chevron-down" style="font-size:11px"></i>'; },100);
     }
   });
