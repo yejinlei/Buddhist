@@ -64,6 +64,47 @@
     ]
   },
   {
+    "group_id": "seg_t0204_t0205_t0207",
+    "group_title": "雜譬喻經",
+    "n_versions": 3,
+    "n_alignments": 181,
+    "versions": [
+      {
+        "id": "t0204",
+        "translator": "後漢 支婁迦讖譯",
+        "title": "雜譬喻經"
+      },
+      {
+        "id": "t0205",
+        "translator": "失譯",
+        "title": "雜譬喻經"
+      },
+      {
+        "id": "t0207",
+        "translator": "道略集",
+        "title": "雜譬喻經"
+      }
+    ]
+  },
+  {
+    "group_id": "seg_t0210_t2901",
+    "group_title": "法句經",
+    "n_versions": 2,
+    "n_alignments": 839,
+    "versions": [
+      {
+        "id": "t2901",
+        "translator": "",
+        "title": "法句經"
+      },
+      {
+        "id": "t0210",
+        "translator": "法救撰 吳 維祇難等譯",
+        "title": "法句經"
+      }
+    ]
+  },
+  {
     "group_id": "seg_t0235_t0237",
     "group_title": "金剛般若波羅蜜經",
     "n_versions": 2,
@@ -110,6 +151,24 @@
     ]
   },
   {
+    "group_id": "seg_t0328_t0329",
+    "group_title": "須賴經",
+    "n_versions": 2,
+    "n_alignments": 522,
+    "versions": [
+      {
+        "id": "t0328",
+        "translator": "曹魏 白延譯",
+        "title": "佛說須賴經"
+      },
+      {
+        "id": "t0329",
+        "translator": "前涼 支施崙譯",
+        "title": "佛說須賴經"
+      }
+    ]
+  },
+  {
     "group_id": "seg_t0334_t0335",
     "group_title": "須摩提菩薩經",
     "n_versions": 2,
@@ -146,6 +205,24 @@
     ]
   },
   {
+    "group_id": "seg_t0417_t0418",
+    "group_title": "般舟三昧經",
+    "n_versions": 2,
+    "n_alignments": 685,
+    "versions": [
+      {
+        "id": "t0417",
+        "translator": "後漢 支婁迦讖譯",
+        "title": "佛說般舟三昧經"
+      },
+      {
+        "id": "t0418",
+        "translator": "後漢 支婁迦讖譯",
+        "title": "般舟三昧經"
+      }
+    ]
+  },
+  {
     "group_id": "seg_t0454_t0455",
     "group_title": "彌勒下生成佛經",
     "n_versions": 2,
@@ -160,6 +237,42 @@
         "id": "t0455",
         "translator": "唐 義淨譯",
         "title": "佛說彌勒下生成佛經"
+      }
+    ]
+  },
+  {
+    "group_id": "seg_t0681_t0682",
+    "group_title": "大乘密嚴經",
+    "n_versions": 2,
+    "n_alignments": 2392,
+    "versions": [
+      {
+        "id": "t0681",
+        "translator": "唐 地婆訶羅譯",
+        "title": "大乘密嚴經"
+      },
+      {
+        "id": "t0682",
+        "translator": "唐 不空譯",
+        "title": "大乘密嚴經"
+      }
+    ]
+  },
+  {
+    "group_id": "seg_t0865_t0874",
+    "group_title": "金剛頂一切如來真實攝大乘現證大教王經",
+    "n_versions": 2,
+    "n_alignments": 881,
+    "versions": [
+      {
+        "id": "t0874",
+        "translator": "唐 不空譯",
+        "title": "金剛頂一切如來真實攝大乘現證大教王經"
+      },
+      {
+        "id": "t0865",
+        "translator": "唐 不空譯",
+        "title": "金剛頂一切如來真實攝大乘現證大教王經"
       }
     ]
   },
@@ -187,6 +300,24 @@
     ]
   },
   {
+    "group_id": "seg_t0984_t0988",
+    "group_title": "孔雀王呪經",
+    "n_versions": 2,
+    "n_alignments": 262,
+    "versions": [
+      {
+        "id": "t0988",
+        "translator": "姚秦 鳩摩羅什譯",
+        "title": "孔雀王呪經"
+      },
+      {
+        "id": "t0984",
+        "translator": "梁 僧伽婆羅譯",
+        "title": "孔雀王呪經"
+      }
+    ]
+  },
+  {
     "group_id": "seg_t0986_t0987",
     "group_title": "大金色孔雀王呪經",
     "n_versions": 2,
@@ -201,6 +332,24 @@
         "id": "t0987",
         "translator": "失譯",
         "title": "佛說大金色孔雀王呪經"
+      }
+    ]
+  },
+  {
+    "group_id": "seg_t0989_t0991",
+    "group_title": "大雲輪請雨經",
+    "n_versions": 2,
+    "n_alignments": 143,
+    "versions": [
+      {
+        "id": "t0991",
+        "translator": "隋 那連提耶舍譯",
+        "title": "大雲輪請雨經"
+      },
+      {
+        "id": "t0989",
+        "translator": "唐 不空譯",
+        "title": "大雲輪請雨經"
       }
     ]
   },
@@ -259,6 +408,24 @@
     ]
   },
   {
+    "group_id": "seg_t1592_t1593",
+    "group_title": "攝大乘論",
+    "n_versions": 2,
+    "n_alignments": 1188,
+    "versions": [
+      {
+        "id": "t1592",
+        "translator": "阿僧伽作 後魏 佛陀扇多譯",
+        "title": "攝大乘論"
+      },
+      {
+        "id": "t1593",
+        "translator": "無著菩薩造 陳 真諦譯",
+        "title": "攝大乘論"
+      }
+    ]
+  },
+  {
     "group_id": "seg_t1626_t1627",
     "group_title": "大乘法界無差別論",
     "n_versions": 2,
@@ -291,6 +458,24 @@
         "id": "t1920",
         "translator": "隋 智顗述",
         "title": "觀心論"
+      }
+    ]
+  },
+  {
+    "group_id": "seg_t2794_t2796",
+    "group_title": "律抄",
+    "n_versions": 2,
+    "n_alignments": 1893,
+    "versions": [
+      {
+        "id": "t2794",
+        "translator": "",
+        "title": "律抄"
+      },
+      {
+        "id": "t2796",
+        "translator": "",
+        "title": "律抄第三卷手決"
       }
     ]
   },

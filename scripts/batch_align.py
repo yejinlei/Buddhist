@@ -66,22 +66,32 @@ print(f'可对齐异译组（排除注疏/残缺）共 {len(candidates)} 组\n')
 
 # 第一批：最长本 ≤ 10000 字（短经/短论）
 batch1 = [c for c in candidates if c[0] <= 10000]
+success = []
 print(f'=== 第一批（最长本 ≤ 10000字）共 {len(batch1)} 组 ===')
 for max_c, title, ids, chars in batch1:
     print(f'  · {title} ({len(ids)}译, 最长{max_c}字)  {ids}')
 
-success = []
-for max_c, title, ids, chars in batch1:
+# 第二批：10000–30000 字
+batch2 = [c for c in candidates if 10000 < c[0] <= 30000]
+print(f'\n=== 第二批（1万字~3万字）共 {len(batch2)} 组 ===')
+for max_c, title, ids, chars in batch2:
+    print(f'  · {title} ({len(ids)}译, 最长{max_c}字)  {ids}')
+for max_c, title, ids, chars in batch2:
     gid = 'seg_' + '_'.join(sorted(ids))
     print(f'\n→ [{gid}] {title}')
     try:
         out = align.build_alignment(gid, title, ids, skip_start=2, skip_noise=True)
         if out:
-            # 把结果写到正确位置（build_alignment 内部已写文件）
             success.append(out)
     except Exception as e:
         import traceback; traceback.print_exc()
         print(f'  ❌ 异常: {e}')
+
+# 第三批：30000–60000 字（中型经论）
+batch3 = [c for c in candidates if 30000 < c[0] <= 60000]
+print(f'\n=== 第三批（3万字~6万字）共 {len(batch3)} 组 ===')
+for max_c, title, ids, chars in batch3:
+    print(f'  · {title} ({len(ids)}译, 最长{max_c}字)  {ids}')
 
 # 重生成完整 manifest（包括已有）
 manifest = []
