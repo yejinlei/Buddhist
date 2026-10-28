@@ -105,7 +105,7 @@
             }));
             const head = `<div class="mb-5">
                 <h1 class="text-2xl font-bold text-ink mb-1">${g.title}</h1>
-                <p class="text-sm text-ink/60">${g.sutras.length} 个汉译本并排对读 · 拖动各栏可独立滚动</p>
+                <p class="text-sm text-ink/60">${g.sutras.length} 个汉译本并排对读 · 各译本分卷与句读不同，按整篇并列呈现，可拖动各栏独立滚动</p>
             </div>`;
             const grid = `<div class="grid gap-4" style="grid-template-columns: repeat(${Math.min(cols.length, 4)}, minmax(0,1fr))">` +
                 cols.map(c => {
@@ -118,7 +118,8 @@
                     return `<div class="border border-paper rounded-lg overflow-hidden flex flex-col">
                         <div class="bg-primary/5 px-3 py-2 border-b border-paper">
                             <div class="font-bold text-ink text-sm">${m.translator||'失译'}</div>
-                            <div class="text-xs text-ink/50 mt-0.5">${m.vol||''} ${yr} · ${chars.toLocaleString()}字</div>
+                            <div class="text-xs text-ink/50 mt-0.5">${m.vol||''} ${yr} · ${chars.toLocaleString()}字${m.juan_count?` · ${m.juan_count}卷`:''}</div>
+                            ${m.completeness_ratio?`<div class="text-xs mt-0.5 ${m.completeness_ratio>=0.95?'text-green-700':'text-ink/45'}">完整度 ${(m.completeness_ratio*100).toFixed(0)}%</div>`:''}
                         </div>
                         <div class="col-wrap px-3 py-3">${body}</div>
                     </div>`;
