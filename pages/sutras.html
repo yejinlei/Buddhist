@@ -309,19 +309,134 @@ function openNoteEditor(pid) {
   if (curSBtab==='note') renderSB();
 }
 
+function getParaKepanPath(pid) {
+  const el = document.getElementById(pid);
+  if(!el) return null;
+  const p = el.closest('.para-wrap');
+  if(!p) return null;
+  // 优先读已加在段末的 kepan-pill
+  const pill = p.querySelector('.kepan-pill');
+  if(pill && pill.title) return pill.title;
+  // 兜底：实时匹配
+  const sutraKepan = (CROSS && CROSS._kepanBySutra && CROSS._kepanBySutra[currentSutra.id]) || [];
+  const ptxt = p.querySelector('.sutra-content')?.textContent?.replace(/\s+/g,'') || '';
+  for(const k of sutraKepan){
+    if(!k.quote) continue;
+    const key = k.quote.replace(/\s+/g,'').slice(0, 20);
+    if(key && ptxt.includes(key)) return k.path || k.title;
+  }
+  return null;
+}
+function getSutraTaishoVol(sid) {
+  // 从经号算大正藏册号：T01-T17 阿含、T18-T33 本缘、T34-T55 般若等
+  const num = parseInt((sid||'').replace(/^t/i,'').replace(/[a-z].*$/i,''),10);
+  if(isNaN(num)) return null;
+  const volMap = [
+    [122,1],[219,2],[322,3],[452,4],[573,5],[784,6],[912,7],[1041,8],
+    [1163,9],[1274,10],[1338,11],[1404,12],[1462,13],[1526,14],[1586,15],
+    [1692,16],[1803,17],[1886,18],[1955,19],[2027,20],[2084,21],[2127,22],
+    [2144,23],[2157,24],[2184,25],[2201,26],[2220,27],[2250,28],[2290,29],
+    [2342,30],[2409,31],[2472,32],[2603,33],[2646,34],[2698,35],[2723,36],
+    [2753,37],[2773,38],[2788,39],[2823,40],[2848,41],[2866,42],[2896,43],
+    [2920,44],[2942,45],[2961,46],[2980,47],[3048,48],[3048,49],[3048,50],
+    [3048,51],[3048,52],[3048,53],[3048,54],[3048,55]
+  ];
+  for(const [end, vol] of volMap){ if(num<=end) return vol; }
+  return 55;
+}
+
 function citePara(pid) {
   const paraText = getParaText(pid);
   const sutraId = currentSutra ? (currentSutra.id || '').toUpperCase() : '';
   const title = getSutraTitle();
-  const trans = getTranslator();
-  // §段号 = cN_pN → 简化显示
-  const m = pid.match(/_c(\d+)_p(\d+)/);
-  const seg = m ? `§${parseInt(m[1])+1}.${parseInt(m[2])+1}` : '';
-  const cite = `"${paraText.slice(0,60)}${paraText.length>60?'…':''}" ——《${title}》（${trans}译），${sutraId}，${seg}`;
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(cite).then(()=>toast('✅ 引用已复制：' + cite.slice(0,40)+'…'))
-      .catch(()=>fallbackCopy(cite));
-  } else fallbackCopy(cite);
+  const transRaw = getTranslator() || '失译';
+  // 译者朝代解析：形如 "[姚秦]鸠摩罗什 译" / "[唐]玄奘 译"
+  const transM = transRaw.match(/^\s*\[?([^\]\s]*)?\]?\s*([^\s译]+)/);
+  const dynasty = transM ? (transM[1]||'') : '';
+  const translator = transM ? transM[2] : transRaw.replace(/译$/,'').trim();
+  // 章节号：cN_pN → §(N+1).(N+1)
+  const m = pid.match(/c(\d+)_p(\d+)/);
+  const chIdx = m ? parseInt(m[1]) : -1;
+  const pIdx = m ? parseInt(m[2]) : -1;
+  const chapterName = (chIdx>=0 && currentSutra && currentSutra.chapters && currentSutra.chapters[chIdx])
+    ? currentSutra.chapters[chIdx].title : '';
+  const sec = m ? `§${chIdx+1}.${pIdx+1}` : '';
+  // 科判位置
+  const kepanPath = getParaKepanPath(pid);
+  // 大正藏册号（T08n0251 → 册8）
+  const vol = getSutraTaishoVol(sutraId);
+  const taishoLoc = vol ? `T${vol}, ${sutraId}` : sutraId;
+
+  // 三种格式
+  const quotePart = paraText.length>180 ? paraText.slice(0,178)+'……' : paraText;
+  const transLabel = dynasty ? `[${dynasty}]${translator}` : translator;
+  const locParts = [taishoLoc];
+  if(chapterName) locParts.push(`〈${chapterName}〉`);
+  if(sec) locParts.push(sec);
+  if(kepanPath) locParts.push(`[科判：${kepanPath}]`);
+
+  // 1. 纯文本标准学术引用（默认）
+  const plainCite = `「${quotePart}」——《${title}》，${transLabel}译，${locParts.join('，')}。`;
+
+  // 2. Markdown（适合笔记软件/Obsidian/Notion）
+  const mdCite = `> ${quotePart}
+>
+> ——《${title}》，${transLabel}译，${locParts.join('，')}。`;
+
+  // 3. 国际佛学界引用格式（近似 CBETA 引用法）
+  const intlCite = `"${quotePart.slice(0,150)}${quotePart.length>150?'…':''}"《${title}》, tr. ${translator} (${dynasty||'—'}), ${taishoLoc}${chapterName?' 〈'+chapterName+'〉':''}${sec?' '+sec:''}${kepanPath?' [Kepan: '+kepanPath+']':''}. CBETA.`;
+
+  // 弹出格式选择菜单
+  showCiteMenu(pid, {plainCite, mdCite, intlCite});
+}
+
+function showCiteMenu(pid, cites){
+  let menu = document.getElementById('cite-menu');
+  if(menu) menu.remove();
+  const el = document.getElementById(pid);
+  if(!el) return;
+  const r = el.getBoundingClientRect();
+  menu = document.createElement('div');
+  menu.id = 'cite-menu';
+  menu.style.cssText = `position:fixed;z-index:400;background:#fff;border:1px solid #d4b58a;border-radius:10px;box-shadow:0 6px 20px rgba(93,54,16,.25);padding:8px;font-size:13px;width:240px;left:${Math.min(r.left, window.innerWidth-250)}px;top:${Math.min(r.bottom+6, window.innerHeight-200)}px;`;
+  menu.innerHTML = `
+    <div style="font-weight:bold;color:#5d3610;padding:6px 8px 4px;border-bottom:1px dashed #e6d2a9;margin-bottom:4px;">📋 选择引用格式</div>
+    <button class="cite-opt" data-fmt="plain" style="display:block;width:100%;text-align:left;padding:8px 10px;border:none;background:none;cursor:pointer;border-radius:6px;color:#3d2914;">📄 纯文本（标准学术引用）</button>
+    <button class="cite-opt" data-fmt="md" style="display:block;width:100%;text-align:left;padding:8px 10px;border:none;background:none;cursor:pointer;border-radius:6px;color:#3d2914;">📝 Markdown（Obsidian/Notion）</button>
+    <button class="cite-opt" data-fmt="intl" style="display:block;width:100%;text-align:left;padding:8px 10px;border:none;background:none;cursor:pointer;border-radius:6px;color:#3d2914;">🌐 国际佛学引用格式</button>
+    <div style="border-top:1px dashed #e6d2a9;margin-top:4px;padding-top:6px;"><button class="cite-opt" data-fmt="preview" style="display:block;width:100%;text-align:left;padding:6px 10px;border:none;background:none;cursor:pointer;border-radius:6px;color:#8b7b55;font-size:12px;">👁 预览完整引文</button></div>
+  `;
+  document.body.appendChild(menu);
+  menu.querySelectorAll('.cite-opt').forEach(b=>{
+    b.addEventListener('mouseenter', ()=>b.style.background='#faf3e2');
+    b.addEventListener('mouseleave', ()=>b.style.background='none');
+    b.addEventListener('click', ()=>{
+      const fmt = b.dataset.fmt;
+      if(fmt==='preview'){
+        alert(
+`【纯文本】
+${cites.plainCite}
+
+【Markdown】
+${cites.mdCite}
+
+【国际佛学格式】
+${cites.intlCite}`);
+        return;
+      }
+      const text = cites[fmt==='plain'?'plainCite':fmt==='md'?'mdCite':'intlCite'];
+      doCopy(text);
+      menu.remove();
+      document.removeEventListener('click', outsideClose);
+    });
+  });
+  const outsideClose = (e)=>{ if(!menu.contains(e.target)){ menu.remove(); document.removeEventListener('click', outsideClose); }};
+  setTimeout(()=>document.addEventListener('click', outsideClose), 10);
+}
+function doCopy(text){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(()=>toast('✅ 引用已复制到剪贴板')).catch(()=>fallbackCopy(text));
+  } else fallbackCopy(text);
 }
 function fallbackCopy(text) {
   const ta = document.createElement('textarea');
