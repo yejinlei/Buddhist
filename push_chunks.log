@@ -1,6 +1,0 @@
-[2026-10-28 07:53:41] === 分批推送开始，基线 5fe6d56 ===
-[2026-10-28 07:53:42] 已折叠历史提交，工作区保持完整
-[2026-10-28 07:53:45] 已提交：站点与脚本
-fatal: unable to access 'https://github.com/yejinlei/Buddhist.git/': Failed to connect to github.com port 443 after 129501 ms: Connection timed out
-[2026-10-28 07:55:54]   推送失败(rc=128)，重试 1/4
-fatal: unable to access 'https://github.com/yejinlei/Buddhist.git/': Failed to connect to github.com port 443 after 131018 ms: Connection timed out

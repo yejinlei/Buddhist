@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>全藏原典 - 佛学本体论</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../css/tailwind.min.css">
     <link rel="stylesheet" href="../css/tailwind-extra.css">
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .sutra-content { line-height: 2.2; font-size: 1.05rem; text-indent: 2em; margin-bottom: 0.5rem; }
-            .chapter-title { font-weight: bold; color: #8B4513; margin-top: 2rem; margin-bottom: 1rem; font-size: 1.25rem; text-indent: 0; border-bottom: 1px solid #e5d9c3; padding-bottom: 0.5rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/custom.css">
     <style>
         body { font-family: -apple-system, "Noto Serif SC", "Songti SC", serif; background-color: #F5F0E1; color: #2C1810; }
         .nav-active { background-color: rgba(184,134,11,0.2); }
@@ -111,6 +107,41 @@ let DICT_TERMS = null;
 let DICT_MAP = new Map();
 let DICT_MAX_LEN = 6;
 const CHAPTERS_PER_PAGE = 10; // 每次加载10章（大约几卷）
+
+// ===== 阅读增强：字号调节与章节目录 =====
+const FS_KEY = 'buddhist_read_fs';
+let curFs = 'md';
+try { curFs = localStorage.getItem(FS_KEY) || 'md'; } catch(e) {}
+
+function applyFs(fs){
+    curFs = fs;
+    try { localStorage.setItem(FS_KEY, fs); } catch(e) {}
+    const t = document.getElementById('sutra-text');
+    if(t) t.dataset.fs = fs;
+    document.querySelectorAll('.read-toolbar button[data-fs]').forEach(b =>
+        b.classList.toggle('active', b.dataset.fs === fs));
+}
+
+function buildToc(){
+    const panel = document.getElementById('toc-panel');
+    if(!panel || !currentSutra) return;
+    if(panel.dataset.built === currentSutra.id) return;
+    panel.innerHTML = currentSutra.content.map((c, i) =>
+        `<a href="javascript:void(0)" onclick="jumpToChapter(${i})">${i+1}. ${esc(c.chapter || c.title || ('第' + (i+1) + '章'))}</a>`
+    ).join('');
+    panel.dataset.built = currentSutra.id;
+}
+
+function jumpToChapter(i){
+    if(!currentSutra) return;
+    let guard = 0;
+    while(loadedChapters <= i && loadedChapters < currentSutra.content.length && guard < 2000){
+        loadMoreChapters(); guard++;
+    }
+    const el = document.getElementById('chap-' + i);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    document.getElementById('toc-panel')?.classList.add('hidden');
+}
 
 function esc(s){ return (s||'').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
 function toSimp(s){ return [...(s||'')].map(c => H2S[c] || c).join(''); }
@@ -396,8 +427,26 @@ async function loadSutra(meta) {
                 <span>✍️ ${(sutraData.word_count||sutraData.content.reduce((sum,c)=>sum+(c.text||'').length,0)).toLocaleString()} 字</span>
             </div>
         </div>
+        <div class="read-toolbar">
+            <button id="toc-toggle" title="章节目录">☰ 章节目录</button>
+            <span class="rt-label" style="margin-left:.5rem">字号</span>
+            <button data-fs="sm">小</button>
+            <button data-fs="md">中</button>
+            <button data-fs="lg">大</button>
+            <button data-fs="xl">特大</button>
+            <span class="rt-label" id="read-progress" style="margin-left:auto"></span>
+        </div>
+        <div id="toc-panel" class="hidden mb-4"></div>
         <div id="sutra-text"></div>
     `;
+    // 绑定阅读工具条
+    document.getElementById('toc-toggle')?.addEventListener('click', () => {
+        buildToc();
+        document.getElementById('toc-panel')?.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.read-toolbar button[data-fs]').forEach(b =>
+        b.addEventListener('click', () => applyFs(b.dataset.fs)));
+    applyFs(curFs);
     // 先加载前N章
     loadMoreChapters();
     // 监听滚动，懒加载更多章节
@@ -419,6 +468,8 @@ function loadMoreChapters() {
     for(let i = loadedChapters; i < end; i++) {
         const chap = currentSutra.content[i];
         const chapDiv = document.createElement('div');
+        chapDiv.id = 'chap-' + i;
+        chapDiv.className = 'sutra-chapter';
         chapDiv.innerHTML = `
             <div class="chapter-title">${chap.chapter || chap.title || ''}</div>
             <div>${(chap.text || '').split(/\n+/).map(p => `<p class="sutra-content">${renderParagraph(p.trim())}</p>`).join('')}</div>
@@ -426,6 +477,9 @@ function loadMoreChapters() {
         textContainer.appendChild(chapDiv);
     }
     loadedChapters = end;
+    // 更新阅读进度
+    const progEl = document.getElementById('read-progress');
+    if(progEl) progEl.textContent = `已读 ${loadedChapters}/${currentSutra.content.length} 章`;
     // 显示/隐藏加载更多按钮
     const loadMore = document.getElementById('load-more');
     if(loadedChapters < currentSutra.content.length) {

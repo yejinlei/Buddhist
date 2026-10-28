@@ -1,3 +1,11 @@
 .xmlcache/
 __pycache__/
 *.pyc
+
+# 构建/抓取/推送过程日志
+*.log
+
+# 临时与备份
+*.bak
+*.tmp
+.DS_Store

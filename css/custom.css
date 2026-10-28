@@ -1,0 +1,108 @@
+/* ============================================================
+   佛学本体论 · 站点自定义样式
+   说明：这些规则原先写在页面内的 <style type="text/tailwindcss"> 块中，
+   该块依赖 Tailwind 官方 CDN 运行时编译，站点改用本地编译版 CSS 后即为
+   惰性代码，规则不会生效。此处统一迁移为独立样式表，供全站引用。
+   ============================================================ */
+
+/* ---------- 通用工具类 ---------- */
+.content-auto { content-visibility: auto; }
+
+.scrollbar-thin { scrollbar-width: thin; }
+.scrollbar-thin::-webkit-scrollbar { width: 4px; height: 4px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background-color: rgba(139, 90, 43, 0.3); border-radius: 2px; }
+
+.text-balance { text-wrap: balance; }
+
+.bg-paper-texture {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+.lotus-pattern {
+  background-image: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+}
+
+/* ---------- 图谱节点配色 ---------- */
+.node-sutra { color: #7B3F00; }
+.node-concept { color: #1E4D2B; }
+.node-person { color: #8B0000; }
+.node-sect { color: #4A148C; }
+
+/* ---------- 经文阅读排版 ---------- */
+.sutra-content {
+  line-height: 2.2;
+  font-size: 1.05rem;
+  text-indent: 2em;
+  margin-bottom: 0.5rem;
+}
+
+.chapter-title {
+  font-weight: bold;
+  color: #8B4513;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  text-indent: 0;
+  border-bottom: 1px solid #e5d9c3;
+  padding-bottom: 0.5rem;
+}
+
+/* ---------- 经文字号调节（阅读页） ---------- */
+#sutra-text[data-fs="sm"] .sutra-content { font-size: 0.95rem; }
+#sutra-text[data-fs="md"] .sutra-content { font-size: 1.05rem; }
+#sutra-text[data-fs="lg"] .sutra-content { font-size: 1.25rem; }
+#sutra-text[data-fs="xl"] .sutra-content { font-size: 1.45rem; }
+
+/* 阅读工具条 */
+.read-toolbar {
+  position: sticky;
+  top: 68px;
+  z-index: 30;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  background: rgba(245, 240, 225, 0.96);
+  backdrop-filter: blur(4px);
+  border: 1px solid #e5d9c3;
+  border-radius: 10px;
+}
+.read-toolbar .rt-label { font-size: 0.8rem; color: #6b5b4a; }
+.read-toolbar button {
+  border: 1px solid #d9c9a8;
+  background: #fff;
+  color: #5b4a34;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  line-height: 1.6;
+}
+.read-toolbar button:hover { background: #f7f0dd; }
+.read-toolbar button.active { background: #B8860B; border-color: #B8860B; color: #fff; }
+
+/* 章节目录面板 */
+#toc-panel {
+  max-height: 60vh;
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #e5d9c3;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 8px;
+  min-width: 240px;
+}
+#toc-panel a {
+  display: block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #4a3a2a;
+  font-size: 0.85rem;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#toc-panel a:hover { background: rgba(184, 134, 11, 0.14); }
