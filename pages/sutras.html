@@ -19,7 +19,16 @@
         ::-webkit-scrollbar-thumb { background: #d4c8b0; border-radius: 3px; }
         .scholar-hi { background: linear-gradient(transparent 62%, #f3e2a9 62%); }
         .scholar-mark { color:#B8860B; cursor:pointer; font-size:.68em; vertical-align:super; margin:0 2px; font-weight:700; }
+        .dict-term { color:#8B4513; border-bottom:1px dashed #B8860B; cursor:pointer; transition:background .15s; }
+        .dict-term:hover { background: rgba(184,134,11,.15); border-bottom-style:solid; }
         #note-pop { position:fixed; right:20px; bottom:20px; width:340px; max-width:calc(100vw - 40px); max-height:60vh; overflow:auto; background:#fff; border:1px solid #e5d9c3; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.12); padding:16px; z-index:80; }
+        #dict-pop { position:absolute; background:#fff; border:1px solid #e5d9c3; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.15); padding:14px 16px; max-width:320px; z-index:90; font-size:14px; line-height:1.7; }
+        #dict-pop .dt-name { font-size:16px; font-weight:700; color:#2C1810; margin-right:8px; }
+        #dict-pop .dt-type { font-size:11px; background:rgba(139,69,19,.1); color:#8B4513; padding:1px 8px; border-radius:8px; }
+        #dict-pop .dt-desc { color:#3E2723; margin-top:8px; }
+        #dict-pop .dt-close { position:absolute; top:6px; right:10px; color:#999; cursor:pointer; font-size:18px; line-height:1; }
+        #dict-pop .dt-close:hover { color:#333; }
+        #dict-pop .dict-hint { text-align:center; color:#999; font-size:12px; padding:10px 8px; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -47,6 +56,7 @@
     </nav>
 
     <div id="note-pop" class="hidden"></div>
+    <div id="dict-pop" class="hidden"></div>
 
     <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
         <!-- 左侧经目 -->
@@ -97,6 +107,9 @@ let currentSutra = null;
 let loadedChapters = 0;
 let NOTES = {};   // 学者注解：sutra_id -> {anchors:[...]}
 let H2S = {};     // 繁->简单字映射
+let DICT_TERMS = null;
+let DICT_MAP = new Map();
+let DICT_MAX_LEN = 6;
 const CHAPTERS_PER_PAGE = 10; // 每次加载10章（大约几卷）
 
 function esc(s){ return (s||'').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
@@ -104,40 +117,89 @@ function toSimp(s){ return [...(s||'')].map(c => H2S[c] || c).join(''); }
 
 async function loadExtras() {
     try {
-        const [n, h] = await Promise.all([
+        const [n, h, d] = await Promise.all([
             fetch('../data/scholar-notes.json?' + Date.now()).then(r => r.json()),
-            fetch('../sutras/hant2simp.json').then(r => r.json())
+            fetch('../sutras/hant2simp.json').then(r => r.json()),
+            fetch('../data/buddhist_dict.json?' + Date.now()).then(r => r.json())
         ]);
         H2S = h || {};
         (n.notes || []).forEach(x => { NOTES[x.sutra_id] = x; });
+        if (d && d.terms) {
+            DICT_TERMS = d.terms;
+            d.terms.forEach(t => { if(t.name && t.name.length >= 2) { DICT_MAP.set(t.name, t); if(t.name.length > DICT_MAX_LEN) DICT_MAX_LEN = Math.min(t.name.length, 10); } });
+        }
         if (currentSutra && NOTES[currentSutra.id]) { loadedChapters = 0; const c = document.getElementById('sutra-text'); if (c) c.innerHTML = ''; if (c) loadMoreChapters(); }
-    } catch (e) { console.warn('注解/映射加载失败', e); }
+    } catch (e) { console.warn('注解/词典加载失败', e); }
 }
 
-// 渲染单段：繁简逐字对齐后高亮锚点句并插入「注」标记
+// 将段落中词典词条自动加下划线可点击
+function linkDictTerms(simpText, origText) {
+    // simpText 是已转简体的文本，origText 是原文（繁简逐字对齐）
+    if (!DICT_MAP || !DICT_MAP.size) return origText;
+    const n = simpText.length;
+    const out = [];
+    let i = 0;
+    while (i < n) {
+        let matched = null, matchLen = 0;
+        // 从长到短尝试匹配（最长 DICT_MAX_LEN 字）
+        for (let L = Math.min(DICT_MAX_LEN, n - i); L >= 2; L--) {
+            const seg = simpText.substr(i, L);
+            if (DICT_MAP.has(seg)) { matched = DICT_MAP.get(seg); matchLen = L; break; }
+        }
+        if (matched) {
+            const chunk = origText.substr(i, matchLen);
+            out.push(`<span class="dict-term" data-term="${esc(matched.name)}" title="点击查词典：${esc(matched.name)}（${matched.type||'术语'}）">${esc(chunk)}</span>`);
+            i += matchLen;
+        } else {
+            out.push(esc(origText[i]));
+            i += 1;
+        }
+    }
+    return out.join('');
+}
+
+// 渲染单段：繁简逐字对齐后高亮锚点句并插入「注」标记；同时自动识别佛学名词加词典链接
 function renderParagraph(p) {
+    if (!p) return '';
     const noteSet = (currentSutra && NOTES[currentSutra.id]) ? NOTES[currentSutra.id] : null;
-    if (!noteSet || !p) return esc(p);
     const simp = toSimp(p);
-    const hits = [];
-    noteSet.anchors.forEach(a => {
-        let from = 0, idx;
-        while ((idx = simp.indexOf(a.text, from)) !== -1) {
-            hits.push({ s: idx, e: idx + a.text.length, a });
-            from = idx + a.text.length;
+
+    // 第一步：将文本切成"普通文本"和"学者注高亮片段"区间
+    const seg = []; // [{s,e,isNote,anchor}]
+    if (noteSet) {
+        const hits = [];
+        noteSet.anchors.forEach(a => {
+            let from = 0, idx;
+            while ((idx = simp.indexOf(a.text, from)) !== -1) {
+                hits.push({ s: idx, e: idx + a.text.length, a });
+                from = idx + a.text.length;
+            }
+        });
+        hits.sort((x,y)=>x.s-y.s);
+        let cur = 0;
+        hits.forEach(h => {
+            if (h.s < cur) return;
+            if (h.s > cur) seg.push({s:cur, e:h.s, isNote:false});
+            seg.push({s:h.s, e:h.e, isNote:true, a:h.a});
+            cur = h.e;
+        });
+        if (cur < p.length) seg.push({s:cur, e:p.length, isNote:false});
+    } else {
+        seg.push({s:0, e:p.length, isNote:false});
+    }
+
+    // 第二步：每个片段内：若是注片段加学者标记；否则应用词典词条自动链接
+    let out = '';
+    seg.forEach(part => {
+        const partOrig = p.slice(part.s, part.e);
+        const partSimp = simp.slice(part.s, part.e);
+        if (part.isNote) {
+            out += `<span class="scholar-hi">${linkDictTerms(partSimp, partOrig)}</span>`;
+            out += `<sup class="scholar-mark" data-note="${encodeURIComponent(JSON.stringify(part.a))}" title="查看学者解读">注</sup>`;
+        } else {
+            out += linkDictTerms(partSimp, partOrig);
         }
     });
-    if (!hits.length) return esc(p);
-    hits.sort((x, y) => x.s - y.s);
-    let out = '', cur = 0;
-    hits.forEach(h => {
-        if (h.s < cur) return;
-        out += esc(p.slice(cur, h.s));
-        out += `<span class="scholar-hi">${esc(p.slice(h.s, h.e))}</span>`;
-        out += `<sup class="scholar-mark" data-note="${encodeURIComponent(JSON.stringify(h.a))}" title="查看学者解读">注</sup>`;
-        cur = h.e;
-    });
-    out += esc(p.slice(cur));
     return out;
 }
 
@@ -387,7 +449,78 @@ document.getElementById('load-more-btn').addEventListener('click', loadMoreChapt
 document.addEventListener('click', e => {
     const mk = e.target.closest('.scholar-mark');
     if (mk && mk.dataset.note) showNote(mk.dataset.note);
+    // 点击划线的佛学名词 → 弹出词典
+    const dt = e.target.closest('.dict-term');
+    if (dt && dt.dataset.term) { showDictTerm(dt.dataset.term, dt); e.stopPropagation(); return; }
+    // 点击其他区域关闭词典
+    if (!e.target.closest('#dict-pop')) closeDict();
 });
+
+// 词典弹窗
+function showDictTerm(termName, anchorEl) {
+    const term = DICT_MAP.get(termName);
+    const pop = document.getElementById('dict-pop');
+    if (!term) { pop.classList.add('hidden'); return; }
+    pop.innerHTML = `
+        <span class="dt-close" onclick="closeDict()">×</span>
+        <div><span class="dt-name">${esc(term.name)}</span><span class="dt-type">${term.type||'术语'}</span></div>
+        <div class="dt-desc">${esc(term.desc||'暂无释义')}</div>
+        <div class="text-right mt-2"><a href="dict.html" target="_blank" class="text-xs text-primary hover:underline">在大词典中查看 →</a></div>
+    `;
+    pop.classList.remove('hidden');
+    // 定位
+    const rect = anchorEl.getBoundingClientRect();
+    let top = rect.bottom + window.scrollY + 6;
+    let left = rect.left + window.scrollX;
+    // 防止超出右侧
+    const popW = 320;
+    if (left + popW > window.scrollX + window.innerWidth - 10) left = window.scrollX + window.innerWidth - popW - 10;
+    if (top + 200 > window.scrollY + window.innerHeight) top = rect.top + window.scrollY - 200;
+    pop.style.top = top + 'px';
+    pop.style.left = Math.max(10, left) + 'px';
+}
+function closeDict() { document.getElementById('dict-pop').classList.add('hidden'); }
+
+// 划词查词典：选中文字后在光标位置显示「查词典」按钮
+document.addEventListener('mouseup', e => {
+    if (e.target.closest('#dict-pop') || e.target.closest('input,textarea')) return;
+    setTimeout(() => {
+        const sel = window.getSelection();
+        const text = sel ? sel.toString().trim() : '';
+        removeSelBtn();
+        if (!text || text.length < 2 || text.length > 12) return;
+        // 去标点
+        const key = text.replace(/[，。、；：！？「」『』（）()\s.,;!?\[\]\""'']/g,'');
+        let hit = null;
+        if (DICT_MAP.has(key)) hit = key;
+        else {
+            // 尝试简体/包含匹配
+            const simp = toSimp(key);
+            for (const k of DICT_MAP.keys()) {
+                if (k === simp || k === key || k.includes(key) || simp.includes(k)) { hit = k; break; }
+            }
+        }
+        if (!hit) return;
+        const range = sel.getRangeAt(0);
+        const rect = range.getBoundingClientRect();
+        const btn = document.createElement('button');
+        btn.id = 'dict-sel-btn';
+        btn.textContent = `📖 查「${hit.length > 6 ? hit.slice(0,6)+'…' : hit}」`;
+        btn.style.cssText = `position:absolute;top:${rect.bottom + window.scrollY + 4}px;left:${rect.left + window.scrollX}px;background:#8B4513;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.2);`;
+        btn.onclick = (ev) => {
+            // 伪造一个anchorEl
+            const span = document.createElement('span');
+            span.getBoundingClientRect = () => rect;
+            showDictTerm(hit, span);
+            removeSelBtn();
+            window.getSelection().removeAllRanges();
+            ev.stopPropagation();
+        };
+        document.body.appendChild(btn);
+    }, 10);
+});
+document.addEventListener('mousedown', e => { if(!e.target.closest('#dict-sel-btn')) removeSelBtn(); });
+function removeSelBtn(){ const b=document.getElementById('dict-sel-btn'); if(b) b.remove(); }
 
 // 启动
 loadExtras();
