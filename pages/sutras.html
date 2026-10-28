@@ -1,327 +1,320 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>全藏原典 · 佛学本体论</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<script>
-tailwind.config={theme:{extend:{colors:{buddha:{primary:'#8B5A2B',secondary:'#D4AF37',dark:'#3A2E1F',light:'#F5F0E6',paper:'#F8F4E9'}}}}}
-</script>
-<style>
-body{font-family:"Noto Serif SC","Source Han Serif SC",serif;background:#F8F4E9;}
-.sutra-text p{text-indent:2em;line-height:2;margin:0.8em 0;font-size:17px;white-space: pre-wrap;}
-.vol-tag{display:inline-block;padding:2px 8px;border-radius:4px;background:#8B5A2B;color:white;font-size:12px;margin-right:6px;}
-.cat-tag{display:inline-block;padding:2px 8px;border-radius:4px;background:#D4AF37;color:#3A2E1F;font-size:12px;margin-right:6px;}
-.scroll-thin::-webkit-scrollbar{width:6px;height:6px;}
-.scroll-thin::-webkit-scrollbar-thumb{background:rgba(139,90,43,.3);border-radius:3px;}
-.filter-btn.active{background:#8B5A2B;color:white;}
-.chapter-title{font-weight:bold;font-size:18px;color:#8B5A2B;margin-top:2rem;padding-bottom:0.5rem;border-bottom:1px solid #D4AF37;}
-.loading{text-align:center;padding:2rem;color:#8B5A2B;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全藏原典 - 佛学本体论</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#8B4513', paper: '#F5F0E1', ink: '#2C1810', gold: '#B8860B', } } }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .sutra-content { line-height: 2.2; font-size: 1.05rem; text-indent: 2em; margin-bottom: 0.5rem; }
+            .chapter-title { font-weight: bold; color: #8B4513; margin-top: 2rem; margin-bottom: 1rem; font-size: 1.25rem; text-indent: 0; border-bottom: 1px solid #e5d9c3; padding-bottom: 0.5rem; }
+        }
+    </style>
+    <style>
+        body { font-family: -apple-system, "Noto Serif SC", "Songti SC", serif; background-color: #F5F0E1; color: #2C1810; }
+        .nav-active { background-color: rgba(184,134,11,0.2); }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-thumb { background: #d4c8b0; border-radius: 3px; }
+    </style>
 </head>
-<body class="text-buddha-dark">
-
-<!-- 导航 -->
-<header class="sticky top-0 z-50 bg-buddha-dark/95 backdrop-blur-sm border-b border-buddha-primary/20 text-white shadow-md">
-  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-    <div class="flex items-center gap-2">
-      <i class="fa fa-leaf text-buddha-secondary text-xl"></i>
-      <a href="../index.html" class="font-serif font-bold text-lg">佛学本体论</a>
-      <span class="mx-2 text-white/30">|</span>
-      <span class="text-white/70">全藏原典</span>
-    </div>
-    <nav class="flex gap-4 text-sm">
-      <a href="../index.html" class="hover:text-buddha-secondary">首页</a>
-      <a href="graph.html" class="hover:text-buddha-secondary">义理图谱</a>
-      <a href="translation.html" class="hover:text-buddha-secondary">佛典译学</a>
-      <a href="kepan.html" class="hover:text-buddha-secondary">科判导航</a>
-      <a href="panjiao.html" class="hover:text-buddha-secondary">判教对比</a>
-      <a href="inference.html" class="hover:text-buddha-secondary">概念推演</a>
-      <a href="timeline.html" class="hover:text-buddha-secondary">译传时间轴</a>
+<body class="min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-ink text-paper py-4 px-6 flex items-center gap-6 sticky top-0 z-50">
+        <a href="../index.html" class="text-xl font-bold flex items-center gap-2 text-gold">
+            <span>🍃</span> 佛学本体论
+        </a>
+        <span class="text-paper/60">|</span>
+        <a href="sutras.html" class="text-paper font-medium hover:text-gold nav-active">全藏原典</a>
+        <div class="ml-auto flex gap-5 text-paper/80">
+            <a href="../index.html" class="hover:text-gold">首页</a>
+            <a href="graph.html" class="hover:text-gold">义理图谱</a>
+            <a href="trans.html" class="hover:text-gold">佛典译学</a>
+            <a href="kepan.html" class="hover:text-gold">科判导航</a>
+            <a href="panjiao.html" class="hover:text-gold">判教对比</a>
+            <a href="inference.html" class="hover:text-gold">概念推演</a>
+            <a href="timeline.html" class="hover:text-gold">译传时间轴</a>
+        </div>
     </nav>
-  </div>
-</header>
 
-<div class="container mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-4 gap-6">
-  <!-- 左侧经目 -->
-  <aside class="lg:col-span-1">
-    <div class="bg-white rounded-lg shadow p-4 sticky top-20 max-h-[calc(100vh-100px)] overflow-auto scroll-thin">
-      <h3 class="font-bold text-buddha-primary mb-3 flex items-center gap-2">
-        <i class="fa fa-book"></i>
-        <span>大正藏经目</span>
-        <span id="totalBadge" class="ml-auto text-xs bg-buddha-primary/10 text-buddha-primary px-2 py-0.5 rounded">加载中</span>
-      </h3>
-      
-      <div class="mb-3">
-        <input id="searchInput" type="text" placeholder="搜索经名/译者/经号..."
-               class="w-full px-3 py-2 border border-buddha-primary/20 rounded text-sm focus:outline-none focus:border-buddha-primary">
-      </div>
-      
-      <!-- 部类筛选 -->
-      <div class="mb-3">
-        <div class="text-xs text-buddha-dark/60 mb-1">按部类筛选：</div>
-        <div class="flex flex-wrap gap-1 text-xs" id="catFilters">
-          <button class="filter-btn px-2 py-1 rounded border border-buddha-primary/30 hover:bg-buddha-primary/10 active" data-cat="">全部部类</button>
+    <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
+        <!-- 左侧经目 -->
+        <div class="w-72 flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-md p-4 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-bold text-ink flex items-center gap-2"><span class="text-primary">📖</span>大正藏经目</h2>
+                    <span id="loading-status" class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">加载中</span>
+                </div>
+                <input id="search-input" type="text" placeholder="搜索经名/译者/经号..." class="w-full border border-primary/20 rounded-lg px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-primary/30">
+                <div class="mb-3">
+                    <div class="text-sm text-ink/70 mb-1">按部类筛选：</div>
+                    <div id="category-filters" class="flex flex-wrap gap-1"></div>
+                </div>
+                <div class="mb-3">
+                    <div class="text-sm text-ink/70 mb-1">按册筛选：</div>
+                    <select id="vol-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-sm">
+                        <option value="">全部册</option>
+                    </select>
+                </div>
+                <div id="sutra-list" class="flex-1 overflow-y-auto text-sm">
+                    <div class="text-center text-ink/50 py-8">正在加载经目...</div>
+                </div>
+                <div id="list-stats" class="text-xs text-ink/50 mt-2 pt-2 border-t border-paper"></div>
+            </div>
         </div>
-      </div>
-      
-      <!-- 册号筛选 -->
-      <div class="mb-3">
-        <div class="text-xs text-buddha-dark/60 mb-1">按册号筛选：</div>
-        <div class="flex flex-wrap gap-1 text-xs" id="volFilters">
-          <button class="filter-btn px-2 py-1 rounded border border-buddha-primary/30 hover:bg-buddha-primary/10 active" data-vol="">全部册</button>
+
+        <!-- 右侧经文内容 -->
+        <div class="flex-1">
+            <div id="content-area" class="bg-white rounded-xl shadow-md p-8 min-h-[70vh]">
+                <div class="text-center py-20">
+                    <div class="text-6xl mb-4 opacity-30">📜</div>
+                    <h1 class="text-3xl font-bold text-ink mb-4">CBETA大正藏全文在线阅读</h1>
+                    <p class="text-lg text-ink/70 mb-2">从左侧选择一部经典开始阅读。</p>
+                    <p class="text-ink/50">共收录 <span class="text-primary font-bold">2400+部</span> 佛典原文，总计约 7880 万字。</p>
+                    <p class="text-sm text-ink/40 mt-4">数据来自 CBETA 电子佛典，按经独立加载，秒开阅读。</p>
+                </div>
+            </div>
+            <div id="load-more" class="hidden mt-4 text-center py-4">
+                <button id="load-more-btn" class="bg-primary/10 text-primary px-6 py-2 rounded-lg hover:bg-primary/20">加载更多经文</button>
+            </div>
         </div>
-      </div>
-      
-      <div id="sutraList" class="space-y-1 text-sm">
-        <div class="loading">正在加载经目...</div>
-      </div>
     </div>
-  </aside>
-  
-  <!-- 右侧正文 -->
-  <main class="lg:col-span-3">
-    <div id="welcome" class="bg-white rounded-lg shadow p-8 text-center">
-      <i class="fa fa-book text-buddha-primary text-5xl mb-4 opacity-30"></i>
-      <h2 class="text-2xl font-serif font-bold mb-3">CBETA大正藏全文在线阅读</h2>
-      <p class="text-buddha-dark/60 max-w-lg mx-auto mb-4">
-        从左侧选择一部经典开始阅读。当前已收录
-        <span class="text-buddha-primary font-bold" id="welcomeCount">加载中</span>部
-        共<span class="text-buddha-primary font-bold" id="welcomeChars">加载中</span>，
-        数据来自 <a href="https://www.cbeta.org/" target="_blank" class="text-blue-600 underline">CBETA</a> 电子佛典。
-      </p>
-    </div>
-    
-    <div id="sutraContent" class="hidden bg-white rounded-lg shadow p-8">
-      <div class="mb-6 pb-4 border-b border-buddha-primary/20">
-        <h1 id="sutraTitle" class="text-3xl font-serif font-bold text-buddha-dark mb-2"></h1>
-        <div class="flex flex-wrap items-center gap-2 text-sm text-buddha-dark/70">
-          <span id="sutraId"></span>
-          <span id="sutraVol"></span>
-          <span id="sutraTranslator"></span>
-          <span id="sutraJuanCount"></span>
-          <span id="sutraChars" class="ml-auto"></span>
-        </div>
-      </div>
-      <div id="sutraText" class="sutra-text"></div>
-    </div>
-  </main>
-</div>
 
 <script>
 let allSutras = [];
-let currentFilter = { cat: '', vol: '', search: '' };
+let currentSutra = null;
+let loadedChapters = 0;
+const CHAPTERS_PER_PAGE = 10; // 每次加载10章（大约几卷）
+const CACHE_KEY = 'sutra_cache_';
+const CACHE_EXPIRY = 7 * 24 * 60 * 60 * 1000; // 缓存7天
 
-// 从实际JSON文件动态加载经目元数据
-async function buildIndex() {
-  // 生成t0001到t2920的经号列表（大正藏T01-T55, T85范围）
-  const ids = [];
-  // 正藏T01-T55
-  for (let n = 1; n <= 2200; n++) {
-    ids.push('t' + String(n).padStart(4, '0'));
-  }
-  // 古逸部T85
-  for (let n = 2731; n <= 2920; n++) {
-    ids.push('t' + String(n).padStart(4, '0'));
-  }
-  
-  // 并发加载元数据（只取头部）
-  const results = [];
-  const batchSize = 50;
-  for (let i = 0; i < ids.length; i += batchSize) {
-    const batch = ids.slice(i, i+batchSize);
-    const batchResults = await Promise.allSettled(batch.map(async id => {
-      try {
-        const res = await fetch(`../sutras/${id}.json`);
-        if (!res.ok) return null;
-        const data = await res.json();
-        // 只提取列表需要的元数据，不加载正文
-        return {
-          id: data.id || id,
-          title: data.title,
-          translator: data.translator,
-          vol: data.vol || (data.taisho ? data.taisho.substr(0,3) : ''),
-          chars: data.chars || data.actual_char_count || 0,
-          juan: data.juan || data.juan_count || 0,
-          category: data.category || '其他'
-        };
-      } catch(e) { return null; }
-    }));
-    batchResults.forEach(r => { if (r.status === 'fulfilled' && r.value) results.push(r.value); });
-  }
-  
-  allSutras = results;
-  return allSutras;
+// 1. 页面加载时只拉轻量索引（478KB，秒开）
+async function loadLightIndex() {
+    const res = await fetch('../sutras/index-light.json?' + Date.now());
+    allSutras = await res.json();
+    console.log(`轻量索引加载完成：${allSutras.length}部经`);
+    document.getElementById('loading-status').textContent = '已就绪';
+    document.getElementById('loading-status').className = 'text-xs bg-green-100 text-green-700 px-2 py-1 rounded';
+    initFilters();
+    renderSutraList(allSutras);
+    document.getElementById('list-stats').textContent = `共 ${allSutras.length} 部经`;
 }
 
-async function loadIndex() {
-  await buildIndex();
-  
-  // 统计总字数
-  const totalChars = allSutras.reduce((sum, s) => sum + (s.chars || 0), 0);
-  document.getElementById('welcomeCount').textContent = allSutras.length;
-  document.getElementById('welcomeChars').textContent = (totalChars / 10000).toFixed(0) + '万字';
-  document.getElementById('totalBadge').textContent = allSutras.length + '部';
-  
-  // 生成部类筛选器
-  const mainCats = {};
-  allSutras.forEach(s => {
-    const cat = s.category || '未分类';
-    mainCats[cat] = (mainCats[cat] || 0) + 1;
-  });
-  const catContainer = document.getElementById('catFilters');
-  Object.entries(mainCats).sort((a,b) => b[1]-a[1]).forEach(([cat, cnt]) => {
-    if (!cat) return;
-    const btn = document.createElement('button');
-    btn.className = 'filter-btn px-2 py-1 rounded border border-buddha-primary/30 hover:bg-buddha-primary/10';
-    btn.dataset.cat = cat;
-    btn.textContent = `${cat.replace('部类','')}(${cnt})`;
-    btn.onclick = () => setFilter('cat', cat);
-    catContainer.appendChild(btn);
-  });
-  
-  // 生成册号筛选器
-  const vols = {};
-  allSutras.forEach(s => {
-    const vol = s.vol || '';
-    if (vol) vols[vol] = (vols[vol] || 0) + 1;
-  });
-  const volContainer = document.getElementById('volFilters');
-  Object.keys(vols).sort().forEach(vol => {
-    const btn = document.createElement('button');
-    btn.className = 'filter-btn px-2 py-1 rounded border border-buddha-primary/30 hover:bg-buddha-primary/10';
-    btn.dataset.vol = vol;
-    btn.textContent = vol.replace('T', '') + '册';
-    btn.onclick = () => setFilter('vol', vol);
-    volContainer.appendChild(btn);
-  });
-  
-  renderList();
+// 2. 初始化筛选器
+function initFilters() {
+    // 部类筛选
+    const cats = [...new Set(allSutras.map(s => s.category).filter(Boolean))].sort();
+    const catContainer = document.getElementById('category-filters');
+    catContainer.innerHTML = `<button class="cat-btn px-2 py-1 rounded bg-primary text-white text-xs" data-cat="">全部</button>`;
+    cats.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'cat-btn px-2 py-1 rounded bg-gray-100 hover:bg-primary/10 text-xs';
+        btn.dataset.cat = cat;
+        btn.textContent = cat.length > 6 ? cat.substring(0,5)+'…' : cat;
+        btn.title = cat;
+        catContainer.appendChild(btn);
+    });
+    catContainer.addEventListener('click', e => {
+        if(e.target.classList.contains('cat-btn')) {
+            document.querySelectorAll('.cat-btn').forEach(b => {
+                b.className = 'cat-btn px-2 py-1 rounded bg-gray-100 hover:bg-primary/10 text-xs';
+            });
+            e.target.className = 'cat-btn px-2 py-1 rounded bg-primary text-white text-xs';
+            applyFilters();
+        }
+    });
+
+    // 册号筛选
+    const vols = [...new Set(allSutras.map(s => s.vol).filter(Boolean))].sort();
+    const volSelect = document.getElementById('vol-filter');
+    vols.forEach(v => {
+        const opt = document.createElement('option');
+        opt.value = v;
+        opt.textContent = v + '册';
+        volSelect.appendChild(opt);
+    });
+    volSelect.addEventListener('change', applyFilters);
+
+    // 搜索框：防抖
+    let searchTimer;
+    document.getElementById('search-input').addEventListener('input', e => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(applyFilters, 200);
+    });
 }
 
-function setFilter(type, value) {
-  if (currentFilter[type] === value) value = '';
-  currentFilter[type] = value;
-  
-  // 更新按钮状态
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.classList.remove('active');
-    const t = btn.dataset.cat !== undefined ? 'cat' : 'vol';
-    if (currentFilter[t] === (btn.dataset.cat || btn.dataset.vol)) {
-      btn.classList.add('active');
+// 3. 渲染经目列表（分批渲染，避免卡顿）
+function renderSutraList(list) {
+    const container = document.getElementById('sutra-list');
+    container.innerHTML = '';
+    // 只渲染前200条，滚动时再渲染更多
+    const batchSize = 200;
+    let renderCount = Math.min(batchSize, list.length);
+    function renderBatch(start) {
+        const end = Math.min(start + batchSize, list.length);
+        for(let i = start; i < end; i++) {
+            const s = list[i];
+            const item = document.createElement('div');
+            item.className = 'py-1.5 px-2 rounded cursor-pointer hover:bg-primary/5 border-b border-gray-100 flex justify-between items-center sutra-item';
+            item.dataset.id = s.id;
+            item.innerHTML = `<span class="truncate">${s.title}</span><span class="text-xs text-ink/40 ml-2 flex-shrink-0">${s.dynasty||''}${s.translator?.substring(0,4)||''}</span>`;
+            item.addEventListener('click', () => loadSutra(s));
+            container.appendChild(item);
+        }
     }
-  });
-  if (currentFilter.cat === '' && currentFilter.vol === '') {
-    document.querySelector('.filter-btn[data-cat=""]').classList.add('active');
-    document.querySelector('.filter-btn[data-vol=""]').classList.add('active');
-  }
-  
-  renderList();
+    renderBatch(0);
+    // 滚动加载更多经目
+    container.addEventListener('scroll', () => {
+        if(container.scrollTop + container.clientHeight > container.scrollHeight - 100) {
+            if(renderCount < list.length) {
+                renderBatch(renderCount);
+                renderCount += batchSize;
+            }
+        }
+    });
 }
 
-function renderList() {
-  const search = currentFilter.search.toLowerCase();
-  const filtered = allSutras.filter(s => {
-    const matchCat = !currentFilter.cat || (s.category || '') === currentFilter.cat;
-    const matchVol = !currentFilter.vol || (s.vol || '') === currentFilter.vol;
-    const matchSearch = !search || 
-      (s.title || '').toLowerCase().includes(search) ||
-      (s.translator || '').toLowerCase().includes(search) ||
-      (s.id || '').toLowerCase().includes(search);
-    return matchCat && matchVol && matchSearch;
-  });
-  
-  const container = document.getElementById('sutraList');
-  container.innerHTML = '';
-  
-  filtered.slice(0, 200).forEach(s => {
-    const item = document.createElement('div');
-    item.className = 'px-2 py-1.5 rounded hover:bg-buddha-light cursor-pointer border border-transparent hover:border-buddha-primary/20';
-    item.innerHTML = `
-      <div class="font-medium text-buddha-dark">${s.title}</div>
-      <div class="text-xs text-buddha-dark/50 flex flex-wrap gap-1">
-        <span class="text-buddha-primary/70">${s.id.toUpperCase()}</span>
-        <span>·</span>
-        <span>${s.translator || '失译'}</span>
-        ${s.juan ? `<span>· ${s.juan}卷</span>` : ''}
-        <span class="ml-auto">${((s.chars||0)/10000).toFixed(1)}万字</span>
-      </div>
+// 4. 筛选逻辑
+function applyFilters() {
+    const keyword = document.getElementById('search-input').value.trim().toLowerCase();
+    const cat = document.querySelector('.cat-btn.bg-primary')?.dataset.cat || '';
+    const vol = document.getElementById('vol-filter').value;
+    let filtered = allSutras.filter(s => {
+        if(cat && s.category !== cat) return false;
+        if(vol && s.vol !== vol) return false;
+        if(keyword) {
+            const match = (s.title||'').toLowerCase().includes(keyword) 
+                || (s.translator||'').toLowerCase().includes(keyword)
+                || (s.id||'').toLowerCase().includes(keyword);
+            if(!match) return false;
+        }
+        return true;
+    });
+    renderSutraList(filtered);
+    document.getElementById('list-stats').textContent = `显示 ${filtered.length} / ${allSutras.length} 部经`;
+}
+
+// 5. 加载单部经文（用户点击才加载，不预加载）
+async function loadSutra(meta) {
+    // 高亮当前选中
+    document.querySelectorAll('.sutra-item').forEach(i => i.classList.remove('bg-gold/10'));
+    document.querySelector(`[data-id="${meta.id}"]`)?.classList.add('bg-gold/10');
+    
+    // 先检查缓存
+    const cacheKey = CACHE_KEY + meta.id;
+    let sutraData = null;
+    try {
+        const cached = localStorage.getItem(cacheKey);
+        if(cached) {
+            const { data, timestamp } = JSON.parse(cached);
+            if(Date.now() - timestamp < CACHE_EXPIRY) {
+                sutraData = data;
+                console.log('从缓存加载：' + meta.title);
+            }
+        }
+    } catch(e) {}
+
+    // 显示加载状态
+    const contentArea = document.getElementById('content-area');
+    contentArea.innerHTML = `
+        <div class="text-center py-20">
+            <div class="text-4xl mb-4 animate-pulse">📖</div>
+            <p class="text-ink/70">正在加载《${meta.title}》...</p>
+            <p class="text-sm text-ink/40 mt-2">${meta.word_count}字，首次加载需几秒，后续秒开</p>
+        </div>
     `;
-    item.onclick = () => loadSutra(s.id);
-    container.appendChild(item);
-  });
-  
-  if (filtered.length > 200) {
-    const more = document.createElement('div');
-    more.className = 'text-xs text-center text-buddha-dark/50 py-2';
-    more.textContent = `共${filtered.length}部，显示前200部，请使用搜索或筛选缩小范围`;
-    container.appendChild(more);
-  }
+    document.getElementById('load-more').classList.add('hidden');
+
+    // 没有缓存就从服务器拉
+    if(!sutraData) {
+        try {
+            const res = await fetch(`../sutras/${meta.file}?v=2`);
+            sutraData = await res.json();
+            // 写入缓存
+            try {
+                localStorage.setItem(cacheKey, JSON.stringify({
+                    data: sutraData,
+                    timestamp: Date.now()
+                }));
+            } catch(e) {
+                console.warn('缓存写入失败（存储空间不足），不影响阅读');
+            }
+        } catch(e) {
+            contentArea.innerHTML = `<div class="text-center py-20 text-red-600">加载失败，请刷新重试</div>`;
+            return;
+        }
+    }
+
+    currentSutra = sutraData;
+    loadedChapters = 0;
+    // 渲染经文头部信息
+    contentArea.innerHTML = `
+        <div class="mb-8 pb-6 border-b-2 border-primary/20">
+            <h1 class="text-3xl font-bold text-ink mb-2">${sutraData.title || sutraData.sutra_title}</h1>
+            <div class="flex gap-4 text-sm text-ink/70 flex-wrap">
+                <span>📜 ${sutraData.id?.toUpperCase()}</span>
+                <span>👤 ${sutraData.translator || '失译'}${sutraData.dynasty ? '（'+sutraData.dynasty+'）' : ''}</span>
+                <span>📚 ${sutraData.vol}册 · ${sutraData.juan_count || sutraData.content.length}卷</span>
+                <span>📖 ${sutraData.category || ''}</span>
+                <span>✍️ ${(sutraData.word_count||sutraData.content.reduce((sum,c)=>sum+(c.text||'').length,0)).toLocaleString()} 字</span>
+            </div>
+        </div>
+        <div id="sutra-text"></div>
+    `;
+    // 先加载前N章
+    loadMoreChapters();
+    // 监听滚动，懒加载更多章节
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting && loadedChapters < currentSutra.content.length) {
+                loadMoreChapters();
+            }
+        });
+    }, { rootMargin: '500px' }); // 提前500px加载
+    observer.observe(document.getElementById('load-more'));
 }
 
-async function loadSutra(id) {
-  document.getElementById('welcome').classList.add('hidden');
-  document.getElementById('sutraContent').classList.remove('hidden');
-  
-  // 显示加载中
-  const textContainer = document.getElementById('sutraText');
-  textContainer.innerHTML = '<div class="loading">正在加载经文正文...</div>';
-  
-  const res = await fetch(`../sutras/${id}.json`);
-  const sutra = await res.json();
-  
-  // 适配实际数据格式
-  const title = sutra.title;
-  const sutraId = sutra.id || id;
-  const vol = sutra.vol || (sutra.taisho ? sutra.taisho.substr(0,3) : '');
-  const translator = sutra.translator || '失译';
-  const juan = sutra.juan || sutra.juan_count || 0;
-  const chars = sutra.chars || sutra.actual_char_count || 0;
-  const content = sutra.content || sutra.chapters || [];
-  
-  document.getElementById('sutraTitle').textContent = title;
-  document.getElementById('sutraId').innerHTML = `<span class="vol-tag">${sutraId.toUpperCase()}</span>`;
-  document.getElementById('sutraVol').innerHTML = vol ? `<span>📖 ${vol}</span>` : '';
-  document.getElementById('sutraTranslator').textContent = translator;
-  document.getElementById('sutraJuanCount').textContent = juan ? `${juan}卷` : '';
-  document.getElementById('sutraChars').textContent = chars ? `${(chars/10000).toFixed(2)}万字` : '';
-  
-  textContainer.innerHTML = '';
-  if (content.length === 0) {
-    textContainer.innerHTML = '<div class="text-center py-8 text-buddha-dark/50">该经正文加载中...</div>';
-    return;
-  }
-  
-  content.forEach(ch => {
-    const chTitle = ch.chapter || ch.title;
-    const chText = ch.text || ch.content;
-    if (chTitle) {
-      const h = document.createElement('div');
-      h.className = 'chapter-title';
-      h.textContent = chTitle;
-      textContainer.appendChild(h);
+// 6. 分批加载章节（大经如大般若经不会一次渲染所有DOM）
+function loadMoreChapters() {
+    if(!currentSutra) return;
+    const textContainer = document.getElementById('sutra-text');
+    const end = Math.min(loadedChapters + CHAPTERS_PER_PAGE, currentSutra.content.length);
+    for(let i = loadedChapters; i < end; i++) {
+        const chap = currentSutra.content[i];
+        const chapDiv = document.createElement('div');
+        chapDiv.innerHTML = `
+            <div class="chapter-title">${chap.chapter || chap.title || ''}</div>
+            <div>${(chap.text || '').split(/\n+/).map(p => `<p class="sutra-content">${p.trim()}</p>`).join('')}</div>
+        `;
+        textContainer.appendChild(chapDiv);
     }
-    if (chText) {
-      const p = document.createElement('p');
-      p.textContent = chText;
-      textContainer.appendChild(p);
+    loadedChapters = end;
+    // 显示/隐藏加载更多按钮
+    const loadMore = document.getElementById('load-more');
+    if(loadedChapters < currentSutra.content.length) {
+        loadMore.classList.remove('hidden');
+        document.getElementById('load-more-btn').textContent = `继续加载后续内容（${loadedChapters}/${currentSutra.content.length}）`;
+    } else {
+        loadMore.classList.add('hidden');
+        // 全文加载完提示
+        if(currentSutra.content.length > CHAPTERS_PER_PAGE) {
+            const endTip = document.createElement('div');
+            endTip.className = 'text-center text-ink/40 py-8 mt-8 border-t border-paper';
+            endTip.textContent = '—— 全文完 ——';
+            textContainer.appendChild(endTip);
+        }
     }
-  });
-  
-  window.scrollTo(0, 0);
 }
 
-document.getElementById('searchInput').addEventListener('input', (e) => {
-  currentFilter.search = e.target.value;
-  renderList();
-});
+document.getElementById('load-more-btn').addEventListener('click', loadMoreChapters);
 
-// 页面加载完成后开始建索引
-loadIndex().catch(err => {
-  document.getElementById('sutraList').innerHTML = `<div class="text-red-600 p-2">加载失败：${err.message}</div>`;
-});
+// 启动
+loadLightIndex();
 </script>
 </body>
 </html>
