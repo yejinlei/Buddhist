@@ -49,17 +49,24 @@ def api(path, method="GET", data=None, token=None, timeout=180):
     for attempt in range(4):
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
+                total = resp.length  # Content-Length, may be None
                 chunks = []
+                read = 0
                 while True:
                     chunk = resp.read(65536)
                     if not chunk:
                         break
                     chunks.append(chunk)
-                body = b"".join(chunks).decode()
-                return resp.status, (json.loads(body) if body else None)
+                    read += len(chunk)
+                body = b"".join(chunks)
+                if total and read < total:
+                    # 未读完
+                    raise http.client.IncompleteRead(body, total - read)
+                text = body.decode("utf-8", "replace")
+                return resp.status, (json.loads(text) if text else None)
         except urllib.error.HTTPError as e:
-            return e.code, e.read().decode()[:400]
-        except (http.client.IncompleteRead, TimeoutError, socket.timeout, urllib.error.URLError, ConnectionError) as e:
+            return e.code, e.read().decode("utf-8", "replace")[:400]
+        except (http.client.IncompleteRead, TimeoutError, socket.timeout, urllib.error.URLError, ConnectionError, json.JSONDecodeError) as e:
             last_err = e
             time.sleep(2 * (attempt + 1))
             continue
