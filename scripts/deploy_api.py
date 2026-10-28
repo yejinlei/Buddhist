@@ -16,11 +16,14 @@
 """
 
 import base64
+import http.client
 import json
 import os
 import re
+import socket
 import subprocess
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -31,7 +34,7 @@ def sh(*args):
     return subprocess.check_output(list(args)).decode("utf-8", "replace")
 
 
-def api(path, method="GET", data=None, token=None, timeout=60):
+def api(path, method="GET", data=None, token=None, timeout=180):
     req = urllib.request.Request(
         API + path,
         method=method,
@@ -42,12 +45,25 @@ def api(path, method="GET", data=None, token=None, timeout=60):
             "User-Agent": "buddhist-ontology-deploy",
         },
     )
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            body = resp.read().decode()
-            return resp.status, (json.loads(body) if body else None)
-    except urllib.error.HTTPError as e:
-        return e.code, e.read().decode()[:400]
+    last_err = None
+    for attempt in range(4):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                chunks = []
+                while True:
+                    chunk = resp.read(65536)
+                    if not chunk:
+                        break
+                    chunks.append(chunk)
+                body = b"".join(chunks).decode()
+                return resp.status, (json.loads(body) if body else None)
+        except urllib.error.HTTPError as e:
+            return e.code, e.read().decode()[:400]
+        except (http.client.IncompleteRead, TimeoutError, socket.timeout, urllib.error.URLError, ConnectionError) as e:
+            last_err = e
+            time.sleep(2 * (attempt + 1))
+            continue
+    return 0, str(last_err)
 
 
 def local_tree():

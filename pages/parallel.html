@@ -16,9 +16,25 @@
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-thumb { background: #d4c8b0; border-radius: 3px; }
         .group-item.active { background-color: rgba(139,69,19,.1); border-left: 3px solid #8B4513; }
+        .seg-badge { display:inline-block; font-size:10px; padding:1px 6px; border-radius:3px; background:#16a34a; color:#fff; margin-left:6px; vertical-align:middle; }
+        .seg-badge.raw { background:#9ca3af; }
         .col-body { line-height: 2; font-size: .95rem; text-indent: 2em; }
         .col-body .chap { font-weight: bold; color: #8B4513; text-indent: 0; margin: 1rem 0 .5rem; font-size: 1.02rem; border-bottom: 1px solid #e5d9c3; padding-bottom: .3rem; }
         .col-wrap { max-height: 74vh; overflow-y: auto; }
+        /* 段级对齐 */
+        .seg-row { display: grid; gap: 8px; border-bottom: 1px dashed #e5d9c3; padding: 10px 0; scroll-margin-top: 80px; }
+        .seg-row.active { background: rgba(234,179,8,.08); }
+        .seg-row.highlight { background: rgba(234,179,8,.25); box-shadow: inset 3px 0 0 #b8860b; }
+        .seg-cell { padding: 6px 10px; border-radius: 6px; cursor: pointer; line-height: 2; font-size: .95rem; text-indent: 2em; transition: background .15s; }
+        .seg-cell:hover { background: rgba(184,134,11,.08); }
+        .seg-cell.empty { color: #9ca3af; font-size: .85rem; font-style: italic; text-indent: 0; cursor: default; }
+        .seg-num { display:inline-block; width:34px; text-align:right; color:#8B4513; font-size:.75rem; opacity:.6; margin-right:6px; font-style: normal; text-indent: 0; }
+        .seg-kw { font-size:.8rem; color:#8B4513; background:rgba(139,69,19,.08); padding:2px 8px; border-radius:4px; }
+        @media (max-width: 768px) {
+            .seg-row { display: flex; flex-direction: column; gap: 6px; }
+            .seg-cell { font-size: .92rem; }
+            .col-wrap { max-height: none; }
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -46,8 +62,13 @@
         <div class="w-72 flex-shrink-0">
             <div class="bg-white rounded-xl shadow-md p-4 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
                 <h2 class="text-lg font-bold text-ink mb-1 flex items-center gap-2"><span class="text-primary">📚</span>同经异译</h2>
-                <p class="text-xs text-ink/50 mb-3">共 <span id="grp-count" class="text-primary font-bold">—</span> 组，同部佛经的不同汉译本</p>
-                <input id="grp-search" type="text" placeholder="搜索经名..." class="w-full border border-primary/20 rounded-lg px-3 py-2 mb-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30">
+                <p class="text-xs text-ink/50 mb-3">共 <span id="grp-count" class="text-primary font-bold">—</span> 组，其中 <span id="seg-count" class="text-green-700 font-bold">0</span> 组已做段级对齐</p>
+                <input id="grp-search" type="text" placeholder="搜索经名..." class="w-full border border-primary/20 rounded-lg px-3 py-2 mb-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30">
+                <div class="flex gap-1 mb-3 text-xs">
+                    <button data-flt="all" class="flt-btn px-2 py-1 rounded bg-primary/10 text-ink">全部</button>
+                    <button data-flt="seg" class="flt-btn px-2 py-1 rounded text-ink/60 hover:bg-primary/5">段级对齐</button>
+                    <button data-flt="raw" class="flt-btn px-2 py-1 rounded text-ink/60 hover:bg-primary/5">整篇并排</button>
+                </div>
                 <div id="grp-list" class="flex-1 overflow-y-auto text-sm space-y-1">
                     <div class="text-center text-ink/50 py-8">加载中...</div>
                 </div>
@@ -60,7 +81,8 @@
                     <div class="text-6xl mb-4 opacity-30">🔀</div>
                     <h1 class="text-2xl font-bold text-ink mb-3">异译本逐部对照</h1>
                     <p class="text-ink/70 mb-1">从左侧选择一组同经异译，即可并排对读不同译师的译本。</p>
-                    <p class="text-sm text-ink/50">例如《心经》玄奘 / 般若共利言 / 法成 / 智慧轮 四译并观。</p>
+                    <p class="text-sm text-ink/50"><span class="text-green-700 font-bold">绿色标签</span>的经典已做段级对齐，点击任意段，其他译本对应段落将高亮联动。</p>
+                    <p class="text-sm text-ink/50 mt-1">推荐：《金刚经》4 译本、《阿弥陀经》2 译本、《大乘起信论》2 译本。</p>
                 </div>
             </div>
         </div>
@@ -68,14 +90,40 @@
 
     <script>
         let GROUPS = [];
-        const cache = {};
+        let SEG_MANIFEST = {}; // {group_key: seg_data}  —— group_key 用于把异译组映射到段对齐文件
+        const cache = {};       // 经文 JSON 缓存
+        const segCache = {};    // 段对齐数据缓存
+        let currentFilter = 'all';
+
+        // 根据异译组 titles 匹配段对齐组（简化：通过组内第一个经的 id 前缀匹配）
+        function findSegGroup(g) {
+            // 组内全部经 id
+            const ids = g.sutras.map(s => s.id).sort().join(',');
+            for (const [key, seg] of Object.entries(SEG_MANIFEST)) {
+                const segIds = seg.versions.map(v => v.id).sort().join(',');
+                // 若段对齐组的所有版本都在异译组中，认为匹配
+                if (segIds.split(',').every(id => ids.includes(id))) return key;
+            }
+            return null;
+        }
 
         async function load() {
+            try {
+                const mr = await fetch('../data/segment_alignments/manifest.json?v=2');
+                const ml = await mr.json();
+                ml.forEach(m => { SEG_MANIFEST[m.group_id] = m; });
+            } catch(e) { console.warn('段对齐清单加载失败', e); }
+            document.getElementById('seg-count').textContent = Object.keys(SEG_MANIFEST).length;
+
             const res = await fetch('../ontology/parallel_translations.json?' + Date.now());
             let d = await res.json();
             if (d && d.groups) d = d.groups;
             GROUPS = (d || []).filter(g => g && g.sutras && g.sutras.length >= 2 && !/疏|目錄|目录|禮懺|礼忏/.test(g.title || ''))
-                .sort((a,b) => b.sutras.length - a.sutras.length || (a.title||'').localeCompare(b.title||''));
+                .map(g => {
+                    const segKey = findSegGroup(g);
+                    return { ...g, _seg: segKey, _hasSeg: !!segKey };
+                })
+                .sort((a,b) => (b._hasSeg?1:0)-(a._hasSeg?1:0) || b.sutras.length - a.sutras.length || (a.title||'').localeCompare(b.title||''));
             document.getElementById('grp-count').textContent = GROUPS.length;
             renderList();
             if (GROUPS.length) openGroup(0);
@@ -83,13 +131,52 @@
 
         function renderList() {
             const kw = (document.getElementById('grp-search').value || '').trim();
-            const list = GROUPS.filter(g => !kw || (g.title||'').includes(kw) || g.sutras.some(s => (s.title||'').includes(kw)));
-            document.getElementById('grp-list').innerHTML = list.map(g =>
-                `<div class="group-item cursor-pointer rounded px-3 py-2 hover:bg-primary/5" data-idx="${GROUPS.indexOf(g)}">
-                    <div class="font-medium text-ink truncate">${g.title}</div>
-                    <div class="text-xs text-ink/50">${g.sutras.length} 译本</div>
-                </div>`).join('') || `<div class="text-center text-ink/50 py-6">无匹配</div>`;
+            let list = GROUPS;
+            if (currentFilter === 'seg') list = list.filter(g => g._hasSeg);
+            else if (currentFilter === 'raw') list = list.filter(g => !g._hasSeg);
+            if (kw) list = list.filter(g => (g.title||'').includes(kw) || g.sutras.some(s => (s.title||'').includes(kw) || (s.translator||'').includes(kw)));
+            document.getElementById('grp-list').innerHTML = list.map(g => {
+                const gi = GROUPS.indexOf(g);
+                return `<div class="group-item cursor-pointer rounded px-3 py-2 hover:bg-primary/5" data-idx="${gi}">
+                    <div class="font-medium text-ink truncate">${g.title}${g._hasSeg?'<span class="seg-badge">段级对齐</span>':'<span class="seg-badge raw">整篇</span>'}</div>
+                    <div class="text-xs text-ink/50">${g.sutras.length} 译本${g._hasSeg?' · 点击联动高亮':''}</div>
+                </div>`;
+            }).join('') || `<div class="text-center text-ink/50 py-6">无匹配</div>`;
             document.querySelectorAll('.group-item').forEach(el => el.onclick = () => openGroup(+el.dataset.idx));
+        }
+
+        function getParas(data) {
+            // 从经文 JSON 中提取段落列表（按索引顺序）
+            const out = [];
+            if (data.chapters) {
+                data.chapters.forEach(c => {
+                    if (c.title) out.push({type:'chap', text:c.title});
+                    (c.paragraphs||[]).forEach(p => out.push({type:'p', text:p}));
+                });
+            } else if (data.content) {
+                data.content.forEach(c => {
+                    if (c.chapter) out.push({type:'chap', text:c.chapter});
+                    const t = c.text || '';
+                    const parts = t.split(/(?<=[。！？])\s*|\n+/).map(x => x.trim()).filter(x => x.length >= 2);
+                    parts.forEach(p => out.push({type:'p', text:p}));
+                });
+            }
+            return out;
+        }
+
+        function getParasByIndex(data) {
+            // 返回段落数组（仅 p 类型），索引对应对齐数据中的 para_idx
+            const arr = [];
+            if (data.chapters) {
+                data.chapters.forEach(c => (c.paragraphs||[]).forEach(p => arr.push(p)));
+            } else if (data.content) {
+                data.content.forEach(c => {
+                    const t = c.text || '';
+                    const parts = t.split(/(?<=[。！？])\s*|\n+/).map(x => x.trim()).filter(x => x.length >= 2);
+                    parts.forEach(p => arr.push(p));
+                });
+            }
+            return arr;
         }
 
         async function openGroup(idx) {
@@ -97,6 +184,8 @@
             const g = GROUPS[idx];
             const stage = document.getElementById('stage');
             stage.innerHTML = `<div class="text-center py-16 text-ink/50">正在加载各译本正文…</div>`;
+
+            // 并行加载各译本
             const cols = await Promise.all(g.sutras.map(async s => {
                 let data = cache[s.id];
                 if (!data) {
@@ -108,22 +197,45 @@
                 }
                 return { meta: s, data };
             }));
+
+            // 若存在段级对齐数据，则走段级视图
+            if (g._hasSeg) {
+                let seg = segCache[g._seg];
+                if (!seg) {
+                    try {
+                        const r = await fetch(`../data/segment_alignments/${g._seg}.json?v=2`);
+                        seg = await r.json();
+                        segCache[g._seg] = seg;
+                    } catch(e) { seg = null; }
+                }
+                if (seg) return renderSegmentView(g, cols, seg);
+            }
+            renderRawView(g, cols);
+        }
+
+        function renderRawView(g, cols) {
+            const stage = document.getElementById('stage');
             const head = `<div class="mb-5">
-                <h1 class="text-2xl font-bold text-ink mb-1">${g.title}</h1>
-                <p class="text-sm text-ink/60">${g.sutras.length} 个汉译本并排对读 · 各译本分卷与句读不同，按整篇并列呈现，可拖动各栏独立滚动</p>
+                <h1 class="text-2xl font-bold text-ink mb-1">${g.title}<span class="seg-badge raw">整篇并排</span></h1>
+                <p class="text-sm text-ink/60">${g.sutras.length} 个汉译本并排对读 · 各译本句读分段不同，按整篇并列呈现，可拖动各栏独立滚动</p>
             </div>`;
-            const grid = `<div class="grid gap-4" style="grid-template-columns: repeat(${Math.min(cols.length, 4)}, minmax(0,1fr))">` +
+            const n = Math.min(cols.length, 4);
+            const grid = `<div class="grid gap-4" style="grid-template-columns: repeat(${n}, minmax(0,1fr))">` +
                 cols.map(c => {
                     const m = c.meta, d = c.data;
-                    const chars = d && d.content ? d.content.reduce((n,x)=>n+(x.text||'').length,0) : (m.official_char_count||0);
-                    const body = d && d.content
-                        ? d.content.map(ch => `<div class="chap">${ch.chapter||''}</div><div class="col-body">${(ch.text||'').replace(/\n/g,'<br>')}</div>`).join('')
+                    const paras = getParas(d);
+                    let charCount = paras.reduce((n,x)=>n+(x.text||'').length,0);
+                    if (!charCount) charCount = m.actual_char_count || m.official_char_count || 0;
+                    const body = paras.length
+                        ? paras.map(p => p.type==='chap'
+                            ? `<div class="chap">${p.text||''}</div>`
+                            : `<div class="col-body">${(p.text||'').replace(/\n/g,'<br>')}</div>`).join('')
                         : `<div class="text-ink/40 text-center py-10">该译本正文暂未收录</div>`;
                     const yr = m.time_from ? `约${m.time_from}年` : '';
                     return `<div class="border border-paper rounded-lg overflow-hidden flex flex-col">
                         <div class="bg-primary/5 px-3 py-2 border-b border-paper">
                             <div class="font-bold text-ink text-sm">${m.translator||'失译'}</div>
-                            <div class="text-xs text-ink/50 mt-0.5">${m.vol||''} ${yr} · ${chars.toLocaleString()}字${m.juan_count?` · ${m.juan_count}卷`:''}</div>
+                            <div class="text-xs text-ink/50 mt-0.5">${m.vol||''} ${yr} · ${charCount.toLocaleString()}字${m.juan_count?` · ${m.juan_count}卷`:''}</div>
                             ${m.completeness_ratio?`<div class="text-xs mt-0.5 ${m.completeness_ratio>=0.95?'text-green-700':'text-ink/45'}">完整度 ${(m.completeness_ratio*100).toFixed(0)}%</div>`:''}
                         </div>
                         <div class="col-wrap px-3 py-3">${body}</div>
@@ -132,7 +244,109 @@
             stage.innerHTML = head + grid;
         }
 
+        function renderSegmentView(g, cols, seg) {
+            const stage = document.getElementById('stage');
+            // 列 id 顺序以 seg.versions 为准（保持与段对齐数据一致）
+            const orderedIds = seg.versions.map(v => v.id);
+            const colMap = {};
+            cols.forEach(c => { colMap[c.meta.id] = c; });
+            // 为每部经构造"段落正文数组"（按对齐 idx 取值）
+            const paraArrs = {};
+            orderedIds.forEach(id => {
+                const d = colMap[id] && colMap[id].data;
+                paraArrs[id] = d ? getParasByIndex(d) : [];
+            });
+
+            // 统计
+            const totalSeg = seg.alignments.length;
+            const multiSeg = seg.alignments.filter(a => Object.keys(a.refs).length > 1).length;
+
+            const head = `<div class="mb-5">
+                <h1 class="text-2xl font-bold text-ink mb-1">${seg.group_title || g.title}<span class="seg-badge">段级对齐</span></h1>
+                <p class="text-sm text-ink/60 mb-2">
+                    ${seg.versions.length} 个汉译本 · ${totalSeg} 组对齐段落 · 多译对齐率 ${Math.round(multiSeg/totalSeg*100)}%&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <span class="text-ink/50">点击任意段落，对应段落会<strong class="text-primary">金色高亮联动</strong>；手机端自动纵向排列。</span>
+                </p>
+                <div class="flex flex-wrap gap-2 text-xs mb-1">
+                    ${seg.versions.map(v => `<span class="px-2 py-1 rounded bg-primary/10 text-ink"><strong>${v.translator||'失译'}</strong> ${v.id} · ${v.n_paras}段</span>`).join('')}
+                </div>
+                <p class="text-xs text-ink/40 italic">※ 自动段对齐基于共现关键词 + 句段相似度，存在局部错配，长段落的切分也会因译师风格有差异；对齐率≠翻译一致率。</p>
+            </div>`;
+
+            // 列头
+            const colHeads = `<div class="seg-row font-bold text-ink border-b-2 border-primary/20 pb-2" style="grid-template-columns: 40px repeat(${orderedIds.length}, minmax(0,1fr));">
+                <div class="text-ink/40 text-center text-xs">#</div>
+                ${orderedIds.map(id => {
+                    const c = colMap[id], m = c.meta, v = seg.versions.find(v=>v.id===id);
+                    return `<div class="text-sm">
+                        <div class="font-bold text-ink">${m.translator||'失译'}</div>
+                        <div class="text-xs text-ink/50">${m.vol||''}${m.time_from?` · 约${m.time_from}年`:''} · ${v?`${v.n_paras}段`:''}</div>
+                    </div>`;
+                }).join('')}
+            </div>`;
+
+            // 对齐段行
+            const rows = seg.alignments.map(a => {
+                const cells = orderedIds.map(id => {
+                    const pis = a.refs[id];
+                    if (!pis || !pis.length) return `<div class="seg-cell empty">— 本段无对应 —</div>`;
+                    const text = pis.map(pi => (paraArrs[id][pi]||'').replace(/\n/g,'<br>')).join('<br>');
+                    return `<div class="seg-cell" data-sid="${id}" data-seg="${a.id}" title="${(m=colMap[id].meta, m.translator||'失译')}">${text}</div>`;
+                }).join('');
+                return `<div class="seg-row" data-row="${a.id}" style="grid-template-columns: 40px repeat(${orderedIds.length}, minmax(0,1fr));">
+                    <div class="flex items-start justify-end pr-1 pt-1"><span class="seg-num">§${a.id}</span></div>
+                    ${cells}
+                </div>`;
+            }).join('');
+
+            // 关键词跳转条（前若干关键词）
+            const kwHtml = (() => {
+                const kws = [];
+                for (const a of seg.alignments) {
+                    if (a.keyword && a.keyword.length >= 2 && a.keyword.length <= 20 && !/^一時|^如是|^何以|^佛言|^須菩提$/.test(a.keyword)) {
+                        if (!kws.find(x=>x.kw===a.keyword)) kws.push({kw:a.keyword, id:a.id});
+                    }
+                    if (kws.length >= 18) break;
+                }
+                return `<div class="mb-4 flex flex-wrap gap-1.5">${kws.map(k => `<button class="kw-jump px-2 py-1 rounded text-xs border border-primary/20 hover:bg-primary/10 text-ink/70" data-to="${k.id}">${k.kw}</button>`).join('')}</div>`;
+            })();
+
+            stage.innerHTML = head + kwHtml + colHeads + `<div class="overflow-x-auto"><div id="seg-body">${rows}</div></div>`;
+
+            // 事件：点击段落，整行高亮
+            const body = document.getElementById('seg-body');
+            body.addEventListener('click', e => {
+                const cell = e.target.closest('.seg-cell');
+                if (!cell || cell.classList.contains('empty')) return;
+                const row = cell.closest('.seg-row');
+                body.querySelectorAll('.seg-row.highlight').forEach(el => el.classList.remove('highlight'));
+                row.classList.add('highlight');
+                row.scrollIntoView({behavior:'smooth', block:'center'});
+            });
+            // 关键词跳转
+            document.querySelectorAll('.kw-jump').forEach(btn => {
+                btn.onclick = () => {
+                    const to = document.querySelector(`.seg-row[data-row="${btn.dataset.to}"]`);
+                    if (to) {
+                        body.querySelectorAll('.seg-row.highlight').forEach(el => el.classList.remove('highlight'));
+                        to.classList.add('highlight');
+                        to.scrollIntoView({behavior:'smooth', block:'center'});
+                    }
+                };
+            });
+        }
+
         document.getElementById('grp-search').addEventListener('input', renderList);
+        document.querySelectorAll('.flt-btn').forEach(b => b.onclick = () => {
+            currentFilter = b.dataset.flt;
+            document.querySelectorAll('.flt-btn').forEach(x => {
+                x.classList.remove('bg-primary/10','text-ink');
+                x.classList.add('text-ink/60','hover:bg-primary/5');
+            });
+            b.classList.add('bg-primary/10','text-ink');
+            b.classList.remove('text-ink/60','hover:bg-primary/5');
+            renderList();
+        });
         load();
     </script>
     <script src="../js/mobile-nav.js"></script>

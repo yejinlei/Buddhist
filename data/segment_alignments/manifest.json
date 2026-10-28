@@ -1,0 +1,66 @@
+[
+  {
+    "group_id": "amituojing",
+    "group_title": "阿彌陀經",
+    "n_versions": 2,
+    "n_alignments": 105,
+    "versions": [
+      {
+        "id": "t0366",
+        "translator": "姚秦 鳩摩羅什譯",
+        "title": "佛說阿彌陀經"
+      },
+      {
+        "id": "t0367",
+        "translator": "唐 玄奘譯",
+        "title": "稱讚淨土佛攝受經"
+      }
+    ]
+  },
+  {
+    "group_id": "dachengqixinlun",
+    "group_title": "大乘起信論",
+    "n_versions": 2,
+    "n_alignments": 431,
+    "versions": [
+      {
+        "id": "t1666",
+        "translator": "馬鳴菩薩造 梁 真諦譯",
+        "title": "大乘起信論"
+      },
+      {
+        "id": "t1667",
+        "translator": "馬鳴菩薩造 唐 實叉難陀譯",
+        "title": "大乘起信論"
+      }
+    ]
+  },
+  {
+    "group_id": "jingangjing",
+    "group_title": "金剛般若波羅蜜經（金剛經）",
+    "n_versions": 4,
+    "n_alignments": 450,
+    "versions": [
+      {
+        "id": "t0235",
+        "translator": "後秦 鳩摩羅什譯",
+        "title": "金剛般若波羅蜜經"
+      },
+      {
+        "id": "t0237",
+        "translator": "陳 真諦譯",
+        "title": "金剛般若波羅蜜經"
+      },
+      {
+        "id": "t0238",
+        "translator": "隋 笈多譯",
+        "title": "金剛能斷般若波羅蜜經"
+      },
+      {
+        "id": "t0239",
+        "translator": "唐 義淨譯",
+        "title": "佛說能斷金剛般若波羅蜜多經"
+      }
+    ]
+  }
+]
