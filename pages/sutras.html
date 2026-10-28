@@ -1231,6 +1231,8 @@ async function loadSutra(meta) {
     }
 
     currentSutra = sutraData;
+    // 读经辅助重置（切换新经时重新抓取原文）
+    if(window.__readingAid && window.__readingAid.reset) window.__readingAid.reset();
     // 补一下归一化字段（sutraData 来自单经 JSON，没有 _dynasty/_trans）
     if(allSutras && allSutras.length){
       const metaHit = allSutras.find(s=>s.id===sutraData.id);
@@ -1474,6 +1476,7 @@ document.getElementById('btn-kepan')?.addEventListener('click', showKepanPanel);
 loadExtras();
 loadLightIndex();
 </script>
+    <script src="../js/reading-aid.js"></script>
     <script src="../js/mobile-nav.js"></script>
 </body>
 </html>

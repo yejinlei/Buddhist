@@ -1,73 +1,63 @@
 [
   {
-    "group_id": "amituojing",
-    "group_title": "阿彌陀經",
-    "n_versions": 2,
-    "n_alignments": 105,
-    "versions": [
-      {
-        "id": "t0366",
-        "translator": "姚秦 鳩摩羅什譯",
-        "title": "佛說阿彌陀經"
-      },
-      {
-        "id": "t0367",
-        "translator": "唐 玄奘譯",
-        "title": "稱讚淨土佛攝受經"
-      }
-    ]
-  },
-  {
-    "group_id": "dachengqixinlun",
-    "group_title": "大乘起信論",
-    "n_versions": 2,
-    "n_alignments": 431,
-    "versions": [
-      {
-        "id": "t1666",
-        "translator": "馬鳴菩薩造 梁 真諦譯",
-        "title": "大乘起信論"
-      },
-      {
-        "id": "t1667",
-        "translator": "馬鳴菩薩造 唐 實叉難陀譯",
-        "title": "大乘起信論"
-      }
-    ]
-  },
-  {
-    "group_id": "jingangjing",
-    "group_title": "金剛般若波羅蜜經（金剛經）",
+    "group_id": "般若波羅蜜多心經_t0251_t0253",
+    "group_title": "般若波羅蜜多心經",
+    "mode": "segment",
+    "n_alignments": 36,
     "n_versions": 4,
-    "n_alignments": 450,
     "versions": [
       {
-        "id": "t0235",
-        "translator": "後秦 鳩摩羅什譯",
-        "title": "金剛般若波羅蜜經"
+        "id": "t0253",
+        "translator": "唐 般若共利言等譯",
+        "title": "般若波羅蜜多心經"
       },
       {
-        "id": "t0237",
-        "translator": "陳 真諦譯",
-        "title": "金剛般若波羅蜜經"
+        "id": "t0251",
+        "translator": "唐 玄奘譯",
+        "title": "般若波羅蜜多心經"
       },
       {
-        "id": "t0238",
-        "translator": "隋 笈多譯",
-        "title": "金剛能斷般若波羅蜜經"
+        "id": "t0254",
+        "translator": "唐 智慧輪譯",
+        "title": "般若波羅蜜多心經"
       },
       {
-        "id": "t0239",
-        "translator": "唐 義淨譯",
-        "title": "佛說能斷金剛般若波羅蜜多經"
+        "id": "t0255",
+        "translator": "唐 法成譯",
+        "title": "般若波羅蜜多心經"
       }
     ]
   },
   {
-    "group_id": "seg_t0204_t0205_t0207",
-    "group_title": "雜譬喻經",
+    "group_id": "大般涅槃經_t0007_t0374",
+    "group_title": "大般涅槃經",
+    "mode": "chapter",
+    "n_alignments": 11,
     "n_versions": 3,
-    "n_alignments": 181,
+    "versions": [
+      {
+        "id": "t0007",
+        "translator": "東晉 法顯譯",
+        "title": "大般涅槃經"
+      },
+      {
+        "id": "t0374",
+        "translator": "北涼 曇無讖譯",
+        "title": "大般涅槃經"
+      },
+      {
+        "id": "t0375",
+        "translator": "宋 慧嚴等依泥洹經加之",
+        "title": "大般涅槃經"
+      }
+    ]
+  },
+  {
+    "group_id": "雜譬喻經_t0204_t0205",
+    "group_title": "雜譬喻經",
+    "mode": "segment",
+    "n_alignments": 203,
+    "n_versions": 3,
     "versions": [
       {
         "id": "t0204",
@@ -75,22 +65,138 @@
         "title": "雜譬喻經"
       },
       {
-        "id": "t0205",
-        "translator": "失譯",
+        "id": "t0207",
+        "translator": "道略集",
         "title": "雜譬喻經"
       },
       {
-        "id": "t0207",
-        "translator": "道略集",
+        "id": "t0205",
+        "translator": "失译",
         "title": "雜譬喻經"
       }
     ]
   },
   {
-    "group_id": "seg_t0210_t2901",
-    "group_title": "法句經",
+    "group_id": "大方廣佛華嚴經_t0278_t0279",
+    "group_title": "大方廣佛華嚴經",
+    "mode": "chapter",
+    "n_alignments": 80,
+    "n_versions": 3,
+    "versions": [
+      {
+        "id": "t0293",
+        "translator": "唐 般若譯",
+        "title": "大方廣佛華嚴經"
+      },
+      {
+        "id": "t0278",
+        "translator": "東晉 佛馱跋陀羅譯",
+        "title": "大方廣佛華嚴經"
+      },
+      {
+        "id": "t0279",
+        "translator": "唐 實叉難陀譯",
+        "title": "大方廣佛華嚴經"
+      }
+    ]
+  },
+  {
+    "group_id": "月燈三昧經_t0640_t0641",
+    "group_title": "月燈三昧經",
+    "mode": "segment",
+    "n_alignments": 367,
+    "n_versions": 3,
+    "versions": [
+      {
+        "id": "t0640",
+        "translator": "劉宋 先公譯",
+        "title": "佛說月燈三昧經"
+      },
+      {
+        "id": "t0641",
+        "translator": "劉宋 先公譯",
+        "title": "佛說月燈三昧經"
+      },
+      {
+        "id": "t0639",
+        "translator": "高齊 那連提耶舍譯",
+        "title": "月燈三昧經"
+      }
+    ]
+  },
+  {
+    "group_id": "佛頂尊勝陀羅尼經_t0967_t0968",
+    "group_title": "佛頂尊勝陀羅尼經",
+    "mode": "segment",
+    "n_alignments": 131,
+    "n_versions": 3,
+    "versions": [
+      {
+        "id": "t0971",
+        "translator": "唐 義淨譯",
+        "title": "佛說佛頂尊勝陀羅尼經"
+      },
+      {
+        "id": "t0968",
+        "translator": "唐 杜行顗譯",
+        "title": "佛頂尊勝陀羅尼經"
+      },
+      {
+        "id": "t0967",
+        "translator": "唐 佛陀波利譯",
+        "title": "佛頂尊勝陀羅尼經"
+      }
+    ]
+  },
+  {
+    "group_id": "攝大乘論釋_t1595_t1597",
+    "group_title": "攝大乘論釋",
+    "mode": "chapter",
+    "n_alignments": 19,
+    "n_versions": 3,
+    "versions": [
+      {
+        "id": "t1597",
+        "translator": "世親菩薩造 唐 玄奘譯",
+        "title": "攝大乘論釋"
+      },
+      {
+        "id": "t1598",
+        "translator": "無性菩薩造 唐 玄奘譯",
+        "title": "攝大乘論釋"
+      },
+      {
+        "id": "t1595",
+        "translator": "世親菩薩釋 陳 真諦譯",
+        "title": "攝大乘論釋"
+      }
+    ]
+  },
+  {
+    "group_id": "雜阿含經_t0101_t0099",
+    "group_title": "雜阿含經",
+    "mode": "chapter",
+    "n_alignments": 8,
     "n_versions": 2,
-    "n_alignments": 839,
+    "versions": [
+      {
+        "id": "t0101",
+        "translator": "失译",
+        "title": "雜阿含經"
+      },
+      {
+        "id": "t0099",
+        "translator": "劉宋 求那跋陀羅譯",
+        "title": "雜阿含經"
+      }
+    ]
+  },
+  {
+    "group_id": "法句經_t2901_t0210",
+    "group_title": "法句經",
+    "mode": "chapter",
+    "n_alignments": 8,
+    "n_versions": 2,
     "versions": [
       {
         "id": "t2901",
@@ -105,10 +211,11 @@
     ]
   },
   {
-    "group_id": "seg_t0235_t0237",
+    "group_id": "金剛般若波羅蜜經_t0235_t0237",
     "group_title": "金剛般若波羅蜜經",
+    "mode": "segment",
+    "n_alignments": 460,
     "n_versions": 2,
-    "n_alignments": 448,
     "versions": [
       {
         "id": "t0235",
@@ -123,56 +230,30 @@
     ]
   },
   {
-    "group_id": "seg_t0251_t0253_t0254_t0255",
-    "group_title": "般若波羅蜜多心經",
-    "n_versions": 4,
-    "n_alignments": 34,
-    "versions": [
-      {
-        "id": "t0251",
-        "translator": "唐 玄奘譯",
-        "title": "般若波羅蜜多心經"
-      },
-      {
-        "id": "t0253",
-        "translator": "唐 般若共利言等譯",
-        "title": "般若波羅蜜多心經"
-      },
-      {
-        "id": "t0255",
-        "translator": "唐 法成譯",
-        "title": "般若波羅蜜多心經"
-      },
-      {
-        "id": "t0254",
-        "translator": "唐 智慧輪譯",
-        "title": "般若波羅蜜多心經"
-      }
-    ]
-  },
-  {
-    "group_id": "seg_t0328_t0329",
+    "group_id": "須賴經_t0328_t0329",
     "group_title": "須賴經",
+    "mode": "segment",
+    "n_alignments": 534,
     "n_versions": 2,
-    "n_alignments": 522,
     "versions": [
-      {
-        "id": "t0328",
-        "translator": "曹魏 白延譯",
-        "title": "佛說須賴經"
-      },
       {
         "id": "t0329",
         "translator": "前涼 支施崙譯",
         "title": "佛說須賴經"
+      },
+      {
+        "id": "t0328",
+        "translator": "曹魏 白延譯",
+        "title": "佛說須賴經"
       }
     ]
   },
   {
-    "group_id": "seg_t0334_t0335",
+    "group_id": "須摩提菩薩經_t0334_t0335",
     "group_title": "須摩提菩薩經",
+    "mode": "segment",
+    "n_alignments": 343,
     "n_versions": 2,
-    "n_alignments": 319,
     "versions": [
       {
         "id": "t0334",
@@ -187,28 +268,30 @@
     ]
   },
   {
-    "group_id": "seg_t0406_t0407",
+    "group_id": "虛空藏菩薩神呪經_t0406_t0407",
     "group_title": "虛空藏菩薩神呪經",
+    "mode": "segment",
+    "n_alignments": 307,
     "n_versions": 2,
-    "n_alignments": 248,
     "versions": [
-      {
-        "id": "t0406",
-        "translator": "失譯",
-        "title": "虛空藏菩薩神呪經"
-      },
       {
         "id": "t0407",
         "translator": "宋 曇摩蜜多譯",
+        "title": "虛空藏菩薩神呪經"
+      },
+      {
+        "id": "t0406",
+        "translator": "失译",
         "title": "虛空藏菩薩神呪經"
       }
     ]
   },
   {
-    "group_id": "seg_t0417_t0418",
+    "group_id": "般舟三昧經_t0417_t0418",
     "group_title": "般舟三昧經",
+    "mode": "segment",
+    "n_alignments": 732,
     "n_versions": 2,
-    "n_alignments": 685,
     "versions": [
       {
         "id": "t0417",
@@ -223,87 +306,106 @@
     ]
   },
   {
-    "group_id": "seg_t0454_t0455",
-    "group_title": "彌勒下生成佛經",
+    "group_id": "佛名經_t0441_t0440",
+    "group_title": "佛名經",
+    "mode": "chapter",
+    "n_alignments": 32,
     "n_versions": 2,
-    "n_alignments": 207,
     "versions": [
       {
-        "id": "t0454",
-        "translator": "後秦 鳩摩羅什譯",
-        "title": "佛說彌勒下生成佛經"
+        "id": "t0440",
+        "translator": "元魏 菩提流支譯",
+        "title": "佛說佛名經"
       },
+      {
+        "id": "t0441",
+        "translator": "",
+        "title": "佛說佛名經"
+      }
+    ]
+  },
+  {
+    "group_id": "彌勒下生成佛經_t0454_t0455",
+    "group_title": "彌勒下生成佛經",
+    "mode": "segment",
+    "n_alignments": 209,
+    "n_versions": 2,
+    "versions": [
       {
         "id": "t0455",
         "translator": "唐 義淨譯",
         "title": "佛說彌勒下生成佛經"
+      },
+      {
+        "id": "t0454",
+        "translator": "後秦 鳩摩羅什譯",
+        "title": "佛說彌勒下生成佛經"
       }
     ]
   },
   {
-    "group_id": "seg_t0681_t0682",
+    "group_id": "大乘密嚴經_t0681_t0682",
     "group_title": "大乘密嚴經",
+    "mode": "chapter",
+    "n_alignments": 11,
     "n_versions": 2,
-    "n_alignments": 2392,
     "versions": [
-      {
-        "id": "t0681",
-        "translator": "唐 地婆訶羅譯",
-        "title": "大乘密嚴經"
-      },
       {
         "id": "t0682",
         "translator": "唐 不空譯",
         "title": "大乘密嚴經"
+      },
+      {
+        "id": "t0681",
+        "translator": "唐 地婆訶羅譯",
+        "title": "大乘密嚴經"
       }
     ]
   },
   {
-    "group_id": "seg_t0865_t0874",
-    "group_title": "金剛頂一切如來真實攝大乘現證大教王經",
+    "group_id": "大乘四法經_t0772_t0774",
+    "group_title": "大乘四法經",
+    "mode": "segment",
+    "n_alignments": 17,
     "n_versions": 2,
-    "n_alignments": 881,
     "versions": [
       {
-        "id": "t0874",
-        "translator": "唐 不空譯",
-        "title": "金剛頂一切如來真實攝大乘現證大教王經"
+        "id": "t0772",
+        "translator": "唐 地婆訶羅譯",
+        "title": "大乘四法經"
       },
+      {
+        "id": "t0774",
+        "translator": "唐 實叉難陀譯",
+        "title": "大乘四法經"
+      }
+    ]
+  },
+  {
+    "group_id": "金剛頂一切如來真實攝大乘現證_t0874_t0865",
+    "group_title": "金剛頂一切如來真實攝大乘現證大教王經",
+    "mode": "chapter",
+    "n_alignments": 8,
+    "n_versions": 2,
+    "versions": [
       {
         "id": "t0865",
         "translator": "唐 不空譯",
         "title": "金剛頂一切如來真實攝大乘現證大教王經"
+      },
+      {
+        "id": "t0874",
+        "translator": "唐 不空譯",
+        "title": "金剛頂一切如來真實攝大乘現證大教王經"
       }
     ]
   },
   {
-    "group_id": "seg_t0967_t0968_t0971",
-    "group_title": "佛頂尊勝陀羅尼經",
-    "n_versions": 3,
-    "n_alignments": 117,
-    "versions": [
-      {
-        "id": "t0967",
-        "translator": "唐 佛陀波利譯",
-        "title": "佛頂尊勝陀羅尼經"
-      },
-      {
-        "id": "t0968",
-        "translator": "唐 杜行顗譯",
-        "title": "佛頂尊勝陀羅尼經"
-      },
-      {
-        "id": "t0971",
-        "translator": "唐 義淨譯",
-        "title": "佛說佛頂尊勝陀羅尼經"
-      }
-    ]
-  },
-  {
-    "group_id": "seg_t0984_t0988",
+    "group_id": "孔雀王呪經_t0988_t0984",
     "group_title": "孔雀王呪經",
+    "mode": "segment",
+    "n_alignments": 264,
     "n_versions": 2,
-    "n_alignments": 262,
     "versions": [
       {
         "id": "t0988",
@@ -318,46 +420,49 @@
     ]
   },
   {
-    "group_id": "seg_t0986_t0987",
+    "group_id": "大金色孔雀王呪經_t0986_t0987",
     "group_title": "大金色孔雀王呪經",
+    "mode": "segment",
+    "n_alignments": 132,
     "n_versions": 2,
-    "n_alignments": 130,
     "versions": [
       {
         "id": "t0986",
-        "translator": "失譯",
+        "translator": "失译",
         "title": "大金色孔雀王呪經"
       },
       {
         "id": "t0987",
-        "translator": "失譯",
+        "translator": "失译",
         "title": "佛說大金色孔雀王呪經"
       }
     ]
   },
   {
-    "group_id": "seg_t0989_t0991",
+    "group_id": "大雲輪請雨經_t0991_t0989",
     "group_title": "大雲輪請雨經",
+    "mode": "segment",
+    "n_alignments": 146,
     "n_versions": 2,
-    "n_alignments": 143,
     "versions": [
-      {
-        "id": "t0991",
-        "translator": "隋 那連提耶舍譯",
-        "title": "大雲輪請雨經"
-      },
       {
         "id": "t0989",
         "translator": "唐 不空譯",
+        "title": "大雲輪請雨經"
+      },
+      {
+        "id": "t0991",
+        "translator": "隋 那連提耶舍譯",
         "title": "大雲輪請雨經"
       }
     ]
   },
   {
-    "group_id": "seg_t1009_t1018",
+    "group_id": "出生無邊門陀羅尼經_t1009_t1018",
     "group_title": "出生無邊門陀羅尼經",
+    "mode": "segment",
+    "n_alignments": 443,
     "n_versions": 2,
-    "n_alignments": 441,
     "versions": [
       {
         "id": "t1009",
@@ -372,10 +477,11 @@
     ]
   },
   {
-    "group_id": "seg_t1244_t1245",
+    "group_id": "毘沙門天王經_t1244_t1245",
     "group_title": "毘沙門天王經",
+    "mode": "segment",
+    "n_alignments": 81,
     "n_versions": 2,
-    "n_alignments": 78,
     "versions": [
       {
         "id": "t1244",
@@ -390,10 +496,11 @@
     ]
   },
   {
-    "group_id": "seg_t1500_t1501",
+    "group_id": "菩薩戒本_t1500_t1501",
     "group_title": "菩薩戒本",
+    "mode": "segment",
+    "n_alignments": 292,
     "n_versions": 2,
-    "n_alignments": 173,
     "versions": [
       {
         "id": "t1500",
@@ -408,10 +515,30 @@
     ]
   },
   {
-    "group_id": "seg_t1592_t1593",
-    "group_title": "攝大乘論",
+    "group_id": "菩薩善戒經_t1582_t1583",
+    "group_title": "菩薩善戒經",
+    "mode": "segment",
+    "n_alignments": 641,
     "n_versions": 2,
-    "n_alignments": 1188,
+    "versions": [
+      {
+        "id": "t1583",
+        "translator": "劉宋 求那跋摩譯",
+        "title": "菩薩善戒經"
+      },
+      {
+        "id": "t1582",
+        "translator": "劉宋 求那跋摩譯",
+        "title": "菩薩善戒經"
+      }
+    ]
+  },
+  {
+    "group_id": "攝大乘論_t1592_t1593",
+    "group_title": "攝大乘論",
+    "mode": "chapter",
+    "n_alignments": 8,
+    "n_versions": 2,
     "versions": [
       {
         "id": "t1592",
@@ -426,73 +553,77 @@
     ]
   },
   {
-    "group_id": "seg_t1626_t1627",
+    "group_id": "大乘法界無差別論_t1626_t1627",
     "group_title": "大乘法界無差別論",
+    "mode": "segment",
+    "n_alignments": 187,
     "n_versions": 2,
-    "n_alignments": 183,
     "versions": [
-      {
-        "id": "t1626",
-        "translator": "堅慧菩薩造 唐 提雲般若等譯",
-        "title": "大乘法界無差別論"
-      },
       {
         "id": "t1627",
         "translator": "堅慧菩薩造 唐 提雲般若譯",
         "title": "大乘法界無差別論"
+      },
+      {
+        "id": "t1626",
+        "translator": "堅慧菩薩造 唐 提雲般若等譯",
+        "title": "大乘法界無差別論"
       }
     ]
   },
   {
-    "group_id": "seg_t1920_t2833",
-    "group_title": "觀心論",
+    "group_id": "大乘起信論_t1666_t1667",
+    "group_title": "大乘起信論",
+    "mode": "segment",
+    "n_alignments": 473,
     "n_versions": 2,
-    "n_alignments": 298,
     "versions": [
       {
-        "id": "t2833",
-        "translator": "",
-        "title": "觀心論"
+        "id": "t1667",
+        "translator": "馬鳴菩薩造 唐 實叉難陀譯",
+        "title": "大乘起信論"
       },
+      {
+        "id": "t1666",
+        "translator": "馬鳴菩薩造 梁 真諦譯",
+        "title": "大乘起信論"
+      }
+    ]
+  },
+  {
+    "group_id": "觀心論_t2833_t1920",
+    "group_title": "觀心論",
+    "mode": "segment",
+    "n_alignments": 301,
+    "n_versions": 2,
+    "versions": [
       {
         "id": "t1920",
         "translator": "隋 智顗述",
         "title": "觀心論"
-      }
-    ]
-  },
-  {
-    "group_id": "seg_t2794_t2796",
-    "group_title": "律抄",
-    "n_versions": 2,
-    "n_alignments": 1893,
-    "versions": [
-      {
-        "id": "t2794",
-        "translator": "",
-        "title": "律抄"
       },
       {
-        "id": "t2796",
+        "id": "t2833",
         "translator": "",
-        "title": "律抄第三卷手決"
+        "title": "觀心論"
       }
     ]
   },
   {
-    "group_id": "seg_t2865_t2866",
+    "group_id": "護身命經_t2865_t2866",
     "group_title": "護身命經",
+    "mode": "segment",
+    "n_alignments": 208,
     "n_versions": 2,
-    "n_alignments": 206,
     "versions": [
-      {
-        "id": "t2865",
-        "translator": "界　比丘道真",
-        "title": "護身命經"
-      },
       {
         "id": "t2866",
         "translator": "",
+        "title": "護身命經"
+      },
+      {
+        "id": "t2865",
+        "translator": "界　比丘道真",
         "title": "護身命經"
       }
     ]
