@@ -60,6 +60,7 @@
         <!-- 视图切换 tab -->
         <div class="flex gap-1 border-b border-stone-200 mb-0">
             <div class="view-tab active" data-view="ontology">🕸️ 义理图谱</div>
+            <div class="view-tab" data-view="m2">🌐 M2 本体实例</div>
             <div class="view-tab" data-view="kepan">📐 科判图谱</div>
         </div>
 
@@ -70,6 +71,16 @@
             <label class="flex items-center gap-1 text-sm"><input type="checkbox" checked data-type="person" class="graph-filter"> 人物</label>
             <label class="flex items-center gap-1 text-sm"><input type="checkbox" checked data-type="sect" class="graph-filter"> 宗派</label>
             <label class="flex items-center gap-1 text-sm"><input type="checkbox" checked data-type="category" class="graph-filter"> 部类</label>
+        </div>
+
+        <!-- M2 本体实例控制栏 -->
+        <div id="m2Controls" class="hidden flex gap-3 flex-wrap items-center py-3 bg-white px-4 rounded-b-lg border border-t-0 border-stone-200">
+            <label class="text-sm font-semibold text-buddha-dark/80">层级筛选：</label>
+            <label class="flex items-center gap-1 text-sm"><input type="checkbox" checked data-m2="c" class="m2-filter"> 义理概念</label>
+            <label class="flex items-center gap-1 text-sm"><input type="checkbox" checked data-m2="p" class="m2-filter"> 人物</label>
+            <label class="flex items-center gap-1 text-sm"><input type="checkbox" data-m2="s" class="m2-filter"> 核心经典</label>
+            <label class="flex items-center gap-1 text-sm"><input type="checkbox" data-m2="sec" class="m2-filter"> 八宗</label>
+            <span class="text-xs text-stone-500 ml-auto" id="m2Stat">加载中…</span>
         </div>
 
         <!-- 科判图谱控制栏 -->
@@ -147,10 +158,14 @@
             t.classList.add('active');
             CUR_VIEW = t.dataset.view;
             document.getElementById('ontologyControls').classList.toggle('hidden', CUR_VIEW!=='ontology');
+            document.getElementById('m2Controls').classList.toggle('hidden', CUR_VIEW!=='m2');
             document.getElementById('kepanControls').classList.toggle('hidden', CUR_VIEW!=='kepan');
             if(CUR_VIEW==='ontology'){
-              document.getElementById('graphDesc').textContent = '共收录义理概念、人物、宗派、部类、经典五类节点，支持拖拽缩放，点击节点查看详情；切换到"科判图谱"可查看某部经的三分科判树形结构';
+              document.getElementById('graphDesc').textContent = '共收录义理概念、人物、宗派、部类、经典五类节点，支持拖拽缩放，点击节点查看详情；切换到"M2 本体实例"查看完整 221+125+96+8 实例全图';
               renderOntology();
+            }else if(CUR_VIEW==='m2'){
+              document.getElementById('graphDesc').textContent = 'M2 义理层 ABox 全图：义理概念 / 人物 / 核心经典 / 八宗四类节点，按 1088 条关系连线。左侧筛选控制显示类别；节点可拖拽缩放，点击查看详情。';
+              renderM2Graph();
             }else{
               document.getElementById('graphDesc').textContent = '选择一部经典查看其三分科判树形结构（序分→正宗分→流通分）；节点颜色表示层级，悬停/点击节点可查看原文摘要、相关词条与学者解读';
               initKepanSelect();
@@ -447,6 +462,111 @@
 
         /* ========== 初始化 ========== */
         document.querySelectorAll('.graph-filter').forEach(c=>c.addEventListener('change',()=>{ if(CUR_VIEW==='ontology') renderOntology(); }));
+
+        /* ========== M2 本体实例图 ========== */
+        let M2_CACHE = null;
+        async function loadM2Data(){
+          if(M2_CACHE) return M2_CACHE;
+          const [idx, rels] = await Promise.all([
+            fetch('../ontology/instances/m2_index.json',{cache:'no-cache'}).then(r=>r.json()),
+            fetch('../ontology/instances/relations.json',{cache:'no-cache'}).then(r=>r.json())
+          ]);
+          M2_CACHE = {idx, rels: rels.relations};
+          return M2_CACHE;
+        }
+        async function renderM2Graph(){
+          const chart = echarts.init(document.getElementById('graphChart'));
+          chart.showLoading({text:'加载 M2 实例…'});
+          try{
+            const {idx, rels} = await loadM2Data();
+            const show = {};
+            document.querySelectorAll('.m2-filter').forEach(f=>{
+              const k = f.dataset.m2;
+              show[k] = f.checked;
+            });
+            const prefix2type = {c:'concept', p:'person', s:'sutra', sec:'sect'};
+            const type2color = {concept:'#1E4D2B', person:'#DAA520', sutra:'#8B2500', sect:'#4A148C'};
+            const type2name = {concept:'义理概念', person:'人物', sutra:'经典', sect:'宗派'};
+            const layerColor = {'L1':'#B71C1C','L2':'#E65100','L3':'#1B5E20'};
+            // 节点
+            const nodes = [];
+            const nodeIdSet = new Set();
+            function addNode(id, name, cat, extra){
+              if(nodeIdSet.has(id)) return;
+              nodeIdSet.add(id);
+              let symSize = 14;
+              let color = type2color[cat];
+              if(cat==='concept'){
+                color = layerColor[extra.layer]||type2color.concept;
+                symSize = extra.layer==='L1'?28:(extra.layer==='L2'?20:12);
+              } else if(cat==='sect'){ symSize = 26; }
+              else if(cat==='person'){ symSize = 14; }
+              else if(cat==='sutra'){ symSize = 12; }
+              nodes.push({
+                id, name, category: cat,
+                symbolSize: symSize,
+                itemStyle:{color},
+                tooltip:{formatter:(p)=>`<b>${p.name}</b><br/>${type2name[cat]||''} ${p.data.extra&&p.data.extra.layer?'· '+p.data.extra.layer:''}<br/>${p.data.extra&&p.data.extra.desc?p.data.extra.desc:''}`},
+                extra
+              });
+            }
+            if(show.c) idx.concepts.forEach(c=>addNode(c.id,c.name,'concept',{layer:c.layer, desc:c.primary_sect+' · '+(c.definition_short||'')}));
+            if(show.p) idx.persons.forEach(p=>addNode(p.id,p.name,'person',{desc:(p.category||'')+(p.era?' · '+p.era:'')}));
+            if(show.s) idx.sutras.forEach(s=>addNode(s.id,s.name,'sutra',{desc:(s.category||'')+(s.translator?' · '+s.translator:'')}));
+            if(show.sec) idx.sects.forEach(s=>addNode(s.id,s.name,'sect',{desc:(s.founder||'')+' · '+(s.found_time||'')}));
+            // 边（只保留两端都在已选节点集的）
+            const edges = [];
+            const edgeSet = new Set();
+            const edgeTypeColor = {
+              subdivision:'#1B5E20', based_on:'#4A148C', translated_by:'#8B2500',
+              propagates:'#DAA520', transmits_dharma_to:'#DAA520', parallel_translation:'#8B2500',
+              founder:'#4A148C', refutes:'#B71C1C', identity:'#666'
+            };
+            rels.forEach(r=>{
+              if(!nodeIdSet.has(r.source)||!nodeIdSet.has(r.target)) return;
+              const k = r.source+'=>'+r.target;
+              if(edgeSet.has(k)) return;
+              edgeSet.add(k);
+              edges.push({
+                source:r.source, target:r.target,
+                lineStyle:{color: edgeTypeColor[r.type]||'#ccc', width: r.type==='subdivision'?1.2:0.8, opacity: r.type==='subdivision'?0.5:0.3},
+                label:{show:false},
+                _type: r.type
+              });
+            });
+            // 限制边数（点太多时裁剪）
+            const MAX_EDGES = 2500;
+            const shownEdges = edges.slice(0, MAX_EDGES);
+            document.getElementById('m2Stat').textContent = `节点 ${nodes.length} · 关系 ${shownEdges.length}${edges.length>MAX_EDGES?'（截取'+MAX_EDGES+'）':''} · 共 ${rels.length} 条`;
+            chart.hideLoading();
+            chart.setOption({
+              tooltip:{},
+              legend:[{data:Object.keys(type2name).filter(t=>show[t.charAt(0)]||show[ t==='concept'?'c':t==='person'?'p':t==='sutra'?'s':'sec']).map(t=>({name:type2name[t],itemStyle:{color:type2color[t]}})), top:10}],
+              series:[{
+                type:'graph', layout:'force', roam:true, draggable:true,
+                data:nodes, links:shownEdges,
+                categories: Object.keys(type2name).map(t=>({name:type2name[t],itemStyle:{color:type2color[t]}})),
+                force:{repulsion:180, edgeLength:[40,120], gravity:0.08},
+                label:{show:true, position:'right', fontSize:10},
+                emphasis:{focus:'adjacency', lineStyle:{width:2}},
+                lineStyle:{curveness:0.1}
+              }]
+            }, true);
+            chart.off('click');
+            chart.on('click', function(p){
+              if(p.dataType!=='node') return;
+              const d = document.getElementById('detail');
+              d.classList.remove('hidden');
+              d.innerHTML = `<h3 class="font-bold text-lg text-buddha-primary mb-2">${p.name} <span class="text-xs text-stone-500 font-mono">${p.data.id}</span></h3>
+                <p class="text-sm text-buddha-dark/85 mb-2">${type2name[p.data.category]||''} · ${(p.data.extra&&p.data.extra.desc)||''}</p>
+                <p class="text-xs text-stone-500">类型：${p.data.category}${p.data.extra&&p.data.extra.layer?' · 层：'+p.data.extra.layer:''}</p>`;
+            });
+          }catch(e){
+            chart.hideLoading();
+            document.getElementById('graphChart').innerHTML = '<p class="p-8 text-red-600">加载失败：'+e.message+'</p>';
+          }
+        }
+        document.querySelectorAll('.m2-filter').forEach(c=>c.addEventListener('change',()=>{ if(CUR_VIEW==='m2') renderM2Graph(); }));
         window.addEventListener('resize',()=>chart.resize());
 
         // 移动汉堡
