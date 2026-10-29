@@ -32,10 +32,8 @@
                 <a href="parallel.html" class="hover:text-buddha-secondary">异译对照</a>
                 <a href="graph.html" class="text-buddha-primary font-bold">义理图谱</a><a href="ontology.html" class="hover:text-buddha-secondary">本体总纲</a>
                 <a href="kepan.html" class="hover:text-buddha-secondary">科判导航</a>
-                <a href="panjiao.html" class="hover:text-buddha-secondary">宗派判教</a>
+                <div class="nav-dropdown"><a href="javascript:void(0)" class="hover:text-buddha-secondary nav-dropdown-toggle" role="button" aria-haspopup="true">佛学知识<span class="nav-caret">▾</span></a><div class="nav-dropdown-menu"><a href="panjiao.html">宗派判教</a><a href="translation.html">佛典译学</a><a href="timeline.html">译传时间轴</a></div></div>
                 <a href="inference.html" class="hover:text-buddha-secondary">概念推演</a>
-                <a href="timeline.html" class="hover:text-buddha-secondary">译传时间轴</a>
-                <a href="translation.html" class="hover:text-buddha-secondary">佛典译学</a>
             </div>
             <button id="mobileMenuBtn" class="md:hidden text-2xl">☰</button>
         </div>
@@ -47,10 +45,8 @@
             <a href="parallel.html" class="py-1">异译对照</a>
             <a href="graph.html" class="py-1 text-buddha-primary font-bold">义理图谱</a><a href="ontology.html" class="py-1">本体总纲</a>
             <a href="kepan.html" class="py-1">科判导航</a>
-            <a href="panjiao.html" class="py-1">宗派判教</a>
+            <div class="nav-dropdown"><a href="javascript:void(0)" class="hover:text-buddha-secondary nav-dropdown-toggle" role="button" aria-haspopup="true">佛学知识<span class="nav-caret">▾</span></a><div class="nav-dropdown-menu"><a href="panjiao.html">宗派判教</a><a href="translation.html">佛典译学</a><a href="timeline.html">译传时间轴</a></div></div>
             <a href="inference.html" class="py-1">概念推演</a>
-            <a href="timeline.html" class="py-1">译传时间轴</a>
-            <a href="translation.html" class="py-1">佛典译学</a>
         </div>
     </nav>
     <main class="max-w-7xl mx-auto px-4 py-6">
@@ -106,8 +102,11 @@
         const colorMap = {concept:'#1E4D2B',sutra:'#8B2500',buddha:'#DAA520',bodhisattva:'#DB7093',arhat:'#9370DB',master:'#2F4F4F',scholar:'#20B2AA',folk:'#CD853F',sect:'#4A148C',category:'#5D4037'};
         const nameMap = {concept:'义理概念',sutra:'经典',buddha:'佛',bodhisattva:'菩萨',arhat:'阿罗汉',master:'祖师译师',scholar:'学者',folk:'民间人物',sect:'宗派',category:'部类'};
         let CROSS = null;
+        let DICT_LINKS = null;  // ontology_id -> link
+        let DICT_TERMS = null;  // word -> entry
         let KEPAN_DATA = null;
         let CUR_VIEW = 'ontology';
+        let M2_FOCUS = null;
 
         async function getCross(){
           if(!CROSS){
@@ -149,6 +148,47 @@
             }catch(e){ console.warn('科判数据加载失败',e); KEPAN_DATA={}; }
           }
           return KEPAN_DATA;
+        }
+
+        async function getDict(){
+          if(!DICT_LINKS || !DICT_TERMS){
+            try{
+              const [linkR, dictR] = await Promise.all([
+                fetch('../ontology/dict-links.json'),
+                fetch('../data/buddhist_dict.json')
+              ]);
+              const ld = await linkR.json();
+              const dd = await dictR.json();
+              DICT_LINKS = {};
+              for(const l of (ld.links||[])){ DICT_LINKS[l.ontology_id] = l; }
+              DICT_TERMS = {};
+              for(const t of (dd.terms||[])){ DICT_TERMS[t.name] = t; }
+            }catch(e){ console.warn('dict加载失败', e); DICT_LINKS={}; DICT_TERMS={}; }
+          }
+          return {links:DICT_LINKS, terms:DICT_TERMS};
+        }
+
+        async function dictCard(oid, name){
+          const {links, terms} = await getDict();
+          const link = links[oid];
+          if(!link) return '';
+          let entry = terms[link.dict_word] || terms[name] || null;
+          if(!entry){
+            // 别名尝试：遍历 terms 找首个包含 name 或等于 dict_word 的
+            for(const w of Object.keys(terms)){
+              if(w === name || w === link.dict_word){ entry = terms[w]; break; }
+            }
+          }
+          if(!entry){
+            return `<div class="mt-2 p-2 bg-amber-50 border border-amber-200 rounded text-xs text-amber-800">📖 词典匹配：<a href="dict.html?q=${encodeURIComponent(link.dict_word||name)}" target="_blank" class="underline">「${link.dict_word||name}」（${link.dict_category||''}）→ 查看完整词条</a></div>`;
+          }
+          const def = (entry.definition||'').replace(/</g,'&lt;');
+          const short = def.length>220 ? def.slice(0,220)+'…' : def;
+          const more = def.length>220 ? `<a href="dict.html?q=${encodeURIComponent(entry.name)}" target="_blank" class="underline text-amber-700 ml-1">完整释义→</a>` : '';
+          return `<div class="mt-2 p-3 bg-amber-50/70 border border-amber-200 rounded text-sm">
+            <div class="text-amber-900 mb-1"><b>📖 佛学大词典 · 「${entry.name}」</b> <span class="text-xs text-amber-700 ml-1">[${entry.category||link.dict_category||''}]</span></div>
+            <div class="text-stone-700 leading-relaxed">${short}${more}</div>
+          </div>`;
         }
 
         /* ========== 视图切换 ========== */
@@ -260,6 +300,7 @@
               sutraDirectHtml += `</div>`;
             }
             const typeLabel = nameMap[d.class||d.type] || (d.type==='concept'?'义理概念':d.type);
+            const dCard = await dictCard(d.id, name);
             document.getElementById('detail').classList.remove('hidden');
             document.getElementById('detail').innerHTML = `<h3 class="font-bold text-lg text-buddha-primary mb-1">${name} <span class="text-xs font-normal text-stone-500 ml-1">[${typeLabel}]</span></h3>
               <div class="text-sm text-stone-700 leading-relaxed mb-2">${d.definition||d.core_doctrine||d.translator||''}</div>
@@ -267,7 +308,8 @@
               ${sutraDirectHtml}
               ${sutraHtml}
               ${kepanHtml}
-              ${noteHtml}`;
+              ${noteHtml}
+              ${dCard}`;
         }
 
         /* ========== 科判图谱 ========== */
@@ -552,14 +594,34 @@
                 lineStyle:{curveness:0.1}
               }]
             }, true);
+            if(M2_FOCUS){
+              const fi = nodes.findIndex(n=>n.id===M2_FOCUS);
+              if(fi>=0){
+                try{ chart.dispatchAction({type:'highlight', seriesIndex:0, dataIndex:fi});
+                     chart.dispatchAction({type:'showTip', seriesIndex:0, dataIndex:fi}); }catch(_){}
+                const nd = nodes[fi];
+                (async()=>{
+                  const d = document.getElementById('detail');
+                  const dCard = await dictCard(nd.id, nd.name);
+                  d.classList.remove('hidden');
+                  d.innerHTML = `<h3 class="font-bold text-lg text-buddha-primary mb-2">${nd.name} <span class="text-xs text-stone-500 font-mono">${nd.id}</span></h3>
+                    <p class="text-sm text-buddha-dark/85 mb-2">${type2name[nd.category]||''} · ${(nd.extra&&nd.extra.desc)||''}</p>
+                    <p class="text-xs text-stone-500">类型：${nd.category}${nd.extra&&nd.extra.layer?' · 层：'+nd.extra.layer:''}</p>
+                    ${dCard}`;
+                })();
+              }
+              M2_FOCUS = null;
+            }
             chart.off('click');
-            chart.on('click', function(p){
+            chart.on('click', async function(p){
               if(p.dataType!=='node') return;
               const d = document.getElementById('detail');
+              const dCard = await dictCard(p.data.id, p.name);
               d.classList.remove('hidden');
               d.innerHTML = `<h3 class="font-bold text-lg text-buddha-primary mb-2">${p.name} <span class="text-xs text-stone-500 font-mono">${p.data.id}</span></h3>
                 <p class="text-sm text-buddha-dark/85 mb-2">${type2name[p.data.category]||''} · ${(p.data.extra&&p.data.extra.desc)||''}</p>
-                <p class="text-xs text-stone-500">类型：${p.data.category}${p.data.extra&&p.data.extra.layer?' · 层：'+p.data.extra.layer:''}</p>`;
+                <p class="text-xs text-stone-500">类型：${p.data.category}${p.data.extra&&p.data.extra.layer?' · 层：'+p.data.extra.layer:''}</p>
+                ${dCard}`;
             });
           }catch(e){
             chart.hideLoading();
@@ -574,7 +636,29 @@
         if(mbtn){ mbtn.addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden')); }
 
         getCross();
-        renderOntology();
+        (function(){
+          const usp = new URLSearchParams(location.search);
+          const hash = (location.hash||'').replace(/^#/,'');
+          // 支持 ?focus=c001 或 #onto=c001 两种形式
+          const hashMatch = hash.match(/onto=([cps]\d+|sec\d+)/);
+          const v = usp.get('view');
+          if(v==='m2' || hashMatch){
+            const f = usp.get('focus') || (hashMatch?hashMatch[1]:null);
+            if(f){
+              M2_FOCUS = f;
+              const pre = f.startsWith('sec')?'sec':f.charAt(0);
+              const cb = document.querySelector('.m2-filter[data-m2="'+pre+'"]');
+              if(cb) cb.checked = true;
+            }
+            const tab = document.querySelector('.view-tab[data-view="m2"]');
+            if(tab) tab.click();
+          } else if(v==='kepan'){
+            const tab = document.querySelector('.view-tab[data-view="kepan"]');
+            if(tab) tab.click();
+          } else {
+            renderOntology();
+          }
+        })();
     </script>
 </body>
 </html>
