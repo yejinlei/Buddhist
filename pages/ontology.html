@@ -58,6 +58,22 @@
 
         <div id="stat-bar" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-3 mb-8"></div>
 
+        <!-- 四轴 × 七层 正交交互图 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-buddha-primary mb-2">〇、本体结构交互图</h2>
+            <p class="text-sm muted mb-4">上方为<strong>四轴 × 七层</strong>正交矩阵（列=轴、行=层、格子数字=该组合下的本体类数），下方为<strong>本体类关系网络图</strong>（纵向按抽象层级排列、横向按四轴分栏；深灰曲线=subClassOf 继承，彩色虚线=对象属性关系）。<b>点击任意行/列/格/节点</b>即可联动筛选下方类树；再次点击取消筛选。</p>
+
+            <div class="bg-white rounded-xl shadow-sm border border-buddha-gold/20 p-4 md:p-6 mb-4">
+                <div id="tbox-matrix" class="mx-auto" style="max-width:720px"></div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-buddha-gold/20 p-4 md:p-6 overflow-x-auto">
+                <h3 class="text-base font-bold text-buddha-primary mb-2">类关系网络（节点按轴×层布点）</h3>
+                <p class="text-xs muted mb-3">纵向：L0 元模型 → L6 信仰文化外延（抽象→具体）；横向：按四轴分栏。彩色虚线表示该分组的对象属性（属乘、阐明、传承、译于 等）。鼠标悬停可看详情。</p>
+                <div id="tbox-graph" class="w-full"></div>
+            </div>
+        </section>
+
         <section class="mb-10">
             <h2 class="text-xl font-bold text-buddha-primary mb-4">一、四轴（顶层分类骨架）</h2>
             <p class="text-sm muted mb-4">回答"从哪个维度看"。点击任一轴可筛选下方类树。</p>
@@ -865,7 +881,11 @@
         initCO();
         initTR();
         initST();
+
+        // 四轴×七层正交交互图（等 #axis-filter/#layer-filter 按钮渲染后再 init，便于联动筛选）
+        setTimeout(()=>{ if(window.OntologyTBox) OntologyTBox.init({onFilter:(st)=>{/* 同步已经在模块内部处理 */}}); }, 120);
     })();
     </script>
+    <script src="../js/ontology-tbox-viz.js"></script>
 </body>
 </html>
