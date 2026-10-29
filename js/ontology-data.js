@@ -2801,7 +2801,7 @@ const ontologyData = {
   },
   {
     "id": "s077",
-    "sutra_id": "t0848",
+    "sutra_id": "t0363",
     "name": "大毗卢遮那成佛神变加持经",
     "translator": "善无畏、一行",
     "vol": "T18",
@@ -2817,7 +2817,7 @@ const ontologyData = {
   },
   {
     "id": "s079",
-    "sutra_id": "t1425",
+    "sutra_id": "t1488",
     "name": "四分律",
     "translator": "佛陀耶舍、竺佛念",
     "vol": "T22",
@@ -2865,7 +2865,7 @@ const ontologyData = {
   },
   {
     "id": "s085",
-    "sutra_id": "t0474",
+    "sutra_id": "t0389",
     "name": "佛说父母恩难报经",
     "translator": "安世高",
     "vol": "T16",
