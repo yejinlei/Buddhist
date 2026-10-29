@@ -19,8 +19,8 @@
     L0:'#4a4a4a', L1:'#6b5638', L2:'#8a7a62', L3:'#B8860B',
     L4:'#3E6B4F', L5:'#8B5A2B', L6:'#A23B3B'
   };
-  const LAYER_Y = {L0:70,L1:150,L2:230,L3:310,L4:420,L5:520,L6:600};
-  const AXIS_X  = {A1:200,A2:470,A3:740,A4:1010};
+  const LAYER_Y = {L0:80,L1:170,L2:270,L3:370,L4:470,L5:570,L6:670};
+  const AXIS_X  = {A1:220,A2:500,A3:780,A4:1070};
   const COLS=['A1','A2','A3','A4'];
   const ROWS=['L0','L1','L2','L3','L4','L5','L6'];
 
@@ -119,9 +119,9 @@
   // ========== 2) 正交矩阵热力图 ==========
   function renderMatrix(){
     const root=q('#tbox-matrix'); if(!root) return;
-    const W=680,H=380,pad={t:60,r:40,b:80,l:120};
+    const W=720,H=420,pad={t:90,r:40,b:80,l:120};
     root.innerHTML='';
-    const svg=ns('svg',{width:'100%',height:H,viewBox:'0 0 '+W+' '+H,style:'max-height:380px'});
+    const svg=ns('svg',{width:'100%',height:H,viewBox:'0 0 '+W+' '+H,style:'max-height:420px'});
     root.appendChild(svg);
 
     const cw=(W-pad.l-pad.r)/4;
@@ -129,21 +129,21 @@
 
     svg.appendChild(ns('text',{x:W/2,y:24,'text-anchor':'middle','font-size':15,'font-weight':700,fill:'#5a3e1b'}))
        .textContent='四轴 × 七层 正交矩阵（格子数字 = 该格所定义的本体类数）';
-    svg.appendChild(ns('text',{x:W/2,y:44,'text-anchor':'middle','font-size':11.5,fill:'#8a7a62'}))
+    svg.appendChild(ns('text',{x:W/2,y:42,'text-anchor':'middle','font-size':11.5,fill:'#8a7a62'}))
        .textContent='点击行/列/格可筛选下方类树；再次点击取消筛选';
 
     D.axes.forEach(function(a,i){
       const x=pad.l+i*cw+cw/2;
       const g=ns('g',{class:'axis-head','data-axis':a.id,cursor:'pointer'});
-      g.appendChild(rect(pad.l+i*cw+4,pad.t-38,cw-8,30,8,a.color+'22',a.color));
-      g.appendChild(text(x,pad.t-19,a.label,13,'700',a.color,'middle'));
+      g.appendChild(rect(pad.l+i*cw+6,pad.t-30,cw-12,26,8,a.color+'22',a.color));
+      g.appendChild(text(x,pad.t-13,a.label,13,'700',a.color,'middle'));
       svg.appendChild(g);
       g.addEventListener('click',function(){toggleFilter('filterAxis',a.id);});
     });
     D.layers.forEach(function(l,i){
       const y=pad.t+i*ch+ch/2;
       const g=ns('g',{class:'layer-head','data-layer':l.id,cursor:'pointer'});
-      g.appendChild(rect(pad.l-100,pad.t+i*ch+4,96,ch-8,6,l.color+'22',l.color));
+      g.appendChild(rect(pad.l-100,pad.t+i*ch+6,96,ch-12,6,l.color+'22',l.color));
       g.appendChild(text(pad.l-52,y,l.label,12,'600',l.color,'middle'));
       svg.appendChild(g);
       g.addEventListener('click',function(){toggleFilter('filterLayer',l.id);});
@@ -209,9 +209,9 @@
   // ========== 3) 类关系网络图（分轴分层布局 + 实时实例数徽标） ==========
   function renderGraph(){
     const root=q('#tbox-graph'); if(!root) return;
-    const W=1240,H=720,pad={t:50,r:40,b:40,l:160};
+    const W=1280,H=760,pad={t:60,r:40,b:60,l:170};
     root.innerHTML='';
-    const svg=ns('svg',{width:'100%',viewBox:'0 0 '+W+' '+H,style:'max-height:640px'});
+    const svg=ns('svg',{width:'100%',viewBox:'0 0 '+W+' '+H,style:'max-height:680px'});
     root.appendChild(svg);
 
     ROWS.forEach(function(l){
@@ -225,10 +225,11 @@
     COLS.forEach(function(a){
       const x=AXIS_X[a];
       const ax=D.axes.find(function(x){return x.id===a;});
-      const t=ns('text',{x:x,y:pad.t-20,'text-anchor':'middle','font-size':13,fill:COLORS[a],'font-weight':700});
+      // 列标题挪到顶部区域中央，与首行节点保持距离
+      const t=ns('text',{x:x,y:pad.t-24,'text-anchor':'middle','font-size':13,fill:COLORS[a],'font-weight':700});
       t.textContent=ax?ax.label:a;
       svg.appendChild(t);
-      const rect_bg=ns('rect',{x:x-120,y:pad.t-8,width:240,height:H-pad.t-pad.b,rx:12,fill:COLORS[a]+'08'});
+      const rect_bg=ns('rect',{x:x-130,y:pad.t-8,width:260,height:H-pad.t-pad.b+10,rx:12,fill:COLORS[a]+'08'});
       svg.insertBefore(rect_bg,svg.firstChild);
     });
 
@@ -246,11 +247,14 @@
       const arr=byCell[k];
       const parts=k.split('|'), a=parts[0], l=parts[1];
       const x0=AXIS_X[a], y0=LAYER_Y[l];
-      const span=Math.min(220, 30*arr.length+20);
+      const n = arr.length;
+      // 同一格内节点横向排开，间距随节点数自适应（垂直方向留足徽标空间）
+      const spread = Math.min(200, Math.max(60, 28*n));
+      const startX = x0 - spread/2;
       arr.forEach(function(c,i){
         if(nodes[c.id]) return;
-        const x=x0-span/2 + (span/(arr.length||1))*(i+0.5);
-        const y=y0 + (arr.length%2===0? (i-arr.length/2+0.5)*6 : (i-Math.floor(arr.length/2))*6);
+        const x = n===1 ? x0 : startX + (spread/(n-1))*i;
+        const y = y0;
         nodes[c.id]={x:x,y:y,c:c};
       });
     });
@@ -309,19 +313,20 @@
       const ax=(c.axes&&c.axes[0])||'A1';
       const col=COLORS[ax]||'#888';
       const cnt=liveCount(c.id);
-      const r=c.parent?11:13;
+      const r=c.parent?10:12;
       const g=ns('g',{cursor:'pointer','data-cls':c.id,transform:'translate('+n.x+','+n.y+')'});
       const circle=ns('circle',{cx:0,cy:0,r:r,fill:c.parent?col+'cc':col,stroke:'#fff','stroke-width':2});
       g.appendChild(circle);
-      const lbl=ns('text',{x:0,y:r+12,'text-anchor':'middle','font-size':10.5,fill:'#4a3a1e','font-weight':c.parent?500:700});
+      // 标签放在节点下方，字号缩小避免相互覆盖
+      const lbl=ns('text',{x:0,y:r+11,'text-anchor':'middle','font-size':10,fill:'#4a3a1e','font-weight':c.parent?500:700});
       lbl.textContent=c.label;
       g.appendChild(lbl);
-      // 实时实例数徽标
+      // 实时实例数徽标 —— 缩小到标签下方，避免压到下一行
       if(cnt!=null){
-        const bw=String(cnt).length*6.4+12;
-        const badge=ns('g',{transform:'translate(0,'+(r+16)+')'});
-        badge.appendChild(rect(-bw/2,0,bw,13,6.5,'#fdf6e3','#d9cdb4'));
-        badge.appendChild(text(0,9.6,String(cnt),9.5,'700','#8a6d2f','middle'));
+        const bw=String(cnt).length*6+10;
+        const badge=ns('g',{transform:'translate(0,'+(r+22)+')'});
+        badge.appendChild(rect(-bw/2,0,bw,12,6,'#fdf6e3','#d9cdb4'));
+        badge.appendChild(text(0,9,String(cnt),9,'700','#8a6d2f','middle'));
         g.appendChild(badge);
       }
       g.addEventListener('mouseenter',function(){circle.setAttribute('r',r+3);showClsTip(c,n);});
