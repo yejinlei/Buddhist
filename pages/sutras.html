@@ -15,6 +15,29 @@
         .nav-active { background-color: rgba(184,134,11,0.2); }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-thumb { background: #d4c8b0; border-radius: 3px; }
+        /* ====== 生僻字 ruby 旁注 ====== */
+        .pr-ruby { ruby-position: over; ruby-align: center; margin: 0 1px; cursor: help; }
+        .pr-ruby rt { font-size: 0.55em; color: #B8860B; font-weight: 500; font-family: "Noto Sans SC", "PingFang SC", sans-serif; letter-spacing: 0; line-height: 1; opacity: 0.85; user-select: none; }
+        .pr-ruby:hover { background: rgba(184,134,11,.08); border-radius: 2px; }
+        .pr-ruby:hover rt { opacity: 1; color: #8B4513; }
+        /* 关闭注音按钮 */
+        .pr-toggle { background:none;border:1px solid #d9c89a;border-radius:4px;color:#8B4513;padding:2px 8px;font-size:12px;cursor:pointer; }
+        .pr-toggle.off { opacity:.5; }
+        /* ====== 划词查询弹窗 ====== */
+        .sel-pop { position: absolute; z-index: 9999; background:#fffdf6; border:1px solid #d9c89a; border-radius:10px; box-shadow:0 6px 24px rgba(90,62,27,.18); padding:10px 12px; min-width:220px; max-width:320px; font-size:13px; line-height:1.55; color:#3e2723; }
+        .sel-pop.hidden { display:none; }
+        .sel-pop-arrow { position:absolute; bottom:-6px; left:50%; transform:translateX(-50%) rotate(45deg); width:12px; height:12px; background:#fffdf6; border-right:1px solid #d9c89a; border-bottom:1px solid #d9c89a; }
+        .sel-pop .sel-section + .sel-section { margin-top:8px; padding-top:8px; border-top:1px dashed #eadfbf; }
+        .sel-pop .sel-title { font-size:13px; color:#5a3e1b; margin-bottom:3px; }
+        .sel-pop .sel-cat { font-size:11px; color:#a08755; font-weight:400; margin-left:4px; }
+        .sel-pop .sel-py { color:#B8860B; font-weight:600; font-family:"Noto Sans SC",sans-serif; }
+        .sel-pop .sel-def { color:#4a3a1e; font-size:12.5px; }
+        .sel-pop .sel-more { display:inline-block; margin-top:4px; color:#B8860B; font-size:12px; text-decoration:none; border-bottom:1px dashed #d9c89a; }
+        .sel-pop .sel-more:hover { color:#8B4513; }
+        /* 关闭注音时隐藏 rt（不拆毁 DOM，切换时即时生效） */
+        .sutra-container.pron-off .pr-ruby rt { display: none; }
+        .sutra-container.pron-off .pr-ruby { margin: 0; }
+        .sel-pop code { background:#f6efd9; padding:0 4px; border-radius:3px; font-size:11.5px; color:#6d4f1d; }
         .scholar-hi { background: linear-gradient(transparent 62%, #f3e2a9 62%); }
         .scholar-mark { color:#B8860B; cursor:pointer; font-size:.68em; vertical-align:super; margin:0 2px; font-weight:700; }
         .dict-term { color:#8B4513; border-bottom:1px dashed #B8860B; cursor:pointer; transition:background .15s; }
@@ -184,6 +207,29 @@
         .od-item.fig { background:#edf7ee; border-color:#a5d6a7; }
         .od-item.doc { background:#e8f2fc; border-color:#90caf9; }
         .od-item.para { background:#f5f5f5; }
+        /* ====== 本体实例详情弹窗（点击人物/佛理标签弹出） ====== */
+        .od-entity-mask { position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:250; opacity:0; pointer-events:none; transition:opacity .2s; }
+        .od-entity-mask.open { opacity:1; pointer-events:auto; }
+        .od-entity-pop { position:fixed; right:520px; top:50%; transform:translateY(-50%) translateX(20px); width:360px; max-width:calc(92vw - 520px); max-height:80vh; background:#fffdf6; border:1px solid #d9c89a; border-radius:12px; box-shadow:-4px 0 20px rgba(90,62,27,.2); z-index:251; display:flex; flex-direction:column; opacity:0; pointer-events:none; transition:all .25s ease; }
+        .od-entity-pop.open { opacity:1; pointer-events:auto; transform:translateY(-50%) translateX(0); }
+        .od-entity-head { padding:12px 14px; background:linear-gradient(135deg,#6a3d10,#b8860b); color:#f5edcc; border-radius:11px 11px 0 0; display:flex; align-items:center; gap:8px; }
+        .od-entity-head .e-type { font-size:11px; padding:2px 8px; background:rgba(255,255,255,.2); border-radius:10px; }
+        .od-entity-head h4 { margin:0; font-size:15px; font-weight:600; flex:1; }
+        .od-entity-head button { background:none; border:0; color:#f5edcc; font-size:20px; cursor:pointer; }
+        .od-entity-body { padding:12px 14px; overflow-y:auto; font-size:13px; line-height:1.7; color:#3e2723; }
+        .od-entity-body .e-label { font-weight:600; color:#5d3610; margin-top:8px; font-size:12.5px; }
+        .od-entity-body .e-label:first-child { margin-top:0; }
+        .od-entity-body .e-def { background:#fbf4df; border-left:3px solid #b8860b; padding:6px 10px; border-radius:0 6px 6px 0; margin:4px 0; color:#4a3a1e; }
+        .od-entity-body .e-aliases, .od-entity-body .e-rels { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px; }
+        .od-entity-body .e-chip { padding:2px 8px; border-radius:10px; font-size:11px; background:#fff; border:1px solid #e5d9c3; color:#5d4037; cursor:pointer; }
+        .od-entity-body .e-chip.concept { background:#e8f2fc; border-color:#90caf9; }
+        .od-entity-body .e-chip.person { background:#edf7ee; border-color:#a5d6a7; }
+        .od-entity-body .e-chip:hover { background:#f5ecd0; }
+        .od-entity-body .e-meta { font-size:11.5px; color:#8b5a2b; opacity:.85; }
+        .od-entity-foot { padding:8px 14px; border-top:1px solid #f0e3c4; display:flex; gap:8px; font-size:12px; }
+        .od-entity-foot a { flex:1; text-align:center; padding:6px; background:#fbf4df; border:1px solid #e0c988; border-radius:6px; color:#8b4513; text-decoration:none; }
+        .od-entity-foot a:hover { background:#f3e2a9; }
+        .od-loading, .od-empty { text-align:center; padding:30px 10px; color:#8b5a2b; font-size:13px; }
         .od-empty { padding:6px 12px; font-size:12px; color:#999; font-style:italic; }
         .od-gatha-mantra-item { padding:6px 10px; margin:4px 0; border-radius:6px; font-size:12px; cursor:pointer; border-left:3px solid transparent; transition:all .12s; }
         .od-gatha-mantra-item:hover { background:#fdf8ec; }
@@ -232,6 +278,17 @@
 
     <div id="note-pop" class="hidden"></div>
     <div id="dict-pop" class="hidden"></div>
+    <!-- 本体实例详情弹窗（点击下钻面板中的人物/佛理/术语标签弹出） -->
+    <div id="od-entity-mask" class="od-entity-mask" onclick="closeEntityPop()"></div>
+    <div id="od-entity-pop" class="od-entity-pop">
+        <div class="od-entity-head">
+            <span class="e-type" id="od-e-type">概念</span>
+            <h4 id="od-e-name">—</h4>
+            <button onclick="closeEntityPop()" title="关闭">×</button>
+        </div>
+        <div class="od-entity-body" id="od-e-body"><div class="od-loading">加载中…</div></div>
+        <div class="od-entity-foot" id="od-e-foot"></div>
+    </div>
 
     <!-- 学术工具侧栏 -->
     <div id="study-sidebar-mask"></div>
@@ -307,6 +364,182 @@ let DICT_AUTO_SET = new Set(); // 自动划线用的词条（不含人物/地名
 let DICT_MAX_LEN = 8;
 let CROSS = null; // 跨页关联数据，懒加载
 const CHAPTERS_PER_PAGE = 10; // 每次加载10章（大约几卷）
+
+// ====== 生僻字/异体字/音译注音（ruby 旁注） ======
+let PRONOUNCE = null;  // {chars:{字:{py,mean,cat}, 词组:{...}}}
+let PRONOUNCE_LOADED = false;
+let PRONOUNCE_SINGLE = {};  // 单字 map
+let PRONOUNCE_PHRASES = []; // 词组数组（长→短）
+let ONTO_DICT_TERMS = null; // 本体词典 (dict-links.json 中词 -> entry)，划词时合并使用
+
+async function loadPronounce(){
+  if(PRONOUNCE_LOADED) return PRONOUNCE;
+  try{
+    const r = await fetch('../data/buddhist-pronounce.json?v=1',{cache:'no-cache'});
+    PRONOUNCE = await r.json();
+    PRONOUNCE_SINGLE = {}; PRONOUNCE_PHRASES = [];
+    Object.entries(PRONOUNCE.chars||{}).forEach(([k,v])=>{
+      if(k.length===1) PRONOUNCE_SINGLE[k]=v;
+      else PRONOUNCE_PHRASES.push({w:k,...v});
+    });
+    PRONOUNCE_PHRASES.sort((a,b)=>b.w.length-a.w.length); // 长词优先
+    // 本体词典（术语/人物/地名）
+    try{
+      const lr = await fetch('../ontology/dict-links.json',{cache:'no-cache'});
+      const ld = await lr.json();
+      ONTO_DICT_TERMS = {};
+      (ld.links||[]).forEach(l=>{ ONTO_DICT_TERMS[l.dict_word]=l; });
+    }catch(e){ ONTO_DICT_TERMS={}; }
+  }catch(e){ console.warn('注音数据加载失败',e); PRONOUNCE={chars:{}}; PRONOUNCE_SINGLE={}; PRONOUNCE_PHRASES=[]; ONTO_DICT_TERMS={}; }
+  PRONOUNCE_LOADED = true;
+  return PRONOUNCE;
+}
+
+// 对已渲染好的 DOM（.sutra-content 段落）扫描文本节点，注入 ruby 注音
+// 规则：词组精确匹配优先 → 单字命中才注（且要落在生僻字集合里，现代汉语常用字不标）
+function annotatePronounceIn(container){
+  if(!PRONOUNCE_SINGLE) return;
+  const paras = container.querySelectorAll ? container.querySelectorAll('.sutra-content') : [];
+  paras.forEach(p=>{
+    if(p.dataset.pronounced==='1') return; // 已处理过不重复
+    rubyWalk(p);
+    p.dataset.pronounced='1';
+  });
+}
+function rubyWalk(el){
+  // 收集文本节点
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+    acceptNode: n=>{
+      if(!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      const p = n.parentNode;
+      if(!p) return NodeFilter.FILTER_REJECT;
+      const tag = p.nodeName;
+      if(tag==='RUBY'||tag==='RT'||tag==='RP') return NodeFilter.FILTER_REJECT;
+      if(p.closest && p.closest('sup,a,button,.scholar-mark,.para-tools')) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes=[];
+  let n; while((n=walker.nextNode())) nodes.push(n);
+  nodes.forEach(tn=>{
+    const txt = tn.nodeValue;
+    const frag = document.createDocumentFragment();
+    const html = pronounceHtml(txt);
+    const tmp = document.createElement('span');
+    tmp.innerHTML = html;
+    while(tmp.firstChild) frag.appendChild(tmp.firstChild);
+    tn.parentNode.replaceChild(frag, tn);
+  });
+}
+function escapeHtml(s){ return s.replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function pronounceHtml(txt){
+  // 先做词组匹配，用占位符保护；再对单字注音
+  const placeholders = [];
+  let work = txt;
+  PRONOUNCE_PHRASES.forEach(ph=>{
+    const w = ph.w;
+    let idx;
+    while((idx = work.indexOf(w)) !== -1){
+      const key = '\u0001PH'+placeholders.length+'\u0001';
+      placeholders.push(`<ruby class="pr-ruby" data-cat="${ph.cat||''}" title="${escapeHtml(ph.mean||'')}">${escapeHtml(w)}<rt>${escapeHtml(ph.py)}</rt></ruby>`);
+      work = work.slice(0,idx) + key + work.slice(idx+w.length);
+    }
+  });
+  // 单字注音
+  let out = '';
+  for(let i=0;i<work.length;i++){
+    const ch = work[i];
+    if(ch==='\u0001'){
+      // 占位符读取
+      let j=i+1; while(j<work.length && work[j]!=='\u0001') j++;
+      const idx = parseInt(work.slice(i+2,j),10);
+      out += placeholders[idx] || '';
+      i=j; continue;
+    }
+    const m = PRONOUNCE_SINGLE[ch];
+    if(m){
+      out += `<ruby class="pr-ruby" data-cat="${m.cat||''}" title="${escapeHtml(m.mean||'')}">${escapeHtml(ch)}<rt>${escapeHtml(m.py)}</rt></ruby>`;
+    }else{
+      out += escapeHtml(ch);
+    }
+  }
+  return out;
+}
+
+// ====== 划词显示本体/词典信息 ======
+function initSelectionPopup(){
+  if(document.getElementById('sel-pop')) return;
+  const pop = document.createElement('div');
+  pop.id = 'sel-pop';
+  pop.className = 'sel-pop hidden';
+  pop.innerHTML = `
+    <div class="sel-pop-arrow"></div>
+    <div class="sel-pop-body" id="sel-pop-body">…</div>
+  `;
+  document.body.appendChild(pop);
+  document.addEventListener('mouseup', onSelMouseUp, true);
+  document.addEventListener('mousedown', e=>{
+    if(!pop.contains(e.target)) pop.classList.add('hidden');
+  }, true);
+}
+function onSelMouseUp(e){
+  const pop = document.getElementById('sel-pop');
+  const sel = window.getSelection();
+  if(!sel || sel.isCollapsed){ pop.classList.add('hidden'); return; }
+  const text = sel.toString().trim();
+  if(text.length<1 || text.length>30){ pop.classList.add('hidden'); return; }
+  // 仅在经文区域内响应
+  const range = sel.getRangeAt(0);
+  const inSutra = range.commonAncestorContainer.parentElement &&
+                  range.commonAncestorContainer.parentElement.closest('#sutra-text');
+  if(!inSutra){ pop.classList.add('hidden'); return; }
+  const rect = range.getBoundingClientRect();
+  const body = document.getElementById('sel-pop-body');
+  body.innerHTML = buildSelPopContent(text);
+  pop.classList.remove('hidden');
+  const top = window.scrollY + rect.top - pop.offsetHeight - 10;
+  const left = window.scrollX + rect.left + rect.width/2 - pop.offsetWidth/2;
+  pop.style.top = Math.max(window.scrollY+8, top) + 'px';
+  pop.style.left = Math.max(8, Math.min(window.innerWidth - pop.offsetWidth - 8, left)) + 'px';
+}
+function buildSelPopContent(text){
+  // 优先级：佛学词典 → 注音字典 → 本体索引
+  const parts = [];
+  if(DICT_MAP && DICT_MAP.has(text)){
+    const t = DICT_MAP.get(text);
+    const shortDef = (t.definition||'').slice(0,260);
+    parts.push(`<div class="sel-section sel-dict">
+      <div class="sel-title">📖 佛学大词典 · <b>${escapeHtml(t.name)}</b> <span class="sel-cat">${escapeHtml(t.category||'')}</span></div>
+      <div class="sel-def">${escapeHtml(shortDef)}${(t.definition||'').length>260?'…':''}</div>
+      <a class="sel-more" href="dict.html?q=${encodeURIComponent(t.name)}" target="_blank">完整释义 →</a>
+    </div>`);
+  }
+  if(PRONOUNCE && PRONOUNCE.chars && PRONOUNCE.chars[text]){
+    const m = PRONOUNCE.chars[text];
+    parts.push(`<div class="sel-section sel-pron">
+      <div class="sel-title">🔤 读音 · <b>${escapeHtml(text)}</b> <span class="sel-py">${escapeHtml(m.py)}</span> <span class="sel-cat">${escapeHtml(m.cat||'')}</span></div>
+      <div class="sel-def">${escapeHtml(m.mean||'')}</div>
+    </div>`);
+  }
+  if(ONTO_DICT_TERMS && ONTO_DICT_TERMS[text]){
+    const o = ONTO_DICT_TERMS[text];
+    parts.push(`<div class="sel-section sel-onto">
+      <div class="sel-title">🏛️ 本体实例 · <b>${escapeHtml(text)}</b> <span class="sel-cat">${escapeHtml(o.dict_category||o.ontology_id||'')}</span></div>
+      <div class="sel-def">本体 ID：<code>${escapeHtml(o.ontology_id||'')}</code>，在「本体下钻」面板可查看层级、关系、注疏。</div>
+      <a class="sel-more" href="ontology.html#cls=${encodeURIComponent(o.ontology_id||'')}" target="_blank">本体详情 →</a>
+    </div>`);
+  }
+  if(parts.length===0){
+    parts.push(`<div class="sel-section sel-tip">
+      <div class="sel-title">🔍 「${escapeHtml(text)}」</div>
+      <div class="sel-def">暂无词典收录；可使用顶部「全文检索」或「佛学词典」搜索完整词条。</div>
+      <a class="sel-more" href="search.html?q=${encodeURIComponent(text)}" target="_blank">全文检索 →</a>
+      <a class="sel-more" href="dict.html?q=${encodeURIComponent(text)}" target="_blank" style="margin-left:8px;">词典搜索 →</a>
+    </div>`);
+  }
+  return parts.join('');
+}
+
 
 // ===== 学术工具：收藏/笔记/引用/书签 =====
 const LS_FAV = 'buddhist_favs';
@@ -739,6 +972,7 @@ const BAIHUA_KEY = 'buddhist_show_baihua';
 let showBaihua = false;
 try { showBaihua = localStorage.getItem(BAIHUA_KEY) === '1'; } catch(e) {}
 let baihuaData = null;
+let baihuaLoadedFor = null;   // 记录当前 baihuaData 对应哪部经，切换经时自动失效
 
 async function toggleBaihua() {
     showBaihua = !showBaihua;
@@ -746,7 +980,7 @@ async function toggleBaihua() {
     const btn = document.getElementById('btn-baihua');
     if (btn) btn.classList.toggle('active', showBaihua);
     if (showBaihua) {
-        if (!baihuaData) await loadBaihua(currentSutra.id);
+        if (!baihuaData || baihuaLoadedFor !== currentSutra.id) await loadBaihua(currentSutra.id);
         applyBaihua();
     } else {
         removeBaihua();
@@ -758,10 +992,12 @@ async function toggleBaihua() {
 const BAIHUA_AVAILABLE = new Set(['t0235','t0251','t0366','t0389','t0450','t0779','sishi_erzhang']);
 
 async function loadBaihua(tid) {
-    if (!BAIHUA_AVAILABLE.has(tid)) { baihuaData = null; return; }
+    baihuaData = null;
+    baihuaLoadedFor = tid;
+    if (!tid || !BAIHUA_AVAILABLE.has(tid)) { return; }
     try {
-        const r = await fetch(`../data/modern-translation/${tid}.json`);
-        baihuaData = r.ok ? await r.json() : null;
+        const r = await fetch(`../data/modern-translation/${tid}.json?v=2`, {cache:'no-cache'});
+        if (r.ok) { baihuaData = await r.json(); }
     } catch(e) { baihuaData = null; }
 }
 
@@ -1544,6 +1780,10 @@ async function loadSutra(meta) {
     window.currentSutra = sutraData;   // 供读经辅助读取原文（繁体模式）
     // 读经辅助重置（切换新经时重新抓取原文）
     if(window.__readingAid && window.__readingAid.reset) window.__readingAid.reset();
+    // 切换新经时，重置白话数据（避免上一部经的白话残留，并防止对无白话经的错误请求）
+    removeBaihua();
+    baihuaData = null;
+    baihuaLoadedFor = null;
     // 补一下归一化字段（sutraData 来自单经 JSON，没有 _dynasty/_trans）
     if(allSutras && allSutras.length){
       const metaHit = allSutras.find(s=>s.id===sutraData.id);
@@ -1583,6 +1823,7 @@ async function loadSutra(meta) {
             <button data-fs="lg">大</button>
             <button data-fs="xl">特大</button>
             <button id="btn-baihua" title="白话文翻译/导读" class="${showBaihua?'active':''}"><i class="fa fa-book"></i> <span class="rt-label">白话</span></button>
+            <button id="btn-pron" title="生僻字/音译字旁注读音" class="active"><i class="fa fa-font"></i> <span class="rt-label">注音</span></button>
             <button id="bookmark-btn" title="添加书签" style="margin-left:.5rem"><i class="fa fa-bookmark"></i> <span class="rt-label">书签</span></button>
             <button id="btn-kepan" title="本科判结构" style="display:none;margin-left:.3rem"><i class="fa fa-sitemap"></i> <span class="rt-label">科判</span></button>
             <button id="study-btn" title="我的收藏与笔记"><i class="fa fa-star"></i> <span class="rt-label">学术工具</span></button>
@@ -1622,6 +1863,27 @@ async function loadSutra(meta) {
     document.getElementById('onto-drill-mask')?.addEventListener('click', closeOntologyDrill);
     // 白话按钮
     document.getElementById('btn-baihua')?.addEventListener('click', toggleBaihua);
+    // 注音按钮（生僻字/音译字旁注拼音）
+    window.__pronEnabled = true;
+    try { if(localStorage.getItem('buddhist_show_pron')==='0') window.__pronEnabled=false; } catch(e){}
+    const pronBtn = document.getElementById('btn-pron');
+    if(pronBtn){
+      pronBtn.classList.toggle('active', window.__pronEnabled);
+      pronBtn.addEventListener('click', ()=>{
+        window.__pronEnabled = !window.__pronEnabled;
+        try { localStorage.setItem('buddhist_show_pron', window.__pronEnabled?'1':'0'); } catch(e){}
+        pronBtn.classList.toggle('active', window.__pronEnabled);
+        // 关闭：移除所有 ruby（替换 rt 为注释节点再还原原文？此处直接用样式隐藏更可靠）
+        document.getElementById('sutra-text')?.classList.toggle('pron-off', !window.__pronEnabled);
+      });
+    }
+    if(!window.__pronEnabled) document.getElementById('sutra-text')?.classList.add('pron-off');
+    // 划词弹窗初始化
+    initSelectionPopup();
+    // 预加载注音数据
+    loadPronounce().then(()=>{
+      if(window.__pronEnabled) annotatePronounceIn(document.getElementById('sutra-text'));
+    });
     // 若默认开启白话
     if (showBaihua) {
         (async () => {
@@ -1678,6 +1940,8 @@ function loadMoreChapters() {
     loadedChapters = end;
     // 给新加载的段落标注科判标签
     if(window.CROSS_LOADED) annotateParaKepanTags();
+    // 给新加载的段落注入注音旁注（若注音已开）
+    if(window.__pronEnabled !== false && PRONOUNCE_LOADED) annotatePronounceIn(textContainer);
     // 更新阅读进度
     const progEl = document.getElementById('read-progress');
     if(progEl) progEl.textContent = `已读 ${loadedChapters}/${currentSutra.content.length} 章`;
@@ -1969,7 +2233,7 @@ function renderOntologyDrill(inst){
         ch.figures.slice(0,20).forEach(fid=>{
           const f = (inst.figure_mentions||[]).find(x=>x.figure_id===fid);
           const n = f?f.name:fid;
-          html += `<span class="od-item fig" onclick="event.stopPropagation(); ontoFilterText('${esc(n)}')">${esc(n)}</span>`;
+          html += `<span class="od-item fig" onclick="event.stopPropagation(); ontoShowEntityWord('${esc(n)}','person')">${esc(n)}</span>`;
         });
         html += `</div></div>`;
       }
@@ -1979,7 +2243,7 @@ function renderOntologyDrill(inst){
         ch.doctrines.slice(0,20).forEach(did=>{
           const c = (inst.doctrine_mentions||[]).find(x=>x.concept_id===did);
           const n = c?c.name:did;
-          html += `<span class="od-item doc" onclick="event.stopPropagation(); ontoFilterText('${esc(n)}')">${esc(n)}</span>`;
+          html += `<span class="od-item doc" onclick="event.stopPropagation(); ontoShowEntityWord('${esc(n)}','concept')">${esc(n)}</span>`;
         });
         html += `</div></div>`;
       }
@@ -2014,7 +2278,7 @@ function renderOntologyDrill(inst){
       <span class="arrow">▶</span><span>👥 人物总览（${(inst.figure_mentions||[]).length}）</span></div>
       <div class="od-sec-body"><div class="od-subgroup" style="padding:8px"><div class="od-items">`;
     figAll.forEach(f=>{
-      html += `<span class="od-item fig" onclick="ontoFilterText('${esc(f.name)}')">${esc(f.name)}<small style="opacity:.6">·${f.mention_count}处</small></span>`;
+      html += `<span class="od-item fig" onclick="ontoShowEntityWord('${esc(f.name)}','person')">${esc(f.name)}<small style="opacity:.6">·${f.mention_count}处</small></span>`;
     });
     html += `</div></div></div></div>`;
   }
@@ -2023,7 +2287,7 @@ function renderOntologyDrill(inst){
       <span class="arrow">▶</span><span>💎 佛理概念（${(inst.doctrine_mentions||[]).length}）</span></div>
       <div class="od-sec-body"><div class="od-subgroup" style="padding:8px"><div class="od-items">`;
     docAll.forEach(c=>{
-      html += `<span class="od-item doc" onclick="ontoFilterText('${esc(c.name)}')">${esc(c.name)}<small style="opacity:.6">·${c.mention_count}处</small></span>`;
+      html += `<span class="od-item doc" onclick="ontoShowEntityWord('${esc(c.name)}','concept')">${esc(c.name)}<small style="opacity:.6">·${c.mention_count}处</small></span>`;
     });
     html += `</div></div></div></div>`;
   }
@@ -2060,7 +2324,7 @@ function ontoJumpToPara(pidInOnto, chIdx){
 }
 function ontoFilterText(text){
   closeOntologyDrill();
-  // 在当前经中高亮查找：用浏览器的搜索不便实现，改为跳转到正文首部并闪一下检索框
+  // 在当前经中高亮查找
   try{
     const found = [...document.querySelectorAll('#sutra-text p.sutra-content')].find(p=>p.textContent.includes(text));
     if(found){
@@ -2069,6 +2333,144 @@ function ontoFilterText(text){
       setTimeout(()=>{found.style.background='';}, 1500);
     }
   }catch(e){}
+}
+// 下钻面板内人物/佛理标签点击：弹出本体实例；若未命中则回退到词查找高亮
+async function ontoShowEntityWord(word, type){
+  event && event.stopPropagation && event.stopPropagation();
+  await loadPronounce();
+  let link = null;
+  // 精确匹配
+  if(ONTO_DICT_TERMS && ONTO_DICT_TERMS[word]) link = ONTO_DICT_TERMS[word];
+  if(!link){
+    // 按类型过滤的前缀/包含匹配
+    for(const w in (ONTO_DICT_TERMS||{})){
+      const L = ONTO_DICT_TERMS[w];
+      if(w===word || (w.includes(word) && (!type || L.ontology_type===type))){ link = L; break; }
+    }
+  }
+  if(link && link.ontology_id){
+    await showEntityById(link.ontology_id, link.ontology_type || type);
+    return;
+  }
+  // 无本体映射 → 回退：词典卡片+经内高亮
+  const term = DICT_MAP && DICT_MAP.get(word);
+  if(term){
+    openEntityPop();
+    showEntityDictFallback(term);
+  }else{
+    ontoFilterText(word);
+  }
+}
+
+// ====== 本体实例详情弹窗（人物/佛理/术语点击） ======
+let ENTITY_CACHE = {}; // oid -> data
+const TYPE_LABEL = {concept:'义理概念',person:'人物·圣众',sect:'宗派',sutra:'经典',category:'部类',event:'事件'};
+const TYPE_PATH  = {concept:'concepts',person:'persons',sect:'sects',sutra:'sutras'};
+function closeEntityPop(){
+  document.getElementById('od-entity-mask')?.classList.remove('open');
+  document.getElementById('od-entity-pop')?.classList.remove('open');
+}
+async function showEntityByWord(word){
+  // 按词从 ONTO_DICT_TERMS / DICT_MAP 找 ontology_id
+  await loadPronounce(); // 确保词典已加载
+  let link = (ONTO_DICT_TERMS && ONTO_DICT_TERMS[word]) || null;
+  if(!link){
+    // 尝试遍历找别名匹配
+    for(const w in (ONTO_DICT_TERMS||{})){
+      if(w===word || w.includes(word) || word.includes(w)){ link = ONTO_DICT_TERMS[w]; break; }
+    }
+  }
+  if(!link){
+    // 无本体映射，显示词典卡片
+    const term = DICT_MAP && DICT_MAP.get(word);
+    if(term) return showEntityDictFallback(term);
+    document.getElementById('od-e-name').textContent = word;
+    document.getElementById('od-e-type').textContent = '词';
+    document.getElementById('od-e-body').innerHTML = `<div class="od-empty">暂未在本体中收录「${esc(word)}」的定义。可使用顶部词典检索查看完整词条。</div>`;
+    document.getElementById('od-e-foot').innerHTML = `<a href="dict.html?q=${encodeURIComponent(word)}" target="_blank">📚 词典检索 →</a><a href="search.html?q=${encodeURIComponent(word)}" target="_blank">🔍 全文检索 →</a>`;
+    openEntityPop();
+    return;
+  }
+  await showEntityById(link.ontology_id, link.ontology_type);
+}
+async function showEntityById(oid, type){
+  openEntityPop();
+  document.getElementById('od-e-name').textContent = oid;
+  document.getElementById('od-e-type').textContent = TYPE_LABEL[type]||type||'';
+  document.getElementById('od-e-body').innerHTML = `<div class="od-loading">加载本体实例中…</div>`;
+  document.getElementById('od-e-foot').innerHTML = '';
+  try{
+    const data = await loadEntityInstance(oid, type);
+    renderEntityPop(data, oid, type);
+  }catch(e){
+    document.getElementById('od-e-body').innerHTML = `<div class="od-empty">本体实例加载失败：${esc(e.message||String(e))}</div>`;
+    document.getElementById('od-e-foot').innerHTML = `<a href="ontology.html#cls=${encodeURIComponent(oid)}" target="_blank">🏛️ 本体总页查看 →</a>`;
+  }
+}
+async function loadEntityInstance(oid, type){
+  if(ENTITY_CACHE[oid]) return ENTITY_CACHE[oid];
+  const folder = TYPE_PATH[type] || (oid.startsWith('c')?'concepts':oid.startsWith('p')?'persons':oid.startsWith('sec')?'sects':'sutras');
+  const r = await fetch(`../ontology/instances/${folder}/${oid}.json`,{cache:'no-cache'});
+  if(!r.ok) throw new Error('HTTP '+r.status);
+  const data = await r.json();
+  ENTITY_CACHE[oid] = data;
+  return data;
+}
+function renderEntityPop(data, oid, type){
+  const name = data.label || data.name || oid;
+  const typeLab = data.type || type || '';
+  document.getElementById('od-e-name').textContent = name;
+  document.getElementById('od-e-type').textContent = TYPE_LABEL[typeLab]||typeLab;
+  const parts = [];
+  // 别名
+  const aliases = data.aliases || [];
+  if(aliases.length){
+    parts.push(`<div class="e-label">别称·异名</div><div class="e-aliases">${aliases.slice(0,12).map(a=>`<span class="e-chip">${esc(a)}</span>`).join('')}</div>`);
+  }
+  // 定义
+  const def = data.definition || data.description || data.summary || data.intro || '';
+  if(def){
+    parts.push(`<div class="e-label">定义</div><div class="e-def">${esc(def.slice(0,500))}${def.length>500?'…':''}</div>`);
+  }
+  // 出处/部派/层级
+  const meta = [];
+  if(data.layer) meta.push(`本体层：${esc(data.layer)}`);
+  if(data.sanskrit || data.sanskrit_name) meta.push(`梵：${esc(data.sanskrit||data.sanskrit_name)}`);
+  if(data.pali) meta.push(`巴：${esc(data.pali)}`);
+  if(data.source_sutra) meta.push(`出处：${esc(Array.isArray(data.source_sutra)?data.source_sutra.join('、'):data.source_sutra)}`);
+  if(data.dynasty) meta.push(`朝代：${esc(data.dynasty)}`);
+  if(meta.length) parts.push(`<div class="e-meta">${meta.join(' · ')}</div>`);
+  // 关系（父/相关概念/人物）
+  const rels = [];
+  (data.parent||[]).forEach(p=>{ if(p.id||p) rels.push({k:'is_a', t:p.id||p, label:p.label||p.id||p}); });
+  (data.related||[]).forEach(r=>{ rels.push({k:'related', t:r.id||r, label:r.label||r.id||r, type:r.type}); });
+  (data.relations||[]).forEach(r=>{ rels.push({k:r.predicate||r.type||'related', t:r.target||r.object||r.to, label:r.target_label||r.label||r.target||r.object}); });
+  if(rels.length){
+    parts.push(`<div class="e-label">本体关系</div><div class="e-rels">`);
+    rels.slice(0,24).forEach(r=>{
+      const rtype = (r.t&&r.t.startsWith('c'))?'concept':(r.t&&r.t.startsWith('p'))?'person':(r.t&&r.t.startsWith('sec'))?'sect':'';
+      parts.push(`<span class="e-chip ${rtype}" onclick="showEntityById('${esc(r.t)}','${rtype}')" title="${esc(r.k)}">${esc(r.label)} <small style="opacity:.6">${esc(r.k)}</small></span>`);
+    });
+    parts.push(`</div>`);
+  }
+  document.getElementById('od-e-body').innerHTML = parts.join('');
+  const foot=[];
+  foot.push(`<a href="ontology.html#cls=${encodeURIComponent(oid)}" target="_blank">🏛️ 本体总页</a>`);
+  const termName = name;
+  foot.push(`<a href="dict.html?q=${encodeURIComponent(termName)}" target="_blank">📚 词典</a>`);
+  foot.push(`<a href="search.html?q=${encodeURIComponent(termName)}" target="_blank">🔍 全文检索</a>`);
+  document.getElementById('od-e-foot').innerHTML = foot.join('');
+}
+function showEntityDictFallback(term){
+  openEntityPop();
+  document.getElementById('od-e-name').textContent = term.name;
+  document.getElementById('od-e-type').textContent = term.category||'词条';
+  document.getElementById('od-e-body').innerHTML = `<div class="e-def">${esc((term.definition||'').slice(0,600))}${(term.definition||'').length>600?'…':''}</div>`;
+  document.getElementById('od-e-foot').innerHTML = `<a href="dict.html?q=${encodeURIComponent(term.name)}" target="_blank">📚 完整词条 →</a>`;
+}
+function openEntityPop(){
+  document.getElementById('od-entity-mask')?.classList.add('open');
+  document.getElementById('od-entity-pop')?.classList.add('open');
 }
 async function loadSutraById(sid){
   const hit = LIGHT_INDEX?.items?.find(x=>x.id===sid);
