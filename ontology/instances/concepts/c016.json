@@ -1,0 +1,24 @@
+{
+  "id": "c016",
+  "layer": "L2",
+  "name": "识蕴",
+  "parent": "c011",
+  "sanskrit": "Vijñāna-skandha",
+  "alias": [
+    "识",
+    "心"
+  ],
+  "definition": "五蕴之一，指了别外境的心识本体，大乘分为六识或八识",
+  "structure": [
+    "六识说：眼耳鼻舌身意",
+    "八识说：加末那识、阿赖耶识"
+  ],
+  "sutra_source": [
+    "《阿含经》（t0001）",
+    "《唯识论》（t1585）"
+  ],
+  "primary_sect": "禅宗",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}
