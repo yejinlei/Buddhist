@@ -1,0 +1,1467 @@
+{
+ "meta": {
+  "version": "1.0.0",
+  "generated_at": "2026-10-29 23:11:06",
+  "generated_by": "scripts/build_ontology_index.py",
+  "structure": "54 类 / 43 关系谓词 / 39 数据属性",
+  "note": "本页统计由脚本扫描原始索引生成；页面加载时会实时重算，本文件为快照与来源元数据。"
+ },
+ "global": {
+  "sutras": 2508,
+  "sutra_files": 2506,
+  "shards": 17,
+  "chapters": 47531,
+  "paragraphs": 781474,
+  "gathas": 10749,
+  "mantras": 1876,
+  "concepts": 221,
+  "persons": 125,
+  "core_sutras": 96,
+  "sects": 8,
+  "kepan": 64,
+  "events": 916,
+  "assemblies": 32,
+  "councils": 6,
+  "transmission_events": 602,
+  "story_events": 276,
+  "relations": 1090
+ },
+ "axes": {
+  "A2": {
+   "classes": 24,
+   "instances": 846576,
+   "active": 12
+  },
+  "A1": {
+   "classes": 24,
+   "instances": 232,
+   "active": 4
+  },
+  "A4": {
+   "classes": 13,
+   "instances": 1897,
+   "active": 6
+  },
+  "A3": {
+   "classes": 16,
+   "instances": 160,
+   "active": 4
+  }
+ },
+ "layers": {
+  "L4": {
+   "classes": 25,
+   "instances": 846209,
+   "active": 10
+  },
+  "L3": {
+   "classes": 10,
+   "instances": 1999,
+   "active": 8
+  },
+  "L1": {
+   "classes": 1,
+   "instances": 221,
+   "active": 1
+  },
+  "L2": {
+   "classes": 1,
+   "instances": 60,
+   "active": 1
+  },
+  "L5": {
+   "classes": 7,
+   "instances": 160,
+   "active": 4
+  },
+  "L6": {
+   "classes": 3,
+   "instances": 0,
+   "active": 0
+  },
+  "L0": {
+   "classes": 7,
+   "instances": 0,
+   "active": 0
+  }
+ },
+ "classes": {
+  "Text": {
+   "id": "Text",
+   "status": "active",
+   "count": 2508,
+   "unit": "部",
+   "coverage": {
+    "have": 2508,
+    "total": 2506,
+    "pct": 100.0
+   },
+   "breakdown": {
+    "经": 1730,
+    "律": 130,
+    "论": 82
+   },
+   "origin": [
+    "ontology/instances/manifest.json",
+    "ontology/instances/t####.json"
+   ],
+   "storage": "ontology/instances/（2506 个 t####.json 平铺）+ ontology/instances/shards/（17 片）",
+   "generator": "scripts/build_all_instances.py → scripts/build_shards.py",
+   "update_cmd": "python3 scripts/build_all_instances.py && python3 scripts/build_shards.py && python3 scripts/build_ontology_index.py",
+   "note": "全藏文本本体，按大正藏经号 t#### 平铺存储，分片用于大文件分发。",
+   "samples": [
+    "amituo_jiumo",
+    "bada_renjue",
+    "fo_yijiao",
+    "instance-links",
+    "jingang_jiumo",
+    "puxian_xingyuan"
+   ],
+   "live_key": "manifest.sutras",
+   "category_field": null
+  },
+  "Sutra": {
+   "id": "Sutra",
+   "status": "active",
+   "count": 1730,
+   "unit": "部",
+   "coverage": {
+    "have": 1730,
+    "total": 2508,
+    "pct": 69.0
+   },
+   "breakdown": {
+    "密教部类": 620,
+    "經集部类": 493,
+    "阿含部类": 161,
+    "般若部类": 96,
+    "寶積部类": 94,
+    "華嚴部类": 83,
+    "法華部类": 81,
+    "涅槃部类": 38,
+    "淨土宗部类": 35,
+    "大集部类": 29
+   },
+   "origin": [
+    "ontology/instances/manifest.json"
+   ],
+   "storage": "ontology/instances/t####.json（category 字段）",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "category 字段含经部类者；部类细分见 breakdown。",
+   "samples": [],
+   "live_key": "manifest.sutras.category",
+   "category_field": null
+  },
+  "Vinaya": {
+   "id": "Vinaya",
+   "status": "active",
+   "count": 130,
+   "unit": "部",
+   "coverage": {
+    "have": 130,
+    "total": 2508,
+    "pct": 5.2
+   },
+   "breakdown": {
+    "律部类": 118,
+    "律部类,敦煌寫本部类": 12
+   },
+   "origin": [
+    "ontology/instances/manifest.json"
+   ],
+   "storage": "ontology/instances/t####.json（category 字段）",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "category 字段含律部类者。",
+   "samples": [],
+   "live_key": "manifest.sutras.category",
+   "category_field": null
+  },
+  "Sastra": {
+   "id": "Sastra",
+   "status": "active",
+   "count": 82,
+   "unit": "部",
+   "coverage": {
+    "have": 82,
+    "total": 2508,
+    "pct": 3.3
+   },
+   "breakdown": {
+    "論集部类": 78,
+    "論集部类,敦煌寫本部类": 4
+   },
+   "origin": [
+    "ontology/instances/manifest.json"
+   ],
+   "storage": "ontology/instances/t####.json（category 字段）",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "category 字段含论/释/疏部类者。",
+   "samples": [],
+   "live_key": "manifest.sutras.category",
+   "category_field": null
+  },
+  "Kepan": {
+   "id": "Kepan",
+   "status": "active",
+   "count": 64,
+   "unit": "部",
+   "coverage": {
+    "have": 64,
+    "total": 2508,
+    "pct": 2.6
+   },
+   "breakdown": {
+    "已建科判": 64,
+    "待补": 2444
+   },
+   "origin": [
+    "kepan/core.json"
+   ],
+   "storage": "kepan/core.json（64 条，键为经号）",
+   "generator": "scripts/build_kepan.py → scripts/extend_kepan.py",
+   "update_cmd": "python3 scripts/extend_kepan.py && python3 scripts/build_ontology_index.py",
+   "note": "科判（序分/正宗分/流通分及品章结构）。补充科判后重跑脚本，本页数字自动更新。",
+   "samples": [
+    "t0251",
+    "t0235",
+    "t0262",
+    "t0279",
+    "t0945",
+    "t0475",
+    "t0366",
+    "t0412"
+   ],
+   "live_key": "kepan.core",
+   "category_field": null
+  },
+  "Chapter": {
+   "id": "Chapter",
+   "status": "active",
+   "count": 47531,
+   "unit": "品/章",
+   "coverage": null,
+   "breakdown": {
+    "含品章之经": null
+   },
+   "origin": [
+    "ontology/instances/manifest.json",
+    "ontology/instances/t####.json（chapters 字段）"
+   ],
+   "storage": "ontology/instances/t####.json 内 chapters 数组；汇总于 manifest.stats",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "品/章级结构节点，来自每部经的科判切分。",
+   "samples": [],
+   "live_key": "manifest.stats.total_chapters",
+   "category_field": null
+  },
+  "Section": {
+   "id": "Section",
+   "status": "active",
+   "count": 781474,
+   "unit": "段落",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/manifest.json",
+    "ontology/instances/t####.json（paragraphs 字段）"
+   ],
+   "storage": "ontology/instances/t####.json 内段落数组；汇总于 manifest.stats",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "段落级文本节点。",
+   "samples": [],
+   "live_key": "manifest.stats.total_paragraphs",
+   "category_field": null
+  },
+  "Gatha": {
+   "id": "Gatha",
+   "status": "active",
+   "count": 10749,
+   "unit": "偈颂",
+   "coverage": {
+    "have": 574,
+    "total": 2508,
+    "pct": 22.9
+   },
+   "breakdown": {
+    "偈颂总数": 10749,
+    "含偈之经": 574
+   },
+   "origin": [
+    "ontology/instances/manifest.json"
+   ],
+   "storage": "ontology/instances/t####.json（gatha 标记）",
+   "generator": "scripts/build_all_instances.py（偈颂识别保守策略）",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "偈颂节点，识别采取“宁可漏判、不可误判”。",
+   "samples": [],
+   "live_key": "manifest.stats.total_gathas",
+   "category_field": null
+  },
+  "Mantra": {
+   "id": "Mantra",
+   "status": "active",
+   "count": 1876,
+   "unit": "咒语",
+   "coverage": {
+    "have": 321,
+    "total": 2508,
+    "pct": 12.8
+   },
+   "breakdown": {
+    "咒语总数": 1876,
+    "含咒之经": 321
+   },
+   "origin": [
+    "ontology/instances/manifest.json"
+   ],
+   "storage": "ontology/instances/t####.json（mantra 标记）",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "咒语节点，按梵音特征 + “莎婆訶”结尾 + “即說咒曰”导语识别。",
+   "samples": [],
+   "live_key": "manifest.stats.total_mantras",
+   "category_field": null
+  },
+  "Commentary": {
+   "id": "Commentary",
+   "status": "field",
+   "count": null,
+   "unit": "部",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/t####.json（cross_links / is_commentary）"
+   ],
+   "storage": "ontology/instances/t####.json；注疏关系见 data/cross-links.json",
+   "generator": "scripts/build_instance_links.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "注疏类，以实例字段与 cross-links 表达，未单列实例目录。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "Translation": {
+   "id": "Translation",
+   "status": "field",
+   "count": null,
+   "unit": "组",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/parallel_translations.json",
+    "ontology/instances/relations.json"
+   ],
+   "storage": "ontology/parallel_translations.json + relation:translation_of",
+   "generator": "scripts/build_instance_links.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "异译译本，以异译分组与 translation_of 关系表达。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "Translator": {
+   "id": "Translator",
+   "status": "field",
+   "count": 65,
+   "unit": "位",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/persons/",
+    "ontology/instances/manifest.json（translator 字段）"
+   ],
+   "storage": "ontology/instances/persons/（category=祖师译经师）+ 每经 translator 字段",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "译者，由人物实例与经文 translator 字段共同承载。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "Genre": {
+   "id": "Genre",
+   "status": "field",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/t####.json（字段）",
+    "ontology/ontology.yaml（枚举定义）"
+   ],
+   "storage": "ontology/instances/t####.json 的对应字段 / ontology.yaml 枚举",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "由实例字段或主档枚举承载，尚无独立实例目录。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "CanonCategory": {
+   "id": "CanonCategory",
+   "status": "field",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/t####.json（字段）",
+    "ontology/ontology.yaml（枚举定义）"
+   ],
+   "storage": "ontology/instances/t####.json 的对应字段 / ontology.yaml 枚举",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "由实例字段或主档枚举承载，尚无独立实例目录。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "Division": {
+   "id": "Division",
+   "status": "field",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/t####.json（字段）",
+    "ontology/ontology.yaml（枚举定义）"
+   ],
+   "storage": "ontology/instances/t####.json 的对应字段 / ontology.yaml 枚举",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "由实例字段或主档枚举承载，尚无独立实例目录。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "Vehicle": {
+   "id": "Vehicle",
+   "status": "field",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/t####.json（字段）",
+    "ontology/ontology.yaml（枚举定义）"
+   ],
+   "storage": "ontology/instances/t####.json 的对应字段 / ontology.yaml 枚举",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "由实例字段或主档枚举承载，尚无独立实例目录。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "Mode": {
+   "id": "Mode",
+   "status": "field",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/t####.json（字段）",
+    "ontology/ontology.yaml（枚举定义）"
+   ],
+   "storage": "ontology/instances/t####.json 的对应字段 / ontology.yaml 枚举",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "由实例字段或主档枚举承载，尚无独立实例目录。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "ThreeBaskets": {
+   "id": "ThreeBaskets",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "三藏结构类，由 Sutra/Vinaya/Sastra 承载。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "Edition": {
+   "id": "Edition",
+   "status": "field",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/t####.json（字段）",
+    "ontology/ontology.yaml（枚举定义）"
+   ],
+   "storage": "ontology/instances/t####.json 的对应字段 / ontology.yaml 枚举",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "由实例字段或主档枚举承载，尚无独立实例目录。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "SourceLanguage": {
+   "id": "SourceLanguage",
+   "status": "field",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/t####.json（字段）",
+    "ontology/ontology.yaml（枚举定义）"
+   ],
+   "storage": "ontology/instances/t####.json 的对应字段 / ontology.yaml 枚举",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "由实例字段或主档枚举承载，尚无独立实例目录。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "TranslationEra": {
+   "id": "TranslationEra",
+   "status": "field",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/t####.json（字段）",
+    "ontology/ontology.yaml（枚举定义）"
+   ],
+   "storage": "ontology/instances/t####.json 的对应字段 / ontology.yaml 枚举",
+   "generator": "scripts/build_all_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "由实例字段或主档枚举承载，尚无独立实例目录。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "Concept": {
+   "id": "Concept",
+   "status": "active",
+   "count": 221,
+   "unit": "个",
+   "coverage": null,
+   "breakdown": {
+    "L1 教理本体": 10,
+    "L2 义理范畴": 60,
+    "L3 宗派行持": 151
+   },
+   "origin": [
+    "ontology/instances/concepts/",
+    "ontology/instances/m2_index.json"
+   ],
+   "storage": "ontology/instances/concepts/c###.json（221 个）",
+   "generator": "scripts/build_m2_instances.py（并入旧 ontology-data.js）",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "M2 义理层概念实例，按 layer 字段分 L1/L2/L3。",
+   "samples": [
+    "c001 法界",
+    "c002 真如",
+    "c003 佛性",
+    "c004 阿赖耶识",
+    "c005 空性",
+    "c006 缘起"
+   ],
+   "live_key": "m2.concepts",
+   "category_field": null
+  },
+  "Doctrine": {
+   "id": "Doctrine",
+   "status": "active",
+   "count": 60,
+   "unit": "个",
+   "coverage": null,
+   "breakdown": {
+    "通途": 49,
+    "大乘通途": 5,
+    "般若系": 1,
+    "唯识宗": 1,
+    "华严宗": 1,
+    "禅宗": 1,
+    "说一切有部": 1,
+    "净土宗": 1
+   },
+   "origin": [
+    "ontology/instances/concepts/"
+   ],
+   "storage": "ontology/instances/concepts/（layer=L2）",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "义理范畴层（L2），含系统化教理范畴。",
+   "samples": [],
+   "live_key": "m2.concepts.L2",
+   "category_field": null
+  },
+  "School": {
+   "id": "School",
+   "status": "active",
+   "count": 8,
+   "unit": "家",
+   "coverage": null,
+   "breakdown": {
+    "宗派": 8
+   },
+   "origin": [
+    "ontology/instances/sects/",
+    "ontology/instances/m2_index.json"
+   ],
+   "storage": "ontology/instances/sects/sec###.json（8 个）",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "",
+   "samples": [
+    "sec001 三论宗",
+    "sec002 唯识宗",
+    "sec003 天台宗",
+    "sec004 华严宗",
+    "sec005 禅宗",
+    "sec006 净土宗",
+    "sec007 律宗",
+    "sec008 密宗"
+   ],
+   "live_key": "m2.sects",
+   "category_field": null
+  },
+  "PanjiaoSystem": {
+   "id": "PanjiaoSystem",
+   "status": "active",
+   "count": 8,
+   "unit": "套",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/sects/",
+    "pages/panjiao.html"
+   ],
+   "storage": "ontology/instances/sects/sec###.json（判教字段）+ pages/panjiao.html",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "判教体系，与宗派实例一体两面。",
+   "samples": [],
+   "live_key": "m2.sects",
+   "category_field": null
+  },
+  "Practice": {
+   "id": "Practice",
+   "status": "field",
+   "count": 151,
+   "unit": "条",
+   "coverage": null,
+   "breakdown": {
+    "唯识宗": 31,
+    "三论宗": 21,
+    "天台宗": 20,
+    "华严宗": 20,
+    "通途": 16,
+    "禅宗": 15,
+    "说一切有部": 7,
+    "净土宗": 5,
+    "大乘通途": 4,
+    "大乘起信论": 4
+   },
+   "origin": [
+    "ontology/instances/concepts/（layer=L3）"
+   ],
+   "storage": "ontology/instances/concepts/（layer=L3 宗派行持层）",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "法门/行持，含于 L3 宗派行持层。",
+   "samples": [],
+   "live_key": "m2.concepts.L3",
+   "category_field": null
+  },
+  "Person": {
+   "id": "Person",
+   "status": "active",
+   "count": 125,
+   "unit": "位",
+   "coverage": {
+    "have": 125,
+    "total": 125,
+    "pct": 100.0
+   },
+   "breakdown": {
+    "历代祖师译经师": 63,
+    "阿罗汉/十大弟子": 24,
+    "菩萨": 15,
+    "佛陀": 11,
+    "现代学者": 9,
+    "民间信仰人物": 3
+   },
+   "origin": [
+    "ontology/instances/persons/",
+    "ontology/instances/m2_index.json"
+   ],
+   "storage": "ontology/instances/persons/p###.json（125 个）",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "",
+   "samples": [
+    "p001 释迦牟尼佛",
+    "p002 阿弥陀佛",
+    "p003 药师佛",
+    "p004 卢舍那佛",
+    "p005 毗卢遮那佛",
+    "p006 燃灯古佛"
+   ],
+   "live_key": "m2.persons",
+   "category_field": null
+  },
+  "Buddha": {
+   "id": "Buddha",
+   "status": "active",
+   "count": 11,
+   "unit": "位",
+   "coverage": {
+    "have": 11,
+    "total": 125,
+    "pct": 8.8
+   },
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/persons/（category 字段）"
+   ],
+   "storage": "ontology/instances/persons/p###.json（category=佛陀）",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "",
+   "samples": [
+    "p001 释迦牟尼佛",
+    "p002 阿弥陀佛",
+    "p003 药师佛",
+    "p004 卢舍那佛",
+    "p005 毗卢遮那佛",
+    "p006 燃灯古佛"
+   ],
+   "live_key": "m2.persons.category",
+   "category_field": null
+  },
+  "Bodhisattva": {
+   "id": "Bodhisattva",
+   "status": "active",
+   "count": 15,
+   "unit": "位",
+   "coverage": {
+    "have": 15,
+    "total": 125,
+    "pct": 12.0
+   },
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/persons/（category 字段）"
+   ],
+   "storage": "ontology/instances/persons/p###.json（category=菩萨）",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "",
+   "samples": [
+    "p101 文殊菩萨",
+    "p102 普贤菩萨",
+    "p103 观世音菩萨",
+    "p104 地藏菩萨",
+    "p105 大势至菩萨",
+    "p106 虚空藏菩萨"
+   ],
+   "live_key": "m2.persons.category",
+   "category_field": null
+  },
+  "Arhat": {
+   "id": "Arhat",
+   "status": "active",
+   "count": null,
+   "unit": "位",
+   "coverage": {
+    "have": null,
+    "total": 125,
+    "pct": 0.0
+   },
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/persons/（category 字段）"
+   ],
+   "storage": "ontology/instances/persons/p###.json（category=阿罗汉）",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "",
+   "samples": [],
+   "live_key": "m2.persons.category",
+   "category_field": null
+  },
+  "Patriarch": {
+   "id": "Patriarch",
+   "status": "active",
+   "count": 0,
+   "unit": "位",
+   "coverage": {
+    "have": 0,
+    "total": 125,
+    "pct": 0.0
+   },
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/persons/（category 字段）"
+   ],
+   "storage": "ontology/instances/persons/p###.json（category=祖师译经师）",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "",
+   "samples": [],
+   "live_key": "m2.persons.category",
+   "category_field": null
+  },
+  "ModernScholar": {
+   "id": "ModernScholar",
+   "status": "active",
+   "count": 9,
+   "unit": "位",
+   "coverage": {
+    "have": 9,
+    "total": 125,
+    "pct": 7.2
+   },
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/persons/（category 字段）"
+   ],
+   "storage": "ontology/instances/persons/p###.json（category=学者）",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "",
+   "samples": [],
+   "live_key": "m2.persons.category",
+   "category_field": null
+  },
+  "Deity": {
+   "id": "Deity",
+   "status": "active",
+   "count": 0,
+   "unit": "位",
+   "coverage": {
+    "have": 0,
+    "total": 125,
+    "pct": 0.0
+   },
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/persons/（category 字段）"
+   ],
+   "storage": "ontology/instances/persons/p###.json（category=神祇）",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "",
+   "samples": [],
+   "live_key": "m2.persons.category",
+   "category_field": null
+  },
+  "FolkFigure": {
+   "id": "FolkFigure",
+   "status": "active",
+   "count": null,
+   "unit": "位",
+   "coverage": {
+    "have": null,
+    "total": 125,
+    "pct": 0.0
+   },
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/persons/（category 字段）"
+   ],
+   "storage": "ontology/instances/persons/p###.json（category=民间信仰）",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "",
+   "samples": [],
+   "live_key": "m2.persons.category",
+   "category_field": null
+  },
+  "Protector": {
+   "id": "Protector",
+   "status": "active",
+   "count": 0,
+   "unit": "位",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/persons/（category=护法）"
+   ],
+   "storage": "ontology/instances/persons/p###.json",
+   "generator": "scripts/build_m2_instances.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "护法类，目前多为法会/经中人名，独立实例待扩。",
+   "samples": [],
+   "live_key": "m2.persons.category",
+   "category_field": null
+  },
+  "Event": {
+   "id": "Event",
+   "status": "active",
+   "count": 916,
+   "unit": "条",
+   "coverage": null,
+   "breakdown": {
+    "法会": 32,
+    "结集": 6,
+    "译经传法": 602,
+    "本生故事": 276
+   },
+   "origin": [
+    "ontology/instances/events.json",
+    "ontology/dharma_assemblies.json"
+   ],
+   "storage": "ontology/instances/events.json + ontology/dharma_assemblies.json",
+   "generator": "scripts/extract_dharma_assemblies.py → scripts/build_events.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "M4 事件层四类事件合计。",
+   "samples": [],
+   "live_key": "events.all",
+   "category_field": null
+  },
+  "DharmaAssembly": {
+   "id": "DharmaAssembly",
+   "status": "active",
+   "count": 32,
+   "unit": "会",
+   "coverage": {
+    "have": 841,
+    "total": 2508,
+    "pct": 33.5
+   },
+   "breakdown": {
+    "法会数": 32,
+    "关联经数": 841
+   },
+   "origin": [
+    "ontology/dharma_assemblies.json"
+   ],
+   "storage": "ontology/dharma_assemblies.json（assemblies 字典，32 会）",
+   "generator": "scripts/extract_dharma_assemblies.py → scripts/build_dharma_assemblies.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "",
+   "samples": [
+    "舍卫国祇树给孤独园法会",
+    "舍卫国逝多林给孤独园法会",
+    "王舍城耆阇崛山法会（灵鹫山法会）",
+    "王舍城迦兰陀竹园法会",
+    "王舍城法会"
+   ],
+   "live_key": "dharma_assemblies",
+   "category_field": null
+  },
+  "Council": {
+   "id": "Council",
+   "status": "active",
+   "count": 6,
+   "unit": "次",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/events.json（councils）"
+   ],
+   "storage": "ontology/instances/events.json → councils 数组（6 条）",
+   "generator": "scripts/build_events.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "",
+   "samples": [
+    "王舍城第一结集（五百结集）",
+    "毗舍离第二结集（七百结集）",
+    "华氏城第三结集",
+    "迦湿弥罗第四结集（说一切有部）",
+    "庐山白莲结社"
+   ],
+   "live_key": "events.councils",
+   "category_field": null
+  },
+  "TransmissionEvent": {
+   "id": "TransmissionEvent",
+   "status": "active",
+   "count": 602,
+   "unit": "件",
+   "coverage": {
+    "have": 2508,
+    "total": 2508,
+    "pct": 100.0
+   },
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/events.json（transmission_events）"
+   ],
+   "storage": "ontology/instances/events.json → transmission_events 数组（602 条）",
+   "generator": "scripts/build_events.py → scripts/finalize_events.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "译经传法事件；失译经统一挂 te_unknown 单一聚合事件，不编造译者。",
+   "samples": [],
+   "live_key": "events.transmission",
+   "category_field": null
+  },
+  "StoryEvent": {
+   "id": "StoryEvent",
+   "status": "active",
+   "count": 276,
+   "unit": "则",
+   "coverage": {
+    "have": 552,
+    "total": 2508,
+    "pct": 22.0
+   },
+   "breakdown": {},
+   "origin": [
+    "ontology/instances/events.json（story_events）"
+   ],
+   "storage": "ontology/instances/events.json → story_events 数组（276 条）",
+   "generator": "scripts/build_events.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "",
+   "samples": [
+    "九色鹿本生（修凡鹿王本生）",
+    "须大拏太子本生",
+    "睒子本生",
+    "萨埵太子舍身饲虎",
+    "长寿王本生"
+   ],
+   "live_key": "events.stories",
+   "category_field": null
+  },
+  "Entity": {
+   "id": "Entity",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "根类，一切本体元素的总类。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "Axis": {
+   "id": "Axis",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "轴元类（四轴定义）。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "Layer": {
+   "id": "Layer",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "层元类（七层定义）。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "OntologyClass": {
+   "id": "OntologyClass",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "类元类（本页所列举的所有类）。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "DatatypeProperty": {
+   "id": "DatatypeProperty",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "数据属性元类。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "ObjectProperty": {
+   "id": "ObjectProperty",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "关系谓词元类。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "Individual": {
+   "id": "Individual",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "个体元类（ABox 实例的总类）。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "SutraPitaka": {
+   "id": "SutraPitaka",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "经藏，由 Sutra 实例承载。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "VinayaPitaka": {
+   "id": "VinayaPitaka",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "律藏，由 Vinaya 实例承载。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "AbhidharmaPitaka": {
+   "id": "AbhidharmaPitaka",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "论藏，由 Sastra 实例承载。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "IntroductoryPart": {
+   "id": "IntroductoryPart",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "序分，由科判结构承载。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "EssentialPart": {
+   "id": "EssentialPart",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "正宗分，由科判结构承载。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "CirculationPart": {
+   "id": "CirculationPart",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "流通分，由科判结构承载。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  },
+  "CulturalElement": {
+   "id": "CulturalElement",
+   "status": "abstract",
+   "count": null,
+   "unit": "",
+   "coverage": null,
+   "breakdown": {},
+   "origin": [
+    "ontology/ontology.yaml"
+   ],
+   "storage": "ontology/ontology.yaml（类定义）",
+   "generator": "scripts/build_ontology.py",
+   "update_cmd": "python3 scripts/build_ontology_index.py",
+   "note": "文化外延元素，L6 外延层，实例待建。",
+   "samples": [],
+   "live_key": null,
+   "category_field": null
+  }
+ },
+ "relations": {
+  "total": 1090,
+  "by_type": {
+   "subdivision": 689,
+   "translated_by": 51,
+   "based_on": 44,
+   "propagates": 24,
+   "parallel_translation": 24,
+   "chujing": 19,
+   "contains": 17,
+   "transmits_dharma_to": 16,
+   "generic": 14,
+   "identity": 10,
+   "quanshi": 9,
+   "sheshu": 9,
+   "yijing": 9,
+   "baohan": 8,
+   "hexin": 8,
+   "subsumption": 8,
+   "disciple_of": 8,
+   "attendant_of": 8,
+   "yichu": 7,
+   "yanshen": 6,
+   "shuofa": 5,
+   "dishi": 5,
+   "tongyi": 4,
+   "root_of": 4,
+   "chuangli": 3,
+   "seal_of": 3,
+   "manifests": 3,
+   "meaning_of": 3,
+   "protects": 3,
+   "duipo": 2,
+   "zao": 2,
+   "huaxian": 2,
+   "essence_of": 2,
+   "truth_of": 2,
+   "practice_of": 2,
+   "stage_of": 2,
+   "function_of": 2,
+   "emanation_of": 2,
+   "synonym": 2,
+   "xiangji": 1,
+   "未分类": 1,
+   "duiying": 1,
+   "duili": 1,
+   "zhengming": 1,
+   "shu": 1,
+   "qianshe": 1,
+   "peihe": 1,
+   "zhushu": 1,
+   "chuancheng": 1,
+   "fayang": 1,
+   "nonduality": 1,
+   "implies": 1,
+   "reveals": 1,
+   "begins_with": 1,
+   "ceases_with": 1,
+   "guided_by": 1,
+   "leads_to": 1,
+   "responds_to": 1,
+   "verifies": 1,
+   "shila_of": 1,
+   "paramita_of": 1,
+   "ultimate_of": 1,
+   "conventional_of": 1,
+   "core_of": 1,
+   "returns_to": 1,
+   "outline_of": 1,
+   "refutes": 1,
+   "depends_on": 1,
+   "arises_from": 1,
+   "contrast_with": 1,
+   "establishes": 1,
+   "mutual_perfuming": 1,
+   "inherent_in": 1,
+   "aspect_of": 1,
+   "relates_to": 1,
+   "instantly_contains": 1,
+   "samadhi_prajna": 1,
+   "elaborates": 1,
+   "gate_of": 1,
+   "metaphor_of": 1,
+   "classifies": 1,
+   "points_to": 1,
+   "school_of": 1,
+   "dharma_of": 1,
+   "provision_of": 1,
+   "birthplace_of": 1,
+   "vow_of": 1,
+   "founds": 1
+  },
+  "storage": "ontology/instances/relations.json",
+  "generator": "scripts/build_m2_instances.py",
+  "origin": [
+   "data/relations-expanded.json",
+   "ontology/instances/relations.json"
+  ]
+ },
+ "sources": [
+  {
+   "path": "ontology/instances/manifest.json",
+   "exists": true,
+   "bytes": 1932394,
+   "mtime": "2026-10-29 20:30:32",
+   "desc": "M3 文本层全量索引"
+  },
+  {
+   "path": "ontology/instances/m2_index.json",
+   "exists": true,
+   "bytes": 82459,
+   "mtime": "2026-10-29 21:08:58",
+   "desc": "M2 义理层轻量索引"
+  },
+  {
+   "path": "ontology/instances/events.json",
+   "exists": true,
+   "bytes": 569008,
+   "mtime": "2026-10-29 20:30:32",
+   "desc": "M4 事件层（结集/传法/故事）"
+  },
+  {
+   "path": "ontology/dharma_assemblies.json",
+   "exists": true,
+   "bytes": 31445,
+   "mtime": "2026-10-29 20:30:32",
+   "desc": "M4 法会索引"
+  },
+  {
+   "path": "ontology/instances/relations.json",
+   "exists": true,
+   "bytes": 226040,
+   "mtime": "2026-10-29 22:22:40",
+   "desc": "M2 关系三元组"
+  },
+  {
+   "path": "ontology/instances/instance-links.json",
+   "exists": true,
+   "bytes": 179634,
+   "mtime": "2026-10-29 16:50:22",
+   "desc": "义理↔文本反向索引"
+  },
+  {
+   "path": "ontology/instances/shard-map.json",
+   "exists": true,
+   "bytes": 50488,
+   "mtime": "2026-10-29 20:31:01",
+   "desc": "实例分片映射"
+  },
+  {
+   "path": "kepan/core.json",
+   "exists": true,
+   "bytes": 177955,
+   "mtime": "2026-10-29 10:53:48",
+   "desc": "科判数据"
+  },
+  {
+   "path": "ontology/tbox_data.json",
+   "exists": true,
+   "bytes": 22959,
+   "mtime": "2026-10-29 22:58:41",
+   "desc": "TBox 结构与关系（交互图）"
+  },
+  {
+   "path": "ontology/ontology.yaml",
+   "exists": true,
+   "bytes": 38797,
+   "mtime": "2026-10-29 21:59:52",
+   "desc": "本体主档（四轴×七层）"
+  }
+ ]
+}
