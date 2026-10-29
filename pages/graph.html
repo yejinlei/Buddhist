@@ -104,7 +104,6 @@
         let CROSS = null;
         let DICT_LINKS = null;  // ontology_id -> link
         let DICT_TERMS = null;  // word -> entry
-        let KEPAN_DATA = null;
         let CUR_VIEW = 'ontology';
         let M2_FOCUS = null;
 
@@ -140,14 +139,60 @@
           return CROSS;
         }
 
-        async function getKepan(){
-          if(!KEPAN_DATA){
+        /* ========== 科判数据（core + shards 按需加载） ========== */
+        let KEPAN_INDEX = null;  // 索引 {meta,sutras}
+        let KEPAN_CORE = null;   // 古德精判 73 部
+        let KEPAN_SHARD_MAP = null;
+        let KEPAN_SHARD_CACHE = {};  // {sid0: {...}, sid1: {...}}
+
+        async function getKepanIndex(){
+          if(!KEPAN_INDEX){
+            try{
+              const r = await fetch('../kepan/index.json',{cache:'no-cache'});
+              KEPAN_INDEX = await r.json();
+            }catch(e){ console.warn('科判索引加载失败',e); KEPAN_INDEX={meta:{},sutras:{}}; }
+          }
+          return KEPAN_INDEX;
+        }
+        async function getKepanCore(){
+          if(!KEPAN_CORE){
             try{
               const r = await fetch('../kepan/core.json',{cache:'no-cache'});
-              KEPAN_DATA = await r.json();
-            }catch(e){ console.warn('科判数据加载失败',e); KEPAN_DATA={}; }
+              KEPAN_CORE = await r.json();
+            }catch(e){ console.warn('科判core加载失败',e); KEPAN_CORE={}; }
           }
-          return KEPAN_DATA;
+          return KEPAN_CORE;
+        }
+        async function getKepanShardMap(){
+          if(!KEPAN_SHARD_MAP){
+            try{
+              const r = await fetch('../kepan/shard-map.json',{cache:'no-cache'});
+              KEPAN_SHARD_MAP = await r.json();
+            }catch(e){ console.warn('科判shard-map加载失败',e); KEPAN_SHARD_MAP={}; }
+          }
+          return KEPAN_SHARD_MAP;
+        }
+        async function loadKepanSutra(sid){
+          // 1. 古德精判优先
+          const core = await getKepanCore();
+          if(core[sid]) return core[sid];
+          // 2. 分片加载
+          const map = await getKepanShardMap();
+          const shardId = map[sid];
+          if(shardId===undefined || shardId===null){
+            // 回退：可能在 core 里用了别的键；尝试按 id 前缀匹配
+            for(const k of Object.keys(core)){
+              if(k===sid || k.replace(/^0*/,'')===sid.replace(/^0*/,'')){ return core[k]; }
+            }
+            return null;
+          }
+          if(!KEPAN_SHARD_CACHE[shardId]){
+            try{
+              const r = await fetch(`../kepan/shards/shard-${String(shardId).padStart(3,'0')}.json`,{cache:'no-cache'});
+              KEPAN_SHARD_CACHE[shardId] = await r.json();
+            }catch(e){ console.warn(`科判分片${shardId}加载失败`,e); KEPAN_SHARD_CACHE[shardId]={}; }
+          }
+          return KEPAN_SHARD_CACHE[shardId][sid] || null;
         }
 
         async function getDict(){
@@ -316,32 +361,56 @@
         let KEPAN_SID = null;
 
         async function initKepanSelect(){
-          const kd = await getKepan();
           const sel = document.getElementById('kepanSutraSelect');
           if(sel.options.length>0) return;
-          const entries = Object.entries(kd).sort((a,b)=>(a[1].title||a[0]).localeCompare(b[1].title||b[0],'zh'));
+          const idx = await getKepanIndex();
+          const sutras = idx.sutras || {};
+          const entries = Object.entries(sutras).sort((a,b)=>{
+            const ta=(a[1].title||a[0]), tb=(b[1].title||b[0]);
+            // 古德精判优先置顶，其余按标题拼音排序
+            const aa = (a[1].ancient==='true'||a[1].ancient===true)?0:1;
+            const bb = (b[1].ancient==='true'||b[1].ancient===true)?0:1;
+            if(aa!==bb) return aa-bb;
+            return ta.localeCompare(tb,'zh');
+          });
+          const optGrpAncient = document.createElement('optgroup');
+          optGrpAncient.label = `📜 古德精判（${idx.meta?.ancient||73}部）`;
+          const optGrpAuto = document.createElement('optgroup');
+          optGrpAuto.label = `📐 结构科判（${(idx.meta?.structural||2433) + (idx.meta?.total||2506)-(idx.meta?.ancient||73)-(idx.meta?.structural||2433)}部，全藏）`;
+          let ancientCount=0, autoCount=0;
           entries.forEach(([sid,s])=>{
             const opt=document.createElement('option');
             opt.value=sid;
-            opt.textContent = (s.title||sid) + ` (${sid})`;
-            sel.appendChild(opt);
+            const ancient = s.ancient==='true'||s.ancient===true;
+            const tag = ancient ? '【古德】' : '';
+            const juan = s.juan ? `·${s.juan}卷` : '';
+            opt.textContent = `${tag}${s.title||sid} (${(s.taisho||sid).toUpperCase()}${juan})`;
+            if(ancient){ optGrpAncient.appendChild(opt); ancientCount++; }
+            else { optGrpAuto.appendChild(opt); autoCount++; }
           });
-          // 默认选 t0251 心经
+          optGrpAncient.label = `📜 古德精判（${ancientCount}部）`;
+          optGrpAuto.label = `📐 结构科判（${autoCount}部，全藏）`;
+          sel.appendChild(optGrpAncient);
+          sel.appendChild(optGrpAuto);
+          // 默认选 t0251 心经（古德）
           sel.value = 't0251';
           KEPAN_SID = 't0251';
           sel.addEventListener('change', ()=>{ KEPAN_SID=sel.value; renderKepan(); });
+          // 首次渲染
+          renderKepan();
         }
 
+        // 选中一部经后异步加载其科判并渲染
         // 递归构建ECharts tree数据
         function buildKepanTree(sid, sutra){
           let nodeCount=0, leafCount=0;
           function walk(item, depth, parentPath){
             nodeCount++;
             const fullPath = parentPath ? parentPath+' → '+item.name : item.name;
-            const kepanId = sid+'__'+item.name;
+            const kepanId = sid+'__'+(item.id||item.name);
             const isRoot = depth===0;
-            const isBig = depth<=1;  // 经名根 / 三大科
-            const isMid = depth===2; // 分科
+            const isBig = depth<=1;
+            const isMid = depth===2;
             let color='#81C784';
             let size=10;
             if(isRoot){ color='#DAA520'; size=36; }
@@ -349,7 +418,7 @@
             else if(isMid){ color='#2E7D32'; size=16; }
             else { color='#81C784'; size=10; leafCount++; }
 
-            const quote = item.content || item.position || item.description || '';
+            const quote = item.content || item.position || item.description || item.summary || '';
             const children = (item.children||[]).map(c=>walk(c, depth+1, fullPath));
             if(children.length===0 && depth>1) leafCount++;
             return {
@@ -366,21 +435,22 @@
               itemStyle: {color: color, borderColor:'#fff', borderWidth: isRoot?2:1},
               symbolSize: size,
               label: {
-                position: isRoot ? 'inside' : (depth<=2?'right':'right'),
+                position: isRoot ? 'inside' : 'right',
                 fontSize: isRoot?15:(isBig?13:(isMid?11:9)),
                 fontWeight: isRoot?'bold':(isBig?600:400),
                 color: isRoot?'#fff':(item.type==='正宗分'?'#8b4513':'#333')
               }
             };
           }
-          const children = (sutra.kepan||[]).map(c=>walk(c,1,c.name));
+          const kepanList = sutra.kepan || sutra.children || [];
+          const children = kepanList.map(c=>walk(c,1,c.name));
           const root = {
             name: sutra.title||sid,
             _sid: sid,
             _sutraTitle: sutra.title,
             _kepanId: sid+'__root',
             _fullPath: sutra.title,
-            _quote: sutra.title,
+            _quote: sutra.summary || sutra.description || '',
             _depth: 0,
             _type: 'root',
             children,
@@ -390,17 +460,35 @@
           };
           return {tree:root, nodeCount: nodeCount+1, leafCount};
         }
+        function countNodes(node){
+          let n=1;
+          (node.children||[]).forEach(c=>n+=countNodes(c));
+          return n;
+        }
 
+        // 选中一部经后异步加载其科判并渲染
         async function renderKepan(){
-          const kd = await getKepan();
+          const sid = KEPAN_SID;
+          if(!sid) return;
+          let chart = echarts.getInstanceByDom(document.getElementById('graphChart'));
+          if(!chart){ chart = echarts.init(document.getElementById('graphChart')); }
+          chart.showLoading({text:'加载中...', color:'#B8860B', textColor:'#8B4513', maskColor:'rgba(255,250,240,0.7)'});
           await getCross();
-          if(!KEPAN_SID) KEPAN_SID='t0251';
-          const sutra = kd[KEPAN_SID];
-          if(!sutra){ document.getElementById('kepanStat').textContent=''; return; }
-          const {tree,nodeCount} = buildKepanTree(KEPAN_SID, sutra);
-          const parallelGrp = (CROSS.sutra_to_parallel && CROSS.sutra_to_parallel[KEPAN_SID]) ? CROSS.sutra_to_parallel[KEPAN_SID][0].group_name : null;
-          const stat = `共 ${nodeCount} 个科判节点 · ${sutra.kepan.length} 大科`;
-          document.getElementById('kepanStat').textContent = stat;
+          const idx = await getKepanIndex();
+          const meta = (idx.sutras||{})[sid] || {title: sid};
+          const sutraData = await loadKepanSutra(sid);
+          chart.hideLoading();
+          if(!sutraData){
+            document.getElementById('kepanStat').textContent = '暂无科判数据';
+            chart.setOption({title:{text:`暂无科判数据：${meta.title||sid}`, left:'center', top:'center', textStyle:{color:'#999', fontSize:14}}, series:[]}, true);
+            return;
+          }
+          const merged = Object.assign({}, meta, sutraData, {title: sutraData.title||meta.title});
+          const {tree,nodeCount} = buildKepanTree(sid, merged);
+          const bigKe = (merged.kepan||merged.children||[]).length;
+          const ancient = meta.ancient==='true'||meta.ancient===true || sutraData.ancient===true;
+          const tag = ancient ? '【古德精判】' : '【结构科判】';
+          document.getElementById('kepanStat').textContent = `${tag} 共 ${nodeCount} 个科判节点 · ${bigKe} 大科${meta.juan?' · '+meta.juan+'卷':''}`;
 
           chart.setOption({
             tooltip:{
@@ -409,7 +497,7 @@
                 const d=p.data;
                 if(!d._fullPath) return d.name;
                 let html = `<b style="color:#8b2500;">${d._fullPath}</b>`;
-                if(d._quote) html += `<br/><span style="color:#555;font-size:12px;">${d._quote.slice(0,100)}${d._quote.length>100?'…':''}</span>`;
+                if(d._quote) html += `<br/><span style="color:#555;font-size:12px;">${String(d._quote).slice(0,100)}${String(d._quote).length>100?'…':''}</span>`;
                 if(d._type!=='root') html += `<br/><span style="color:#888;font-size:11px;">层级：${d._type}${d._juan?' · 卷'+d._juan:''}</span>`;
                 return html;
               }
@@ -433,14 +521,16 @@
               animationDurationUpdate:600
             }]
           },true);
-          // 点击根节点展示总览
+          chart.off('click');
+          chart.on('click', handleKepanClick);
+          // 展示根节点总览
           handleKepanClick({data:tree});
         }
 
+        // 点击科判节点，右侧显示详情
         async function handleKepanClick(p){
           const d = p.data;
-          if(!d._sid) return;
-          await getCross();
+          if(!d) return;
           const sid = d._sid;
           const sutraTitle = d._sutraTitle;
           const kepanId = d._kepanId;
