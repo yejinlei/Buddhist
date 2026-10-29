@@ -2,8 +2,8 @@
   "version": "3.0.0-m4",
   "type": "DharmaAssemblyIndex",
   "description": "M4 事件层·法会实例（DharmaAssembly）",
-  "total": 32,
-  "sutras_linked": 840,
+  "total": 2508,
+  "sutras_linked": 841,
   "assemblies": {
     "da:shewei_jishu": {
       "id": "da:shewei_jishu",
