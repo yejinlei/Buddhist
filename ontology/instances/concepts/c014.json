@@ -1,0 +1,18 @@
+{
+  "id": "c014",
+  "layer": "L2",
+  "name": "想蕴",
+  "parent": "c011",
+  "sanskrit": "Saṃjñā-skandha",
+  "alias": [
+    "想"
+  ],
+  "definition": "五蕴之一，指取境、构划概念、表象的作用",
+  "sutra_source": [
+    "《阿含经》（t0001）"
+  ],
+  "primary_sect": "唯识宗",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}
