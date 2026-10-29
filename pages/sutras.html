@@ -138,6 +138,62 @@
         .ov-link { display:block; padding:5px 8px; border-radius:6px; font-size:13px; color:#3E2723; text-decoration:none; transition:all .12s; border:1px solid transparent; cursor:pointer; }
         .ov-link:hover { background:rgba(184,134,11,.1); border-color:#e5d9c3; color:#8B4513; }
         .ov-link .m { font-size:11px; color:#8B4513; opacity:.65; margin-left:4px; }
+        /* ===== 本体下钻浮层 ===== */
+        #onto-drill-mask { position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:200; opacity:0; pointer-events:none; transition:opacity .25s ease; }
+        #onto-drill-mask.open { opacity:1; pointer-events:auto; }
+        #onto-drill { position:fixed; top:0; right:-520px; width:500px; max-width:92vw; height:100vh; background:#fffaf0; z-index:201; display:flex; flex-direction:column; box-shadow:-6px 0 28px rgba(0,0,0,.25); transition:right .3s ease; }
+        #onto-drill.open { right:0; }
+        #onto-drill .od-head { padding:14px 16px; background:linear-gradient(135deg,#6a3d10,#b8860b); color:#f5edcc; display:flex; align-items:center; gap:10px; }
+        #onto-drill .od-head h3 { margin:0; font-size:17px; font-weight:600; flex:1; }
+        #onto-drill .od-head .od-meta { font-size:12px; opacity:.9; margin-top:3px; }
+        #onto-drill .od-head button { background:none; border:0; color:#f5edcc; font-size:24px; cursor:pointer; min-width:36px; min-height:36px; }
+        #onto-drill .od-stats { display:flex; gap:6px; padding:10px 12px; border-bottom:1px solid #e5d9c3; flex-wrap:wrap; background:#fdf8ec; }
+        #onto-drill .od-stat { font-size:12px; padding:4px 10px; border-radius:12px; background:#fff; border:1px solid #e5d9c3; color:#5d3610; }
+        #onto-drill .od-stat b { color:#b8860b; margin:0 2px; }
+        #onto-drill .od-body { flex:1; overflow-y:auto; padding:8px 6px 16px; }
+        .od-sec { margin:6px 8px; border:1px solid #e5d9c3; border-radius:8px; overflow:hidden; background:#fff; }
+        .od-sec-head { padding:10px 12px; background:linear-gradient(90deg,#f5ecd0,#fffaf0); color:#5d3610; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:14px; user-select:none; }
+        .od-sec-head .arrow { transition:transform .2s; font-size:10px; color:#b8860b; }
+        .od-sec.open .od-sec-head .arrow { transform:rotate(90deg); }
+        .od-sec-head .od-sec-cnt { margin-left:auto; font-size:11px; color:#8b5a2b; opacity:.7; font-weight:400; }
+        .od-sec-body { display:none; padding:4px 0; }
+        .od-sec.open .od-sec-body { display:block; }
+        .od-ch { margin:0; border-top:1px dashed #f0e3c4; }
+        .od-ch:first-child { border-top:0; }
+        .od-ch-head { padding:8px 12px 8px 28px; cursor:pointer; font-size:13px; color:#3e2723; display:flex; align-items:center; gap:6px; }
+        .od-ch-head:hover { background:#fdf8ec; }
+        .od-ch-head .ch-name { flex:1; }
+        .od-ch-head .ch-tags { font-size:11px; display:flex; gap:4px; flex-wrap:wrap; }
+        .od-ch-head .tag { padding:1px 7px; border-radius:8px; font-size:11px; }
+        .od-ch.open .od-ch-head { background:#fbf3dd; color:#5d3610; font-weight:500; }
+        .od-ch-body { display:none; padding:4px 12px 8px 40px; font-size:12px; }
+        .od-ch.open .od-ch-body { display:block; }
+        .tag-gatha { background:#f0e0b0; color:#6a3d10; }
+        .tag-mantra { background:#e6d4f0; color:#4a148c; }
+        .tag-fig { background:#c8e6c9; color:#1b5e20; }
+        .tag-doc { background:#bbdefb; color:#0d47a1; }
+        .tag-para { background:#f5f5f5; color:#555; }
+        .od-subgroup { margin:6px 0; }
+        .od-subgroup-title { font-size:12px; color:#8b5a2b; margin:6px 0 3px; display:flex; align-items:center; gap:6px; }
+        .od-subgroup-title::before { content:''; width:14px; height:1px; background:#d4b878; }
+        .od-items { display:flex; flex-wrap:wrap; gap:4px; }
+        .od-item { padding:3px 8px; border-radius:10px; font-size:11px; cursor:pointer; background:#fff; border:1px solid #e5d9c3; color:#3e2723; transition:all .12s; }
+        .od-item:hover { background:#f5ecd0; border-color:#b8860b; }
+        .od-item.gatha { background:#fbf4df; border-color:#e0c988; }
+        .od-item.mantra { background:#f4ebfa; border-color:#c9a8e2; }
+        .od-item.fig { background:#edf7ee; border-color:#a5d6a7; }
+        .od-item.doc { background:#e8f2fc; border-color:#90caf9; }
+        .od-item.para { background:#f5f5f5; }
+        .od-empty { padding:6px 12px; font-size:12px; color:#999; font-style:italic; }
+        .od-gatha-mantra-item { padding:6px 10px; margin:4px 0; border-radius:6px; font-size:12px; cursor:pointer; border-left:3px solid transparent; transition:all .12s; }
+        .od-gatha-mantra-item:hover { background:#fdf8ec; }
+        .od-gatha-mantra-item.gatha { border-left-color:#b8860b; }
+        .od-gatha-mantra-item.mantra { border-left-color:#7b1fa2; background:#f9f2fd; }
+        .od-gatha-mantra-item .gm-label { font-size:10px; padding:1px 6px; border-radius:8px; margin-right:6px; }
+        .od-gatha-mantra-item.gatha .gm-label { background:#b8860b; color:#fff; }
+        .od-gatha-mantra-item.mantra .gm-label { background:#7b1fa2; color:#fff; }
+        .od-gatha-mantra-item .gm-meter { color:#8b5a2b; font-size:11px; margin-left:4px; }
+        .od-gatha-mantra-item .gm-preview { color:#5d4037; margin-top:2px; line-height:1.5; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -1063,7 +1119,9 @@ function renderOverview(){
 // 1. 页面加载时只拉轻量索引（478KB，秒开）
 async function loadLightIndex() {
     const res = await fetch('../sutras/index-light.json?' + Date.now());
-    allSutras = await res.json();
+    const idx = await res.json();
+    // index-light.json 格式为 {total, total_chars, items:[...]}，兼容旧版纯数组
+    allSutras = Array.isArray(idx) ? idx : (idx.items || []);
     console.log(`轻量索引加载完成：${allSutras.length}部经`);
     document.getElementById('loading-status').textContent = '已就绪';
     document.getElementById('loading-status').className = 'text-xs bg-green-100 text-green-700 px-2 py-1 rounded';
@@ -1074,6 +1132,21 @@ async function loadLightIndex() {
     if (loadParam) {
         const hit = allSutras.find(s => s.file === loadParam || s.id === loadParam || (s.id + '.json') === loadParam);
         if (hit) { loadSutra(hit); opened = true; }
+        else {
+            // 索引未命中（自定义id经如 sishi_erzhang），直接尝试 fetch
+            const tryId = loadParam.replace(/\.json$/i,'');
+            const tryFile = tryId + '.json';
+            fetch('../sutras/' + tryFile).then(r => r.ok ? r.json() : null).then(d => {
+                if(d && d.content){
+                    // 构造临时meta
+                    const meta = {id: d.id||tryId, title: d.title||tryId, file: tryFile,
+                                  translator: d.translator, chars: d.actual_char_count||d.chars,
+                                  category: d.category, vol: d.vol, juan_count: d.juan_count};
+                    loadSutra(meta);
+                } else { ovLoad(); renderOverview(); }
+            }).catch(() => { ovLoad(); renderOverview(); });
+            opened = true;
+        }
     }
     if (!opened) { ovLoad(); renderOverview(); }
 }
@@ -1398,7 +1471,9 @@ async function loadSutra(meta) {
     // 没有缓存就从服务器拉
     if(!sutraData) {
         try {
-            const res = await fetch(`../sutras/${meta.file}?v=2`);
+            // file 字段可能为 null，回退到 id + '.json'
+            const fname = meta.file || (meta.id + '.json');
+            const res = await fetch(`../sutras/${fname}?v=2`);
             sutraData = await res.json();
             // 写入缓存
             try {
@@ -1451,6 +1526,7 @@ async function loadSutra(meta) {
         <div class="read-toolbar">
             <button id="btn-overview" title="返回部类总览"><i class="fa fa-th-large"></i> <span class="rt-label">部类总览</span></button>
             <button id="toc-toggle" title="章节目录"><i class="fa fa-list-ul"></i> <span class="rt-label">章节目录</span></button>
+            <button id="btn-ontology" title="本体下钻（三分→品→段→偈/咒/人物/佛理）"><i class="fa fa-sitemap"></i> <span class="rt-label">本体下钻</span></button>
             <span class="rt-label" style="margin-left:.5rem">字号</span>
             <button data-fs="sm">小</button>
             <button data-fs="md" class="active">中</button>
@@ -1464,6 +1540,19 @@ async function loadSutra(meta) {
         </div>
         <div id="toc-panel" class="hidden mb-4"></div>
         <div id="sutra-text" class="sutra-container"></div>
+        <!-- 本体下钻浮层 -->
+        <div id="onto-drill-mask"></div>
+        <div id="onto-drill">
+            <div class="od-head">
+                <div style="flex:1">
+                    <h3 id="od-title">本体下钻</h3>
+                    <div class="od-meta" id="od-meta"></div>
+                </div>
+                <button id="od-close">×</button>
+            </div>
+            <div class="od-stats" id="od-stats"></div>
+            <div class="od-body" id="od-body"></div>
+        </div>
     `;
     // 绑定阅读工具条
     document.getElementById('btn-overview')?.addEventListener('click', () => { renderOverview(); window.scrollTo({top:0,behavior:'smooth'}); });
@@ -1474,6 +1563,10 @@ async function loadSutra(meta) {
     document.querySelectorAll('.read-toolbar button[data-fs]').forEach(b =>
         b.addEventListener('click', () => applyFs(b.dataset.fs)));
     applyFs(curFs);
+    // 本体下钻按钮绑定
+    document.getElementById('btn-ontology')?.addEventListener('click', openOntologyDrill);
+    document.getElementById('od-close')?.addEventListener('click', closeOntologyDrill);
+    document.getElementById('onto-drill-mask')?.addEventListener('click', closeOntologyDrill);
     // 白话按钮
     document.getElementById('btn-baihua')?.addEventListener('click', toggleBaihua);
     // 若默认开启白话
@@ -1674,6 +1767,260 @@ document.getElementById('btn-kepan')?.addEventListener('click', showKepanPanel);
 // 启动
 loadExtras();
 loadLightIndex();
+
+// ===== 本体下钻（三分→品→段→偈/咒/人物/佛理）=====
+let ontoInstanceCache = {};
+let ontoShardMap = null;
+const ontoShardCache = {};
+async function loadOntologyInstance(id){
+  if(ontoInstanceCache[id]) return ontoInstanceCache[id];
+  if(!ontoShardMap){
+    const r0 = await fetch('../ontology/instances/shard-map.json');
+    if(!r0.ok) throw new Error('本体索引加载失败 HTTP '+r0.status);
+    ontoShardMap = await r0.json();
+  }
+  const sh = ontoShardMap.map[id];
+  if(sh===undefined) throw new Error('未收录该经的本体实例');
+  if(!ontoShardCache[sh]){
+    const r1 = await fetch(`../ontology/instances/shards/shard-${String(sh).padStart(3,'0')}.json`);
+    if(!r1.ok) throw new Error('本体分片加载失败 HTTP '+r1.status);
+    ontoShardCache[sh] = await r1.json();
+  }
+  const inst = ontoShardCache[sh][id];
+  if(!inst) throw new Error('本体分片中缺少该经');
+  ontoInstanceCache[id] = inst;
+  return inst;
+}
+async function openOntologyDrill(){
+  if(!currentSutra) return;
+  const mask = document.getElementById('onto-drill-mask');
+  const panel = document.getElementById('onto-drill');
+  mask.classList.add('open');
+  panel.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // 加载
+  try{
+    const inst = await loadOntologyInstance(currentSutra.id);
+    renderOntologyDrill(inst);
+  }catch(e){
+    document.getElementById('od-body').innerHTML = '<div class="od-empty">本体实例加载失败：'+(e.message||e)+'</div>';
+  }
+}
+function closeOntologyDrill(){
+  document.getElementById('onto-drill-mask')?.classList.remove('open');
+  document.getElementById('onto-drill')?.classList.remove('open');
+  document.body.style.overflow='';
+}
+function renderOntologyDrill(inst){
+  // 头部元信息
+  document.getElementById('od-title').textContent = inst.title || '';
+  const metaBits = [];
+  if(inst.taisho) metaBits.push(inst.taisho);
+  if(inst.translator) metaBits.push(inst.translator);
+  if(inst.juan_count) metaBits.push(inst.juan_count+'卷');
+  metaBits.push(((inst.actual_char_count||0).toLocaleString())+'字');
+  if(inst.vehicle) metaBits.push(inst.vehicle);
+  if(inst.mode && inst.mode!=='显教') metaBits.push(inst.mode);
+  document.getElementById('od-meta').textContent = metaBits.join(' · ');
+
+  // 统计条
+  const xu = inst.kepan?.序分?.length||0;
+  const zh = inst.kepan?.正宗分?.length||0;
+  const li = inst.kepan?.流通分?.length||0;
+  document.getElementById('od-stats').innerHTML =
+    `<span class="od-stat">序分<b>${xu}</b></span>
+     <span class="od-stat">正宗分<b>${zh}</b></span>
+     <span class="od-stat">流通分<b>${li}</b></span>
+     <span class="od-stat">章<b>${(inst.chapters||[]).length}</b></span>
+     <span class="od-stat">段<b>${(inst.paragraphs||[]).length}</b></span>
+     <span class="od-stat">偈<b>${(inst.gathas||[]).length}</b></span>
+     <span class="od-stat">咒<b>${(inst.mantras||[]).length}</b></span>
+     <span class="od-stat">人物<b>${(inst.figure_mentions||[]).length}</b></span>
+     <span class="od-stat">佛理<b>${(inst.doctrine_mentions||[]).length}</b></span>`;
+
+  // 建立章id→章对象、段id→段对象映射
+  const chById = {}; (inst.chapters||[]).forEach(c=>chById[c.id]=c);
+  const pById = {}; (inst.paragraphs||[]).forEach(p=>pById[p.id]=p);
+  const gById = {}; (inst.gathas||[]).forEach(g=>gById[g.id]=g);
+  const mById = {}; (inst.mantras||[]).forEach(m=>mById[m.id]=m);
+  // 章→在 content 数组中的索引（用于 jumpToChapter）
+  const chIdxById = {};
+  (inst.chapters||[]).forEach((c,i)=>chIdxById[c.id]=i);
+
+  const body = document.getElementById('od-body');
+  const sections = [
+    {key:'序分', label:'📜 序分', klass:'xu', color:'#6a8e3b'},
+    {key:'正宗分', label:'📖 正宗分', klass:'zh', color:'#b8860b'},
+    {key:'流通分', label:'🎉 流通分', klass:'li', color:'#0277bd'}
+  ];
+  let html = '';
+  sections.forEach((sec,secIdx)=>{
+    const chIds = inst.kepan?.[sec.key]||[];
+    if(chIds.length===0 && sec.key!=='正宗分') return; // 空序/流不展示
+    html += `<div class="od-sec open" data-sec="${sec.key}">
+      <div class="od-sec-head" onclick="this.parentNode.classList.toggle('open')">
+        <span class="arrow">▶</span>
+        <span>${sec.label}</span>
+        <span class="od-sec-cnt">${chIds.length} 章</span>
+      </div>
+      <div class="od-sec-body">`;
+    chIds.forEach(cid=>{
+      const ch = chById[cid]; if(!ch) return;
+      const chIdx = chIdxById[cid];
+      const paraCnt = (ch.paragraphs||[]).length;
+      const gCnt = (ch.gathas||[]).length;
+      const mCnt = (ch.mantras||[]).length;
+      const fCnt = (ch.figures||[]).length;
+      const dCnt = (ch.doctrines||[]).length;
+      let tags = `<span class="tag tag-para">${paraCnt}段</span>`;
+      if(gCnt) tags += `<span class="tag tag-gatha">${gCnt}偈</span>`;
+      if(mCnt) tags += `<span class="tag tag-mantra">${mCnt}咒</span>`;
+      if(fCnt) tags += `<span class="tag tag-fig">${fCnt}人</span>`;
+      if(dCnt) tags += `<span class="tag tag-doc">${dCnt}理</span>`;
+      html += `<div class="od-ch" data-cid="${cid}" data-chidx="${chIdx}">
+        <div class="od-ch-head" onclick="ontoToggleCh(this)">
+          <span class="arrow" style="font-size:10px;color:#b8860b;transition:transform .2s">▶</span>
+          <span class="ch-name">${ch.chapter_no}. ${esc(ch.chapter_title)}</span>
+          <span class="ch-tags">${tags}</span>
+        </div>
+        <div class="od-ch-body">`;
+
+      // 偈颂
+      if(gCnt>0){
+        html += `<div class="od-subgroup"><div class="od-subgroup-title">偈颂</div>`;
+        ch.gathas.forEach(gid=>{
+          const g = gById[gid]; if(!g) return;
+          html += `<div class="od-gatha-mantra-item gatha" onclick="ontoJumpToChapter(${chIdx})">
+            <span class="gm-label">偈</span><span>${esc(g.text_preview.replace(/[「」]/g,'').slice(0,50))}${g.text_preview.length>50?'…':''}</span>
+            <span class="gm-meter">· ${g.meter||''}</span>
+            <div class="gm-preview">${esc(g.text_preview.slice(0,80))}${g.text_preview.length>80?'…':''}</div>
+          </div>`;
+        });
+        html += `</div>`;
+      }
+      // 咒语
+      if(mCnt>0){
+        html += `<div class="od-subgroup"><div class="od-subgroup-title">咒语</div>`;
+        ch.mantras.forEach(mid=>{
+          const m = mById[mid]; if(!m) return;
+          html += `<div class="od-gatha-mantra-item mantra" onclick="ontoJumpToChapter(${chIdx})">
+            <span class="gm-label">咒</span><span>${esc(m.name)}</span>
+            <div class="gm-preview">${esc(m.text_preview.slice(0,80))}${m.text_preview.length>80?'…':''}</div>
+          </div>`;
+        });
+        html += `</div>`;
+      }
+      // 人物
+      if(fCnt>0){
+        html += `<div class="od-subgroup"><div class="od-subgroup-title">出场人物</div><div class="od-items">`;
+        ch.figures.slice(0,20).forEach(fid=>{
+          const f = (inst.figure_mentions||[]).find(x=>x.figure_id===fid);
+          const n = f?f.name:fid;
+          html += `<span class="od-item fig" onclick="event.stopPropagation(); ontoFilterText('${esc(n)}')">${esc(n)}</span>`;
+        });
+        html += `</div></div>`;
+      }
+      // 佛理
+      if(dCnt>0){
+        html += `<div class="od-subgroup"><div class="od-subgroup-title">阐发佛理</div><div class="od-items">`;
+        ch.doctrines.slice(0,20).forEach(did=>{
+          const c = (inst.doctrine_mentions||[]).find(x=>x.concept_id===did);
+          const n = c?c.name:did;
+          html += `<span class="od-item doc" onclick="event.stopPropagation(); ontoFilterText('${esc(n)}')">${esc(n)}</span>`;
+        });
+        html += `</div></div>`;
+      }
+      // 段列表前N段预览
+      const paras = ch.paragraphs||[];
+      const showParas = paras.slice(0,8);
+      if(showParas.length>0){
+        html += `<div class="od-subgroup"><div class="od-subgroup-title">段落预览${paras.length>8?`（前${showParas.length}/${paras.length}）`:''}</div><div>`;
+        showParas.forEach((pid,pi)=>{
+          const p = pById[pid]; if(!p) return;
+          let pcls = 'para';
+          if(p.section_type==='偈颂') pcls='gatha';
+          else if(p.section_type==='咒语') pcls='mantra';
+          const preview = p.text_preview.replace(/[「」]/g,'').slice(0,40);
+          html += `<div class="od-gatha-mantra-item ${pcls}" style="padding:4px 8px;margin:2px 0" onclick="ontoJumpToPara('${p.id}',${chIdx})">
+            <span style="font-size:10px;color:#999;margin-right:6px">#${p.para_no}</span>
+            <span class="gm-preview" style="margin-top:0">${esc(preview)}${p.text_preview.length>40?'…':''}</span>
+          </div>`;
+        });
+        html += `</div></div>`;
+      }
+      html += `</div></div>`;
+    });
+    html += `</div></div>`;
+  });
+
+  // 全经人物/佛理
+  const figAll = (inst.figure_mentions||[]).slice(0,30);
+  const docAll = (inst.doctrine_mentions||[]).slice(0,30);
+  if(figAll.length>0){
+    html += `<div class="od-sec open"><div class="od-sec-head" onclick="this.parentNode.classList.toggle('open')">
+      <span class="arrow">▶</span><span>👥 人物总览（${(inst.figure_mentions||[]).length}）</span></div>
+      <div class="od-sec-body"><div class="od-subgroup" style="padding:8px"><div class="od-items">`;
+    figAll.forEach(f=>{
+      html += `<span class="od-item fig" onclick="ontoFilterText('${esc(f.name)}')">${esc(f.name)}<small style="opacity:.6">·${f.mention_count}处</small></span>`;
+    });
+    html += `</div></div></div></div>`;
+  }
+  if(docAll.length>0){
+    html += `<div class="od-sec"><div class="od-sec-head" onclick="this.parentNode.classList.toggle('open')">
+      <span class="arrow">▶</span><span>💎 佛理概念（${(inst.doctrine_mentions||[]).length}）</span></div>
+      <div class="od-sec-body"><div class="od-subgroup" style="padding:8px"><div class="od-items">`;
+    docAll.forEach(c=>{
+      html += `<span class="od-item doc" onclick="ontoFilterText('${esc(c.name)}')">${esc(c.name)}<small style="opacity:.6">·${c.mention_count}处</small></span>`;
+    });
+    html += `</div></div></div></div>`;
+  }
+  // 异译/部类
+  html += `<div class="od-sec"><div class="od-sec-head" onclick="this.parentNode.classList.toggle('open')">
+    <span class="arrow">▶</span><span>🔗 相关信息</span></div>
+    <div class="od-sec-body" style="padding:10px 14px;font-size:12px;color:#5d4037;line-height:1.8">`;
+  if(inst.belongs_to_school && inst.belongs_to_school.length){
+    html += `<div>所宗：${inst.belongs_to_school.map(s=>`<span class="tag tag-doc" style="margin-right:4px">${esc(s)}</span>`).join('')}</div>`;
+  }
+  if(inst.parallel_translations && inst.parallel_translations.length){
+    html += `<div>同经异译：${inst.parallel_translations.map(pid=>{
+      return `<span class="od-item para" style="margin:2px" onclick="closeOntologyDrill();loadSutraById('${esc(pid)}')">${esc(pid)}</span>`;
+    }).join('')}</div>`;
+  }
+  html += `<div style="margin-top:6px;opacity:.7">译地：${esc(inst.translation_place||'—')} · 部类：${esc(inst.category||'—')}</div>`;
+  html += `</div></div>`;
+
+  body.innerHTML = html;
+}
+function ontoToggleCh(el){
+  const ch = el.closest('.od-ch');
+  ch.classList.toggle('open');
+  const arr = el.querySelector('.arrow');
+  if(arr) arr.style.transform = ch.classList.contains('open')?'rotate(90deg)':'';
+}
+function ontoJumpToChapter(chIdx){
+  closeOntologyDrill();
+  jumpToChapter(chIdx);
+}
+function ontoJumpToPara(pidInOnto, chIdx){
+  // 段id格式是 p00001，与前端pid格式 p_tXXX_cY_pZ不同；改用章跳转+搜索
+  ontoJumpToChapter(chIdx);
+}
+function ontoFilterText(text){
+  closeOntologyDrill();
+  // 在当前经中高亮查找：用浏览器的搜索不便实现，改为跳转到正文首部并闪一下检索框
+  try{
+    const found = [...document.querySelectorAll('#sutra-text p.sutra-content')].find(p=>p.textContent.includes(text));
+    if(found){
+      found.scrollIntoView({behavior:'smooth', block:'center'});
+      found.style.background='#fff3a8';
+      setTimeout(()=>{found.style.background='';}, 1500);
+    }
+  }catch(e){}
+}
+async function loadSutraById(sid){
+  const hit = LIGHT_INDEX?.items?.find(x=>x.id===sid);
+  if(hit) await loadSutra(hit);
+}
 </script>
     <script src="../js/reading-aid.js"></script>
     <script src="../js/mobile-nav.js"></script>
