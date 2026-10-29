@@ -4700,7 +4700,7 @@
   "kepan": [
    {
     "name": "全书总纲——释《大品般若经》",
-    "type": "总序",
+    "type": "序分",
     "description": "论释《摩诃般若波罗蜜经》，共一百卷，般若中观根本论典",
     "children": [
      {
@@ -4712,8 +4712,7 @@
       "content": "世界悉檀、各各为人悉檀、对治悉檀、第一义悉檀——如来以四悉檀说法"
      }
     ],
-    "ancient": true,
-    "auto": false
+    "ancient": true
    },
    {
     "name": "正宗分——释六波罗蜜",
@@ -4782,15 +4781,11 @@
      }
     ],
     "ancient": true,
-    "auto": false
+    "auto": false,
+    "type": "流通分"
    }
   ],
   "meaning_points": [
-   {
-    "text": "重点核心经典",
-    "source": "tag",
-    "priority": "high"
-   },
    {
     "text": "十八界",
     "source": "keyword"
@@ -4820,7 +4815,8 @@
     "source": "doctrine",
     "cid": "c027"
    }
-  ]
+  ],
+  "genre": "论典"
  },
  "t1558": {
   "title": "阿毘達磨俱舍論",
@@ -4841,7 +4837,7 @@
      }
     ],
     "ancient": true,
-    "auto": false
+    "type": "序分"
    },
    {
     "name": "正宗分——八品",
@@ -4897,7 +4893,8 @@
      }
     ],
     "ancient": true,
-    "auto": false
+    "auto": false,
+    "type": "流通分"
    }
   ],
   "meaning_points": [
@@ -4930,7 +4927,8 @@
     "source": "doctrine",
     "cid": "c043"
    }
-  ]
+  ],
+  "genre": "论典"
  },
  "t1564": {
   "title": "中論",
@@ -5100,7 +5098,7 @@
      }
     ],
     "ancient": true,
-    "auto": false
+    "type": "序分"
    },
    {
     "name": "正宗分——十二门观空",
@@ -5193,7 +5191,8 @@
     "text": "佛性",
     "source": "keyword"
    }
-  ]
+  ],
+  "genre": "论典"
  },
  "t1569": {
   "title": "百論",
@@ -5312,116 +5311,22 @@
   "auto": false,
   "kepan": [
    {
-    "name": "总序——五分结构",
-    "description": "全论一百卷，分本地分、摄决择分、摄释分、摄异门分、摄事分五分",
-    "children": [
-     {
-      "name": "本地分：十七地",
-      "type": "正宗分",
-      "children": [
-       {
-        "name": "一、五识身相应地",
-        "content": "前五识及心所法"
-       },
-       {
-        "name": "二、意地",
-        "content": "第六意识、第七末那识、第八阿赖耶识"
-       },
-       {
-        "name": "三、有寻有伺地",
-        "content": "初静虑未至定及初静虑近分——有寻有伺"
-       },
-       {
-        "name": "四、无寻唯伺地",
-        "content": "中间静虑"
-       },
-       {
-        "name": "五、无寻无伺地",
-        "content": "第二静虑以上一切等至"
-       },
-       {
-        "name": "六、三摩呬多地",
-        "content": "四静虑、四无色、三等持等至等一切定地"
-       },
-       {
-        "name": "七、非三摩呬多地",
-        "content": "不定地，散心位"
-       },
-       {
-        "name": "八、有心地",
-        "content": "六位中心起位"
-       },
-       {
-        "name": "九、无心地",
-        "content": "六位心断位：睡眠、闷绝、无想定、无想果、灭尽定、无余涅槃"
-       },
-       {
-        "name": "十、闻所成地",
-        "content": "五明处：内明、因明、声明、医方明、工巧明"
-       },
-       {
-        "name": "十一、思所成地",
-        "content": "如理思惟，简择诸法"
-       },
-       {
-        "name": "十二、修所成地",
-        "content": "暖顶忍世第一法；四沙门果；三界九地修证次第"
-       },
-       {
-        "name": "十三、声闻地",
-        "content": "声闻乘种姓、修行、证果"
-       },
-       {
-        "name": "十四、独觉地",
-        "content": "独觉乘种姓、修行、证果"
-       },
-       {
-        "name": "十五、菩萨地",
-        "children": [
-         {
-          "name": "四持：持、任持、助持、住持",
-          "content": "菩萨种姓、发心、修行、菩提分法"
-         },
-         {
-          "name": "六度四摄",
-          "content": "布施、持戒、忍辱、精进、静虑、般若；布施、爱语、利行、同事"
-         }
-        ]
-       },
-       {
-        "name": "十六、有余依地",
-        "content": "证阿罗汉后，残余依身"
-       },
-       {
-        "name": "十七、无余依地",
-        "content": "入无余涅槃界"
-       }
-      ]
-     },
-     {
-      "name": "后四分",
-      "children": [
-       {
-        "name": "摄决择分",
-        "content": "决择十七地深义"
-       },
-       {
-        "name": "摄释分",
-        "content": "解释诸经仪则"
-       },
-       {
-        "name": "摄异门分",
-        "content": "诸法异门名义"
-       },
-       {
-        "name": "摄事分",
-        "content": "三藏要事，摄契经、调伏、本母"
-       }
-      ]
-     }
-    ],
-    "ancient": true,
-    "auto": false
+    "name": "序分——论首",
+    "type": "序分",
+    "description": "论典体例，论首归敬。弥勒菩萨说、无著菩萨记，彌勒菩薩說　唐 玄奘譯译",
+    "children": []
+   },
+   {
+    "name": "正宗分——五分十七地",
+    "type": "正宗分",
+    "description": "本地分（十七地）·摄决择分·摄释分·摄异门分·摄事分",
+    "children": []
+   },
+   {
+    "name": "流通分（论典体例）",
+    "type": "流通分",
+    "description": "论典不设经式流通分；论末以回向付嘱结",
+    "children": []
    }
   ],
   "meaning_points": [
@@ -5459,7 +5364,8 @@
     "source": "doctrine",
     "cid": "c027"
    }
-  ]
+  ],
+  "genre": "论典"
  },
  "t1585": {
   "title": "成唯識論",
@@ -5627,8 +5533,7 @@
       "content": "阿毗达磨大乘经中，由十相殊胜语，显大乘是佛说"
      }
     ],
-    "ancient": true,
-    "auto": false
+    "ancient": true
    },
    {
     "name": "正宗分——十一分",
@@ -5690,6 +5595,12 @@
     ],
     "ancient": true,
     "auto": false
+   },
+   {
+    "name": "流通分（论典体例）",
+    "type": "流通分",
+    "description": "论典不设经式流通分；论末以回向付嘱结",
+    "children": []
    }
   ],
   "meaning_points": [
@@ -5722,7 +5633,8 @@
     "source": "doctrine",
     "cid": "c030"
    }
-  ]
+  ],
+  "genre": "论典"
  },
  "t1612": {
   "title": "大乘五蘊論",
@@ -6201,8 +6113,7 @@
       "content": "以五聚料简大乘佛法：教法、义法、修法、护法、果法"
      }
     ],
-    "ancient": true,
-    "auto": false
+    "ancient": true
    },
    {
     "name": "正宗分——五聚",
@@ -6257,6 +6168,12 @@
     ],
     "ancient": true,
     "auto": false
+   },
+   {
+    "name": "流通分（论典体例）",
+    "type": "流通分",
+    "description": "论典不设经式流通分；论末以回向付嘱结",
+    "children": []
    }
   ],
   "meaning_points": [
@@ -6299,7 +6216,8 @@
     "source": "doctrine",
     "cid": "c022"
    }
-  ]
+  ],
+  "genre": "论典"
  },
  "t1881": {
   "title": "華嚴經金師子章註",
@@ -6320,8 +6238,7 @@
       "content": "法藏为则天武后讲华严，指殿前金师子为喻，说缘起法界"
      }
     ],
-    "ancient": true,
-    "auto": false
+    "ancient": true
    },
    {
     "name": "正宗分——十门",
@@ -6375,6 +6292,12 @@
     ],
     "ancient": true,
     "auto": false
+   },
+   {
+    "name": "流通分（论典体例）",
+    "type": "流通分",
+    "description": "论典不设经式流通分；论末以回向付嘱结",
+    "children": []
    }
   ],
   "meaning_points": [
@@ -6402,7 +6325,8 @@
     "text": "真如",
     "source": "keyword"
    }
-  ]
+  ],
+  "genre": "论典"
  },
  "t1911": {
   "title": "摩訶止觀",
@@ -6423,8 +6347,7 @@
       "content": "发大心、修大行、感大果、裂大网、归大处；此五略统十广"
      }
     ],
-    "ancient": true,
-    "auto": false
+    "ancient": true
    },
    {
     "name": "正宗分——十广章",
@@ -6519,6 +6442,12 @@
     ],
     "ancient": true,
     "auto": false
+   },
+   {
+    "name": "流通分（论典体例）",
+    "type": "流通分",
+    "description": "论典不设经式流通分；论末以回向付嘱结",
+    "children": []
    }
   ],
   "meaning_points": [
@@ -6551,7 +6480,8 @@
     "source": "doctrine",
     "cid": "c038"
    }
-  ]
+  ],
+  "genre": "论典"
  },
  "t1931": {
   "title": "天台四教儀",
@@ -6572,8 +6502,7 @@
       "content": "南三北七，天台立五时八教，为判教正轨"
      }
     ],
-    "ancient": true,
-    "auto": false
+    "ancient": true
    },
    {
     "name": "一、五时",
@@ -6624,7 +6553,8 @@
      }
     ],
     "ancient": true,
-    "auto": false
+    "auto": false,
+    "type": "正宗分"
    },
    {
     "name": "三、化法四教",
@@ -6647,7 +6577,8 @@
      }
     ],
     "ancient": true,
-    "auto": false
+    "auto": false,
+    "type": "正宗分"
    },
    {
     "name": "四、六即",
@@ -6658,7 +6589,14 @@
      }
     ],
     "ancient": true,
-    "auto": false
+    "auto": false,
+    "type": "正宗分"
+   },
+   {
+    "name": "流通分（论典体例）",
+    "type": "流通分",
+    "description": "论典不设经式流通分；论末以回向付嘱结",
+    "children": []
    }
   ],
   "meaning_points": [
@@ -6691,7 +6629,8 @@
     "source": "doctrine",
     "cid": "c049"
    }
-  ]
+  ],
+  "genre": "论典"
  },
  "t2003": {
   "title": "佛果圜悟禪師碧巖錄",
