@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "version": "3.1.0-M2",
+    "generated_at": "2026-10-29",
+    "layer": "M2_ABox"
+  },
+  "counts": {
+    "concepts": 216,
+    "concepts_L1": 10,
+    "concepts_L2": 60,
+    "concepts_L3": 146,
+    "persons": 125,
+    "core_sutras": 95,
+    "sects": 8,
+    "relations": 1092
+  },
+  "id_spaces": {
+    "concepts": "c001-c216",
+    "persons": "p001-p505",
+    "sutras": "s001-s095",
+    "sects": "sec001-sec008"
+  }
+}
