@@ -76,12 +76,15 @@ def main():
     result = {
         'meta': {
             'generated_at': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'ontology_version': '3.0.0',
+            'structure': '四轴 × 七层',
             'total_texts': total,
             'concepts_with_texts': len(concept_texts),
             'figures_with_texts': len(figure_texts),
             'schools_with_texts': len(school_texts),
             'categories_with_texts': len(category_texts),
-            'note': 'concept/figure id 与 data/*-expanded.json 完全对齐，无悬空引用。',
+            'events': 0,
+            'note': 'concept/figure id 与 data/*-expanded.json 完全对齐，无悬空引用。事件轴（DharmaAssembly/StoryEvent/TransmissionEvent/Council）实例待 M4 填充，当前 events=0。',
         },
         'concept': pack(concept_texts, concepts),
         'figure': pack(figure_texts, persons),

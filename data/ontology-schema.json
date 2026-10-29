@@ -2,80 +2,138 @@
   "meta": {
     "name": "佛学本体论",
     "english_name": "Buddhist Ontology",
-    "version": "2.0.0",
+    "version": "3.0.0",
+    "structure": "四轴 × 七层",
     "namespace": "https://yejinlei.github.io/Buddhist/ontology#",
     "prefix": "bc",
+    "source_namespace": "https://ontology.doubao/buddhist-canon#",
+    "source_version": "佛经三藏体系本体构建方案 v1.0（四轴骨架）+ 仓库初始七层稿（L0–L6 层级）",
     "basis": "大正新修大藏经（CBETA）",
     "license": "MIT",
-    "description": "以大正藏为语料基础构建的七层佛学知识本体，统一描述义理概念、修行范畴、 宗派体系、文本载体、人物传承与信仰文化外延，并把全藏 2506 部经文的 科判结构（三分→品→段→偈/咒）挂接为文本层实例。",
+    "description": "融合四轴骨架（分类 / 内容 / 人物 / 事件）与七层抽象层级（L0–L6）的佛学知识本体， 统一描述三藏分类、义理概念、宗派判教、典籍结构（科判→品→段→偈/咒）、人物传承、 法会事件、译经版本与文化外延，并把全藏 2506 部经文挂接为文本层实例。",
     "id_convention": {
       "concept": "c###  （对应 data/concepts-expanded.json）",
       "person": "p###  （对应 data/persons-expanded.json）",
-      "sutra": "s###  （对应 data/sutras-expanded.json）",
       "school": "sec###",
-      "text_instance": "t#### （对应 ontology/instances 文本实例）"
+      "sutra_meta": "s###  （对应 data/sutras-expanded.json，义理层元数据）",
+      "text_instance": "t#### （对应 ontology/instances 文本实例，CBETA 大正藏经号）",
+      "event": "e###"
+    },
+    "process": {
+      "phases": [
+        "M1 骨架定版（本主档）",
+        "M2 义理层实例填充（concepts/persons/sects/relations）",
+        "M3 全量文本实例挂接（ontology/instances 2506 部，已完成）",
+        "M4 事件层实例填充（法会/本生/译经/结集）",
+        "M5 应用层（图谱/检索/RAG 问答）"
+      ],
+      "quality_checks": [
+        "引文逐句回原典核对",
+        "类层级无环、关系对称/逆元一致",
+        "实例 id 唯一、无悬空引用",
+        "偈/咒/人物/佛理标引可回原典定位",
+        "异译组经号与大正藏目录一致",
+        "判教体系与宗派依经有据"
+      ]
     }
   },
+  "axes": [
+    {
+      "id": "A1",
+      "key": "classification",
+      "name": "横向分类轴",
+      "description": "三藏 → 部类 → 乘 → 显密 → 宗派 → 判教 → 版本。回答这部经属于哪一类。"
+    },
+    {
+      "id": "A2",
+      "key": "content",
+      "name": "纵向内容轴",
+      "description": "教理 → 典籍 → 科判 → 品章 → 段落 → 偈/咒。回答在讲什么、结构怎样。"
+    },
+    {
+      "id": "A3",
+      "key": "person",
+      "name": "人物传承轴",
+      "description": "佛 → 菩萨 → 声闻 → 护法 → 祖师 → 学者。回答谁在讲、谁传承。"
+    },
+    {
+      "id": "A4",
+      "key": "event",
+      "name": "事件缘起轴",
+      "description": "法会 → 本事本生 → 译经传法 → 结集。回答在何时何地何缘何会讲。"
+    }
+  ],
   "layers": [
     {
       "id": "L0",
       "key": "metamodel",
       "name": "元模型层",
-      "description": "描述本体所用的元语言：层、类、属性、关系、实例。"
+      "description": "描述本体所用的元语言：轴、层、类、属性、关系、实例。"
     },
     {
       "id": "L1",
       "key": "doctrine_core",
       "name": "教理本体层",
-      "description": "佛学最顶层的形而上学核心概念。"
+      "description": "佛学最顶层的形而上学核心概念（真如、佛性、空性、法身…）。"
     },
     {
       "id": "L2",
       "key": "doctrine_category",
       "name": "义理范畴层",
-      "description": "佛学核心修行与分析框架。"
+      "description": "佛学核心修行与分析框架（五蕴、十二缘起、四圣谛、二谛…）。"
     },
     {
       "id": "L3",
       "key": "school_system",
       "name": "宗派体系层",
-      "description": "各宗派及其判教体系。"
+      "description": "各宗派及其判教体系，以及法门、乘、显密等教法分类。"
     },
     {
       "id": "L4",
       "key": "text",
       "name": "文本载体层",
-      "description": "经律论三藏典籍及其科判结构（科判→品→段→偈/咒）。"
+      "description": "三藏典籍、部类、科判结构（科判→品→段→偈/咒）、版本与异译。"
     },
     {
       "id": "L5",
       "key": "person_lineage",
       "name": "人物传承层",
-      "description": "佛、菩萨、阿罗汉、历代祖师与学者。"
+      "description": "佛、菩萨、阿罗汉、护法诸天、历代祖师、译经师、学者。"
     },
     {
       "id": "L6",
       "key": "cultural_extension",
       "name": "信仰文化外延层",
-      "description": "护法诸天、民间信仰人物与文化外延元素。"
+      "description": "民间信仰人物、文化艺术外延元素。"
     }
   ],
   "classes": [
     {
       "id": "bc:Entity",
+      "axis": [
+        "A1",
+        "A2",
+        "A3",
+        "A4"
+      ],
       "layer": "L0",
       "label": "本体元素",
       "description": "本体中一切元素的根类。",
       "subclasses": [
         {
+          "id": "bc:Axis",
+          "label": "轴",
+          "description": "顶层分类维度，共四轴。"
+        },
+        {
           "id": "bc:Layer",
           "label": "层",
-          "description": "本体的分层，共七层。"
+          "description": "抽象层级，共七层。"
         },
         {
           "id": "bc:OntologyClass",
           "label": "类",
-          "description": "对同类实例的抽象，如 Sutra、Person。"
+          "description": "对同类实例的抽象，如 Sutra、Person、Event。"
         },
         {
           "id": "bc:DatatypeProperty",
@@ -90,15 +148,18 @@
         {
           "id": "bc:Individual",
           "label": "个体",
-          "description": "类的具体实例，如 T0235、释迦牟尼佛。"
+          "description": "类的具体实例，如 T0235、释迦牟尼佛、灵山法会。"
         }
       ]
     },
     {
       "id": "bc:Concept",
+      "axis": [
+        "A2"
+      ],
       "layer": "L1",
       "label": "教理核心概念",
-      "description": "佛学最顶层的形而上学核心概念族。",
+      "description": "佛学最顶层的形而上学核心概念族，为义理分析的原子。",
       "examples": [
         "法界",
         "真如",
@@ -111,14 +172,22 @@
         "法身",
         "自性",
         "实相",
-        "一真法界"
+        "一真法界",
+        "二谛",
+        "三身",
+        "一佛乘",
+        "顿悟",
+        "三性"
       ]
     },
     {
       "id": "bc:Doctrine",
+      "axis": [
+        "A2"
+      ],
       "layer": "L2",
       "label": "义理范畴",
-      "description": "佛学核心修行与分析框架。",
+      "description": "佛学核心修行与分析框架，由多个教理概念组合而成。",
       "examples": [
         "五蕴",
         "十二处",
@@ -129,13 +198,14 @@
         "三法印",
         "六度",
         "三学",
-        "三十七道品",
-        "二谛",
-        "三自性"
+        "三十七道品"
       ]
     },
     {
       "id": "bc:School",
+      "axis": [
+        "A1"
+      ],
       "layer": "L3",
       "label": "佛教宗派",
       "aliases": [
@@ -156,6 +226,9 @@
     },
     {
       "id": "bc:PanjiaoSystem",
+      "axis": [
+        "A1"
+      ],
       "layer": "L3",
       "label": "判教体系",
       "description": "各宗派对佛陀一代教法的分类与判摄体系。",
@@ -167,25 +240,128 @@
       ]
     },
     {
-      "id": "bc:Text",
+      "id": "bc:Practice",
+      "axis": [
+        "A1",
+        "A2"
+      ],
+      "layer": "L3",
+      "label": "法门",
+      "description": "具体修行法门，由宗派依经典而立。",
+      "examples": [
+        "念佛",
+        "持咒",
+        "禅观",
+        "止观",
+        "忏悔",
+        "礼佛",
+        "读诵",
+        "持戒"
+      ]
+    },
+    {
+      "id": "bc:Vehicle",
+      "axis": [
+        "A1"
+      ],
+      "layer": "L3",
+      "label": "乘",
+      "description": "教法的乘别分类。",
+      "examples": [
+        "声闻乘",
+        "缘觉乘",
+        "菩萨乘",
+        "一乘",
+        "三乘",
+        "五乘"
+      ]
+    },
+    {
+      "id": "bc:Mode",
+      "axis": [
+        "A1"
+      ],
+      "layer": "L3",
+      "label": "显密",
+      "description": "显教 / 密教两类教法模式。",
+      "examples": [
+        "显教",
+        "密教",
+        "显密圆融"
+      ]
+    },
+    {
+      "id": "bc:ThreeBaskets",
+      "axis": [
+        "A1"
+      ],
       "layer": "L4",
-      "label": "典籍",
-      "description": "佛教文献的总类。",
+      "label": "三藏",
+      "description": "经律论三藏分类根类。",
       "subclasses": [
         {
-          "id": "bc:Sutra",
+          "id": "bc:SutraPitaka",
           "label": "经藏",
           "description": "佛所说或所印可的经典。"
         },
         {
-          "id": "bc:Vinaya",
+          "id": "bc:VinayaPitaka",
           "label": "律藏",
           "description": "僧团戒律典籍。"
         },
         {
-          "id": "bc:Sastra",
+          "id": "bc:AbhidharmaPitaka",
           "label": "论藏",
-          "description": "菩萨、论师所造之论典。"
+          "description": "菩萨、论师所造论典。"
+        }
+      ]
+    },
+    {
+      "id": "bc:Genre",
+      "axis": [
+        "A1"
+      ],
+      "layer": "L4",
+      "label": "十二分教",
+      "description": "经典文体分类。",
+      "examples": [
+        "契经",
+        "祇夜",
+        "记别",
+        "伽陀",
+        "优陀那",
+        "尼陀那",
+        "阿波陀那",
+        "伊帝目多伽",
+        "阇多伽",
+        "毗富罗",
+        "阿浮多达摩",
+        "优波提舍"
+      ]
+    },
+    {
+      "id": "bc:Text",
+      "axis": [
+        "A2"
+      ],
+      "layer": "L4",
+      "label": "典籍",
+      "description": "佛教文献的总类；按三藏归属 Sutra/Vinaya/Sastra 三个子类。",
+      "subclasses": [
+        {
+          "id": "bc:Sutra",
+          "label": "经",
+          "description": "经藏典籍，对应 SutraPitaka。"
+        },
+        {
+          "id": "bc:Vinaya",
+          "label": "律",
+          "description": "律藏典籍，对应 VinayaPitaka。"
+        },
+        {
+          "id": "bc:Sastra",
+          "label": "论",
+          "description": "论藏典籍，对应 AbhidharmaPitaka。"
         },
         {
           "id": "bc:Commentary",
@@ -201,9 +377,12 @@
     },
     {
       "id": "bc:CanonCategory",
+      "axis": [
+        "A1"
+      ],
       "layer": "L4",
       "label": "部类",
-      "description": "大正藏典籍的部类划分。",
+      "description": "大正藏典籍的部类划分（阿含 / 般若 / 法华 / 华严 …）。",
       "examples": [
         "阿含部",
         "般若部",
@@ -217,41 +396,180 @@
         "律部",
         "论部",
         "禅宗部",
-        "净土部"
+        "净土部",
+        "史传部",
+        "目录部",
+        "事汇部",
+        "外教部",
+        "疑似部"
+      ]
+    },
+    {
+      "id": "bc:Division",
+      "axis": [
+        "A1"
+      ],
+      "layer": "L4",
+      "label": "分部",
+      "description": "大正藏内部分部（如阿含部含长/中/杂/增一阿含），介于三藏与部类之间。",
+      "examples": [
+        "长阿含分部",
+        "中阿含分部",
+        "杂阿含分部",
+        "增一阿含分部",
+        "般若分部",
+        "华严分部"
       ]
     },
     {
       "id": "bc:Kepan",
+      "axis": [
+        "A2"
+      ],
       "layer": "L4",
       "label": "科判",
-      "description": "一部经的三分结构（序分/正宗分/流通分）。"
+      "description": "一部经的三分结构（序分 / 正宗分 / 流通分）。",
+      "subclasses": [
+        {
+          "id": "bc:IntroductoryPart",
+          "label": "序分",
+          "description": "证信序与发起序，明说法时处因缘。"
+        },
+        {
+          "id": "bc:EssentialPart",
+          "label": "正宗分",
+          "description": "一经正所诠之法门。"
+        },
+        {
+          "id": "bc:CirculationPart",
+          "label": "流通分",
+          "description": "付嘱流通，令法久住。"
+        }
+      ]
     },
     {
       "id": "bc:Chapter",
+      "axis": [
+        "A2"
+      ],
       "layer": "L4",
       "label": "品章",
       "description": "经中的品或卷级单位。"
     },
     {
       "id": "bc:Section",
+      "axis": [
+        "A2"
+      ],
       "layer": "L4",
       "label": "段落",
       "description": "科判下的基本段落单位。"
     },
     {
       "id": "bc:Gatha",
+      "axis": [
+        "A2"
+      ],
       "layer": "L4",
       "label": "偈颂",
-      "description": "韵文体偈颂，一般紧随偈头（而说偈言等）之后。"
+      "description": "韵文体偈颂，一般紧随「而说偈言 / 说偈言 / 偈曰」等偈头之后。"
     },
     {
       "id": "bc:Mantra",
+      "axis": [
+        "A2"
+      ],
       "layer": "L4",
       "label": "咒语",
-      "description": "音译真言陀罗尼，以莎婆诃（svāhā）等结尾。"
+      "description": "音译真言陀罗尼，多以「莎婆诃（svāhā）」等结尾，前常有「即说咒曰」等导语。"
+    },
+    {
+      "id": "bc:Translator",
+      "axis": [
+        "A1",
+        "A4"
+      ],
+      "layer": "L4",
+      "label": "译者",
+      "description": "经律论的翻译者；归属人物轴 L5 的 Master，但在文本轴 L4 单独立类以便挂接译事。",
+      "parent": "bc:Master",
+      "examples": [
+        "鸠摩罗什",
+        "玄奘",
+        "义净",
+        "真谛",
+        "不空",
+        "施护"
+      ]
+    },
+    {
+      "id": "bc:TranslationEra",
+      "axis": [
+        "A1"
+      ],
+      "layer": "L4",
+      "label": "译时代",
+      "description": "汉译佛经的译经时代分期。",
+      "examples": [
+        "东汉",
+        "三国",
+        "西晋",
+        "东晋",
+        "南北朝",
+        "隋",
+        "唐",
+        "北宋",
+        "南宋",
+        "元",
+        "明",
+        "清"
+      ]
+    },
+    {
+      "id": "bc:SourceLanguage",
+      "axis": [
+        "A1"
+      ],
+      "layer": "L4",
+      "label": "原本语言",
+      "description": "译经所据原本的语言。",
+      "examples": [
+        "梵文",
+        "巴利文",
+        "吐火罗文",
+        "于阗文",
+        "藏文"
+      ]
+    },
+    {
+      "id": "bc:Edition",
+      "axis": [
+        "A1"
+      ],
+      "layer": "L4",
+      "label": "藏经版本",
+      "description": "藏经版本 / 刻本系统。",
+      "examples": [
+        "开宝藏",
+        "崇宁藏",
+        "赵城金藏",
+        "高丽藏",
+        "碛砂藏",
+        "永乐南藏",
+        "永乐北藏",
+        "径山藏",
+        "龙藏",
+        "频伽藏",
+        "大正藏",
+        "卍续藏",
+        "CBETA"
+      ]
     },
     {
       "id": "bc:Person",
+      "axis": [
+        "A3"
+      ],
       "layer": "L5",
       "label": "人物",
       "description": "与佛教相关的人物总类。",
@@ -259,22 +577,27 @@
         {
           "id": "bc:Buddha",
           "label": "佛陀",
-          "description": "如释迦牟尼佛、阿弥陀佛。"
+          "description": "如释迦牟尼佛、阿弥陀佛、药师佛。"
         },
         {
           "id": "bc:Bodhisattva",
           "label": "菩萨",
-          "description": "如文殊、普贤、观音。"
+          "description": "如文殊、普贤、观音、地藏、弥勒。"
         },
         {
           "id": "bc:Arhat",
           "label": "阿罗汉",
-          "description": "声闻乘圣者、十大弟子。"
+          "description": "声闻乘圣者、十大弟子等。"
         },
         {
-          "id": "bc:Master",
-          "label": "历代祖师",
-          "description": "译经师、论师、宗派祖师。"
+          "id": "bc:Protector",
+          "label": "护法",
+          "description": "天龙八部、护法善神，护持佛法。"
+        },
+        {
+          "id": "bc:Patriarch",
+          "label": "祖师",
+          "description": "译经师、论师、宗派祖师（含 Translator）。"
         },
         {
           "id": "bc:ModernScholar",
@@ -285,21 +608,61 @@
     },
     {
       "id": "bc:Deity",
+      "axis": [
+        "A3"
+      ],
       "layer": "L6",
       "label": "护法诸天",
-      "description": "护法神、天龙八部、诸天。"
+      "description": "护法神、天龙八部、诸天；与 L5 Protector 的区别为已民间信仰化。"
     },
     {
       "id": "bc:FolkFigure",
+      "axis": [
+        "A3"
+      ],
       "layer": "L6",
       "label": "民间信仰人物",
       "description": "济公、布袋和尚等民间化佛教人物。"
     },
     {
       "id": "bc:CulturalElement",
+      "axis": [
+        "A1"
+      ],
       "layer": "L6",
       "label": "文化外延元素",
-      "description": "佛教相关的文学、艺术、民俗元素。"
+      "description": "佛教相关的文学、艺术、建筑、民俗元素。"
+    },
+    {
+      "id": "bc:Event",
+      "axis": [
+        "A4"
+      ],
+      "layer": "L3",
+      "label": "事件",
+      "description": "佛教教法传播与成立过程中的关键事件。",
+      "subclasses": [
+        {
+          "id": "bc:DharmaAssembly",
+          "label": "法会事件",
+          "description": "佛陀宣说某经法会（时、处、听众），如灵山法会、般若法会。"
+        },
+        {
+          "id": "bc:StoryEvent",
+          "label": "本事本生事件",
+          "description": "经中叙述的过去世本事、本生、因缘、譬喻故事。"
+        },
+        {
+          "id": "bc:TransmissionEvent",
+          "label": "传法译经事件",
+          "description": "祖师传法、译师译经、宗派开创等传译事件。"
+        },
+        {
+          "id": "bc:Council",
+          "label": "结集事件",
+          "description": "三藏结集（王舍城、毗舍离、华氏城等）。"
+        }
+      ]
     }
   ],
   "properties": [
@@ -320,13 +683,20 @@
       "label": "定义",
       "domain": [
         "Concept",
-        "Doctrine"
+        "Doctrine",
+        "Practice"
       ],
       "range": "xsd:string"
     },
     {
       "id": "bc:sanskrit",
       "label": "梵文名",
+      "domain": "all",
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:description",
+      "label": "描述",
       "domain": "all",
       "range": "xsd:string"
     },
@@ -361,22 +731,47 @@
       "range": "xsd:string"
     },
     {
+      "id": "bc:source_language",
+      "label": "原典语言",
+      "domain": "Text",
+      "range": "SourceLanguage"
+    },
+    {
+      "id": "bc:translation_era",
+      "label": "译经时代",
+      "domain": "Text",
+      "range": "TranslationEra"
+    },
+    {
+      "id": "bc:vehicle",
+      "label": "乘",
+      "domain": "Text",
+      "range": "Vehicle"
+    },
+    {
+      "id": "bc:mode",
+      "label": "显密",
+      "domain": "Text",
+      "range": "Mode"
+    },
+    {
       "id": "bc:category",
       "label": "部类",
       "domain": "Text",
       "range": "CanonCategory"
     },
     {
-      "id": "bc:vehicle",
-      "label": "乘",
+      "id": "bc:genre",
+      "label": "文体",
       "domain": "Text",
-      "range": "xsd:string"
+      "range": "Genre"
     },
     {
       "id": "bc:char_count",
       "label": "字数",
       "domain": [
         "Text",
+        "Chapter",
         "Section"
       ],
       "range": "xsd:integer"
@@ -394,6 +789,114 @@
         "Text",
         "School"
       ],
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:parallel_versions",
+      "label": "异译版本",
+      "domain": "Text",
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:edition_list",
+      "label": "存世版本",
+      "domain": "Text",
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:keywords",
+      "label": "关键词",
+      "domain": "Text",
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:commentary_count",
+      "label": "注疏数",
+      "domain": "Text",
+      "range": "xsd:integer"
+    },
+    {
+      "id": "bc:chapter_no",
+      "label": "品序号",
+      "domain": "Chapter",
+      "range": "xsd:integer"
+    },
+    {
+      "id": "bc:chapter_title",
+      "label": "品题",
+      "domain": "Chapter",
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:section_no",
+      "label": "段序号",
+      "domain": "Section",
+      "range": "xsd:integer"
+    },
+    {
+      "id": "bc:part_of_kepan",
+      "label": "所属三分",
+      "domain": [
+        "Chapter",
+        "Section"
+      ],
+      "range": "Kepan"
+    },
+    {
+      "id": "bc:gatha_meter",
+      "label": "句式",
+      "domain": "Gatha",
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:mantra_siddham",
+      "label": "悉昙/梵字转写",
+      "domain": "Mantra",
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:founder",
+      "label": "创立者",
+      "domain": "School",
+      "range": "Person"
+    },
+    {
+      "id": "bc:found_time",
+      "label": "创立时间",
+      "domain": "School",
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:era",
+      "label": "时代",
+      "domain": [
+        "Person",
+        "Event"
+      ],
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:birth_place",
+      "label": "籍贯/出生地",
+      "domain": "Person",
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:location",
+      "label": "地点",
+      "domain": "Event",
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:audience",
+      "label": "听众/当机众",
+      "domain": "DharmaAssembly",
+      "range": "xsd:string"
+    },
+    {
+      "id": "bc:event_time",
+      "label": "事件时间",
+      "domain": "Event",
       "range": "xsd:string"
     },
     {
@@ -422,34 +925,458 @@
         "Doctrine"
       ],
       "range": "xsd:string"
-    },
-    {
-      "id": "bc:founder",
-      "label": "创立者",
-      "domain": "School",
-      "range": "Person"
-    },
-    {
-      "id": "bc:found_time",
-      "label": "创立时间",
-      "domain": "School",
-      "range": "xsd:string"
-    },
-    {
-      "id": "bc:era",
-      "label": "时代",
-      "domain": "Person",
-      "range": "xsd:string"
-    },
-    {
-      "id": "bc:birth_place",
-      "label": "籍贯",
-      "domain": "Person",
-      "range": "xsd:string"
     }
   ],
   "relations": {
-    "义理关系类": [
+    "分类关系类（A1 横向分类轴）": [
+      {
+        "id": "belongs_to_basket",
+        "label": "属三藏",
+        "aliases": [
+          "belongsToBasket"
+        ],
+        "domain": "Text",
+        "range": "ThreeBaskets",
+        "description": "A 典籍归属于三藏中某一藏。"
+      },
+      {
+        "id": "part_of",
+        "label": "属于",
+        "aliases": [
+          "partOf",
+          "shuyu"
+        ],
+        "inverse": "has_part",
+        "domain": [
+          "Text",
+          "Chapter"
+        ],
+        "range": [
+          "Text",
+          "CanonCategory",
+          "Division",
+          "Chapter"
+        ],
+        "description": "部分属于整体或某部类/分部。"
+      },
+      {
+        "id": "belongs_to_division",
+        "label": "属分部",
+        "aliases": [
+          "belongsToDivision"
+        ],
+        "domain": "CanonCategory",
+        "range": "Division",
+        "description": "部类归属于某一分部。"
+      },
+      {
+        "id": "of_genre",
+        "label": "属文体",
+        "aliases": [
+          "ofGenre"
+        ],
+        "domain": "Text",
+        "range": "Genre",
+        "description": "典籍属于十二分教中某一文体。"
+      },
+      {
+        "id": "of_vehicle",
+        "label": "属乘",
+        "aliases": [
+          "ofVehicle"
+        ],
+        "domain": [
+          "Text",
+          "School",
+          "Practice"
+        ],
+        "range": "Vehicle",
+        "description": "典籍/宗派/法门归属某乘。"
+      },
+      {
+        "id": "of_mode",
+        "label": "属显密",
+        "aliases": [
+          "ofMode"
+        ],
+        "domain": [
+          "Text",
+          "School"
+        ],
+        "range": "Mode",
+        "description": "典籍/宗派归属显教或密教。"
+      },
+      {
+        "id": "translation_of",
+        "label": "异译",
+        "aliases": [
+          "translationOf",
+          "yiyi",
+          "same_text_different_translation"
+        ],
+        "symmetric": true,
+        "domain": "Text",
+        "range": "Text",
+        "description": "A 与 B 为同一部经之异译。"
+      },
+      {
+        "id": "based_on_edition",
+        "label": "据版本",
+        "aliases": [
+          "basedOnEdition"
+        ],
+        "domain": "Text",
+        "range": "Edition",
+        "description": "A 经所据底本为某藏经版本。"
+      },
+      {
+        "id": "translated_in",
+        "label": "译于",
+        "aliases": [
+          "translatedIn"
+        ],
+        "domain": "Text",
+        "range": "TranslationEra",
+        "description": "A 经译于某译经时代。"
+      },
+      {
+        "id": "from_language",
+        "label": "译自",
+        "aliases": [
+          "fromLanguage"
+        ],
+        "domain": "Text",
+        "range": "SourceLanguage",
+        "description": "A 经译自某种原典语言。"
+      }
+    ],
+    "文本结构关系类（A2 纵向内容轴）": [
+      {
+        "id": "expounds",
+        "label": "阐明",
+        "aliases": [
+          "chanming"
+        ],
+        "inverse": "origin_from_text",
+        "domain": "Text",
+        "range": [
+          "Concept",
+          "Doctrine"
+        ],
+        "description": "A 经阐明 B 教理概念。"
+      },
+      {
+        "id": "has_kepan",
+        "label": "三分",
+        "aliases": [
+          "hasKepan"
+        ],
+        "domain": "Text",
+        "range": "Kepan",
+        "description": "A 经具序/正宗/流通三分。"
+      },
+      {
+        "id": "has_chapter",
+        "label": "含章",
+        "aliases": [
+          "hasChapter"
+        ],
+        "domain": [
+          "Text",
+          "Kepan"
+        ],
+        "range": "Chapter",
+        "description": "包含品/章。"
+      },
+      {
+        "id": "has_section",
+        "label": "含段",
+        "aliases": [
+          "hasSection"
+        ],
+        "domain": [
+          "Chapter",
+          "Kepan"
+        ],
+        "range": "Section",
+        "description": "包含段落。"
+      },
+      {
+        "id": "has_gatha",
+        "label": "含偈",
+        "aliases": [
+          "hasGatha"
+        ],
+        "domain": [
+          "Chapter",
+          "Section"
+        ],
+        "range": "Gatha",
+        "description": "包含偈颂。"
+      },
+      {
+        "id": "has_mantra",
+        "label": "含咒",
+        "aliases": [
+          "hasMantra"
+        ],
+        "domain": [
+          "Chapter",
+          "Section"
+        ],
+        "range": "Mantra",
+        "description": "包含咒语。"
+      },
+      {
+        "id": "commentary_on",
+        "label": "注疏",
+        "aliases": [
+          "commentaryOn"
+        ],
+        "inverse": "commented_by",
+        "domain": "Commentary",
+        "range": "Text",
+        "description": "A 注疏为 B 之注释。"
+      },
+      {
+        "id": "quotation",
+        "label": "引用",
+        "aliases": [
+          "yinyong",
+          "quotes"
+        ],
+        "inverse": "quoted_by",
+        "description": "A 论引用 B 经文句。"
+      },
+      {
+        "id": "accomplishment",
+        "label": "成就",
+        "aliases": [
+          "chengjiu"
+        ],
+        "domain": "Practice",
+        "range": "Text",
+        "description": "法门依经典而成就。"
+      },
+      {
+        "id": "mentions_doctrine",
+        "label": "涉佛理",
+        "aliases": [
+          "mentionsDoctrine"
+        ],
+        "domain": [
+          "Section",
+          "Gatha",
+          "Mantra"
+        ],
+        "range": [
+          "Concept",
+          "Doctrine"
+        ],
+        "description": "段落/偈/咒中涉及某佛理概念。"
+      }
+    ],
+    "宗派判教关系类（A1 / L3）": [
+      {
+        "id": "founding",
+        "label": "创立",
+        "aliases": [
+          "chuangli",
+          "founderOf",
+          "founder_of"
+        ],
+        "inverse": "founded_by",
+        "domain": "Person",
+        "range": "School",
+        "description": "A 创立 B 宗派。"
+      },
+      {
+        "id": "co_founding",
+        "label": "共同创立",
+        "aliases": [
+          "cofounderOf"
+        ],
+        "domain": "Person",
+        "range": "School",
+        "description": "A 与同道共同开创 B。"
+      },
+      {
+        "id": "reliance",
+        "label": "依经",
+        "aliases": [
+          "yijing",
+          "basesOn"
+        ],
+        "inverse": "relied_by",
+        "domain": "School",
+        "range": "Text",
+        "description": "A 宗派以 B 经为根本依止。"
+      },
+      {
+        "id": "establishes_practice",
+        "label": "立法门",
+        "aliases": [
+          "establishesPractice"
+        ],
+        "domain": "School",
+        "range": "Practice",
+        "description": "宗派立某修行法门。"
+      },
+      {
+        "id": "has_panjiao",
+        "label": "立判教",
+        "aliases": [
+          "hasPanJiao"
+        ],
+        "domain": "School",
+        "range": "PanjiaoSystem",
+        "description": "A 宗派立有 B 判教体系。"
+      },
+      {
+        "id": "classifies_as",
+        "label": "判为",
+        "aliases": [
+          "classifiesAs"
+        ],
+        "domain": "PanjiaoSystem",
+        "range": [
+          "Text",
+          "Doctrine",
+          "Vehicle",
+          "Mode"
+        ],
+        "description": "判教体系将某经/教理/乘/显密判属某一教相。"
+      },
+      {
+        "id": "higher_than",
+        "label": "胜",
+        "aliases": [],
+        "asymmetric": true,
+        "domain": "PanjiaoSystem",
+        "range": "PanjiaoSystem",
+        "description": "判教中的高低层次，如圆教胜于别教。"
+      },
+      {
+        "id": "panjiao_attribution",
+        "label": "判摄",
+        "aliases": [
+          "panshe",
+          "classifiedIn"
+        ],
+        "domain": [
+          "Text",
+          "Doctrine"
+        ],
+        "range": "PanjiaoSystem",
+        "description": "A 被 B 判教体系摄归某位。"
+      },
+      {
+        "id": "transmission",
+        "label": "传承",
+        "aliases": [
+          "chuancheng",
+          "succeeds"
+        ],
+        "inverse": "received_from",
+        "domain": "Person",
+        "range": "Person",
+        "description": "A 传承 B 之法脉。"
+      },
+      {
+        "id": "divergence",
+        "label": "分歧",
+        "aliases": [
+          "fenqi"
+        ],
+        "symmetric": true,
+        "domain": "School",
+        "range": "School",
+        "description": "A 与 B 宗派在某义理上存在分歧。"
+      }
+    ],
+    "人物关系类（A3 人物传承轴）": [
+      {
+        "id": "teacher_student",
+        "label": "师徒",
+        "aliases": [
+          "dishi",
+          "teacherOf",
+          "studentOf"
+        ],
+        "domain": "Person",
+        "range": "Person",
+        "description": "A 与 B 为师徒（师→弟）。"
+      },
+      {
+        "id": "sibling",
+        "label": "兄弟",
+        "aliases": [
+          "brotherOf"
+        ],
+        "symmetric": true,
+        "domain": "Person",
+        "range": "Person",
+        "description": "A 与 B 为兄弟（如阿难与提婆达多）。"
+      },
+      {
+        "id": "manifestation",
+        "label": "化现",
+        "aliases": [
+          "huaxian"
+        ],
+        "inverse": "manifested_as",
+        "description": "A 化现为 B，如观音化现民间人物。"
+      },
+      {
+        "id": "protection",
+        "label": "护持",
+        "aliases": [
+          "huchi",
+          "hufa"
+        ],
+        "domain": [
+          "Protector",
+          "Deity"
+        ],
+        "range": [
+          "Text",
+          "School",
+          "Doctrine",
+          "Practice"
+        ],
+        "description": "A 护持 B 法门/宗派/教理。"
+      },
+      {
+        "id": "authorship",
+        "label": "著有",
+        "aliases": [
+          "zhuyou",
+          "authorOf",
+          "author_of"
+        ],
+        "inverse": "authored_by",
+        "domain": "Person",
+        "range": [
+          "Text",
+          "Commentary"
+        ],
+        "description": "A 造/著 B 经论或注疏。"
+      },
+      {
+        "id": "translated_by",
+        "label": "译出",
+        "aliases": [
+          "yichu",
+          "translatedBy",
+          "translated"
+        ],
+        "inverse": "translated",
+        "domain": "Text",
+        "range": "Translator",
+        "description": "A 经为 B 所译出。"
+      }
+    ],
+    "义理关系类（A2 / L1–L2）": [
       {
         "id": "subsumption",
         "label": "摄属",
@@ -503,7 +1430,7 @@
         "id": "derivation",
         "label": "衍生",
         "aliases": [
-          "yanshen"
+          "yansheng"
         ],
         "inverse": "derived_from",
         "description": "B 由 A 衍生发展而来。"
@@ -525,239 +1452,7 @@
         ],
         "symmetric": true,
         "description": "A 与 B 为同一概念之异名。"
-      }
-    ],
-    "经典关系类": [
-      {
-        "id": "translation_of",
-        "label": "异译",
-        "aliases": [
-          "yiyi",
-          "translationOf"
-        ],
-        "symmetric": true,
-        "domain": "Text",
-        "range": "Text",
-        "description": "A 与 B 为同一部经之异译，如《心经》诸本。"
       },
-      {
-        "id": "part_of",
-        "label": "属于",
-        "aliases": [
-          "shuyu",
-          "partOf"
-        ],
-        "inverse": "has_part",
-        "domain": "Text",
-        "range": [
-          "Text",
-          "CanonCategory"
-        ],
-        "description": "部分属于整体或某部类。"
-      },
-      {
-        "id": "commentary_on",
-        "label": "注疏",
-        "aliases": [
-          "zhushu"
-        ],
-        "inverse": "commented_by",
-        "domain": "Commentary",
-        "range": "Text",
-        "description": "A 注疏为 B 之注释。"
-      },
-      {
-        "id": "quotation",
-        "label": "引用",
-        "aliases": [
-          "yinjing"
-        ],
-        "inverse": "quoted_by",
-        "description": "A 论引用 B 经文句。"
-      },
-      {
-        "id": "accomplishment",
-        "label": "成就",
-        "aliases": [
-          "chengjiu"
-        ],
-        "description": "法门依经典而成就。"
-      },
-      {
-        "id": "translated_by",
-        "label": "译出",
-        "aliases": [
-          "yichu",
-          "translated"
-        ],
-        "inverse": "translated",
-        "domain": "Text",
-        "range": "Person",
-        "description": "A 为 B 所译出。"
-      }
-    ],
-    "宗派关系类": [
-      {
-        "id": "founding",
-        "label": "创立",
-        "aliases": [
-          "chuangli",
-          "founderOf",
-          "founder_of"
-        ],
-        "inverse": "founded_by",
-        "domain": "Person",
-        "range": "School",
-        "description": "A 创立 B 宗派。"
-      },
-      {
-        "id": "co_founding",
-        "label": "共同创立",
-        "aliases": [
-          "cofounder_of"
-        ],
-        "domain": "Person",
-        "range": "School",
-        "description": "A 与同道共同开创 B。"
-      },
-      {
-        "id": "reliance",
-        "label": "依经",
-        "aliases": [
-          "yijing",
-          "basesOn"
-        ],
-        "inverse": "relied_by",
-        "domain": "School",
-        "range": "Text",
-        "description": "A 宗派以 B 经为根本依止。"
-      },
-      {
-        "id": "transmission",
-        "label": "传承",
-        "aliases": [
-          "chuancheng",
-          "succeeds"
-        ],
-        "inverse": "received_from",
-        "domain": "Person",
-        "range": "Person",
-        "description": "A 传承 B 之法脉。"
-      },
-      {
-        "id": "panjiao_attribution",
-        "label": "判摄",
-        "aliases": [
-          "panshe",
-          "classifiedIn"
-        ],
-        "domain": [
-          "Text",
-          "Doctrine"
-        ],
-        "range": "PanjiaoSystem",
-        "description": "A 被 B 判教体系摄归某位。"
-      },
-      {
-        "id": "divergence",
-        "label": "分歧",
-        "aliases": [
-          "fenqi"
-        ],
-        "symmetric": true,
-        "domain": "School",
-        "range": "School",
-        "description": "A 与 B 宗派在某义理上存在分歧。"
-      },
-      {
-        "id": "has_panjiao",
-        "label": "立判教",
-        "aliases": [
-          "hasPanJiao"
-        ],
-        "domain": "School",
-        "range": "PanjiaoSystem",
-        "description": "A 宗派立有 B 判教体系。"
-      },
-      {
-        "id": "classifies_as",
-        "label": "判为",
-        "aliases": [
-          "classifiesAs"
-        ],
-        "domain": "PanjiaoSystem",
-        "range": "Text",
-        "description": "判教体系将某经判属某一教相。"
-      },
-      {
-        "id": "higher_than",
-        "label": "胜",
-        "aliases": [],
-        "asymmetric": true,
-        "domain": "PanjiaoSystem",
-        "range": "PanjiaoSystem",
-        "description": "判教中的高低层次，如圆教胜于别教。"
-      }
-    ],
-    "人物关系类": [
-      {
-        "id": "teacher_student",
-        "label": "师徒",
-        "aliases": [
-          "dishi",
-          "teacherOf",
-          "studentOf"
-        ],
-        "domain": "Person",
-        "range": "Person",
-        "description": "A 与 B 为师徒（师→弟）。"
-      },
-      {
-        "id": "manifestation",
-        "label": "化现",
-        "aliases": [
-          "huahua"
-        ],
-        "inverse": "manifested_as",
-        "description": "A 化现为 B，如观音化现民间人物。"
-      },
-      {
-        "id": "protection",
-        "label": "护持",
-        "aliases": [
-          "hufa"
-        ],
-        "domain": "Deity",
-        "range": [
-          "Text",
-          "School",
-          "Doctrine"
-        ],
-        "description": "A 护持 B 法门/宗派。"
-      },
-      {
-        "id": "authorship",
-        "label": "著有",
-        "aliases": [
-          "author_of"
-        ],
-        "domain": "Person",
-        "range": "Text",
-        "description": "A 造/著 B 论典。"
-      },
-      {
-        "id": "sibling",
-        "label": "兄弟",
-        "aliases": [
-          "brother_of"
-        ],
-        "symmetric": true,
-        "domain": "Person",
-        "range": "Person",
-        "description": "A 与 B 为兄弟。"
-      }
-    ],
-    "概念-经典关系类": [
       {
         "id": "origin_from_text",
         "label": "出自",
@@ -787,199 +1482,315 @@
         "description": "A 经文佐证 B 概念。"
       }
     ],
-    "文本结构关系": [
+    "事件关系类（A4 事件缘起轴）": [
       {
-        "id": "has_kepan",
-        "label": "三分",
-        "domain": "Text",
-        "range": "Kepan",
-        "description": "A 经具序/正宗/流通三分。"
-      },
-      {
-        "id": "has_chapter",
-        "label": "含章",
-        "domain": [
-          "Text",
-          "Kepan"
+        "id": "speaks_at",
+        "label": "说于",
+        "aliases": [
+          "speaksAt"
         ],
-        "range": "Chapter",
-        "description": "包含品/章。"
+        "inverse": "spoken_by",
+        "domain": "Buddha",
+        "range": "DharmaAssembly",
+        "description": "A 佛在 B 法会上说法。"
       },
       {
-        "id": "has_section",
-        "label": "含段",
-        "domain": "Chapter",
-        "range": "Section",
-        "description": "包含段落。"
-      },
-      {
-        "id": "has_gatha",
-        "label": "含偈",
-        "domain": "Chapter",
-        "range": "Gatha",
-        "description": "包含偈颂。"
-      },
-      {
-        "id": "has_mantra",
-        "label": "含咒",
-        "domain": "Chapter",
-        "range": "Mantra",
-        "description": "包含咒语。"
-      },
-      {
-        "id": "mentions_figure",
-        "label": "提及人物",
-        "domain": "Text",
-        "range": "Person",
-        "description": "A 经中出现 B 人物。"
-      },
-      {
-        "id": "mentions_doctrine",
-        "label": "阐明佛理",
-        "domain": "Text",
-        "range": [
-          "Concept",
-          "Doctrine"
+        "id": "held_at",
+        "label": "处会",
+        "aliases": [
+          "heldAt"
         ],
-        "description": "A 经中阐发 B 概念。"
+        "domain": "DharmaAssembly",
+        "range": "Text",
+        "description": "法会 B 所说为 A 经。"
+      },
+      {
+        "id": "in_assembly",
+        "label": "预会",
+        "aliases": [
+          "inAssembly"
+        ],
+        "domain": "Person",
+        "range": "DharmaAssembly",
+        "description": "A 人物为 B 法会之听众 / 当机众。"
+      },
+      {
+        "id": "tells_of",
+        "label": "述说",
+        "aliases": [
+          "tellsOf"
+        ],
+        "domain": "Text",
+        "range": "StoryEvent",
+        "description": "A 经中述说 B 本事/本生/因缘故事。"
+      },
+      {
+        "id": "attends_council",
+        "label": "参与结集",
+        "aliases": [
+          "attendsCouncil"
+        ],
+        "domain": "Person",
+        "range": "Council",
+        "description": "A 参与 B 结集。"
+      },
+      {
+        "id": "during_event",
+        "label": "发生于",
+        "aliases": [
+          "duringEvent"
+        ],
+        "domain": "Event",
+        "range": "Event",
+        "description": "子事件发生于母事件期间。"
+      },
+      {
+        "id": "transmits",
+        "label": "传法",
+        "aliases": [
+          "chuanfa"
+        ],
+        "domain": "Person",
+        "range": "TransmissionEvent",
+        "description": "A 祖师在传法事件 B 中传付法脉。"
       }
     ]
   },
   "relations_flat": [
     {
-      "id": "subsumption",
-      "label": "摄属",
+      "id": "belongs_to_basket",
+      "label": "属三藏",
       "aliases": [
-        "sheshu",
-        "subsumes"
+        "belongsToBasket"
       ],
-      "inverse": "subsumed_by",
-      "description": "总法含别法，如五蕴摄属三科。",
-      "group": "义理关系类"
-    },
-    {
-      "id": "correspondence",
-      "label": "相即",
-      "aliases": [
-        "xiangji",
-        "correspondsTo"
-      ],
-      "symmetric": true,
-      "description": "两法相即不二，如烦恼即菩提、生死即涅槃。",
-      "group": "义理关系类"
-    },
-    {
-      "id": "refutation",
-      "label": "对破",
-      "aliases": [
-        "duipo",
-        "disputes"
-      ],
-      "symmetric": true,
-      "description": "A 对破 B 之偏执，如中观对破有见与空见。",
-      "group": "义理关系类"
-    },
-    {
-      "id": "precedence",
-      "label": "次第",
-      "aliases": [
-        "cidi",
-        "precedes"
-      ],
-      "inverse": "succeeds_in_order",
-      "description": "修行或义理之先后，如信为行之先。",
-      "group": "义理关系类"
-    },
-    {
-      "id": "interpretation",
-      "label": "诠释",
-      "aliases": [
-        "quanshi",
-        "interprets"
-      ],
-      "description": "A 诠释 B 之义，如《大智度论》诠释《大般若经》。",
-      "group": "义理关系类"
-    },
-    {
-      "id": "derivation",
-      "label": "衍生",
-      "aliases": [
-        "yanshen"
-      ],
-      "inverse": "derived_from",
-      "description": "B 由 A 衍生发展而来。",
-      "group": "义理关系类"
-    },
-    {
-      "id": "opposition",
-      "label": "对立",
-      "aliases": [
-        "duili"
-      ],
-      "symmetric": true,
-      "description": "A 与 B 是两种对立见地。",
-      "group": "义理关系类"
-    },
-    {
-      "id": "synonymy",
-      "label": "同一",
-      "aliases": [
-        "tongyi"
-      ],
-      "symmetric": true,
-      "description": "A 与 B 为同一概念之异名。",
-      "group": "义理关系类"
-    },
-    {
-      "id": "translation_of",
-      "label": "异译",
-      "aliases": [
-        "yiyi",
-        "translationOf"
-      ],
-      "symmetric": true,
       "domain": "Text",
-      "range": "Text",
-      "description": "A 与 B 为同一部经之异译，如《心经》诸本。",
-      "group": "经典关系类"
+      "range": "ThreeBaskets",
+      "description": "A 典籍归属于三藏中某一藏。",
+      "group": "分类关系类（A1 横向分类轴）"
     },
     {
       "id": "part_of",
       "label": "属于",
       "aliases": [
-        "shuyu",
-        "partOf"
+        "partOf",
+        "shuyu"
       ],
       "inverse": "has_part",
-      "domain": "Text",
+      "domain": [
+        "Text",
+        "Chapter"
+      ],
       "range": [
         "Text",
-        "CanonCategory"
+        "CanonCategory",
+        "Division",
+        "Chapter"
       ],
-      "description": "部分属于整体或某部类。",
-      "group": "经典关系类"
+      "description": "部分属于整体或某部类/分部。",
+      "group": "分类关系类（A1 横向分类轴）"
+    },
+    {
+      "id": "belongs_to_division",
+      "label": "属分部",
+      "aliases": [
+        "belongsToDivision"
+      ],
+      "domain": "CanonCategory",
+      "range": "Division",
+      "description": "部类归属于某一分部。",
+      "group": "分类关系类（A1 横向分类轴）"
+    },
+    {
+      "id": "of_genre",
+      "label": "属文体",
+      "aliases": [
+        "ofGenre"
+      ],
+      "domain": "Text",
+      "range": "Genre",
+      "description": "典籍属于十二分教中某一文体。",
+      "group": "分类关系类（A1 横向分类轴）"
+    },
+    {
+      "id": "of_vehicle",
+      "label": "属乘",
+      "aliases": [
+        "ofVehicle"
+      ],
+      "domain": [
+        "Text",
+        "School",
+        "Practice"
+      ],
+      "range": "Vehicle",
+      "description": "典籍/宗派/法门归属某乘。",
+      "group": "分类关系类（A1 横向分类轴）"
+    },
+    {
+      "id": "of_mode",
+      "label": "属显密",
+      "aliases": [
+        "ofMode"
+      ],
+      "domain": [
+        "Text",
+        "School"
+      ],
+      "range": "Mode",
+      "description": "典籍/宗派归属显教或密教。",
+      "group": "分类关系类（A1 横向分类轴）"
+    },
+    {
+      "id": "translation_of",
+      "label": "异译",
+      "aliases": [
+        "translationOf",
+        "yiyi",
+        "same_text_different_translation"
+      ],
+      "symmetric": true,
+      "domain": "Text",
+      "range": "Text",
+      "description": "A 与 B 为同一部经之异译。",
+      "group": "分类关系类（A1 横向分类轴）"
+    },
+    {
+      "id": "based_on_edition",
+      "label": "据版本",
+      "aliases": [
+        "basedOnEdition"
+      ],
+      "domain": "Text",
+      "range": "Edition",
+      "description": "A 经所据底本为某藏经版本。",
+      "group": "分类关系类（A1 横向分类轴）"
+    },
+    {
+      "id": "translated_in",
+      "label": "译于",
+      "aliases": [
+        "translatedIn"
+      ],
+      "domain": "Text",
+      "range": "TranslationEra",
+      "description": "A 经译于某译经时代。",
+      "group": "分类关系类（A1 横向分类轴）"
+    },
+    {
+      "id": "from_language",
+      "label": "译自",
+      "aliases": [
+        "fromLanguage"
+      ],
+      "domain": "Text",
+      "range": "SourceLanguage",
+      "description": "A 经译自某种原典语言。",
+      "group": "分类关系类（A1 横向分类轴）"
+    },
+    {
+      "id": "expounds",
+      "label": "阐明",
+      "aliases": [
+        "chanming"
+      ],
+      "inverse": "origin_from_text",
+      "domain": "Text",
+      "range": [
+        "Concept",
+        "Doctrine"
+      ],
+      "description": "A 经阐明 B 教理概念。",
+      "group": "文本结构关系类（A2 纵向内容轴）"
+    },
+    {
+      "id": "has_kepan",
+      "label": "三分",
+      "aliases": [
+        "hasKepan"
+      ],
+      "domain": "Text",
+      "range": "Kepan",
+      "description": "A 经具序/正宗/流通三分。",
+      "group": "文本结构关系类（A2 纵向内容轴）"
+    },
+    {
+      "id": "has_chapter",
+      "label": "含章",
+      "aliases": [
+        "hasChapter"
+      ],
+      "domain": [
+        "Text",
+        "Kepan"
+      ],
+      "range": "Chapter",
+      "description": "包含品/章。",
+      "group": "文本结构关系类（A2 纵向内容轴）"
+    },
+    {
+      "id": "has_section",
+      "label": "含段",
+      "aliases": [
+        "hasSection"
+      ],
+      "domain": [
+        "Chapter",
+        "Kepan"
+      ],
+      "range": "Section",
+      "description": "包含段落。",
+      "group": "文本结构关系类（A2 纵向内容轴）"
+    },
+    {
+      "id": "has_gatha",
+      "label": "含偈",
+      "aliases": [
+        "hasGatha"
+      ],
+      "domain": [
+        "Chapter",
+        "Section"
+      ],
+      "range": "Gatha",
+      "description": "包含偈颂。",
+      "group": "文本结构关系类（A2 纵向内容轴）"
+    },
+    {
+      "id": "has_mantra",
+      "label": "含咒",
+      "aliases": [
+        "hasMantra"
+      ],
+      "domain": [
+        "Chapter",
+        "Section"
+      ],
+      "range": "Mantra",
+      "description": "包含咒语。",
+      "group": "文本结构关系类（A2 纵向内容轴）"
     },
     {
       "id": "commentary_on",
       "label": "注疏",
       "aliases": [
-        "zhushu"
+        "commentaryOn"
       ],
       "inverse": "commented_by",
       "domain": "Commentary",
       "range": "Text",
       "description": "A 注疏为 B 之注释。",
-      "group": "经典关系类"
+      "group": "文本结构关系类（A2 纵向内容轴）"
     },
     {
       "id": "quotation",
       "label": "引用",
       "aliases": [
-        "yinjing"
+        "yinyong",
+        "quotes"
       ],
       "inverse": "quoted_by",
       "description": "A 论引用 B 经文句。",
-      "group": "经典关系类"
+      "group": "文本结构关系类（A2 纵向内容轴）"
     },
     {
       "id": "accomplishment",
@@ -987,21 +1798,28 @@
       "aliases": [
         "chengjiu"
       ],
+      "domain": "Practice",
+      "range": "Text",
       "description": "法门依经典而成就。",
-      "group": "经典关系类"
+      "group": "文本结构关系类（A2 纵向内容轴）"
     },
     {
-      "id": "translated_by",
-      "label": "译出",
+      "id": "mentions_doctrine",
+      "label": "涉佛理",
       "aliases": [
-        "yichu",
-        "translated"
+        "mentionsDoctrine"
       ],
-      "inverse": "translated",
-      "domain": "Text",
-      "range": "Person",
-      "description": "A 为 B 所译出。",
-      "group": "经典关系类"
+      "domain": [
+        "Section",
+        "Gatha",
+        "Mantra"
+      ],
+      "range": [
+        "Concept",
+        "Doctrine"
+      ],
+      "description": "段落/偈/咒中涉及某佛理概念。",
+      "group": "文本结构关系类（A2 纵向内容轴）"
     },
     {
       "id": "founding",
@@ -1015,18 +1833,18 @@
       "domain": "Person",
       "range": "School",
       "description": "A 创立 B 宗派。",
-      "group": "宗派关系类"
+      "group": "宗派判教关系类（A1 / L3）"
     },
     {
       "id": "co_founding",
       "label": "共同创立",
       "aliases": [
-        "cofounder_of"
+        "cofounderOf"
       ],
       "domain": "Person",
       "range": "School",
       "description": "A 与同道共同开创 B。",
-      "group": "宗派关系类"
+      "group": "宗派判教关系类（A1 / L3）"
     },
     {
       "id": "reliance",
@@ -1039,20 +1857,55 @@
       "domain": "School",
       "range": "Text",
       "description": "A 宗派以 B 经为根本依止。",
-      "group": "宗派关系类"
+      "group": "宗派判教关系类（A1 / L3）"
     },
     {
-      "id": "transmission",
-      "label": "传承",
+      "id": "establishes_practice",
+      "label": "立法门",
       "aliases": [
-        "chuancheng",
-        "succeeds"
+        "establishesPractice"
       ],
-      "inverse": "received_from",
-      "domain": "Person",
-      "range": "Person",
-      "description": "A 传承 B 之法脉。",
-      "group": "宗派关系类"
+      "domain": "School",
+      "range": "Practice",
+      "description": "宗派立某修行法门。",
+      "group": "宗派判教关系类（A1 / L3）"
+    },
+    {
+      "id": "has_panjiao",
+      "label": "立判教",
+      "aliases": [
+        "hasPanJiao"
+      ],
+      "domain": "School",
+      "range": "PanjiaoSystem",
+      "description": "A 宗派立有 B 判教体系。",
+      "group": "宗派判教关系类（A1 / L3）"
+    },
+    {
+      "id": "classifies_as",
+      "label": "判为",
+      "aliases": [
+        "classifiesAs"
+      ],
+      "domain": "PanjiaoSystem",
+      "range": [
+        "Text",
+        "Doctrine",
+        "Vehicle",
+        "Mode"
+      ],
+      "description": "判教体系将某经/教理/乘/显密判属某一教相。",
+      "group": "宗派判教关系类（A1 / L3）"
+    },
+    {
+      "id": "higher_than",
+      "label": "胜",
+      "aliases": [],
+      "asymmetric": true,
+      "domain": "PanjiaoSystem",
+      "range": "PanjiaoSystem",
+      "description": "判教中的高低层次，如圆教胜于别教。",
+      "group": "宗派判教关系类（A1 / L3）"
     },
     {
       "id": "panjiao_attribution",
@@ -1067,7 +1920,20 @@
       ],
       "range": "PanjiaoSystem",
       "description": "A 被 B 判教体系摄归某位。",
-      "group": "宗派关系类"
+      "group": "宗派判教关系类（A1 / L3）"
+    },
+    {
+      "id": "transmission",
+      "label": "传承",
+      "aliases": [
+        "chuancheng",
+        "succeeds"
+      ],
+      "inverse": "received_from",
+      "domain": "Person",
+      "range": "Person",
+      "description": "A 传承 B 之法脉。",
+      "group": "宗派判教关系类（A1 / L3）"
     },
     {
       "id": "divergence",
@@ -1079,39 +1945,7 @@
       "domain": "School",
       "range": "School",
       "description": "A 与 B 宗派在某义理上存在分歧。",
-      "group": "宗派关系类"
-    },
-    {
-      "id": "has_panjiao",
-      "label": "立判教",
-      "aliases": [
-        "hasPanJiao"
-      ],
-      "domain": "School",
-      "range": "PanjiaoSystem",
-      "description": "A 宗派立有 B 判教体系。",
-      "group": "宗派关系类"
-    },
-    {
-      "id": "classifies_as",
-      "label": "判为",
-      "aliases": [
-        "classifiesAs"
-      ],
-      "domain": "PanjiaoSystem",
-      "range": "Text",
-      "description": "判教体系将某经判属某一教相。",
-      "group": "宗派关系类"
-    },
-    {
-      "id": "higher_than",
-      "label": "胜",
-      "aliases": [],
-      "asymmetric": true,
-      "domain": "PanjiaoSystem",
-      "range": "PanjiaoSystem",
-      "description": "判教中的高低层次，如圆教胜于别教。",
-      "group": "宗派关系类"
+      "group": "宗派判教关系类（A1 / L3）"
     },
     {
       "id": "teacher_student",
@@ -1124,55 +1958,164 @@
       "domain": "Person",
       "range": "Person",
       "description": "A 与 B 为师徒（师→弟）。",
-      "group": "人物关系类"
-    },
-    {
-      "id": "manifestation",
-      "label": "化现",
-      "aliases": [
-        "huahua"
-      ],
-      "inverse": "manifested_as",
-      "description": "A 化现为 B，如观音化现民间人物。",
-      "group": "人物关系类"
-    },
-    {
-      "id": "protection",
-      "label": "护持",
-      "aliases": [
-        "hufa"
-      ],
-      "domain": "Deity",
-      "range": [
-        "Text",
-        "School",
-        "Doctrine"
-      ],
-      "description": "A 护持 B 法门/宗派。",
-      "group": "人物关系类"
-    },
-    {
-      "id": "authorship",
-      "label": "著有",
-      "aliases": [
-        "author_of"
-      ],
-      "domain": "Person",
-      "range": "Text",
-      "description": "A 造/著 B 论典。",
-      "group": "人物关系类"
+      "group": "人物关系类（A3 人物传承轴）"
     },
     {
       "id": "sibling",
       "label": "兄弟",
       "aliases": [
-        "brother_of"
+        "brotherOf"
       ],
       "symmetric": true,
       "domain": "Person",
       "range": "Person",
-      "description": "A 与 B 为兄弟。",
-      "group": "人物关系类"
+      "description": "A 与 B 为兄弟（如阿难与提婆达多）。",
+      "group": "人物关系类（A3 人物传承轴）"
+    },
+    {
+      "id": "manifestation",
+      "label": "化现",
+      "aliases": [
+        "huaxian"
+      ],
+      "inverse": "manifested_as",
+      "description": "A 化现为 B，如观音化现民间人物。",
+      "group": "人物关系类（A3 人物传承轴）"
+    },
+    {
+      "id": "protection",
+      "label": "护持",
+      "aliases": [
+        "huchi",
+        "hufa"
+      ],
+      "domain": [
+        "Protector",
+        "Deity"
+      ],
+      "range": [
+        "Text",
+        "School",
+        "Doctrine",
+        "Practice"
+      ],
+      "description": "A 护持 B 法门/宗派/教理。",
+      "group": "人物关系类（A3 人物传承轴）"
+    },
+    {
+      "id": "authorship",
+      "label": "著有",
+      "aliases": [
+        "zhuyou",
+        "authorOf",
+        "author_of"
+      ],
+      "inverse": "authored_by",
+      "domain": "Person",
+      "range": [
+        "Text",
+        "Commentary"
+      ],
+      "description": "A 造/著 B 经论或注疏。",
+      "group": "人物关系类（A3 人物传承轴）"
+    },
+    {
+      "id": "translated_by",
+      "label": "译出",
+      "aliases": [
+        "yichu",
+        "translatedBy",
+        "translated"
+      ],
+      "inverse": "translated",
+      "domain": "Text",
+      "range": "Translator",
+      "description": "A 经为 B 所译出。",
+      "group": "人物关系类（A3 人物传承轴）"
+    },
+    {
+      "id": "subsumption",
+      "label": "摄属",
+      "aliases": [
+        "sheshu",
+        "subsumes"
+      ],
+      "inverse": "subsumed_by",
+      "description": "总法含别法，如五蕴摄属三科。",
+      "group": "义理关系类（A2 / L1–L2）"
+    },
+    {
+      "id": "correspondence",
+      "label": "相即",
+      "aliases": [
+        "xiangji",
+        "correspondsTo"
+      ],
+      "symmetric": true,
+      "description": "两法相即不二，如烦恼即菩提、生死即涅槃。",
+      "group": "义理关系类（A2 / L1–L2）"
+    },
+    {
+      "id": "refutation",
+      "label": "对破",
+      "aliases": [
+        "duipo",
+        "disputes"
+      ],
+      "symmetric": true,
+      "description": "A 对破 B 之偏执，如中观对破有见与空见。",
+      "group": "义理关系类（A2 / L1–L2）"
+    },
+    {
+      "id": "precedence",
+      "label": "次第",
+      "aliases": [
+        "cidi",
+        "precedes"
+      ],
+      "inverse": "succeeds_in_order",
+      "description": "修行或义理之先后，如信为行之先。",
+      "group": "义理关系类（A2 / L1–L2）"
+    },
+    {
+      "id": "interpretation",
+      "label": "诠释",
+      "aliases": [
+        "quanshi",
+        "interprets"
+      ],
+      "description": "A 诠释 B 之义，如《大智度论》诠释《大般若经》。",
+      "group": "义理关系类（A2 / L1–L2）"
+    },
+    {
+      "id": "derivation",
+      "label": "衍生",
+      "aliases": [
+        "yansheng"
+      ],
+      "inverse": "derived_from",
+      "description": "B 由 A 衍生发展而来。",
+      "group": "义理关系类（A2 / L1–L2）"
+    },
+    {
+      "id": "opposition",
+      "label": "对立",
+      "aliases": [
+        "duili"
+      ],
+      "symmetric": true,
+      "description": "A 与 B 是两种对立见地。",
+      "group": "义理关系类（A2 / L1–L2）"
+    },
+    {
+      "id": "synonymy",
+      "label": "同一",
+      "aliases": [
+        "tongyi"
+      ],
+      "symmetric": true,
+      "description": "A 与 B 为同一概念之异名。",
+      "group": "义理关系类（A2 / L1–L2）"
     },
     {
       "id": "origin_from_text",
@@ -1188,7 +2131,7 @@
       ],
       "range": "Text",
       "description": "A 概念出自 B 经。",
-      "group": "概念-经典关系类"
+      "group": "义理关系类（A2 / L1–L2）"
     },
     {
       "id": "textual_evidence",
@@ -1202,69 +2145,85 @@
         "Doctrine"
       ],
       "description": "A 经文佐证 B 概念。",
-      "group": "概念-经典关系类"
+      "group": "义理关系类（A2 / L1–L2）"
     },
     {
-      "id": "has_kepan",
-      "label": "三分",
-      "domain": "Text",
-      "range": "Kepan",
-      "description": "A 经具序/正宗/流通三分。",
-      "group": "文本结构关系"
-    },
-    {
-      "id": "has_chapter",
-      "label": "含章",
-      "domain": [
-        "Text",
-        "Kepan"
+      "id": "speaks_at",
+      "label": "说于",
+      "aliases": [
+        "speaksAt"
       ],
-      "range": "Chapter",
-      "description": "包含品/章。",
-      "group": "文本结构关系"
+      "inverse": "spoken_by",
+      "domain": "Buddha",
+      "range": "DharmaAssembly",
+      "description": "A 佛在 B 法会上说法。",
+      "group": "事件关系类（A4 事件缘起轴）"
     },
     {
-      "id": "has_section",
-      "label": "含段",
-      "domain": "Chapter",
-      "range": "Section",
-      "description": "包含段落。",
-      "group": "文本结构关系"
-    },
-    {
-      "id": "has_gatha",
-      "label": "含偈",
-      "domain": "Chapter",
-      "range": "Gatha",
-      "description": "包含偈颂。",
-      "group": "文本结构关系"
-    },
-    {
-      "id": "has_mantra",
-      "label": "含咒",
-      "domain": "Chapter",
-      "range": "Mantra",
-      "description": "包含咒语。",
-      "group": "文本结构关系"
-    },
-    {
-      "id": "mentions_figure",
-      "label": "提及人物",
-      "domain": "Text",
-      "range": "Person",
-      "description": "A 经中出现 B 人物。",
-      "group": "文本结构关系"
-    },
-    {
-      "id": "mentions_doctrine",
-      "label": "阐明佛理",
-      "domain": "Text",
-      "range": [
-        "Concept",
-        "Doctrine"
+      "id": "held_at",
+      "label": "处会",
+      "aliases": [
+        "heldAt"
       ],
-      "description": "A 经中阐发 B 概念。",
-      "group": "文本结构关系"
+      "domain": "DharmaAssembly",
+      "range": "Text",
+      "description": "法会 B 所说为 A 经。",
+      "group": "事件关系类（A4 事件缘起轴）"
+    },
+    {
+      "id": "in_assembly",
+      "label": "预会",
+      "aliases": [
+        "inAssembly"
+      ],
+      "domain": "Person",
+      "range": "DharmaAssembly",
+      "description": "A 人物为 B 法会之听众 / 当机众。",
+      "group": "事件关系类（A4 事件缘起轴）"
+    },
+    {
+      "id": "tells_of",
+      "label": "述说",
+      "aliases": [
+        "tellsOf"
+      ],
+      "domain": "Text",
+      "range": "StoryEvent",
+      "description": "A 经中述说 B 本事/本生/因缘故事。",
+      "group": "事件关系类（A4 事件缘起轴）"
+    },
+    {
+      "id": "attends_council",
+      "label": "参与结集",
+      "aliases": [
+        "attendsCouncil"
+      ],
+      "domain": "Person",
+      "range": "Council",
+      "description": "A 参与 B 结集。",
+      "group": "事件关系类（A4 事件缘起轴）"
+    },
+    {
+      "id": "during_event",
+      "label": "发生于",
+      "aliases": [
+        "duringEvent"
+      ],
+      "domain": "Event",
+      "range": "Event",
+      "description": "子事件发生于母事件期间。",
+      "group": "事件关系类（A4 事件缘起轴）"
+    },
+    {
+      "id": "transmits",
+      "label": "传法",
+      "aliases": [
+        "chuanfa"
+      ],
+      "domain": "Person",
+      "range": "TransmissionEvent",
+      "description": "A 祖师在传法事件 B 中传付法脉。",
+      "group": "事件关系类（A4 事件缘起轴）"
     }
   ],
   "datasets": [
@@ -1272,31 +2231,31 @@
       "path": "data/concepts-expanded.json",
       "entity": "Concept / Doctrine",
       "count": 50,
-      "note": "义理概念与范畴实例，id 前缀 c###（注：规划总数 216）。"
+      "note": "义理概念与范畴实例，id 前缀 c###（规划 216，待补）。"
     },
     {
       "path": "data/persons-expanded.json",
-      "entity": "Person（Buddha/Bodhisattva/Arhat/Master/Deity/ModernScholar/FolkFigure）",
+      "entity": "Person（Buddha/Bodhisattva/Arhat/Protector/Patriarch/ModernScholar/Deity/FolkFigure）",
       "count": 54,
       "note": "人物实例，id 前缀 p###。"
     },
     {
       "path": "data/sects-expanded.json",
-      "entity": "School",
+      "entity": "School / PanjiaoSystem",
       "count": 8,
       "note": "宗派实例，id 前缀 sec###，含判教对照。"
     },
     {
       "path": "data/sutras-expanded.json",
-      "entity": "Text（Sutra/Sastra）",
+      "entity": "Text 元数据",
       "count": 20,
-      "note": "核心经典实例，id 前缀 s###（注：规划总数 86）。"
+      "note": "核心经典义理元数据，id 前缀 s###（规划 86，待补）。"
     },
     {
       "path": "data/relations-expanded.json",
       "entity": "ObjectProperty 实例（三元组）",
       "count": 109,
-      "note": "义理关系三元组（注：规划总数 368）。"
+      "note": "义理关系三元组（规划 368，待补）。"
     },
     {
       "path": "ontology/instances/",
@@ -1305,32 +2264,67 @@
       "note": "全藏文本本体，分片存储于 shards/（51 片），实例内 figure_id/concept_id 已对齐 p###/c###。"
     },
     {
+      "path": "ontology/instance-links.json",
+      "entity": "反向索引（concept/person/school/category → 经文落点）",
+      "note": "打通义理本体与文本本体的查询层。"
+    },
+    {
+      "path": "ontology/parallel_translations.json",
+      "entity": "Text 异译组",
+      "note": "异译分组数据；与 relation:translation_of 对应。"
+    },
+    {
       "path": "js/ontology-graph-data.js",
       "entity": "图谱页内联节点/边",
-      "note": "义理图谱页（graph.html/inference.html）当前数据源，待并入统一实例。"
+      "note": "义理图谱页（graph.html / inference.html）当前数据源，待并入统一实例。"
     },
     {
       "path": "js/ontology-data.js",
-      "entity": "Concept/Person/School/Text/Relation",
-      "note": "旧版完整数据（216 概念/100 人物/984 关系），当前无页面引用，待并入统一实例后归档。"
+      "entity": "Concept/Person/School/Text/Relation 旧版完整数据",
+      "count": "216 概念 / 100 人物 / 984 关系",
+      "note": "旧版完整数据，当前无页面引用，待并入统一实例后归档。"
     }
   ],
+  "process": {
+    "phases": [
+      "M1 骨架定版（本主档）",
+      "M2 义理层实例填充（concepts/persons/sects/relations）",
+      "M3 全量文本实例挂接（ontology/instances 2506 部，已完成）",
+      "M4 事件层实例填充（法会/本生/译经/结集）",
+      "M5 应用层（图谱/检索/RAG 问答）"
+    ],
+    "quality_checks": [
+      "引文逐句回原典核对",
+      "类层级无环、关系对称/逆元一致",
+      "实例 id 唯一、无悬空引用",
+      "偈/咒/人物/佛理标引可回原典定位",
+      "异译组经号与大正藏目录一致",
+      "判教体系与宗派依经有据"
+    ]
+  },
   "fixes": [
-    "以七层体系为唯一框架；四层旧稿 schema.yaml 废弃。",
-    "修正旧稿 TBox/ABox 混写：二谛、三身、一佛乘、顿悟、三性、涅槃、轮回、真谛、俗谛、心、菩萨、佛教 等原被误列于 object_properties，现归为 Concept/Doctrine 实例。",
-    "修正旧稿 Person 层号写漏（layer: L）→ 人物类统归 L5。",
-    "去重合并旧稿重复/并列谓词：teacherOf、founderOf 与 founder_of、studentOf 与 succeeds。",
-    "关系谓词 id 统一为 snake_case，旧 camelCase/拼音写法收入 aliases 以兼容既有数据。",
-    "修正旧稿举例讹误：删除《心经》属于《大般若经》之误（T0251《心经》系独立经典）。"
+    "顶层结构由「纯七层」改为「四轴 × 七层」：四轴（分类/内容/人物/事件）做顶层分类骨架，七层（L0–L6）做抽象层级，两者正交。",
+    "补入 A 稿（用户上传方案）有而 v2.0.0 缺的完整事件轴 Event 及其子类：DharmaAssembly 法会 / StoryEvent 本事本生 / TransmissionEvent 传法译经 / Council 结集，并新增 7 条事件关系谓词（speaks_at / held_at / in_assembly / tells_of / attends_council / during_event / transmits）。",
+    "补入 A 稿的传播存世四分类：Translator 译者 / TranslationEra 译时代 / SourceLanguage 原典语言 / Edition 藏经版本，并补相应数据属性与谓词。",
+    "补入三藏根类 ThreeBaskets（SutraPitaka / VinayaPitaka / AbhidharmaPitaka）、十二分教 Genre、分部 Division、法门 Practice、乘 Vehicle、显密 Mode；Text 下三子类 Sutra/Vinaya/Sastra 与三藏对齐。",
+    "Kepan 补全三分子类 IntroductoryPart 序分 / EssentialPart 正宗分 / CirculationPart 流通分，与「三段式」模型对齐。",
+    "人物类 Protector（护法）、Patriarch（祖师）按 A 稿正名，替换 v2.0.0 中 Master/Deity 命名（保留 aliases 兼容）。",
+    "数据属性由 21 条扩到 45 条：补入 description/source_language/translation_era/vehicle/mode/genre/parallel_versions/edition_list/keywords/commentary_count/chapter_no/chapter_title/section_no/part_of_kepan/gatha_meter/mantra_siddham/location/audience/event_time 等 A 稿细分属性。",
+    "关系谓词由 37 条扩到 50 条，分 6 组重排为 7 组（新增分类关系组、事件关系组）；id 统一 snake_case，A 稿 camelCase（partOf/teacherOf/founderOf/basesOn/derivesFrom/translationOf/classifiedIn/hasPanJiao/classifiesAs/authorOf/translatedBy/same_text_different_translation 等）全部收录 aliases。",
+    "命名空间以公网 https://yejinlei.github.io/Buddhist/ontology# 为准，原方案 doubao 命名空间登记为 source_namespace。",
+    "v2.0.0 中「依据：《佛经三藏体系本体构建方案》（七层框架）」依据标注错误——该方案是四轴而非七层；现更正为 source_v2，并同时记录 v1 七层稿与 v2 四轴稿来源。",
+    "保留 v2.0.0 已修的四项硬伤：TBox/ABox 不再混写；Person 层号归 L5；teacherOf/founderOf/studentOf 重复已合并；删除《心经》属《大般若经》之误举例。",
+    "2506 部文本实例字段（vehicle/mode/belongs_to_school/parallel_translations/canon_ref/kepan/chapters/paragraphs/gathas/mantras/figures/doctrines）与本主档对齐，实例 id（t####/c###/p###）不整体重写。"
   ],
   "stats": {
+    "axes": 4,
     "layers": 7,
-    "classes": 31,
-    "class_roots": 16,
-    "properties": 21,
-    "relations": 37,
+    "classes": 54,
+    "class_roots": 27,
+    "properties": 39,
+    "relations": 53,
     "relation_groups": 6,
-    "datasets": 8
+    "datasets": 10
   },
-  "generated_at": "2026-10-29 11:25:59"
+  "generated_at": "2026-10-29 13:08:39"
 }

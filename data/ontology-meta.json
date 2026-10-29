@@ -1,45 +1,76 @@
 {
   "name": "佛学本体论",
-  "version": "2.0.0",
+  "version": "3.0.0",
+  "structure": "四轴 × 七层",
   "namespace": "https://yejinlei.github.io/Buddhist/ontology#",
   "stats": {
+    "axes": 4,
     "layers": 7,
-    "classes": 31,
-    "class_roots": 16,
-    "properties": 21,
-    "relations": 37,
+    "classes": 54,
+    "class_roots": 27,
+    "properties": 39,
+    "relations": 53,
     "relation_groups": 6,
-    "datasets": 8
+    "datasets": 10
   },
+  "axes": [
+    {
+      "id": "A1",
+      "name": "横向分类轴",
+      "key": "classification"
+    },
+    {
+      "id": "A2",
+      "name": "纵向内容轴",
+      "key": "content"
+    },
+    {
+      "id": "A3",
+      "name": "人物传承轴",
+      "key": "person"
+    },
+    {
+      "id": "A4",
+      "name": "事件缘起轴",
+      "key": "event"
+    }
+  ],
   "layers": [
     {
       "id": "L0",
-      "name": "元模型层"
+      "name": "元模型层",
+      "key": "metamodel"
     },
     {
       "id": "L1",
-      "name": "教理本体层"
+      "name": "教理本体层",
+      "key": "doctrine_core"
     },
     {
       "id": "L2",
-      "name": "义理范畴层"
+      "name": "义理范畴层",
+      "key": "doctrine_category"
     },
     {
       "id": "L3",
-      "name": "宗派体系层"
+      "name": "宗派体系层",
+      "key": "school_system"
     },
     {
       "id": "L4",
-      "name": "文本载体层"
+      "name": "文本载体层",
+      "key": "text"
     },
     {
       "id": "L5",
-      "name": "人物传承层"
+      "name": "人物传承层",
+      "key": "person_lineage"
     },
     {
       "id": "L6",
-      "name": "信仰文化外延层"
+      "name": "信仰文化外延层",
+      "key": "cultural_extension"
     }
   ],
-  "generated_at": "2026-10-29 11:25:59"
+  "generated_at": "2026-10-29 13:08:39"
 }

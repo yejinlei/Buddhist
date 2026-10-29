@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>本体总纲 · 七层体系 - 佛学本体论</title>
+    <title>本体总纲 · 四轴 × 七层 - 佛学本体论</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../css/tailwind.min.css">
     <link rel="stylesheet" href="../css/tailwind-extra.css">
@@ -15,6 +15,9 @@
         .layer-card{cursor:pointer;transition:all .18s ease;border-left:4px solid transparent}
         .layer-card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(139,90,43,.14)}
         .layer-card.active{border-left-color:#D4AF37;background:#fffdf6}
+        .axis-card{cursor:pointer;transition:all .18s ease;border-top:4px solid transparent}
+        .axis-card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(62,107,79,.14)}
+        .axis-card.active{border-top-color:#D4AF37;background:#fffdf6}
         .class-node{border-left:2px solid #e7ddc8;padding-left:12px;margin-left:6px}
         .cls-head{display:flex;align-items:baseline;gap:8px;cursor:pointer;padding:4px 0}
         .cls-id{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:#a07840;background:#f6efe0;border-radius:4px;padding:1px 6px}
@@ -49,39 +52,49 @@
     </nav>
 
     <main class="max-w-7xl mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-buddha-primary mb-2">📐 本体总纲 · 七层体系</h1>
-        <p class="text-buddha-dark/70 mb-2">佛学本体论的权威定义（TBox）：以七层结构组织义理、宗派、文本、人物与文化外延，并把全藏经文的科判结构挂接为文本层实例。</p>
+        <h1 class="text-3xl font-bold text-buddha-primary mb-2">📐 本体总纲 · 四轴 × 七层</h1>
+        <p class="text-buddha-dark/70 mb-2">佛学本体论的权威定义（TBox）：以<strong>四轴</strong>（分类 / 内容 / 人物 / 事件）作为顶层分类骨架，以<strong>七层</strong>（元模型→信仰文化外延）作为抽象层级，两者正交融合；并把全藏经文的科判结构挂接为文本层实例。</p>
         <p id="meta-line" class="text-xs muted mb-6"></p>
 
-        <div id="stat-bar" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8"></div>
+        <div id="stat-bar" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-3 mb-8"></div>
 
         <section class="mb-10">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">一、七层结构</h2>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">一、四轴（顶层分类骨架）</h2>
+            <p class="text-sm muted mb-4">回答"从哪个维度看"。点击任一轴可筛选下方类树。</p>
+            <div id="axes" class="grid md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">二、七层（抽象层级）</h2>
+            <p class="text-sm muted mb-4">回答"抽象到哪一层"。轴与层正交：同一轴内可跨层，同一层内可跨轴。点击任一层可筛选下方类树。</p>
             <div id="layers" class="grid md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
         </section>
 
         <section class="mb-10">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">二、类体系（Class Hierarchy）</h2>
-            <p class="text-sm muted mb-4">点击类名可展开/收起其子类；左侧按钮可按层筛选。</p>
-            <div id="layer-filter" class="flex flex-wrap gap-2 mb-5 text-xs"></div>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">三、类体系（Class Hierarchy）</h2>
+            <p class="text-sm muted mb-4">每个根类同时标注所属「轴」与「层」。点击类名可展开/收起子类；可按轴或按层筛选。</p>
+            <div class="flex flex-col gap-2 mb-4">
+                <div id="axis-filter" class="flex flex-wrap gap-2 text-xs"></div>
+                <div id="layer-filter" class="flex flex-wrap gap-2 text-xs"></div>
+            </div>
             <div id="classes" class="space-y-6"></div>
         </section>
 
         <section class="mb-10">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">三、关系谓词（Object Properties）</h2>
-            <p class="text-sm muted mb-4">统一以 snake_case 命名，旧写法（拼音 / camelCase）收入 aliases 以兼容既有数据。</p>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">四、关系谓词（Object Properties）</h2>
+            <p class="text-sm muted mb-4">统一以 snake_case 命名，原方案 camelCase 写法与旧拼音写法收入 aliases，以兼容既有数据与原方案语义。</p>
             <div id="relations" class="space-y-6"></div>
         </section>
 
         <section class="mb-10">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">四、数据源登记（ABox）</h2>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">五、数据源登记（ABox）</h2>
             <div class="bg-white rounded-lg shadow p-4 overflow-x-auto">
                 <table class="rel-table" id="datasets"></table>
             </div>
         </section>
 
         <section class="mb-10" id="sec-instances">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">五、义理实例 ↔ 文本落点</h2>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">六、义理实例 ↔ 文本落点</h2>
             <p class="text-sm muted mb-4">聚合文本本体的标引，展示义理概念、人物、宗派、部类在全藏 2506 部经文中的落点。点击任一项可查看关联经文。</p>
             <div class="flex flex-wrap gap-2 mb-4 text-xs" id="il-tabs">
                 <button class="il-tab px-3 py-1 rounded-full bg-buddha-primary text-white" data-k="concept">概念</button>
@@ -95,20 +108,28 @@
         </section>
 
         <section class="mb-10">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">六、本次修订记录</h2>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">七、落地路线（M1–M5）与质量校验</h2>
+            <div id="process" class="grid md:grid-cols-2 gap-4"></div>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">八、本次融合修订记录（v3.0.0）</h2>
             <ul id="fixes" class="list-disc list-inside text-sm text-buddha-dark/85 space-y-1 bg-white rounded-lg shadow p-5"></ul>
         </section>
     </main>
 
     <footer class="border-t border-paper mt-12 py-6 text-center text-xs muted">
-        <p>佛学本体论 · 七层本体体系 · 语料依据 CBETA 大正藏</p>
+        <p>佛学本体论 · 四轴 × 七层融合本体体系 · 语料依据 CBETA 大正藏</p>
         <p class="mt-1"><a href="../index.html" class="text-buddha-primary">返回首页</a></p>
     </footer>
 
     <script>
     (function(){
+        var AXIS_TAG = {A1:'分类轴',A2:'内容轴',A3:'人物轴',A4:'事件轴'};
+        var AXIS_COLOR = {A1:'#8B5A2B',A2:'#3E6B4F',A3:'#9c4a4a',A4:'#6a5aa0'};
         var LAYER_TAG = {L0:'元模型',L1:'教理本体',L2:'义理范畴',L3:'宗派体系',L4:'文本载体',L5:'人物传承',L6:'信仰文化外延'};
         var LAYER_COLOR = {L0:'#8a8a8a',L1:'#B8860B',L2:'#3E6B4F',L3:'#8B5A2B',L4:'#2f5d8a',L5:'#9c4a4a',L6:'#6a5aa0'};
+        var FILTER = {axis:'all', layer:'all'};
         function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
         function arr(v){ if(v==null) return []; return Array.isArray(v)?v:[v]; }
 
@@ -124,20 +145,36 @@
         function render(d){
             var meta = d.meta||{}, stats = d.stats||{};
             document.getElementById('meta-line').textContent =
-                (meta.name||'佛学本体论')+' · v'+(meta.version||'')+' · 命名空间 '+(meta.namespace||'')+' · 依据 '+(meta.basis||'');
+                (meta.name||'佛学本体论')+' · v'+(meta.version||'')+' · '+(meta.structure||'')+' · 命名空间 '+(meta.namespace||'')+' · 依据 '+(meta.basis||'');
 
             // 统计条
             var statItems = [
-                ['层', stats.layers],['类', stats.classes],['数据属性', stats.properties],
-                ['关系谓词', stats.relations],['数据源', stats.datasets]
+                ['轴', stats.axes],['层', stats.layers],['类', stats.classes],['数据属性', stats.properties],
+                ['关系谓词', stats.relations],['关系组', stats.relation_groups],['数据源', stats.datasets]
             ];
             document.getElementById('stat-bar').innerHTML = statItems.map(function(it){
                 return '<div class="bg-white rounded-lg shadow px-4 py-3 text-center"><div class="text-2xl font-bold text-buddha-primary">'+esc(it[1])+'</div><div class="text-xs muted">'+esc(it[0])+'</div></div>';
             }).join('');
 
+            // 轴卡片
+            var axes = d.axes||[];
+            var perAxis = {};
+            (d.classes||[]).forEach(function(c){
+                arr(c.axis).forEach(function(a){ perAxis[a]=(perAxis[a]||0)+1+countSubsOnAxis(c,a); });
+            });
+            document.getElementById('axes').innerHTML = axes.map(function(a){
+                var color = AXIS_COLOR[a.id]||'#8B5A2B';
+                return '<div class="axis-card bg-white rounded-lg shadow p-4" data-axis="'+esc(a.id)+'" style="border-top-color:'+color+'">'
+                    +'<div class="flex items-center justify-between mb-1"><span class="font-bold text-buddha-primary">'+esc(a.id)+'</span>'
+                    +'<span class="text-[11px] px-2 py-0.5 rounded-full" style="background:'+color+'1a;color:'+color+'">'+esc(AXIS_TAG[a.id]||'')+'</span></div>'
+                    +'<div class="text-sm font-semibold mb-1">'+esc(a.name)+'</div>'
+                    +'<div class="text-xs muted leading-relaxed">'+esc(a.description||'')+'</div>'
+                    +'<div class="text-[11px] mt-2 muted">相关类 '+ (perAxis[a.id]||0) +' 个</div>'
+                    +'</div>';
+            }).join('');
+
             // 层卡片
             var layers = d.layers||[];
-            // 统计每层类数
             var perLayer = {};
             (d.classes||[]).forEach(function(c){ perLayer[c.layer]=(perLayer[c.layer]||0)+1+countSubs(c); });
             document.getElementById('layers').innerHTML = layers.map(function(l){
@@ -151,12 +188,19 @@
                     +'</div>';
             }).join('');
 
-            // 层筛选按钮
-            var filterBtns = ['<button class="filter-btn px-3 py-1 rounded-full bg-buddha-primary text-white" data-f="all">全部</button>'];
-            layers.forEach(function(l){
-                filterBtns.push('<button class="filter-btn px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-f="'+esc(l.id)+'">'+esc(l.id+' '+l.name)+'</button>');
+            // 轴筛选按钮
+            var axisBtns = ['<button class="axis-btn filter-btn px-3 py-1 rounded-full bg-buddha-primary text-white" data-f="all">全部轴</button>'];
+            axes.forEach(function(a){
+                axisBtns.push('<button class="axis-btn filter-btn px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-f="'+esc(a.id)+'">'+esc(a.id+' '+a.name)+'</button>');
             });
-            document.getElementById('layer-filter').innerHTML = filterBtns.join('');
+            document.getElementById('axis-filter').innerHTML = axisBtns.join('');
+
+            // 层筛选按钮
+            var layerBtns = ['<button class="layer-btn filter-btn px-3 py-1 rounded-full bg-buddha-primary text-white" data-f="all">全部层</button>'];
+            layers.forEach(function(l){
+                layerBtns.push('<button class="layer-btn filter-btn px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-f="'+esc(l.id)+'">'+esc(l.id+' '+l.name)+'</button>');
+            });
+            document.getElementById('layer-filter').innerHTML = layerBtns.join('');
 
             // 类树
             renderClasses(d.classes||[]);
@@ -166,17 +210,19 @@
             renderDatasets(d.datasets||[]);
             // 修订
             document.getElementById('fixes').innerHTML = (d.fixes||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
+            // 落地流程
+            renderProcess(d.process||{});
 
             bind(d);
             initInstances();
         }
 
         function countSubs(c){ var n=0; (c.subclasses||[]).forEach(function(s){ n+=1+countSubs(s); }); return n; }
+        function countSubsOnAxis(c, axis){ var n=0; (c.subclasses||[]).forEach(function(s){ var ax=arr(s.axis||c.axis); if(ax.indexOf(axis)>=0) n+=1; n+=countSubsOnAxis(Object.assign({axis:c.axis},s),axis); }); return n; }
 
         function renderClasses(classes){
             var host = document.getElementById('classes');
             host.innerHTML = classes.map(function(c){ return classBlock(c); }).join('');
-            // 默认展开根，折叠子
             host.querySelectorAll('.cls-head').forEach(function(h){
                 h.addEventListener('click', function(){
                     var subs = h.parentElement.querySelector('.cls-subs');
@@ -186,7 +232,6 @@
                     if(t) t.textContent = subs.style.display==='none' ? '▸ 展开' : '▾ 收起';
                 });
             });
-            // 子类默认展开（一层）
             host.querySelectorAll('.cls-subs').forEach(function(s){
                 var depth = s.getAttribute('data-depth');
                 if(depth && +depth>1) s.style.display='none';
@@ -200,19 +245,27 @@
         function classBlock(c, depth){
             depth = depth||0;
             var subs = c.subclasses||[];
-            var color = LAYER_COLOR[c.layer]||'#8B5A2B';
+            var layerColor = LAYER_COLOR[c.layer]||'#8B5A2B';
+            var axes = arr(c.axis||[]);
+            var axTags = axes.map(function(a){
+                var c2 = AXIS_COLOR[a]||'#8B5A2B';
+                return '<span class="text-[11px] px-1.5 py-0.5 rounded" style="background:'+c2+'1a;color:'+c2+'">'+esc(a)+'</span>';
+            }).join('');
             var ex = arr(c.examples);
-            var html = '<div class="cls-wrap" data-layer="'+esc(c.layer)+'" data-depth="'+depth+'">';
+            var al = arr(c.aliases);
+            var html = '<div class="cls-wrap" data-axes="'+esc(axes.join(','))+'" data-layer="'+esc(c.layer)+'" data-depth="'+depth+'">';
             html += '<div class="cls-head">'
                 + (subs.length? '<span class="toggle">▾ 收起</span>' : '<span class="toggle" style="visibility:hidden">·</span>')
                 + '<span class="cls-id">'+esc(c.id)+'</span>'
                 + '<span class="font-semibold">'+esc(c.label)+'</span>'
-                + '<span class="text-[11px] px-1.5 py-0.5 rounded" style="background:'+color+'1a;color:'+color+'">'+esc(c.layer)+'</span>'
+                + axTags
+                + '<span class="text-[11px] px-1.5 py-0.5 rounded" style="background:'+layerColor+'1a;color:'+layerColor+'">'+esc(c.layer)+'</span>'
+                + (al.length?al.map(function(a){return '<span class="alias-tag">'+esc(a)+'</span>';}).join(''):'')
                 + '</div>';
             if(c.description){ html += '<div class="text-xs muted mb-1" style="padding-left:52px">'+esc(c.description)+'</div>'; }
             if(ex.length){ html += '<div class="mb-1" style="padding-left:52px">'+ex.map(function(e){return '<span class="alias-tag">'+esc(e)+'</span>';}).join('')+'</div>'; }
             if(subs.length){
-                html += '<div class="cls-subs class-node" data-depth="'+(depth+1)+'">'+subs.map(function(s){return classBlock(Object.assign({layer:c.layer},s),depth+1);}).join('')+'</div>';
+                html += '<div class="cls-subs class-node" data-depth="'+(depth+1)+'">'+subs.map(function(s){return classBlock(Object.assign({axis:c.axis,layer:c.layer},s),depth+1);}).join('')+'</div>';
             }
             html += '</div>';
             return html;
@@ -239,7 +292,7 @@
                 }).join('');
                 return '<div class="bg-white rounded-lg shadow p-4 overflow-x-auto">'
                     +'<h3 class="font-bold text-buddha-primary mb-2">'+esc(g)+' <span class="text-xs muted">('+(groups[g]||[]).length+')</span></h3>'
-                    +'<table class="rel-table"><thead><tr><th style="width:120px">id</th><th style="width:80px">名称</th><th style="width:150px">domain → range</th><th>说明</th><th style="width:200px">别名 / 特性</th></tr></thead><tbody>'
+                    +'<table class="rel-table"><thead><tr><th style="width:140px">id</th><th style="width:80px">名称</th><th style="width:180px">domain → range</th><th>说明</th><th style="width:220px">别名 / 特性</th></tr></thead><tbody>'
                     +rows+'</tbody></table></div>';
             }).join('');
         }
@@ -249,29 +302,73 @@
                 return '<tr><td class="rel-id">'+esc(x.path)+'</td><td>'+esc(x.entity)+'</td><td>'+(x.count!=null?esc(x.count):'—')+'</td><td class="muted">'+esc(x.note||'')+'</td></tr>';
             }).join('');
             document.getElementById('datasets').innerHTML =
-                '<thead><tr><th style="width:230px">数据文件</th><th style="width:200px">实体类</th><th style="width:70px">数量</th><th>说明</th></tr></thead><tbody>'+rows+'</tbody>';
+                '<thead><tr><th style="width:230px">数据文件</th><th style="width:230px">实体类</th><th style="width:70px">数量</th><th>说明</th></tr></thead><tbody>'+rows+'</tbody>';
+        }
+
+        function renderProcess(proc){
+            var host = document.getElementById('process');
+            var phases = arr(proc.phases);
+            var checks = arr(proc.quality_checks);
+            var ph = phases.length ? '<div class="bg-white rounded-lg shadow p-4"><h3 class="font-bold text-buddha-primary mb-3">M1–M5 落地路线</h3>'
+                + '<ol class="list-decimal list-inside text-sm space-y-1">'
+                + phases.map(function(p,i){return '<li><span class="font-medium">'+esc(p)+'</span>'+(i<3?' <span class="text-[11px] text-green-700">（已完成）</span>':(i===3?' <span class="text-[11px] text-amber-700">（进行中）</span>':' <span class="text-[11px] muted">（规划中）</span>'))+'</li>';}).join('')
+                + '</ol></div>' : '';
+            var qc = checks.length ? '<div class="bg-white rounded-lg shadow p-4"><h3 class="font-bold text-buddha-primary mb-3">六项质量校验</h3>'
+                + '<ul class="list-disc list-inside text-sm space-y-1 muted">'
+                + checks.map(function(c){return '<li>'+esc(c)+'</li>';}).join('')
+                + '</ul></div>' : '';
+            host.innerHTML = ph + qc;
         }
 
         function bind(d){
-            // 层卡片点击 -> 筛选类
-            document.querySelectorAll('.layer-card').forEach(function(card){
+            // 轴卡片点击 -> 筛选
+            document.querySelectorAll('.axis-card').forEach(function(card){
                 card.addEventListener('click', function(){
-                    applyFilter(card.getAttribute('data-layer'));
+                    FILTER.axis = card.getAttribute('data-axis');
+                    syncFilterBtns();
+                    applyFilter();
                     document.getElementById('classes').scrollIntoView({behavior:'smooth',block:'start'});
                 });
             });
-            document.querySelectorAll('.filter-btn').forEach(function(btn){
-                btn.addEventListener('click', function(){ applyFilter(btn.getAttribute('data-f')); });
+            // 层卡片点击 -> 筛选
+            document.querySelectorAll('.layer-card').forEach(function(card){
+                card.addEventListener('click', function(){
+                    FILTER.layer = card.getAttribute('data-layer');
+                    syncFilterBtns();
+                    applyFilter();
+                    document.getElementById('classes').scrollIntoView({behavior:'smooth',block:'start'});
+                });
+            });
+            document.querySelectorAll('.axis-btn').forEach(function(btn){
+                btn.addEventListener('click', function(){ FILTER.axis = btn.getAttribute('data-f'); syncFilterBtns(); applyFilter(); });
+            });
+            document.querySelectorAll('.layer-btn').forEach(function(btn){
+                btn.addEventListener('click', function(){ FILTER.layer = btn.getAttribute('data-f'); syncFilterBtns(); applyFilter(); });
             });
         }
-
-        function applyFilter(f){
-            document.querySelectorAll('.filter-btn').forEach(function(b){
-                var on = b.getAttribute('data-f')===f;
-                b.className = 'filter-btn px-3 py-1 rounded-full ' + (on?'bg-buddha-primary text-white':'bg-white border border-paper hover:bg-paper');
+        function syncFilterBtns(){
+            document.querySelectorAll('.axis-btn').forEach(function(b){
+                var on = b.getAttribute('data-f')===FILTER.axis;
+                b.className = 'axis-btn filter-btn px-3 py-1 rounded-full ' + (on?'bg-buddha-primary text-white':'bg-white border border-paper hover:bg-paper');
             });
+            document.querySelectorAll('.layer-btn').forEach(function(b){
+                var on = b.getAttribute('data-f')===FILTER.layer;
+                b.className = 'layer-btn filter-btn px-3 py-1 rounded-full ' + (on?'bg-buddha-primary text-white':'bg-white border border-paper hover:bg-paper');
+            });
+            document.querySelectorAll('.axis-card').forEach(function(c){
+                c.classList.toggle('active', c.getAttribute('data-axis')===FILTER.axis && FILTER.axis!=='all');
+            });
+            document.querySelectorAll('.layer-card').forEach(function(c){
+                c.classList.toggle('active', c.getAttribute('data-layer')===FILTER.layer && FILTER.layer!=='all');
+            });
+        }
+        function applyFilter(){
             document.querySelectorAll('#classes .cls-wrap[data-depth="0"]').forEach(function(w){
-                w.style.display = (f==='all' || w.getAttribute('data-layer')===f) ? '' : 'none';
+                var layer = w.getAttribute('data-layer');
+                var axes = (w.getAttribute('data-axes')||'').split(',');
+                var axisOk = (FILTER.axis==='all') || axes.indexOf(FILTER.axis)>=0;
+                var layerOk = (FILTER.layer==='all') || layer===FILTER.layer;
+                w.style.display = (axisOk && layerOk) ? '' : 'none';
             });
         }
 

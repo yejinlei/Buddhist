@@ -44,7 +44,11 @@ def main():
             r['group'] = group
             rel_flat.append(r)
 
+    axes = od.get('axes', []) or []
+    process = (od.get('meta', {}).get('process') or {})
+
     stats = {
+        'axes': len(axes),
         'layers': len(od.get('layers', []) or []),
         'classes': count_classes(classes),
         'class_roots': len(classes),
@@ -56,12 +60,14 @@ def main():
 
     out = {
         'meta': od.get('meta', {}),
+        'axes': axes,
         'layers': od.get('layers', []),
         'classes': classes,
         'properties': properties,
         'relations': relations,
         'relations_flat': rel_flat,
         'datasets': datasets,
+        'process': process,
         'fixes': od.get('fixes', []),
         'stats': stats,
         'generated_at': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
@@ -74,9 +80,11 @@ def main():
         json.dump({
             'name': od.get('meta', {}).get('name'),
             'version': od.get('meta', {}).get('version'),
+            'structure': od.get('meta', {}).get('structure'),
             'namespace': od.get('meta', {}).get('namespace'),
             'stats': stats,
-            'layers': [{'id': l['id'], 'name': l['name']} for l in od.get('layers', [])],
+            'axes': [{'id': a['id'], 'name': a['name'], 'key': a['key']} for a in axes],
+            'layers': [{'id': l['id'], 'name': l['name'], 'key': l['key']} for l in od.get('layers', [])],
             'generated_at': out['generated_at'],
         }, f, ensure_ascii=False, indent=2)
 
