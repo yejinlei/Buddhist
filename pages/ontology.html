@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本体总纲 · 七层体系 - 佛学本体论</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/tailwind.min.css">
+    <link rel="stylesheet" href="../css/tailwind-extra.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" href="../css/tailwind-fixes.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .layer-card{cursor:pointer;transition:all .18s ease;border-left:4px solid transparent}
+        .layer-card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(139,90,43,.14)}
+        .layer-card.active{border-left-color:#D4AF37;background:#fffdf6}
+        .class-node{border-left:2px solid #e7ddc8;padding-left:12px;margin-left:6px}
+        .cls-head{display:flex;align-items:baseline;gap:8px;cursor:pointer;padding:4px 0}
+        .cls-id{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:#a07840;background:#f6efe0;border-radius:4px;padding:1px 6px}
+        .rel-id{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;color:#3E6B4F}
+        .alias-tag{display:inline-block;font-size:10.5px;color:#7a6a52;background:#f2ecdd;border-radius:3px;padding:0 5px;margin:1px 2px}
+        .toggle{font-size:11px;color:#B8860B}
+        table.rel-table{width:100%;border-collapse:collapse;font-size:12.5px}
+        table.rel-table th{text-align:left;background:#f7f1e3;color:#6b5638;font-weight:600;padding:6px 8px;border-bottom:1px solid #e7ddc8}
+        table.rel-table td{padding:6px 8px;border-bottom:1px solid #f0e8d6;vertical-align:top}
+        .muted{color:#8a7a62}
+    </style>
+</head>
+<body class="bg-buddha-paper text-buddha-dark">
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="../index.html" class="text-xl font-bold text-buddha-primary">🏛️ 佛学本体论</a>
+            <div class="flex gap-4 text-xs flex-wrap">
+                <a href="../index.html" class="hover:text-buddha-secondary">首页</a>
+                <a href="sutras.html" class="hover:text-buddha-secondary">全藏原典</a>
+                <a href="search.html" class="hover:text-buddha-secondary">全文检索</a>
+                <a href="dict.html" class="hover:text-buddha-secondary">佛学词典</a>
+                <a href="parallel.html" class="hover:text-buddha-secondary">异译对照</a>
+                <a href="graph.html" class="hover:text-buddha-secondary">义理图谱</a>
+                <a href="kepan.html" class="hover:text-buddha-secondary">科判导航</a>
+                <a href="ontology.html" class="text-buddha-primary font-bold">本体总纲</a>
+                <a href="panjiao.html" class="hover:text-buddha-secondary">宗派判教</a>
+                <a href="inference.html" class="hover:text-buddha-secondary">概念推演</a>
+                <a href="timeline.html" class="hover:text-buddha-secondary">译传时间轴</a>
+                <a href="translation.html" class="hover:text-buddha-secondary">佛典译学</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-buddha-primary mb-2">📐 本体总纲 · 七层体系</h1>
+        <p class="text-buddha-dark/70 mb-2">佛学本体论的权威定义（TBox）：以七层结构组织义理、宗派、文本、人物与文化外延，并把全藏经文的科判结构挂接为文本层实例。</p>
+        <p id="meta-line" class="text-xs muted mb-6"></p>
+
+        <div id="stat-bar" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8"></div>
+
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">一、七层结构</h2>
+            <div id="layers" class="grid md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">二、类体系（Class Hierarchy）</h2>
+            <p class="text-sm muted mb-4">点击类名可展开/收起其子类；左侧按钮可按层筛选。</p>
+            <div id="layer-filter" class="flex flex-wrap gap-2 mb-5 text-xs"></div>
+            <div id="classes" class="space-y-6"></div>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">三、关系谓词（Object Properties）</h2>
+            <p class="text-sm muted mb-4">统一以 snake_case 命名，旧写法（拼音 / camelCase）收入 aliases 以兼容既有数据。</p>
+            <div id="relations" class="space-y-6"></div>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">四、数据源登记（ABox）</h2>
+            <div class="bg-white rounded-lg shadow p-4 overflow-x-auto">
+                <table class="rel-table" id="datasets"></table>
+            </div>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">五、本次修订记录</h2>
+            <ul id="fixes" class="list-disc list-inside text-sm text-buddha-dark/85 space-y-1 bg-white rounded-lg shadow p-5"></ul>
+        </section>
+    </main>
+
+    <footer class="border-t border-paper mt-12 py-6 text-center text-xs muted">
+        <p>佛学本体论 · 七层本体体系 · 语料依据 CBETA 大正藏</p>
+        <p class="mt-1"><a href="../index.html" class="text-buddha-primary">返回首页</a></p>
+    </footer>
+
+    <script>
+    (function(){
+        var LAYER_TAG = {L0:'元模型',L1:'教理本体',L2:'义理范畴',L3:'宗派体系',L4:'文本载体',L5:'人物传承',L6:'信仰文化外延'};
+        var LAYER_COLOR = {L0:'#8a8a8a',L1:'#B8860B',L2:'#3E6B4F',L3:'#8B5A2B',L4:'#2f5d8a',L5:'#9c4a4a',L6:'#6a5aa0'};
+        function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+        function arr(v){ if(v==null) return []; return Array.isArray(v)?v:[v]; }
+
+        Promise.all([
+            fetch('../data/ontology-schema.json',{cache:'no-cache'}).then(function(r){return r.json();})
+        ]).then(function(res){
+            var d = res[0];
+            render(d);
+        }).catch(function(e){
+            document.getElementById('classes').innerHTML = '<p class="text-red-600 text-sm">本体数据加载失败：'+esc(e.message)+'</p>';
+        });
+
+        function render(d){
+            var meta = d.meta||{}, stats = d.stats||{};
+            document.getElementById('meta-line').textContent =
+                (meta.name||'佛学本体论')+' · v'+(meta.version||'')+' · 命名空间 '+(meta.namespace||'')+' · 依据 '+(meta.basis||'');
+
+            // 统计条
+            var statItems = [
+                ['层', stats.layers],['类', stats.classes],['数据属性', stats.properties],
+                ['关系谓词', stats.relations],['数据源', stats.datasets]
+            ];
+            document.getElementById('stat-bar').innerHTML = statItems.map(function(it){
+                return '<div class="bg-white rounded-lg shadow px-4 py-3 text-center"><div class="text-2xl font-bold text-buddha-primary">'+esc(it[1])+'</div><div class="text-xs muted">'+esc(it[0])+'</div></div>';
+            }).join('');
+
+            // 层卡片
+            var layers = d.layers||[];
+            // 统计每层类数
+            var perLayer = {};
+            (d.classes||[]).forEach(function(c){ perLayer[c.layer]=(perLayer[c.layer]||0)+1+countSubs(c); });
+            document.getElementById('layers').innerHTML = layers.map(function(l){
+                var color = LAYER_COLOR[l.id]||'#8B5A2B';
+                return '<div class="layer-card bg-white rounded-lg shadow p-4" data-layer="'+esc(l.id)+'" style="border-left-color:'+color+'">'
+                    +'<div class="flex items-center justify-between mb-1"><span class="font-bold text-buddha-primary">'+esc(l.id)+'</span>'
+                    +'<span class="text-[11px] px-2 py-0.5 rounded-full" style="background:'+color+'1a;color:'+color+'">'+esc(LAYER_TAG[l.id]||'')+'</span></div>'
+                    +'<div class="text-sm font-semibold mb-1">'+esc(l.name)+'</div>'
+                    +'<div class="text-xs muted leading-relaxed">'+esc(l.description||'')+'</div>'
+                    +'<div class="text-[11px] mt-2 muted">类 '+ (perLayer[l.id]||0) +' 个</div>'
+                    +'</div>';
+            }).join('');
+
+            // 层筛选按钮
+            var filterBtns = ['<button class="filter-btn px-3 py-1 rounded-full bg-buddha-primary text-white" data-f="all">全部</button>'];
+            layers.forEach(function(l){
+                filterBtns.push('<button class="filter-btn px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-f="'+esc(l.id)+'">'+esc(l.id+' '+l.name)+'</button>');
+            });
+            document.getElementById('layer-filter').innerHTML = filterBtns.join('');
+
+            // 类树
+            renderClasses(d.classes||[]);
+            // 关系
+            renderRelations(d.relations||{});
+            // 数据源
+            renderDatasets(d.datasets||[]);
+            // 修订
+            document.getElementById('fixes').innerHTML = (d.fixes||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
+
+            bind(d);
+        }
+
+        function countSubs(c){ var n=0; (c.subclasses||[]).forEach(function(s){ n+=1+countSubs(s); }); return n; }
+
+        function renderClasses(classes){
+            var host = document.getElementById('classes');
+            host.innerHTML = classes.map(function(c){ return classBlock(c); }).join('');
+            // 默认展开根，折叠子
+            host.querySelectorAll('.cls-head').forEach(function(h){
+                h.addEventListener('click', function(){
+                    var subs = h.parentElement.querySelector('.cls-subs');
+                    if(!subs) return;
+                    subs.style.display = subs.style.display==='none' ? '' : 'none';
+                    var t = h.querySelector('.toggle');
+                    if(t) t.textContent = subs.style.display==='none' ? '▸ 展开' : '▾ 收起';
+                });
+            });
+            // 子类默认展开（一层）
+            host.querySelectorAll('.cls-subs').forEach(function(s){
+                var depth = s.getAttribute('data-depth');
+                if(depth && +depth>1) s.style.display='none';
+            });
+            host.querySelectorAll('.cls-head .toggle').forEach(function(t){
+                var subs=t.closest('.cls-wrap').querySelector('.cls-subs');
+                if(subs && subs.style.display==='none') t.textContent='▸ 展开';
+            });
+        }
+
+        function classBlock(c, depth){
+            depth = depth||0;
+            var subs = c.subclasses||[];
+            var color = LAYER_COLOR[c.layer]||'#8B5A2B';
+            var ex = arr(c.examples);
+            var html = '<div class="cls-wrap" data-layer="'+esc(c.layer)+'" data-depth="'+depth+'">';
+            html += '<div class="cls-head">'
+                + (subs.length? '<span class="toggle">▾ 收起</span>' : '<span class="toggle" style="visibility:hidden">·</span>')
+                + '<span class="cls-id">'+esc(c.id)+'</span>'
+                + '<span class="font-semibold">'+esc(c.label)+'</span>'
+                + '<span class="text-[11px] px-1.5 py-0.5 rounded" style="background:'+color+'1a;color:'+color+'">'+esc(c.layer)+'</span>'
+                + '</div>';
+            if(c.description){ html += '<div class="text-xs muted mb-1" style="padding-left:52px">'+esc(c.description)+'</div>'; }
+            if(ex.length){ html += '<div class="mb-1" style="padding-left:52px">'+ex.map(function(e){return '<span class="alias-tag">'+esc(e)+'</span>';}).join('')+'</div>'; }
+            if(subs.length){
+                html += '<div class="cls-subs class-node" data-depth="'+(depth+1)+'">'+subs.map(function(s){return classBlock(Object.assign({layer:c.layer},s),depth+1);}).join('')+'</div>';
+            }
+            html += '</div>';
+            return html;
+        }
+
+        function renderRelations(groups){
+            var host = document.getElementById('relations');
+            var keys = Object.keys(groups);
+            host.innerHTML = keys.map(function(g){
+                var rows = (groups[g]||[]).map(function(r){
+                    var aliases = arr(r.aliases).map(function(a){return '<span class="alias-tag">'+esc(a)+'</span>';}).join('');
+                    var dr = [r.domain,r.range].filter(Boolean).map(function(x){return esc([].concat(x).join(' / '));}).join(' → ');
+                    var flags = [];
+                    if(r.symmetric) flags.push('对称');
+                    if(r.asymmetric) flags.push('反对称');
+                    if(r.inverse) flags.push('逆 '+esc(r.inverse));
+                    return '<tr>'
+                        +'<td class="rel-id">'+esc(r.id)+'</td>'
+                        +'<td><b>'+esc(r.label)+'</b></td>'
+                        +'<td>'+dr+'</td>'
+                        +'<td class="muted">'+esc(r.description||'')+'</td>'
+                        +'<td>'+(aliases||'')+(flags.length?'<div class="text-[11px] muted mt-1">'+flags.join(' · ')+'</div>':'')+'</td>'
+                        +'</tr>';
+                }).join('');
+                return '<div class="bg-white rounded-lg shadow p-4 overflow-x-auto">'
+                    +'<h3 class="font-bold text-buddha-primary mb-2">'+esc(g)+' <span class="text-xs muted">('+(groups[g]||[]).length+')</span></h3>'
+                    +'<table class="rel-table"><thead><tr><th style="width:120px">id</th><th style="width:80px">名称</th><th style="width:150px">domain → range</th><th>说明</th><th style="width:200px">别名 / 特性</th></tr></thead><tbody>'
+                    +rows+'</tbody></table></div>';
+            }).join('');
+        }
+
+        function renderDatasets(ds){
+            var rows = ds.map(function(x){
+                return '<tr><td class="rel-id">'+esc(x.path)+'</td><td>'+esc(x.entity)+'</td><td>'+(x.count!=null?esc(x.count):'—')+'</td><td class="muted">'+esc(x.note||'')+'</td></tr>';
+            }).join('');
+            document.getElementById('datasets').innerHTML =
+                '<thead><tr><th style="width:230px">数据文件</th><th style="width:200px">实体类</th><th style="width:70px">数量</th><th>说明</th></tr></thead><tbody>'+rows+'</tbody>';
+        }
+
+        function bind(d){
+            // 层卡片点击 -> 筛选类
+            document.querySelectorAll('.layer-card').forEach(function(card){
+                card.addEventListener('click', function(){
+                    applyFilter(card.getAttribute('data-layer'));
+                    document.getElementById('classes').scrollIntoView({behavior:'smooth',block:'start'});
+                });
+            });
+            document.querySelectorAll('.filter-btn').forEach(function(btn){
+                btn.addEventListener('click', function(){ applyFilter(btn.getAttribute('data-f')); });
+            });
+        }
+
+        function applyFilter(f){
+            document.querySelectorAll('.filter-btn').forEach(function(b){
+                var on = b.getAttribute('data-f')===f;
+                b.className = 'filter-btn px-3 py-1 rounded-full ' + (on?'bg-buddha-primary text-white':'bg-white border border-paper hover:bg-paper');
+            });
+            document.querySelectorAll('#classes .cls-wrap[data-depth="0"]').forEach(function(w){
+                w.style.display = (f==='all' || w.getAttribute('data-layer')===f) ? '' : 'none';
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

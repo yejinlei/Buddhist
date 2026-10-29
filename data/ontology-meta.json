@@ -1,0 +1,45 @@
+{
+  "name": "佛学本体论",
+  "version": "2.0.0",
+  "namespace": "https://yejinlei.github.io/Buddhist/ontology#",
+  "stats": {
+    "layers": 7,
+    "classes": 31,
+    "class_roots": 16,
+    "properties": 21,
+    "relations": 37,
+    "relation_groups": 6,
+    "datasets": 8
+  },
+  "layers": [
+    {
+      "id": "L0",
+      "name": "元模型层"
+    },
+    {
+      "id": "L1",
+      "name": "教理本体层"
+    },
+    {
+      "id": "L2",
+      "name": "义理范畴层"
+    },
+    {
+      "id": "L3",
+      "name": "宗派体系层"
+    },
+    {
+      "id": "L4",
+      "name": "文本载体层"
+    },
+    {
+      "id": "L5",
+      "name": "人物传承层"
+    },
+    {
+      "id": "L6",
+      "name": "信仰文化外延层"
+    }
+  ],
+  "generated_at": "2026-10-29 11:25:59"
+}
