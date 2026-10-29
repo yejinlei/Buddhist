@@ -1,0 +1,238 @@
+{
+  "id": "bada_renjue",
+  "type": "Text",
+  "title": "佛說八大人覺經",
+  "title_zh": "佛說八大人覺經",
+  "translator": "後漢 安世高譯",
+  "category": "經集部类",
+  "volume": "T17",
+  "juan_count": 1,
+  "actual_char_count": 485,
+  "canon_ref": "T.779",
+  "taisho": "T0779",
+  "vehicle": "大乘",
+  "mode": "显教",
+  "translation_place": "",
+  "time_from": 148,
+  "belongs_to_school": [
+    "经集部",
+    "诸经杂集"
+  ],
+  "parallel_translations": [],
+  "kepan": {
+    "序分": [],
+    "正宗分": [
+      "c000"
+    ],
+    "流通分": []
+  },
+  "chapters": [
+    {
+      "id": "c000",
+      "chapter_no": 1,
+      "chapter_title": "卷001",
+      "section_type": "卷首",
+      "part_of_kepan": "正宗分",
+      "paragraphs": [
+        "p00000",
+        "p00001",
+        "p00002",
+        "p00003",
+        "p00004",
+        "p00005",
+        "p00006",
+        "p00007",
+        "p00008",
+        "p00009",
+        "p00010",
+        "p00011"
+      ],
+      "gathas": [],
+      "mantras": [],
+      "figures": [],
+      "doctrines": [
+        "c008",
+        "c010"
+      ],
+      "char_count": 474
+    }
+  ],
+  "paragraphs": [
+    {
+      "id": "p00000",
+      "chapter_id": "c000",
+      "para_no": 1,
+      "text_preview": "後漢安息國三藏安世高譯",
+      "char_count": 11,
+      "section_type": "译者署名",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00001",
+      "chapter_id": "c000",
+      "para_no": 2,
+      "text_preview": "為佛弟子，常於晝夜，至心誦念，八大人覺：",
+      "char_count": 20,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00002",
+      "chapter_id": "c000",
+      "para_no": 3,
+      "text_preview": "第一覺悟：世間無常，國土危脆；四大苦空，五陰無我；生滅變異，虛偽無主；心是惡源，形為罪藪。如是觀察，漸離生死。",
+      "char_count": 55,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00003",
+      "chapter_id": "c000",
+      "para_no": 4,
+      "text_preview": "第二覺知：多欲為苦，生死疲勞，從貪欲起；少欲無為，身心自在。",
+      "char_count": 30,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00004",
+      "chapter_id": "c000",
+      "para_no": 5,
+      "text_preview": "第三覺知：心無厭足，唯得多求，增長罪惡；菩薩不爾，常念知足，安貧守道，唯慧是業。",
+      "char_count": 40,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00005",
+      "chapter_id": "c000",
+      "para_no": 6,
+      "text_preview": "第四覺知：懈怠墜落；常行精進，破煩惱惡，摧伏四魔，出陰界獄。",
+      "char_count": 30,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00006",
+      "chapter_id": "c000",
+      "para_no": 7,
+      "text_preview": "第五覺悟：愚癡生死。菩薩常念，廣學多聞，增長智慧，成就辯才，教化一切，悉以大樂。",
+      "char_count": 40,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00007",
+      "chapter_id": "c000",
+      "para_no": 8,
+      "text_preview": "第六覺知：貧苦多怨，橫結惡緣。菩薩布施，等念冤親，不念舊惡，不憎惡人。",
+      "char_count": 35,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00008",
+      "chapter_id": "c000",
+      "para_no": 9,
+      "text_preview": "第七覺悟：五欲過患。雖為俗人，不染世樂；常念三衣，瓦鉢法器；志願出家，守道清白；梵行高遠，慈悲一切。",
+      "char_count": 50,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00009",
+      "chapter_id": "c000",
+      "para_no": 10,
+      "text_preview": "第八覺知：生死熾然，苦惱無量。發大乘心，普濟一切；願代眾生，受無量苦；令諸眾生，畢竟大樂。",
+      "char_count": 45,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00010",
+      "chapter_id": "c000",
+      "para_no": 11,
+      "text_preview": "如此八事，乃是諸佛菩薩大人之所覺悟。精進行道，慈悲修慧，乘法身船，至涅槃岸；復還生死，度脫眾生。以前八事，開導一切，令諸眾生，覺生死苦，捨離五欲，修心聖道。",
+      "char_count": 78,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": [
+        "c008",
+        "c010"
+      ]
+    },
+    {
+      "id": "p00011",
+      "chapter_id": "c000",
+      "para_no": 12,
+      "text_preview": "若佛弟子，誦此八事，於念念中，滅無量罪；進趣菩提，速登正覺；永斷生死，常住快樂。",
+      "char_count": 40,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    }
+  ],
+  "gathas": [],
+  "mantras": [],
+  "figure_mentions": [],
+  "doctrine_mentions": [
+    {
+      "concept_id": "c008",
+      "name": "涅槃",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    },
+    {
+      "concept_id": "c010",
+      "name": "法身",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    }
+  ],
+  "transmission_events": [
+    "event:translation:安世高"
+  ],
+  "alias_of": "t0779",
+  "doctrines": [
+    "c008",
+    "c010"
+  ]
+}

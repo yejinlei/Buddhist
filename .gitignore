@@ -10,3 +10,6 @@ __pycache__/
 *.tmp
 .DS_Store
 .deploy_progress.json
+ontology/dharma_assemblies_raw.json
+ontology/instances/t*.json
+ontology/instances/t*.json

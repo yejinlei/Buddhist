@@ -108,15 +108,46 @@
         </section>
 
         <section class="mb-10" id="sec-events">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">七、事件层实例 · 法会（DharmaAssembly）</h2>
-            <p class="text-sm muted mb-4">M4 事件层首批发起落地：根据各经序分「如是我聞：一時，佛在…」的原文记载，按说法地点聚合为<strong>法会</strong>（DharmaAssembly）实例。每部经实例上挂 <code class="text-[11px] bg-paper px-1 rounded">dharma_assembly</code> 字段反向关联，读者从读经页「🌳 本体下钻」浮层可见其所属法会。</p>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">七、事件层实例（M4 · A4 事件轴）</h2>
+            <p class="text-sm muted mb-4">M4 事件层四种子类全部落地：<strong>法会（DharmaAssembly）</strong>、<strong>结集（Council）</strong>、<strong>译经传法（TransmissionEvent）</strong>、<strong>本生·本事·因缘故事（StoryEvent）</strong>。每部经实例通过对应字段反向关联，读经页「🌳 本体下钻」浮层可见其归属事件。</p>
+
+            <h3 class="text-lg font-semibold text-buddha-primary/90 mb-3 mt-6">7.1 法会（DharmaAssembly）</h3>
+            <p class="text-sm muted mb-3">根据各经序分「如是我聞：一時，佛在…」按说法地点聚合，关联字段 <code class="text-[11px] bg-paper px-1 rounded">dharma_assembly</code>。</p>
             <div class="flex flex-wrap gap-2 mb-4 text-xs" id="da-tabs">
                 <button class="da-tab px-3 py-1 rounded-full bg-buddha-primary text-white" data-k="classic">主要法会</button>
                 <button class="da-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="auto">其他法会</button>
                 <button class="da-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="all">全部法会</button>
             </div>
-            <div id="da-body" class="bg-white rounded-lg shadow p-4">
+            <div id="da-body" class="bg-white rounded-lg shadow p-4 mb-6">
                 <button id="da-load" class="px-4 py-2 bg-buddha-primary text-white rounded-lg text-sm">加载法会实例</button>
+            </div>
+
+            <h3 class="text-lg font-semibold text-buddha-primary/90 mb-3">7.2 结集（Council）</h3>
+            <p class="text-sm muted mb-3">佛教史上六次关键结集/结社，关联字段 <code class="text-[11px] bg-paper px-1 rounded">councils</code>。</p>
+            <div id="co-body" class="bg-white rounded-lg shadow p-4 mb-6">
+                <button id="co-load" class="px-4 py-2 bg-buddha-primary text-white rounded-lg text-sm">加载结集实例</button>
+            </div>
+
+            <h3 class="text-lg font-semibold text-buddha-primary/90 mb-3">7.3 译经传法（TransmissionEvent）</h3>
+            <p class="text-sm muted mb-3">按译者+朝代聚合的译经事件，以及东土关键祖师传法付法事件（禅宗灵山拈花、达摩东来、六祖得法、玄奘西行、天台付法）。关联字段 <code class="text-[11px] bg-paper px-1 rounded">transmission_events</code>。</p>
+            <div class="flex flex-wrap gap-2 mb-4 text-xs" id="tr-tabs">
+                <button class="tr-tab px-3 py-1 rounded-full bg-buddha-primary text-white" data-k="lineage">重要传法</button>
+                <button class="tr-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="major">主要译师</button>
+                <button class="tr-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="all">全部译经</button>
+            </div>
+            <div id="tr-body" class="bg-white rounded-lg shadow p-4 mb-6">
+                <button id="tr-load" class="px-4 py-2 bg-buddha-primary text-white rounded-lg text-sm">加载译经/传法实例</button>
+            </div>
+
+            <h3 class="text-lg font-semibold text-buddha-primary/90 mb-3">7.4 本生·本事·因缘故事（StoryEvent）</h3>
+            <p class="text-sm muted mb-3">收录汉译佛典中著名本生、本事、因缘、譬喻故事（九色鹿、舍身饲虎、目连救母、须大拏、睒子、降魔成道、八相成道、百喻等），以及本缘部/譬喻类经典按品识别的故事。关联字段 <code class="text-[11px] bg-paper px-1 rounded">story_events</code>。</p>
+            <div class="flex flex-wrap gap-2 mb-4 text-xs" id="st-tabs">
+                <button class="st-tab px-3 py-1 rounded-full bg-buddha-primary text-white" data-k="famous">著名故事</button>
+                <button class="st-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="auto">品目·因缘</button>
+                <button class="st-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="all">全部故事</button>
+            </div>
+            <div id="st-body" class="bg-white rounded-lg shadow p-4">
+                <button id="st-load" class="px-4 py-2 bg-buddha-primary text-white rounded-lg text-sm">加载故事实例</button>
             </div>
         </section>
 
@@ -501,9 +532,191 @@
                 + '<div class="grid md:grid-cols-2 gap-3 max-h-[620px] overflow-y-auto">'+cards+'</div>';
         }
 
+        // ===== 事件层·结集（Council） =====
+        var EV = null;
+        function ensureEV(){
+            if(EV) return Promise.resolve(EV);
+            return fetch('../ontology/instances/events.json',{cache:'no-cache'})
+                .then(function(r){return r.json();})
+                .then(function(d){ EV = d; return d; });
+        }
+        function initCO(){
+            var btn = document.getElementById('co-load');
+            if(btn) btn.addEventListener('click', loadCO);
+        }
+        function loadCO(){
+            var body = document.getElementById('co-body');
+            body.innerHTML = '<p class="text-sm muted">加载中…</p>';
+            ensureEV().then(renderCO).catch(function(e){ body.innerHTML='<p class="text-sm text-red-600">加载失败：'+esc(e.message)+'</p>'; });
+        }
+        function renderCO(){
+            var body = document.getElementById('co-body');
+            var list = (EV && EV.councils) || [];
+            if(!list.length){ body.innerHTML='<p class="text-sm muted">无数据</p>'; return; }
+            var cards = list.map(function(c){
+                var sutras = (c.related_sutras||[]).map(function(sid){
+                    return '<a href="sutras.html?load='+esc(sid)+'" class="alias-tag" style="text-decoration:none">'+esc(sid)+'</a>';
+                }).join('');
+                var parts = (c.participants||[]).map(function(p){return '<span class="text-[11px] px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 mr-1">'+esc(p)+'</span>';}).join('');
+                return '<div class="border border-paper rounded-lg p-4 hover:shadow-md transition">'
+                    + '<div class="flex items-baseline gap-2 mb-1 flex-wrap">'
+                    + '<span class="cls-id">'+esc(c.id)+'</span>'
+                    + '<b class="text-buddha-primary">'+esc(c.label_zh)+'</b>'
+                    + '<span class="text-[11px] px-2 py-0.5 rounded-full bg-rose-50 text-rose-700">结集</span>'
+                    + '</div>'
+                    + '<div class="text-xs muted mb-1">时间：'+esc(c.time||'')+' · 地点：'+esc(c.place||'')+' · 主持：'+esc(c.presider||'')+'</div>'
+                    + (parts ? '<div class="mb-1">'+parts+'</div>' : '')
+                    + '<div class="text-[12px] text-buddha-dark/90 mb-2">'+esc(c.outcome||'')+'</div>'
+                    + '<div class="text-[11px] text-stone-500 mb-1">出处：'+esc(c.source||'')+'</div>'
+                    + '<div>'+sutras+'</div>'
+                    + '</div>';
+            }).join('');
+            body.innerHTML = '<p class="text-xs muted mb-3">共 '+list.length+' 次结集/结社 · 数据版本 '+esc(EV && EV._meta ? EV._meta.version : '')+'</p>'
+                + '<div class="grid md:grid-cols-2 gap-3">'+cards+'</div>';
+        }
+
+        // ===== 事件层·译经/传法（TransmissionEvent） =====
+        var TR_KEY = 'lineage';
+        function initTR(){
+            var btn = document.getElementById('tr-load');
+            if(btn) btn.addEventListener('click', function(){ loadTR(TR_KEY); });
+            document.querySelectorAll('.tr-tab').forEach(function(t){
+                t.addEventListener('click', function(){
+                    TR_KEY = t.getAttribute('data-k');
+                    document.querySelectorAll('.tr-tab').forEach(function(b){
+                        var on = b===t;
+                        b.className = 'tr-tab px-3 py-1 rounded-full ' + (on?'bg-buddha-primary text-white':'bg-white border border-paper hover:bg-paper');
+                    });
+                    if(EV) renderTR(TR_KEY); else loadTR(TR_KEY);
+                });
+            });
+        }
+        function loadTR(key){
+            var body = document.getElementById('tr-body');
+            body.innerHTML = '<p class="text-sm muted">加载中…</p>';
+            ensureEV().then(function(){ renderTR(key); })
+                .catch(function(e){ body.innerHTML='<p class="text-sm text-red-600">加载失败：'+esc(e.message)+'</p>'; });
+        }
+        function renderTR(key){
+            var body = document.getElementById('tr-body');
+            var all = (EV && EV.translation_events) || [];
+            var list = all.filter(function(t){
+                if(key==='lineage') return (t.subtype||'').indexOf('传法')>=0;
+                if(key==='major') return (t.key_sutras && t.key_sutras.length) || (t.subtype||'').indexOf('传法')>=0;
+                return true;
+            });
+            list.sort(function(a,b){
+                var sa = (t_subtype_order(a.subtype))*1000000 - (a.total_translated||0);
+                var sb = (t_subtype_order(b.subtype))*1000000 - (b.total_translated||0);
+                return sa-sb;
+            });
+            function t_subtype_order(s){ if(!s) return 9; if(s.indexOf('传法')>=0) return 0; if(s.indexOf('求法')>=0) return 1; return 2; }
+            if(!list.length){ body.innerHTML='<p class="text-sm muted">无数据</p>'; return; }
+            var cards = list.slice(0, key==='all'?400:200).map(function(t){
+                var key_sutras = (t.key_sutras||[]).map(function(sid){
+                    return '<a href="sutras.html?load='+esc(sid)+'" class="alias-tag" style="text-decoration:none;background:#fef3c7">'+esc(sid)+'</a>';
+                }).join('');
+                var sutras = (t.related_sutras||[]).slice(0,key==='all'?6:8).map(function(sid){
+                    if((t.key_sutras||[]).indexOf(sid)>=0) return '';
+                    return '<a href="sutras.html?load='+esc(sid)+'" class="alias-tag" style="text-decoration:none">'+esc(sid)+'</a>';
+                }).filter(Boolean).join('');
+                var more = (t.total_translated && t.total_translated>(t.key_sutras||[]).length && t.total_translated>8) ? '<span class="text-[11px] muted"> …等 '+(t.total_translated)+' 部</span>' : '';
+                var tagColor = (t.subtype||'').indexOf('传法')>=0 ? 'bg-purple-50 text-purple-700' : 'bg-sky-50 text-sky-700';
+                var parts = (t.participants||[]).slice(0,8).map(function(p){return '<span class="text-[11px] px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 mr-1">'+esc(p)+'</span>';}).join('');
+                return '<div class="border border-paper rounded-lg p-4 hover:shadow-md transition">'
+                    + '<div class="flex items-baseline gap-2 mb-1 flex-wrap">'
+                    + '<span class="cls-id">'+esc(t.id)+'</span>'
+                    + '<b class="text-buddha-primary">'+esc(t.label_zh)+'</b>'
+                    + '<span class="text-[11px] px-2 py-0.5 rounded-full '+tagColor+'">'+esc(t.subtype||'译经')+'</span>'
+                    + (t.total_translated ? '<span class="text-[11px] px-2 py-0.5 rounded-full bg-green-50 text-green-700">'+t.total_translated+' 部经</span>' : '')
+                    + '</div>'
+                    + '<div class="text-xs muted mb-1">主持/译主：'+esc(t.presider||'')+(t.sponsor?' · 护持：'+esc(t.sponsor):'')+'</div>'
+                    + '<div class="text-xs muted mb-1">时间：'+esc(t.time||'')+(t.place?' · 地点：'+esc(t.place):'')+'</div>'
+                    + (parts ? '<div class="mb-1">'+parts+'</div>' : '')
+                    + '<div class="text-[12px] text-buddha-dark/90 mb-2">'+esc(t.outcome||'')+'</div>'
+                    + '<div>'+key_sutras+sutras+more+'</div>'
+                    + '</div>';
+            }).join('');
+            body.innerHTML = '<p class="text-xs muted mb-3">共显示 '+Math.min(list.length,key==='all'?400:200)+' / '+list.length+' 个译经/传法事件 · 数据版本 '+esc(EV && EV._meta ? EV._meta.version : '')+(key==='all'?'（仅显示前 400 个）':'（重要传法+主要译师）')+'</p>'
+                + '<div class="grid md:grid-cols-2 gap-3 max-h-[620px] overflow-y-auto">'+cards+'</div>';
+        }
+
+        // ===== 事件层·故事（StoryEvent） =====
+        var ST_KEY = 'famous';
+        function initST(){
+            var btn = document.getElementById('st-load');
+            if(btn) btn.addEventListener('click', function(){ loadST(ST_KEY); });
+            document.querySelectorAll('.st-tab').forEach(function(t){
+                t.addEventListener('click', function(){
+                    ST_KEY = t.getAttribute('data-k');
+                    document.querySelectorAll('.st-tab').forEach(function(b){
+                        var on = b===t;
+                        b.className = 'st-tab px-3 py-1 rounded-full ' + (on?'bg-buddha-primary text-white':'bg-white border border-paper hover:bg-paper');
+                    });
+                    if(EV) renderST(ST_KEY); else loadST(ST_KEY);
+                });
+            });
+        }
+        function loadST(key){
+            var body = document.getElementById('st-body');
+            body.innerHTML = '<p class="text-sm muted">加载中…</p>';
+            ensureEV().then(function(){ renderST(key); })
+                .catch(function(e){ body.innerHTML='<p class="text-sm text-red-600">加载失败：'+esc(e.message)+'</p>'; });
+        }
+        function renderST(key){
+            var body = document.getElementById('st-body');
+            var all = (EV && EV.story_events) || [];
+            var list = all.filter(function(s){
+                if(key==='famous') return !s.chapter_title;
+                if(key==='auto') return !!s.chapter_title;
+                return true;
+            });
+            if(!list.length){ body.innerHTML='<p class="text-sm muted">无数据</p>'; return; }
+            // group by source_sutra for famous
+            var cards;
+            if(key==='famous'){
+                cards = list.map(function(s){
+                    var fig = (s.figure||[]).map(function(f){return '<span class="text-[11px] px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 mr-1">'+esc(f)+'</span>';}).join('');
+                    return '<div class="border border-paper rounded-lg p-4 hover:shadow-md transition">'
+                        + '<div class="flex items-baseline gap-2 mb-1 flex-wrap">'
+                        + '<b class="text-buddha-primary">'+esc(s.label_zh)+'</b>'
+                        + '<span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700">'+esc(s.subtype||'故事')+'</span>'
+                        + '<a href="sutras.html?load='+esc(s.source_sutra)+'" class="alias-tag" style="text-decoration:none">'+esc(s.source_sutra)+' '+esc(s.source_title||'')+'</a>'
+                        + '</div>'
+                        + (fig?'<div class="mb-1">'+fig+'</div>':'')
+                        + '<div class="text-[12px] text-buddha-dark/90">'+esc(s.description||'')+'</div>'
+                        + '</div>';
+                }).join('');
+            } else {
+                // 按源经分组显示
+                var groups = {};
+                list.forEach(function(s){
+                    groups[s.source_sutra] = groups[s.source_sutra] || {title:s.source_title,sutra:s.source_sutra,items:[]};
+                    groups[s.source_sutra].items.push(s);
+                });
+                cards = Object.keys(groups).sort().map(function(sid){
+                    var g = groups[sid];
+                    var chapters = g.items.map(function(s){return '<li class="text-[12px]"><a href="sutras.html?load='+esc(sid)+'" class="text-buddha-primary hover:underline">'+esc(s.chapter_title)+'</a></li>';}).join('');
+                    return '<div class="border border-paper rounded-lg p-4 hover:shadow-md transition">'
+                        + '<div class="flex items-baseline gap-2 mb-2 flex-wrap">'
+                        + '<a href="sutras.html?load='+esc(sid)+'" class="alias-tag" style="text-decoration:none">'+esc(sid)+'</a>'
+                        + '<b class="text-buddha-primary">'+esc(g.title)+'</b>'
+                        + '<span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700">'+g.items.length+' 个故事</span>'
+                        + '</div>'
+                        + '<ul class="list-disc list-inside space-y-0.5">'+chapters+'</ul>'
+                        + '</div>';
+                }).join('');
+            }
+            body.innerHTML = '<p class="text-xs muted mb-3">共 '+list.length+' 个本生/本事/因缘故事 · 数据版本 '+esc(EV && EV._meta ? EV._meta.version : '')+'</p>'
+                + '<div class="grid md:grid-cols-2 gap-3 max-h-[620px] overflow-y-auto">'+cards+'</div>';
+        }
+
         bind(d);
         initInstances();
         initDA();
+        initCO();
+        initTR();
+        initST();
     })();
     </script>
 </body>

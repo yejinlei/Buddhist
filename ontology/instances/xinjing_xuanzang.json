@@ -1,0 +1,327 @@
+{
+  "id": "xinjing_xuanzang",
+  "type": "Text",
+  "title": "般若波羅蜜多心經",
+  "title_zh": "般若波羅蜜多心經",
+  "translator": "唐 玄奘譯",
+  "category": "般若部类",
+  "volume": "T08",
+  "juan_count": 1,
+  "actual_char_count": 1258,
+  "canon_ref": "T.251",
+  "taisho": "T0251",
+  "vehicle": "大乘",
+  "mode": "显教",
+  "translation_place": "翠微寺",
+  "time_from": 648,
+  "belongs_to_school": [
+    "般若",
+    "中观宗",
+    "三论宗"
+  ],
+  "parallel_translations": [
+    "t0253",
+    "t0254",
+    "t0255"
+  ],
+  "kepan": {
+    "序分": [
+      "c000",
+      "c001"
+    ],
+    "正宗分": [
+      "c002"
+    ],
+    "流通分": []
+  },
+  "chapters": [
+    {
+      "id": "c000",
+      "chapter_no": 1,
+      "chapter_title": "大明太祖高皇帝御製般若心經序",
+      "section_type": "序文",
+      "part_of_kepan": "序分",
+      "paragraphs": [
+        "p00000"
+      ],
+      "gathas": [],
+      "mantras": [],
+      "figures": [],
+      "doctrines": [
+        "c003"
+      ],
+      "char_count": 770
+    },
+    {
+      "id": "c001",
+      "chapter_no": 2,
+      "chapter_title": "般若波羅蜜多心經序",
+      "section_type": "序文",
+      "part_of_kepan": "序分",
+      "paragraphs": [
+        "p00001",
+        "p00002"
+      ],
+      "gathas": [],
+      "mantras": [],
+      "figures": [],
+      "doctrines": [
+        "c001",
+        "c009"
+      ],
+      "char_count": 138
+    },
+    {
+      "id": "c002",
+      "chapter_no": 3,
+      "chapter_title": "卷001",
+      "section_type": "卷首",
+      "part_of_kepan": "正宗分",
+      "paragraphs": [
+        "p00003",
+        "p00004",
+        "p00005",
+        "p00006",
+        "p00007",
+        "p00008",
+        "p00009",
+        "p00010"
+      ],
+      "gathas": [],
+      "mantras": [
+        "m000"
+      ],
+      "figures": [
+        "p203",
+        "p307"
+      ],
+      "doctrines": [
+        "c008"
+      ],
+      "char_count": 342
+    }
+  ],
+  "paragraphs": [
+    {
+      "id": "p00000",
+      "chapter_id": "c000",
+      "para_no": 1,
+      "text_preview": "二儀久判，萬物備周，子民者君君，育民者法其法也。三綱五常以示天下，亦以五刑輔弼之。有等凶頑不循教者，往往有趨火赴淵之為，終不自省。是凶頑者，非特中國有之，盡天下",
+      "char_count": 770,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": [
+        "c003"
+      ]
+    },
+    {
+      "id": "p00001",
+      "chapter_id": "c001",
+      "para_no": 1,
+      "text_preview": "唐釋慧忠撰",
+      "char_count": 5,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00002",
+      "chapter_id": "c001",
+      "para_no": 2,
+      "text_preview": "夫法性無邊，豈藉心之所度；真如非相，詎假言之所詮。是故眾生浩浩無窮，法海茫茫何極。若也廣尋文義，猶如鏡裏求形，更乃息念觀空，又似日中逃影。茲經喻如大地，何物不從",
+      "char_count": 133,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": [
+        "c001",
+        "c009"
+      ]
+    },
+    {
+      "id": "p00003",
+      "chapter_id": "c002",
+      "para_no": 1,
+      "text_preview": "唐三藏法師玄奘譯",
+      "char_count": 8,
+      "section_type": "译者署名",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p307"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00004",
+      "chapter_id": "c002",
+      "para_no": 2,
+      "text_preview": "觀自在菩薩行深般若波羅蜜多時，照見五蘊皆空，度一切苦厄。",
+      "char_count": 28,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00005",
+      "chapter_id": "c002",
+      "para_no": 3,
+      "text_preview": "「舍利子！色不異空，空不異色，色即是空，空即是色；受、想、行、識，亦復如是。",
+      "char_count": 38,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p203"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00006",
+      "chapter_id": "c002",
+      "para_no": 4,
+      "text_preview": "「舍利子！是諸法空相，不生不滅，不垢不淨，不增不減。是故，空中無色，無受、想、行、識；無眼、耳、鼻、舌、身、意；無色、聲、香、味、觸、法；無眼界，乃至無意識界；",
+      "char_count": 116,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p203"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00007",
+      "chapter_id": "c002",
+      "para_no": 5,
+      "text_preview": "「以無所得故，菩提薩埵依般若波羅蜜多故，心無罣礙；無罣礙故，無有恐怖，遠離顛倒夢想，究竟涅槃。三世諸佛依般若波羅蜜多故，得阿耨多羅三藐三菩提。",
+      "char_count": 71,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": [
+        "c008"
+      ]
+    },
+    {
+      "id": "p00008",
+      "chapter_id": "c002",
+      "para_no": 6,
+      "text_preview": "「故知般若波羅蜜多是大神咒、是大明咒、是無上咒、是無等等咒，能除一切苦，真實不虛，故說般若波羅蜜多咒。」",
+      "char_count": 52,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00009",
+      "chapter_id": "c002",
+      "para_no": 7,
+      "text_preview": "即說咒曰：",
+      "char_count": 5,
+      "section_type": "咒语引导",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00010",
+      "chapter_id": "c002",
+      "para_no": 8,
+      "text_preview": "「揭帝　揭帝　般羅揭帝　般羅僧揭帝菩提　莎婆訶」",
+      "char_count": 24,
+      "section_type": "咒语",
+      "gatha_id": null,
+      "mantra_id": "m000",
+      "figures": [],
+      "doctrines": []
+    }
+  ],
+  "gathas": [],
+  "mantras": [
+    {
+      "id": "m000",
+      "chapter_id": "c002",
+      "name": "真言",
+      "text_preview": "「揭帝　揭帝　般羅揭帝　般羅僧揭帝菩提　莎婆訶」",
+      "char_count": 24
+    }
+  ],
+  "figure_mentions": [
+    {
+      "figure_id": "p307",
+      "name": "玄奘法师",
+      "chapters": [
+        "c002"
+      ],
+      "mention_count": 1
+    },
+    {
+      "figure_id": "p203",
+      "name": "舍利弗",
+      "chapters": [
+        "c002"
+      ],
+      "mention_count": 1
+    }
+  ],
+  "doctrine_mentions": [
+    {
+      "concept_id": "c003",
+      "name": "佛性",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    },
+    {
+      "concept_id": "c009",
+      "name": "实相",
+      "chapters": [
+        "c001"
+      ],
+      "mention_count": 1
+    },
+    {
+      "concept_id": "c001",
+      "name": "法界",
+      "chapters": [
+        "c001"
+      ],
+      "mention_count": 1
+    },
+    {
+      "concept_id": "c008",
+      "name": "涅槃",
+      "chapters": [
+        "c002"
+      ],
+      "mention_count": 1
+    }
+  ],
+  "transmission_events": [
+    "event:translation:玄奘"
+  ],
+  "alias_of": "t0251",
+  "figures": [
+    "p203",
+    "p307"
+  ],
+  "doctrines": [
+    "c001",
+    "c003",
+    "c008",
+    "c009"
+  ]
+}

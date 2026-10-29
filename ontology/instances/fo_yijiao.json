@@ -1,0 +1,393 @@
+{
+  "id": "fo_yijiao",
+  "type": "Text",
+  "title": "佛垂般涅槃略說教誡經",
+  "title_zh": "佛垂般涅槃略說教誡經",
+  "translator": "姚秦 鳩摩羅什譯",
+  "category": "涅槃部类",
+  "volume": "T12",
+  "juan_count": 1,
+  "actual_char_count": 2799,
+  "canon_ref": "T.389",
+  "taisho": "T0389",
+  "vehicle": "大乘",
+  "mode": "显教",
+  "translation_place": "",
+  "time_from": 402,
+  "belongs_to_school": [
+    "涅槃宗"
+  ],
+  "parallel_translations": [],
+  "kepan": {
+    "序分": [],
+    "正宗分": [
+      "c000"
+    ],
+    "流通分": []
+  },
+  "chapters": [
+    {
+      "id": "c000",
+      "chapter_no": 1,
+      "chapter_title": "卷001",
+      "section_type": "卷首",
+      "part_of_kepan": "正宗分",
+      "paragraphs": [
+        "p00000",
+        "p00001",
+        "p00002",
+        "p00003",
+        "p00004",
+        "p00005",
+        "p00006",
+        "p00007",
+        "p00008",
+        "p00009",
+        "p00010",
+        "p00011",
+        "p00012",
+        "p00013",
+        "p00014",
+        "p00015",
+        "p00016",
+        "p00017",
+        "p00018",
+        "p00019",
+        "p00020",
+        "p00021"
+      ],
+      "gathas": [],
+      "mantras": [],
+      "figures": [
+        "p001"
+      ],
+      "doctrines": [
+        "c008",
+        "c010"
+      ],
+      "char_count": 2778
+    }
+  ],
+  "paragraphs": [
+    {
+      "id": "p00000",
+      "chapter_id": "c000",
+      "para_no": 1,
+      "text_preview": "後秦龜茲國三藏鳩摩羅什奉　詔譯",
+      "char_count": 15,
+      "section_type": "译者署名",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00001",
+      "chapter_id": "c000",
+      "para_no": 2,
+      "text_preview": "釋迦牟尼佛初轉法輪，度阿若憍陳如，最後說法度須跋陀羅，所應度者皆已度訖，於娑羅雙樹間將入涅槃。是時中夜寂然無聲，為諸弟子略說法要：「汝等比丘，於我滅後，當尊重珍",
+      "char_count": 380,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": [
+        "c008"
+      ]
+    },
+    {
+      "id": "p00002",
+      "chapter_id": "c000",
+      "para_no": 3,
+      "text_preview": "「汝等比丘，已能住戒當制五根，勿令放逸入於五欲，譬如牧牛之人執杖視之，不令縱逸犯人苗稼。若縱五根，非唯五欲將無崖畔不可制也，亦如惡馬不以轡制，將當牽人墜於坑陷。",
+      "char_count": 271,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00003",
+      "chapter_id": "c000",
+      "para_no": 4,
+      "text_preview": "「汝等比丘，受諸飲食當如服藥，於好於惡勿生增減，趣得支身以除飢渴。如蜂採花，但取其味不損色香；比丘亦爾，受人供養取自除惱，無得多求壞其善心。譬如智者籌量牛力所堪",
+      "char_count": 92,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00004",
+      "chapter_id": "c000",
+      "para_no": 5,
+      "text_preview": "「汝等比丘，晝則勤心修習善法，無令失時，初夜後夜亦勿有廢，中夜誦經以自消息，無以睡眠因緣令一生空過無所得也。當念無常之火燒諸世間，早求自度勿睡眠也。諸煩惱賊常伺",
+      "char_count": 218,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00005",
+      "chapter_id": "c000",
+      "para_no": 6,
+      "text_preview": "「汝等比丘，若有人來節節支解，當自攝心無令瞋恨，亦當護口勿出惡言；若縱恚心，則自妨道、失功德利。忍之為德，持戒苦行所不能及。能行忍者，乃可名為有力大人；若其不能",
+      "char_count": 213,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00006",
+      "chapter_id": "c000",
+      "para_no": 7,
+      "text_preview": "「汝等比丘，當自摩頭，已捨飾好著壞色衣，執持應器以乞自活，自見如是，若起憍慢當疾滅之。謂長憍慢尚非世俗白衣所宜，何況出家入道之人為解脫故，自降其心而行乞耶？",
+      "char_count": 78,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00007",
+      "chapter_id": "c000",
+      "para_no": 8,
+      "text_preview": "「汝等比丘，諂曲之心與道相違，是故宜應質直其心。當知諂曲但為欺誑，入道之人則無是處。是故汝等宜應端心，以質直為本。",
+      "char_count": 57,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00008",
+      "chapter_id": "c000",
+      "para_no": 9,
+      "text_preview": "「汝等比丘，當知多欲之人多求利故，苦惱亦多；少欲之人無求無欲，則無此患。直爾少欲尚應修習，何況少欲能生諸善功德？少欲之人則無諂曲以求人意，亦復不為諸根所牽。行少",
+      "char_count": 115,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": [
+        "c008"
+      ]
+    },
+    {
+      "id": "p00009",
+      "chapter_id": "c000",
+      "para_no": 10,
+      "text_preview": "「汝等比丘，若欲脫諸苦惱，當觀知足，知足之法即是富樂安隱之處。知足之人，雖臥地上猶為安樂；不知足者，雖處天堂亦不稱意。不知足者雖富而貧，知足之人雖貧而富。不知足",
+      "char_count": 102,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00010",
+      "chapter_id": "c000",
+      "para_no": 11,
+      "text_preview": "「汝等比丘，若求寂靜無為安樂，當離憒閙、獨處閑居，靜處之人帝釋諸天所共敬重。是故當捨己眾他眾，空閑獨處思滅苦本。若樂眾者則受眾惱，譬如大樹眾鳥集之，則有枯折之患",
+      "char_count": 106,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00011",
+      "chapter_id": "c000",
+      "para_no": 12,
+      "text_preview": "「汝等比丘，若勤精進則事無難者，是故汝等當勤精進，譬如小水常流則能穿石。若行者之心數數懈廢，譬如鑽火未熱而息，雖欲得火，火難可得。是名精進。",
+      "char_count": 70,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00012",
+      "chapter_id": "c000",
+      "para_no": 13,
+      "text_preview": "「汝等比丘，求善知識、求善護助而不忘念；若不忘念者，諸煩惱賊則不能入。是故汝等常當攝念在心，若失念者則失諸功德。若念力堅強，雖入五欲賊中不為所害，譬如著鎧入陣則",
+      "char_count": 90,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00013",
+      "chapter_id": "c000",
+      "para_no": 14,
+      "text_preview": "「汝等比丘，若攝心者心則在定，心在定故能知世間生滅法相。是故汝等常當精勤修集諸定，若得定者心則不亂，譬如惜水之家善治堤塘；行者亦爾，為智慧水故，善修禪定令不漏失",
+      "char_count": 86,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00014",
+      "chapter_id": "c000",
+      "para_no": 15,
+      "text_preview": "「汝等比丘，若有智慧則無貪著，常自省察不令有失，是則於我法中能得解脫；若不爾者，既非道人又非白衣，無所名也。實智慧者，則是度老病死海堅牢船也，亦是無明黑闇大明燈",
+      "char_count": 142,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00015",
+      "chapter_id": "c000",
+      "para_no": 16,
+      "text_preview": "「汝等比丘，若種種戲論其心則亂，雖復出家猶未得脫。是故比丘，當急捨離亂心戲論；若汝欲得寂滅樂者，唯當善滅戲論之患。是名不戲論。",
+      "char_count": 63,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00016",
+      "chapter_id": "c000",
+      "para_no": 17,
+      "text_preview": "「汝等比丘，於諸功德常當一心，捨諸放逸如離怨賊。大悲世尊所欲利益皆以究竟，汝等但當勤而行之。若在山間、若空澤中、若在樹下、閑處靜室，念所受法勿令忘失，常當自勉精",
+      "char_count": 161,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00017",
+      "chapter_id": "c000",
+      "para_no": 18,
+      "text_preview": "爾時世尊如是三唱，人無問者。所以者何？眾無疑故。",
+      "char_count": 24,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00018",
+      "chapter_id": "c000",
+      "para_no": 19,
+      "text_preview": "爾時阿㝹樓馱觀察眾心而白佛言：「世尊！月可令熱，日可令冷，佛說四諦不可令異。佛說苦諦真實是苦，不可令樂；集真是因，更無異因；苦若滅者即是因滅，因滅故果滅。滅苦之",
+      "char_count": 183,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00019",
+      "chapter_id": "c000",
+      "para_no": 20,
+      "text_preview": "阿㝹樓馱雖說是語，眾中皆悉了達四聖諦義。世尊欲令此諸大眾皆得堅固，以大悲心復為眾說：",
+      "char_count": 42,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00020",
+      "chapter_id": "c000",
+      "para_no": 21,
+      "text_preview": "「汝等比丘，勿懷憂惱。若我住世一劫會亦當滅，會而不離終不可得。自利利人法皆具足，若我久住更無所益。應可度者，若天上人間皆悉已度，其未度者，皆亦已作得度因緣。自今",
+      "char_count": 207,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": [
+        "c010"
+      ]
+    },
+    {
+      "id": "p00021",
+      "chapter_id": "c000",
+      "para_no": 22,
+      "text_preview": "「汝等比丘，常當一心勤求出道，一切世間動不動法，皆是敗壞不安之相。汝等且止，勿得復語，時將欲過，我欲滅度，是我最後之所教誨。」",
+      "char_count": 63,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    }
+  ],
+  "gathas": [],
+  "mantras": [],
+  "figure_mentions": [
+    {
+      "figure_id": "p001",
+      "name": "释迦牟尼佛",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    }
+  ],
+  "doctrine_mentions": [
+    {
+      "concept_id": "c008",
+      "name": "涅槃",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    },
+    {
+      "concept_id": "c010",
+      "name": "法身",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    }
+  ],
+  "transmission_events": [
+    "event:translation:鳩摩羅什"
+  ],
+  "alias_of": "t0389",
+  "figures": [
+    "p001"
+  ],
+  "doctrines": [
+    "c008",
+    "c010"
+  ],
+  "dharma_assembly": "da:jiushi"
+}

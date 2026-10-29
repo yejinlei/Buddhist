@@ -182,7 +182,7 @@ def main():
 
     uploaded = 0
     failed = []
-    with ThreadPoolExecutor(max_workers=16) as ex:
+    with ThreadPoolExecutor(max_workers=4) as ex:
         futs = [ex.submit(_up, p) for p in todo]
         for f in as_completed(futs):
             p, status, blob = f.result()

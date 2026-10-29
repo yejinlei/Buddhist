@@ -1,0 +1,653 @@
+{
+  "id": "yaoshi_xuanzang",
+  "type": "Text",
+  "title": "藥師琉璃光如來本願功德經",
+  "title_zh": "藥師琉璃光如來本願功德經",
+  "translator": "唐 玄奘譯",
+  "category": "經集部类",
+  "volume": "T14",
+  "juan_count": 1,
+  "actual_char_count": 6054,
+  "canon_ref": "T.450",
+  "taisho": "T0450",
+  "vehicle": "大乘",
+  "mode": "显教",
+  "translation_place": "大慈恩寺",
+  "time_from": 650,
+  "belongs_to_school": [
+    "经集部",
+    "诸经杂集"
+  ],
+  "parallel_translations": [],
+  "kepan": {
+    "序分": [],
+    "正宗分": [
+      "c000"
+    ],
+    "流通分": []
+  },
+  "chapters": [
+    {
+      "id": "c000",
+      "chapter_no": 1,
+      "chapter_title": "卷001",
+      "section_type": "卷首",
+      "part_of_kepan": "正宗分",
+      "paragraphs": [
+        "p00000",
+        "p00001",
+        "p00002",
+        "p00003",
+        "p00004",
+        "p00005",
+        "p00006",
+        "p00007",
+        "p00008",
+        "p00009",
+        "p00010",
+        "p00011",
+        "p00012",
+        "p00013",
+        "p00014",
+        "p00015",
+        "p00016",
+        "p00017",
+        "p00018",
+        "p00019",
+        "p00020",
+        "p00021",
+        "p00022",
+        "p00023",
+        "p00024",
+        "p00025",
+        "p00026",
+        "p00027",
+        "p00028",
+        "p00029",
+        "p00030",
+        "p00031",
+        "p00032",
+        "p00033",
+        "p00034",
+        "p00035",
+        "p00036",
+        "p00037",
+        "p00038",
+        "p00039"
+      ],
+      "gathas": [],
+      "mantras": [],
+      "figures": [
+        "p001",
+        "p101"
+      ],
+      "doctrines": [],
+      "char_count": 6015
+    }
+  ],
+  "paragraphs": [
+    {
+      "id": "p00000",
+      "chapter_id": "c000",
+      "para_no": 1,
+      "text_preview": "大唐、三藏法師玄奘奉　詔譯",
+      "char_count": 13,
+      "section_type": "译者署名",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00001",
+      "chapter_id": "c000",
+      "para_no": 2,
+      "text_preview": "如是我聞：",
+      "char_count": 5,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00002",
+      "chapter_id": "c000",
+      "para_no": 3,
+      "text_preview": "一時，薄伽梵遊化諸國，至廣嚴城，住樂音樹下。與大苾芻眾八千人俱，菩薩摩訶薩三萬六千，及國王、大臣、婆羅門、居士、天、龍、藥叉、人、非人等，無量大眾，恭敬圍繞，而",
+      "char_count": 84,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00003",
+      "chapter_id": "c000",
+      "para_no": 4,
+      "text_preview": "爾時，曼殊室利法王子，承佛威神，從座而起，偏袒一肩，右膝著地，向薄伽梵，曲躬合掌，白言：「世尊！惟願演說如是相類諸佛名號，及本大願殊勝功德，令諸聞者業障銷除，為",
+      "char_count": 93,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001",
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00004",
+      "chapter_id": "c000",
+      "para_no": 5,
+      "text_preview": "爾時，世尊讚曼殊室利童子言：「善哉！善哉！曼殊室利！汝以大悲，勸請我說諸佛名號、本願功德，為拔業障所纏有情，利益安樂像法轉時諸有情故。汝今諦聽，極善思惟，當為汝",
+      "char_count": 102,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001",
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00005",
+      "chapter_id": "c000",
+      "para_no": 6,
+      "text_preview": "佛告曼殊室利：「東方去此過十殑伽沙等佛土，有世界名淨琉璃，佛號藥師琉璃光如來、應、正等覺、明行圓滿、善逝、世間解、無上丈夫、調御士、天人師、佛、薄伽梵。曼殊室利",
+      "char_count": 116,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001",
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00006",
+      "chapter_id": "c000",
+      "para_no": 7,
+      "text_preview": "「第一大願：願我來世得阿耨多羅三藐三菩提時，自身光明，熾然照曜無量無數無邊世界，以三十二大丈夫相、八十隨好，莊嚴其身；令一切有情，如我無異。",
+      "char_count": 70,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00007",
+      "chapter_id": "c000",
+      "para_no": 8,
+      "text_preview": "「第二大願：願我來世得菩提時，身如琉璃，內外明徹，淨無瑕穢，光明廣大，功德巍巍，身善安住，焰網莊嚴，過於日月；幽冥眾生，悉蒙開曉，隨意所趣，作諸事業。",
+      "char_count": 75,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00008",
+      "chapter_id": "c000",
+      "para_no": 9,
+      "text_preview": "「第三大願：願我來世得菩提時，以無量無邊智慧方便，令諸有情，皆得無盡所受用物，莫令眾生有所乏少。",
+      "char_count": 48,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00009",
+      "chapter_id": "c000",
+      "para_no": 10,
+      "text_preview": "「第四大願：願我來世得菩提時，若諸有情行邪道者，悉令安住菩提道中；若行聲聞獨覺乘者，皆以大乘而安立之。",
+      "char_count": 51,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00010",
+      "chapter_id": "c000",
+      "para_no": 11,
+      "text_preview": "「第五大願：願我來世得菩提時，若有無量無邊有情，於我法中修行梵行，一切皆令得不缺戒，具三聚戒。設有毀犯，聞我名已，還得清淨，不墮惡趣。",
+      "char_count": 67,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00011",
+      "chapter_id": "c000",
+      "para_no": 12,
+      "text_preview": "「第六大願：願我來世得菩提時，若諸有情，其身下劣，諸根不具，醜陋、頑愚、盲、聾、瘖、瘂、攣、躄、背僂、白癩、癲狂、種種病苦；聞我名已，一切皆得端正黠慧。諸根完具",
+      "char_count": 86,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00012",
+      "chapter_id": "c000",
+      "para_no": 13,
+      "text_preview": "「第七大願：願我來世得菩提時，若諸有情，眾病逼切，無救無歸，無醫無藥，無親無家，貧窮多苦，我之名號，一經其耳，病悉得除，身心安樂，家屬資具，悉皆豐足，乃至證得無",
+      "char_count": 84,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00013",
+      "chapter_id": "c000",
+      "para_no": 14,
+      "text_preview": "「第八大願：願我來世得菩提時，若有女人，為女百惡之所逼惱，極生厭離，願捨女身；聞我名已，一切皆得轉女成男，具丈夫相，乃至證得無上菩提。",
+      "char_count": 67,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00014",
+      "chapter_id": "c000",
+      "para_no": 15,
+      "text_preview": "「第九大願：願我來世得菩提時，令諸有情，出魔羂網，解脫一切外道纏縛；若墮種種惡見稠林，皆當引攝置於正見，漸令修習諸菩薩行，速證無上正等菩提。",
+      "char_count": 70,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00015",
+      "chapter_id": "c000",
+      "para_no": 16,
+      "text_preview": "「第十大願：願我來世得菩提時，若諸有情，王法所錄，縲縛鞭撻，繫閉牢獄，或當刑戮，及餘無量災難凌辱，悲愁煎迫，身心受苦；若聞我名，以我福德威神力故，皆得解脫一切憂",
+      "char_count": 82,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00016",
+      "chapter_id": "c000",
+      "para_no": 17,
+      "text_preview": "「第十一大願：願我來世得菩提時，若諸有情，飢渴所惱，為求食故造諸惡業；得聞我名，專念受持，我當先以上妙飲食，飽足其身；後以法味，畢竟安樂而建立之。",
+      "char_count": 73,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00017",
+      "chapter_id": "c000",
+      "para_no": 18,
+      "text_preview": "「第十二大願：願我來世得菩提時，若諸有情，貧無衣服，蚊虻寒熱，晝夜逼惱；若聞我名，專念受持，如其所好，即得種種上妙衣服，亦得一切寶莊嚴具，華鬘塗香，鼓樂眾伎，隨",
+      "char_count": 89,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00018",
+      "chapter_id": "c000",
+      "para_no": 19,
+      "text_preview": "「曼殊室利！是為彼世尊藥師琉璃光如來、應、正等覺，行菩薩道時，所發十二微妙上願。",
+      "char_count": 40,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001",
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00019",
+      "chapter_id": "c000",
+      "para_no": 20,
+      "text_preview": "「復次，曼殊室利！彼世尊藥師琉璃光如來，行菩薩道時所發大願，及彼佛土功德莊嚴，我若一劫，若一劫餘，說不能盡。然彼佛土，一向清淨，無有女人，亦無惡趣，及苦音聲。琉",
+      "char_count": 217,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001",
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00020",
+      "chapter_id": "c000",
+      "para_no": 21,
+      "text_preview": "爾時，世尊復告曼殊室利童子言：「曼殊室利！有諸眾生，不識善惡，唯懷貪悋，不知布施及施果報，愚癡無智，闕於信根，多聚財寶，勤加守護；見乞者來，其心不喜，設不獲已而",
+      "char_count": 265,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001",
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00021",
+      "chapter_id": "c000",
+      "para_no": 22,
+      "text_preview": "「復次，曼殊室利，若諸有情，雖於如來受諸學處，而破尸羅；有雖不破尸羅，而破軌則；有於尸羅、軌則，雖得不壞，然毀正見；有雖不毀正見，而棄多聞，於佛所說契經深義不能",
+      "char_count": 310,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00022",
+      "chapter_id": "c000",
+      "para_no": 23,
+      "text_preview": "「復次，曼殊室利！若諸有情，慳貪嫉妬，自讚毀他，當墮三惡趣中，無量千歲受諸劇苦；受劇苦已，從彼命終，來生人間，作牛、馬、駝、驢，恒被鞭撻，飢渴逼惱；又常負重，隨",
+      "char_count": 206,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001",
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00023",
+      "chapter_id": "c000",
+      "para_no": 24,
+      "text_preview": "「復次，曼殊室利！若諸有情，好憙乖離，更相鬪訟，惱亂自他，以身語意，造作增長種種惡業，展轉常為不饒益事，互相謀害。告召山林樹塚等神；殺諸眾生，取其血肉，祭祀藥叉",
+      "char_count": 200,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00024",
+      "chapter_id": "c000",
+      "para_no": 25,
+      "text_preview": "「復次，曼殊室利！若有四眾：苾芻、苾芻尼、鄔波索迦、鄔波斯迦，及餘淨信善男子、善女人等，有能受持八分齋戒，或經一年，或復三月，受持學處，以此善根，願生西方極樂世",
+      "char_count": 300,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001",
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00025",
+      "chapter_id": "c000",
+      "para_no": 26,
+      "text_preview": "爾時，曼殊室利童子白佛言：「世尊！我當誓於像法轉時，以種種方便，令諸淨信善男子、善女人等，得聞世尊藥師琉璃光如來名號，乃至睡中亦以佛名覺悟其耳。世尊！若於此經受",
+      "char_count": 272,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001",
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00026",
+      "chapter_id": "c000",
+      "para_no": 27,
+      "text_preview": "佛告曼殊室利：「如是！如是！如汝所說。曼殊室利！若有淨信善男子、善女人等，欲供養彼世尊藥師琉璃光如來者，應先造立彼佛形像，敷清淨座而安處之；散種種花，燒種種香，",
+      "char_count": 396,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001",
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00027",
+      "chapter_id": "c000",
+      "para_no": 28,
+      "text_preview": "「復次，曼殊室利！若有淨信善男子、善女人等，乃至盡形不事餘天，惟當一心歸佛、法、僧，受持禁戒，若五戒、十戒、菩薩四百戒、苾芻二百五十戒、苾芻尼五百戒，於所受中或",
+      "char_count": 192,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p101"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00028",
+      "chapter_id": "c000",
+      "para_no": 29,
+      "text_preview": "爾時，世尊告阿難言：「如我稱揚彼佛世尊藥師琉璃光如來所有功德，此是諸佛甚深行處，難可解了，汝為信不？」阿難白言：「大德世尊！我於如來所說契經，不生疑惑；所以者何",
+      "char_count": 433,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00029",
+      "chapter_id": "c000",
+      "para_no": 30,
+      "text_preview": "爾時，眾中有一菩薩摩訶薩，名曰救脫，即從座起，偏袒右肩，右膝著地，曲躬合掌而白佛言：「大德世尊！像法轉時，有諸眾生，為種種患之所困厄，長病羸瘦，不能飲食，喉脣乾",
+      "char_count": 375,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00030",
+      "chapter_id": "c000",
+      "para_no": 31,
+      "text_preview": "爾時，阿難問救脫菩薩曰：「善男子！應云何恭敬供養彼世尊藥師琉璃光如來續命幡燈，復云何造？」救脫菩薩言：「大德！若有病人，欲脫病苦，當為其人，七日七夜，受持八分齋",
+      "char_count": 218,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00031",
+      "chapter_id": "c000",
+      "para_no": 32,
+      "text_preview": "「復次，阿難！若剎帝利灌頂王等，災難起時，所謂人眾疾疫難，他國侵逼難，自界叛逆難，星宿變怪難，日月薄蝕難，非時風雨難，過時不雨難。彼剎帝利灌頂王等，爾時應於一切",
+      "char_count": 291,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00032",
+      "chapter_id": "c000",
+      "para_no": 33,
+      "text_preview": "爾時，阿難問救脫菩薩言：「善男子！云何已盡之命而可增益？」救脫菩薩言：「大德！汝豈不聞如來說有九橫死耶？是故勸造續命幡燈，修諸福德；以修福故，盡其壽命，不經苦患",
+      "char_count": 378,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00033",
+      "chapter_id": "c000",
+      "para_no": 34,
+      "text_preview": "「復次，阿難！彼琰魔王主領世間名籍之記。若諸有情，不孝五逆，破辱三寶，壞君臣法，毀於信戒，琰魔法王，隨罪輕重，考而罰之。是故我今勸諸有情，然燈造幡，放生修福，令",
+      "char_count": 90,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00034",
+      "chapter_id": "c000",
+      "para_no": 35,
+      "text_preview": "爾時，眾中有十二藥叉大將，俱在會坐，所謂：",
+      "char_count": 21,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00035",
+      "chapter_id": "c000",
+      "para_no": 36,
+      "text_preview": "宮毘羅大將，伐折羅大將，迷企羅大將，安底羅大將，頞儞羅大將，珊底羅大將，因達羅大將，波夷羅大將，摩虎羅大將，真達羅大將，招杜羅大將，毘羯羅大將。",
+      "char_count": 72,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00036",
+      "chapter_id": "c000",
+      "para_no": 37,
+      "text_preview": "此十二藥叉大將，一一各有七千藥叉以為眷屬，同時舉聲白佛言：「世尊！我等今者，蒙佛威力，得聞世尊藥師琉璃光如來名號，不復更有惡趣之怖。我等相率，皆同一心，乃至盡形",
+      "char_count": 210,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00037",
+      "chapter_id": "c000",
+      "para_no": 38,
+      "text_preview": "爾時，世尊讚諸藥叉大將言：「善哉！善哉！大藥叉將！汝等念報世尊藥師琉璃光如來恩德者，常應如是利益安樂一切有情。」",
+      "char_count": 56,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00038",
+      "chapter_id": "c000",
+      "para_no": 39,
+      "text_preview": "爾時，阿難白佛言：「世尊！當何名此法門？我等云何奉持？」佛告阿難：「此法門名說藥師琉璃光如來本願功德；亦名說十二神將饒益有情結願神呪；亦名拔除一切業障；應如是持",
+      "char_count": 170,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00039",
+      "chapter_id": "c000",
+      "para_no": 40,
+      "text_preview": "（弟子賈崇俊願平安廣德二年十二月十五日發心寫藥師經一卷）",
+      "char_count": 28,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    }
+  ],
+  "gathas": [],
+  "mantras": [],
+  "figure_mentions": [
+    {
+      "figure_id": "p101",
+      "name": "文殊菩萨",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    },
+    {
+      "figure_id": "p001",
+      "name": "释迦牟尼佛",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    }
+  ],
+  "doctrine_mentions": [],
+  "transmission_events": [
+    "event:translation:玄奘"
+  ],
+  "story_events": [
+    "event:story:t0450_盂兰盆经·目连救母"
+  ],
+  "alias_of": "t0450",
+  "figures": [
+    "p001",
+    "p101"
+  ],
+  "dharma_assembly": "da:guangyan"
+}

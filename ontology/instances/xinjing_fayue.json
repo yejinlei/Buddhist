@@ -1,0 +1,253 @@
+{
+  "id": "xinjing_fayue",
+  "type": "Text",
+  "title": "普遍智藏般若波羅蜜多心經",
+  "title_zh": "普遍智藏般若波羅蜜多心經",
+  "translator": "唐 法月重譯",
+  "category": "般若部类",
+  "volume": "T08",
+  "juan_count": 1,
+  "actual_char_count": 806,
+  "canon_ref": "T.252",
+  "taisho": "T0252",
+  "vehicle": "大乘",
+  "mode": "显教",
+  "translation_place": "西京",
+  "time_from": 731,
+  "belongs_to_school": [
+    "般若",
+    "中观宗",
+    "三论宗"
+  ],
+  "parallel_translations": [],
+  "kepan": {
+    "序分": [],
+    "正宗分": [
+      "c000"
+    ],
+    "流通分": []
+  },
+  "chapters": [
+    {
+      "id": "c000",
+      "chapter_no": 1,
+      "chapter_title": "卷001",
+      "section_type": "卷首",
+      "part_of_kepan": "正宗分",
+      "paragraphs": [
+        "p00000",
+        "p00001",
+        "p00002",
+        "p00003",
+        "p00004",
+        "p00005",
+        "p00006",
+        "p00007",
+        "p00008"
+      ],
+      "gathas": [],
+      "mantras": [
+        "m000"
+      ],
+      "figures": [
+        "p001",
+        "p203"
+      ],
+      "doctrines": [
+        "c003",
+        "c005",
+        "c008"
+      ],
+      "char_count": 798
+    }
+  ],
+  "paragraphs": [
+    {
+      "id": "p00000",
+      "chapter_id": "c000",
+      "para_no": 1,
+      "text_preview": "摩竭提國三藏沙門法月重譯",
+      "char_count": 12,
+      "section_type": "译者署名",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00001",
+      "chapter_id": "c000",
+      "para_no": 2,
+      "text_preview": "如是我聞：",
+      "char_count": 5,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00002",
+      "chapter_id": "c000",
+      "para_no": 3,
+      "text_preview": "一時佛在王舍大城靈鷲山中，與大比丘眾滿百千人，菩薩摩訶薩七萬七千人俱，其名曰觀世音菩薩、文殊師利菩薩、彌勒菩薩等，以為上首。皆得三昧總持，住不思議解脫。",
+      "char_count": 76,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00003",
+      "chapter_id": "c000",
+      "para_no": 4,
+      "text_preview": "爾時觀自在菩薩摩訶薩在彼敷坐，於其眾中即從座起，詣世尊所。面向合掌，曲躬恭敬，瞻仰尊顏而白佛言：「世尊！我欲於此會中，說諸菩薩普遍智藏般若波羅蜜多心。唯願世尊聽",
+      "char_count": 141,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p001"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00004",
+      "chapter_id": "c000",
+      "para_no": 5,
+      "text_preview": "於是觀自在菩薩摩訶薩蒙佛聽許，佛所護念，入於慧光三昧正受。入此定已，以三昧力行深般若波羅蜜多時，照見五蘊自性皆空。彼了知五蘊自性皆空，從彼三昧安詳而起。即告慧命",
+      "char_count": 166,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p203"
+      ],
+      "doctrines": [
+        "c003"
+      ]
+    },
+    {
+      "id": "p00005",
+      "chapter_id": "c000",
+      "para_no": 6,
+      "text_preview": "於斯告舍利弗：「諸菩薩摩訶薩應如是學。色性是空，空性是色。色不異空，空不異色。色即是空，空即是色。受、想、行、識亦復如是。識性是空，空性是識。識不異空，空不異識",
+      "char_count": 323,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p203"
+      ],
+      "doctrines": [
+        "c005",
+        "c008"
+      ]
+    },
+    {
+      "id": "p00006",
+      "chapter_id": "c000",
+      "para_no": 7,
+      "text_preview": "即說呪曰：",
+      "char_count": 5,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00007",
+      "chapter_id": "c000",
+      "para_no": 8,
+      "text_preview": "「揭諦　揭諦　波羅揭諦　波羅僧揭諦　菩提莎婆訶」",
+      "char_count": 24,
+      "section_type": "咒语",
+      "gatha_id": null,
+      "mantra_id": "m000",
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00008",
+      "chapter_id": "c000",
+      "para_no": 9,
+      "text_preview": "佛說是經已，諸比丘及菩薩眾，一切世間天、人、阿脩羅、乾闥婆等，聞佛所說，皆大歡喜，信受奉行。",
+      "char_count": 46,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    }
+  ],
+  "gathas": [],
+  "mantras": [
+    {
+      "id": "m000",
+      "chapter_id": "c000",
+      "name": "真言",
+      "text_preview": "「揭諦　揭諦　波羅揭諦　波羅僧揭諦　菩提莎婆訶」",
+      "char_count": 24
+    }
+  ],
+  "figure_mentions": [
+    {
+      "figure_id": "p001",
+      "name": "释迦牟尼佛",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    },
+    {
+      "figure_id": "p203",
+      "name": "舍利弗",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    }
+  ],
+  "doctrine_mentions": [
+    {
+      "concept_id": "c003",
+      "name": "佛性",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    },
+    {
+      "concept_id": "c008",
+      "name": "涅槃",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    },
+    {
+      "concept_id": "c005",
+      "name": "空性",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    }
+  ],
+  "transmission_events": [
+    "event:translation:法月重"
+  ],
+  "alias_of": "t0252",
+  "figures": [
+    "p001",
+    "p203"
+  ],
+  "doctrines": [
+    "c003",
+    "c005",
+    "c008"
+  ],
+  "dharma_assembly": "da:wangshe_lingjiu"
+}

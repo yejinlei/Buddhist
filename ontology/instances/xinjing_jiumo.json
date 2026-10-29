@@ -1,0 +1,194 @@
+{
+  "id": "xinjing_jiumo",
+  "type": "Text",
+  "title": "摩訶般若波羅蜜大明呪經",
+  "title_zh": "摩訶般若波羅蜜大明呪經",
+  "translator": "姚秦 鳩摩羅什譯",
+  "category": "般若部类",
+  "volume": "T08",
+  "juan_count": 1,
+  "actual_char_count": 396,
+  "canon_ref": "T.250",
+  "taisho": "T0250",
+  "vehicle": "大乘",
+  "mode": "显教",
+  "translation_place": "",
+  "time_from": 402,
+  "belongs_to_school": [
+    "般若",
+    "中观宗",
+    "三论宗"
+  ],
+  "parallel_translations": [],
+  "kepan": {
+    "序分": [],
+    "正宗分": [
+      "c000"
+    ],
+    "流通分": []
+  },
+  "chapters": [
+    {
+      "id": "c000",
+      "chapter_no": 1,
+      "chapter_title": "卷001",
+      "section_type": "卷首",
+      "part_of_kepan": "正宗分",
+      "paragraphs": [
+        "p00000",
+        "p00001",
+        "p00002",
+        "p00003",
+        "p00004",
+        "p00005",
+        "p00006",
+        "p00007"
+      ],
+      "gathas": [],
+      "mantras": [],
+      "figures": [
+        "p203"
+      ],
+      "doctrines": [
+        "c008"
+      ],
+      "char_count": 389
+    }
+  ],
+  "paragraphs": [
+    {
+      "id": "p00000",
+      "chapter_id": "c000",
+      "para_no": 1,
+      "text_preview": "姚秦天竺三藏鳩摩羅什譯",
+      "char_count": 11,
+      "section_type": "译者署名",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00001",
+      "chapter_id": "c000",
+      "para_no": 2,
+      "text_preview": "觀世音菩薩行深般若波羅蜜時，照見五陰空，度一切苦厄。",
+      "char_count": 26,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00002",
+      "chapter_id": "c000",
+      "para_no": 3,
+      "text_preview": "「舍利弗！色空故無惱壞相，受空故無受相，想空故無知相，行空故無作相，識空故無覺相。何以故？舍利弗！非色異空，非空異色。色即是空，空即是色。受、想、行、識亦如是。",
+      "char_count": 80,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p203"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00003",
+      "chapter_id": "c000",
+      "para_no": 4,
+      "text_preview": "「舍利弗！是諸法空相，不生不滅，不垢不淨，不增不減。是空法，非過去、非未來、非現在。是故空中無色，無受、想、行、識，無眼、耳、鼻、舌、身、意，無色、聲、香、味、",
+      "char_count": 128,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [
+        "p203"
+      ],
+      "doctrines": []
+    },
+    {
+      "id": "p00004",
+      "chapter_id": "c000",
+      "para_no": 5,
+      "text_preview": "「以無所得故，菩薩依般若波羅蜜故，心無罣礙。無罣礙故，無有恐怖，離一切顛倒夢想苦惱，究竟涅槃。三世諸佛依般若波羅蜜故，得阿耨多羅三藐三菩提。",
+      "char_count": 70,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": [
+        "c008"
+      ]
+    },
+    {
+      "id": "p00005",
+      "chapter_id": "c000",
+      "para_no": 6,
+      "text_preview": "「故知般若波羅蜜是大明呪、無上明呪、無等等明呪，能除一切苦，真實不虛。故說般若波羅蜜呪。」",
+      "char_count": 45,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00006",
+      "chapter_id": "c000",
+      "para_no": 7,
+      "text_preview": "即說呪曰：",
+      "char_count": 5,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00007",
+      "chapter_id": "c000",
+      "para_no": 8,
+      "text_preview": "「竭帝　竭帝　波羅竭帝　波羅僧竭帝　菩提僧莎呵」",
+      "char_count": 24,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    }
+  ],
+  "gathas": [],
+  "mantras": [],
+  "figure_mentions": [
+    {
+      "figure_id": "p203",
+      "name": "舍利弗",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    }
+  ],
+  "doctrine_mentions": [
+    {
+      "concept_id": "c008",
+      "name": "涅槃",
+      "chapters": [
+        "c000"
+      ],
+      "mention_count": 1
+    }
+  ],
+  "transmission_events": [
+    "event:translation:鳩摩羅什"
+  ],
+  "alias_of": "t0250",
+  "figures": [
+    "p203"
+  ],
+  "doctrines": [
+    "c008"
+  ]
+}

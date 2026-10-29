@@ -1,0 +1,186 @@
+{
+  "id": "yulan_pen",
+  "type": "Text",
+  "title": "佛說盂蘭盆經",
+  "title_zh": "佛說盂蘭盆經",
+  "translator": "西晉 竺法護譯",
+  "category": "經集部类",
+  "volume": "T16",
+  "juan_count": 1,
+  "actual_char_count": 957,
+  "canon_ref": "T.685",
+  "taisho": "T0685",
+  "vehicle": "大乘",
+  "mode": "显教",
+  "translation_place": "",
+  "time_from": 266,
+  "belongs_to_school": [
+    "经集部",
+    "诸经杂集"
+  ],
+  "parallel_translations": [],
+  "kepan": {
+    "序分": [],
+    "正宗分": [
+      "c000"
+    ],
+    "流通分": []
+  },
+  "chapters": [
+    {
+      "id": "c000",
+      "chapter_no": 1,
+      "chapter_title": "卷001",
+      "section_type": "卷首",
+      "part_of_kepan": "正宗分",
+      "paragraphs": [
+        "p00000",
+        "p00001",
+        "p00002",
+        "p00003",
+        "p00004",
+        "p00005",
+        "p00006",
+        "p00007",
+        "p00008",
+        "p00009"
+      ],
+      "gathas": [],
+      "mantras": [],
+      "figures": [],
+      "doctrines": [],
+      "char_count": 948
+    }
+  ],
+  "paragraphs": [
+    {
+      "id": "p00000",
+      "chapter_id": "c000",
+      "para_no": 1,
+      "text_preview": "西晉月氏三藏竺法護譯",
+      "char_count": 10,
+      "section_type": "译者署名",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00001",
+      "chapter_id": "c000",
+      "para_no": 2,
+      "text_preview": "聞如是：",
+      "char_count": 4,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00002",
+      "chapter_id": "c000",
+      "para_no": 3,
+      "text_preview": "一時佛在舍衛國祇樹給孤獨園。大目乾連始得六通，欲度父母，報乳哺之恩。即以道眼觀視世間，見其亡母生餓鬼中，不見飲食，皮骨連立。目連悲哀，即鉢盛飯，往餉其母。母得鉢",
+      "char_count": 129,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00003",
+      "chapter_id": "c000",
+      "para_no": 4,
+      "text_preview": "佛言：「汝母罪根深結，非汝一人力所奈何！汝雖孝順，聲動天地，天神、地神、邪魔、外道、道士、四天王神亦不能奈何！當須十方眾僧威神之力乃得解脫。吾今當為汝說救濟之法",
+      "char_count": 96,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00004",
+      "chapter_id": "c000",
+      "para_no": 5,
+      "text_preview": "佛告目連：「十方眾僧於七月十五日僧自恣時，當為七世父母及現在父母厄難中者，具飯、百味五果、汲灌盆器、香油錠爥、床敷臥具，盡世甘美以著盆中，供養十方大德眾僧。當此",
+      "char_count": 301,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00005",
+      "chapter_id": "c000",
+      "para_no": 6,
+      "text_preview": "爾時目連比丘及此大會大菩薩眾皆大歡喜，而目連悲啼泣聲釋然除滅。是時目連其母即於是日，得脫一劫餓鬼之苦。",
+      "char_count": 51,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00006",
+      "chapter_id": "c000",
+      "para_no": 7,
+      "text_preview": "爾時目連復白佛言：「弟子所生父母，得蒙三寶功德之力、眾僧威神之力。故，若未來世一切佛弟子行孝順者，亦應奉此盂蘭盆，救度現在父母乃至七世父母，為可爾不？」",
+      "char_count": 76,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00007",
+      "chapter_id": "c000",
+      "para_no": 8,
+      "text_preview": "佛言：「大善快問！我正欲說，汝今復問。善男子！若有比丘比丘尼、國王太子、王子大臣宰相、三公百官、萬民庶人行孝慈者，皆應為所生現在父母、過去七世父母，於七月十五日",
+      "char_count": 158,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00008",
+      "chapter_id": "c000",
+      "para_no": 9,
+      "text_preview": "佛告諸善男子、善女人：「是佛弟子修孝順者，應念念中常憶父母，供養乃至七世父母。年年七月十五日，常以孝順慈憶所生父母，乃至七世父母，為作盂蘭盆施佛及僧，以報父母長",
+      "char_count": 101,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    },
+    {
+      "id": "p00009",
+      "chapter_id": "c000",
+      "para_no": 10,
+      "text_preview": "爾時目連比丘、四輩弟子，聞佛所說，歡喜奉行。",
+      "char_count": 22,
+      "section_type": "长行",
+      "gatha_id": null,
+      "mantra_id": null,
+      "figures": [],
+      "doctrines": []
+    }
+  ],
+  "gathas": [],
+  "mantras": [],
+  "figure_mentions": [],
+  "doctrine_mentions": [],
+  "transmission_events": [
+    "event:translation:竺法護"
+  ],
+  "alias_of": "t0685",
+  "dharma_assembly": "da:shewei_jishu"
+}
