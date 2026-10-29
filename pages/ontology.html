@@ -80,8 +80,22 @@
             </div>
         </section>
 
+        <section class="mb-10" id="sec-instances">
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">五、义理实例 ↔ 文本落点</h2>
+            <p class="text-sm muted mb-4">聚合文本本体的标引，展示义理概念、人物、宗派、部类在全藏 2506 部经文中的落点。点击任一项可查看关联经文。</p>
+            <div class="flex flex-wrap gap-2 mb-4 text-xs" id="il-tabs">
+                <button class="il-tab px-3 py-1 rounded-full bg-buddha-primary text-white" data-k="concept">概念</button>
+                <button class="il-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="figure">人物</button>
+                <button class="il-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="school">宗派</button>
+                <button class="il-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="category">部类</button>
+            </div>
+            <div id="il-body" class="bg-white rounded-lg shadow p-4">
+                <button id="il-load" class="px-4 py-2 bg-buddha-primary text-white rounded-lg text-sm">加载实例分布</button>
+            </div>
+        </section>
+
         <section class="mb-10">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">五、本次修订记录</h2>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">六、本次修订记录</h2>
             <ul id="fixes" class="list-disc list-inside text-sm text-buddha-dark/85 space-y-1 bg-white rounded-lg shadow p-5"></ul>
         </section>
     </main>
@@ -154,6 +168,7 @@
             document.getElementById('fixes').innerHTML = (d.fixes||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
 
             bind(d);
+            initInstances();
         }
 
         function countSubs(c){ var n=0; (c.subclasses||[]).forEach(function(s){ n+=1+countSubs(s); }); return n; }
@@ -258,6 +273,55 @@
             document.querySelectorAll('#classes .cls-wrap[data-depth="0"]').forEach(function(w){
                 w.style.display = (f==='all' || w.getAttribute('data-layer')===f) ? '' : 'none';
             });
+        }
+
+        // ===== 义理实例 ↔ 文本落点 =====
+        var IL = null, IL_KEY = 'concept';
+        function ensureIL(){
+            if(IL) return Promise.resolve(IL);
+            return fetch('../ontology/instance-links.json',{cache:'no-cache'})
+                .then(function(r){return r.json();})
+                .then(function(d){ IL = d; return d; });
+        }
+        function initInstances(){
+            var loadBtn = document.getElementById('il-load');
+            if(loadBtn) loadBtn.addEventListener('click', function(){ loadIL(IL_KEY); });
+            document.querySelectorAll('.il-tab').forEach(function(t){
+                t.addEventListener('click', function(){
+                    IL_KEY = t.getAttribute('data-k');
+                    document.querySelectorAll('.il-tab').forEach(function(b){
+                        var on = b===t;
+                        b.className = 'il-tab px-3 py-1 rounded-full ' + (on?'bg-buddha-primary text-white':'bg-white border border-paper hover:bg-paper');
+                    });
+                    if(IL) renderIL(IL_KEY); else loadIL(IL_KEY);
+                });
+            });
+        }
+        function loadIL(key){
+            var body = document.getElementById('il-body');
+            body.innerHTML = '<p class="text-sm muted">加载中…</p>';
+            ensureIL().then(function(){ renderIL(key); })
+                .catch(function(e){ body.innerHTML = '<p class="text-sm text-red-600">加载失败：'+esc(e.message)+'</p>'; });
+        }
+        function renderIL(key){
+            var body = document.getElementById('il-body');
+            var idx = (IL && IL[key]) || {};
+            var keys = Object.keys(idx).sort(function(a,b){ return idx[b].count - idx[a].count; });
+            if(!keys.length){ body.innerHTML = '<p class="text-sm muted">无数据</p>'; return; }
+            var rows = keys.map(function(k){
+                var it = idx[k];
+                var texts = it.texts.slice(0,12).map(function(t){
+                    return '<a href="sutras.html?load='+esc(t)+'" class="alias-tag" style="text-decoration:none">'+esc(t)+'</a>';
+                }).join('');
+                var more = it.texts.length>12 ? '<span class="text-[11px] muted"> …等 '+it.texts.length+' 部</span>' : '';
+                return '<div class="py-2 border-b border-paper">'
+                    +'<div class="flex items-baseline gap-2"><span class="cls-id">'+esc(k)+'</span><b>'+esc(it.name)+'</b>'
+                    +'<span class="text-[11px] muted">'+it.count+' 部</span></div>'
+                    +'<div class="mt-1">'+texts+more+'</div></div>';
+            }).join('');
+            var meta = (IL && IL.meta) || {};
+            body.innerHTML = '<p class="text-xs muted mb-2">共 '+keys.length+' 项 · 语料 '+esc(meta.total_texts||2506)+' 部</p>'
+                + '<div class="max-h-[520px] overflow-y-auto">'+rows+'</div>';
         }
     })();
     </script>
