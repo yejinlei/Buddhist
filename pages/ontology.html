@@ -107,13 +107,26 @@
             </div>
         </section>
 
+        <section class="mb-10" id="sec-events">
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">七、事件层实例 · 法会（DharmaAssembly）</h2>
+            <p class="text-sm muted mb-4">M4 事件层首批发起落地：根据各经序分「如是我聞：一時，佛在…」的原文记载，按说法地点聚合为<strong>法会</strong>（DharmaAssembly）实例。每部经实例上挂 <code class="text-[11px] bg-paper px-1 rounded">dharma_assembly</code> 字段反向关联，读者从读经页「🌳 本体下钻」浮层可见其所属法会。</p>
+            <div class="flex flex-wrap gap-2 mb-4 text-xs" id="da-tabs">
+                <button class="da-tab px-3 py-1 rounded-full bg-buddha-primary text-white" data-k="classic">主要法会</button>
+                <button class="da-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="auto">其他法会</button>
+                <button class="da-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="all">全部法会</button>
+            </div>
+            <div id="da-body" class="bg-white rounded-lg shadow p-4">
+                <button id="da-load" class="px-4 py-2 bg-buddha-primary text-white rounded-lg text-sm">加载法会实例</button>
+            </div>
+        </section>
+
         <section class="mb-10">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">七、落地路线（M1–M5）与质量校验</h2>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">八、落地路线（M1–M5）与质量校验</h2>
             <div id="process" class="grid md:grid-cols-2 gap-4"></div>
         </section>
 
         <section class="mb-10">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">八、本次融合修订记录（v3.0.0）</h2>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">九、本次融合修订记录（v3.0.0）</h2>
             <ul id="fixes" class="list-disc list-inside text-sm text-buddha-dark/85 space-y-1 bg-white rounded-lg shadow p-5"></ul>
         </section>
     </main>
@@ -420,6 +433,77 @@
             body.innerHTML = '<p class="text-xs muted mb-2">共 '+keys.length+' 项 · 语料 '+esc(meta.total_texts||2506)+' 部</p>'
                 + '<div class="max-h-[520px] overflow-y-auto">'+rows+'</div>';
         }
+
+        // ===== 事件层·法会实例 =====
+        var DA = null, DA_KEY = 'classic';
+        function ensureDA(){
+            if(DA) return Promise.resolve(DA);
+            return fetch('../ontology/dharma_assemblies.json',{cache:'no-cache'})
+                .then(function(r){return r.json();})
+                .then(function(d){ DA = d; return d; });
+        }
+        function initDA(){
+            var loadBtn = document.getElementById('da-load');
+            if(loadBtn) loadBtn.addEventListener('click', function(){ loadDA(DA_KEY); });
+            document.querySelectorAll('.da-tab').forEach(function(t){
+                t.addEventListener('click', function(){
+                    DA_KEY = t.getAttribute('data-k');
+                    document.querySelectorAll('.da-tab').forEach(function(b){
+                        var on = b===t;
+                        b.className = 'da-tab px-3 py-1 rounded-full ' + (on?'bg-buddha-primary text-white':'bg-white border border-paper hover:bg-paper');
+                    });
+                    if(DA) renderDA(DA_KEY); else loadDA(DA_KEY);
+                });
+            });
+        }
+        function loadDA(key){
+            var body = document.getElementById('da-body');
+            body.innerHTML = '<p class="text-sm muted">加载中…</p>';
+            ensureDA().then(function(){ renderDA(key); })
+                .catch(function(e){ body.innerHTML = '<p class="text-sm text-red-600">加载失败：'+esc(e.message)+'</p>'; });
+        }
+        function renderDA(key){
+            var body = document.getElementById('da-body');
+            var am = (DA && DA.assemblies) || {};
+            var list = [];
+            Object.keys(am).forEach(function(id){
+                var it = am[id];
+                var ok = key==='all'
+                    || (key==='classic' && !it.auto_generated)
+                    || (key==='auto' && it.auto_generated);
+                if(ok) list.push(it);
+            });
+            list.sort(function(a,b){ return (b.sutra_count||0) - (a.sutra_count||0); });
+            if(!list.length){ body.innerHTML = '<p class="text-sm muted">无数据</p>'; return; }
+            var meta = DA||{};
+            var cards = list.map(function(a){
+                var sutras = (a.sutras||[]).slice(0,10).map(function(sid){
+                    return '<a href="sutras.html?load='+esc(sid)+'" class="alias-tag" style="text-decoration:none">'+esc(sid)+'</a>';
+                }).join('');
+                var more = (a.sutras||[]).length>10 ? '<span class="text-[11px] muted"> …等 '+(a.sutras.length)+' 部</span>' : '';
+                var tag = a.auto_generated
+                    ? '<span class="text-[11px] px-2 py-0.5 rounded-full bg-stone-100 text-stone-600">自动聚合</span>'
+                    : '<span class="text-[11px] px-2 py-0.5 rounded-full bg-amber-50 text-amber-700">经典法会</span>';
+                return '<div class="border border-paper rounded-lg p-4 hover:shadow-md transition">'
+                    + '<div class="flex items-baseline gap-2 mb-1 flex-wrap">'
+                    + '<span class="cls-id">'+esc(a.id)+'</span>'
+                    + '<b class="text-buddha-primary">'+esc(a.name)+'</b>'
+                    + '<span class="text-[11px] muted">'+esc(a.place)+'</span>'
+                    + tag
+                    + '<span class="text-[11px] px-2 py-0.5 rounded-full bg-green-50 text-green-700">'+(a.sutra_count||0)+' 部经</span>'
+                    + '</div>'
+                    + '<div class="text-xs muted mb-2">主说：'+esc(a.buddha||'释迦牟尼佛')+' · '+esc(a.description||'')+'</div>'
+                    + (a.significance ? '<div class="text-[11px] text-stone-600 mb-2">义理意义：'+esc(a.significance)+'</div>' : '')
+                    + '<div>'+sutras+more+'</div>'
+                    + '</div>';
+            }).join('');
+            body.innerHTML = '<p class="text-xs muted mb-3">共 '+list.length+' 个法会 · 关联经文总数 '+esc(meta.sutras_linked||0)+' 部 · 数据版本 '+esc(meta.version||'')+'</p>'
+                + '<div class="grid md:grid-cols-2 gap-3 max-h-[620px] overflow-y-auto">'+cards+'</div>';
+        }
+
+        bind(d);
+        initInstances();
+        initDA();
     })();
     </script>
 </body>
