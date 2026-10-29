@@ -67,9 +67,9 @@
 <a href="dict.html" class="text-amber-700 font-medium">佛学词典</a>
 <a href="graph.html" class="text-stone-600 hover:text-amber-700">义理图谱</a>
 <a href="kepan.html" class="text-stone-600 hover:text-amber-700">科判导航</a>
-<a href="translation.html" class="text-stone-600 hover:text-amber-700">译学本体</a>
-<a href="timeline.html" class="text-stone-600 hover:text-amber-700">时间轴</a>
-<a href="panjiao.html" class="text-stone-600 hover:text-amber-700">判教对比</a>
+<div class="nav-dropdown"><a href="javascript:void(0)" class="text-stone-600 hover:text-amber-700 nav-dropdown-toggle" role="button" aria-haspopup="true">佛学知识<span class="nav-caret">▾</span></a><div class="nav-dropdown-menu"><a href="panjiao.html">宗派判教</a><a href="translation.html">佛典译学</a><a href="timeline.html">译传时间轴</a></div></div>
+
+
 <a href="inference.html" class="text-stone-600 hover:text-amber-700">智能推演</a>
 <a href="persons.html" class="text-stone-600 hover:text-amber-700">人物圣众</a>
 </div>
@@ -90,9 +90,9 @@
 <a href="dict.html" class="text-amber-700 font-medium py-2 border-b border-amber-200">佛学词典</a>
 <a href="graph.html" class="text-stone-700 py-2 border-b border-amber-200">义理图谱</a>
 <a href="kepan.html" class="text-stone-700 py-2 border-b border-amber-200">科判导航</a>
-<a href="translation.html" class="text-stone-700 py-2 border-b border-amber-200">译学本体</a>
-<a href="timeline.html" class="text-stone-700 py-2 border-b border-amber-200">时间轴</a>
-<a href="panjiao.html" class="text-stone-700 py-2 border-b border-amber-200">判教对比</a>
+<div class="nav-dropdown"><a href="javascript:void(0)" class="text-stone-600 hover:text-amber-700 nav-dropdown-toggle" role="button" aria-haspopup="true">佛学知识<span class="nav-caret">▾</span></a><div class="nav-dropdown-menu"><a href="panjiao.html">宗派判教</a><a href="translation.html">佛典译学</a><a href="timeline.html">译传时间轴</a></div></div>
+
+
 <a href="inference.html" class="text-stone-700 py-2 border-b border-amber-200">智能推演</a>
 <a href="persons.html" class="text-stone-700 py-2 border-b border-amber-200">人物圣众</a>
 </div>
@@ -150,6 +150,12 @@
 <div class="modal-def" id="mDef"></div>
 <div class="dict-src" id="mSrc"></div>
 
+<!-- 本体实例跳转 -->
+<div class="xlink-section" id="xOntoBox" style="display:none;">
+<div class="xlink-title"><i class="fa fa-sitemap"></i> 本体实例</div>
+<div id="xOnto"></div>
+</div>
+
 <!-- 跨页关联：经文出处 -->
 <div class="xlink-section" id="xSutrasBox">
 <div class="xlink-title"><i class="fa fa-book"></i> 经文出处</div>
@@ -182,6 +188,7 @@ let DICT = null;
 let TERMS = [];
 let FIRST_CHAR = {};
 let CROSS = null;  // 跨页关联数据，懒加载
+let DICT_LINKS = null; // 词典→本体映射
 let CUR_CAT = 'all';
 let CUR_CHAR = null;
 let CUR_Q = '';
@@ -197,6 +204,23 @@ async function getCross(){
     }
   }
   return CROSS;
+}
+
+async function getDictLinks(){
+  if(!DICT_LINKS){
+    try{
+      const r = await fetch('../ontology/dict-links.json');
+      const data = await r.json();
+      DICT_LINKS = {};
+      for(const l of data.links){
+        DICT_LINKS[l.dict_word] = l;
+      }
+    }catch(e){
+      console.warn('dict-links加载失败', e);
+      DICT_LINKS = {};
+    }
+  }
+  return DICT_LINKS;
 }
 
 const CAT_NAMES = {
@@ -361,6 +385,8 @@ async function openTerm(name){
   document.getElementById('xSutras').innerHTML = '<span class="xlink-loading">加载中…</span>';
   document.getElementById('xKepan').innerHTML = '<span class="xlink-loading">加载中…</span>';
   document.getElementById('xNotes').innerHTML = '<span class="xlink-loading">加载中…</span>';
+  document.getElementById('xOntoBox').style.display = 'none';
+  document.getElementById('xOnto').innerHTML = '';
 
   // 相关词条：同分类+相关定义提及
   const rel = TERMS.filter(o=>o!==t && o.category===t.category && (o.name[0]===t.name[0] || (t.definition&&t.definition.includes(o.name)))).slice(0,8);
@@ -378,6 +404,33 @@ async function openTerm(name){
   renderXSutras(t.name, cross);
   renderXKepan(t.name, cross);
   renderXNotes(t.name, cross);
+  renderXOnto(t.name);
+}
+
+function renderXOnto(termName){
+  const boxSection = document.getElementById('xOntoBox');
+  const box = document.getElementById('xOnto');
+  getDictLinks().then(links=>{
+    const link = links[termName];
+    if(!link){
+      boxSection.style.display = 'none';
+      return;
+    }
+    boxSection.style.display = 'block';
+    const typeMap = {
+      concept: {icon:'fa-cube', label:'义理概念', color:'#7c3aed', url:'graph.html'},
+      person:  {icon:'fa-user-circle-o', label:'人物', color:'#0891b2', url:'graph.html'},
+      sutra:   {icon:'fa-book', label:'核心经典', color:'#b45309', url:'graph.html'},
+      sect:    {icon:'fa-university', label:'宗派', color:'#be123c', url:'panjiao.html'}
+    };
+    const meta = typeMap[link.ontology_type] || typeMap.concept;
+    const extraMethod = link.match_method==='normalized'?`<span style="font-size:11px;color:#a8a29e;margin-left:6px;">（名称归一匹配）</span>`:'';
+    box.innerHTML = `<a class="xlink-item" href="${meta.url}#onto=${encodeURIComponent(link.ontology_id)}" target="_blank" style="border-left:3px solid ${meta.color};">
+  <div><i class="fa ${meta.icon}" style="color:${meta.color};"></i> <b>${link.ontology_label}</b> <span style="font-size:12px;color:${meta.color};margin-left:6px;padding:1px 8px;border-radius:10px;background:${meta.color}1a;">${meta.label} · ${link.ontology_id}</span>${extraMethod}</div>
+  <div class="xlink-quote">在本体图谱中查看该词的上下位、关系网、经文引用与相关人物。</div>
+  <div class="xlink-src">点此在本体视图/判教页定位此实例 <i class="fa fa-external-link" style="font-size:11px;"></i></div>
+</a>`;
+  });
 }
 
 function sutraTitleOf(sid, cross){
