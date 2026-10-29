@@ -107,11 +107,26 @@
             </div>
         </section>
 
+        <section class="mb-10" id="sec-m2">
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">七、M2 义理层实例（ABox · A2 义理轴）</h2>
+            <p class="text-sm muted mb-4">M2 是义理概念与实体层，把佛学本体论的 <strong>221 个义理概念（L1 10 / L2 60 / L3 151）</strong>、<strong>125 位人物</strong>、<strong>96 部核心经典</strong>、<strong>8 大宗派</strong>、<strong>1088 条义理关系</strong>统一成独立可下钻实例；引文均标注 t#### 经号回原典，旧数据缺字段标「（待考）」。</p>
+            <div class="flex flex-wrap gap-2 mb-4 text-xs" id="m2-tabs">
+                <button class="m2-tab px-3 py-1 rounded-full bg-buddha-primary text-white" data-k="concept">义理概念（L1–L3）</button>
+                <button class="m2-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="person">人物</button>
+                <button class="m2-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="sutra">核心经典</button>
+                <button class="m2-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="sect">八宗</button>
+                <button class="m2-tab px-3 py-1 rounded-full bg-white border border-paper hover:bg-paper" data-k="rel">关系</button>
+            </div>
+            <div id="m2-body" class="bg-white rounded-lg shadow p-4">
+                <button id="m2-load" class="px-4 py-2 bg-buddha-primary text-white rounded-lg text-sm">加载 M2 义理层实例</button>
+            </div>
+        </section>
+
         <section class="mb-10" id="sec-events">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">七、事件层实例（M4 · A4 事件轴）</h2>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">八、事件层实例（M4 · A4 事件轴）</h2>
             <p class="text-sm muted mb-4">M4 事件层四种子类全部落地：<strong>法会（DharmaAssembly）</strong>、<strong>结集（Council）</strong>、<strong>译经传法（TransmissionEvent）</strong>、<strong>本生·本事·因缘故事（StoryEvent）</strong>。每部经实例通过对应字段反向关联，读经页「🌳 本体下钻」浮层可见其归属事件。</p>
 
-            <h3 class="text-lg font-semibold text-buddha-primary/90 mb-3 mt-6">7.1 法会（DharmaAssembly）</h3>
+            <h3 class="text-lg font-semibold text-buddha-primary/90 mb-3 mt-6">8.1 法会（DharmaAssembly）</h3>
             <p class="text-sm muted mb-3">根据各经序分「如是我聞：一時，佛在…」按说法地点聚合，关联字段 <code class="text-[11px] bg-paper px-1 rounded">dharma_assembly</code>。</p>
             <div class="flex flex-wrap gap-2 mb-4 text-xs" id="da-tabs">
                 <button class="da-tab px-3 py-1 rounded-full bg-buddha-primary text-white" data-k="classic">主要法会</button>
@@ -122,13 +137,13 @@
                 <button id="da-load" class="px-4 py-2 bg-buddha-primary text-white rounded-lg text-sm">加载法会实例</button>
             </div>
 
-            <h3 class="text-lg font-semibold text-buddha-primary/90 mb-3">7.2 结集（Council）</h3>
+            <h3 class="text-lg font-semibold text-buddha-primary/90 mb-3">8.2 结集（Council）</h3>
             <p class="text-sm muted mb-3">佛教史上六次关键结集/结社，关联字段 <code class="text-[11px] bg-paper px-1 rounded">councils</code>。</p>
             <div id="co-body" class="bg-white rounded-lg shadow p-4 mb-6">
                 <button id="co-load" class="px-4 py-2 bg-buddha-primary text-white rounded-lg text-sm">加载结集实例</button>
             </div>
 
-            <h3 class="text-lg font-semibold text-buddha-primary/90 mb-3">7.3 译经传法（TransmissionEvent）</h3>
+            <h3 class="text-lg font-semibold text-buddha-primary/90 mb-3">8.3 译经传法（TransmissionEvent）</h3>
             <p class="text-sm muted mb-3">按译者+朝代聚合的译经事件，以及东土关键祖师传法付法事件（禅宗灵山拈花、达摩东来、六祖得法、玄奘西行、天台付法）。关联字段 <code class="text-[11px] bg-paper px-1 rounded">transmission_events</code>。</p>
             <div class="flex flex-wrap gap-2 mb-4 text-xs" id="tr-tabs">
                 <button class="tr-tab px-3 py-1 rounded-full bg-buddha-primary text-white" data-k="lineage">重要传法</button>
@@ -139,7 +154,7 @@
                 <button id="tr-load" class="px-4 py-2 bg-buddha-primary text-white rounded-lg text-sm">加载译经/传法实例</button>
             </div>
 
-            <h3 class="text-lg font-semibold text-buddha-primary/90 mb-3">7.4 本生·本事·因缘故事（StoryEvent）</h3>
+            <h3 class="text-lg font-semibold text-buddha-primary/90 mb-3">8.4 本生·本事·因缘故事（StoryEvent）</h3>
             <p class="text-sm muted mb-3">收录汉译佛典中著名本生、本事、因缘、譬喻故事（九色鹿、舍身饲虎、目连救母、须大拏、睒子、降魔成道、八相成道、百喻等），以及本缘部/譬喻类经典按品识别的故事。关联字段 <code class="text-[11px] bg-paper px-1 rounded">story_events</code>。</p>
             <div class="flex flex-wrap gap-2 mb-4 text-xs" id="st-tabs">
                 <button class="st-tab px-3 py-1 rounded-full bg-buddha-primary text-white" data-k="famous">著名故事</button>
@@ -152,12 +167,12 @@
         </section>
 
         <section class="mb-10">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">八、落地路线（M1–M5）与质量校验</h2>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">九、落地路线（M1–M5）与质量校验</h2>
             <div id="process" class="grid md:grid-cols-2 gap-4"></div>
         </section>
 
         <section class="mb-10">
-            <h2 class="text-xl font-bold text-buddha-primary mb-4">九、本次融合修订记录（v3.0.0）</h2>
+            <h2 class="text-xl font-bold text-buddha-primary mb-4">十、本次融合修订记录（v3.0.0）</h2>
             <ul id="fixes" class="list-disc list-inside text-sm text-buddha-dark/85 space-y-1 bg-white rounded-lg shadow p-5"></ul>
         </section>
     </main>
@@ -465,6 +480,137 @@
                 + '<div class="max-h-[520px] overflow-y-auto">'+rows+'</div>';
         }
 
+        // ===== M2 义理层实例 =====
+        var M2 = null;
+        var M2_REL = null;
+        var M2_KEY = 'concept';
+        function ensureM2(){
+            var p1 = fetch('../ontology/instances/m2_index.json',{cache:'no-cache'}).then(function(r){return r.json();});
+            var p2 = fetch('../ontology/instances/relations.json',{cache:'no-cache'}).then(function(r){return r.json();});
+            return Promise.all([p1,p2]).then(function(arr){ M2 = arr[0]; M2_REL = arr[1].relations; return M2; });
+        }
+        function initM2(){
+            var btn = document.getElementById('m2-load');
+            if(btn) btn.addEventListener('click', function(){ loadM2(M2_KEY); });
+            document.querySelectorAll('.m2-tab').forEach(function(t){
+                t.addEventListener('click', function(){
+                    M2_KEY = t.getAttribute('data-k');
+                    document.querySelectorAll('.m2-tab').forEach(function(b){
+                        var on = b===t;
+                        b.className = 'm2-tab px-3 py-1 rounded-full '+(on?'bg-buddha-primary text-white':'bg-white border border-paper hover:bg-paper');
+                    });
+                    if(M2) renderM2(M2_KEY); else loadM2(M2_KEY);
+                });
+            });
+        }
+        function loadM2(key){
+            var body = document.getElementById('m2-body');
+            body.innerHTML = '<p class="text-sm muted">加载中…</p>';
+            ensureM2().then(function(){ renderM2(key); })
+                .catch(function(e){ body.innerHTML='<p class="text-sm text-red-600">加载失败：'+esc(e.message)+'</p>'; });
+        }
+        function renderM2(key){
+            var body = document.getElementById('m2-body');
+            if(!M2){ body.innerHTML='<p class="text-sm muted">无数据</p>'; return; }
+            var list = M2[key+'s'] || [];
+            var meta = M2.meta || {};
+            var count = meta['total_'+key+'s'] || list.length;
+            var layerTag = function(layer){
+                var m={'L1':'bg-red-50 text-red-700','L2':'bg-orange-50 text-orange-700','L3':'bg-emerald-50 text-emerald-700'};
+                return '<span class="text-[11px] px-2 py-0.5 rounded-full '+(m[layer]||'bg-paper text-stone-600')+'">'+esc(layer||'')+'</span>';
+            };
+            var catTag = function(c, color){
+                if(!c) return '';
+                return '<span class="text-[11px] px-2 py-0.5 rounded-full '+color+'">'+esc(c)+'</span>';
+            };
+            var tcolor='bg-sky-50 text-sky-700';
+            var cards = '';
+            if(key==='concept'){
+                cards = list.map(function(c){
+                    return '<div class="border border-paper rounded-lg p-3 hover:shadow-md transition">'
+                        +'<div class="flex items-baseline gap-2 mb-1 flex-wrap">'
+                        +'<span class="cls-id">'+esc(c.id)+'</span>'
+                        +'<b class="text-buddha-primary text-sm">'+esc(c.name)+'</b>'
+                        +layerTag(c.layer)
+                        +catTag(c.primary_sect,tcolor)
+                        +'</div>'
+                        +'<div class="text-[12px] text-buddha-dark/85">'+esc(c.definition_short||'（待考）')+'</div>'
+                        +'</div>';
+                }).join('');
+            } else if(key==='person'){
+                cards = list.map(function(p){
+                    return '<div class="border border-paper rounded-lg p-3 hover:shadow-md transition">'
+                        +'<div class="flex items-baseline gap-2 mb-1 flex-wrap">'
+                        +'<span class="cls-id">'+esc(p.id)+'</span>'
+                        +'<b class="text-buddha-primary text-sm">'+esc(p.name)+'</b>'
+                        +catTag(p.category,'bg-amber-50 text-amber-700')
+                        +(p.sect?'<span class="text-[11px] px-2 py-0.5 rounded-full '+tcolor+'">'+esc(p.sect)+'</span>':'')
+                        +'</div>'
+                        +'<div class="text-[12px] muted">'+esc(p.era||'')+(p.place?' · '+esc(p.place):'')+'</div>'
+                        +'</div>';
+                }).join('');
+            } else if(key==='sutra'){
+                cards = list.map(function(s){
+                    var link = s.taisho_id ? '<a href="sutras.html?load='+esc(s.taisho_id.replace('T','t').toLowerCase())+'" class="alias-tag" style="text-decoration:none">'+esc(s.taisho_id)+'</a>' : '';
+                    return '<div class="border border-paper rounded-lg p-3 hover:shadow-md transition">'
+                        +'<div class="flex items-baseline gap-2 mb-1 flex-wrap">'
+                        +'<span class="cls-id">'+esc(s.id)+'</span>'
+                        +link
+                        +'<b class="text-buddha-primary text-sm">'+esc(s.name)+'</b>'
+                        +catTag(s.category,'bg-violet-50 text-violet-700')
+                        +'</div>'
+                        +'<div class="text-[12px] muted">'+esc(s.translator||'（待考）')+'</div>'
+                        +'</div>';
+                }).join('');
+            } else if(key==='sect'){
+                cards = list.map(function(s){
+                    return '<div class="border border-paper rounded-lg p-3 hover:shadow-md transition">'
+                        +'<div class="flex items-baseline gap-2 mb-1 flex-wrap">'
+                        +'<span class="cls-id">'+esc(s.id)+'</span>'
+                        +'<b class="text-buddha-primary text-sm">'+esc(s.name)+'</b>'
+                        +'</div>'
+                        +'<div class="text-[12px] muted">开宗：'+esc(s.founder||'')+' · '+esc(s.found_time||'')+'</div>'
+                        +'<div class="text-[12px] text-buddha-dark/85 mt-1">'+esc((s.core_doctrine||'').toString().slice(0,80))+'</div>'
+                        +'</div>';
+                }).join('');
+            } else if(key==='rel'){
+                var types = {};
+                M2_REL.forEach(function(r){
+                    var t = r.type||'generic';
+                    types[t] = (types[t]||0)+1;
+                });
+                var typeNames = {
+                    subdivision:'细分(概念层级)',subsumption:'摄属',contains:'含/化法化仪',
+                    identity:'即(同义)',nonduality:'相即',implies:'蕴含',manifests:'体现',
+                    reveals:'所显',based_on:'宗依',core_of:'核心',root_of:'根本',
+                    outline_of:'总纲',refutes:'破',depends_on:'所依',
+                    contrast_with:'对',essence_of:'体/为体',establishes:'成',
+                    inherent_in:'性具',aspect_of:'相',instantly_contains:'一念具',
+                    stage_of:'阶位/位',samadhi_prajna:'定慧',elaborates:'阐发',
+                    gate_of:'门',metaphor_of:'喻',classifies:'判',points_to:'旨归',
+                    school_of:'宗',dharma_of:'法',function_of:'用/机用',
+                    provision_of:'资粮',practice_of:'行/观行',birthplace_of:'生处',
+                    vow_of:'本愿',founds:'开宗',propagates:'开宗/弘传',
+                    transmits_dharma_to:'付法',disciple_of:'门人/弟子',attendant_of:'胁侍',
+                    protects:'护法',emanation_of:'化身',translated_by:'译出/著',
+                    parallel_translation:'同经异译',mutual_perfuming:'互熏',
+                    leads_to:'牵引',responds_to:'感',verifies:'印证',arises_from:'缘起',
+                    meaning_of:'义',returns_to:'为归',relates_to:'间',generic:'通用/待考',
+                    chujing:'出处',hexin:'核心',huaxian:'化身'
+                };
+                var rows = Object.keys(types).sort(function(a,b){return types[b]-types[a];}).map(function(t){
+                    return '<tr><td class="p-2 text-[12px] font-mono text-buddha-primary">'+esc(t)+'</td>'
+                        +'<td class="p-2 text-[12px]">'+esc(typeNames[t]||t)+'</td>'
+                        +'<td class="p-2 text-[12px] text-right"><strong>'+types[t]+'</strong></td></tr>';
+                }).join('');
+                body.innerHTML = '<p class="text-xs muted mb-3">共 '+M2_REL.length+' 条义理关系 · 跨概念/人物/经典/宗派四类节点</p>'
+                    +'<div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="border-b border-paper"><th class="p-2 text-left">关系码</th><th class="p-2 text-left">中文语义</th><th class="p-2 text-right">条数</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+                return;
+            }
+            body.innerHTML = '<p class="text-xs muted mb-3">共 '+count+' 项 · 数据版本 '+esc(meta.version||'')+' · 点击 taisho_id 可跳转经文</p>'
+                +'<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-[640px] overflow-y-auto">'+cards+'</div>';
+        }
+
         // ===== 事件层·法会实例 =====
         var DA = null, DA_KEY = 'classic';
         function ensureDA(){
@@ -714,6 +860,7 @@
                 + '<div class="grid md:grid-cols-2 gap-3 max-h-[620px] overflow-y-auto">'+cards+'</div>';
         }
 
+        initM2();
         initDA();
         initCO();
         initTR();
