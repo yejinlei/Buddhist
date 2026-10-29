@@ -182,8 +182,8 @@
             return html;
         }
 
-        async function renderKepan(sutra, targetNodeId){
-            CUR_SID = Object.keys(data).find(k => data[k] === sutra) || null;
+        async function renderKepan(sutra, targetNodeId, sid){
+            CUR_SID = sid || Object.keys(data).find(k => data[k] === sutra) || null;
             let html = `<div class="mb-4 pb-4 border-b border-buddha-light/60">`;
             html += `<h2 class="text-2xl font-bold text-buddha-primary font-serif mb-1">${sutra.title}</h2>`;
             const meta = [];
@@ -261,29 +261,60 @@
             }
         }
 
+        // ===== 科判按需加载（索引列表 + 分片） =====
+        let shardMap = null;
+        const shardCache = {};
+        async function ensureShardMap(){
+            if (shardMap) return shardMap;
+            try{
+                const r = await fetch('../kepan/shard-map.json', {cache:'no-cache'});
+                shardMap = r.ok ? ((await r.json()).map || {}) : {};
+            }catch(e){ shardMap = {}; }
+            return shardMap;
+        }
+        async function loadKepanFor(id){
+            await ensureShardMap();
+            const sh = shardMap[id];
+            if (sh === undefined) return null;
+            if (!shardCache[sh]){
+                const r = await fetch('../kepan/shards/shard-' + String(sh).padStart(3,'0') + '.json', {cache:'no-cache'});
+                if (!r.ok) throw new Error('科判分片加载失败 HTTP ' + r.status);
+                shardCache[sh] = await r.json();
+            }
+            return shardCache[sh][id] || null;
+        }
+
         function buildList(filter){
             list.innerHTML = '';
             const keys = Object.keys(data).sort();
             let count = 0;
             keys.forEach(tid => {
                 const s = data[tid];
-                const text = (s.title + ' ' + (s.translator||'') + ' ' + (s.description||'')).toLowerCase();
+                const text = ((s.title||'') + ' ' + (s.translator||'') + ' ' + (s.category||'')).toLowerCase();
                 if (filter && !text.includes(filter.toLowerCase())) return;
                 count++;
                 const btn = document.createElement('button');
                 btn.className = 'w-full text-left p-2.5 rounded hover:bg-buddha-light/50 transition-colors border border-buddha-light/40 text-sm flex flex-col gap-0.5';
                 btn.dataset.tid = tid;
-                let top = `<span class="font-semibold text-buddha-ink">${s.title}</span>`;
-                let sub = `<span class="text-xs text-buddha-dark/60">${s.taisho||''} · ${s.translator||''} · ${s.juan?s.juan+'卷':''}${s.pin?s.pin+'品':''}</span>`;
+                const badge = s.ancient ? '<span style="font-size:10px;color:#8a5a2b;border:1px solid #d8b48a;border-radius:8px;padding:0 5px;margin-left:5px">古德</span>' : '';
+                let top = `<span class="font-semibold text-buddha-ink">${s.title}${badge}</span>`;
+                let sub = `<span class="text-xs text-buddha-dark/60">${s.taisho||''} · ${s.translator||''} · ${s.juan?s.juan+'卷':''}</span>`;
                 btn.innerHTML = top + sub;
-                btn.onclick = () => {
+                btn.onclick = async () => {
                     list.querySelectorAll('button').forEach(b => b.classList.remove('bg-buddha-secondary/20','border-buddha-secondary'));
                     btn.classList.add('bg-buddha-secondary/20','border-buddha-secondary');
-                    renderKepan(s);
+                    container.innerHTML = '<p class="text-sm text-buddha-dark/60 p-6">科判加载中…</p>';
+                    try{
+                        const full = await loadKepanFor(tid);
+                        if (full) await renderKepan(full, null, tid);
+                        else container.innerHTML = '<p class="text-sm text-buddha-dark/60 p-6">该经暂无科判数据。</p>';
+                    }catch(e){
+                        container.innerHTML = '<p class="text-red-600 p-6">科判加载失败：' + e.message + '</p>';
+                    }
                 };
                 list.appendChild(btn);
             });
-            document.getElementById('cnt').textContent = Object.keys(data).length;
+            document.getElementById('cnt').textContent = count;
             if (count === 0) {
                 list.innerHTML = '<p class="text-sm text-buddha-dark/60 p-3">没有匹配的经典</p>';
             }
@@ -295,25 +326,22 @@
             searchTimer = setTimeout(()=>buildList(search.value.trim()), 150);
         });
 
-        fetch('../kepan/core.json', {cache:'no-cache'}).then(r=>r.json()).then(async d => {
-            data = d;
+        fetch('../kepan/index.json', {cache:'no-cache'}).then(r=>r.json()).then(async d => {
+            data = d.sutras || d;
             buildList('');
-            // 等待跨页数据加载完成再渲染默认/目标经，确保互链meta显示
             await getCross();
-            // 支持 ?sid=xxx&node=xxx
             const p = new URLSearchParams(location.search);
             const targetSid = p.get('sid');
             const targetNode = p.get('node');
-            let selectedBtn = null;
-            if(targetSid && data[targetSid]){
-              selectedBtn = list.querySelector(`button[data-tid="${targetSid}"]`);
-            }
-            if(!selectedBtn) selectedBtn = list.querySelector('button');
-            if(selectedBtn) {
-              selectedBtn.click();
-              // click是同步的，但renderKepan是async，需要取sid
-              const tid = selectedBtn.dataset.tid;
-              if(data[tid]) renderKepan(data[tid], targetNode);
+            let tid = (targetSid && data[targetSid]) ? targetSid : Object.keys(data).sort()[0];
+            const btn = list.querySelector(`button[data-tid="${tid}"]`);
+            if (btn) btn.classList.add('bg-buddha-secondary/20','border-buddha-secondary');
+            try{
+                const full = await loadKepanFor(tid);
+                if (full) await renderKepan(full, targetNode, tid);
+                else container.innerHTML = '<p class="text-sm text-buddha-dark/60 p-6">该经暂无科判数据。</p>';
+            }catch(e){
+                container.innerHTML = '<p class="text-red-600 p-6">科判加载失败：' + e.message + '</p>';
             }
         }).catch(e => {
             container.innerHTML = '<p class="text-red-600">科判数据加载失败：' + e.message + '</p>';
