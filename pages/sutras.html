@@ -194,6 +194,19 @@
         .od-gatha-mantra-item.mantra .gm-label { background:#7b1fa2; color:#fff; }
         .od-gatha-mantra-item .gm-meter { color:#8b5a2b; font-size:11px; margin-left:4px; }
         .od-gatha-mantra-item .gm-preview { color:#5d4037; margin-top:2px; line-height:1.5; }
+        /* ===== 科判弹窗 ===== */
+        .kepan-type { display:inline-block; font-size:11px; padding:1px 7px; border-radius:9px; margin-right:6px; background:#b8860b; color:#fff; vertical-align:middle; }
+        .kepan-badge { display:inline-block; font-size:11px; padding:1px 7px; border-radius:9px; margin-left:6px; vertical-align:middle; }
+        .kepan-badge.auto { color:#8a6d42; border:1px solid #d8c9a8; }
+        .kepan-badge.ancient { color:#8a5a2b; border:1px solid #d8b48a; background:#fbf3e6; }
+        .kepan-node { margin:5px 0; }
+        .kepan-name { font-weight:600; color:#3A2E1F; font-size:14px; line-height:1.7; }
+        .kepan-desc { color:#6b5840; font-size:12px; line-height:1.65; margin:2px 0; }
+        .kepan-content { color:#5c3c1a; background:rgba(196,154,108,0.12); padding:5px 9px; border-radius:5px; font-family:serif; font-size:12px; line-height:1.7; margin:3px 0; }
+        .kepan-children { padding-left:16px; border-left:1px dashed rgba(139,90,43,0.28); margin-left:6px; }
+        .kepan-cc { font-size:10px; color:#a08a68; margin-left:6px; font-weight:400; }
+        .kepan-points { display:flex; flex-wrap:wrap; gap:5px; margin:4px 0; }
+        .kepan-point { font-size:11px; padding:1px 8px; border-radius:9px; background:#f2e6cf; color:#8a5a2b; border:1px solid #e2cfa8; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -890,38 +903,76 @@ async function loadExtras() {
     } catch (e) { console.warn('注解/词典加载失败', e); }
 }
 
-function updateKepanBtn() {
+// 科判：古德精判（kepan/core.json，小）已在 KEPAN；结构科判走分片按需加载
+let kepanShardMap = null;
+const kepanShardCache = {};
+async function ensureKepanShardMap(){
+    if (kepanShardMap) return kepanShardMap;
+    try{
+        const r = await fetch('../kepan/shard-map.json?' + Date.now());
+        kepanShardMap = r.ok ? ((await r.json()).map || {}) : {};
+    }catch(e){ kepanShardMap = {}; }
+    return kepanShardMap;
+}
+async function loadKepanFor(id){
+    if (KEPAN && KEPAN[id]) return KEPAN[id];
+    await ensureKepanShardMap();
+    const sh = kepanShardMap[id];
+    if (sh === undefined) return null;
+    if (!kepanShardCache[sh]){
+        const r = await fetch('../kepan/shards/shard-' + String(sh).padStart(3,'0') + '.json');
+        if (!r.ok) throw new Error('科判分片加载失败 HTTP ' + r.status);
+        kepanShardCache[sh] = await r.json();
+    }
+    return kepanShardCache[sh][id] || null;
+}
+async function updateKepanBtn() {
     const btn = document.getElementById('btn-kepan');
     if (!btn) return;
-    if (KEPAN && currentSutra && KEPAN[currentSutra.id]) {
-        btn.style.display = '';
-        btn.title = '本科判：' + KEPAN[currentSutra.id].title;
-    } else {
-        btn.style.display = 'none';
-    }
+    if (!currentSutra) { btn.style.display = 'none'; return; }
+    let has = !!(KEPAN && KEPAN[currentSutra.id]);
+    if (!has){ await ensureKepanShardMap(); has = kepanShardMap && kepanShardMap[currentSutra.id] !== undefined; }
+    if (has) { btn.style.display = ''; btn.title = '本科判结构（三分科判）'; }
+    else { btn.style.display = 'none'; }
 }
 
-// 科判弹窗渲染
-function showKepanPanel() {
-    if (!KEPAN || !currentSutra || !KEPAN[currentSutra.id]) return;
-    const k = KEPAN[currentSutra.id];
+// 科判弹窗渲染（异步按需加载）
+async function showKepanPanel() {
+    if (!currentSutra) return;
+    let k = null;
+    try { k = await loadKepanFor(currentSutra.id); } catch(e){ console.warn(e); }
+    if (!k) { alert('该经暂无科判数据'); return; }
+    function pointsHtml(mp){
+        mp = mp || [];
+        if (!mp.length) return '';
+        return '<div class="kepan-points">' + mp.map(p => {
+            const txt = (typeof p === 'string') ? p : (p.text || '');
+            return txt ? '<span class="kepan-point">' + esc(txt) + '</span>' : '';
+        }).join('') + '</div>';
+    }
     function render(items) {
-        return items.map(item => {
+        return (items||[]).map(item => {
             const t = item.type ? `<span class="kepan-type">${item.type}</span>` : '';
             const c = item.content ? `<div class="kepan-content">${esc(item.content)}</div>` : '';
             const d = item.description ? `<div class="kepan-desc">${esc(item.description)}</div>` : '';
+            const cc = item.char_count ? `<span class="kepan-cc">${item.char_count}字</span>` : '';
+            const pts = pointsHtml(item.meaning_points);
             const ch = item.children ? `<div class="kepan-children">${render(item.children)}</div>` : '';
-            return `<div class="kepan-node"><div class="kepan-name">${t}${esc(item.name)}</div>${d}${c}${ch}</div>`;
+            return `<div class="kepan-node"><div class="kepan-name">${t}${esc(item.name)}${cc}</div>${d}${pts}${c}${ch}</div>`;
         }).join('');
     }
+    const badge = k.genre === '论典'
+        ? '<span class="kepan-badge ancient">论典科判</span>'
+        : (k.ancient ? '<span class="kepan-badge ancient">古德科判</span>' : '<span class="kepan-badge auto">结构科判</span>');
     const modal = document.createElement('div');
     modal.className = 'modal-backdrop';
     modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;display:flex;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto;';
     modal.innerHTML = `
         <div style="background:#fdfbf5;border-radius:14px;max-width:780px;width:100%;padding:28px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
             <button id="close-kepan-modal" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:28px;cursor:pointer;color:#6b5a3a;">×</button>
-            <h2 style="color:#6b3410;font-size:24px;margin:0 0 6px;font-family:serif;">📐 本科判结构</h2>
-            <div style="color:#8a6d42;margin-bottom:16px;font-size:14px;">${esc(k.title)}${k.author ? ' · ' + esc(k.author) : ''}</div>
+            <h2 style="color:#6b3410;font-size:24px;margin:0 0 6px;font-family:serif;">📐 本科判结构${badge}</h2>
+            <div style="color:#8a6d42;margin-bottom:16px;font-size:14px;">${esc(k.title || (currentSutra && currentSutra.title) || '')}${k.translator ? ' · ' + esc(k.translator) : ''}${k.juan ? ' · ' + k.juan + '卷' : ''}</div>
+            ${pointsHtml(k.meaning_points)}
             <div class="kepan-panel">${render(k.kepan)}</div>
         </div>`;
     document.body.appendChild(modal);
@@ -1563,6 +1614,9 @@ async function loadSutra(meta) {
     document.querySelectorAll('.read-toolbar button[data-fs]').forEach(b =>
         b.addEventListener('click', () => applyFs(b.dataset.fs)));
     applyFs(curFs);
+    // 科判按钮绑定（每部经的工具栏是动态生成，必须在此处绑定）
+    document.getElementById('btn-kepan')?.addEventListener('click', showKepanPanel);
+    updateKepanBtn();
     // 本体下钻按钮绑定
     document.getElementById('btn-ontology')?.addEventListener('click', openOntologyDrill);
     document.getElementById('od-close')?.addEventListener('click', closeOntologyDrill);
