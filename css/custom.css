@@ -186,3 +186,56 @@
 .baihua-section{display:inline-block;background:#d97706;color:#fff;padding:2px 10px;border-radius:10px;font-size:12px;margin-bottom:8px;font-weight:bold;}
 .baihua-text{font-size:15px;color:#5c3a1e;line-height:2;}
 #btn-baihua.active{background:#fef3c7;color:#92400e;}
+
+/* ============================================================
+   导航：佛学知识 下拉菜单（桌面悬停展开 / 移动端平铺）
+   ============================================================ */
+.nav-dropdown { position: relative; display: inline-block; }
+.nav-dropdown-toggle { cursor: pointer; white-space: nowrap; }
+.nav-dropdown-toggle .nav-caret { font-size: 9px; opacity: .7; margin-left: 2px; display: inline-block; }
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 132px;
+  background: #fffdf7;
+  border: 1px solid #e5d9c3;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(91,70,54,.18);
+  padding: 6px 0;
+  z-index: 300;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu a {
+  display: block;
+  padding: 7px 18px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #5b4636 !important;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.nav-dropdown-menu a:hover { background: #f3ead6; color: #b8860b !important; }
+.nav-dropdown-menu--dark { background: #2c1810; border-color: rgba(212,175,55,.35); }
+.nav-dropdown-menu--dark a { color: #f0e6d2 !important; }
+.nav-dropdown-menu--dark a:hover { background: rgba(212,175,55,.20); color: #d4af37 !important; }
+
+@media (max-width: 767px) {
+  .nav-dropdown { display: block; width: 100%; }
+  .nav-dropdown-menu {
+    display: block;
+    position: static;
+    transform: none;
+    min-width: 0;
+    box-shadow: none;
+    border: 0;
+    background: transparent;
+    padding: 0 0 0 12px;
+  }
+  .nav-dropdown-menu--dark { background: transparent; border: 0; }
+  .nav-dropdown-menu a { padding: 4px 0; font-size: 13px; }
+  .nav-dropdown-toggle .nav-caret { display: none; }
+}
