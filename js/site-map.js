@@ -42,8 +42,8 @@
      desc:'核心法义（缘起/空/佛性/佛土…）的关系网络',status:'built',
      count:(R)=>({num:R.m2.layer_count?R.m2.layer_count.L1:0,sub:'核心教义概念'})},
     {title:'佛学词典',axis:'A2',layer:'L1',href:'dict.html',
-     desc:'7190 条佛学词条，双向挂接本体实例',status:'built',
-     count:()=>({num:7190,sub:'词典词条'})},
+     desc:'佛学词条，双向挂接本体实例',status:'built',
+     count:(R)=>({num:R.dictCount||0,sub:'词典词条'})},
     {title:'智能推演',axis:'A2',layer:'L1',href:'inference.html',
      desc:'基于本体关系的概念推演与问答',status:'built',
      count:(R)=>({num:R.relCnt||0,sub:'义理关系三元组'})},
@@ -65,20 +65,20 @@
      }},
     {title:'部类总览',axis:'A1',layer:'L3',href:'categories.html',
      desc:'阿含/般若/法华/华严/宝积… 部类划分与三藏分类',status:'built',
-     count:(R)=>({num:Object.keys((R.manifest&&R.manifest.category_count)||{}).length,sub:'经录部类'})},
+     count:(R)=>({num:R.catCount||0,sub:'经录部类'})},
 
     // ---- L4 具体文本 ----
     {title:'全藏原典',axis:'A1',layer:'L4',href:'sutras.html',
-     desc:'2506 部大正藏经文，繁/简/白三态、术语划词',status:'built',
-     count:(R)=>({num:(R.manifest&&R.manifest.stats&&R.manifest.stats.total_sutras)||(R.manifest&&R.manifest.sutras&&R.manifest.sutras.length)||0,sub:'大正藏经'})},
+     desc:'大正藏全部经文，繁/简/白三态、术语划词',status:'built',
+     count:(R)=>({num:R.sutraCount||0,sub:'大正藏经'})},
     {title:'科判导航',axis:'A1',layer:'L4',href:'kepan.html',
-     desc:'64 部核心经的章段科判结构',status:'built',
-     count:(R)=>({num:(R.kepan&&R.kepan.length)||0,sub:'已科判核心经',warn:true})},
+     desc:'核心经的章段科判结构',status:'built',
+     count:(R)=>({num:R.kepanCount||0,sub:'已科判核心经',warn:true})},
     {title:'异译对照',axis:'A1',layer:'L4',href:'parallel.html',
      desc:'同经异译本的段落级对齐',status:'built',
      count:(R)=>{
-        const gps=((R.manifest&&R.manifest.stats)||{}).parallel_groups||0;
-        return {num:gps||'~30',sub:'异译组对'};
+        const gps=(R.parallelGroups)||0;
+        return {num:gps,sub:'异译组对'};
      }},
     {title:'全文检索',axis:'A2',layer:'L4',href:'search.html',
      desc:'全藏关键词检索与段落定位',status:'built',
@@ -95,23 +95,23 @@
         return {num:trs.length,sub:'译经/传法'};
      }},
     {title:'法会与结集',axis:'A4',layer:'L5',href:'ontology.html#ev-da',
-     desc:'32 大法会、6 次经典结集的场所、圣众与所说法',status:'built',
+     desc:'诸大法会与经典结集的场所、圣众与所说法',status:'built',
      count:(R)=>{
-        const da=(R.da&&R.da.dharma_assemblies)||[];
+        const da=(R.assemblyCount)||0;
         const co=((R.events&&R.events.councils)||[]).length;
-        return {num:da.length+' + '+co,sub:'法会 + 结集'};
+        return {num:da+' + '+co,sub:'法会 + 结集'};
      }},
     {title:'本生故事',axis:'A4',layer:'L5',href:'ontology.html#ev-st',
-     desc:'276 个本生/本事/因缘故事（来源经文+人物）',status:'built',
+     desc:'本生/本事/因缘故事（来源经文+人物）',status:'built',
      count:(R)=>({num:((R.events&&R.events.story_events)||[]).length,sub:'本生/因缘故事'})},
 
     // ---- L6 信仰文化外延 ----
     {title:'民间信仰与文化艺术',axis:'A3',layer:'L6',href:'graph.html#view=folklore',
      desc:'观音/弥勒/地藏/伽蓝等民间化圣众；造像、壁画、仪轨外延',status:'pending',
-     count:(R)=>({num:Math.max(0,(R.m2.persons||0)-122)+3,sub:'民间信仰人物'})},
+     count:(R)=>({num:(R.personCat&&R.personCat['民间信仰人物'])||0,sub:'民间信仰人物'})},
     {title:'护法诸天',axis:'A3',layer:'L6',href:'graph.html#view=protectors',
      desc:'天龙八部、伽蓝、韦驮、四大天王等护法神祇',status:'pending',
-     count:()=>({num:0,sub:'待建实例'})}
+     count:(R)=>({num:(R.personCat&&(R.personCat['护法诸天']||R.personCat['护法']))||0,sub:'护法神祇'})}
   ];
 
   let R={}; // 存放各索引的原始数据
@@ -127,23 +127,56 @@
       '../ontology/instances/events.json',
       '../ontology/dharma_assemblies.json',
       '../kepan/core.json',
-      '../ontology/instances/relations.json'
+      '../ontology/instances/relations.json',
+      '../ontology/parallel_translations.json',
+      '../data/dict_index.json'
     ];
     return Promise.all(urls.map(function(u){
       return fetch(u,{cache:'no-cache'}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});
     })).then(function(res){
-      R.tbox=res[0]; R.manifest=res[1]; R.m2=res[2]; R.events=res[3]; R.da=res[4]; R.kepan=res[5]; R.rels=res[6];
-      R.relCnt=(R.rels&&R.rels.length)||0;
-      // 为 m2 准备 layer_count（从 concepts 统计）
-      R.m2.layer_count={L1:0,L2:0,L3:0};
-      R.m2.persons=(R.m2&&R.m2.persons&&R.m2.persons.length)||0;
-      R.m2.concepts=(R.m2&&R.m2.concepts&&R.m2.concepts.length)||0;
-      R.m2.sutras=(R.m2&&R.m2.sutras&&R.m2.sutras.length)||0;
-      R.m2.sects=(R.m2&&R.m2.sects&&R.m2.sects.length)||0;
-      (R.m2.concepts||[]).forEach(function(c){
-        var ly=(c.layer||'L?').substr(0,2);
-        if(R.m2.layer_count[ly]!=null) R.m2.layer_count[ly]++;
+      R.tbox=res[0]; R.manifest=res[1]; R.events=res[3]; R.da=res[4]; R.kepan=res[5]; R.rels=res[6];
+      R.parallel=res[7]; R.dictIndex=res[8];
+      R.relCnt=(R.rels&&R.rels.relations)?R.rels.relations.length:0;
+
+      // —— M2 义理层：从原始数组实时统计，切勿用长度覆盖数组本身 ——
+      var m2=res[2]||{};
+      var cs=Array.isArray(m2.concepts)?m2.concepts:[];
+      var ps=Array.isArray(m2.persons)?m2.persons:[];
+      var layer_count={L1:0,L2:0,L3:0};
+      cs.forEach(function(c){
+        var ly=String((c&&c.layer)||'').substr(0,2);
+        if(layer_count[ly]!=null) layer_count[ly]++;
       });
+      var pcat={};
+      ps.forEach(function(p){ var k=String((p&&p.category)||'').trim(); if(k) pcat[k]=(pcat[k]||0)+1; });
+      R.personCat=pcat;
+      R.m2={
+        layer_count:layer_count,
+        concepts:cs.length,
+        persons:ps.length,
+        sutras:Array.isArray(m2.sutras)?m2.sutras.length:0,
+        sects:Array.isArray(m2.sects)?m2.sects.length:0
+      };
+
+      // —— M3 文本层：全藏经数 + 经录部类（从 category 拆分去重） ——
+      var su=(R.manifest&&Array.isArray(R.manifest.sutras))?R.manifest.sutras:[];
+      var catSet={};
+      su.forEach(function(s){
+        String((s&&s.category)||'').split(/[,，]/).forEach(function(x){ x=x.trim(); if(x) catSet[x]=1; });
+      });
+      R.sutraCount=su.length;
+      R.catCount=Object.keys(catSet).length;
+
+      // —— M4 事件层与其他实时计数 ——
+      R.assemblyCount=(R.da&&R.da.assemblies)?Object.keys(R.da.assemblies).length:0;
+      R.kepanCount=(R.kepan&&typeof R.kepan==='object')?Object.keys(R.kepan).length:0;
+      R.parallelGroups=Array.isArray(R.parallel)?R.parallel.length:0;
+      R.dictCount=(function(){
+        if(R.dictIndex&&R.dictIndex.total) return R.dictIndex.total;
+        var dg=R.dictIndex&&R.dictIndex.first_char_groups, n=0;
+        if(dg){ Object.keys(dg).forEach(function(k){ n+=(dg[k]||[]).length; }); }
+        return n;
+      })();
       return R;
     });
   }
