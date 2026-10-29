@@ -1,0 +1,24 @@
+{
+  "id": "c010",
+  "layer": "L1",
+  "name": "法身",
+  "sanskrit": "Dharmakāya",
+  "alias": [
+    "佛身",
+    "自性身",
+    "真身"
+  ],
+  "definition": "佛的真身，以正法为体，遍一切处，即是真如理体",
+  "sutra_source": [
+    "《金刚经》（t0235）",
+    "《大乘起信论》（t1666）"
+  ],
+  "sect_interpretation": {
+    "三身说": "法身、报身、化身",
+    "天台宗": "三身相即，一即三",
+    "禅宗": "清净法身即汝本心"
+  },
+  "modern_interpretation": "",
+  "primary_sect": "大乘通途",
+  "layer_label": "L1 教理本体层"
+}
