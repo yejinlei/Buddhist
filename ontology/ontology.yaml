@@ -461,7 +461,19 @@ datasets:
   - path: ontology/instances/
     entity: Text 全量实例（含 Kepan/Chapter/Section/Gatha/Mantra）
     count: 2506
-    note: "全藏文本本体，分片存储于 shards/（51 片），实例内 figure_id/concept_id 已对齐 p###/c###。"
+    note: "全藏文本本体，分片存储于 shards/（17 片），实例内 figure_id/concept_id 已对齐 p###/c###。"
+  - path: ontology/instances/concepts/
+    note: "M2 义理轴 ABox 概念实例 c001-c221（L1/L2/L3 三层）。"
+  - path: ontology/instances/persons/
+    note: "M2 义理轴 ABox 人物实例 p001-p505（佛/菩萨/阿罗汉/祖师/学者/民间）。"
+  - path: ontology/instances/sutras/
+    note: "M2 义理轴 ABox 核心经典元数据实例 s001-s096。"
+  - path: ontology/instances/sects/
+    note: "M2 义理轴 ABox 宗派实例 sec001-sec008（大乘八宗）。"
+  - path: ontology/instances/relations.json
+    note: "M2 义理轴 ABox 关系三元组，共 1088 条。"
+  - path: ontology/instances/m2_index.json
+    note: "M2 轻量索引（列表页使用，避免一次性加载全部详情）。"
   - path: ontology/instance-links.json
     entity: 反向索引（concept/person/school/category → 经文落点）
     note: "打通义理本体与文本本体的查询层。"
