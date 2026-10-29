@@ -9468,6 +9468,29 @@
       "relation_cn": "同经异译",
       "description": "同经异译",
       "_source": "merged_from_old_js"
+    },
+    {
+      "id": "r2075",
+      "type": "synonym",
+      "type_label": "同义/异名",
+      "source": "c004",
+      "target": "c125",
+      "label": "亦称/异名",
+      "evidence_source": "佛学大词典参见链",
+      "evidence": "「阿赖耶识」参见「阿黎耶识」"
+    },
+    {
+      "id": "r2076",
+      "type": "synonym",
+      "type_label": "同义/异名",
+      "source": "p104",
+      "target": "p117",
+      "label": "亦称/异名",
+      "evidence_source": "佛学大词典参见链",
+      "evidence": "「地藏菩萨」参见「地藏王菩萨」"
     }
-  ]
+  ],
+  "summary": {
+    "total": 1090
+  }
 }
