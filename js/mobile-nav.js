@@ -51,6 +51,8 @@
       var href = a.getAttribute('href') || '';
       var text = a.textContent.trim();
       if (!text || text === '佛学本体论') return;
+      // 跳过"佛学知识"下拉的分组标题（无实际跳转）
+      if (href.indexOf('javascript:') === 0 || text === '佛学知识') return;
       // 去重
       if (links.some(function (l) { return l.href === href && l.text === text; })) return;
       var isActive = a.classList.contains('nav-active') ||
