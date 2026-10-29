@@ -141,20 +141,85 @@ def main():
         print("（--dry-run，未推送）")
         return
 
+    # 断点续传：进度文件记录 path -> {gitsha, blobsha}
+    prog_path = ".deploy_progress.json"
+    prog = {}
+    if os.path.exists(prog_path):
+        try:
+            prog = json.load(open(prog_path, encoding="utf-8"))
+        except Exception:
+            prog = {}
+    max_blobs = None
+    for i, a in enumerate(sys.argv):
+        if a == "--max-blobs" and i + 1 < len(sys.argv):
+            max_blobs = int(sys.argv[i + 1])
+
+    def _need(p):
+        rec = prog.get(p)
+        return not (rec and rec.get("gitsha") == locals_[p]["sha"])
+
+    todo = [p for p in sorted(changed) if _need(p)]
+    pending = 0
+    if max_blobs is not None and len(todo) > max_blobs:
+        pending = len(todo) - max_blobs
+        todo = todo[:max_blobs]
+
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    def _up(p):
+        try:
+            content = open(p, "rb").read()
+            status, blob = api(
+                f"/repos/{owner}/{repo}/git/blobs",
+                "POST",
+                {"content": base64.b64encode(content).decode(), "encoding": "base64"},
+                token=token,
+                timeout=600,
+            )
+            return p, status, blob
+        except Exception as e:
+            return p, 0, str(e)
+
+    uploaded = 0
+    failed = []
+    with ThreadPoolExecutor(max_workers=16) as ex:
+        futs = [ex.submit(_up, p) for p in todo]
+        for f in as_completed(futs):
+            p, status, blob = f.result()
+            if status in (200, 201):
+                prog[p] = {"gitsha": locals_[p]["sha"], "blobsha": blob["sha"]}
+                uploaded += 1
+            else:
+                failed.append((p, status))
+            if uploaded and uploaded % 100 == 0:
+                json.dump(prog, open(prog_path, "w", encoding="utf-8"))
+    json.dump(prog, open(prog_path, "w", encoding="utf-8"))
+    if failed:
+        print("部分上传失败：", failed[:5])
+
     items = []
     for p in sorted(changed):
-        content = open(p, "rb").read()
-        status, blob = api(
-            f"/repos/{owner}/{repo}/git/blobs",
-            "POST",
-            {"content": base64.b64encode(content).decode(), "encoding": "base64"},
-            token=token,
-        )
-        if status not in (200, 201):
-            sys.exit(f"上传 {p} 失败（{status}）：{blob}")
-        items.append({"path": p, "mode": locals_[p]["mode"], "type": "blob", "sha": blob["sha"]})
+        rec = prog.get(p)
+        if rec and rec.get("gitsha") == locals_[p]["sha"]:
+            items.append({"path": p, "mode": locals_[p]["mode"], "type": "blob", "sha": rec["blobsha"]})
     for p in sorted(removed):
         items.append({"path": p, "mode": "100644", "type": "blob", "sha": None})
+
+    done = len(items)
+    total = len(changed) + len(removed)
+    print(f"本轮上传 {uploaded} 个；累计 {done}/{total}。")
+    if pending or failed or done < total:
+        print("尚未完成（等待续传上传），请再次运行。")
+        return
+
+    max_entries = None
+    for i, a in enumerate(sys.argv):
+        if a == "--max-entries" and i + 1 < len(sys.argv):
+            max_entries = int(sys.argv[i + 1])
+    truncated = False
+    if max_entries and len(items) > max_entries:
+        items = items[:max_entries]
+        truncated = True
 
     status, tree = api(
         f"/repos/{owner}/{repo}/git/trees",
@@ -184,8 +249,11 @@ def main():
     if status not in (200, 201):
         sys.exit(f"更新分支失败（{status}）：{res}")
 
-    print(f"✅ 部署完成，远程提交：{commit['sha']}")
-    print("   注意：本地提交号与远程不同（Git 对象由服务端生成），内容一致即可。")
+    print(f"✅ 已提交，远程提交：{commit['sha']}")
+    if truncated:
+        print(f"   本轮提交 {len(items)}/{total} 个文件，请再次运行继续剩余部分。")
+    else:
+        print("   ✅ 全部文件部署完成。")
 
 
 if __name__ == "__main__":
