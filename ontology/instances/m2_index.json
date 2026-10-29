@@ -1,0 +1,3168 @@
+{
+  "concepts": [
+    {
+      "id": "c001",
+      "name": "法界",
+      "layer": "L1",
+      "primary_sect": "通途",
+      "definition_short": "一切诸法的总体，含摄万有的真实理体，华严宗以法界缘起为核心，分四法界：事法界、理法界、理事无碍法界、事事无碍法界"
+    },
+    {
+      "id": "c002",
+      "name": "真如",
+      "layer": "L1",
+      "primary_sect": "通途",
+      "definition_short": "诸法的真实本性，不变随缘、随缘不变，非有非无，离一切言说分别"
+    },
+    {
+      "id": "c003",
+      "name": "佛性",
+      "layer": "L1",
+      "primary_sect": "大乘通途",
+      "definition_short": "一切众生本具的成佛可能性，自性清净，客尘所覆"
+    },
+    {
+      "id": "c004",
+      "name": "阿赖耶识",
+      "layer": "L1",
+      "primary_sect": "唯识宗",
+      "definition_short": "唯识宗根本识，含藏一切业种，为万法所依，有能藏、所藏、我爱执藏三义"
+    },
+    {
+      "id": "c005",
+      "name": "空性",
+      "layer": "L1",
+      "primary_sect": "中观/三论",
+      "definition_short": "一切法无自性，因缘所生，无固定不变的实体，不是虚无，而是缘起无自性"
+    },
+    {
+      "id": "c006",
+      "name": "缘起",
+      "layer": "L1",
+      "primary_sect": "通途",
+      "definition_short": "一切法都是因缘和合而生，因缘分散而灭，没有独立不变的自性，是佛教的核心教义"
+    },
+    {
+      "id": "c007",
+      "name": "如来藏",
+      "layer": "L1",
+      "primary_sect": "通途",
+      "definition_short": "众生身中本来具足的如来本性，在众生位为烦恼所缠，如来之性不失"
+    },
+    {
+      "id": "c008",
+      "name": "涅槃",
+      "layer": "L1",
+      "primary_sect": "如来藏系",
+      "definition_short": "烦恼灭尽，生死苦果永息，是佛教修行的最终目的，不是断灭，而是不生不灭的寂静境界"
+    },
+    {
+      "id": "c009",
+      "name": "实相",
+      "layer": "L1",
+      "primary_sect": "通途",
+      "definition_short": "一切法的真实相状，离一切言说分别，言语道断心行处灭"
+    },
+    {
+      "id": "c010",
+      "name": "法身",
+      "layer": "L1",
+      "primary_sect": "大乘通途",
+      "definition_short": "佛的真身，以正法为体，遍一切处，即是真如理体"
+    },
+    {
+      "id": "c011",
+      "name": "五蕴",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "构成众生身心的五种积聚：色、受、想、行、识，是佛教分析众生无我的基础框架"
+    },
+    {
+      "id": "c012",
+      "name": "色蕴",
+      "layer": "L2",
+      "primary_sect": "般若系",
+      "definition_short": "五蕴之一，指物质现象，包括地水火风四大及所造色"
+    },
+    {
+      "id": "c013",
+      "name": "受蕴",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "五蕴之一，指领纳外境的感受作用，分苦受、乐受、舍受三种"
+    },
+    {
+      "id": "c014",
+      "name": "想蕴",
+      "layer": "L2",
+      "primary_sect": "唯识宗",
+      "definition_short": "五蕴之一，指取境、构划概念、表象的作用"
+    },
+    {
+      "id": "c015",
+      "name": "行蕴",
+      "layer": "L2",
+      "primary_sect": "华严宗",
+      "definition_short": "五蕴之一，指造作、意志、心的驱动作用，包括除受想外的一切心所法"
+    },
+    {
+      "id": "c016",
+      "name": "识蕴",
+      "layer": "L2",
+      "primary_sect": "禅宗",
+      "definition_short": "五蕴之一，指了别外境的心识本体，大乘分为六识或八识"
+    },
+    {
+      "id": "c017",
+      "name": "十二处",
+      "layer": "L2",
+      "primary_sect": "大乘通途",
+      "definition_short": "三科之一，六根六境合为十二处，是认识产生的十二个处所"
+    },
+    {
+      "id": "c018",
+      "name": "十八界",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "三科之一，六根六境六识合为十八界，是对认识活动的完整分析"
+    },
+    {
+      "id": "c019",
+      "name": "十二缘起",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "解释众生生死轮回的十二个环节：无明缘行，行缘识，识缘名色，名色缘六入，六入缘触，触缘受，受缘爱，爱缘取，取缘有，有缘生，"
+    },
+    {
+      "id": "c020",
+      "name": "四圣谛",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "佛陀初转法轮所说的四条真理，是佛教的基础教义：苦谛、集谛、灭谛、道谛"
+    },
+    {
+      "id": "c021",
+      "name": "八正道",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "道谛的具体内容，八种通向涅槃的正确方法"
+    },
+    {
+      "id": "c022",
+      "name": "三法印",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "鉴别是否是佛法的三个标准：诸行无常、诸法无我、涅槃寂静"
+    },
+    {
+      "id": "c023",
+      "name": "四念处",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "四种观法，通过观身不净、观受是苦、观心无常、观法无我，对治四种颠倒"
+    },
+    {
+      "id": "c024",
+      "name": "四无量心",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "四种广大的利他心：慈、悲、喜、舍"
+    },
+    {
+      "id": "c025",
+      "name": "六度",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "大乘菩萨修行的六种法门，从生死此岸到涅槃彼岸的方法"
+    },
+    {
+      "id": "c026",
+      "name": "四摄法",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "菩萨摄受众生的四种方法"
+    },
+    {
+      "id": "c027",
+      "name": "三十七道品",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "趋向菩提的三十七种修行方法，包含七类"
+    },
+    {
+      "id": "c028",
+      "name": "三学",
+      "layer": "L2",
+      "primary_sect": "大乘通途",
+      "definition_short": "戒、定、慧三学，是佛教修行的总纲"
+    },
+    {
+      "id": "c029",
+      "name": "三无性",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "唯识宗所说的三种无自性，对应三自性"
+    },
+    {
+      "id": "c030",
+      "name": "三自性",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "唯识宗核心义理，一切法的三种存在性"
+    },
+    {
+      "id": "c031",
+      "name": "八不中道",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "中观宗核心义理，用八不否定八种边见，显中道实相"
+    },
+    {
+      "id": "c032",
+      "name": "中道",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "不执二边，离于断常、有无、生灭等边见的中正之道"
+    },
+    {
+      "id": "c033",
+      "name": "二谛",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "胜义谛和世俗谛，佛教的两种真理观"
+    },
+    {
+      "id": "c034",
+      "name": "三谛圆融",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "天台宗核心义理，空谛、假谛、中谛三谛相即不二，一空一切空，一假一切假，一中一切中"
+    },
+    {
+      "id": "c035",
+      "name": "一念三千",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "天台宗核心义理，一念心中具足三千世间，三千性相一念本具"
+    },
+    {
+      "id": "c036",
+      "name": "十玄门",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "华严宗法界缘起的十个方面，说明事事无碍的境界"
+    },
+    {
+      "id": "c037",
+      "name": "六相圆融",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "华严宗义理，总相、别相、同相、异相、成相、坏相六相圆融无碍"
+    },
+    {
+      "id": "c038",
+      "name": "四法界",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "华严宗对法界的四层分析"
+    },
+    {
+      "id": "c039",
+      "name": "性起",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "华严宗义理，称性而起，一切万法都是真如本性自然显现，不是随缘造作"
+    },
+    {
+      "id": "c040",
+      "name": "如来藏缘起",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "《大乘起信论》核心义理，真如不守自性，随缘生起万法，生灭与不生灭和合"
+    },
+    {
+      "id": "c041",
+      "name": "转识成智",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "唯识宗修行果位，转八识成四智"
+    },
+    {
+      "id": "c042",
+      "name": "末那识",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "八识之一，恒审思量，执阿赖耶识为我，是我执的根本"
+    },
+    {
+      "id": "c043",
+      "name": "种子",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "阿赖耶识中含藏的能生现行的功能，有本有种子和新熏种子"
+    },
+    {
+      "id": "c044",
+      "name": "现行",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "种子遇缘生起现行诸法，现行又熏习成种子，种子生现行，现行熏种子，三法同时"
+    },
+    {
+      "id": "c045",
+      "name": "五种姓",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "唯识宗所说的众生五种根性，决定成佛可能性"
+    },
+    {
+      "id": "c046",
+      "name": "顿悟",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "不经过次第修行，一念相应，顿见本性，直了成佛"
+    },
+    {
+      "id": "c047",
+      "name": "渐修",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "经过次第阶位逐步修行，断除烦恼，最终成佛"
+    },
+    {
+      "id": "c048",
+      "name": "明心见性",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "禅宗核心宗旨，明了自心本是佛，见自本性即开悟"
+    },
+    {
+      "id": "c049",
+      "name": "即心即佛",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "马祖道一禅师的核心思想，心就是佛，佛就是心，离心无别佛"
+    },
+    {
+      "id": "c050",
+      "name": "非心非佛",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "马祖道一为破对即心即佛的执着而说，心佛俱不可得"
+    },
+    {
+      "id": "c051",
+      "name": "三归依",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "归依佛、归依法、归依僧，进入佛门的根本仪式"
+    },
+    {
+      "id": "c052",
+      "name": "五戒",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "在家信众应持的五条根本戒律：不杀生、不偷盗、不邪淫、不妄语、不饮酒"
+    },
+    {
+      "id": "c053",
+      "name": "八戒",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "在家信众一日一夜受持的八种斋戒"
+    },
+    {
+      "id": "c054",
+      "name": "十善",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "身三善、口四善、意三善，共十种善业"
+    },
+    {
+      "id": "c055",
+      "name": "四摄",
+      "layer": "L2",
+      "primary_sect": "大乘通途",
+      "definition_short": "菩萨摄受众生的四种方法：布施、爱语、利行、同事"
+    },
+    {
+      "id": "c056",
+      "name": "四无量心",
+      "layer": "L2",
+      "primary_sect": "大乘通途",
+      "definition_short": "慈、悲、喜、舍四种广大的利他心"
+    },
+    {
+      "id": "c057",
+      "name": "三十七道品",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "通往涅槃的三十七种修行方法总称"
+    },
+    {
+      "id": "c058",
+      "name": "择灭",
+      "layer": "L2",
+      "primary_sect": "说一切有部",
+      "definition_short": "以智慧简择力断灭烦恼，证得涅槃"
+    },
+    {
+      "id": "c059",
+      "name": "无我",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "一切法无有恒常不变、独立存在的自性"
+    },
+    {
+      "id": "c060",
+      "name": "无常",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "一切法都在刹那生灭变化，没有恒常不变的事物"
+    },
+    {
+      "id": "c061",
+      "name": "苦",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "三法印之一，三界无安，犹如火宅"
+    },
+    {
+      "id": "c062",
+      "name": "中道",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "远离二边极端的中正之道"
+    },
+    {
+      "id": "c063",
+      "name": "因缘",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "诸法生起的条件，因是主要条件，缘是辅助条件"
+    },
+    {
+      "id": "c064",
+      "name": "果报",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "业力所招感的异熟果"
+    },
+    {
+      "id": "c065",
+      "name": "众生",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "一切有情识的生命"
+    },
+    {
+      "id": "c066",
+      "name": "佛土",
+      "layer": "L2",
+      "primary_sect": "大乘通途",
+      "definition_short": "佛所教化的国土世界"
+    },
+    {
+      "id": "c067",
+      "name": "娑婆世界",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "释迦牟尼佛所教化的现实世界"
+    },
+    {
+      "id": "c068",
+      "name": "西方极乐世界",
+      "layer": "L2",
+      "primary_sect": "净土宗",
+      "definition_short": "阿弥陀佛所摄受的净土，念佛众生往生之处"
+    },
+    {
+      "id": "c069",
+      "name": "东方净琉璃世界",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "药师佛所摄受的净土"
+    },
+    {
+      "id": "c070",
+      "name": "兜率天",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "弥勒菩萨所在的天界，未来将下生成佛"
+    },
+    {
+      "id": "c071",
+      "name": "三科",
+      "layer": "L3",
+      "primary_sect": "部派佛教",
+      "definition_short": "五蕴、十二处、十八界，是部派佛教对一切法的分类"
+    },
+    {
+      "id": "c072",
+      "name": "五位七十五法",
+      "layer": "L3",
+      "primary_sect": "说一切有部",
+      "definition_short": "说一切有部对一切法的分类：色法11、心法1、心所法46、心不相应行法14、无为法3"
+    },
+    {
+      "id": "c073",
+      "name": "我空法有",
+      "layer": "L3",
+      "primary_sect": "说一切有部",
+      "definition_short": "说一切有部核心主张：人我是空，但法体实有"
+    },
+    {
+      "id": "c074",
+      "name": "三世实有",
+      "layer": "L3",
+      "primary_sect": "说一切有部",
+      "definition_short": "说一切有部主张：过去、现在、未来三世法体真实存在"
+    },
+    {
+      "id": "c075",
+      "name": "法体恒有",
+      "layer": "L3",
+      "primary_sect": "说一切有部",
+      "definition_short": "一切法的体性恒常存在，作用有生灭"
+    },
+    {
+      "id": "c076",
+      "name": "六因四缘",
+      "layer": "L3",
+      "primary_sect": "说一切有部",
+      "definition_short": "说一切有部的缘起理论：能作因、俱有因、同类因、相应因、遍行因、异熟因；因缘、等无间缘、所缘缘、增上缘"
+    },
+    {
+      "id": "c077",
+      "name": "五果",
+      "layer": "L3",
+      "primary_sect": "说一切有部",
+      "definition_short": "异熟果、等流果、士用果、增上果、离系果"
+    },
+    {
+      "id": "c078",
+      "name": "有漏",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "含有烦恼的法，能招感三界生死果报"
+    },
+    {
+      "id": "c079",
+      "name": "无漏",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "断离烦恼的法，能证得涅槃"
+    },
+    {
+      "id": "c080",
+      "name": "见道",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "以无漏智亲证四圣谛理，断除见惑，进入圣者之流"
+    },
+    {
+      "id": "c081",
+      "name": "修道",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "见道后继续修行，渐次断除修惑"
+    },
+    {
+      "id": "c082",
+      "name": "无学道",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "烦恼断尽，无需再学，即阿罗汉果"
+    },
+    {
+      "id": "c083",
+      "name": "四向四果",
+      "layer": "L3",
+      "primary_sect": "声闻乘",
+      "definition_short": "须陀洹向/果、斯陀含向/果、阿那含向/果、阿罗汉向/果"
+    },
+    {
+      "id": "c084",
+      "name": "阿罗汉",
+      "layer": "L3",
+      "primary_sect": "声闻乘",
+      "definition_short": "声闻乘最高果位，烦恼断尽，应受人天供养"
+    },
+    {
+      "id": "c085",
+      "name": "辟支佛",
+      "layer": "L3",
+      "primary_sect": "缘觉乘",
+      "definition_short": "缘觉，无佛出世时观十二缘起自觉悟道者"
+    },
+    {
+      "id": "c086",
+      "name": "菩萨",
+      "layer": "L3",
+      "primary_sect": "大乘通途",
+      "definition_short": "上求佛道、下化众生的大乘修行者"
+    },
+    {
+      "id": "c087",
+      "name": "佛果",
+      "layer": "L3",
+      "primary_sect": "大乘通途",
+      "definition_short": "菩萨修行圆满所证得的究竟佛位"
+    },
+    {
+      "id": "c088",
+      "name": "三乘",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "声闻乘、缘觉乘、菩萨乘"
+    },
+    {
+      "id": "c089",
+      "name": "一乘",
+      "layer": "L3",
+      "primary_sect": "法华宗",
+      "definition_short": "唯一佛乘，三乘皆是方便，最终皆归于佛道"
+    },
+    {
+      "id": "c090",
+      "name": "化城",
+      "layer": "L3",
+      "primary_sect": "法华宗",
+      "definition_short": "法华经中比喻：佛陀以方便力设立三乘化城，引导众生趋向一乘"
+    },
+    {
+      "id": "c091",
+      "name": "有余涅槃",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "烦恼已断，但色身果报尚存"
+    },
+    {
+      "id": "c092",
+      "name": "无余涅槃",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "色身果报亦尽，究竟寂灭"
+    },
+    {
+      "id": "c093",
+      "name": "自性涅槃",
+      "layer": "L3",
+      "primary_sect": "大乘通途",
+      "definition_short": "一切法本性清净，自性本自涅槃"
+    },
+    {
+      "id": "c094",
+      "name": "无住涅槃",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "不住生死、不住涅槃，大乘菩萨的究竟涅槃"
+    },
+    {
+      "id": "c095",
+      "name": "四谛十六行相",
+      "layer": "L3",
+      "primary_sect": "部派佛教",
+      "definition_short": "观苦谛四行相：苦、空、无常、无我；集谛四行相：因、集、生、缘；灭谛四行相：灭、静、妙、离；道谛四行相：道、如、行、出"
+    },
+    {
+      "id": "c096",
+      "name": "八忍八智",
+      "layer": "L3",
+      "primary_sect": "说一切有部",
+      "definition_short": "见道位所生的十六种无漏心"
+    },
+    {
+      "id": "c097",
+      "name": "见惑",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "见道位所断的烦恼，共八十八使"
+    },
+    {
+      "id": "c098",
+      "name": "修惑",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "修道位所断的烦恼，共八十一品"
+    },
+    {
+      "id": "c099",
+      "name": "习气",
+      "layer": "L3",
+      "primary_sect": "大乘通途",
+      "definition_short": "烦恼断后残留的余习"
+    },
+    {
+      "id": "c100",
+      "name": "无为法",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "非因缘和合而生、无生灭变化的法"
+    },
+    {
+      "id": "c101",
+      "name": "八不中道",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "不生亦不灭，不常亦不断，不一亦不异，不来亦不去，破一切边见"
+    },
+    {
+      "id": "c102",
+      "name": "二谛",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "世俗谛和胜义谛：随顺世俗说有，依胜义说空"
+    },
+    {
+      "id": "c103",
+      "name": "缘起性空",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "一切法皆由因缘生起，故无自性，无自性即是空"
+    },
+    {
+      "id": "c104",
+      "name": "性空幻有",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "自性是空，但因缘所生的幻相宛然存在"
+    },
+    {
+      "id": "c105",
+      "name": "破邪显正",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "三论宗方法论：破斥一切错误见解，真理自然显现"
+    },
+    {
+      "id": "c106",
+      "name": "四重二谛",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "吉藏将二谛分为四层，层层递进，最终归于绝待"
+    },
+    {
+      "id": "c107",
+      "name": "于谛教谛",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "于谛是于情为实，教谛是佛陀方便言教"
+    },
+    {
+      "id": "c108",
+      "name": "中道实相",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "远离空有二边，即是诸法实相"
+    },
+    {
+      "id": "c109",
+      "name": "诸法无生",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "一切法因缘生，自性无生"
+    },
+    {
+      "id": "c110",
+      "name": "毕竟空",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "一切法究竟皆空，连空的概念也不可执著"
+    },
+    {
+      "id": "c111",
+      "name": "假名",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "诸法因缘和合，只有假名施设，无有实体"
+    },
+    {
+      "id": "c112",
+      "name": "中观",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "龙树菩萨创立的大乘学派，主张缘起性空、八不中道"
+    },
+    {
+      "id": "c113",
+      "name": "三论",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "《中论》《百论》《十二门论》，三论宗所依根本经典"
+    },
+    {
+      "id": "c114",
+      "name": "二智",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "根本智与后得智：根本智证真如，后得智度众生"
+    },
+    {
+      "id": "c115",
+      "name": "三是偈",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "众因缘生法，我说即是空，亦为是假名，亦是中道义"
+    },
+    {
+      "id": "c116",
+      "name": "空亦复空",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "不仅法是空，空这个概念本身也是空"
+    },
+    {
+      "id": "c117",
+      "name": "无所得",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "三论宗修行旨归：于一切法无执著、无所得"
+    },
+    {
+      "id": "c118",
+      "name": "四句百非",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "破斥一切有、无、亦有亦无、非有非无四句，穷尽一切戏论"
+    },
+    {
+      "id": "c119",
+      "name": "一异",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "诸法是一是异的边见，为八不中道所破"
+    },
+    {
+      "id": "c120",
+      "name": "断常",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "断见与常见两种极端边见"
+    },
+    {
+      "id": "c121",
+      "name": "生灭",
+      "layer": "L3",
+      "primary_sect": "三论宗",
+      "definition_short": "诸法有生有灭的妄见，为八不中道所破"
+    },
+    {
+      "id": "c122",
+      "name": "如来藏缘起",
+      "layer": "L3",
+      "primary_sect": "如来藏系",
+      "definition_short": "一切法依如来藏而缘起"
+    },
+    {
+      "id": "c123",
+      "name": "真如缘起",
+      "layer": "L3",
+      "primary_sect": "大乘起信论",
+      "definition_short": "一切法由真如随缘而生起"
+    },
+    {
+      "id": "c124",
+      "name": "一心二门",
+      "layer": "L3",
+      "primary_sect": "大乘起信论",
+      "definition_short": "《大乘起信论》核心：一心开真如门与生灭门"
+    },
+    {
+      "id": "c125",
+      "name": "阿黎耶识",
+      "layer": "L3",
+      "primary_sect": "大乘起信论",
+      "definition_short": "《大乘起信论》中与如来藏和合的阿赖耶识"
+    },
+    {
+      "id": "c126",
+      "name": "本觉",
+      "layer": "L3",
+      "primary_sect": "大乘起信论",
+      "definition_short": "众生本具的觉悟本性，不假修行"
+    },
+    {
+      "id": "c127",
+      "name": "三自性",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "遍计所执性、依他起性、圆成实性，唯识宗核心理论"
+    },
+    {
+      "id": "c128",
+      "name": "遍计所执性",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "凡夫虚妄分别，执著诸法实有，如绳以为蛇"
+    },
+    {
+      "id": "c129",
+      "name": "依他起性",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "一切法依因缘而生起，如绳依麻等缘而有"
+    },
+    {
+      "id": "c130",
+      "name": "圆成实性",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "诸法的真实本性，即二空所显真如"
+    },
+    {
+      "id": "c131",
+      "name": "三无性",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "相无性、生无性、胜义无性，是对三自性的无性解说"
+    },
+    {
+      "id": "c132",
+      "name": "五位百法",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "唯识宗对一切法的分类：心法8、心所法51、色法11、心不相应行法24、无为法6"
+    },
+    {
+      "id": "c133",
+      "name": "八识",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "眼耳鼻舌身意六识、第七末那识、第八阿赖耶识"
+    },
+    {
+      "id": "c134",
+      "name": "末那识",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "第七识，恒审思量，执阿赖耶识为我"
+    },
+    {
+      "id": "c135",
+      "name": "转识成智",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "转有漏八识为无漏四智：成所作智、妙观察智、平等性智、大圆镜智"
+    },
+    {
+      "id": "c136",
+      "name": "四智",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "转前五识为成所作智，转第六识为妙观察智，转第七识为平等性智，转第八识为大圆镜智"
+    },
+    {
+      "id": "c137",
+      "name": "种子生现行",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "阿赖耶识中的种子生起现行诸法"
+    },
+    {
+      "id": "c138",
+      "name": "现行熏种子",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "现行诸法反过来熏习阿赖耶识，形成新种子"
+    },
+    {
+      "id": "c139",
+      "name": "种现互生",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "种子生现行，现行熏种子，刹那同时，因果同时"
+    },
+    {
+      "id": "c140",
+      "name": "等流种子",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "能生起同类果的种子"
+    },
+    {
+      "id": "c141",
+      "name": "异熟种子",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "能招感异熟果报的善恶业种子"
+    },
+    {
+      "id": "c142",
+      "name": "习气种子",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "由现行熏习而成的种子，即名言种子"
+    },
+    {
+      "id": "c143",
+      "name": "我执",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "执著有实我存在，为末那识所执"
+    },
+    {
+      "id": "c144",
+      "name": "法执",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "执著有实法存在"
+    },
+    {
+      "id": "c145",
+      "name": "二障",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "烦恼障与所知障，障碍解脱与菩提"
+    },
+    {
+      "id": "c146",
+      "name": "烦恼障",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "由我执生起的烦恼，障碍涅槃解脱"
+    },
+    {
+      "id": "c147",
+      "name": "所知障",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "由法执生起的障碍，障碍无上菩提"
+    },
+    {
+      "id": "c148",
+      "name": "四分",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "相分、见分、自证分、证自证分，唯识宗对认识结构的分析"
+    },
+    {
+      "id": "c149",
+      "name": "相分",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "认识时心中显现的影像相状"
+    },
+    {
+      "id": "c150",
+      "name": "见分",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "能缘虑、认识相分的作用"
+    },
+    {
+      "id": "c151",
+      "name": "五重唯识观",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "窥基大师提出的修行观法：遣虚存实识、舍滥留纯识、摄末归本识、隐劣显胜识、遣相证性识"
+    },
+    {
+      "id": "c152",
+      "name": "唯识无境",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "只有内在的心识，没有心外独立存在的外境"
+    },
+    {
+      "id": "c153",
+      "name": "万法唯识",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "宇宙万有皆是阿赖耶识所变现"
+    },
+    {
+      "id": "c154",
+      "name": "三类境",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "性境、独影境、带质境"
+    },
+    {
+      "id": "c155",
+      "name": "性境",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "有真实体性的境界，如前五识所缘的色声香味触"
+    },
+    {
+      "id": "c156",
+      "name": "带质境",
+      "layer": "L3",
+      "primary_sect": "唯识宗",
+      "definition_short": "缘有体法时兼带其相分的境界"
+    },
+    {
+      "id": "c157",
+      "name": "三谛圆融",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "空谛、假谛、中谛三谛互摄互融，一即三、三即一"
+    },
+    {
+      "id": "c158",
+      "name": "一心三观",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "于一心中同时观照空、假、中三谛"
+    },
+    {
+      "id": "c159",
+      "name": "一念三千",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "一念心中具足三千世间、三千诸法"
+    },
+    {
+      "id": "c160",
+      "name": "圆教",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "天台宗判教中最究竟圆满的教法"
+    },
+    {
+      "id": "c161",
+      "name": "五时八教",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "天台宗判教体系：华严时、阿含时、方等时、般若时、法华涅槃时；化仪四教、化法四教"
+    },
+    {
+      "id": "c162",
+      "name": "化法四教",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "藏、通、别、圆四教，根据教法内容深浅划分"
+    },
+    {
+      "id": "c163",
+      "name": "化仪四教",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "顿、渐、秘密、不定四教，根据佛陀说法形式划分"
+    },
+    {
+      "id": "c164",
+      "name": "性具善恶",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "天台宗核心义理：佛性本具善、恶两种性德"
+    },
+    {
+      "id": "c165",
+      "name": "性具实相",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "一切法自性本具，法尔自然即是实相"
+    },
+    {
+      "id": "c166",
+      "name": "十界互具",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "十法界中每一界都互具其余九界"
+    },
+    {
+      "id": "c167",
+      "name": "十如是",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "相、性、体、力、作、因、缘、果、报、本末究竟等，诸法本具的十种如是"
+    },
+    {
+      "id": "c168",
+      "name": "三世间",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "五阴世间、众生世间、国土世间"
+    },
+    {
+      "id": "c169",
+      "name": "三千世间",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "十界×十界×十如是×三世间=三千世间，一念具足"
+    },
+    {
+      "id": "c170",
+      "name": "六即佛",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "理即佛、名字即佛、观行即佛、相似即佛、分证即佛、究竟即佛，修行成佛的六个阶位"
+    },
+    {
+      "id": "c171",
+      "name": "二十五方便",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "天台宗止观修行前的二十五种预备方便"
+    },
+    {
+      "id": "c172",
+      "name": "止观",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "天台宗核心修行方法：止是定，观是慧，止观双运"
+    },
+    {
+      "id": "c173",
+      "name": "圆顿止观",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "天台宗圆教的止观，当下即观诸法实相，不历阶梯"
+    },
+    {
+      "id": "c174",
+      "name": "一念无明法性心",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "一念心同时具足无明与法性"
+    },
+    {
+      "id": "c175",
+      "name": "无情有性",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "不仅有情众生有佛性，无情草木瓦石也有佛性"
+    },
+    {
+      "id": "c176",
+      "name": "五重玄义",
+      "layer": "L3",
+      "primary_sect": "天台宗",
+      "definition_short": "天台宗解经体例：释名、辨体、明宗、论用、判教相"
+    },
+    {
+      "id": "c177",
+      "name": "法界缘起",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "华严宗核心义理：以一真法界为本体，一切法互为缘起、重重无尽"
+    },
+    {
+      "id": "c178",
+      "name": "四法界",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "事法界、理法界、理事无碍法界、事事无碍法界"
+    },
+    {
+      "id": "c179",
+      "name": "事法界",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "差别事相的世界，一一事法各有差别"
+    },
+    {
+      "id": "c180",
+      "name": "理法界",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "诸法平等的真如理体"
+    },
+    {
+      "id": "c181",
+      "name": "理事无碍",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "理体与事相互相融摄，理不碍事、事不碍理"
+    },
+    {
+      "id": "c182",
+      "name": "事事无碍",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "一一事法之间互相融通、相即相入、重重无尽"
+    },
+    {
+      "id": "c183",
+      "name": "六相圆融",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "总相、别相、同相、异相、成相、坏相，六相互相融通，一法之中具六相"
+    },
+    {
+      "id": "c184",
+      "name": "十玄门",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "华严宗事事无碍的十种玄妙门径，一即一切、一切即一"
+    },
+    {
+      "id": "c185",
+      "name": "一多相即",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "一即多、多即一，相即相入"
+    },
+    {
+      "id": "c186",
+      "name": "因陀罗网",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "帝释天宫殿中的宝珠网，珠珠相映，一珠现一切珠影，比喻重重无尽"
+    },
+    {
+      "id": "c187",
+      "name": "性起",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "法性自然而起，一切法都是真如本性的显现"
+    },
+    {
+      "id": "c188",
+      "name": "五教十宗",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "华严宗判教体系：小、始、终、顿、圆五教，分判佛教各宗派浅深"
+    },
+    {
+      "id": "c189",
+      "name": "六相",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "总别同异成坏六相，华严宗观察诸法圆融的视角"
+    },
+    {
+      "id": "c190",
+      "name": "广狭自在",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "十玄门之一，一法可摄一切法而不坏本位"
+    },
+    {
+      "id": "c191",
+      "name": "主伴圆明",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "一法为主，一切法为伴，主伴交辉，圆满具足"
+    },
+    {
+      "id": "c192",
+      "name": "托事显法",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "依托具体事相显发圆融佛法"
+    },
+    {
+      "id": "c193",
+      "name": "华严三圣",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "毗卢遮那佛、文殊菩萨、普贤菩萨"
+    },
+    {
+      "id": "c194",
+      "name": "菩萨行位",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "菩萨修行的五十二位：十信、十住、十行、十回向、十地、等觉、妙觉"
+    },
+    {
+      "id": "c195",
+      "name": "十地",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "菩萨修行的十个阶位：欢喜地、离垢地、发光地、焰慧地、难胜地、现前地、远行地、不动地、善慧地、法云地"
+    },
+    {
+      "id": "c196",
+      "name": "圆融",
+      "layer": "L3",
+      "primary_sect": "华严宗",
+      "definition_short": "诸法互摄互入，不相妨碍"
+    },
+    {
+      "id": "c197",
+      "name": "明心见性",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "禅宗核心：明了自心，见到本具佛性，当下成佛"
+    },
+    {
+      "id": "c198",
+      "name": "不立文字",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "禅宗宗旨：以心传心，不依赖文字语言，教外别传"
+    },
+    {
+      "id": "c199",
+      "name": "教外别传",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "禅宗自称是佛陀在经教之外单独传付的心印法门"
+    },
+    {
+      "id": "c200",
+      "name": "直指人心",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "直接指示学人当下反观自心，见性成佛"
+    },
+    {
+      "id": "c201",
+      "name": "见性成佛",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "见到自性本来面目，即是成佛"
+    },
+    {
+      "id": "c202",
+      "name": "本来面目",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "众生本具的自性真心，未被烦恼污染的本来状态"
+    },
+    {
+      "id": "c203",
+      "name": "无念为宗",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "六祖坛经核心：于念而无念，不被境转"
+    },
+    {
+      "id": "c204",
+      "name": "无相为体",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "于相而离相，不执著事相"
+    },
+    {
+      "id": "c205",
+      "name": "无住为本",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "于诸法上念念不住，心不执著"
+    },
+    {
+      "id": "c206",
+      "name": "顿悟",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "禅宗南宗主张：无需渐次修行，当下明心见性，豁然开悟"
+    },
+    {
+      "id": "c207",
+      "name": "渐修",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "禅宗北宗主张：通过渐次修行，逐步断惑证真"
+    },
+    {
+      "id": "c208",
+      "name": "公案",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "禅宗祖师用以接引学人的机锋问答、机缘故事"
+    },
+    {
+      "id": "c209",
+      "name": "机锋",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "禅师接引学人时含蓄锋利、不落痕迹的语言或动作"
+    },
+    {
+      "id": "c210",
+      "name": "棒喝",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "德山棒、临济喝，禅师以极端手段打断学人情识分别"
+    },
+    {
+      "id": "c211",
+      "name": "平常心是道",
+      "layer": "L3",
+      "primary_sect": "禅宗",
+      "definition_short": "马祖道一提出：日常穿衣吃饭、运水搬柴皆是道"
+    },
+    {
+      "id": "c212",
+      "name": "信愿行",
+      "layer": "L3",
+      "primary_sect": "净土宗",
+      "definition_short": "净土宗三资粮：真信、切愿、持名念佛"
+    },
+    {
+      "id": "c213",
+      "name": "持名念佛",
+      "layer": "L3",
+      "primary_sect": "净土宗",
+      "definition_short": "念诵「南无阿弥陀佛」名号，求生西方极乐世界"
+    },
+    {
+      "id": "c214",
+      "name": "往生",
+      "layer": "L3",
+      "primary_sect": "净土宗",
+      "definition_short": "命终时蒙阿弥陀佛接引，往生西方极乐世界"
+    },
+    {
+      "id": "c215",
+      "name": "九品往生",
+      "layer": "L3",
+      "primary_sect": "净土宗",
+      "definition_short": "根据修行深浅，往生分三辈九品"
+    },
+    {
+      "id": "c216",
+      "name": "他力本愿",
+      "layer": "L3",
+      "primary_sect": "净土宗",
+      "definition_short": "依靠阿弥陀佛四十八大愿的他力救度，而非仅靠自力修行"
+    },
+    {
+      "id": "c217",
+      "name": "不二法门",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "（待考，从旧拼音id补）"
+    },
+    {
+      "id": "c218",
+      "name": "持戒",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "（待考，从旧拼音id补）"
+    },
+    {
+      "id": "c219",
+      "name": "极乐世界",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "（待考，从旧拼音id补）"
+    },
+    {
+      "id": "c220",
+      "name": "念佛",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "（待考，从旧拼音id补）"
+    },
+    {
+      "id": "c221",
+      "name": "三密相应",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "（待考，从旧拼音id补）"
+    }
+  ],
+  "persons": [
+    {
+      "id": "p001",
+      "name": "释迦牟尼佛",
+      "category": "佛陀",
+      "era": "约公元前565年-前486年",
+      "sect": ""
+    },
+    {
+      "id": "p002",
+      "name": "阿弥陀佛",
+      "category": "佛陀",
+      "era": "成佛以来十劫",
+      "sect": ""
+    },
+    {
+      "id": "p003",
+      "name": "药师佛",
+      "category": "佛陀",
+      "era": "成佛以来十劫",
+      "sect": ""
+    },
+    {
+      "id": "p004",
+      "name": "卢舍那佛",
+      "category": "佛陀",
+      "era": "永恒",
+      "sect": ""
+    },
+    {
+      "id": "p005",
+      "name": "毗卢遮那佛",
+      "category": "佛陀",
+      "era": "永恒",
+      "sect": ""
+    },
+    {
+      "id": "p006",
+      "name": "燃灯古佛",
+      "category": "佛陀",
+      "era": "过去庄严劫",
+      "sect": ""
+    },
+    {
+      "id": "p007",
+      "name": "弥勒佛",
+      "category": "佛陀",
+      "era": "现在兜率天，未来五十六亿七千万年下生",
+      "sect": ""
+    },
+    {
+      "id": "p101",
+      "name": "文殊菩萨",
+      "category": "菩萨",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p102",
+      "name": "普贤菩萨",
+      "category": "菩萨",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p103",
+      "name": "观世音菩萨",
+      "category": "菩萨",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p104",
+      "name": "地藏菩萨",
+      "category": "菩萨",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p105",
+      "name": "大势至菩萨",
+      "category": "菩萨",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p106",
+      "name": "虚空藏菩萨",
+      "category": "菩萨",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p107",
+      "name": "韦驮菩萨",
+      "category": "菩萨",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p108",
+      "name": "伽蓝菩萨",
+      "category": "菩萨",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p109",
+      "name": "燃灯佛",
+      "category": "佛陀",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p110",
+      "name": "不动佛",
+      "category": "佛陀",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p111",
+      "name": "宝生佛",
+      "category": "佛陀",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p112",
+      "name": "不空成就佛",
+      "category": "佛陀",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p113",
+      "name": "观音菩萨",
+      "category": "菩萨",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p114",
+      "name": "弥勒菩萨",
+      "category": "菩萨",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p115",
+      "name": "除盖障菩萨",
+      "category": "菩萨",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p116",
+      "name": "药王菩萨",
+      "category": "菩萨",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p117",
+      "name": "地藏王菩萨",
+      "category": "菩萨",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p118",
+      "name": "文殊师利菩萨",
+      "category": "菩萨",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p119",
+      "name": "普贤王菩萨",
+      "category": "菩萨",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p120",
+      "name": "大迦叶尊者",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p121",
+      "name": "舍利弗尊者",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p122",
+      "name": "目犍连尊者",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p123",
+      "name": "须菩提尊者",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p124",
+      "name": "富楼那尊者",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p125",
+      "name": "迦旃延尊者",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p126",
+      "name": "阿那律尊者",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p127",
+      "name": "优波离尊者",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p128",
+      "name": "罗睺罗尊者",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p129",
+      "name": "宾头卢尊者",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p130",
+      "name": "降龙罗汉",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p131",
+      "name": "伏虎罗汉",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p132",
+      "name": "十八罗汉",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p133",
+      "name": "五百罗汉",
+      "category": "阿罗汉/十大弟子",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p134",
+      "name": "安世高",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p135",
+      "name": "支娄迦谶",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p136",
+      "name": "竺法护",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p137",
+      "name": "佛驮跋陀罗",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p138",
+      "name": "法显",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p139",
+      "name": "昙无谶",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p140",
+      "name": "菩提流支",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p141",
+      "name": "真谛",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p142",
+      "name": "达摩笈多",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p143",
+      "name": "义净法师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p144",
+      "name": "实叉难陀",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p145",
+      "name": "善无畏",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p146",
+      "name": "金刚智",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p147",
+      "name": "不空三藏",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p148",
+      "name": "般若三藏",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p149",
+      "name": "法成法师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p150",
+      "name": "施护法师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p151",
+      "name": "道安法师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p152",
+      "name": "道生法师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p153",
+      "name": "僧肇大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p154",
+      "name": "达摩祖师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p155",
+      "name": "神秀大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p156",
+      "name": "惠能大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p157",
+      "name": "吉藏大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p158",
+      "name": "智顗大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p159",
+      "name": "灌顶大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p160",
+      "name": "杜顺大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p161",
+      "name": "智俨大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p162",
+      "name": "法藏大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p163",
+      "name": "澄观大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p164",
+      "name": "宗密大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p165",
+      "name": "窥基大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p166",
+      "name": "惠果阿阇梨",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p167",
+      "name": "一行禅师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p168",
+      "name": "百丈怀海",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p169",
+      "name": "马祖道一",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p170",
+      "name": "临济义玄",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p171",
+      "name": "洞山良价",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p172",
+      "name": "永明延寿",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p173",
+      "name": "蕅益大师",
+      "category": "历代祖师译经师",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p174",
+      "name": "杨文会",
+      "category": "现代学者",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p175",
+      "name": "欧阳竟无",
+      "category": "现代学者",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p176",
+      "name": "太虚大师",
+      "category": "现代学者",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p177",
+      "name": "南怀瑾",
+      "category": "现代学者",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p178",
+      "name": "济公活佛",
+      "category": "民间信仰人物",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p179",
+      "name": "彦琮法师",
+      "category": "现代学者",
+      "era": "（待考）",
+      "sect": ""
+    },
+    {
+      "id": "p201",
+      "name": "摩诃迦叶",
+      "category": "阿罗汉/十大弟子",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p202",
+      "name": "阿难尊者",
+      "category": "阿罗汉/十大弟子",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p203",
+      "name": "舍利弗",
+      "category": "阿罗汉/十大弟子",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p204",
+      "name": "目犍连",
+      "category": "阿罗汉/十大弟子",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p205",
+      "name": "须菩提",
+      "category": "阿罗汉/十大弟子",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p206",
+      "name": "富楼那",
+      "category": "阿罗汉/十大弟子",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p207",
+      "name": "迦旃延",
+      "category": "阿罗汉/十大弟子",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p208",
+      "name": "阿那律",
+      "category": "阿罗汉/十大弟子",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p209",
+      "name": "优波离",
+      "category": "阿罗汉/十大弟子",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p210",
+      "name": "罗睺罗",
+      "category": "阿罗汉/十大弟子",
+      "era": "",
+      "sect": ""
+    },
+    {
+      "id": "p301",
+      "name": "龙树菩萨",
+      "category": "历代祖师译经师",
+      "era": "约公元2-3世纪，南印度",
+      "sect": "中观宗创始人"
+    },
+    {
+      "id": "p302",
+      "name": "提婆菩萨",
+      "category": "历代祖师译经师",
+      "era": "公元3世纪",
+      "sect": ""
+    },
+    {
+      "id": "p303",
+      "name": "无著菩萨",
+      "category": "历代祖师译经师",
+      "era": "约公元4-5世纪，北印度健陀罗国",
+      "sect": "唯识宗创始人"
+    },
+    {
+      "id": "p304",
+      "name": "世亲菩萨",
+      "category": "历代祖师译经师",
+      "era": "约公元4-5世纪",
+      "sect": "唯识宗"
+    },
+    {
+      "id": "p305",
+      "name": "鸠摩罗什",
+      "category": "历代祖师译经师",
+      "era": "344-413年，东晋十六国",
+      "sect": "三论宗、成实宗祖师"
+    },
+    {
+      "id": "p306",
+      "name": "真谛三藏",
+      "category": "历代祖师译经师",
+      "era": "499-569年，南朝陈",
+      "sect": "摄论宗"
+    },
+    {
+      "id": "p307",
+      "name": "玄奘法师",
+      "category": "历代祖师译经师",
+      "era": "602-664年，唐代",
+      "sect": "唯识宗（法相宗）创始人"
+    },
+    {
+      "id": "p308",
+      "name": "义净三藏",
+      "category": "历代祖师译经师",
+      "era": "635-713年，唐代",
+      "sect": "律宗"
+    },
+    {
+      "id": "p309",
+      "name": "菩提达磨",
+      "category": "历代祖师译经师",
+      "era": "约5-6世纪，南北朝",
+      "sect": "禅宗初祖"
+    },
+    {
+      "id": "p310",
+      "name": "慧可大师",
+      "category": "历代祖师译经师",
+      "era": "487-593年，北朝",
+      "sect": "禅宗二祖"
+    },
+    {
+      "id": "p311",
+      "name": "僧璨大师",
+      "category": "历代祖师译经师",
+      "era": "约510-606年，隋代",
+      "sect": "禅宗三祖"
+    },
+    {
+      "id": "p312",
+      "name": "道信大师",
+      "category": "历代祖师译经师",
+      "era": "580-651年，唐代",
+      "sect": "禅宗四祖"
+    },
+    {
+      "id": "p313",
+      "name": "弘忍大师",
+      "category": "历代祖师译经师",
+      "era": "602-675年，唐代",
+      "sect": "禅宗五祖"
+    },
+    {
+      "id": "p314",
+      "name": "慧能大师",
+      "category": "历代祖师译经师",
+      "era": "638-713年，唐代",
+      "sect": "禅宗南宗创始人，六祖"
+    },
+    {
+      "id": "p315",
+      "name": "智者大师",
+      "category": "历代祖师译经师",
+      "era": "538-597年，隋代",
+      "sect": "天台宗创始人，四祖"
+    },
+    {
+      "id": "p316",
+      "name": "贤首国师",
+      "category": "历代祖师译经师",
+      "era": "643-712年，唐代",
+      "sect": "华严宗实际创始人，三祖"
+    },
+    {
+      "id": "p317",
+      "name": "道宣律师",
+      "category": "历代祖师译经师",
+      "era": "596-667年，唐代",
+      "sect": "律宗南山宗创始人"
+    },
+    {
+      "id": "p318",
+      "name": "善导大师",
+      "category": "历代祖师译经师",
+      "era": "613-681年，唐代",
+      "sect": "净土宗实际创始人，二祖"
+    },
+    {
+      "id": "p319",
+      "name": "慧远大师",
+      "category": "历代祖师译经师",
+      "era": "334-416年，东晋",
+      "sect": "净土宗初祖"
+    },
+    {
+      "id": "p401",
+      "name": "道安",
+      "category": "历代祖师译经师",
+      "era": "312-385年，东晋",
+      "sect": "般若学·本无宗"
+    },
+    {
+      "id": "p402",
+      "name": "彦琮",
+      "category": "历代祖师译经师",
+      "era": "557-610年，隋代",
+      "sect": "隋代译场主持人"
+    },
+    {
+      "id": "p403",
+      "name": "支谦",
+      "category": "历代祖师译经师",
+      "era": "三国·吴",
+      "sect": "译经家·文派"
+    },
+    {
+      "id": "p404",
+      "name": "周敦义",
+      "category": "历代祖师译经师",
+      "era": "宋代",
+      "sect": ""
+    },
+    {
+      "id": "p405",
+      "name": "严复",
+      "category": "现代学者",
+      "era": "1854-1921年，清末民初",
+      "sect": ""
+    },
+    {
+      "id": "p501",
+      "name": "济公和尚",
+      "category": "民间信仰人物",
+      "era": "1148-1209年，南宋",
+      "sect": ""
+    },
+    {
+      "id": "p502",
+      "name": "布袋和尚",
+      "category": "民间信仰人物",
+      "era": "约9-10世纪，五代后梁",
+      "sect": ""
+    },
+    {
+      "id": "p503",
+      "name": "印顺法师",
+      "category": "现代学者",
+      "era": "1906-2005年，现代",
+      "sect": ""
+    },
+    {
+      "id": "p504",
+      "name": "吕澂",
+      "category": "现代学者",
+      "era": "1896-1989年，现代",
+      "sect": ""
+    },
+    {
+      "id": "p505",
+      "name": "汤用彤",
+      "category": "现代学者",
+      "era": "1893-1964年，现代",
+      "sect": ""
+    }
+  ],
+  "sutras": [
+    {
+      "id": "s001",
+      "name": "长阿含经",
+      "taisho_id": "T0001",
+      "category": "阿含部",
+      "translator": "佛陀耶舍、竺佛念"
+    },
+    {
+      "id": "s002",
+      "name": "中阿含经",
+      "taisho_id": "T0026",
+      "category": "阿含部",
+      "translator": "瞿昙僧伽提婆"
+    },
+    {
+      "id": "s003",
+      "name": "杂阿含经",
+      "taisho_id": "T0099",
+      "category": "阿含部",
+      "translator": "求那跋陀罗"
+    },
+    {
+      "id": "s004",
+      "name": "增一阿含经",
+      "taisho_id": "T0125",
+      "category": "阿含部",
+      "translator": "瞿昙僧伽提婆"
+    },
+    {
+      "id": "s005",
+      "name": "大般若波罗蜜多经",
+      "taisho_id": "T0220",
+      "category": "般若部",
+      "translator": "玄奘"
+    },
+    {
+      "id": "s006",
+      "name": "金刚般若波罗蜜经",
+      "taisho_id": "T0235",
+      "category": "般若部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s007",
+      "name": "般若波罗蜜多心经",
+      "taisho_id": "T0251",
+      "category": "般若部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s008",
+      "name": "妙法莲华经",
+      "taisho_id": "T0262",
+      "category": "法华部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s009",
+      "name": "大方广佛华严经",
+      "taisho_id": "T0278",
+      "category": "华严部",
+      "translator": "佛驮跋陀罗"
+    },
+    {
+      "id": "s010",
+      "name": "大般涅槃经",
+      "taisho_id": "T0374",
+      "category": "涅槃部",
+      "translator": "昙无谶"
+    },
+    {
+      "id": "s011",
+      "name": "维摩诘所说经",
+      "taisho_id": "T0475",
+      "category": "经集部",
+      "translator": "竺法护"
+    },
+    {
+      "id": "s012",
+      "name": "楞伽阿跋多罗宝经",
+      "taisho_id": "T0670",
+      "category": "经集部",
+      "translator": ""
+    },
+    {
+      "id": "s013",
+      "name": "大佛顶如来密因修证了义诸菩萨万行首楞严经",
+      "taisho_id": "T0945",
+      "category": "经集部",
+      "translator": "般剌蜜帝"
+    },
+    {
+      "id": "s014",
+      "name": "六祖大师法宝坛经",
+      "taisho_id": "T2008",
+      "category": "禅宗部",
+      "translator": "法海记录"
+    },
+    {
+      "id": "s015",
+      "name": "佛说阿弥陀经",
+      "taisho_id": "T0366",
+      "category": "净土部",
+      "translator": "支谦"
+    },
+    {
+      "id": "s016",
+      "name": "佛说观无量寿佛经",
+      "taisho_id": "T0360",
+      "category": "净土部",
+      "translator": "康僧铠"
+    },
+    {
+      "id": "s017",
+      "name": "佛说无量寿经",
+      "taisho_id": "T0365",
+      "category": "净土部",
+      "translator": "绍德、慧询等"
+    },
+    {
+      "id": "s018",
+      "name": "中论",
+      "taisho_id": "T1509",
+      "category": "论部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s019",
+      "name": "成唯识论",
+      "taisho_id": "T1585",
+      "category": "论部",
+      "translator": "玄奘"
+    },
+    {
+      "id": "s020",
+      "name": "大智度论",
+      "taisho_id": "T1507",
+      "category": "论部",
+      "translator": ""
+    },
+    {
+      "id": "s021",
+      "name": "八大人觉经",
+      "taisho_id": "T0110",
+      "category": "阿含部",
+      "translator": "安世高"
+    },
+    {
+      "id": "s022",
+      "name": "放光般若经",
+      "taisho_id": "T0221",
+      "category": "般若部",
+      "translator": "无罗叉、竺叔兰"
+    },
+    {
+      "id": "s023",
+      "name": "摩诃般若波罗蜜经",
+      "taisho_id": "T0223",
+      "category": "般若部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s024",
+      "name": "般若波罗蜜多心经",
+      "taisho_id": "T0250",
+      "category": "般若部",
+      "translator": "玄奘"
+    },
+    {
+      "id": "s025",
+      "name": "小品般若经",
+      "taisho_id": "T0227",
+      "category": "般若部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s026",
+      "name": "道行般若经",
+      "taisho_id": "T0225",
+      "category": "般若部",
+      "translator": "支娄迦谶"
+    },
+    {
+      "id": "s027",
+      "name": "仁王护国般若经",
+      "taisho_id": "T0236",
+      "category": "般若部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s028",
+      "name": "文殊师利所说摩诃般若波罗蜜经",
+      "taisho_id": "T0245",
+      "category": "般若部",
+      "translator": "曼陀罗仙"
+    },
+    {
+      "id": "s029",
+      "name": "般若波罗蜜多心经",
+      "taisho_id": "T0246",
+      "category": "般若部",
+      "translator": "法月"
+    },
+    {
+      "id": "s030",
+      "name": "般若波罗蜜多心经",
+      "taisho_id": "T0247",
+      "category": "般若部",
+      "translator": "般若共利言"
+    },
+    {
+      "id": "s031",
+      "name": "般若波罗蜜多心经",
+      "taisho_id": "T0248",
+      "category": "般若部",
+      "translator": "智慧轮"
+    },
+    {
+      "id": "s032",
+      "name": "般若波罗蜜多心经",
+      "taisho_id": "T0249",
+      "category": "般若部",
+      "translator": "法成"
+    },
+    {
+      "id": "s033",
+      "name": "般若波罗蜜多心经",
+      "taisho_id": "T0252",
+      "category": "般若部",
+      "translator": "施护"
+    },
+    {
+      "id": "s034",
+      "name": "金刚般若波罗蜜经",
+      "taisho_id": "T0232",
+      "category": "般若部",
+      "translator": "菩提流支"
+    },
+    {
+      "id": "s035",
+      "name": "金刚般若波罗蜜经",
+      "taisho_id": "T0233",
+      "category": "般若部",
+      "translator": "真谛"
+    },
+    {
+      "id": "s036",
+      "name": "金刚能断般若波罗蜜经",
+      "taisho_id": "T0234",
+      "category": "般若部",
+      "translator": "达摩笈多"
+    },
+    {
+      "id": "s037",
+      "name": "能断金刚般若波罗蜜多经",
+      "taisho_id": "T0239",
+      "category": "般若部",
+      "translator": "玄奘"
+    },
+    {
+      "id": "s038",
+      "name": "能断金刚般若波罗蜜多经",
+      "taisho_id": "T0237",
+      "category": "般若部",
+      "translator": "义净"
+    },
+    {
+      "id": "s039",
+      "name": "正法华经",
+      "taisho_id": "T0263",
+      "category": "法华部",
+      "translator": "竺法护"
+    },
+    {
+      "id": "s040",
+      "name": "添品妙法莲华经",
+      "taisho_id": "T0264",
+      "category": "法华部",
+      "translator": "阇那崛多、达摩笈多"
+    },
+    {
+      "id": "s041",
+      "name": "大方广佛华严经(八十华严)",
+      "taisho_id": "T0279",
+      "category": "华严部",
+      "translator": "实叉难陀"
+    },
+    {
+      "id": "s042",
+      "name": "大方广佛华严经入不思议解脱境界普贤行愿品",
+      "taisho_id": "T0293",
+      "category": "华严部",
+      "translator": "般若"
+    },
+    {
+      "id": "s043",
+      "name": "大方广圆觉修多罗了义经",
+      "taisho_id": "T0272",
+      "category": "华严部",
+      "translator": "佛陀多罗"
+    },
+    {
+      "id": "s044",
+      "name": "维摩诘所说经",
+      "taisho_id": "T0266",
+      "category": "华严部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s045",
+      "name": "维摩诘经",
+      "taisho_id": "T0265",
+      "category": "华严部",
+      "translator": "支谦"
+    },
+    {
+      "id": "s046",
+      "name": "维摩诘所说经",
+      "taisho_id": "T0277",
+      "category": "华严部",
+      "translator": "玄奘"
+    },
+    {
+      "id": "s047",
+      "name": "大方广如来秘密藏经",
+      "taisho_id": "T0291",
+      "category": "华严部",
+      "translator": "法护"
+    },
+    {
+      "id": "s048",
+      "name": "楞伽阿跋多罗宝经",
+      "taisho_id": "T0275",
+      "category": "华严部",
+      "translator": "求那跋陀罗"
+    },
+    {
+      "id": "s049",
+      "name": "入楞伽经",
+      "taisho_id": "T0276",
+      "category": "华严部",
+      "translator": "菩提流支"
+    },
+    {
+      "id": "s050",
+      "name": "大乘入楞伽经",
+      "taisho_id": "T276a",
+      "category": "华严部",
+      "translator": "实叉难陀"
+    },
+    {
+      "id": "s051",
+      "name": "解深密经",
+      "taisho_id": "T0285",
+      "category": "华严部",
+      "translator": "玄奘"
+    },
+    {
+      "id": "s052",
+      "name": "大般涅槃经(南本)",
+      "taisho_id": "T0375",
+      "category": "涅槃部",
+      "translator": "慧严、慧观、谢灵运"
+    },
+    {
+      "id": "s053",
+      "name": "佛般泥洹经",
+      "taisho_id": "T0376",
+      "category": "涅槃部",
+      "translator": "白法祖"
+    },
+    {
+      "id": "s054",
+      "name": "大宝积经",
+      "taisho_id": "T0310",
+      "category": "宝积部",
+      "translator": "菩提流志等"
+    },
+    {
+      "id": "s055",
+      "name": "大方便佛报恩经",
+      "taisho_id": "T0350",
+      "category": "宝积部",
+      "translator": "失译"
+    },
+    {
+      "id": "s056",
+      "name": "金光明最胜王经",
+      "taisho_id": "T0412",
+      "category": "宝积部",
+      "translator": "义净"
+    },
+    {
+      "id": "s057",
+      "name": "优婆塞戒经",
+      "taisho_id": "T0665",
+      "category": "宝积部",
+      "translator": "昙无谶"
+    },
+    {
+      "id": "s058",
+      "name": "大方等大集经",
+      "taisho_id": "T0387",
+      "category": "宝积部",
+      "translator": "昙无谶等"
+    },
+    {
+      "id": "s059",
+      "name": "地藏菩萨本愿经",
+      "taisho_id": "T0402",
+      "category": "大集部",
+      "translator": "实叉难陀"
+    },
+    {
+      "id": "s060",
+      "name": "药师琉璃光如来本愿功德经",
+      "taisho_id": "T0416",
+      "category": "大集部",
+      "translator": "玄奘"
+    },
+    {
+      "id": "s061",
+      "name": "佛说阿弥陀经",
+      "taisho_id": "T0450",
+      "category": "净土部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s062",
+      "name": "称赞净土佛摄受经",
+      "taisho_id": "T0451",
+      "category": "净土部",
+      "translator": "玄奘"
+    },
+    {
+      "id": "s063",
+      "name": "南宗顿教最上大乘摩诃般若波罗蜜经六祖惠能大师于韶州大梵寺施法坛经(敦煌本)",
+      "taisho_id": "T2007",
+      "category": "禅宗部",
+      "translator": "法海记录"
+    },
+    {
+      "id": "s064",
+      "name": "大智度论",
+      "taisho_id": "T1569",
+      "category": "论部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s065",
+      "name": "成唯识论",
+      "taisho_id": "T1565",
+      "category": "论部",
+      "translator": "玄奘"
+    },
+    {
+      "id": "s066",
+      "name": "百论",
+      "taisho_id": "T1521",
+      "category": "论部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s067",
+      "name": "十二门论",
+      "taisho_id": "T1522",
+      "category": "论部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s068",
+      "name": "俱舍论",
+      "taisho_id": "T1506",
+      "category": "论部",
+      "translator": "玄奘"
+    },
+    {
+      "id": "s069",
+      "name": "大乘起信论",
+      "taisho_id": "T1646",
+      "category": "论部",
+      "translator": "真谛"
+    },
+    {
+      "id": "s070",
+      "name": "摩诃止观",
+      "taisho_id": "T1851",
+      "category": "论部",
+      "translator": "智顗说、灌顶记"
+    },
+    {
+      "id": "s071",
+      "name": "华严经探玄记",
+      "taisho_id": "T1816",
+      "category": "论部",
+      "translator": "法藏"
+    },
+    {
+      "id": "s072",
+      "name": "法华玄义",
+      "taisho_id": "T1802",
+      "category": "论部",
+      "translator": "智顗说、灌顶记"
+    },
+    {
+      "id": "s073",
+      "name": "肇论",
+      "taisho_id": "T1911",
+      "category": "论部",
+      "translator": "僧肇"
+    },
+    {
+      "id": "s074",
+      "name": "般若灯论释",
+      "taisho_id": "T1510",
+      "category": "论部",
+      "translator": "波罗颇蜜多罗"
+    },
+    {
+      "id": "s075",
+      "name": "大毗卢遮那成佛神变加持经",
+      "taisho_id": "T0363",
+      "category": "密教部",
+      "translator": "善无畏、一行"
+    },
+    {
+      "id": "s076",
+      "name": "金刚顶一切如来真实摄大乘现证大教王经",
+      "taisho_id": "T0865",
+      "category": "密教部",
+      "translator": "不空"
+    },
+    {
+      "id": "s077",
+      "name": "四分律",
+      "taisho_id": "T1488",
+      "category": "律部",
+      "translator": "佛陀耶舍、竺佛念"
+    },
+    {
+      "id": "s078",
+      "name": "佛说弥勒上生经",
+      "taisho_id": "T0415",
+      "category": "净土部",
+      "translator": "沮渠京声"
+    },
+    {
+      "id": "s079",
+      "name": "佛说弥勒大成佛经",
+      "taisho_id": "T0453",
+      "category": "净土部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s080",
+      "name": "佛说父母恩难报经",
+      "taisho_id": "T0389",
+      "category": "经集部",
+      "translator": "安世高"
+    },
+    {
+      "id": "s081",
+      "name": "佛说十善业道经",
+      "taisho_id": "T0685",
+      "category": "经集部",
+      "translator": "实叉难陀"
+    },
+    {
+      "id": "s082",
+      "name": "优婆夷戒经",
+      "taisho_id": "T0666",
+      "category": "律部",
+      "translator": "失译"
+    },
+    {
+      "id": "s083",
+      "name": "五分律",
+      "taisho_id": "T1442",
+      "category": "律部",
+      "translator": "佛陀什、竺道生"
+    },
+    {
+      "id": "s084",
+      "name": "十诵律",
+      "taisho_id": "T1428",
+      "category": "律部",
+      "translator": "弗若多罗、鸠摩罗什"
+    },
+    {
+      "id": "s085",
+      "name": "摩诃僧祇律",
+      "taisho_id": "T1421",
+      "category": "律部",
+      "translator": "佛陀跋陀罗、法显"
+    },
+    {
+      "id": "s086",
+      "name": "观无量寿佛经疏",
+      "taisho_id": "T1804",
+      "category": "论部",
+      "translator": "善导"
+    },
+    {
+      "id": "s087",
+      "name": "往生论注",
+      "taisho_id": "T1985",
+      "category": "论部",
+      "translator": "昙鸾"
+    },
+    {
+      "id": "s088",
+      "name": "佛说观普贤菩萨行法经",
+      "taisho_id": "T0585",
+      "category": "法华部",
+      "translator": "昙摩密多"
+    },
+    {
+      "id": "s089",
+      "name": "大方广圆觉经",
+      "taisho_id": "T0273",
+      "category": "华严部",
+      "translator": "佛陀多罗"
+    },
+    {
+      "id": "s090",
+      "name": "佛说大乘圣无量寿决定光明王如来陀罗尼经",
+      "taisho_id": "T0428",
+      "category": "密教部",
+      "translator": "法天"
+    },
+    {
+      "id": "s091",
+      "name": "佛顶尊胜陀罗尼经",
+      "taisho_id": "T1331",
+      "category": "密教部",
+      "translator": "佛陀波利"
+    },
+    {
+      "id": "s092",
+      "name": "千手千眼观世音菩萨广大圆满无碍大悲心陀罗尼经",
+      "taisho_id": "T1083",
+      "category": "密教部",
+      "translator": "伽梵达摩"
+    },
+    {
+      "id": "s093",
+      "name": "梵网经",
+      "taisho_id": "T1430",
+      "category": "律部",
+      "translator": "鸠摩罗什"
+    },
+    {
+      "id": "s094",
+      "name": "禅源诸诠集都序",
+      "taisho_id": "T2035",
+      "category": "禅宗部",
+      "translator": "宗密"
+    },
+    {
+      "id": "s095",
+      "name": "六祖坛经",
+      "taisho_id": "T2024",
+      "category": "禅宗部",
+      "translator": "宗宝编"
+    },
+    {
+      "id": "s096",
+      "name": "大日经",
+      "taisho_id": "",
+      "category": "密教部",
+      "translator": "（待考）"
+    }
+  ],
+  "sects": [
+    {
+      "id": "sec001",
+      "name": "三论宗",
+      "founder": "鸠摩罗什（译经）、僧肇、吉藏（实际创始人）",
+      "found_time": "隋代",
+      "core_doctrine": "缘起性空"
+    },
+    {
+      "id": "sec002",
+      "name": "唯识宗",
+      "founder": "玄奘、窥基",
+      "found_time": "唐代",
+      "core_doctrine": "万法唯识"
+    },
+    {
+      "id": "sec003",
+      "name": "天台宗",
+      "founder": "智顗（智者大师）",
+      "found_time": "隋代",
+      "core_doctrine": "一念三千"
+    },
+    {
+      "id": "sec004",
+      "name": "华严宗",
+      "founder": "法藏（贤首国师）",
+      "found_time": "唐代",
+      "core_doctrine": "法界缘起"
+    },
+    {
+      "id": "sec005",
+      "name": "禅宗",
+      "founder": "菩提达磨（东土初祖）、慧能（实际集大成者）",
+      "found_time": "唐代",
+      "core_doctrine": "明心见性"
+    },
+    {
+      "id": "sec006",
+      "name": "净土宗",
+      "founder": "慧远（初祖，结白莲社）、善导（实际创始人）",
+      "found_time": "唐代善导集大成",
+      "core_doctrine": "信愿行三资粮"
+    },
+    {
+      "id": "sec007",
+      "name": "律宗",
+      "founder": "道宣律师",
+      "found_time": "唐代",
+      "core_doctrine": "戒为无上菩提本"
+    },
+    {
+      "id": "sec008",
+      "name": "密宗",
+      "founder": "善无畏、金刚智、不空（开元三大士）",
+      "found_time": "唐代开元年间",
+      "core_doctrine": "六大缘起（地水火风空识）"
+    }
+  ],
+  "meta": {
+    "version": "3.1.0-M2",
+    "total_concepts": 221,
+    "total_persons": 125,
+    "total_sutras": 96,
+    "total_sects": 8,
+    "total_relations": 1088
+  }
+}
