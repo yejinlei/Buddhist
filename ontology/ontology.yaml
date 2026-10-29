@@ -483,6 +483,27 @@ datasets:
   - path: js/ontology-graph-data.js
     entity: 图谱页内联节点/边
     note: "义理图谱页（graph.html / inference.html）当前数据源，待并入统一实例。"
+  - path: ontology/paragraph_chunks.jsonl
+    entity: M5 段落级 RAG 切片（chunk）
+    note: "全藏 78 万+段落，逐 chunk 带经号/章节/人物/概念元数据，向量检索/问答召回基础。"
+  - path: ontology/doctrine_section_index.json
+    entity: M5 概念→段落反向索引（段落级）
+    note: "221 义理概念→全藏段落落点。"
+  - path: ontology/person_section_index.json
+    entity: M5 人物→段落反向索引（段落级）
+    note: "人物→提及该人物的全藏段落。"
+  - path: ontology/sutra_chunk_stats.json
+    entity: M5 经文 chunk 统计
+    note: "2506 部经的 chunk/字数/偈/咒统计。"
+  - path: ontology/global_entity_index.json
+    entity: M5 全局实体索引（全部实体统一入口）
+    note: "统一 id 规范、类型、别名与分片位置，RAG/NER/跳转基础。"
+  - path: ontology/entity_aliases.json
+    entity: M5 实体别名字典
+    note: "别名→规范 id 映射，用于检索消歧与 NER 识别。"
+  - path: ontology/sutra_keywords.json
+    entity: M5 全经关键词向量
+    note: "2506 部经关键词标签，RAG 第一跳检索召回用。"
   - path: js/ontology-data.js
     entity: Concept/Person/School/Text/Relation 旧版完整数据
     count: "216 概念 / 100 人物 / 984 关系"
