@@ -599,10 +599,13 @@
         }
         function renderTR(key){
             var body = document.getElementById('tr-body');
-            var all = (EV && EV.translation_events) || [];
+            var all = (EV && EV.transmission_events) || [];
             var list = all.filter(function(t){
-                if(key==='lineage') return (t.subtype||'').indexOf('传法')>=0;
-                if(key==='major') return (t.key_sutras && t.key_sutras.length) || (t.subtype||'').indexOf('传法')>=0;
+                // 兜底 total_translated
+                if(!t.total_translated) t.total_translated = (t.related_sutras||[]).length;
+                if(!t.key_sutras) t.key_sutras = [];
+                if(key==='lineage') return (t.subtype||'').indexOf('传法')>=0 || (t.subtype||'').indexOf('求法')>=0;
+                if(key==='major') return (t.key_sutras && t.key_sutras.length) || (t.subtype||'').indexOf('传法')>=0 || (t.subtype||'').indexOf('失译')>=0;
                 return true;
             });
             list.sort(function(a,b){
@@ -610,9 +613,9 @@
                 var sb = (t_subtype_order(b.subtype))*1000000 - (b.total_translated||0);
                 return sa-sb;
             });
-            function t_subtype_order(s){ if(!s) return 9; if(s.indexOf('传法')>=0) return 0; if(s.indexOf('求法')>=0) return 1; return 2; }
+            function t_subtype_order(s){ if(!s) return 9; if(s.indexOf('传法')>=0) return 0; if(s.indexOf('求法')>=0) return 1; if(s.indexOf('失译')>=0||s.indexOf('阙译')>=0) return 3; return 2; }
             if(!list.length){ body.innerHTML='<p class="text-sm muted">无数据</p>'; return; }
-            var cards = list.slice(0, key==='all'?400:200).map(function(t){
+            var cards = list.slice(0, key==='all'?600:200).map(function(t){
                 var key_sutras = (t.key_sutras||[]).map(function(sid){
                     return '<a href="sutras.html?load='+esc(sid)+'" class="alias-tag" style="text-decoration:none;background:#fef3c7">'+esc(sid)+'</a>';
                 }).join('');
@@ -711,8 +714,6 @@
                 + '<div class="grid md:grid-cols-2 gap-3 max-h-[620px] overflow-y-auto">'+cards+'</div>';
         }
 
-        bind(d);
-        initInstances();
         initDA();
         initCO();
         initTR();
