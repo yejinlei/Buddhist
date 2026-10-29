@@ -349,6 +349,76 @@
     svg.appendChild(isaT);
   }
 
+  // ========== 类 → 站点页面 跳转映射 ==========
+  function classNavLinks(c){
+    var id=c.id, ax=(c.axes&&c.axes[0])||'', ly=c.layer||'';
+    var map={
+      // A1 分类轴
+      'CanonCategory':[{href:'categories.html',label:'部类总览'},{href:'sutras.html',label:'全藏原典'}],
+      'ThreeBaskets':[{href:'categories.html',label:'三藏分类'}],
+      'Tripitaka':[{href:'categories.html',label:'三藏分类'}],
+      'Vehicle':[{href:'panjiao.html',label:'乘与判教'}],
+      'Mode':[{href:'panjiao.html',label:'显密判教'}],
+      'Genre':[{href:'categories.html',label:'十二分教'}],
+      'Division':[{href:'sutras.html',label:'三分结构'}],
+      'Edition':[{href:'translation.html',label:'版本源流'}],
+      'SourceLanguage':[{href:'translation.html',label:'译学·原典语言'}],
+      'TranslationEra':[{href:'translation.html',label:'译学·时代'}],
+      'School':[{href:'panjiao.html',label:'宗派判教'}],
+      'Sect':[{href:'panjiao.html',label:'汉传八宗'}],
+      'Practice':[{href:'graph.html#view=m2',label:'法门行持'}],
+      'PanJiao':[{href:'panjiao.html',label:'判教体系'}],
+      'Kepan':[{href:'kepan.html',label:'科判导航'},{href:'kepan.html',label:'已科判 '+liveCount('Kepan')+' 部'}],
+      // A1×L4 文本层
+      'Text':[{href:'sutras.html',label:'全藏原典'}],
+      'Sutra':[{href:'sutras.html',label:'经藏'},{href:'kepan.html',label:'科判'}],
+      'Vinaya':[{href:'sutras.html',label:'律藏'}],
+      'Sastra':[{href:'sutras.html',label:'论藏'}],
+      'Chapter':[{href:'sutras.html',label:'章节浏览'}],
+      'Paragraph':[{href:'search.html',label:'段落检索'}],
+      'Gatha':[{href:'sutras.html',label:'偈颂浏览'}],
+      'Dharani':[{href:'sutras.html',label:'咒语浏览'}],
+      // A2 义理轴
+      'Doctrine':[{href:'graph.html',label:'义理图谱'},{href:'dict.html',label:'佛学词典'}],
+      'CoreDoctrine':[{href:'graph.html',label:'核心教义'},{href:'inference.html',label:'概念推演'}],
+      'CategoryDoctrine':[{href:'graph.html#view=m2',label:'义理范畴'}],
+      'Pratitya':[{href:'inference.html',label:'缘起推演'}],
+      'Sunyata':[{href:'inference.html',label:'空性推演'}],
+      'BuddhaNature':[{href:'inference.html',label:'佛性推演'}],
+      // A3 人物轴
+      'Person':[{href:'graph.html#view=m2',label:'人物索引'},{href:'timeline.html',label:'译传时间轴'}],
+      'Buddha':[{href:'graph.html#view=m2',label:'佛陀'},{href:'dict.html',label:'词典'}],
+      'Bodhisattva':[{href:'graph.html#view=m2',label:'菩萨'}],
+      'Arhat':[{href:'graph.html#view=m2',label:'阿罗汉'}],
+      'Patriarch':[{href:'timeline.html',label:'祖师传法'},{href:'translation.html',label:'译师'}],
+      'Translator':[{href:'translation.html',label:'译师'},{href:'timeline.html',label:'时间轴'}],
+      'Scholar':[{href:'graph.html#view=m2',label:'学者'}],
+      'Protector':[{href:'graph.html#view=m2',label:'护法诸天'}],
+      'Deity':[{href:'graph.html#view=m2',label:'神祇'}],
+      // A4 事件轴
+      'Event':[{href:'ontology.html#ev-sec',label:'事件层总览'},{href:'timeline.html',label:'时间轴'}],
+      'DharmaAssembly':[{href:'ontology.html#ev-da',label:'法会'},{href:'timeline.html',label:'时间轴'}],
+      'Council':[{href:'ontology.html#ev-co',label:'结集'},{href:'timeline.html',label:'时间轴'}],
+      'TransmissionEvent':[{href:'ontology.html#ev-tr',label:'译经传法'},{href:'timeline.html',label:'时间轴'}],
+      'StoryEvent':[{href:'ontology.html#ev-st',label:'本生故事'}],
+      // L6 外延
+      'FolkloreFigure':[{href:'graph.html#view=folklore',label:'民间信仰'}]
+    };
+    if(map[id]) return map[id];
+    // 按轴兜底
+    var fallback=[];
+    if(ax==='A1') fallback.push({href:'categories.html',label:'部类'});
+    if(ax==='A2') fallback.push({href:'graph.html',label:'义理图谱'});
+    if(ax==='A3') fallback.push({href:'graph.html#view=m2',label:'人物'});
+    if(ax==='A4') fallback.push({href:'timeline.html',label:'事件时间轴'});
+    if(ly==='L4'||id==='Text'||id==='Sutra') fallback.push({href:'sutras.html',label:'全藏原典'});
+    if(ly==='L3'||id==='School') fallback.push({href:'panjiao.html',label:'判教'});
+    // 去重
+    var seen={}; var out=[];
+    fallback.forEach(function(x){ if(!seen[x.href]){seen[x.href]=1;out.push(x);} });
+    return out.slice(0,3);
+  }
+
   function relColor(g){
     if(!g) return '#888';
     if(g.indexOf('分类')>=0)return '#B8860B';
@@ -421,6 +491,19 @@
 
     const mt=(s.origin&&s.origin.length&&RAWMETA.__mtime)? '' : '';
 
+    // ========== 类 → 对应站点页面 的导航跳转 ==========
+    const nav=classNavLinks(c);
+    let navHtml='';
+    if(nav && nav.length){
+      navHtml='<div style="margin-top:12px;padding-top:10px;border-top:1px dashed #ece2ca">'
+        + '<div style="font-size:11px;color:#8a7a62;margin-bottom:6px">🌐 前往站点页面查看实例</div>'
+        + '<div style="display:flex;flex-wrap:wrap;gap:6px">'
+        + nav.map(function(n){
+            return '<a href="'+esc(n.href)+'" style="display:inline-flex;align-items:center;gap:4px;background:#fff7e0;border:1px solid #e8d08a;border-radius:6px;padding:4px 10px;font-size:12px;color:#8a6d2f;text-decoration:none" onmouseover="this.style.background=\'#fdeec1\'" onmouseout="this.style.background=\'#fff7e0\'">→ '+esc(n.label)+'</a>';
+          }).join('')
+        + '</div></div>';
+    }
+
     host.innerHTML=''
       + '<div style="border:1px solid #ece2ca;border-radius:10px;background:#fffdf7;padding:14px 16px" class="grid md:grid-cols-2 gap-5">'
       +   '<div>'
@@ -434,6 +517,7 @@
       +     (s.note && c.desc!==s.note ? '<div style="font-size:11.5px;color:#8a7a62;margin-top:4px">'+esc(s.note)+'</div>' : '')
       +     '<div style="margin-top:10px">'+statHtml+'</div>'
       +     samples
+      +     navHtml
       +   '</div>'
       +   '<div style="border-left:1px dashed #ece2ca;padding-left:18px">'
       +     '<div style="font-size:11px;color:#8a7a62;margin-bottom:3px">数据来源</div>'
