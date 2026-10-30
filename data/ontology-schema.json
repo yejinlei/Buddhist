@@ -937,7 +937,16 @@
         ],
         "domain": "Text",
         "range": "ThreeBaskets",
-        "description": "A 典籍归属于三藏中某一藏。"
+        "description": "A 典籍归属于三藏中某一藏。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/manifest.json（部类/分部/文体/乘/显密/版本字段）",
+          "ontology/instances/t####.json（category 等分类字段）"
+        ],
+        "storage": "ontology/instances/relations.json（ABox 三元组）；分类枚举见 ontology/instances/t####.json 与 ontology/ontology.yaml",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "part_of",
@@ -957,7 +966,16 @@
           "Division",
           "Chapter"
         ],
-        "description": "部分属于整体或某部类/分部。"
+        "description": "部分属于整体或某部类/分部。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/manifest.json（部类/分部/文体/乘/显密/版本字段）",
+          "ontology/instances/t####.json（category 等分类字段）"
+        ],
+        "storage": "ontology/instances/relations.json（ABox 三元组）；分类枚举见 ontology/instances/t####.json 与 ontology/ontology.yaml",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "belongs_to_division",
@@ -967,7 +985,16 @@
         ],
         "domain": "CanonCategory",
         "range": "Division",
-        "description": "部类归属于某一分部。"
+        "description": "部类归属于某一分部。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/manifest.json（部类/分部/文体/乘/显密/版本字段）",
+          "ontology/instances/t####.json（category 等分类字段）"
+        ],
+        "storage": "ontology/instances/relations.json（ABox 三元组）；分类枚举见 ontology/instances/t####.json 与 ontology/ontology.yaml",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "of_genre",
@@ -977,7 +1004,16 @@
         ],
         "domain": "Text",
         "range": "Genre",
-        "description": "典籍属于十二分教中某一文体。"
+        "description": "典籍属于十二分教中某一文体。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/manifest.json（部类/分部/文体/乘/显密/版本字段）",
+          "ontology/instances/t####.json（category 等分类字段）"
+        ],
+        "storage": "ontology/instances/relations.json（ABox 三元组）；分类枚举见 ontology/instances/t####.json 与 ontology/ontology.yaml",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "of_vehicle",
@@ -991,7 +1027,16 @@
           "Practice"
         ],
         "range": "Vehicle",
-        "description": "典籍/宗派/法门归属某乘。"
+        "description": "典籍/宗派/法门归属某乘。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/manifest.json（部类/分部/文体/乘/显密/版本字段）",
+          "ontology/instances/t####.json（category 等分类字段）"
+        ],
+        "storage": "ontology/instances/relations.json（ABox 三元组）；分类枚举见 ontology/instances/t####.json 与 ontology/ontology.yaml",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "of_mode",
@@ -1004,7 +1049,16 @@
           "School"
         ],
         "range": "Mode",
-        "description": "典籍/宗派归属显教或密教。"
+        "description": "典籍/宗派归属显教或密教。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/manifest.json（部类/分部/文体/乘/显密/版本字段）",
+          "ontology/instances/t####.json（category 等分类字段）"
+        ],
+        "storage": "ontology/instances/relations.json（ABox 三元组）；分类枚举见 ontology/instances/t####.json 与 ontology/ontology.yaml",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "translation_of",
@@ -1017,7 +1071,16 @@
         "symmetric": true,
         "domain": "Text",
         "range": "Text",
-        "description": "A 与 B 为同一部经之异译。"
+        "description": "A 与 B 为同一部经之异译。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/manifest.json（部类/分部/文体/乘/显密/版本字段）",
+          "ontology/instances/t####.json（category 等分类字段）"
+        ],
+        "storage": "ontology/instances/relations.json（ABox 三元组）；分类枚举见 ontology/instances/t####.json 与 ontology/ontology.yaml",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "based_on_edition",
@@ -1027,7 +1090,16 @@
         ],
         "domain": "Text",
         "range": "Edition",
-        "description": "A 经所据底本为某藏经版本。"
+        "description": "A 经所据底本为某藏经版本。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/manifest.json（部类/分部/文体/乘/显密/版本字段）",
+          "ontology/instances/t####.json（category 等分类字段）"
+        ],
+        "storage": "ontology/instances/relations.json（ABox 三元组）；分类枚举见 ontology/instances/t####.json 与 ontology/ontology.yaml",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "translated_in",
@@ -1037,7 +1109,16 @@
         ],
         "domain": "Text",
         "range": "TranslationEra",
-        "description": "A 经译于某译经时代。"
+        "description": "A 经译于某译经时代。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/manifest.json（部类/分部/文体/乘/显密/版本字段）",
+          "ontology/instances/t####.json（category 等分类字段）"
+        ],
+        "storage": "ontology/instances/relations.json（ABox 三元组）；分类枚举见 ontology/instances/t####.json 与 ontology/ontology.yaml",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "from_language",
@@ -1047,7 +1128,16 @@
         ],
         "domain": "Text",
         "range": "SourceLanguage",
-        "description": "A 经译自某种原典语言。"
+        "description": "A 经译自某种原典语言。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/manifest.json（部类/分部/文体/乘/显密/版本字段）",
+          "ontology/instances/t####.json（category 等分类字段）"
+        ],
+        "storage": "ontology/instances/relations.json（ABox 三元组）；分类枚举见 ontology/instances/t####.json 与 ontology/ontology.yaml",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       }
     ],
     "文本结构关系类（A2 纵向内容轴）": [
@@ -1063,7 +1153,17 @@
           "Concept",
           "Doctrine"
         ],
-        "description": "A 经阐明 B 教理概念。"
+        "description": "A 经阐明 B 教理概念。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/t####.json（chapters / paragraphs 结构字段）",
+          "kepan/core.json（古德三分科判）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json；文本结构见 ontology/instances/t####.json 与 kepan/",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "has_kepan",
@@ -1073,7 +1173,17 @@
         ],
         "domain": "Text",
         "range": "Kepan",
-        "description": "A 经具序/正宗/流通三分。"
+        "description": "A 经具序/正宗/流通三分。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/t####.json（chapters / paragraphs 结构字段）",
+          "kepan/core.json（古德三分科判）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json；文本结构见 ontology/instances/t####.json 与 kepan/",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "has_chapter",
@@ -1086,7 +1196,17 @@
           "Kepan"
         ],
         "range": "Chapter",
-        "description": "包含品/章。"
+        "description": "包含品/章。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/t####.json（chapters / paragraphs 结构字段）",
+          "kepan/core.json（古德三分科判）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json；文本结构见 ontology/instances/t####.json 与 kepan/",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "has_section",
@@ -1099,7 +1219,17 @@
           "Kepan"
         ],
         "range": "Section",
-        "description": "包含段落。"
+        "description": "包含段落。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/t####.json（chapters / paragraphs 结构字段）",
+          "kepan/core.json（古德三分科判）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json；文本结构见 ontology/instances/t####.json 与 kepan/",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "has_gatha",
@@ -1112,7 +1242,17 @@
           "Section"
         ],
         "range": "Gatha",
-        "description": "包含偈颂。"
+        "description": "包含偈颂。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/t####.json（chapters / paragraphs 结构字段）",
+          "kepan/core.json（古德三分科判）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json；文本结构见 ontology/instances/t####.json 与 kepan/",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "has_mantra",
@@ -1125,7 +1265,17 @@
           "Section"
         ],
         "range": "Mantra",
-        "description": "包含咒语。"
+        "description": "包含咒语。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/t####.json（chapters / paragraphs 结构字段）",
+          "kepan/core.json（古德三分科判）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json；文本结构见 ontology/instances/t####.json 与 kepan/",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "commentary_on",
@@ -1136,7 +1286,17 @@
         "inverse": "commented_by",
         "domain": "Commentary",
         "range": "Text",
-        "description": "A 注疏为 B 之注释。"
+        "description": "A 注疏为 B 之注释。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/t####.json（chapters / paragraphs 结构字段）",
+          "kepan/core.json（古德三分科判）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json；文本结构见 ontology/instances/t####.json 与 kepan/",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "quotation",
@@ -1146,7 +1306,17 @@
           "quotes"
         ],
         "inverse": "quoted_by",
-        "description": "A 论引用 B 经文句。"
+        "description": "A 论引用 B 经文句。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/t####.json（chapters / paragraphs 结构字段）",
+          "kepan/core.json（古德三分科判）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json；文本结构见 ontology/instances/t####.json 与 kepan/",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "accomplishment",
@@ -1156,7 +1326,17 @@
         ],
         "domain": "Practice",
         "range": "Text",
-        "description": "法门依经典而成就。"
+        "description": "法门依经典而成就。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/t####.json（chapters / paragraphs 结构字段）",
+          "kepan/core.json（古德三分科判）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json；文本结构见 ontology/instances/t####.json 与 kepan/",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "mentions_doctrine",
@@ -1173,7 +1353,17 @@
           "Concept",
           "Doctrine"
         ],
-        "description": "段落/偈/咒中涉及某佛理概念。"
+        "description": "段落/偈/咒中涉及某佛理概念。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/t####.json（chapters / paragraphs 结构字段）",
+          "kepan/core.json（古德三分科判）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json；文本结构见 ontology/instances/t####.json 与 kepan/",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       }
     ],
     "宗派判教关系类（A1 / L3）": [
@@ -1188,7 +1378,16 @@
         "inverse": "founded_by",
         "domain": "Person",
         "range": "School",
-        "description": "A 创立 B 宗派。"
+        "description": "A 创立 B 宗派。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/sects/sec###.json（宗派与判教字段）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/sects/sec###.json",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "co_founding",
@@ -1198,7 +1397,16 @@
         ],
         "domain": "Person",
         "range": "School",
-        "description": "A 与同道共同开创 B。"
+        "description": "A 与同道共同开创 B。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/sects/sec###.json（宗派与判教字段）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/sects/sec###.json",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "reliance",
@@ -1210,7 +1418,16 @@
         "inverse": "relied_by",
         "domain": "School",
         "range": "Text",
-        "description": "A 宗派以 B 经为根本依止。"
+        "description": "A 宗派以 B 经为根本依止。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/sects/sec###.json（宗派与判教字段）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/sects/sec###.json",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "establishes_practice",
@@ -1220,7 +1437,16 @@
         ],
         "domain": "School",
         "range": "Practice",
-        "description": "宗派立某修行法门。"
+        "description": "宗派立某修行法门。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/sects/sec###.json（宗派与判教字段）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/sects/sec###.json",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "has_panjiao",
@@ -1230,7 +1456,16 @@
         ],
         "domain": "School",
         "range": "PanjiaoSystem",
-        "description": "A 宗派立有 B 判教体系。"
+        "description": "A 宗派立有 B 判教体系。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/sects/sec###.json（宗派与判教字段）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/sects/sec###.json",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "classifies_as",
@@ -1245,7 +1480,16 @@
           "Vehicle",
           "Mode"
         ],
-        "description": "判教体系将某经/教理/乘/显密判属某一教相。"
+        "description": "判教体系将某经/教理/乘/显密判属某一教相。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/sects/sec###.json（宗派与判教字段）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/sects/sec###.json",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "higher_than",
@@ -1254,7 +1498,16 @@
         "asymmetric": true,
         "domain": "PanjiaoSystem",
         "range": "PanjiaoSystem",
-        "description": "判教中的高低层次，如圆教胜于别教。"
+        "description": "判教中的高低层次，如圆教胜于别教。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/sects/sec###.json（宗派与判教字段）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/sects/sec###.json",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "panjiao_attribution",
@@ -1268,7 +1521,16 @@
           "Doctrine"
         ],
         "range": "PanjiaoSystem",
-        "description": "A 被 B 判教体系摄归某位。"
+        "description": "A 被 B 判教体系摄归某位。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/sects/sec###.json（宗派与判教字段）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/sects/sec###.json",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "transmission",
@@ -1280,7 +1542,16 @@
         "inverse": "received_from",
         "domain": "Person",
         "range": "Person",
-        "description": "A 传承 B 之法脉。"
+        "description": "A 传承 B 之法脉。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/sects/sec###.json（宗派与判教字段）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/sects/sec###.json",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "divergence",
@@ -1291,7 +1562,16 @@
         "symmetric": true,
         "domain": "School",
         "range": "School",
-        "description": "A 与 B 宗派在某义理上存在分歧。"
+        "description": "A 与 B 宗派在某义理上存在分歧。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/sects/sec###.json（宗派与判教字段）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/sects/sec###.json",
+        "axis": "A1",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       }
     ],
     "人物关系类（A3 人物传承轴）": [
@@ -1305,7 +1585,17 @@
         ],
         "domain": "Person",
         "range": "Person",
-        "description": "A 与 B 为师徒（师→弟）。"
+        "description": "A 与 B 为师徒（师→弟）。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/persons/p###.json（人物实例）",
+          "ontology/instances/events.json（transmission_events 传法事件）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/persons/p###.json",
+        "axis": "A3",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "sibling",
@@ -1316,7 +1606,17 @@
         "symmetric": true,
         "domain": "Person",
         "range": "Person",
-        "description": "A 与 B 为兄弟（如阿难与提婆达多）。"
+        "description": "A 与 B 为兄弟（如阿难与提婆达多）。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/persons/p###.json（人物实例）",
+          "ontology/instances/events.json（transmission_events 传法事件）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/persons/p###.json",
+        "axis": "A3",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "manifestation",
@@ -1325,7 +1625,17 @@
           "huaxian"
         ],
         "inverse": "manifested_as",
-        "description": "A 化现为 B，如观音化现民间人物。"
+        "description": "A 化现为 B，如观音化现民间人物。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/persons/p###.json（人物实例）",
+          "ontology/instances/events.json（transmission_events 传法事件）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/persons/p###.json",
+        "axis": "A3",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "protection",
@@ -1344,7 +1654,17 @@
           "Doctrine",
           "Practice"
         ],
-        "description": "A 护持 B 法门/宗派/教理。"
+        "description": "A 护持 B 法门/宗派/教理。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/persons/p###.json（人物实例）",
+          "ontology/instances/events.json（transmission_events 传法事件）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/persons/p###.json",
+        "axis": "A3",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "authorship",
@@ -1360,7 +1680,17 @@
           "Text",
           "Commentary"
         ],
-        "description": "A 造/著 B 经论或注疏。"
+        "description": "A 造/著 B 经论或注疏。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/persons/p###.json（人物实例）",
+          "ontology/instances/events.json（transmission_events 传法事件）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/persons/p###.json",
+        "axis": "A3",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "translated_by",
@@ -1373,7 +1703,17 @@
         "inverse": "translated",
         "domain": "Text",
         "range": "Translator",
-        "description": "A 经为 B 所译出。"
+        "description": "A 经为 B 所译出。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/persons/p###.json（人物实例）",
+          "ontology/instances/events.json（transmission_events 传法事件）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/persons/p###.json",
+        "axis": "A3",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       }
     ],
     "义理关系类（A2 / L1–L2）": [
@@ -1385,7 +1725,16 @@
           "subsumes"
         ],
         "inverse": "subsumed_by",
-        "description": "总法含别法，如五蕴摄属三科。"
+        "description": "总法含别法，如五蕴摄属三科。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/concepts/c###.json（义理概念实例）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/concepts/c###.json",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "correspondence",
@@ -1395,7 +1744,16 @@
           "correspondsTo"
         ],
         "symmetric": true,
-        "description": "两法相即不二，如烦恼即菩提、生死即涅槃。"
+        "description": "两法相即不二，如烦恼即菩提、生死即涅槃。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/concepts/c###.json（义理概念实例）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/concepts/c###.json",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "refutation",
@@ -1405,7 +1763,16 @@
           "disputes"
         ],
         "symmetric": true,
-        "description": "A 对破 B 之偏执，如中观对破有见与空见。"
+        "description": "A 对破 B 之偏执，如中观对破有见与空见。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/concepts/c###.json（义理概念实例）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/concepts/c###.json",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "precedence",
@@ -1415,7 +1782,16 @@
           "precedes"
         ],
         "inverse": "succeeds_in_order",
-        "description": "修行或义理之先后，如信为行之先。"
+        "description": "修行或义理之先后，如信为行之先。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/concepts/c###.json（义理概念实例）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/concepts/c###.json",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "interpretation",
@@ -1424,7 +1800,16 @@
           "quanshi",
           "interprets"
         ],
-        "description": "A 诠释 B 之义，如《大智度论》诠释《大般若经》。"
+        "description": "A 诠释 B 之义，如《大智度论》诠释《大般若经》。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/concepts/c###.json（义理概念实例）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/concepts/c###.json",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "derivation",
@@ -1433,7 +1818,16 @@
           "yansheng"
         ],
         "inverse": "derived_from",
-        "description": "B 由 A 衍生发展而来。"
+        "description": "B 由 A 衍生发展而来。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/concepts/c###.json（义理概念实例）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/concepts/c###.json",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "opposition",
@@ -1442,7 +1836,16 @@
           "duili"
         ],
         "symmetric": true,
-        "description": "A 与 B 是两种对立见地。"
+        "description": "A 与 B 是两种对立见地。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/concepts/c###.json（义理概念实例）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/concepts/c###.json",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "synonymy",
@@ -1451,7 +1854,16 @@
           "tongyi"
         ],
         "symmetric": true,
-        "description": "A 与 B 为同一概念之异名。"
+        "description": "A 与 B 为同一概念之异名。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/concepts/c###.json（义理概念实例）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/concepts/c###.json",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "origin_from_text",
@@ -1466,7 +1878,16 @@
           "Doctrine"
         ],
         "range": "Text",
-        "description": "A 概念出自 B 经。"
+        "description": "A 概念出自 B 经。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/concepts/c###.json（义理概念实例）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/concepts/c###.json",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "textual_evidence",
@@ -1479,7 +1900,16 @@
           "Concept",
           "Doctrine"
         ],
-        "description": "A 经文佐证 B 概念。"
+        "description": "A 经文佐证 B 概念。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/concepts/c###.json（义理概念实例）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/concepts/c###.json",
+        "axis": "A2",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       }
     ],
     "事件关系类（A4 事件缘起轴）": [
@@ -1492,7 +1922,17 @@
         "inverse": "spoken_by",
         "domain": "Buddha",
         "range": "DharmaAssembly",
-        "description": "A 佛在 B 法会上说法。"
+        "description": "A 佛在 B 法会上说法。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/events.json（结集/传法/本生故事）",
+          "ontology/dharma_assemblies.json（法会）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/events.json + ontology/dharma_assemblies.json",
+        "axis": "A4",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "held_at",
@@ -1502,7 +1942,17 @@
         ],
         "domain": "DharmaAssembly",
         "range": "Text",
-        "description": "法会 B 所说为 A 经。"
+        "description": "法会 B 所说为 A 经。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/events.json（结集/传法/本生故事）",
+          "ontology/dharma_assemblies.json（法会）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/events.json + ontology/dharma_assemblies.json",
+        "axis": "A4",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "in_assembly",
@@ -1512,7 +1962,17 @@
         ],
         "domain": "Person",
         "range": "DharmaAssembly",
-        "description": "A 人物为 B 法会之听众 / 当机众。"
+        "description": "A 人物为 B 法会之听众 / 当机众。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/events.json（结集/传法/本生故事）",
+          "ontology/dharma_assemblies.json（法会）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/events.json + ontology/dharma_assemblies.json",
+        "axis": "A4",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "tells_of",
@@ -1522,7 +1982,17 @@
         ],
         "domain": "Text",
         "range": "StoryEvent",
-        "description": "A 经中述说 B 本事/本生/因缘故事。"
+        "description": "A 经中述说 B 本事/本生/因缘故事。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/events.json（结集/传法/本生故事）",
+          "ontology/dharma_assemblies.json（法会）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/events.json + ontology/dharma_assemblies.json",
+        "axis": "A4",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "attends_council",
@@ -1532,7 +2002,17 @@
         ],
         "domain": "Person",
         "range": "Council",
-        "description": "A 参与 B 结集。"
+        "description": "A 参与 B 结集。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/events.json（结集/传法/本生故事）",
+          "ontology/dharma_assemblies.json（法会）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/events.json + ontology/dharma_assemblies.json",
+        "axis": "A4",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "during_event",
@@ -1542,7 +2022,17 @@
         ],
         "domain": "Event",
         "range": "Event",
-        "description": "子事件发生于母事件期间。"
+        "description": "子事件发生于母事件期间。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/events.json（结集/传法/本生故事）",
+          "ontology/dharma_assemblies.json（法会）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/events.json + ontology/dharma_assemblies.json",
+        "axis": "A4",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       },
       {
         "id": "transmits",
@@ -1552,7 +2042,17 @@
         ],
         "domain": "Person",
         "range": "TransmissionEvent",
-        "description": "A 祖师在传法事件 B 中传付法脉。"
+        "description": "A 祖师在传法事件 B 中传付法脉。",
+        "origin": [
+          "ontology/ontology.yaml",
+          "data/ontology-schema.json（前端镜像）",
+          "ontology/instances/events.json（结集/传法/本生故事）",
+          "ontology/dharma_assemblies.json（法会）",
+          "ontology/instances/relations.json（ABox 三元组）"
+        ],
+        "storage": "ontology/instances/relations.json + ontology/instances/events.json + ontology/dharma_assemblies.json",
+        "axis": "A4",
+        "generator": "scripts/build_ontology.py（schema 导出）→ scripts/enrich_tbox.py（元信息增强）"
       }
     ]
   },
