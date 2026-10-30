@@ -69,23 +69,27 @@
             </div>
         </section>
 
-        <!-- 四轴 × 七层 正交交互图 -->
+        <!-- 四轴 × 七层 属性正交交互图（D3.js v7） -->
         <section class="mb-12">
             <div class="flex items-start justify-between gap-4 flex-wrap mb-2">
-                <h2 class="text-xl font-bold text-buddha-primary">〇、本体结构交互图</h2>
-                <div id="tbox-meta" class="text-right"></div>
+                <h2 class="text-xl font-bold text-buddha-primary">〇、本体结构交互图 · 四轴 × 七层 属性正交</h2>
+                <div id="ortho-meta" class="text-right"></div>
             </div>
-            <p class="text-sm muted mb-4">上方为<strong>四轴 × 七层</strong>正交矩阵（列=轴、行=层、格子数字=该组合下的本体类数），下方为<strong>本体类关系网络图</strong>（纵向按抽象层级排列、横向按四轴分栏；深灰曲线=subClassOf 继承，彩色虚线=对象属性关系）。节点下方徽标为该类<strong>实时实例数</strong>。<b>点击任意行/列/格/节点</b>即可联动筛选下方类树；<b>点击类节点</b>会在下方展开该类的数据来源、存放位置与实例统计。再次点击取消筛选。</p>
+            <p class="text-sm muted mb-4">
+                以 <b>D3.js</b> 交互呈现本体论核心：<strong>横轴 = 四轴</strong>（分类 / 内容 / 人物 / 事件），<strong>纵轴 = 七层</strong>（L0 元模型 → L6 信仰文化外延），每个格子的颜色深浅代表该 (轴,层) 组合下的实例体量；格子底部的圆点是具体的 <b>本体类节点</b>（大圆点=顶层类、小圆点=子类、右上角金点=跨轴类），点之间的彩色虚线是 <b>对象属性关系</b>（按关系组着色：分类 / 文本结构 / 宗派判教 / 义理 / 人物 / 事件）；顶部工具条可切换 <b>对象属性 / 继承层级 / 数据属性矩阵</b> 三种视图，并按关系组过滤边。
+            </p>
+            <ul class="text-xs muted mb-4 pl-5 list-disc space-y-0.5">
+                <li><b>滚轮缩放 / 拖拽平移</b>浏览大图；<b>悬停</b>节点/格子/连线看 tooltip 详情</li>
+                <li><b>点击节点</b>高亮其所有邻接关系，下方展开详情卡（父/子类、入/出关系、数据属性、数据来源、页面跳转）</li>
+                <li><b>点击轴头/层头</b>按轴/层筛选；<b>点击格子</b>展开该格全部类；<b>点击空白处</b>重置高亮</li>
+                <li>「数据属性」视图下，右侧出现字段覆盖矩阵，直观显示每类挂接了哪些字段（名称/梵名/译者/经号/字数等共 39 个数据属性）</li>
+            </ul>
 
-            <div class="bg-white rounded-xl shadow-sm border border-buddha-gold/20 p-4 md:p-6 mb-4">
-                <div id="tbox-matrix" class="mx-auto" style="max-width:720px"></div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-sm border border-buddha-gold/20 p-4 md:p-6 overflow-x-auto">
-                <h3 class="text-base font-bold text-buddha-primary mb-2">类关系网络（节点按轴×层布点）</h3>
-                <p class="text-xs muted mb-3">纵向：L0 元模型 → L6 信仰文化外延（抽象→具体）；横向：按四轴分栏。彩色虚线表示该分组的对象属性（属乘、阐明、传承、译于 等）。鼠标悬停可看详情，点击节点看数据来源。</p>
-                <div id="tbox-graph" class="w-full"></div>
-                <div id="tbox-detail" class="mt-4" style="display:none"></div>
+            <div class="bg-white rounded-xl shadow-sm border border-buddha-gold/20 p-4 md:p-6">
+                <div id="ortho-toolbar" class="mb-3"></div>
+                <div id="ortho-graph" class="w-full" style="min-height:620px"></div>
+                <div id="ortho-legend" class="mt-3"></div>
+                <div id="ortho-detail" class="mt-4"></div>
             </div>
         </section>
 
@@ -213,7 +217,8 @@
         <p class="mt-1"><a href="../index.html" class="text-buddha-primary">返回首页</a></p>
     </footer>
 
-    <script src="../js/ontology-tbox-viz.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../js/ontology-ortho-d3.js"></script>
     <script src="../js/site-map.js"></script>
     <script>
     (function(){
@@ -374,17 +379,23 @@
                     if(r.symmetric) flags.push('对称');
                     if(r.asymmetric) flags.push('反对称');
                     if(r.inverse) flags.push('逆 '+esc(r.inverse));
+                    var origins = arr(r.origin);
+                    var srcCell = (origins.length? '<div class="text-[11px] muted">来源：'+origins.map(esc).join('、')+'</div>' : '')
+                                 + (r.storage? '<div class="text-[11px] muted mt-1">存放：'+esc(r.storage)+'</div>' : '')
+                                 + (r.generator? '<div class="text-[11px] muted mt-1">生成：'+esc(r.generator)+'</div>' : '');
+                    var axTag = r.axis? ' <span class="text-[11px] px-1.5 py-0.5 rounded" style="background:#B8860B1a;color:#B8860B">'+esc(r.axis)+'</span>' : '';
                     return '<tr>'
                         +'<td class="rel-id">'+esc(r.id)+'</td>'
-                        +'<td><b>'+esc(r.label)+'</b></td>'
+                        +'<td><b>'+esc(r.label)+'</b>'+axTag+'</td>'
                         +'<td>'+dr+'</td>'
                         +'<td class="muted">'+esc(r.description||'')+'</td>'
                         +'<td>'+(aliases||'')+(flags.length?'<div class="text-[11px] muted mt-1">'+flags.join(' · ')+'</div>':'')+'</td>'
+                        +'<td class="muted">'+(srcCell||'—')+'</td>'
                         +'</tr>';
                 }).join('');
                 return '<div class="bg-white rounded-lg shadow p-4 overflow-x-auto">'
                     +'<h3 class="font-bold text-buddha-primary mb-2">'+esc(g)+' <span class="text-xs muted">('+(groups[g]||[]).length+')</span></h3>'
-                    +'<table class="rel-table"><thead><tr><th style="width:140px">id</th><th style="width:80px">名称</th><th style="width:180px">domain → range</th><th>说明</th><th style="width:220px">别名 / 特性</th></tr></thead><tbody>'
+                    +'<table class="rel-table"><thead><tr><th style="width:130px">id</th><th style="width:110px">名称 / 轴</th><th style="width:170px">domain → range</th><th>说明</th><th style="width:190px">别名 / 特性</th><th style="width:260px">数据来源 / 存放位置</th></tr></thead><tbody>'
                     +rows+'</tbody></table></div>';
             }).join('');
         }
@@ -899,8 +910,8 @@
         initTR();
         initST();
 
-        // 四轴×七层正交交互图（等 #axis-filter/#layer-filter 按钮渲染后再 init，便于联动筛选）
-        setTimeout(()=>{ if(window.OntologyTBox) OntologyTBox.init({onFilter:(st)=>{/* 同步已经在模块内部处理 */}}); }, 120);
+        // 四轴×七层属性正交交互图（D3.js v7）
+        setTimeout(()=>{ if(window.OntologyOrtho) OntologyOrtho.init(); }, 120);
     })();
     </script>
 </body>
