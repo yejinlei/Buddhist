@@ -989,7 +989,7 @@ async function toggleBaihua() {
 
 // 已有白话翻译的经 id 清单（与 data/modern-translation/ 目录一致，由 scripts/gen_baihua_index.py 维护）
 // 先判断再请求，避免对没有白话数据的经发起无谓请求（404）
-const BAIHUA_AVAILABLE = new Set(['t0235','t0251','t0366','t0389','t0450','t0779','sishi_erzhang']);
+const BAIHUA_AVAILABLE = new Set(['sishi_erzhang','t0087','t0089','t0235','t0249','t0250','t0251','t0297','t0366','t0389','t0450','t0599','t0600','t0684','t0685','t0706','t0707','t0778','t0779','t1477']);
 
 async function loadBaihua(tid) {
     baihuaData = null;
@@ -1007,7 +1007,7 @@ function applyBaihua() {
         const tip = document.createElement('div');
         tip.className = 'baihua-tip';
         tip.id = 'baihua-tip';
-        tip.innerHTML = '📘 本经白话翻译正在整理中。目前已提供白话：<b>心经、金刚经、阿弥陀经、八大人觉经、佛遗教经、四十二章经、药师经</b>。';
+        tip.innerHTML = '📘 本经白话翻译正在整理中。目前已提供心经、金刚经、阿弥陀经、四十二章经、八大人觉经、佛遗教经、药师经、十善业道经、盂兰盆经、戒消灾经、八关斋经等的白话对照。';
         const textEl = document.getElementById('sutra-text');
         if (textEl) textEl.insertBefore(tip, textEl.firstChild);
         return;
