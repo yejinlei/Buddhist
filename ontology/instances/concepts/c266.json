@@ -1,0 +1,16 @@
+{
+  "id": "c266",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "法门",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "佛所说的法，因是众生超凡入圣的门户，故称法门。",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch2_dict_expansion"
+}

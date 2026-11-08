@@ -1,0 +1,24 @@
+{
+  "id": "c051",
+  "layer": "L2",
+  "layer_label": "L2 义理范畴层",
+  "name": "三归依",
+  "sanskrit": "",
+  "alias": [
+    "三归戒",
+    "三皈依",
+    "三自归",
+    "趣三归依"
+  ],
+  "definition": "归依佛、归依法、归依僧，进入佛门的根本仪式",
+  "primary_sect": "通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "通途": "归依佛、归依法、归依僧，进入佛门的根本仪式"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

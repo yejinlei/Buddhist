@@ -1,0 +1,18 @@
+{
+  "id": "c128",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "遍计所执性",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "凡夫虚妄分别，执著诸法实有，如绳以为蛇",
+  "primary_sect": "唯识宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "唯识宗": "凡夫虚妄分别，执著诸法实有，如绳以为蛇"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

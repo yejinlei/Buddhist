@@ -1,0 +1,26 @@
+{
+  "id": "c067",
+  "layer": "L2",
+  "layer_label": "L2 义理范畴层",
+  "name": "娑婆世界",
+  "sanskrit": "",
+  "alias": [
+    "娑婆",
+    "娑婆国土",
+    "娑媻",
+    "娑诃",
+    "沙诃",
+    "索诃"
+  ],
+  "definition": "释迦牟尼佛所教化的现实世界",
+  "primary_sect": "通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "通途": "释迦牟尼佛所教化的现实世界"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "c075",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "法体恒有",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "一切法的体性恒常存在，作用有生灭",
+  "primary_sect": "说一切有部",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "说一切有部": "一切法的体性恒常存在，作用有生灭"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

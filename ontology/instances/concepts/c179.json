@@ -1,0 +1,18 @@
+{
+  "id": "c179",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "事法界",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "差别事相的世界，一一事法各有差别",
+  "primary_sect": "华严宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "华严宗": "差别事相的世界，一一事法各有差别"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

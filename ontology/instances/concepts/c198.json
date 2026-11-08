@@ -1,0 +1,18 @@
+{
+  "id": "c198",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "不立文字",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "禅宗宗旨：以心传心，不依赖文字语言，教外别传",
+  "primary_sect": "禅宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "禅宗": "禅宗宗旨：以心传心，不依赖文字语言，教外别传"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

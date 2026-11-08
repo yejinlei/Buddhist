@@ -1,0 +1,18 @@
+{
+  "id": "c098",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "修惑",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "修道位所断的烦恼，共八十一品",
+  "primary_sect": "通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "通途": "修道位所断的烦恼，共八十一品"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

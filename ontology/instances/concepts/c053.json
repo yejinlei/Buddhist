@@ -1,0 +1,21 @@
+{
+  "id": "c053",
+  "layer": "L2",
+  "layer_label": "L2 义理范畴层",
+  "name": "八戒",
+  "sanskrit": "",
+  "alias": [
+    "八戒斋"
+  ],
+  "definition": "在家信众一日一夜受持的八种斋戒",
+  "primary_sect": "通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "通途": "在家信众一日一夜受持的八种斋戒"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

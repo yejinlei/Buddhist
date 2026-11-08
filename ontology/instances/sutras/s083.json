@@ -1,0 +1,21 @@
+{
+  "id": "s083",
+  "old_id": "s088",
+  "taisho_id": "T1442",
+  "category": "律部",
+  "name": "五分律",
+  "volume_count": 0,
+  "volume": "T22",
+  "translator_brief": "佛陀什、竺道生",
+  "translations": [
+    {
+      "id": "s083_1",
+      "name": "五分律",
+      "translator": "佛陀什、竺道生"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

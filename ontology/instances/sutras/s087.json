@@ -1,0 +1,21 @@
+{
+  "id": "s087",
+  "old_id": "s092",
+  "taisho_id": "T1985",
+  "category": "论部",
+  "name": "往生论注",
+  "volume_count": 0,
+  "volume": "T40",
+  "translator_brief": "昙鸾",
+  "translations": [
+    {
+      "id": "s087_1",
+      "name": "往生论注",
+      "translator": "昙鸾"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

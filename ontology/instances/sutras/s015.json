@@ -1,0 +1,35 @@
+{
+  "id": "s015",
+  "taisho_id": "T0366",
+  "category": "净土部",
+  "name": "佛说阿弥陀经",
+  "volume_count": 1,
+  "abbreviation": "阿弥陀经",
+  "translations": [
+    {
+      "id": "t015_1",
+      "name": "佛说阿弥陀经",
+      "translator": "鸠摩罗什",
+      "translate_time": "后秦弘始四年（402年）",
+      "volume_count": 1,
+      "text_length": "约2000字",
+      "differences": "流传最广，净土宗早晚课诵本，文字简洁，“一心不乱”",
+      "open_line": "如是我闻。一时，佛在舍卫国祗树给孤独园，与大比丘僧千二百五十人俱。"
+    },
+    {
+      "id": "t015_2",
+      "name": "称赞净土佛摄受经",
+      "translator": "玄奘",
+      "translate_time": "唐永徽元年（650年）",
+      "volume_count": 1,
+      "differences": "直译，名为“系念不乱”"
+    }
+  ],
+  "core_content": "净土宗根本经典之一，描述西方极乐世界的庄严，持名念佛往生净土，是净土宗每天课诵的经典",
+  "core_concept": [
+    "极乐世界",
+    "持名念佛",
+    "往生"
+  ],
+  "translator_brief": "支谦"
+}

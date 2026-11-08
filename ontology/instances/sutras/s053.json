@@ -1,0 +1,21 @@
+{
+  "id": "s053",
+  "old_id": "s048",
+  "taisho_id": "T0376",
+  "category": "涅槃部",
+  "name": "佛般泥洹经",
+  "volume_count": 0,
+  "volume": "T01",
+  "translator_brief": "白法祖",
+  "translations": [
+    {
+      "id": "s053_1",
+      "name": "佛般泥洹经",
+      "translator": "白法祖"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

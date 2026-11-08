@@ -1,0 +1,21 @@
+{
+  "id": "s095",
+  "old_id": "s100",
+  "taisho_id": "T2024",
+  "category": "禅宗部",
+  "name": "六祖坛经",
+  "volume_count": 0,
+  "volume": "T48",
+  "translator_brief": "宗宝编",
+  "translations": [
+    {
+      "id": "s095_1",
+      "name": "六祖坛经",
+      "translator": "宗宝编"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

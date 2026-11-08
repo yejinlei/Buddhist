@@ -1,0 +1,23 @@
+{
+  "id": "c030",
+  "layer": "L2",
+  "name": "三自性",
+  "sanskrit": "Tri-svabhāva",
+  "alias": [
+    "三性"
+  ],
+  "definition": "唯识宗核心义理，一切法的三种存在性",
+  "structure": [
+    "遍计所执性：凡夫执着的虚妄分别",
+    "依他起性：依因缘而生的现象",
+    "圆成实性：诸法真实本性，即真如"
+  ],
+  "sutra_source": [
+    "《解深密经》（t0676）",
+    "《成唯识论》（t1585）"
+  ],
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}

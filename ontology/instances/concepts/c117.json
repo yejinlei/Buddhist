@@ -1,0 +1,18 @@
+{
+  "id": "c117",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "无所得",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "三论宗修行旨归：于一切法无执著、无所得",
+  "primary_sect": "三论宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "三论宗": "三论宗修行旨归：于一切法无执著、无所得"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

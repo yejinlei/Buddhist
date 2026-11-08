@@ -1,0 +1,18 @@
+{
+  "id": "c099",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "习气",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "烦恼断后残留的余习",
+  "primary_sect": "大乘通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "大乘通途": "烦恼断后残留的余习"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

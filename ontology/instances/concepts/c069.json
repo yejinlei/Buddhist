@@ -1,0 +1,18 @@
+{
+  "id": "c069",
+  "layer": "L2",
+  "layer_label": "L2 义理范畴层",
+  "name": "东方净琉璃世界",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "药师佛所摄受的净土",
+  "primary_sect": "通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "通途": "药师佛所摄受的净土"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

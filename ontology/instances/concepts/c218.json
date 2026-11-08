@@ -1,0 +1,16 @@
+{
+  "id": "c218",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "持戒",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "（待考，从旧拼音id补）",
+  "primary_sect": "通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "（待考）",
+  "_source": "merged_from_pinyin_alias"
+}

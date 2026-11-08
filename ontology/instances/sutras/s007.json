@@ -1,0 +1,82 @@
+{
+  "id": "s007",
+  "taisho_id": "T0251",
+  "category": "般若部",
+  "name": "般若波罗蜜多心经",
+  "volume_count": 1,
+  "abbreviation": "心经",
+  "translations": [
+    {
+      "id": "t007_1",
+      "name": "摩诃般若波罗蜜大明咒经",
+      "translator": "鸠摩罗什",
+      "translate_time": "后秦弘治年间（402-412年）",
+      "volume_count": 1,
+      "text_length": "260字",
+      "differences": "最早译本，无开头序分",
+      "open_line": "观世音菩萨，行深般若波罗蜜时，照见五阴空，度一切苦厄。"
+    },
+    {
+      "id": "t007_2",
+      "name": "般若波罗蜜多心经",
+      "translator": "玄奘",
+      "translate_time": "唐贞观二十三年（649年）",
+      "translate_place": "长安",
+      "volume_count": 1,
+      "text_length": "260字",
+      "differences": "流传最广版本，文字精炼，是日常读诵本",
+      "open_line": "观自在菩萨，行深般若波罗蜜多时，照见五蕴皆空，度一切苦厄。"
+    },
+    {
+      "id": "t007_3",
+      "name": "般若波罗蜜多心经",
+      "translator": "法月",
+      "translate_time": "唐开元二十三年（735年）",
+      "volume_count": 1,
+      "differences": "有序分，比玄奘本多60余字"
+    },
+    {
+      "id": "t007_4",
+      "name": "般若波罗蜜多心经",
+      "translator": "般若共利言等",
+      "translate_time": "唐贞元年间",
+      "volume_count": 1
+    },
+    {
+      "id": "t007_5",
+      "name": "般若波罗蜜多心经",
+      "translator": "智慧轮",
+      "translate_time": "唐大中年间",
+      "volume_count": 1
+    },
+    {
+      "id": "t007_6",
+      "name": "般若波罗蜜多心经",
+      "translator": "法成",
+      "translate_time": "唐大中年间",
+      "volume_count": 1,
+      "differences": "藏汉对照本"
+    },
+    {
+      "id": "t007_7",
+      "name": "佛说圣佛母般若波罗蜜多经",
+      "translator": "施护",
+      "translate_time": "北宋端拱元年（988年）",
+      "volume_count": 1,
+      "text_length": "约400字",
+      "differences": "完整序分，结尾有咒语详细说明",
+      "open_line": "如是我闻。一时，世尊在王舍城鹫峰山中，与大苾刍众千二百五十人俱，并大菩萨众，尔时世尊入三摩地，名广大甚深。"
+    }
+  ],
+  "core_content": "般若经典的精华，高度浓缩了大般若经的核心义理：五蕴皆空、色空不二，是佛教流传最广的经典",
+  "core_concept": [
+    "五蕴皆空",
+    "色空不二",
+    "般若",
+    "空性"
+  ],
+  "modern_commentary": {
+    "印顺": "《般若经讲记》：《心经》是大般若经的精要，二百六十个字道尽般若深义，核心是“照见五蕴皆空，度一切苦厄”"
+  },
+  "translator_brief": "鸠摩罗什"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "c163",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "化仪四教",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "顿、渐、秘密、不定四教，根据佛陀说法形式划分",
+  "primary_sect": "天台宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "天台宗": "顿、渐、秘密、不定四教，根据佛陀说法形式划分"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

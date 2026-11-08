@@ -1,0 +1,21 @@
+{
+  "id": "s080",
+  "old_id": "s085",
+  "taisho_id": "T0389",
+  "category": "经集部",
+  "name": "佛说父母恩难报经",
+  "volume_count": 0,
+  "volume": "T16",
+  "translator_brief": "安世高",
+  "translations": [
+    {
+      "id": "s080_1",
+      "name": "佛说父母恩难报经",
+      "translator": "安世高"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "c210",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "棒喝",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "德山棒、临济喝，禅师以极端手段打断学人情识分别",
+  "primary_sect": "禅宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "禅宗": "德山棒、临济喝，禅师以极端手段打断学人情识分别"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

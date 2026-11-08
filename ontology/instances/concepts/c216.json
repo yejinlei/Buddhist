@@ -1,0 +1,18 @@
+{
+  "id": "c216",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "他力本愿",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "依靠阿弥陀佛四十八大愿的他力救度，而非仅靠自力修行",
+  "primary_sect": "净土宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "净土宗": "依靠阿弥陀佛四十八大愿的他力救度，而非仅靠自力修行"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

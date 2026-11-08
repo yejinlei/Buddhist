@@ -1,0 +1,36 @@
+{
+  "id": "s017",
+  "taisho_id": "T0365",
+  "category": "净土部",
+  "name": "佛说无量寿经",
+  "volume_count": 2,
+  "abbreviation": "大阿弥陀经",
+  "translations": [
+    {
+      "id": "t017_1",
+      "name": "佛说无量清净平等觉经",
+      "translator": "支娄迦谶",
+      "translate_time": "后汉",
+      "volume_count": 2,
+      "differences": "最早译本"
+    },
+    {
+      "id": "t017_2",
+      "name": "佛说无量寿经",
+      "translator": "康僧铠",
+      "translate_time": "曹魏嘉平四年（252年）",
+      "volume_count": 2,
+      "differences": "最通行本",
+      "open_line": "如是我闻。一时，佛住王舍城耆阇崛山中，与大比丘众万二千人俱。"
+    },
+    {
+      "id": "t017_3",
+      "name": "大宝积经无量寿如来会",
+      "translator": "菩提流志",
+      "translate_time": "唐",
+      "volume_count": 2
+    }
+  ],
+  "core_content": "讲述阿弥陀佛因地法藏比丘发四十八大愿，建立极乐世界，是净土宗根本经典",
+  "translator_brief": "绍德、慧询等"
+}

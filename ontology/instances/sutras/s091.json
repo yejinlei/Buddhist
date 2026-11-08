@@ -1,0 +1,21 @@
+{
+  "id": "s091",
+  "old_id": "s096",
+  "taisho_id": "T1331",
+  "category": "密教部",
+  "name": "佛顶尊胜陀罗尼经",
+  "volume_count": 0,
+  "volume": "T19",
+  "translator_brief": "佛陀波利",
+  "translations": [
+    {
+      "id": "s091_1",
+      "name": "佛顶尊胜陀罗尼经",
+      "translator": "佛陀波利"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

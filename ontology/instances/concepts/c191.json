@@ -1,0 +1,18 @@
+{
+  "id": "c191",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "主伴圆明",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "一法为主，一切法为伴，主伴交辉，圆满具足",
+  "primary_sect": "华严宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "华严宗": "一法为主，一切法为伴，主伴交辉，圆满具足"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

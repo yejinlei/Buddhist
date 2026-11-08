@@ -1,0 +1,16 @@
+{
+  "id": "c250",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "一切法",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "一切道理或一切事物的意思。智度论说：‘一切法略说有三种：一者有为法，二者无为法，三者不可说法。此三已摄一切法。’",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch1_dict_expansion"
+}

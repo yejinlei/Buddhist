@@ -1,0 +1,20 @@
+{
+  "id": "c039",
+  "layer": "L2",
+  "name": "性起",
+  "sanskrit": "",
+  "alias": [
+    "性起缘起"
+  ],
+  "definition": "华严宗义理，称性而起，一切万法都是真如本性自然显现，不是随缘造作",
+  "sutra_source": [
+    "《华严经》（t0278）"
+  ],
+  "sect_view": {
+    "华严宗": "性起不同于缘起，是佛果境界的缘起"
+  },
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}

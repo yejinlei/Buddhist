@@ -1,0 +1,24 @@
+{
+  "id": "c084",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "阿罗汉",
+  "sanskrit": "",
+  "alias": [
+    "遏罗曷帝",
+    "阿卢汉",
+    "阿罗呵",
+    "阿黎呵"
+  ],
+  "definition": "声闻乘最高果位，烦恼断尽，应受人天供养",
+  "primary_sect": "声闻乘",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "声闻乘": "声闻乘最高果位，烦恼断尽，应受人天供养"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

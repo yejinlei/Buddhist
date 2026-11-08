@@ -1,0 +1,18 @@
+{
+  "id": "c127",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "三自性",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "遍计所执性、依他起性、圆成实性，唯识宗核心理论",
+  "primary_sect": "唯识宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "唯识宗": "遍计所执性、依他起性、圆成实性，唯识宗核心理论"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "c146",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "烦恼障",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "由我执生起的烦恼，障碍涅槃解脱",
+  "primary_sect": "唯识宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "唯识宗": "由我执生起的烦恼，障碍涅槃解脱"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

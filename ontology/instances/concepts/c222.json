@@ -1,0 +1,16 @@
+{
+  "id": "c222",
+  "layer": "L1",
+  "layer_label": "L1 教理本体层",
+  "name": "烦恼",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "烦是扰义，恼是乱义，能扰乱众生身心，令使心烦意乱的见思惑，叫做烦恼。",
+  "sutra_source": [
+    "《大智度论》"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch1_dict_expansion"
+}

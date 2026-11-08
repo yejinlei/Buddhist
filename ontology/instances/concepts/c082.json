@@ -1,0 +1,21 @@
+{
+  "id": "c082",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "无学道",
+  "sanskrit": "",
+  "alias": [
+    "无学位"
+  ],
+  "definition": "烦恼断尽，无需再学，即阿罗汉果",
+  "primary_sect": "通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "通途": "烦恼断尽，无需再学，即阿罗汉果"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

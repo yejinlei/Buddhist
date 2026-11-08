@@ -1,0 +1,21 @@
+{
+  "id": "c195",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "十地",
+  "sanskrit": "",
+  "alias": [
+    "通教十地"
+  ],
+  "definition": "菩萨修行的十个阶位：欢喜地、离垢地、发光地、焰慧地、难胜地、现前地、远行地、不动地、善慧地、法云地",
+  "primary_sect": "华严宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "华严宗": "菩萨修行的十个阶位：欢喜地、离垢地、发光地、焰慧地、难胜地、现前地、远行地、不动地、善慧地、法云地"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

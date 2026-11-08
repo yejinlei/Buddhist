@@ -1,0 +1,49 @@
+{
+  "id": "s009",
+  "taisho_id": "T0278",
+  "category": "华严部",
+  "name": "大方广佛华严经",
+  "volume_count": 80,
+  "abbreviation": "华严经",
+  "translations": [
+    {
+      "id": "t009_1",
+      "name": "六十华严",
+      "translator": "佛陀跋陀罗",
+      "translate_time": "东晋义熙十四年（418年）",
+      "volume_count": 60,
+      "differences": "最早全本，分三十四品"
+    },
+    {
+      "id": "t009_2",
+      "name": "八十华严",
+      "translator": "实叉难陀",
+      "translate_time": "唐证圣元年至圣历二年（695-699年）",
+      "translate_place": "洛阳佛授记寺",
+      "volume_count": 80,
+      "text_length": "约140万字",
+      "differences": "内容最完整，文字流畅，华严宗根本经典，分三十九品",
+      "open_line": "如是我闻。一时，佛在摩竭提国阿兰若法菩提场中，始成正觉。"
+    },
+    {
+      "id": "t009_3",
+      "name": "四十华严",
+      "translator": "般若",
+      "translate_time": "唐贞元十二年（796年）",
+      "volume_count": 40,
+      "differences": "即《入法界品》的详译本，讲述善财童子五十三参"
+    }
+  ],
+  "core_content": "华严宗根本经典，讲述佛陀成道后最初三七日为法身大士所说的圆顿大法，法界缘起，重重无尽，善财童子五十三参，体现大乘菩萨行精神",
+  "core_concept": [
+    "法界缘起",
+    "十玄门",
+    "六相圆融",
+    "事事无碍"
+  ],
+  "translator_brief": "佛驮跋陀罗",
+  "alias": [
+    "华严"
+  ],
+  "dict_alias_sources": "佛学大词典参见链"
+}

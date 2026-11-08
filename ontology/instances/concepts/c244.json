@@ -1,0 +1,16 @@
+{
+  "id": "c244",
+  "layer": "L1",
+  "layer_label": "L1 教理本体层",
+  "name": "无量",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "多到不可计量。",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch1_dict_expansion"
+}

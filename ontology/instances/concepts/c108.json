@@ -1,0 +1,18 @@
+{
+  "id": "c108",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "中道实相",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "远离空有二边，即是诸法实相",
+  "primary_sect": "三论宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "三论宗": "远离空有二边，即是诸法实相"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

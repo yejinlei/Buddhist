@@ -1,0 +1,18 @@
+{
+  "id": "c064",
+  "layer": "L2",
+  "layer_label": "L2 义理范畴层",
+  "name": "果报",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "业力所招感的异熟果",
+  "primary_sect": "通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "通途": "业力所招感的异熟果"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

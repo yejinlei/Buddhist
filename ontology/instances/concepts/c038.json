@@ -1,0 +1,21 @@
+{
+  "id": "c038",
+  "layer": "L2",
+  "name": "四法界",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "华严宗对法界的四层分析",
+  "structure": [
+    "事法界：现象界，一一事法差别分明",
+    "理法界：本体界，诸法同一性空真如",
+    "理事无碍法界：理体事相互遍互融",
+    "事事无碍法界：一一事法重重无尽，相即相入"
+  ],
+  "sutra_source": [
+    "《华严法界观门》"
+  ],
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}

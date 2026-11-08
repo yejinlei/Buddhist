@@ -1,0 +1,21 @@
+{
+  "id": "s093",
+  "old_id": "s098",
+  "taisho_id": "T1430",
+  "category": "律部",
+  "name": "梵网经",
+  "volume_count": 0,
+  "volume": "T24",
+  "translator_brief": "鸠摩罗什",
+  "translations": [
+    {
+      "id": "s093_1",
+      "name": "梵网经",
+      "translator": "鸠摩罗什"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

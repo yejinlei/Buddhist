@@ -1,0 +1,21 @@
+{
+  "id": "c168",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "三世间",
+  "sanskrit": "",
+  "alias": [
+    "五阴世间"
+  ],
+  "definition": "五阴世间、众生世间、国土世间",
+  "primary_sect": "天台宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "天台宗": "五阴世间、众生世间、国土世间"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

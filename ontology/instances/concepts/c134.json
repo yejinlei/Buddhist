@@ -1,0 +1,22 @@
+{
+  "id": "c134",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "末那识",
+  "sanskrit": "",
+  "alias": [
+    "七识",
+    "末那"
+  ],
+  "definition": "第七识，恒审思量，执阿赖耶识为我",
+  "primary_sect": "唯识宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "唯识宗": "第七识，恒审思量，执阿赖耶识为我"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

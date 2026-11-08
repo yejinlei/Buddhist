@@ -1,0 +1,18 @@
+{
+  "id": "c175",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "无情有性",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "不仅有情众生有佛性，无情草木瓦石也有佛性",
+  "primary_sect": "天台宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "天台宗": "不仅有情众生有佛性，无情草木瓦石也有佛性"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

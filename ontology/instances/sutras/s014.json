@@ -1,0 +1,37 @@
+{
+  "id": "s014",
+  "taisho_id": "T2008",
+  "category": "禅宗部",
+  "name": "六祖大师法宝坛经",
+  "volume_count": 1,
+  "abbreviation": "坛经",
+  "translations": [
+    {
+      "id": "t014_1",
+      "name": "敦煌本坛经",
+      "translator": "法海录",
+      "write_time": "唐",
+      "volume_count": 1,
+      "text_length": "约12000字",
+      "differences": "现存最早版本，约12000字，更接近慧能说法原貌"
+    },
+    {
+      "id": "t014_2",
+      "name": "宗宝本坛经",
+      "translator": "宗宝编",
+      "write_time": "元至元二十八年（1291年）",
+      "volume_count": 1,
+      "text_length": "约24000字",
+      "differences": "流传最广版本，共十品，文字经过润色，增加了后世内容",
+      "open_line": "时大师至宝林，韶州韦刺史与官僚入山，请师出，于城中大梵寺讲堂，为众开缘说法。师升座次，刺史官僚三十余人，儒宗学士三十余人，僧尼道俗一千余人，同时作礼，愿闻法要。"
+    }
+  ],
+  "core_content": "禅宗六祖慧能的说法记录，唯一被称为“经”的祖师著作，核心思想：明心见性、顿悟成佛、无念为宗、无相为体、无住为本，是中国人写的佛经",
+  "core_concept": [
+    "明心见性",
+    "顿悟",
+    "无念无住无相",
+    "即心即佛"
+  ],
+  "translator_brief": "法海记录"
+}

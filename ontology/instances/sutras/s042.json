@@ -1,0 +1,21 @@
+{
+  "id": "s042",
+  "old_id": "s036",
+  "taisho_id": "T0293",
+  "category": "华严部",
+  "name": "大方广佛华严经入不思议解脱境界普贤行愿品",
+  "volume_count": 0,
+  "volume": "T10",
+  "translator_brief": "般若",
+  "translations": [
+    {
+      "id": "s042_1",
+      "name": "大方广佛华严经入不思议解脱境界普贤行愿品",
+      "translator": "般若"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

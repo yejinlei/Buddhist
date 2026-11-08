@@ -1,0 +1,21 @@
+{
+  "id": "s019",
+  "taisho_id": "T1585",
+  "category": "论部",
+  "name": "成唯识论",
+  "volume_count": 10,
+  "author": "护法等菩萨造，玄奘糅译",
+  "translations": [
+    {
+      "id": "t019_1",
+      "name": "成唯识论",
+      "translator": "玄奘",
+      "translate_time": "唐显庆四年（659年）",
+      "volume_count": 10,
+      "differences": "糅译十大论师对《唯识三十颂》的注释，以护法义为正义",
+      "open_line": "稽首唯识性，满分清净者。我今释彼说，利乐诸有情。"
+    }
+  ],
+  "core_content": "唯识宗根本论典，系统阐述三自性、八识、种子、转识成智等核心义理，是唯识宗的集大成著作",
+  "translator_brief": "玄奘"
+}

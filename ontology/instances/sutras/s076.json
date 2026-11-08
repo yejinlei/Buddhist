@@ -1,0 +1,21 @@
+{
+  "id": "s076",
+  "old_id": "s078",
+  "taisho_id": "T0865",
+  "category": "密教部",
+  "name": "金刚顶一切如来真实摄大乘现证大教王经",
+  "volume_count": 0,
+  "volume": "T18",
+  "translator_brief": "不空",
+  "translations": [
+    {
+      "id": "s076_1",
+      "name": "金刚顶一切如来真实摄大乘现证大教王经",
+      "translator": "不空"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

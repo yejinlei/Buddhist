@@ -1,0 +1,22 @@
+{
+  "id": "c148",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "四分",
+  "sanskrit": "",
+  "alias": [
+    "取分",
+    "自证分"
+  ],
+  "definition": "相分、见分、自证分、证自证分，唯识宗对认识结构的分析",
+  "primary_sect": "唯识宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "唯识宗": "相分、见分、自证分、证自证分，唯识宗对认识结构的分析"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

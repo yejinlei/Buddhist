@@ -1,0 +1,21 @@
+{
+  "id": "s058",
+  "old_id": "s055",
+  "taisho_id": "T0387",
+  "category": "宝积部",
+  "name": "大方等大集经",
+  "volume_count": 0,
+  "volume": "T13",
+  "translator_brief": "昙无谶等",
+  "translations": [
+    {
+      "id": "s058_1",
+      "name": "大方等大集经",
+      "translator": "昙无谶等"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

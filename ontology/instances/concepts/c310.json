@@ -1,0 +1,16 @@
+{
+  "id": "c310",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "比丘尼",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "梵文 bhikṣuṇī，受具足戒之女性出家人",
+  "sutra_source": [
+    "《四分律》"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "律宗",
+  "_source": "M2_batch3_dict_expansion"
+}

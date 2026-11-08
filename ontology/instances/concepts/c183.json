@@ -1,0 +1,18 @@
+{
+  "id": "c183",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "六相圆融",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "总相、别相、同相、异相、成相、坏相，六相互相融通，一法之中具六相",
+  "primary_sect": "华严宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "华严宗": "总相、别相、同相、异相、成相、坏相，六相互相融通，一法之中具六相"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

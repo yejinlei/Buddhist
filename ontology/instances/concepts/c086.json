@@ -1,0 +1,18 @@
+{
+  "id": "c086",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "菩萨",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "上求佛道、下化众生的大乘修行者",
+  "primary_sect": "大乘通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "大乘通途": "上求佛道、下化众生的大乘修行者"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

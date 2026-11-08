@@ -1,0 +1,21 @@
+{
+  "id": "s037",
+  "old_id": "s029",
+  "taisho_id": "T0239",
+  "category": "般若部",
+  "name": "能断金刚般若波罗蜜多经",
+  "volume_count": 0,
+  "volume": "T08",
+  "translator_brief": "玄奘",
+  "translations": [
+    {
+      "id": "s037_1",
+      "name": "能断金刚般若波罗蜜多经",
+      "translator": "玄奘"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "s077",
+  "old_id": "s079",
+  "taisho_id": "T1488",
+  "category": "律部",
+  "name": "四分律",
+  "volume_count": 0,
+  "volume": "T22",
+  "translator_brief": "佛陀耶舍、竺佛念",
+  "translations": [
+    {
+      "id": "s077_1",
+      "name": "四分律",
+      "translator": "佛陀耶舍、竺佛念"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

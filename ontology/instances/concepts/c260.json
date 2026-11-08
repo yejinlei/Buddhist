@@ -1,0 +1,16 @@
+{
+  "id": "c260",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "六道",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "六凡：天道、人道、阿修罗道、畜生道、饿鬼道、地狱道",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch2_dict_expansion"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "s047",
+  "old_id": "s041",
+  "taisho_id": "T0291",
+  "category": "华严部",
+  "name": "大方广如来秘密藏经",
+  "volume_count": 0,
+  "volume": "T11",
+  "translator_brief": "法护",
+  "translations": [
+    {
+      "id": "s047_1",
+      "name": "大方广如来秘密藏经",
+      "translator": "法护"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

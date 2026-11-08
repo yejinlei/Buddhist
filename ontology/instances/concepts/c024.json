@@ -1,0 +1,24 @@
+{
+  "id": "c024",
+  "layer": "L2",
+  "name": "四无量心",
+  "sanskrit": "Caturapramāṇa",
+  "alias": [
+    "四等心",
+    "四梵住"
+  ],
+  "definition": "四种广大的利他心：慈、悲、喜、舍",
+  "structure": [
+    "慈无量心：与乐",
+    "悲无量心：拔苦",
+    "喜无量心：见众生离苦得乐而生喜",
+    "舍无量心：怨亲平等，不执着"
+  ],
+  "sutra_source": [
+    "《大智度论》（t1509）"
+  ],
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}

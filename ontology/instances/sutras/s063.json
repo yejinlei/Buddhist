@@ -1,0 +1,21 @@
+{
+  "id": "s063",
+  "old_id": "s062",
+  "taisho_id": "T2007",
+  "category": "禅宗部",
+  "name": "南宗顿教最上大乘摩诃般若波罗蜜经六祖惠能大师于韶州大梵寺施法坛经(敦煌本)",
+  "volume_count": 0,
+  "volume": "T48",
+  "translator_brief": "法海记录",
+  "translations": [
+    {
+      "id": "s063_1",
+      "name": "南宗顿教最上大乘摩诃般若波罗蜜经六祖惠能大师于韶州大梵寺施法坛经(敦煌本)",
+      "translator": "法海记录"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

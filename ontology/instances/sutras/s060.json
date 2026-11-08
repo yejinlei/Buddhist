@@ -1,0 +1,25 @@
+{
+  "id": "s060",
+  "old_id": "s057",
+  "taisho_id": "T0416",
+  "category": "大集部",
+  "name": "药师琉璃光如来本愿功德经",
+  "volume_count": 0,
+  "volume": "T14",
+  "translator_brief": "玄奘",
+  "translations": [
+    {
+      "id": "s060_1",
+      "name": "药师琉璃光如来本愿功德经",
+      "translator": "玄奘"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js",
+  "alias": [
+    "药师本愿经"
+  ],
+  "dict_alias_sources": "佛学大词典参见链"
+}

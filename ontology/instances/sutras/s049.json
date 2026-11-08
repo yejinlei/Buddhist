@@ -1,0 +1,21 @@
+{
+  "id": "s049",
+  "old_id": "s043",
+  "taisho_id": "T0276",
+  "category": "华严部",
+  "name": "入楞伽经",
+  "volume_count": 0,
+  "volume": "T16",
+  "translator_brief": "菩提流支",
+  "translations": [
+    {
+      "id": "s049_1",
+      "name": "入楞伽经",
+      "translator": "菩提流支"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "c057",
+  "layer": "L2",
+  "layer_label": "L2 义理范畴层",
+  "name": "三十七道品",
+  "sanskrit": "",
+  "alias": [
+    "三十七分法",
+    "三十七品",
+    "三十七菩提分法"
+  ],
+  "definition": "通往涅槃的三十七种修行方法总称",
+  "primary_sect": "通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "通途": "通往涅槃的三十七种修行方法总称"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

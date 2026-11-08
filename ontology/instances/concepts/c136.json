@@ -1,0 +1,18 @@
+{
+  "id": "c136",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "四智",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "转前五识为成所作智，转第六识为妙观察智，转第七识为平等性智，转第八识为大圆镜智",
+  "primary_sect": "唯识宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "唯识宗": "转前五识为成所作智，转第六识为妙观察智，转第七识为平等性智，转第八识为大圆镜智"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

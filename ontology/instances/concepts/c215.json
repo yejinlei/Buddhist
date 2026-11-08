@@ -1,0 +1,18 @@
+{
+  "id": "c215",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "九品往生",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "根据修行深浅，往生分三辈九品",
+  "primary_sect": "净土宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "净土宗": "根据修行深浅，往生分三辈九品"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

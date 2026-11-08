@@ -1,0 +1,27 @@
+{
+  "id": "c026",
+  "layer": "L2",
+  "name": "四摄法",
+  "sanskrit": "Catasaḥsaṃgrahavastūni",
+  "alias": [
+    "四事摄法",
+    "四摄",
+    "四摄事",
+    "四集物"
+  ],
+  "definition": "菩萨摄受众生的四种方法",
+  "structure": [
+    "布施：先以财法施，令其生亲近心",
+    "爱语：以柔软语令其生欢喜心",
+    "利行：做利益众生的事",
+    "同事：与众生同事，随机化度"
+  ],
+  "sutra_source": [
+    "《般若经》（t0220）"
+  ],
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": "",
+  "dict_alias_sources": "佛学大词典参见链"
+}

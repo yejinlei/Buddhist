@@ -1,0 +1,18 @@
+{
+  "id": "c077",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "五果",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "异熟果、等流果、士用果、增上果、离系果",
+  "primary_sect": "说一切有部",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "说一切有部": "异熟果、等流果、士用果、增上果、离系果"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

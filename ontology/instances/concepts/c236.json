@@ -1,0 +1,16 @@
+{
+  "id": "c236",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "世间",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "时间和空间之谓，说明过去、现在、未来等三世的时间叫做世；指出东、西、南、北、上、下等十方的空间叫做间。所谓世间，也就是宇宙的意思。在佛教里，不光是指森罗万象的大地为世间，宇宙和人生，统名之为世间，众生所依靠的宇宙国土，叫做器世间，众生由惑造业所感的有生死存亡的色身叫做有情世间。",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch1_dict_expansion"
+}

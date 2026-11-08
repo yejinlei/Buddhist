@@ -1,0 +1,16 @@
+{
+  "id": "c226",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "世界",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "又名世间，即有情众生所住的国土。佛经以过去现在未来为世，东西南北上下为界，由此可见有情众生所居住的国土，不但有东西南北上下的分界，而且是有生灭的，不是永恒存在的东西。",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch1_dict_expansion"
+}

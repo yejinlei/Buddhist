@@ -1,0 +1,25 @@
+{
+  "id": "s035",
+  "old_id": "s027",
+  "taisho_id": "T0233",
+  "category": "般若部",
+  "name": "金刚般若波罗蜜经",
+  "volume_count": 0,
+  "volume": "T08",
+  "translator_brief": "真谛",
+  "translations": [
+    {
+      "id": "s035_1",
+      "name": "金刚般若波罗蜜经",
+      "translator": "真谛"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js",
+  "alias": [
+    "金刚般若经"
+  ],
+  "dict_alias_sources": "佛学大词典参见链"
+}

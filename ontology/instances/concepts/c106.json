@@ -1,0 +1,18 @@
+{
+  "id": "c106",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "四重二谛",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "吉藏将二谛分为四层，层层递进，最终归于绝待",
+  "primary_sect": "三论宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "三论宗": "吉藏将二谛分为四层，层层递进，最终归于绝待"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

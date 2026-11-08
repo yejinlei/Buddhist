@@ -1,0 +1,21 @@
+{
+  "id": "s052",
+  "old_id": "s047",
+  "taisho_id": "T0375",
+  "category": "涅槃部",
+  "name": "大般涅槃经(南本)",
+  "volume_count": 0,
+  "volume": "T12",
+  "translator_brief": "慧严、慧观、谢灵运",
+  "translations": [
+    {
+      "id": "s052_1",
+      "name": "大般涅槃经(南本)",
+      "translator": "慧严、慧观、谢灵运"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

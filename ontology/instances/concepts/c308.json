@@ -1,0 +1,16 @@
+{
+  "id": "c308",
+  "layer": "L3",
+  "layer_label": "L3 宗派/法门/修证层",
+  "name": "精进",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "善心所之一，于善恶品修断事中勇悍为性，对治懈怠满善为业",
+  "sutra_source": [
+    "《大智度论》"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "说一切有部",
+  "_source": "M2_batch3_dict_expansion"
+}

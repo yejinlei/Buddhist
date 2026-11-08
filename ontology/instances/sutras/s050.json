@@ -1,0 +1,21 @@
+{
+  "id": "s050",
+  "old_id": "s044",
+  "taisho_id": "T276a",
+  "category": "华严部",
+  "name": "大乘入楞伽经",
+  "volume_count": 0,
+  "volume": "T16",
+  "translator_brief": "实叉难陀",
+  "translations": [
+    {
+      "id": "s050_1",
+      "name": "大乘入楞伽经",
+      "translator": "实叉难陀"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

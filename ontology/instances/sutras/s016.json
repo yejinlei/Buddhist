@@ -1,0 +1,20 @@
+{
+  "id": "s016",
+  "taisho_id": "T0360",
+  "category": "净土部",
+  "name": "佛说观无量寿佛经",
+  "volume_count": 1,
+  "abbreviation": "观经",
+  "translations": [
+    {
+      "id": "t016_1",
+      "name": "佛说观无量寿佛经",
+      "translator": "畺良耶舍",
+      "translate_time": "刘宋元嘉年间",
+      "volume_count": 1,
+      "differences": "唯一汉译本"
+    }
+  ],
+  "core_content": "讲十六观法，定散二善，九品往生，是净土宗核心经典",
+  "translator_brief": "康僧铠"
+}

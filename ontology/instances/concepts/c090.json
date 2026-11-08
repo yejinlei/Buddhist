@@ -1,0 +1,18 @@
+{
+  "id": "c090",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "化城",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "法华经中比喻：佛陀以方便力设立三乘化城，引导众生趋向一乘",
+  "primary_sect": "法华宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "法华宗": "法华经中比喻：佛陀以方便力设立三乘化城，引导众生趋向一乘"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

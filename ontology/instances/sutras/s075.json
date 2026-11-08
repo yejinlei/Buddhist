@@ -1,0 +1,21 @@
+{
+  "id": "s075",
+  "old_id": "s077",
+  "taisho_id": "T0363",
+  "category": "密教部",
+  "name": "大毗卢遮那成佛神变加持经",
+  "volume_count": 0,
+  "volume": "T18",
+  "translator_brief": "善无畏、一行",
+  "translations": [
+    {
+      "id": "s075_1",
+      "name": "大毗卢遮那成佛神变加持经",
+      "translator": "善无畏、一行"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "c058",
+  "layer": "L2",
+  "layer_label": "L2 义理范畴层",
+  "name": "择灭",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "以智慧简择力断灭烦恼，证得涅槃",
+  "primary_sect": "说一切有部",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "说一切有部": "以智慧简择力断灭烦恼，证得涅槃"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

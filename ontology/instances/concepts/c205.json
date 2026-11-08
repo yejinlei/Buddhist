@@ -1,0 +1,18 @@
+{
+  "id": "c205",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "无住为本",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "于诸法上念念不住，心不执著",
+  "primary_sect": "禅宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "禅宗": "于诸法上念念不住，心不执著"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

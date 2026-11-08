@@ -1,0 +1,21 @@
+{
+  "id": "c114",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "二智",
+  "sanskrit": "",
+  "alias": [
+    "实智"
+  ],
+  "definition": "根本智与后得智：根本智证真如，后得智度众生",
+  "primary_sect": "三论宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "三论宗": "根本智与后得智：根本智证真如，后得智度众生"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

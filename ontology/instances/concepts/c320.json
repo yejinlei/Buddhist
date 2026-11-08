@@ -1,0 +1,17 @@
+{
+  "id": "c320",
+  "layer": "L2",
+  "layer_label": "义理层",
+  "name": "一真法界",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "华严宗所立，唯一真实绝对之法界，即真如法身",
+  "sutra_source": [
+    "《《华严经探玄记》》"
+  ],
+  "sect_interpretation": {
+    "华严宗": "依《华严经》立教，主张法界缘起、圆融无碍"
+  },
+  "modern_interpretation": "",
+  "primary_sect": "sec003"
+}

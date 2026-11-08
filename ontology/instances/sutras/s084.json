@@ -1,0 +1,21 @@
+{
+  "id": "s084",
+  "old_id": "s089",
+  "taisho_id": "T1428",
+  "category": "律部",
+  "name": "十诵律",
+  "volume_count": 0,
+  "volume": "T23",
+  "translator_brief": "弗若多罗、鸠摩罗什",
+  "translations": [
+    {
+      "id": "s084_1",
+      "name": "十诵律",
+      "translator": "弗若多罗、鸠摩罗什"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

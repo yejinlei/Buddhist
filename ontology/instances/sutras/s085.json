@@ -1,0 +1,21 @@
+{
+  "id": "s085",
+  "old_id": "s090",
+  "taisho_id": "T1421",
+  "category": "律部",
+  "name": "摩诃僧祇律",
+  "volume_count": 0,
+  "volume": "T22",
+  "translator_brief": "佛陀跋陀罗、法显",
+  "translations": [
+    {
+      "id": "s085_1",
+      "name": "摩诃僧祇律",
+      "translator": "佛陀跋陀罗、法显"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

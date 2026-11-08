@@ -1,0 +1,21 @@
+{
+  "id": "s028",
+  "old_id": "s020",
+  "taisho_id": "T0245",
+  "category": "般若部",
+  "name": "文殊师利所说摩诃般若波罗蜜经",
+  "volume_count": 0,
+  "volume": "T08",
+  "translator_brief": "曼陀罗仙",
+  "translations": [
+    {
+      "id": "s028_1",
+      "name": "文殊师利所说摩诃般若波罗蜜经",
+      "translator": "曼陀罗仙"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

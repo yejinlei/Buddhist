@@ -1,0 +1,21 @@
+{
+  "id": "c178",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "四法界",
+  "sanskrit": "",
+  "alias": [
+    "四种法界"
+  ],
+  "definition": "事法界、理法界、理事无碍法界、事事无碍法界",
+  "primary_sect": "华严宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "华严宗": "事法界、理法界、理事无碍法界、事事无碍法界"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

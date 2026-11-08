@@ -1,0 +1,18 @@
+{
+  "id": "c083",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "四向四果",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "须陀洹向/果、斯陀含向/果、阿那含向/果、阿罗汉向/果",
+  "primary_sect": "声闻乘",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "声闻乘": "须陀洹向/果、斯陀含向/果、阿那含向/果、阿罗汉向/果"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

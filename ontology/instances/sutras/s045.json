@@ -1,0 +1,21 @@
+{
+  "id": "s045",
+  "old_id": "s039",
+  "taisho_id": "T0265",
+  "category": "华严部",
+  "name": "维摩诘经",
+  "volume_count": 0,
+  "volume": "T14",
+  "translator_brief": "支谦",
+  "translations": [
+    {
+      "id": "s045_1",
+      "name": "维摩诘经",
+      "translator": "支谦"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

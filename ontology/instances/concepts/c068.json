@@ -1,0 +1,18 @@
+{
+  "id": "c068",
+  "layer": "L2",
+  "layer_label": "L2 义理范畴层",
+  "name": "西方极乐世界",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "阿弥陀佛所摄受的净土，念佛众生往生之处",
+  "primary_sect": "净土宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "净土宗": "阿弥陀佛所摄受的净土，念佛众生往生之处"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "s032",
+  "old_id": "s024",
+  "taisho_id": "T0249",
+  "category": "般若部",
+  "name": "般若波罗蜜多心经",
+  "volume_count": 0,
+  "volume": "T08",
+  "translator_brief": "法成",
+  "translations": [
+    {
+      "id": "s032_1",
+      "name": "般若波罗蜜多心经",
+      "translator": "法成"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

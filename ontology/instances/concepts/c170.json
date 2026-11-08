@@ -1,0 +1,18 @@
+{
+  "id": "c170",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "六即佛",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "理即佛、名字即佛、观行即佛、相似即佛、分证即佛、究竟即佛，修行成佛的六个阶位",
+  "primary_sect": "天台宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "天台宗": "理即佛、名字即佛、观行即佛、相似即佛、分证即佛、究竟即佛，修行成佛的六个阶位"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

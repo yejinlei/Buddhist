@@ -1,0 +1,19 @@
+{
+  "id": "s096",
+  "taisho_id": "",
+  "category": "密教部",
+  "name": "大日经",
+  "volume_count": 0,
+  "translator_brief": "（待考）",
+  "translations": [
+    {
+      "id": "s096_1",
+      "name": "大日经",
+      "translator": "（待考）"
+    }
+  ],
+  "core_content": "（待考，从旧拼音id补）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_pinyin_alias"
+}

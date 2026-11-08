@@ -1,0 +1,21 @@
+{
+  "id": "s078",
+  "old_id": "s082",
+  "taisho_id": "T0415",
+  "category": "净土部",
+  "name": "佛说弥勒上生经",
+  "volume_count": 0,
+  "volume": "T14",
+  "translator_brief": "沮渠京声",
+  "translations": [
+    {
+      "id": "s078_1",
+      "name": "佛说弥勒上生经",
+      "translator": "沮渠京声"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

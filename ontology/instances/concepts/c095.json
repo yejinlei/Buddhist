@@ -1,0 +1,18 @@
+{
+  "id": "c095",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "四谛十六行相",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "观苦谛四行相：苦、空、无常、无我；集谛四行相：因、集、生、缘；灭谛四行相：灭、静、妙、离；道谛四行相：道、如、行、出",
+  "primary_sect": "部派佛教",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "部派佛教": "观苦谛四行相：苦、空、无常、无我；集谛四行相：因、集、生、缘；灭谛四行相：灭、静、妙、离；道谛四行相：道、如、行、出"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

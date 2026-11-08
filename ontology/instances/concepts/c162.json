@@ -1,0 +1,18 @@
+{
+  "id": "c162",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "化法四教",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "藏、通、别、圆四教，根据教法内容深浅划分",
+  "primary_sect": "天台宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "天台宗": "藏、通、别、圆四教，根据教法内容深浅划分"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

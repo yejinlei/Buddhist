@@ -1,0 +1,16 @@
+{
+  "id": "c278",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "国土",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "一切有情的住处，有净土和秽土的分别。",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch2_dict_expansion"
+}

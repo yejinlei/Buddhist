@@ -1,0 +1,18 @@
+{
+  "id": "c199",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "教外别传",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "禅宗自称是佛陀在经教之外单独传付的心印法门",
+  "primary_sect": "禅宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "禅宗": "禅宗自称是佛陀在经教之外单独传付的心印法门"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

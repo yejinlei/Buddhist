@@ -1,0 +1,26 @@
+{
+  "id": "c031",
+  "layer": "L2",
+  "name": "八不中道",
+  "sanskrit": "",
+  "alias": [
+    "八不缘起"
+  ],
+  "definition": "中观宗核心义理，用八不否定八种边见，显中道实相",
+  "structure": [
+    "不生亦不灭",
+    "不常亦不断",
+    "不一亦不异",
+    "不来亦不出"
+  ],
+  "sutra_source": [
+    "《中论·观因缘品》（t1564）"
+  ],
+  "sect_view": {
+    "三论宗": "八不中道即是诸法实相"
+  },
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}

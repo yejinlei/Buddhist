@@ -1,0 +1,26 @@
+{
+  "id": "c033",
+  "layer": "L2",
+  "name": "二谛",
+  "sanskrit": "Satya-dvaya",
+  "alias": [
+    "二谛"
+  ],
+  "definition": "胜义谛和世俗谛，佛教的两种真理观",
+  "structure": [
+    "世俗谛：世间共许的真理，如因果、善恶",
+    "胜义谛：诸法实相，离言说分别"
+  ],
+  "sutra_source": [
+    "《中论》（t1564）",
+    "《成实论》（t1646）"
+  ],
+  "sect_view": {
+    "中观宗": "二谛是言教方便，为令众生入实相",
+    "天台宗": "三谛圆融"
+  },
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}

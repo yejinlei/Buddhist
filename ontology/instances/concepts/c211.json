@@ -1,0 +1,18 @@
+{
+  "id": "c211",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "平常心是道",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "马祖道一提出：日常穿衣吃饭、运水搬柴皆是道",
+  "primary_sect": "禅宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "禅宗": "马祖道一提出：日常穿衣吃饭、运水搬柴皆是道"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

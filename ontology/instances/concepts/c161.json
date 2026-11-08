@@ -1,0 +1,18 @@
+{
+  "id": "c161",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "五时八教",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "天台宗判教体系：华严时、阿含时、方等时、般若时、法华涅槃时；化仪四教、化法四教",
+  "primary_sect": "天台宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "天台宗": "天台宗判教体系：华严时、阿含时、方等时、般若时、法华涅槃时；化仪四教、化法四教"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

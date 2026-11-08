@@ -1,0 +1,16 @@
+{
+  "id": "c303",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "六根",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "眼根、耳根、鼻根、舌根、身根、意根，六种感觉和思维认识器官",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "说一切有部",
+  "_source": "M2_batch3_dict_expansion"
+}

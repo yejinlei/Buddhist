@@ -1,0 +1,21 @@
+{
+  "id": "s082",
+  "old_id": "s087",
+  "taisho_id": "T0666",
+  "category": "律部",
+  "name": "优婆夷戒经",
+  "volume_count": 0,
+  "volume": "T24",
+  "translator_brief": "失译",
+  "translations": [
+    {
+      "id": "s082_1",
+      "name": "优婆夷戒经",
+      "translator": "失译"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

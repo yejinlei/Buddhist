@@ -1,0 +1,18 @@
+{
+  "id": "c122",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "如来藏缘起",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "一切法依如来藏而缘起",
+  "primary_sect": "如来藏系",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "如来藏系": "一切法依如来藏而缘起"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

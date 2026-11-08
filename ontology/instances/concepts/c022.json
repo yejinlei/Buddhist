@@ -1,0 +1,25 @@
+{
+  "id": "c022",
+  "layer": "L2",
+  "name": "三法印",
+  "sanskrit": "",
+  "alias": [
+    "三法印"
+  ],
+  "definition": "鉴别是否是佛法的三个标准：诸行无常、诸法无我、涅槃寂静",
+  "structure": [
+    "诸行无常：一切有为法都是生灭变化的",
+    "诸法无我：一切法没有独立不变的自性",
+    "涅槃寂静：涅槃是不生不灭的寂静境界"
+  ],
+  "sutra_source": [
+    "《阿含经》（t0001）"
+  ],
+  "sect_view": {
+    "大乘": "加诸法实相为一实相印"
+  },
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}

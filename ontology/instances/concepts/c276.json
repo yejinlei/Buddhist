@@ -1,0 +1,17 @@
+{
+  "id": "c276",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "阿赖耶",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "心识名，八识中的第八识，华译为藏识，藏字有三义，即能藏、所藏、执藏。能藏谓阿赖耶识能含藏一切法的善恶种子；所藏谓阿赖耶识为前七识熏习的杂染法所覆藏；执藏谓阿赖耶识为第七识所执为自内我。又译作无没，即含藏诸法种子而不没失。又虽在生死而不没失，故名无没。",
+  "sutra_source": [
+    "《成唯识论》（t1585）",
+    "《解深密经》（t0676）"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch2_dict_expansion"
+}

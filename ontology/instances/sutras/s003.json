@@ -1,0 +1,25 @@
+{
+  "id": "s003",
+  "taisho_id": "T0099",
+  "category": "阿含部",
+  "name": "杂阿含经",
+  "volume_count": 50,
+  "translations": [
+    {
+      "id": "t003_1",
+      "name": "杂阿含经",
+      "translator": "求那跋陀罗",
+      "translate_time": "刘宋元嘉二十年（443年）",
+      "translate_place": "建康",
+      "volume_count": 50,
+      "text_length": "约50万字",
+      "differences": "收1362经，按五阴、六入、杂因、道品分类"
+    }
+  ],
+  "core_content": "最早结集的经典，包含最原始的佛教教义，是研究原始佛教的核心资料",
+  "translator_brief": "求那跋陀罗",
+  "alias": [
+    "杂阿鋡经"
+  ],
+  "dict_alias_sources": "佛学大词典参见链"
+}

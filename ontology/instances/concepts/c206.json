@@ -1,0 +1,18 @@
+{
+  "id": "c206",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "顿悟",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "禅宗南宗主张：无需渐次修行，当下明心见性，豁然开悟",
+  "primary_sect": "禅宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "禅宗": "禅宗南宗主张：无需渐次修行，当下明心见性，豁然开悟"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

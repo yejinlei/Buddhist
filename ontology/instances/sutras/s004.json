@@ -1,0 +1,26 @@
+{
+  "id": "s004",
+  "taisho_id": "T0125",
+  "category": "阿含部",
+  "name": "增一阿含经",
+  "volume_count": 51,
+  "translations": [
+    {
+      "id": "t004_1",
+      "name": "增一阿含经",
+      "translator": "瞿昙僧伽提婆",
+      "translate_time": "东晋隆安元年（397年）",
+      "translate_place": "洛阳",
+      "volume_count": 51,
+      "text_length": "约45万字",
+      "differences": "按法数从一到十一递增排列，共收472经，包含大乘萌芽思想"
+    }
+  ],
+  "core_content": "按法数编排，包含众多因果业报、菩萨行的内容，有明显的大乘倾向",
+  "translator_brief": "瞿昙僧伽提婆",
+  "alias": [
+    "增一",
+    "增壹阿含经"
+  ],
+  "dict_alias_sources": "佛学大词典参见链"
+}

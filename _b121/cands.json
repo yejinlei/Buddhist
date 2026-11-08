@@ -1,0 +1,110 @@
+[
+ {
+  "id": "t0012",
+  "segs": 103,
+  "chars": 10753,
+  "title": "大集法門經",
+  "translator": "宋 施護譯",
+  "vol": "T01",
+  "cov": 1.0
+ },
+ {
+  "id": "t0314",
+  "segs": 107,
+  "chars": 10943,
+  "title": "佛說大乘十法經",
+  "translator": "梁 僧伽婆羅譯",
+  "vol": "T11",
+  "cov": 1.0
+ },
+ {
+  "id": "t0459",
+  "segs": 101,
+  "chars": 11025,
+  "title": "佛說文殊悔過經",
+  "translator": "西晉 竺法護譯",
+  "vol": "T14",
+  "cov": 1.0
+ },
+ {
+  "id": "t0458",
+  "segs": 112,
+  "chars": 11258,
+  "title": "文殊師利問菩薩署經",
+  "translator": "後漢 支婁迦讖譯",
+  "vol": "T14",
+  "cov": 1.0
+ },
+ {
+  "id": "t0479",
+  "segs": 116,
+  "chars": 11449,
+  "title": "善思童子經",
+  "translator": "隋 闍那崛多譯",
+  "vol": "T14",
+  "cov": 1.0
+ },
+ {
+  "id": "t0717",
+  "segs": 109,
+  "chars": 11071,
+  "title": "分別緣起初勝法門經",
+  "translator": "唐 玄奘譯",
+  "vol": "T16",
+  "cov": 1.0
+ },
+ {
+  "id": "t0749",
+  "segs": 112,
+  "chars": 11481,
+  "title": "佛說因緣僧護經",
+  "translator": "失譯",
+  "vol": "T17",
+  "cov": 1.0
+ },
+ {
+  "id": "t0763",
+  "segs": 106,
+  "chars": 10868,
+  "title": "佛說法乘義決定經",
+  "translator": "宋 金總持等譯",
+  "vol": "T17",
+  "cov": 1.0
+ },
+ {
+  "id": "t1836",
+  "segs": 111,
+  "chars": 11614,
+  "title": "大乘百法明門論解",
+  "translator": "唐 窺基註解．明 普泰增修",
+  "vol": "T44",
+  "cov": 1.0
+ },
+ {
+  "id": "t1922",
+  "segs": 105,
+  "chars": 11063,
+  "title": "釋摩訶般若波羅蜜經覺意三昧",
+  "translator": "隋 智顗說",
+  "vol": "T46",
+  "cov": 1.0
+ },
+ {
+  "id": "t1964",
+  "segs": 109,
+  "chars": 10833,
+  "title": "西方要決釋疑通規",
+  "translator": "唐 基撰",
+  "vol": "T47",
+  "cov": 1.0
+ },
+ {
+  "id": "t2021",
+  "segs": 114,
+  "chars": 10762,
+  "title": "禪宗決疑集",
+  "translator": "元 智徹述",
+  "vol": "T48",
+  "cov": 1.0
+ }
+]

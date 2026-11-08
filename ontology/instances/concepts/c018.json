@@ -1,0 +1,25 @@
+{
+  "id": "c018",
+  "layer": "L2",
+  "name": "十八界",
+  "sanskrit": "Aṣṭādaśa dhātavaḥ",
+  "alias": [
+    "十八持",
+    "十八界"
+  ],
+  "definition": "三科之一，六根六境六识合为十八界，是对认识活动的完整分析",
+  "structure": [
+    "六根：眼耳鼻舌身意",
+    "六境：色声香味触法",
+    "六识：眼识耳识鼻识舌识身识意识"
+  ],
+  "sutra_source": [
+    "《阿含经》（t0001）",
+    "《俱舍论》（t1558）"
+  ],
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": "",
+  "dict_alias_sources": "佛学大词典参见链"
+}

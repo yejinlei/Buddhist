@@ -1,0 +1,17 @@
+{
+  "id": "c317",
+  "layer": "L2",
+  "layer_label": "义理层",
+  "name": "天台宗",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "陈隋智𫖮创立，以《法华经》为正依，明五时八教、三谛圆融、一心三观，祖庭天台山国清寺",
+  "sutra_source": [
+    "《《摩诃止观》《法华玄义》》"
+  ],
+  "sect_interpretation": {
+    "天台宗": "依《法华经》立教，主张三谛圆融、一心三观"
+  },
+  "modern_interpretation": "",
+  "primary_sect": "sec002"
+}

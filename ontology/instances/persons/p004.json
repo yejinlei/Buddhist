@@ -1,0 +1,31 @@
+{
+  "id": "p004",
+  "category": "佛陀",
+  "name": "卢舍那佛",
+  "sanskrit_name": "Locanabuddha",
+  "alias": [
+    "卢舍那",
+    "报身佛",
+    "毗卢遮那佛"
+  ],
+  "era": "永恒",
+  "place": "莲华藏世界",
+  "core_teachings": [
+    "华严圆教"
+  ],
+  "sutra_records": [
+    "《华严经》（t0278）",
+    "《梵网经》（t1484）"
+  ],
+  "symbol": [
+    "坐千叶莲华台",
+    "千释迦化佛",
+    "报身相好"
+  ],
+  "stories": [
+    "《华严经》中说卢舍那佛成道，法身遍满法界"
+  ],
+  "position": "华严宗主佛，释迦牟尼佛的报身",
+  "old_class": "buddha",
+  "dict_alias_sources": "佛学大词典参见链"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "c071",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "三科",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "五蕴、十二处、十八界，是部派佛教对一切法的分类",
+  "primary_sect": "部派佛教",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "部派佛教": "五蕴、十二处、十八界，是部派佛教对一切法的分类"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

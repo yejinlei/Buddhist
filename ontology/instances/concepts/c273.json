@@ -1,0 +1,16 @@
+{
+  "id": "c273",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "供养",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "奉养的意思，对上含有亲近、奉事、尊敬的意思，对下含有同情、怜措、爱护的意思。",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch2_dict_expansion"
+}

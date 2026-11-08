@@ -1,0 +1,29 @@
+{
+  "id": "s013",
+  "taisho_id": "T0945",
+  "category": "经集部",
+  "name": "大佛顶如来密因修证了义诸菩萨万行首楞严经",
+  "volume_count": 10,
+  "abbreviation": "楞严经",
+  "translations": [
+    {
+      "id": "t013_1",
+      "name": "大佛顶首楞严经",
+      "translator": "般剌蜜帝",
+      "translate_time": "唐神龙元年（705年）",
+      "translate_place": "广州制止寺",
+      "volume_count": 10,
+      "text_length": "约13万字",
+      "differences": "唯一汉译本，房融笔受，文字极其优美",
+      "open_line": "如是我闻。一时，佛在室罗筏城祇桓精舍，与大比丘众千二百五十人俱，皆是无漏大阿罗汉。"
+    }
+  ],
+  "core_content": "论述“根尘同源、缚脱无二”，详细讲解首楞严大定，二十五圆通，七处征心，十番显见，五十阴魔，是开慧的楞严，对中国佛教各宗都影响极大",
+  "core_concept": [
+    "首楞严大定",
+    "如来藏",
+    "根尘同源",
+    "五十阴魔"
+  ],
+  "translator_brief": "般剌蜜帝"
+}

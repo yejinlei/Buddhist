@@ -1,0 +1,21 @@
+{
+  "id": "s071",
+  "old_id": "s072",
+  "taisho_id": "T1816",
+  "category": "论部",
+  "name": "华严经探玄记",
+  "volume_count": 0,
+  "volume": "T35",
+  "translator_brief": "法藏",
+  "translations": [
+    {
+      "id": "s071_1",
+      "name": "华严经探玄记",
+      "translator": "法藏"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

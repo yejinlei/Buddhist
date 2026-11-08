@@ -1,0 +1,18 @@
+{
+  "id": "c103",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "缘起性空",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "一切法皆由因缘生起，故无自性，无自性即是空",
+  "primary_sect": "三论宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "三论宗": "一切法皆由因缘生起，故无自性，无自性即是空"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

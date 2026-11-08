@@ -1,0 +1,33 @@
+{
+  "id": "s001",
+  "taisho_id": "T0001",
+  "category": "阿含部",
+  "name": "长阿含经",
+  "volume_count": 22,
+  "translations": [
+    {
+      "id": "t001_1",
+      "name": "长阿含经",
+      "translator": "佛陀耶舍、竺佛念",
+      "translate_time": "后秦弘始十五年（413年）",
+      "translate_place": "长安",
+      "volume_count": 22,
+      "text_length": "约30万字",
+      "differences": "四分四诵，共收30经"
+    }
+  ],
+  "core_content": "四部阿含之首，包含《大本经》《游行经》等，记述佛陀生平事迹及早期教义，破斥外道九十六种邪见",
+  "core_concept": [
+    "四圣谛",
+    "十二缘起",
+    "轮回",
+    "无我"
+  ],
+  "translator_brief": "佛陀耶舍、竺佛念",
+  "alias": [
+    "长鋡",
+    "长阿含",
+    "长阿鋡"
+  ],
+  "dict_alias_sources": "佛学大词典参见链"
+}

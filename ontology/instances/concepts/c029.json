@@ -1,0 +1,23 @@
+{
+  "id": "c029",
+  "layer": "L2",
+  "name": "三无性",
+  "sanskrit": "Tri-niḥsvabhāvatā",
+  "alias": [
+    "三无自性"
+  ],
+  "definition": "唯识宗所说的三种无自性，对应三自性",
+  "structure": [
+    "相无性：遍计所执相无自性",
+    "生无性：依他起相无自然生自性",
+    "胜义无性：圆成实相无我法我性"
+  ],
+  "sutra_source": [
+    "《解深密经》（t0676）",
+    "《成唯识论》（t1585）"
+  ],
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}

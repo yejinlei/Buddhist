@@ -1,0 +1,18 @@
+{
+  "id": "c074",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "三世实有",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "说一切有部主张：过去、现在、未来三世法体真实存在",
+  "primary_sect": "说一切有部",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "说一切有部": "说一切有部主张：过去、现在、未来三世法体真实存在"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

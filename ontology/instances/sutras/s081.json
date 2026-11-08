@@ -1,0 +1,21 @@
+{
+  "id": "s081",
+  "old_id": "s086",
+  "taisho_id": "T0685",
+  "category": "经集部",
+  "name": "佛说十善业道经",
+  "volume_count": 0,
+  "volume": "T15",
+  "translator_brief": "实叉难陀",
+  "translations": [
+    {
+      "id": "s081_1",
+      "name": "佛说十善业道经",
+      "translator": "实叉难陀"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

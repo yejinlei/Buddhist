@@ -1,0 +1,21 @@
+{
+  "id": "s040",
+  "old_id": "s033",
+  "taisho_id": "T0264",
+  "category": "法华部",
+  "name": "添品妙法莲华经",
+  "volume_count": 0,
+  "volume": "T09",
+  "translator_brief": "阇那崛多、达摩笈多",
+  "translations": [
+    {
+      "id": "s040_1",
+      "name": "添品妙法莲华经",
+      "translator": "阇那崛多、达摩笈多"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

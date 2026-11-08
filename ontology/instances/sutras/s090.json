@@ -1,0 +1,21 @@
+{
+  "id": "s090",
+  "old_id": "s095",
+  "taisho_id": "T0428",
+  "category": "密教部",
+  "name": "佛说大乘圣无量寿决定光明王如来陀罗尼经",
+  "volume_count": 0,
+  "volume": "T19",
+  "translator_brief": "法天",
+  "translations": [
+    {
+      "id": "s090_1",
+      "name": "佛说大乘圣无量寿决定光明王如来陀罗尼经",
+      "translator": "法天"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

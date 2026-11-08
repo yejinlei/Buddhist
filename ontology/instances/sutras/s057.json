@@ -1,0 +1,21 @@
+{
+  "id": "s057",
+  "old_id": "s054",
+  "taisho_id": "T0665",
+  "category": "宝积部",
+  "name": "优婆塞戒经",
+  "volume_count": 0,
+  "volume": "T24",
+  "translator_brief": "昙无谶",
+  "translations": [
+    {
+      "id": "s057_1",
+      "name": "优婆塞戒经",
+      "translator": "昙无谶"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

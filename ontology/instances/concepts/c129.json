@@ -1,0 +1,22 @@
+{
+  "id": "c129",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "依他起性",
+  "sanskrit": "",
+  "alias": [
+    "三性",
+    "遍依圆三性"
+  ],
+  "definition": "一切法依因缘而生起，如绳依麻等缘而有",
+  "primary_sect": "唯识宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "唯识宗": "一切法依因缘而生起，如绳依麻等缘而有"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

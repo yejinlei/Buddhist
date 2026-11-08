@@ -1,0 +1,18 @@
+{
+  "id": "c172",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "止观",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "天台宗核心修行方法：止是定，观是慧，止观双运",
+  "primary_sect": "天台宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "天台宗": "天台宗核心修行方法：止是定，观是慧，止观双运"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

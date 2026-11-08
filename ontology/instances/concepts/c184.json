@@ -1,0 +1,18 @@
+{
+  "id": "c184",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "十玄门",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "华严宗事事无碍的十种玄妙门径，一即一切、一切即一",
+  "primary_sect": "华严宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "华严宗": "华严宗事事无碍的十种玄妙门径，一即一切、一切即一"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

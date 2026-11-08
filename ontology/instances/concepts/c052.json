@@ -1,0 +1,18 @@
+{
+  "id": "c052",
+  "layer": "L2",
+  "layer_label": "L2 义理范畴层",
+  "name": "五戒",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "在家信众应持的五条根本戒律：不杀生、不偷盗、不邪淫、不妄语、不饮酒",
+  "primary_sect": "通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "通途": "在家信众应持的五条根本戒律：不杀生、不偷盗、不邪淫、不妄语、不饮酒"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

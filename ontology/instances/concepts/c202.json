@@ -1,0 +1,18 @@
+{
+  "id": "c202",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "本来面目",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "众生本具的自性真心，未被烦恼污染的本来状态",
+  "primary_sect": "禅宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "禅宗": "众生本具的自性真心，未被烦恼污染的本来状态"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

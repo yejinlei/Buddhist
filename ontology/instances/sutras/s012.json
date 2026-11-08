@@ -1,0 +1,42 @@
+{
+  "id": "s012",
+  "taisho_id": "T0670",
+  "category": "经集部",
+  "name": "楞伽阿跋多罗宝经",
+  "volume_count": 4,
+  "abbreviation": "楞伽经",
+  "translations": [
+    {
+      "id": "t012_1",
+      "name": "楞伽阿跋多罗宝经",
+      "translator": "求那跋陀罗",
+      "translate_time": "刘宋元嘉二十年（443年）",
+      "volume_count": 4,
+      "differences": "四卷本，禅宗初祖达磨印可的四卷楞伽",
+      "open_line": "如是我闻。一时，佛住南海滨楞伽山顶，种种宝华以为庄严。"
+    },
+    {
+      "id": "t012_2",
+      "name": "入楞伽经",
+      "translator": "菩提流支",
+      "translate_time": "北魏延昌二年（513年）",
+      "volume_count": 10,
+      "differences": "十卷本"
+    },
+    {
+      "id": "t012_3",
+      "name": "大乘入楞伽经",
+      "translator": "实叉难陀",
+      "translate_time": "唐久视元年（700年）",
+      "volume_count": 7,
+      "differences": "七卷本，文义流畅"
+    }
+  ],
+  "core_content": "融唯识、如来藏、禅宗思想于一体，讲“五法三自性八识二无我”，是禅宗早期印心经典，“佛语心为宗，无门为法门”",
+  "core_concept": [
+    "如来藏",
+    "阿赖耶识",
+    "唯识无境",
+    "禅"
+  ]
+}

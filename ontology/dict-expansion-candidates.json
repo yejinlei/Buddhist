@@ -1,0 +1,1645 @@
+{
+  "summary": {
+    "dict_total": 7190,
+    "already_matched": 424,
+    "unmatched_total": 6766,
+    "unmatched_categories": 21,
+    "high_value_candidates_score_gt_20": 5854,
+    "note": "high_value = score>20（排除参见条目、单字词、低频梵语音译）"
+  },
+  "by_category": {
+    "名相术语": {
+      "total_unmatched": 4596,
+      "high_value": 4596,
+      "top5": [
+        "烦恼",
+        "智慧",
+        "诸法",
+        "生死",
+        "世界"
+      ]
+    },
+    "人物圣众": {
+      "total_unmatched": 328,
+      "high_value": 328,
+      "top5": [
+        "佛法",
+        "佛教",
+        "成佛",
+        "诸佛",
+        "罗汉"
+      ]
+    },
+    "经论典籍": {
+      "total_unmatched": 175,
+      "high_value": 175,
+      "top5": [
+        "法华经",
+        "华严经",
+        "佛经",
+        "无量寿经",
+        "涅槃经"
+      ]
+    },
+    "基础教义": {
+      "total_unmatched": 124,
+      "high_value": 124,
+      "top5": [
+        "禅定",
+        "声闻",
+        "般若",
+        "方便",
+        "六道"
+      ]
+    },
+    "佛教常识": {
+      "total_unmatched": 115,
+      "high_value": 113,
+      "top5": [
+        "寺院",
+        "南山",
+        "鹫山",
+        "铁围山",
+        "寺庙"
+      ]
+    },
+    "法数名数": {
+      "total_unmatched": 73,
+      "high_value": 73,
+      "top5": [
+        "十二",
+        "十六",
+        "二十",
+        "十住",
+        "四十八"
+      ]
+    },
+    "阿毗达磨": {
+      "total_unmatched": 65,
+      "high_value": 65,
+      "top5": [
+        "无明",
+        "虚空",
+        "六根",
+        "精进",
+        "散乱"
+      ]
+    },
+    "禅宗": {
+      "total_unmatched": 63,
+      "high_value": 63,
+      "top5": [
+        "六祖",
+        "曹洞宗",
+        "临济宗",
+        "云门宗",
+        "沩仰宗"
+      ]
+    },
+    "修行法门": {
+      "total_unmatched": 44,
+      "high_value": 44,
+      "top5": [
+        "十六观",
+        "称名念佛",
+        "十念",
+        "九想",
+        "十六特胜"
+      ]
+    },
+    "净土宗": {
+      "total_unmatched": 41,
+      "high_value": 41,
+      "top5": [
+        "净土",
+        "极乐",
+        "本愿",
+        "称名",
+        "净土门"
+      ]
+    },
+    "汉传宗派": {
+      "total_unmatched": 36,
+      "high_value": 36,
+      "top5": [
+        "八宗",
+        "南宗",
+        "俱舍宗",
+        "七宗",
+        "五宗"
+      ]
+    },
+    "戒律": {
+      "total_unmatched": 32,
+      "high_value": 32,
+      "top5": [
+        "具足戒",
+        "比丘尼",
+        "十恶",
+        "律藏",
+        "四波罗夷"
+      ]
+    },
+    "大乘义理": {
+      "total_unmatched": 29,
+      "high_value": 29,
+      "top5": [
+        "分别",
+        "不二",
+        "自性清净",
+        "正智",
+        "一真法界"
+      ]
+    },
+    "护法诸天": {
+      "total_unmatched": 27,
+      "high_value": 27,
+      "top5": [
+        "帝释天",
+        "紧那罗",
+        "韦驮天",
+        "干闼婆",
+        "仁王"
+      ]
+    },
+    "天台宗": {
+      "total_unmatched": 25,
+      "high_value": 25,
+      "top5": [
+        "五时",
+        "别教",
+        "六即",
+        "藏教",
+        "华严时"
+      ]
+    },
+    "唯识宗": {
+      "total_unmatched": 25,
+      "high_value": 25,
+      "top5": [
+        "意识",
+        "本有",
+        "前五识",
+        "熏习",
+        "陈那"
+      ]
+    },
+    "密宗": {
+      "total_unmatched": 24,
+      "high_value": 24,
+      "top5": [
+        "本尊",
+        "格鲁派",
+        "藏传佛教",
+        "咒语",
+        "不动明王"
+      ]
+    },
+    "华严宗": {
+      "total_unmatched": 15,
+      "high_value": 15,
+      "top5": [
+        "小乘教",
+        "十宗",
+        "大乘始教",
+        "异相",
+        "一切即一"
+      ]
+    },
+    "宇宙观": {
+      "total_unmatched": 11,
+      "high_value": 11,
+      "top5": [
+        "须弥山",
+        "化生",
+        "末法时期",
+        "成劫",
+        "末法万年"
+      ]
+    },
+    "仪轨": {
+      "total_unmatched": 8,
+      "high_value": 8,
+      "top5": [
+        "礼拜",
+        "佛舍利",
+        "盂兰盆会",
+        "剃度",
+        "右绕三匝"
+      ]
+    },
+    "参见": {
+      "total_unmatched": 910,
+      "high_value": 2,
+      "top5": [
+        "华严",
+        "阿弥陀",
+        "四禅",
+        "须弥",
+        "八正"
+      ]
+    }
+  },
+  "top200_candidates": [
+    {
+      "word": "烦恼",
+      "definition": "烦是扰义，恼是乱义，能扰乱众生身心，令使心烦意乱的见思惑，叫做烦恼。",
+      "ref_count": 240,
+      "score": 550,
+      "category": "名相术语"
+    },
+    {
+      "word": "十二",
+      "definition": "十二因缘、十二入、十二分教、十二部经、十二头陀行、十二大愿",
+      "ref_count": 167,
+      "score": 439,
+      "category": "法数名数"
+    },
+    {
+      "word": "智慧",
+      "definition": "智与慧。明白一切事相叫做智；了解一切事理叫做慧。",
+      "ref_count": 149,
+      "score": 368,
+      "category": "名相术语"
+    },
+    {
+      "word": "诸法",
+      "definition": "指森罗万象的一切事物。",
+      "ref_count": 148,
+      "score": 366,
+      "category": "名相术语"
+    },
+    {
+      "word": "生死",
+      "definition": "谓一切众生因惑业所招，生了又死，死了又生。有分段生死与变易生死的分别。见二种生死条。",
+      "ref_count": 145,
+      "score": 360,
+      "category": "名相术语"
+    },
+    {
+      "word": "世界",
+      "definition": "又名世间，即有情众生所住的国土。佛经以过去现在未来为世，东西南北上下为界，由此可见有情众生所居住的国土，不但有东西南北上下的分界，而且是有生灭的，不是永恒存在的东西。",
+      "ref_count": 143,
+      "score": 356,
+      "category": "名相术语"
+    },
+    {
+      "word": "大乘",
+      "definition": "梵语摩诃衍，华译为大乘，即菩萨的法门，以救世利他为宗旨，最高的果位是佛果。大乘从凡夫修到成佛，立五十二个阶位，即十信、十住、十行、十回向、十地、等觉、妙觉。十信是由十住中的第一发心住内，分开另立的，若将其缩入发心住内，则只有四十二位。其中十",
+      "ref_count": 138,
+      "score": 346,
+      "category": "名相术语"
+    },
+    {
+      "word": "修行",
+      "definition": "依佛法的路线去行持实践。",
+      "ref_count": 127,
+      "score": 324,
+      "category": "名相术语"
+    },
+    {
+      "word": "小乘",
+      "definition": "声闻缘觉的法门，以修身自利为宗旨，其最高果位为阿罗汉果及辟支佛果。声闻乘修四谛法，自凡夫至阿罗汉，论时间，速者三生，迟者六十劫，其修行的方便有七，得果有四。见声闻乘条。缘觉乘修十二因缘，自凡夫至辟支佛，论时间，速者四生，迟者一百劫，其修行重",
+      "ref_count": 125,
+      "score": 320,
+      "category": "名相术语"
+    },
+    {
+      "word": "比丘",
+      "definition": "出家受具足戒者的通称，男的叫比丘，女的叫比丘尼。比丘含有三义，即一、乞士，就是一面向社会群众乞化饮食，以资维持色身，一面又向慈悲的佛陀乞化法食，以资长养法身。二、破恶，此恶是指心中的种种烦恼而言，出家人修戒定慧三学，扑灭贪嗔痴等烦恼，以便达",
+      "ref_count": 122,
+      "score": 314,
+      "category": "名相术语"
+    },
+    {
+      "word": "清净",
+      "definition": "１．离恶行的过失，断烦恼的垢染，叫做清净，这是障尽解脱的离垢清净。２．指超诸善恶无对待的清净，这是性净解脱的自性清净。",
+      "ref_count": 115,
+      "score": 300,
+      "category": "名相术语"
+    },
+    {
+      "word": "佛法",
+      "definition": "１．佛所说之法，即八万四千法门是。２．佛所得之法，即无上之真理是。３．佛所知之法，即一切诸法是。",
+      "ref_count": 111,
+      "score": 292,
+      "category": "人物圣众"
+    },
+    {
+      "word": "菩提",
+      "definition": "梵文 bodhi，觉、觉悟、智，断烦恼证涅槃之智",
+      "ref_count": 108,
+      "score": 286,
+      "category": "名相术语"
+    },
+    {
+      "word": "禅定",
+      "definition": "梵文 dhyāna/samādhi，六度第五，摄心一境",
+      "ref_count": 86,
+      "score": 282,
+      "category": "基础教义"
+    },
+    {
+      "word": "净土",
+      "definition": "梵文 Kṣetra-pariśuddhi，清净佛土，佛所居住无烦恼垢染之世界",
+      "ref_count": 91,
+      "score": 277,
+      "category": "净土宗"
+    },
+    {
+      "word": "功德",
+      "definition": "功是指善行，德是指善心。又世人拜佛诵经布施供养等，都叫功德。",
+      "ref_count": 100,
+      "score": 270,
+      "category": "名相术语"
+    },
+    {
+      "word": "佛教",
+      "definition": "１．佛对世人的训示。教即训示之义。２．世界三大宗教之一，以释迦牟尼佛为教主，主张慈悲平等，在后汉明帝时，由西域传入中国，今盛行于世界各地。",
+      "ref_count": 100,
+      "score": 270,
+      "category": "人物圣众"
+    },
+    {
+      "word": "世间",
+      "definition": "时间和空间之谓，说明过去、现在、未来等三世的时间叫做世；指出东、西、南、北、上、下等十方的空间叫做间。所谓世间，也就是宇宙的意思。在佛教里，不光是指森罗万象的大地为世间，宇宙和人生，统名之为世间，众生所依靠的宇宙国土，叫做器世间，众生由惑造",
+      "ref_count": 98,
+      "score": 266,
+      "category": "名相术语"
+    },
+    {
+      "word": "真理",
+      "definition": "永真实不变的道理。",
+      "ref_count": 97,
+      "score": 264,
+      "category": "名相术语"
+    },
+    {
+      "word": "成佛",
+      "definition": "成就佛道。菩萨修六度万行究竟圆满而成办阿耨多罗三藐三菩提，叫做成佛。",
+      "ref_count": 97,
+      "score": 264,
+      "category": "人物圣众"
+    },
+    {
+      "word": "声闻",
+      "definition": "闻佛之声教而悟道之修行者，最高果位为阿罗汉",
+      "ref_count": 77,
+      "score": 264,
+      "category": "基础教义"
+    },
+    {
+      "word": "弥陀",
+      "definition": "阿弥陀佛的简称。",
+      "ref_count": 96,
+      "score": 262,
+      "category": "名相术语"
+    },
+    {
+      "word": "色界",
+      "definition": "三界之一，在欲界之上，因此界的众生，但有色相，而无男女诸欲，故名色界，色界的范围包括初禅至四禅等一共十八层天。",
+      "ref_count": 96,
+      "score": 262,
+      "category": "名相术语"
+    },
+    {
+      "word": "三界",
+      "definition": "欲界、色界、无色界。欲界是有淫食二欲的众生所住的世界，上自六欲天，中自人畜所居的四大洲，下至无间地狱皆属之；色界是无淫食二欲但还有色相的众生所住的世界，四禅十八天皆属之；无色界是色相俱无但住心识于深妙禅定的众生所住的世界，四空天属之。此三界",
+      "ref_count": 93,
+      "score": 261,
+      "category": "名相术语"
+    },
+    {
+      "word": "般若",
+      "definition": "梵文 prajñā 音译，六度第六，智慧，照见诸法实相",
+      "ref_count": 72,
+      "score": 254,
+      "category": "基础教义"
+    },
+    {
+      "word": "无量",
+      "definition": "多到不可计量。",
+      "ref_count": 88,
+      "score": 246,
+      "category": "名相术语"
+    },
+    {
+      "word": "地狱",
+      "definition": "１．六道中最苦的地方，因其位置在地下，故名地狱。分为三类：一名根本地狱，有八热及八寒之别，是为十六大地狱。二名近边地狱，即八热四门的十六游增地狱。三名孤独地狱，在山间、旷野、树下、水滨，场所无定，为各人别业所惑，因此苦报及寿命，亦各不同，若",
+      "ref_count": 87,
+      "score": 244,
+      "category": "名相术语"
+    },
+    {
+      "word": "分别",
+      "definition": "五法之一，虚妄分别，即妄心",
+      "ref_count": 72,
+      "score": 244,
+      "category": "大乘义理"
+    },
+    {
+      "word": "金刚",
+      "definition": "金刚石，其性坚利，坚故不为他物所坏，利故能损坏他物，故佛经常以之比喻坚利。",
+      "ref_count": 84,
+      "score": 238,
+      "category": "名相术语"
+    },
+    {
+      "word": "教法",
+      "definition": "指佛所说的十二部经典，为四法之一。",
+      "ref_count": 83,
+      "score": 236,
+      "category": "名相术语"
+    },
+    {
+      "word": "说法",
+      "definition": "演说佛的教义。",
+      "ref_count": 83,
+      "score": 236,
+      "category": "名相术语"
+    },
+    {
+      "word": "十六",
+      "definition": "十六罗汉、十六观、十六特胜",
+      "ref_count": 63,
+      "score": 236,
+      "category": "法数名数"
+    },
+    {
+      "word": "一切法",
+      "definition": "一切道理或一切事物的意思。智度论说：‘一切法略说有三种：一者有为法，二者无为法，三者不可说法。此三已摄一切法。’",
+      "ref_count": 82,
+      "score": 234,
+      "category": "名相术语"
+    },
+    {
+      "word": "道理",
+      "definition": "道法的义理。",
+      "ref_count": 81,
+      "score": 232,
+      "category": "名相术语"
+    },
+    {
+      "word": "诸佛",
+      "definition": "所有十方三世一切之佛。",
+      "ref_count": 81,
+      "score": 232,
+      "category": "人物圣众"
+    },
+    {
+      "word": "凡夫",
+      "definition": "迷惑事理和流转生死的平常人。",
+      "ref_count": 77,
+      "score": 224,
+      "category": "名相术语"
+    },
+    {
+      "word": "方便",
+      "definition": "梵文 upāya，随机化度众生之善巧方法",
+      "ref_count": 57,
+      "score": 224,
+      "category": "基础教义"
+    },
+    {
+      "word": "二十",
+      "definition": "二十随烦恼、二十诸天",
+      "ref_count": 56,
+      "score": 222,
+      "category": "法数名数"
+    },
+    {
+      "word": "无明",
+      "definition": "即痴，不明缘起真理的迷惑，生死根本，十二因缘之首",
+      "ref_count": 64,
+      "score": 218,
+      "category": "阿毗达磨"
+    },
+    {
+      "word": "法华",
+      "definition": "大乘妙法莲华经的简称。",
+      "ref_count": 70,
+      "score": 210,
+      "category": "名相术语"
+    },
+    {
+      "word": "自在",
+      "definition": "１．进退无碍的意思。２．指吾人的心完全脱离了烦恼的系缚而通达无碍。",
+      "ref_count": 70,
+      "score": 210,
+      "category": "名相术语"
+    },
+    {
+      "word": "释迦",
+      "definition": "释迦牟尼佛世尊。",
+      "ref_count": 67,
+      "score": 204,
+      "category": "名相术语"
+    },
+    {
+      "word": "罗汉",
+      "definition": "阿罗汉的简称。见阿罗汉条。",
+      "ref_count": 67,
+      "score": 204,
+      "category": "人物圣众"
+    },
+    {
+      "word": "出家",
+      "definition": "出离烦恼之家，亦即出离在家的生活，去修沙门的净行。",
+      "ref_count": 64,
+      "score": 198,
+      "category": "名相术语"
+    },
+    {
+      "word": "三昧",
+      "definition": "又名三摩提，或三摩地，华译为正定，即离诸邪乱，摄心不散的意思。",
+      "ref_count": 60,
+      "score": 195,
+      "category": "名相术语"
+    },
+    {
+      "word": "欲界",
+      "definition": "三界之一，即有色欲与食欲的众生所住的世界，上自六欲天，中至人界的四大部洲，下至八大地狱等，都属于欲界的范围。",
+      "ref_count": 62,
+      "score": 194,
+      "category": "名相术语"
+    },
+    {
+      "word": "过去",
+      "definition": "三世之一。",
+      "ref_count": 62,
+      "score": 194,
+      "category": "名相术语"
+    },
+    {
+      "word": "极乐",
+      "definition": "极乐世界",
+      "ref_count": 49,
+      "score": 193,
+      "category": "净土宗"
+    },
+    {
+      "word": "六道",
+      "definition": "六凡：天道、人道、阿修罗道、畜生道、饿鬼道、地狱道",
+      "ref_count": 39,
+      "score": 193,
+      "category": "基础教义"
+    },
+    {
+      "word": "无色界",
+      "definition": "无形色的世界，四天：空无边处、识无边处、无所有处、非想非非想处",
+      "ref_count": 41,
+      "score": 192,
+      "category": "基础教义"
+    },
+    {
+      "word": "四大",
+      "definition": "地大、水大、火大、风大。地以坚硬为性，水以潮湿为性，火以温暖为性，风以流动为性。世间的一切有形物质，都是由四大所造，如人体的毛发爪牙，皮骨筋肉等是坚硬性的地大；唾涕脓血，痰泪便利等是潮湿性的水大；温度暖气是温暖性的火大；一呼一吸是流动性的风",
+      "ref_count": 58,
+      "score": 191,
+      "category": "名相术语"
+    },
+    {
+      "word": "法相",
+      "definition": "诸法显现于外各别不同的相。",
+      "ref_count": 59,
+      "score": 188,
+      "category": "名相术语"
+    },
+    {
+      "word": "无碍",
+      "definition": "没有障碍。",
+      "ref_count": 58,
+      "score": 186,
+      "category": "名相术语"
+    },
+    {
+      "word": "相应",
+      "definition": "互相呼应。依瑜伽论之意，有三种相应，一者，一切所缘之境，与心相应，名境相应；二者，行与理相应，名行相应；三者，三乘圣者，所修诸功德法，因果相符，名果相应，此三种相应，摄尽一切法。",
+      "ref_count": 56,
+      "score": 182,
+      "category": "名相术语"
+    },
+    {
+      "word": "法门",
+      "definition": "佛所说的法，因是众生超凡入圣的门户，故称法门。",
+      "ref_count": 55,
+      "score": 180,
+      "category": "名相术语"
+    },
+    {
+      "word": "虚空",
+      "definition": "1. 无为法之一，无碍为性；2. 色法中之间隔",
+      "ref_count": 45,
+      "score": 180,
+      "category": "阿毗达磨"
+    },
+    {
+      "word": "化身",
+      "definition": "即应身，应化众生所现之身",
+      "ref_count": 35,
+      "score": 180,
+      "category": "基础教义"
+    },
+    {
+      "word": "弟子",
+      "definition": "徒众对老师的自称。",
+      "ref_count": 53,
+      "score": 176,
+      "category": "名相术语"
+    },
+    {
+      "word": "戒律",
+      "definition": "防止佛教徒邪恶的法律，如五戒、十善乃至二百五十戒是。",
+      "ref_count": 53,
+      "score": 176,
+      "category": "名相术语"
+    },
+    {
+      "word": "平等",
+      "definition": "没有高下贵贱深浅等的差别。",
+      "ref_count": 52,
+      "score": 174,
+      "category": "名相术语"
+    },
+    {
+      "word": "梵语",
+      "definition": "印度语。古印度人认为自己所说的语言，乃是禀承大梵天王所说而来的，故称梵语。",
+      "ref_count": 52,
+      "score": 174,
+      "category": "名相术语"
+    },
+    {
+      "word": "缘觉",
+      "definition": "又名独觉，或辟支佛，于佛世听佛说十二因缘之理而悟道者，名为缘觉，若生于无佛之世，观诸法生灭因缘而自行悟道者，名为独觉。",
+      "ref_count": 52,
+      "score": 174,
+      "category": "名相术语"
+    },
+    {
+      "word": "不生",
+      "definition": "１．阿罗汉的译名，因阿罗汉已经了脱生死，不再生于三界六趣之中。２．如来的别名，因如来常住在不生不灭的境界之中。",
+      "ref_count": 51,
+      "score": 172,
+      "category": "名相术语"
+    },
+    {
+      "word": "二因",
+      "definition": "１．生因和了因。生因是能够产生果实的因种，如壳麦等种子是；了因是以智慧去透视事物的原理，如灯照物，了了可见。２．正因和缘因。正因是正主的因；缘因是助缘的因。",
+      "ref_count": 48,
+      "score": 171,
+      "category": "名相术语"
+    },
+    {
+      "word": "供养",
+      "definition": "奉养的意思，对上含有亲近、奉事、尊敬的意思，对下含有同情、怜措、爱护的意思。",
+      "ref_count": 50,
+      "score": 170,
+      "category": "名相术语"
+    },
+    {
+      "word": "受持",
+      "definition": "领受忆持。",
+      "ref_count": 50,
+      "score": 170,
+      "category": "名相术语"
+    },
+    {
+      "word": "赖耶",
+      "definition": "阿赖耶的简称。",
+      "ref_count": 50,
+      "score": 170,
+      "category": "名相术语"
+    },
+    {
+      "word": "阿赖耶",
+      "definition": "心识名，八识中的第八识，华译为藏识，藏字有三义，即能藏、所藏、执藏。能藏谓阿赖耶识能含藏一切法的善恶种子；所藏谓阿赖耶识为前七识熏习的杂染法所覆藏；执藏谓阿赖耶识为第七识所执为自内我。又译作无没，即含藏诸法种子而不没失。又虽在生死而不没失，",
+      "ref_count": 50,
+      "score": 170,
+      "category": "名相术语"
+    },
+    {
+      "word": "唯识",
+      "definition": "又名唯心，谓世间诸法，唯心识所现，因一切法皆不离心识，故名唯识。",
+      "ref_count": 49,
+      "score": 168,
+      "category": "名相术语"
+    },
+    {
+      "word": "国土",
+      "definition": "一切有情的住处，有净土和秽土的分别。",
+      "ref_count": 49,
+      "score": 168,
+      "category": "名相术语"
+    },
+    {
+      "word": "心所",
+      "definition": "心所有法的简称，也就是为心所有的各种思想现象，共有五十一法，即遍行五，别境五，善心所十一，烦恼六，随烦恼二十，不定四。兹列表说明如下：┌遍行（触、作意、受、想、思）────────────────五┐│别境（欲、胜解、念、定、慧）─────",
+      "ref_count": 49,
+      "score": 168,
+      "category": "名相术语"
+    },
+    {
+      "word": "出世",
+      "definition": "１．诸佛为救济众生而出现于世。２．跳出世间不再受生死。",
+      "ref_count": 48,
+      "score": 166,
+      "category": "名相术语"
+    },
+    {
+      "word": "真言",
+      "definition": "真实的言语，又是神圣的言语的意思，为如来三密中之语密。",
+      "ref_count": 48,
+      "score": 166,
+      "category": "名相术语"
+    },
+    {
+      "word": "应身",
+      "definition": "梵文 nirmāṇakāya，三身之一，应机示现之身，即释迦牟尼佛之肉身等",
+      "ref_count": 28,
+      "score": 166,
+      "category": "基础教义"
+    },
+    {
+      "word": "具足戒",
+      "definition": "比丘比丘尼所受之完整戒条，比丘250戒、比丘尼348戒（四分律）",
+      "ref_count": 40,
+      "score": 165,
+      "category": "戒律"
+    },
+    {
+      "word": "赖耶识",
+      "definition": "阿赖耶识的简称。",
+      "ref_count": 47,
+      "score": 164,
+      "category": "名相术语"
+    },
+    {
+      "word": "陀罗尼",
+      "definition": "华译为总持，即总一切法，持无量义。原有四种，咒陀罗尼，不过是其中一种，但通常皆以咒为陀罗尼。",
+      "ref_count": 46,
+      "score": 162,
+      "category": "名相术语"
+    },
+    {
+      "word": "恶业",
+      "definition": "恶劣的行为或作业。",
+      "ref_count": 45,
+      "score": 160,
+      "category": "名相术语"
+    },
+    {
+      "word": "慈悲",
+      "definition": "慈与悲。愿给一切众生安乐叫做慈；愿拔一切众生痛苦叫做悲。",
+      "ref_count": 45,
+      "score": 160,
+      "category": "名相术语"
+    },
+    {
+      "word": "十住",
+      "definition": "菩萨五十二位中第二组：发心住、治地住、修行住、生贵住、方便具足住、正心住、不退住、童真住、法王子住、灌顶住，初入圣位",
+      "ref_count": 25,
+      "score": 160,
+      "category": "法数名数"
+    },
+    {
+      "word": "三藏",
+      "definition": "修多罗藏、毗奈耶藏、阿毗达磨藏。修多罗藏即是经藏，为佛所说的经文；毗奈耶藏即是律藏，为佛所制的戒律；阿毗达磨藏即是论藏，为佛弟子所造的论。",
+      "ref_count": 42,
+      "score": 159,
+      "category": "名相术语"
+    },
+    {
+      "word": "有情",
+      "definition": "又名众生，即一切有情识的动物。",
+      "ref_count": 44,
+      "score": 158,
+      "category": "名相术语"
+    },
+    {
+      "word": "善恶",
+      "definition": "合于理的叫做善；乖于理的叫做恶。",
+      "ref_count": 43,
+      "score": 156,
+      "category": "名相术语"
+    },
+    {
+      "word": "差别",
+      "definition": "同类相殊叫做差，异类相殊叫做别。",
+      "ref_count": 42,
+      "score": 154,
+      "category": "名相术语"
+    },
+    {
+      "word": "执著",
+      "definition": "坚持或固执的意思。",
+      "ref_count": 42,
+      "score": 154,
+      "category": "名相术语"
+    },
+    {
+      "word": "正法",
+      "definition": "１．真理的道法。２．正法时期。见正像末条。",
+      "ref_count": 42,
+      "score": 154,
+      "category": "名相术语"
+    },
+    {
+      "word": "饿鬼",
+      "definition": "六道之一，即时常遭受饥饿的鬼类。其中略有威德的，成为山林冢庙之神，能得祭品或人间的弃食，无威德的，则常不得食，甚至口因渴出火。",
+      "ref_count": 42,
+      "score": 154,
+      "category": "名相术语"
+    },
+    {
+      "word": "十六观",
+      "definition": "《观无量寿经》所说十六种观想极乐世界之法",
+      "ref_count": 29,
+      "score": 153,
+      "category": "修行法门"
+    },
+    {
+      "word": "意识",
+      "definition": "第六识，依意根缘法境而起之分别认识",
+      "ref_count": 29,
+      "score": 153,
+      "category": "唯识宗"
+    },
+    {
+      "word": "布施",
+      "definition": "以自己的财物，分施给别人。布施有三种，即一、财施，即以财物去救济疾病贫苦的人；二、法施，即以正法去劝人修善断恶；三、无畏施，即不顾虑自己的安危去解除别人的怖畏。",
+      "ref_count": 41,
+      "score": 152,
+      "category": "名相术语"
+    },
+    {
+      "word": "四十八",
+      "definition": "阿弥陀佛四十八愿",
+      "ref_count": 23,
+      "score": 151,
+      "category": "法数名数"
+    },
+    {
+      "word": "十号",
+      "definition": "如来、应供、正遍知、明行足、善逝、世间解、无上士、调御丈夫、天人师、佛世尊",
+      "ref_count": 18,
+      "score": 151,
+      "category": "基础教义"
+    },
+    {
+      "word": "善根",
+      "definition": "好的根性。",
+      "ref_count": 40,
+      "score": 150,
+      "category": "名相术语"
+    },
+    {
+      "word": "行人",
+      "definition": "修行的人。",
+      "ref_count": 40,
+      "score": 150,
+      "category": "名相术语"
+    },
+    {
+      "word": "六尘",
+      "definition": "即六境：色声香味触法，能染污净心",
+      "ref_count": 20,
+      "score": 150,
+      "category": "法数名数"
+    },
+    {
+      "word": "七觉支",
+      "definition": "三十七道品之一类：念觉支、择法觉支、精进觉支、喜觉支、轻安觉支、定觉支、行舍觉支",
+      "ref_count": 20,
+      "score": 150,
+      "category": "基础教义"
+    },
+    {
+      "word": "万法",
+      "definition": "一切的事物。",
+      "ref_count": 37,
+      "score": 149,
+      "category": "名相术语"
+    },
+    {
+      "word": "法华经",
+      "definition": "见上",
+      "ref_count": 42,
+      "score": 149,
+      "category": "经论典籍"
+    },
+    {
+      "word": "六根",
+      "definition": "眼根、耳根、鼻根、舌根、身根、意根，六种感觉和思维认识器官",
+      "ref_count": 27,
+      "score": 149,
+      "category": "阿毗达磨"
+    },
+    {
+      "word": "有为",
+      "definition": "有因缘造作之法。",
+      "ref_count": 39,
+      "score": 148,
+      "category": "名相术语"
+    },
+    {
+      "word": "行法",
+      "definition": "修行的方法。",
+      "ref_count": 39,
+      "score": 148,
+      "category": "名相术语"
+    },
+    {
+      "word": "邪见",
+      "definition": "１．五见使中，拨无因果之见叫做邪见。２．凡是不合正法的外道之见都可叫做邪见。",
+      "ref_count": 39,
+      "score": 148,
+      "category": "名相术语"
+    },
+    {
+      "word": "不二",
+      "definition": "超越相对分别之绝对真理，即不二法门",
+      "ref_count": 24,
+      "score": 148,
+      "category": "大乘义理"
+    },
+    {
+      "word": "精进",
+      "definition": "善心所之一，于善恶品修断事中勇悍为性，对治懈怠满善为业",
+      "ref_count": 29,
+      "score": 148,
+      "category": "阿毗达磨"
+    },
+    {
+      "word": "三宝",
+      "definition": "佛宝、法宝、僧宝。一切之佛，即佛宝；佛所说之法，即法宝；奉行佛所说之法的人，即僧宝。佛者觉知之义，法者法轨之义，僧者和合之义。",
+      "ref_count": 36,
+      "score": 147,
+      "category": "名相术语"
+    },
+    {
+      "word": "比丘尼",
+      "definition": "梵文 bhikṣuṇī，受具足戒之女性出家人",
+      "ref_count": 31,
+      "score": 147,
+      "category": "戒律"
+    },
+    {
+      "word": "二乘",
+      "definition": "声闻乘和缘觉乘。凡属修四谛法门而悟道的人，总称为声闻乘；凡属修十二因缘而悟道的人，总称为缘觉乘。以上二乘又分为愚法二乘和不愚法二乘两种，愚法二乘是声闻缘觉二小乘，迷执自法，而愚于大乘法空之妙理；不愚法二乘是与愚法二乘相反，他们善知理法，进入",
+      "ref_count": 35,
+      "score": 145,
+      "category": "名相术语"
+    },
+    {
+      "word": "一切智",
+      "definition": "声闻缘觉之智，知一切法总相",
+      "ref_count": 20,
+      "score": 145,
+      "category": "法数名数"
+    },
+    {
+      "word": "如是",
+      "definition": "如此的意思。",
+      "ref_count": 37,
+      "score": 144,
+      "category": "名相术语"
+    },
+    {
+      "word": "摩诃",
+      "definition": "译义为大、多、胜。",
+      "ref_count": 37,
+      "score": 144,
+      "category": "名相术语"
+    },
+    {
+      "word": "神通",
+      "definition": "变化莫测谓之神，无拘无碍谓之通，合起来说，就是既能使人莫测他之所以，又能为所欲为而了无障碍。",
+      "ref_count": 37,
+      "score": 144,
+      "category": "名相术语"
+    },
+    {
+      "word": "散乱",
+      "definition": "大随烦恼之一，令心于境流荡为性",
+      "ref_count": 27,
+      "score": 144,
+      "category": "阿毗达磨"
+    },
+    {
+      "word": "灭谛",
+      "definition": "四谛之一，苦因苦果寂灭之状态，即涅槃",
+      "ref_count": 17,
+      "score": 144,
+      "category": "基础教义"
+    },
+    {
+      "word": "阿罗汉果",
+      "definition": "四果，无生，断尽烦恼、出离轮回",
+      "ref_count": 17,
+      "score": 144,
+      "category": "基础教义"
+    },
+    {
+      "word": "波罗蜜",
+      "definition": "梵文 pāramitā，到彼岸，度，度生死此岸到涅槃彼岸",
+      "ref_count": 36,
+      "score": 142,
+      "category": "名相术语"
+    },
+    {
+      "word": "证悟",
+      "definition": "证知悟解。",
+      "ref_count": 36,
+      "score": 142,
+      "category": "名相术语"
+    },
+    {
+      "word": "佛说",
+      "definition": "佛金口所说。",
+      "ref_count": 36,
+      "score": 142,
+      "category": "人物圣众"
+    },
+    {
+      "word": "九地",
+      "definition": "见唯识",
+      "ref_count": 16,
+      "score": 142,
+      "category": "法数名数"
+    },
+    {
+      "word": "圣人",
+      "definition": "指大小乘见道以上断惑证理的人，亦即智慧最卓越，人格最完善，能力最高强的人。",
+      "ref_count": 35,
+      "score": 140,
+      "category": "名相术语"
+    },
+    {
+      "word": "庄严",
+      "definition": "１．装饰的意思。２．庄美威严。",
+      "ref_count": 35,
+      "score": 140,
+      "category": "名相术语"
+    },
+    {
+      "word": "莲华",
+      "definition": "植物名。印度共有四种的莲华，即优钵罗华、拘物头华、波头摩华、芬陀利华，亦即青黄赤白四种颜色的莲华，通常所说的莲华，是指芬陀利白莲华。佛教以莲华代表清净，因莲华出污泥而不染。",
+      "ref_count": 35,
+      "score": 140,
+      "category": "名相术语"
+    },
+    {
+      "word": "一心",
+      "definition": "１．指真如的理体独一无二。２．专心。",
+      "ref_count": 32,
+      "score": 139,
+      "category": "名相术语"
+    },
+    {
+      "word": "三观",
+      "definition": "１．指天台宗三观，即空观、假观、中观。空观是观诸法缘生无性，当体即空；假观是观诸法虽同幻化，但有假相和作用；中观是观诸法非空亦非假，亦空亦假之中道实理。修此三观，能破三惑，证三智，成三德。兹列下表说明。２．指华严宗三观，即真空观、理事无碍观",
+      "ref_count": 32,
+      "score": 139,
+      "category": "名相术语"
+    },
+    {
+      "word": "因果",
+      "definition": "因是种因，果是结果，由此因而得此果，是因果义。又因是所作者，果是所受者，种善因必得善果，种恶因必得恶果。",
+      "ref_count": 34,
+      "score": 138,
+      "category": "名相术语"
+    },
+    {
+      "word": "常住",
+      "definition": "１．没有生灭变迁的意思。楞伽经说常住之法有七种，即菩提、涅槃、真如、佛性、庵摩罗识、空如来识、大圆境智。２．指寺院，因寺院是僧人常住的道场。",
+      "ref_count": 34,
+      "score": 138,
+      "category": "名相术语"
+    },
+    {
+      "word": "成道",
+      "definition": "菩提树下成等正觉",
+      "ref_count": 34,
+      "score": 138,
+      "category": "名相术语"
+    },
+    {
+      "word": "观法",
+      "definition": "观念真理的方法。",
+      "ref_count": 34,
+      "score": 138,
+      "category": "名相术语"
+    },
+    {
+      "word": "阿含",
+      "definition": "小乘经的总名，华译为法归，是万法归趣于此而无漏的意思。又译作无比法，即无可相比之法。共分为四部，即增一阿含、长阿含、中阿含、杂阿含。",
+      "ref_count": 34,
+      "score": 138,
+      "category": "名相术语"
+    },
+    {
+      "word": "道谛",
+      "definition": "四谛之一，证灭之方法，即八正道等",
+      "ref_count": 14,
+      "score": 138,
+      "category": "基础教义"
+    },
+    {
+      "word": "三世",
+      "definition": "过去世、现在世、未来世。凡已生已灭之法叫做过去世，已生未灭之法叫做现在世，未生未起之法叫做未来世。",
+      "ref_count": 31,
+      "score": 137,
+      "category": "名相术语"
+    },
+    {
+      "word": "等觉",
+      "definition": "菩萨五十二位之五十一位，与佛果相齐、尚有一分微细无明未断",
+      "ref_count": 16,
+      "score": 137,
+      "category": "法数名数"
+    },
+    {
+      "word": "六识",
+      "definition": "眼识、耳识、鼻识、舌识、身识、意识，依六根缘六境产生的六种认识作用",
+      "ref_count": 21,
+      "score": 137,
+      "category": "阿毗达磨"
+    },
+    {
+      "word": "业因",
+      "definition": "善恶果报的原因。善业是乐果的因，恶业是苦果的因。",
+      "ref_count": 33,
+      "score": 136,
+      "category": "名相术语"
+    },
+    {
+      "word": "无生",
+      "definition": "不生不灭的意思，也是涅槃的道理。",
+      "ref_count": 33,
+      "score": 136,
+      "category": "名相术语"
+    },
+    {
+      "word": "正觉",
+      "definition": "１．真正的觉悟。２．成佛叫做正觉。",
+      "ref_count": 33,
+      "score": 136,
+      "category": "名相术语"
+    },
+    {
+      "word": "空无",
+      "definition": "谓一切事物都没有自性。",
+      "ref_count": 33,
+      "score": 136,
+      "category": "名相术语"
+    },
+    {
+      "word": "大师",
+      "definition": "道德学问足以为人师表的人。",
+      "ref_count": 33,
+      "score": 136,
+      "category": "人物圣众"
+    },
+    {
+      "word": "不定",
+      "definition": "心所法之一类，于善恶无记三性不定的心所：悔、眠、寻、伺四种",
+      "ref_count": 23,
+      "score": 136,
+      "category": "阿毗达磨"
+    },
+    {
+      "word": "十恶",
+      "definition": "十善之反面：杀生、偷盗、邪淫、妄语、两舌、恶口、绮语、贪欲、瞋恚、邪见",
+      "ref_count": 23,
+      "score": 136,
+      "category": "戒律"
+    },
+    {
+      "word": "十回向",
+      "definition": "菩萨五十二位中第四组：救护一切众生离众生相回向、不坏回向、等一切佛回向、至一切处回向、无尽功德藏回向、随顺平等善根回向、随顺等观一切众生回向、真如相回向、无缚无著解脱回向、法界无量回向，以大悲心回向众生",
+      "ref_count": 15,
+      "score": 135,
+      "category": "法数名数"
+    },
+    {
+      "word": "色究竟天",
+      "definition": "色界最顶天",
+      "ref_count": 15,
+      "score": 135,
+      "category": "法数名数"
+    },
+    {
+      "word": "菩萨十地",
+      "definition": "见十地",
+      "ref_count": 15,
+      "score": 135,
+      "category": "法数名数"
+    },
+    {
+      "word": "六趣",
+      "definition": "即六道，众生依业所往生之处",
+      "ref_count": 10,
+      "score": 135,
+      "category": "基础教义"
+    },
+    {
+      "word": "声闻乘",
+      "definition": "二乘或三乘之一，凡是闻佛音声和修四谛法门而悟道的人，总称为声闻乘。声闻乘修四谛法，自凡夫至阿罗汉，论时间，速者三生，迟者六十劫，其修行的方便有七（即七方便），得果有四（即四果）。兹列表说明如下：┌五停心观┐│别相念处├───三贤┐│总相念处",
+      "ref_count": 32,
+      "score": 134,
+      "category": "名相术语"
+    },
+    {
+      "word": "报身",
+      "definition": "佛三身之一，此身是诸佛修福慧功德圆满时，所显现的自受用内证法乐之身，亦即完成佛果之身。",
+      "ref_count": 32,
+      "score": 134,
+      "category": "名相术语"
+    },
+    {
+      "word": "梵天",
+      "definition": "色界之初禅天名。因此天无欲界的淫欲，寂静清净，故名梵天。此天共有三天，即梵众天、梵辅天、大梵天，通常所说的梵天是指大梵天王，名叫尸弃，他深信正法，每逢有佛出世，必定前来请转法轮，此梵天与外道所说的梵天不同。",
+      "ref_count": 32,
+      "score": 134,
+      "category": "名相术语"
+    },
+    {
+      "word": "禅师",
+      "definition": "专修禅定的出家人。",
+      "ref_count": 32,
+      "score": 134,
+      "category": "名相术语"
+    },
+    {
+      "word": "六通",
+      "definition": "五通加漏尽通",
+      "ref_count": 12,
+      "score": 134,
+      "category": "法数名数"
+    },
+    {
+      "word": "十信",
+      "definition": "信心、念心、精进心、慧心、定心、不退心、回向心、护法心、戒心、愿心",
+      "ref_count": 12,
+      "score": 134,
+      "category": "法数名数"
+    },
+    {
+      "word": "十行",
+      "definition": "菩萨五十二位中第三组：欢喜行、饶益行、无嗔恨行、无尽行、离痴乱行、善现行、无著行、尊重行、善法行、真实行，修利他行",
+      "ref_count": 12,
+      "score": 134,
+      "category": "法数名数"
+    },
+    {
+      "word": "苦谛",
+      "definition": "四谛之一，说明三界六道一切皆苦之真理",
+      "ref_count": 12,
+      "score": 134,
+      "category": "基础教义"
+    },
+    {
+      "word": "集谛",
+      "definition": "四谛之一，苦之原因，即烦恼与业",
+      "ref_count": 12,
+      "score": 134,
+      "category": "基础教义"
+    },
+    {
+      "word": "舍利",
+      "definition": "１．鸟名。２．舍利弗母亲的名字。３．佛的身骨。佛、菩萨、罗汉、高僧等，寂后火化，每凝结有舍利，或如珠，或如花，白色为骨舍利，赤色为血肉舍利，黑色为发舍利，也有杂色的，那是综合而成，此是生前依戒定慧薰修而得，无量功德所成，若是佛舍利，世间无物",
+      "ref_count": 31,
+      "score": 132,
+      "category": "名相术语"
+    },
+    {
+      "word": "行者",
+      "definition": "１．修行佛法的人。２．居住佛寺但留著头发修行的人。",
+      "ref_count": 31,
+      "score": 132,
+      "category": "名相术语"
+    },
+    {
+      "word": "身心",
+      "definition": "身与心，为有情的正报，在五蕴之中，色蕴是身，受想行识四蕴是心。",
+      "ref_count": 31,
+      "score": 132,
+      "category": "名相术语"
+    },
+    {
+      "word": "夜摩天",
+      "definition": "欲界第三天，善分天",
+      "ref_count": 13,
+      "score": 131,
+      "category": "法数名数"
+    },
+    {
+      "word": "一法",
+      "definition": "一切法的总称，指单一独立存在的法",
+      "ref_count": 18,
+      "score": 131,
+      "category": "阿毗达磨"
+    },
+    {
+      "word": "回向",
+      "definition": "回是回转，向是趣向，回转自己所修的功德以趣向于其他方面，叫做回向。回向约可分为三类，即回因向果，回事向理，回自向他。",
+      "ref_count": 30,
+      "score": 130,
+      "category": "名相术语"
+    },
+    {
+      "word": "忏悔",
+      "definition": "忏是发露过去所作的旧恶，悔是知错以后不会再作。",
+      "ref_count": 30,
+      "score": 130,
+      "category": "名相术语"
+    },
+    {
+      "word": "五十二",
+      "definition": "菩萨五十二位",
+      "ref_count": 12,
+      "score": 129,
+      "category": "法数名数"
+    },
+    {
+      "word": "分段生死",
+      "definition": "三界凡夫依业惑所受之分段身体生死",
+      "ref_count": 12,
+      "score": 129,
+      "category": "法数名数"
+    },
+    {
+      "word": "本愿",
+      "definition": "阿弥陀佛四十八愿中第十八愿\"十念往生\"之本愿",
+      "ref_count": 17,
+      "score": 129,
+      "category": "净土宗"
+    },
+    {
+      "word": "事理",
+      "definition": "１．因缘生之有为法叫做事，不生不灭之无为法叫做理。２．世间森罗万象之相叫做事，真如的理体叫做理。",
+      "ref_count": 29,
+      "score": 128,
+      "category": "名相术语"
+    },
+    {
+      "word": "变化",
+      "definition": "转换旧的形状叫做变，由无而忽有叫做化。变化是指佛菩萨的神通力能够变化出种种的事物。",
+      "ref_count": 29,
+      "score": 128,
+      "category": "名相术语"
+    },
+    {
+      "word": "外道",
+      "definition": "于佛教以外立道，或道外之道，称为外道，亦即真理以外的邪教。",
+      "ref_count": 29,
+      "score": 128,
+      "category": "名相术语"
+    },
+    {
+      "word": "如意",
+      "definition": "说法、表法用",
+      "ref_count": 29,
+      "score": 128,
+      "category": "名相术语"
+    },
+    {
+      "word": "帝释",
+      "definition": "忉利天的天主，俗称为玉皇大帝。",
+      "ref_count": 29,
+      "score": 128,
+      "category": "名相术语"
+    },
+    {
+      "word": "牟尼",
+      "definition": "华译为寂，或寂默，或寂静等。",
+      "ref_count": 29,
+      "score": 128,
+      "category": "名相术语"
+    },
+    {
+      "word": "畜生",
+      "definition": "受人驯养的禽兽。",
+      "ref_count": 29,
+      "score": 128,
+      "category": "名相术语"
+    },
+    {
+      "word": "六欲天",
+      "definition": "欲界六天：四天王天、忉利天、夜摩天、兜率天、化乐天、他化自在天",
+      "ref_count": 9,
+      "score": 128,
+      "category": "基础教义"
+    },
+    {
+      "word": "异熟",
+      "definition": "梵文 vipāka，果报，因变异而成熟之果",
+      "ref_count": 9,
+      "score": 128,
+      "category": "基础教义"
+    },
+    {
+      "word": "归依",
+      "definition": "梵文 śaraṇa，皈向依靠",
+      "ref_count": 9,
+      "score": 128,
+      "category": "基础教义"
+    },
+    {
+      "word": "死苦",
+      "definition": "八苦之一，死亡之苦",
+      "ref_count": 9,
+      "score": 128,
+      "category": "基础教义"
+    },
+    {
+      "word": "五时",
+      "definition": "华严时、阿含时（鹿苑）、方等时、般若时、法华涅槃时",
+      "ref_count": 14,
+      "score": 128,
+      "category": "天台宗"
+    },
+    {
+      "word": "五根",
+      "definition": "１．指眼等之五根，眼根能生眼识，耳根能生耳识，鼻根能生鼻识，舌根能生舌识，身根能生身识。２．信根、进根、念根、定根、慧根、因此五法是生圣道的根本，故名五根。",
+      "ref_count": 26,
+      "score": 127,
+      "category": "名相术语"
+    },
+    {
+      "word": "一切种智",
+      "definition": "佛智之一，通达一切法之智",
+      "ref_count": 11,
+      "score": 127,
+      "category": "法数名数"
+    },
+    {
+      "word": "性空",
+      "definition": "谓众缘合成的一切事物，其性本空，没有真实的自体可得。",
+      "ref_count": 28,
+      "score": 126,
+      "category": "名相术语"
+    },
+    {
+      "word": "释迦牟尼",
+      "definition": "佛名，华译为能仁寂默，是开创佛教的教主，本是古印度迦毗罗卫国的王太子，父名净饭，母名摩耶，因为了追求真理而出家修道成佛。降生于公元前六二三年，二十九岁出家，三十五岁成道，说法四十五年，谈经三百余会，所度人天，其数无量，约于公元前五四三年入灭",
+      "ref_count": 28,
+      "score": 126,
+      "category": "名相术语"
+    },
+    {
+      "word": "自性清净",
+      "definition": "心之本性清净",
+      "ref_count": 13,
+      "score": 126,
+      "category": "大乘义理"
+    },
+    {
+      "word": "六念",
+      "definition": "念佛、念法、念僧、念戒、念施、念天",
+      "ref_count": 8,
+      "score": 126,
+      "category": "法数名数"
+    },
+    {
+      "word": "流转",
+      "definition": "心不相应行法之一，因果相续不断",
+      "ref_count": 18,
+      "score": 126,
+      "category": "阿毗达磨"
+    },
+    {
+      "word": "四无色定",
+      "definition": "空无边处定、识无边处定、无所有处定、非想非非想处定",
+      "ref_count": 8,
+      "score": 126,
+      "category": "基础教义"
+    },
+    {
+      "word": "法宝",
+      "definition": "三宝之一，佛所说之教法（三藏十二部经等）",
+      "ref_count": 8,
+      "score": 126,
+      "category": "基础教义"
+    },
+    {
+      "word": "生苦",
+      "definition": "八苦之一，出生时之苦",
+      "ref_count": 8,
+      "score": 126,
+      "category": "基础教义"
+    },
+    {
+      "word": "四教",
+      "definition": "１．指化法四教，即三藏教、通教、别教、圆教。以上藏通别圆四教，是化益众生的法门，故名为化法。见化法四教条。２．指化仪四教，即顿教、渐教、秘密教、不定教。以上四教，是教化众生的仪式，故名为化仪。见化仪四教条。",
+      "ref_count": 25,
+      "score": 125,
+      "category": "名相术语"
+    },
+    {
+      "word": "二十五",
+      "definition": "二十五有、二十五方便、圆通（二十五圣圆通）",
+      "ref_count": 10,
+      "score": 125,
+      "category": "法数名数"
+    },
+    {
+      "word": "别教",
+      "definition": "化法四教之三，别于小乘、别于圆教之菩萨法",
+      "ref_count": 15,
+      "score": 125,
+      "category": "天台宗"
+    },
+    {
+      "word": "出离",
+      "definition": "出离生死而证涅槃。",
+      "ref_count": 27,
+      "score": 124,
+      "category": "名相术语"
+    },
+    {
+      "word": "定慧",
+      "definition": "禅定与智慧，亦即三学中之二学。收摄散乱的心意为定；观察照了一切的事理为慧。",
+      "ref_count": 27,
+      "score": 124,
+      "category": "名相术语"
+    },
+    {
+      "word": "思惑",
+      "definition": "又名修惑，三惑之一，即思想上的迷惑错误，如贪嗔痴慢疑等之五烦恼是。思惑的品数有八十一，即欲界五趣一地，色界四禅天为四地，无色界四空天为四地，共九地，每地九品，合共即八十一品。",
+      "ref_count": 27,
+      "score": 124,
+      "category": "名相术语"
+    },
+    {
+      "word": "沙弥",
+      "definition": "华译息慈，即息恶和行慈的意思，又译作勤策，即为大僧勤加策励的对象。沙弥有三类：七至十三岁，名驱乌沙弥，谓其只能驱逐乌鸟。十四至十九岁，名应法沙弥，谓正合沙弥的地位。二十至七十岁，名名字沙弥，谓在此年龄内，本来应居比丘位，但以缘未及，故尚称沙",
+      "ref_count": 27,
+      "score": 124,
+      "category": "名相术语"
+    },
+    {
+      "word": "见思",
+      "definition": "见惑和思惑。依小乘俱舍宗来说，是以迷理和迷事来分别见思二惑，迷于理而起之惑如身见边见等五不正见，叫做见惑，迷于事而起之惑如贪嗔痴等五烦恼，叫做思惑。依大乘唯识宗来说，则以分别俱生之二起来分别，分别起的烦恼障和所知障是见惑，俱生起的烦恼障和所",
+      "ref_count": 27,
+      "score": 124,
+      "category": "名相术语"
+    },
+    {
+      "word": "五通",
+      "definition": "神足通、天眼通、天耳通、他心通、宿命通",
+      "ref_count": 7,
+      "score": 124,
+      "category": "法数名数"
+    },
+    {
+      "word": "十力",
+      "definition": "佛之十种智力",
+      "ref_count": 7,
+      "score": 124,
+      "category": "法数名数"
+    },
+    {
+      "word": "化身佛",
+      "definition": "即释迦牟尼佛，应化之佛",
+      "ref_count": 7,
+      "score": 124,
+      "category": "基础教义"
+    },
+    {
+      "word": "三密",
+      "definition": "身密、语密、意密。就佛界言：大日如来，为遍法界之身，故法界体相，为其身密，一切声音，为其语密，周遍之识大，为其意密。就众生言：手结印契为身密，口诵真言为语密，心观本尊之法相为意密。",
+      "ref_count": 24,
+      "score": 123,
+      "category": "名相术语"
+    },
+    {
+      "word": "天眼",
+      "definition": "天人之眼，见远近粗细",
+      "ref_count": 9,
+      "score": 123,
+      "category": "法数名数"
+    },
+    {
+      "word": "欲界六天",
+      "definition": "四天王天、忉利天、夜摩天、兜率天、化乐天、他化自在天",
+      "ref_count": 9,
+      "score": 123,
+      "category": "法数名数"
+    },
+    {
+      "word": "不生不灭",
+      "definition": "不生也不灭，是常住的别名，也是永生的意思。涅槃经说：‘涅言不生，槃言不灭，不生不灭，名大涅槃。’",
+      "ref_count": 26,
+      "score": 122,
+      "category": "名相术语"
+    },
+    {
+      "word": "事相",
+      "definition": "有实事的，或是有形相可以看得到的，都叫做事相；至于讲道理的，没有形相可以看得到的，则叫做理性。",
+      "ref_count": 26,
+      "score": 122,
+      "category": "名相术语"
+    }
+  ]
+}

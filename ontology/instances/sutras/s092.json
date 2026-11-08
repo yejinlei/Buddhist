@@ -1,0 +1,21 @@
+{
+  "id": "s092",
+  "old_id": "s097",
+  "taisho_id": "T1083",
+  "category": "密教部",
+  "name": "千手千眼观世音菩萨广大圆满无碍大悲心陀罗尼经",
+  "volume_count": 0,
+  "volume": "T20",
+  "translator_brief": "伽梵达摩",
+  "translations": [
+    {
+      "id": "s092_1",
+      "name": "千手千眼观世音菩萨广大圆满无碍大悲心陀罗尼经",
+      "translator": "伽梵达摩"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

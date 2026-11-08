@@ -1,0 +1,18 @@
+{
+  "id": "c200",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "直指人心",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "直接指示学人当下反观自心，见性成佛",
+  "primary_sect": "禅宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "禅宗": "直接指示学人当下反观自心，见性成佛"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

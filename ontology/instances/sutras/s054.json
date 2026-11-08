@@ -1,0 +1,21 @@
+{
+  "id": "s054",
+  "old_id": "s049",
+  "taisho_id": "T0310",
+  "category": "宝积部",
+  "name": "大宝积经",
+  "volume_count": 0,
+  "volume": "T11",
+  "translator_brief": "菩提流志等",
+  "translations": [
+    {
+      "id": "s054_1",
+      "name": "大宝积经",
+      "translator": "菩提流志等"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

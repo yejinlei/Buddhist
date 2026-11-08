@@ -1,0 +1,21 @@
+{
+  "id": "s073",
+  "old_id": "s074",
+  "taisho_id": "T1911",
+  "category": "论部",
+  "name": "肇论",
+  "volume_count": 0,
+  "volume": "T45",
+  "translator_brief": "僧肇",
+  "translations": [
+    {
+      "id": "s073_1",
+      "name": "肇论",
+      "translator": "僧肇"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

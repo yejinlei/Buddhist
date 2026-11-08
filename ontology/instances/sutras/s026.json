@@ -1,0 +1,21 @@
+{
+  "id": "s026",
+  "old_id": "s018",
+  "taisho_id": "T0225",
+  "category": "般若部",
+  "name": "道行般若经",
+  "volume_count": 0,
+  "volume": "T08",
+  "translator_brief": "支娄迦谶",
+  "translations": [
+    {
+      "id": "s026_1",
+      "name": "道行般若经",
+      "translator": "支娄迦谶"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

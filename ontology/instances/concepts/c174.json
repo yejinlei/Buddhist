@@ -1,0 +1,18 @@
+{
+  "id": "c174",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "一念无明法性心",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "一念心同时具足无明与法性",
+  "primary_sect": "天台宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "天台宗": "一念心同时具足无明与法性"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

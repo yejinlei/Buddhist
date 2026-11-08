@@ -1,0 +1,16 @@
+{
+  "id": "c243",
+  "layer": "L1",
+  "layer_label": "L1 教理本体层",
+  "name": "般若",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "梵文 prajñā 音译，六度第六，智慧，照见诸法实相",
+  "sutra_source": [
+    "《大智度论》"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch1_dict_expansion"
+}

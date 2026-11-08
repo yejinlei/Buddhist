@@ -1,0 +1,19 @@
+{
+  "id": "c047",
+  "layer": "L2",
+  "name": "渐修",
+  "sanskrit": "",
+  "alias": [
+    "渐教"
+  ],
+  "definition": "经过次第阶位逐步修行，断除烦恼，最终成佛",
+  "sutra_source": [],
+  "sect_view": {
+    "禅宗北宗": "神秀主张渐修"
+  },
+  "duipo": "c046",
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}

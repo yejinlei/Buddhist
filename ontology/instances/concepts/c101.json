@@ -1,0 +1,22 @@
+{
+  "id": "c101",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "八不中道",
+  "sanskrit": "",
+  "alias": [
+    "八不",
+    "八不正观"
+  ],
+  "definition": "不生亦不灭，不常亦不断，不一亦不异，不来亦不去，破一切边见",
+  "primary_sect": "三论宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "三论宗": "不生亦不灭，不常亦不断，不一亦不异，不来亦不去，破一切边见"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

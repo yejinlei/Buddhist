@@ -1,0 +1,24 @@
+{
+  "id": "c046",
+  "layer": "L2",
+  "name": "顿悟",
+  "sanskrit": "",
+  "alias": [
+    "顿教",
+    "顿悟成佛"
+  ],
+  "definition": "不经过次第修行，一念相应，顿见本性，直了成佛",
+  "sutra_source": [
+    "《楞伽经》（t0670）",
+    "《坛经》（t2008）"
+  ],
+  "sect_view": {
+    "禅宗南宗": "顿悟见性，不立文字",
+    "禅宗北宗": "渐修",
+    "华严宗": "顿教是五教之一"
+  },
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}

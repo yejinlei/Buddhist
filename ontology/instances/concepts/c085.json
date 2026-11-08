@@ -1,0 +1,18 @@
+{
+  "id": "c085",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "辟支佛",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "缘觉，无佛出世时观十二缘起自觉悟道者",
+  "primary_sect": "缘觉乘",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "缘觉乘": "缘觉，无佛出世时观十二缘起自觉悟道者"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

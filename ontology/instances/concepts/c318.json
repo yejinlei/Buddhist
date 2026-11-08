@@ -1,0 +1,17 @@
+{
+  "id": "c318",
+  "layer": "L2",
+  "layer_label": "义理层",
+  "name": "华严宗",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "唐法藏创立，依《华严经》立宗，明法界缘起、六相圆融、十玄无碍、五教十宗",
+  "sutra_source": [
+    "《《华严金师子章》》"
+  ],
+  "sect_interpretation": {
+    "华严宗": "依《华严经》立教，主张法界缘起、圆融无碍"
+  },
+  "modern_interpretation": "",
+  "primary_sect": "sec003"
+}

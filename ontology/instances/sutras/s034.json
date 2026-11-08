@@ -1,0 +1,21 @@
+{
+  "id": "s034",
+  "old_id": "s026",
+  "taisho_id": "T0232",
+  "category": "般若部",
+  "name": "金刚般若波罗蜜经",
+  "volume_count": 0,
+  "volume": "T08",
+  "translator_brief": "菩提流支",
+  "translations": [
+    {
+      "id": "s034_1",
+      "name": "金刚般若波罗蜜经",
+      "translator": "菩提流支"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

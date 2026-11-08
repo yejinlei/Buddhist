@@ -1,0 +1,16 @@
+{
+  "id": "c309",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "三宝",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "佛宝、法宝、僧宝。一切之佛，即佛宝；佛所说之法，即法宝；奉行佛所说之法的人，即僧宝。佛者觉知之义，法者法轨之义，僧者和合之义。",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch3_dict_expansion"
+}

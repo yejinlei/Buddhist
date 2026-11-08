@@ -1,0 +1,25 @@
+{
+  "id": "c028",
+  "layer": "L2",
+  "name": "三学",
+  "sanskrit": "Trīṇi śikṣāṇi",
+  "alias": [
+    "三无漏学",
+    "三胜学",
+    "戒定慧三学"
+  ],
+  "definition": "戒、定、慧三学，是佛教修行的总纲",
+  "structure": [
+    "戒学：防止身口意作恶",
+    "定学：收摄散心，止息妄想",
+    "慧学：观照实相，断除烦恼"
+  ],
+  "sutra_source": [
+    "《阿含经》（t0001）"
+  ],
+  "primary_sect": "大乘通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": "",
+  "dict_alias_sources": "佛学大词典参见链"
+}

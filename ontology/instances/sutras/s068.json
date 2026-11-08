@@ -1,0 +1,21 @@
+{
+  "id": "s068",
+  "old_id": "s069",
+  "taisho_id": "T1506",
+  "category": "论部",
+  "name": "俱舍论",
+  "volume_count": 0,
+  "volume": "T29",
+  "translator_brief": "玄奘",
+  "translations": [
+    {
+      "id": "s068_1",
+      "name": "俱舍论",
+      "translator": "玄奘"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

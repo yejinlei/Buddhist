@@ -1,0 +1,30 @@
+{
+  "id": "c167",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "十如是",
+  "sanskrit": "",
+  "alias": [
+    "十如",
+    "如是体",
+    "如是作",
+    "如是力",
+    "如是因",
+    "如是性",
+    "如是报",
+    "如是果",
+    "如是相",
+    "如是缘"
+  ],
+  "definition": "相、性、体、力、作、因、缘、果、报、本末究竟等，诸法本具的十种如是",
+  "primary_sect": "天台宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "天台宗": "相、性、体、力、作、因、缘、果、报、本末究竟等，诸法本具的十种如是"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js",
+  "dict_alias_sources": "佛学大词典参见链"
+}

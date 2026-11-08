@@ -1,0 +1,35 @@
+{
+  "id": "s005",
+  "taisho_id": "T0220",
+  "category": "般若部",
+  "name": "大般若波罗蜜多经",
+  "volume_count": 600,
+  "translations": [
+    {
+      "id": "t005_1",
+      "name": "大般若波罗蜜多经",
+      "translator": "玄奘",
+      "translate_time": "唐显庆五年至龙朔三年（660-663年）",
+      "translate_place": "长安玉华宫",
+      "volume_count": 600,
+      "text_length": "约480万字",
+      "differences": "共十六会，是般若类经典的总集，系统阐发般若空性思想"
+    },
+    {
+      "id": "t005_2",
+      "name": "大般若经（不全本）",
+      "translator": "鸠摩罗什等",
+      "translate_time": "东晋",
+      "volume_count": "多卷",
+      "differences": "零散译出的各会，玄奘译本为全本"
+    }
+  ],
+  "core_content": "大乘佛教的根本经典，系统阐发“一切法空”“般若波罗蜜多”思想，是中观宗的根本依据",
+  "core_concept": [
+    "空性",
+    "般若",
+    "无所得",
+    "缘起性空"
+  ],
+  "translator_brief": "玄奘"
+}

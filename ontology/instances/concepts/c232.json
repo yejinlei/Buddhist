@@ -1,0 +1,16 @@
+{
+  "id": "c232",
+  "layer": "L1",
+  "layer_label": "L1 教理本体层",
+  "name": "菩提",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "梵文 bodhi，觉、觉悟、智，断烦恼证涅槃之智",
+  "sutra_source": [
+    "《大智度论》"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch1_dict_expansion"
+}

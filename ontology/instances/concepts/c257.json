@@ -1,0 +1,16 @@
+{
+  "id": "c257",
+  "layer": "L3",
+  "layer_label": "L3 宗派/法门/修证层",
+  "name": "三昧",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "又名三摩提，或三摩地，华译为正定，即离诸邪乱，摄心不散的意思。",
+  "sutra_source": [
+    "《大智度论》"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch2_dict_expansion"
+}

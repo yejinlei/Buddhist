@@ -1,0 +1,20 @@
+{
+  "id": "c219",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "极乐世界",
+  "sanskrit": "",
+  "alias": [
+    "安养",
+    "极乐净土"
+  ],
+  "definition": "（待考，从旧拼音id补）",
+  "primary_sect": "通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "（待考）",
+  "_source": "merged_from_pinyin_alias",
+  "dict_alias_sources": "佛学大词典参见链"
+}

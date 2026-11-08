@@ -1,0 +1,18 @@
+{
+  "id": "c132",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "五位百法",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "唯识宗对一切法的分类：心法8、心所法51、色法11、心不相应行法24、无为法6",
+  "primary_sect": "唯识宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "唯识宗": "唯识宗对一切法的分类：心法8、心所法51、色法11、心不相应行法24、无为法6"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

@@ -1,0 +1,5161 @@
+{
+  "summary": {
+    "total_dict_entries": 7190,
+    "total_matched": 424,
+    "matched_by_type": {
+      "concept": 215,
+      "person": 154,
+      "sect": 27,
+      "sutra": 28
+    },
+    "match_rate_by_type": {
+      "concept": "215/0",
+      "person": "154/0",
+      "sect": "27/0",
+      "sutra": "28/0"
+    },
+    "matched_count": 514
+  },
+  "links": [
+    {
+      "dict_word": "实相",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c001",
+      "ontology_label": "法界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "实际",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c001",
+      "ontology_label": "法界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "法性",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c001",
+      "ontology_label": "法界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "法界",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c001",
+      "ontology_label": "法界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "真如",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c001",
+      "ontology_label": "法界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "佛性",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c002",
+      "ontology_label": "真如",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "如",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c002",
+      "ontology_label": "真如",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "如如",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c002",
+      "ontology_label": "真如",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "法身",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c002",
+      "ontology_label": "真如",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "法身菩萨",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c002",
+      "ontology_label": "真如",
+      "ontology_type": "concept",
+      "match_method": "normalized",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "真性",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c002",
+      "ontology_label": "真如",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "如来藏",
+      "dict_clean": null,
+      "dict_category": "大乘义理",
+      "ontology_id": "c003",
+      "ontology_label": "佛性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "本来面目",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c003",
+      "ontology_label": "佛性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "自性",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c003",
+      "ontology_label": "佛性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "觉性",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c003",
+      "ontology_label": "佛性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "异熟识",
+      "dict_clean": null,
+      "dict_category": "唯识宗",
+      "ontology_id": "c004",
+      "ontology_label": "阿赖耶识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "本识",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c004",
+      "ontology_label": "阿赖耶识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "种子识",
+      "dict_clean": null,
+      "dict_category": "唯识宗",
+      "ontology_id": "c004",
+      "ontology_label": "阿赖耶识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "第八识",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c004",
+      "ontology_label": "阿赖耶识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "藏识",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c004",
+      "ontology_label": "阿赖耶识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "阿赖耶识",
+      "dict_clean": null,
+      "dict_category": "唯识宗",
+      "ontology_id": "c004",
+      "ontology_label": "阿赖耶识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "无我",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c005",
+      "ontology_label": "空性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "毕竟空",
+      "dict_clean": null,
+      "dict_category": "大乘义理",
+      "ontology_id": "c005",
+      "ontology_label": "空性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "空",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c005",
+      "ontology_label": "空性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "空性",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c005",
+      "ontology_label": "空性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "缘生",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c006",
+      "ontology_label": "缘起",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "缘起",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c006",
+      "ontology_label": "缘起",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "我",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c007",
+      "ontology_label": "如来藏",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "自性清净心",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c007",
+      "ontology_label": "如来藏",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "圆寂",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c008",
+      "ontology_label": "涅槃",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "寂灭",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c008",
+      "ontology_label": "涅槃",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "无为",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c008",
+      "ontology_label": "涅槃",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "涅槃",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c008",
+      "ontology_label": "涅槃",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "灭度",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c008",
+      "ontology_label": "涅槃",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "解脱",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c008",
+      "ontology_label": "涅槃",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "无相",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c009",
+      "ontology_label": "实相",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "诸法实相",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c009",
+      "ontology_label": "实相",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "佛身",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c010",
+      "ontology_label": "法身",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "真身",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c010",
+      "ontology_label": "法身",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "自性身",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c010",
+      "ontology_label": "法身",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "五蕴",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c011",
+      "ontology_label": "五蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "五阴",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c011",
+      "ontology_label": "五蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "色",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c012",
+      "ontology_label": "色蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "色法",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c012",
+      "ontology_label": "色蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "色蕴",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c012",
+      "ontology_label": "色蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "受",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c013",
+      "ontology_label": "受蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "受蕴",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c013",
+      "ontology_label": "受蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "想蕴",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c014",
+      "ontology_label": "想蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "行",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c015",
+      "ontology_label": "行蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "行蕴",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c015",
+      "ontology_label": "行蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "心",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c016",
+      "ontology_label": "识蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "识",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c016",
+      "ontology_label": "识蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "识蕴",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c016",
+      "ontology_label": "识蕴",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "十二入",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "c017",
+      "ontology_label": "十二处",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "十二处",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c017",
+      "ontology_label": "十二处",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "十八界",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c018",
+      "ontology_label": "十八界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "十二因缘",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c019",
+      "ontology_label": "十二缘起",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "十二缘起",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "c019",
+      "ontology_label": "十二缘起",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "四圣谛",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c020",
+      "ontology_label": "四圣谛",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "四谛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c020",
+      "ontology_label": "四圣谛",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "八圣道",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c021",
+      "ontology_label": "八正道",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "八正道",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c021",
+      "ontology_label": "八正道",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三法印",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c022",
+      "ontology_label": "三法印",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "四念住",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c023",
+      "ontology_label": "四念处",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "四念处",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c023",
+      "ontology_label": "四念处",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "四无量心",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c024",
+      "ontology_label": "四无量心",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "六度",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c025",
+      "ontology_label": "六度",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "六波罗蜜",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c025",
+      "ontology_label": "六度",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "到彼岸",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c025",
+      "ontology_label": "六度",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "四摄",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c026",
+      "ontology_label": "四摄法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "四摄法",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c026",
+      "ontology_label": "四摄法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三十七菩提分法",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "c027",
+      "ontology_label": "三十七道品",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "三十七道品",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "c027",
+      "ontology_label": "三十七道品",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三学",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c028",
+      "ontology_label": "三学",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三无漏学",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c028",
+      "ontology_label": "三学",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "三无性",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c029",
+      "ontology_label": "三无性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三性",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c030",
+      "ontology_label": "三自性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "三自性",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c030",
+      "ontology_label": "三自性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "八不中道",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c031",
+      "ontology_label": "八不中道",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "中道",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c032",
+      "ontology_label": "中道",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "中道实相",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c032",
+      "ontology_label": "中道",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "二谛",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c033",
+      "ontology_label": "二谛",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三谛圆融",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c034",
+      "ontology_label": "三谛圆融",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "圆融三谛",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c034",
+      "ontology_label": "三谛圆融",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "一念三千",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c035",
+      "ontology_label": "一念三千",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "十玄门",
+      "dict_clean": null,
+      "dict_category": "华严宗",
+      "ontology_id": "c036",
+      "ontology_label": "十玄门",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "六相圆融",
+      "dict_clean": null,
+      "dict_category": "华严宗",
+      "ontology_id": "c037",
+      "ontology_label": "六相圆融",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "四法界",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c038",
+      "ontology_label": "四法界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "性起",
+      "dict_clean": null,
+      "dict_category": "华严宗",
+      "ontology_id": "c039",
+      "ontology_label": "性起",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "如来藏缘起",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c040",
+      "ontology_label": "如来藏缘起",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "真如缘起",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c040",
+      "ontology_label": "如来藏缘起",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "转依",
+      "dict_clean": null,
+      "dict_category": "唯识宗",
+      "ontology_id": "c041",
+      "ontology_label": "转识成智",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "转识成智",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c041",
+      "ontology_label": "转识成智",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "末那识",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c042",
+      "ontology_label": "末那识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "染污意",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c042",
+      "ontology_label": "末那识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "第七识",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c042",
+      "ontology_label": "末那识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "习气",
+      "dict_clean": null,
+      "dict_category": "唯识宗",
+      "ontology_id": "c043",
+      "ontology_label": "种子",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "种子",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c043",
+      "ontology_label": "种子",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "现行",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c044",
+      "ontology_label": "现行",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "五性",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c045",
+      "ontology_label": "五种姓",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "顿悟",
+      "dict_clean": null,
+      "dict_category": "修行法门",
+      "ontology_id": "c046",
+      "ontology_label": "顿悟",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "顿教",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c046",
+      "ontology_label": "顿悟",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "渐教",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c047",
+      "ontology_label": "渐修",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "明心见性",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c048",
+      "ontology_label": "明心见性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "见性",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c048",
+      "ontology_label": "明心见性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "见性成佛",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c048",
+      "ontology_label": "明心见性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "即心即佛",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c049",
+      "ontology_label": "即心即佛",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "即心是佛",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c049",
+      "ontology_label": "即心即佛",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "非心非佛",
+      "dict_clean": null,
+      "dict_category": "禅宗",
+      "ontology_id": "c050",
+      "ontology_label": "非心非佛",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三归依",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c051",
+      "ontology_label": "三归依",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "五戒",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c052",
+      "ontology_label": "五戒",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "八戒",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "c053",
+      "ontology_label": "八戒",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "十善",
+      "dict_clean": null,
+      "dict_category": "戒律",
+      "ontology_id": "c054",
+      "ontology_label": "十善",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "择灭",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c058",
+      "ontology_label": "择灭",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "无常",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c060",
+      "ontology_label": "无常",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "因缘",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c063",
+      "ontology_label": "因缘",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "果报",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c064",
+      "ontology_label": "果报",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "佛土",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c066",
+      "ontology_label": "佛土",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "娑婆世界",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "c067",
+      "ontology_label": "娑婆世界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "西方极乐世界",
+      "dict_clean": null,
+      "dict_category": "净土宗",
+      "ontology_id": "c068",
+      "ontology_label": "西方极乐世界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "兜率天",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c070",
+      "ontology_label": "兜率天",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三科",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c071",
+      "ontology_label": "三科",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "五位七十五法",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c072",
+      "ontology_label": "五位七十五法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "五果",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c077",
+      "ontology_label": "五果",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "有漏",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c078",
+      "ontology_label": "有漏",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "无漏",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c079",
+      "ontology_label": "无漏",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "见道",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c080",
+      "ontology_label": "见道",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "修道",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c081",
+      "ontology_label": "修道",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "无学道",
+      "dict_clean": null,
+      "dict_category": "法数名数",
+      "ontology_id": "c082",
+      "ontology_label": "无学道",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "四向四果",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c083",
+      "ontology_label": "四向四果",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "阿",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c084",
+      "ontology_label": "阿罗汉",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "阿罗汉",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c084",
+      "ontology_label": "阿罗汉",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "辟支佛",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c085",
+      "ontology_label": "辟支佛",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c086",
+      "ontology_label": "菩萨",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "佛果",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c087",
+      "ontology_label": "佛果",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三乘",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c088",
+      "ontology_label": "三乘",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "一乘",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c089",
+      "ontology_label": "一乘",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "有余涅槃",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c091",
+      "ontology_label": "有余涅槃",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "无余涅槃",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c092",
+      "ontology_label": "无余涅槃",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "无住涅槃",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c094",
+      "ontology_label": "无住涅槃",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "四谛十六行相",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c095",
+      "ontology_label": "四谛十六行相",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "八忍八智",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c096",
+      "ontology_label": "八忍八智",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "见惑",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c097",
+      "ontology_label": "见惑",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "修惑",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c098",
+      "ontology_label": "修惑",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "无为法",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c100",
+      "ontology_label": "无为法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "缘起性空",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c103",
+      "ontology_label": "缘起性空",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "假名",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c111",
+      "ontology_label": "假名",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "中观",
+      "dict_clean": null,
+      "dict_category": "大乘义理",
+      "ontology_id": "c112",
+      "ontology_label": "中观",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三论",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "c113",
+      "ontology_label": "三论",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "二智",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c114",
+      "ontology_label": "二智",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "无所得",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c117",
+      "ontology_label": "无所得",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "一异",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c119",
+      "ontology_label": "一异",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "生灭",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c121",
+      "ontology_label": "生灭",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "一心二门",
+      "dict_clean": null,
+      "dict_category": "大乘义理",
+      "ontology_id": "c124",
+      "ontology_label": "一心二门",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "阿黎耶识",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "c125",
+      "ontology_label": "阿黎耶识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "本觉",
+      "dict_clean": null,
+      "dict_category": "大乘义理",
+      "ontology_id": "c126",
+      "ontology_label": "本觉",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "遍计所执性",
+      "dict_clean": null,
+      "dict_category": "大乘义理",
+      "ontology_id": "c128",
+      "ontology_label": "遍计所执性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "依他起性",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "c129",
+      "ontology_label": "依他起性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "圆成实性",
+      "dict_clean": null,
+      "dict_category": "大乘义理",
+      "ontology_id": "c130",
+      "ontology_label": "圆成实性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "五位百法",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c132",
+      "ontology_label": "五位百法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "八识",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c133",
+      "ontology_label": "八识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "四智",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c136",
+      "ontology_label": "四智",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "我执",
+      "dict_clean": null,
+      "dict_category": "唯识宗",
+      "ontology_id": "c143",
+      "ontology_label": "我执",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "法执",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c144",
+      "ontology_label": "法执",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "二障",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c145",
+      "ontology_label": "二障",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "烦恼障",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c146",
+      "ontology_label": "烦恼障",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "所知障",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c147",
+      "ontology_label": "所知障",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "四分",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c148",
+      "ontology_label": "四分",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "相分",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c149",
+      "ontology_label": "相分",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "见分",
+      "dict_clean": null,
+      "dict_category": "唯识宗",
+      "ontology_id": "c150",
+      "ontology_label": "见分",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "唯识无境",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c152",
+      "ontology_label": "唯识无境",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "万法唯识",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c153",
+      "ontology_label": "万法唯识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三类境",
+      "dict_clean": null,
+      "dict_category": "唯识宗",
+      "ontology_id": "c154",
+      "ontology_label": "三类境",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "性境",
+      "dict_clean": null,
+      "dict_category": "唯识宗",
+      "ontology_id": "c155",
+      "ontology_label": "性境",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "带质境",
+      "dict_clean": null,
+      "dict_category": "唯识宗",
+      "ontology_id": "c156",
+      "ontology_label": "带质境",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "一心三观",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c158",
+      "ontology_label": "一心三观",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "圆教",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c160",
+      "ontology_label": "圆教",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "五时八教",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c161",
+      "ontology_label": "五时八教",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "化法四教",
+      "dict_clean": null,
+      "dict_category": "天台宗",
+      "ontology_id": "c162",
+      "ontology_label": "化法四教",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "化仪四教",
+      "dict_clean": null,
+      "dict_category": "天台宗",
+      "ontology_id": "c163",
+      "ontology_label": "化仪四教",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "性具善恶",
+      "dict_clean": null,
+      "dict_category": "天台宗",
+      "ontology_id": "c164",
+      "ontology_label": "性具善恶",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "十界互具",
+      "dict_clean": null,
+      "dict_category": "天台宗",
+      "ontology_id": "c166",
+      "ontology_label": "十界互具",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "十如是",
+      "dict_clean": null,
+      "dict_category": "天台宗",
+      "ontology_id": "c167",
+      "ontology_label": "十如是",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三世间",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c168",
+      "ontology_label": "三世间",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "止观",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c172",
+      "ontology_label": "止观",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "无情有性",
+      "dict_clean": null,
+      "dict_category": "天台宗",
+      "ontology_id": "c175",
+      "ontology_label": "无情有性",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "法界缘起",
+      "dict_clean": null,
+      "dict_category": "华严宗",
+      "ontology_id": "c177",
+      "ontology_label": "法界缘起",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "事法界",
+      "dict_clean": null,
+      "dict_category": "华严宗",
+      "ontology_id": "c179",
+      "ontology_label": "事法界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "理法界",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c180",
+      "ontology_label": "理法界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "事事无碍",
+      "dict_clean": null,
+      "dict_category": "华严宗",
+      "ontology_id": "c182",
+      "ontology_label": "事事无碍",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "因陀罗网",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c186",
+      "ontology_label": "因陀罗网",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "五教十宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "c188",
+      "ontology_label": "五教十宗",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "六相",
+      "dict_clean": null,
+      "dict_category": "华严宗",
+      "ontology_id": "c189",
+      "ontology_label": "六相",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "华严三圣",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c193",
+      "ontology_label": "华严三圣",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "十地",
+      "dict_clean": null,
+      "dict_category": "法数名数",
+      "ontology_id": "c195",
+      "ontology_label": "十地",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "圆融",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c196",
+      "ontology_label": "圆融",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "不立文字",
+      "dict_clean": null,
+      "dict_category": "禅宗",
+      "ontology_id": "c198",
+      "ontology_label": "不立文字",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "教外别传",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c199",
+      "ontology_label": "教外别传",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "直指人心",
+      "dict_clean": null,
+      "dict_category": "禅宗",
+      "ontology_id": "c200",
+      "ontology_label": "直指人心",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "无念为宗",
+      "dict_clean": null,
+      "dict_category": "禅宗",
+      "ontology_id": "c203",
+      "ontology_label": "无念为宗",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "无相为体",
+      "dict_clean": null,
+      "dict_category": "禅宗",
+      "ontology_id": "c204",
+      "ontology_label": "无相为体",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "无住为本",
+      "dict_clean": null,
+      "dict_category": "禅宗",
+      "ontology_id": "c205",
+      "ontology_label": "无住为本",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "公案",
+      "dict_clean": null,
+      "dict_category": "禅宗",
+      "ontology_id": "c208",
+      "ontology_label": "公案",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "机锋",
+      "dict_clean": null,
+      "dict_category": "禅宗",
+      "ontology_id": "c209",
+      "ontology_label": "机锋",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "棒喝",
+      "dict_clean": null,
+      "dict_category": "禅宗",
+      "ontology_id": "c210",
+      "ontology_label": "棒喝",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "平常心是道",
+      "dict_clean": null,
+      "dict_category": "禅宗",
+      "ontology_id": "c211",
+      "ontology_label": "平常心是道",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "信愿行",
+      "dict_clean": null,
+      "dict_category": "法数名数",
+      "ontology_id": "c212",
+      "ontology_label": "信愿行",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "持名念佛",
+      "dict_clean": null,
+      "dict_category": "修行法门",
+      "ontology_id": "c213",
+      "ontology_label": "持名念佛",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "往生",
+      "dict_clean": null,
+      "dict_category": "修行法门",
+      "ontology_id": "c214",
+      "ontology_label": "往生",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "九品往生",
+      "dict_clean": null,
+      "dict_category": "修行法门",
+      "ontology_id": "c215",
+      "ontology_label": "九品往生",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "不二法门",
+      "dict_clean": null,
+      "dict_category": "大乘义理",
+      "ontology_id": "c217",
+      "ontology_label": "不二法门",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "持戒",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c218",
+      "ontology_label": "持戒",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "极乐世界",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c219",
+      "ontology_label": "极乐世界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "念佛",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c220",
+      "ontology_label": "念佛",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三密相应",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c221",
+      "ontology_label": "三密相应",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "世尊",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p001",
+      "ontology_label": "释迦牟尼佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "佛陀",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p001",
+      "ontology_label": "释迦牟尼佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "天人师",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p001",
+      "ontology_label": "释迦牟尼佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "如来",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p001",
+      "ontology_label": "释迦牟尼佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "应供",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p001",
+      "ontology_label": "释迦牟尼佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "释迦牟尼佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p001",
+      "ontology_label": "释迦牟尼佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "接引佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p002",
+      "ontology_label": "阿弥陀佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "无量光佛",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p002",
+      "ontology_label": "阿弥陀佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "无量寿佛",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p002",
+      "ontology_label": "阿弥陀佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "阿弥陀佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p002",
+      "ontology_label": "阿弥陀佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "大医王佛",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p003",
+      "ontology_label": "药师佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "消灾延寿药师佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p003",
+      "ontology_label": "药师佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "药师佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p003",
+      "ontology_label": "药师佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "药师琉璃光如来",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p003",
+      "ontology_label": "药师佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "卢舍那佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p004",
+      "ontology_label": "卢舍那佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "报身佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p004",
+      "ontology_label": "卢舍那佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "毗卢遮那佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p004",
+      "ontology_label": "卢舍那佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "大日如来",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p005",
+      "ontology_label": "毗卢遮那佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "法身佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p005",
+      "ontology_label": "毗卢遮那佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "定光佛",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p006",
+      "ontology_label": "燃灯古佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "布袋和尚",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p007",
+      "ontology_label": "弥勒佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "弥勒佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p007",
+      "ontology_label": "弥勒佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "慈氏",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p007",
+      "ontology_label": "弥勒佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "慈氏菩萨",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p007",
+      "ontology_label": "弥勒佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "文殊",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p101",
+      "ontology_label": "文殊菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "文殊师利",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p101",
+      "ontology_label": "文殊菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "文殊菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p101",
+      "ontology_label": "文殊菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三曼多跋陀罗",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p102",
+      "ontology_label": "普贤菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "大行普贤菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p102",
+      "ontology_label": "普贤菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "普贤",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p102",
+      "ontology_label": "普贤菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "普贤菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p102",
+      "ontology_label": "普贤菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "圆通",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p103",
+      "ontology_label": "观世音菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "圆通大士",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p103",
+      "ontology_label": "观世音菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "大悲",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p103",
+      "ontology_label": "观世音菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "大悲菩萨",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p103",
+      "ontology_label": "观世音菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "观世音",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p103",
+      "ontology_label": "观世音菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "观世音菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p103",
+      "ontology_label": "观世音菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "观自在",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p103",
+      "ontology_label": "观世音菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "观自在菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p103",
+      "ontology_label": "观世音菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "观音",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p103",
+      "ontology_label": "观世音菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "地藏",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p104",
+      "ontology_label": "地藏菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "地藏王",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p104",
+      "ontology_label": "地藏菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "地藏王菩萨",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p104",
+      "ontology_label": "地藏菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "地藏菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p104",
+      "ontology_label": "地藏菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "大势至",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p105",
+      "ontology_label": "大势至菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "大势至菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p105",
+      "ontology_label": "大势至菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "得大势菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p105",
+      "ontology_label": "大势至菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "虚空孕菩萨",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p106",
+      "ontology_label": "虚空藏菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "虚空藏",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p106",
+      "ontology_label": "虚空藏菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "虚空藏菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p106",
+      "ontology_label": "虚空藏菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "韦天将军",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p107",
+      "ontology_label": "韦驮菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "韦驮",
+      "dict_clean": null,
+      "dict_category": "护法诸天",
+      "ontology_id": "p107",
+      "ontology_label": "韦驮菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "韦驮菩萨",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p107",
+      "ontology_label": "韦驮菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "伽蓝",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p108",
+      "ontology_label": "伽蓝菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "关公",
+      "dict_clean": null,
+      "dict_category": "护法诸天",
+      "ontology_id": "p108",
+      "ontology_label": "伽蓝菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "关圣帝君",
+      "dict_clean": null,
+      "dict_category": "护法诸天",
+      "ontology_id": "p108",
+      "ontology_label": "伽蓝菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "不动佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p110",
+      "ontology_label": "不动佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "宝生佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p111",
+      "ontology_label": "宝生佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "不空成就佛",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p112",
+      "ontology_label": "不空成就佛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "观音菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p113",
+      "ontology_label": "观音菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "弥勒",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p114",
+      "ontology_label": "弥勒菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "弥勒菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p114",
+      "ontology_label": "弥勒菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "除盖障菩萨",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p115",
+      "ontology_label": "除盖障菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "大迦叶",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p120",
+      "ontology_label": "大迦叶尊者",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "舍利弗",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p121",
+      "ontology_label": "舍利弗尊者",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "目犍连",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p122",
+      "ontology_label": "目犍连尊者",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "须菩提",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p123",
+      "ontology_label": "须菩提尊者",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "富楼那",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p124",
+      "ontology_label": "富楼那尊者",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "迦旃延",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p125",
+      "ontology_label": "迦旃延尊者",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "阿那律",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p126",
+      "ontology_label": "阿那律尊者",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "优波离",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p127",
+      "ontology_label": "优波离尊者",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "罗睺罗",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p128",
+      "ontology_label": "罗睺罗尊者",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "十八",
+      "dict_clean": null,
+      "dict_category": "法数名数",
+      "ontology_id": "p132",
+      "ontology_label": "十八罗汉",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "十八罗汉",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p132",
+      "ontology_label": "十八罗汉",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "五百罗汉",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "p133",
+      "ontology_label": "五百罗汉",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "安世高",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p134",
+      "ontology_label": "安世高",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "支娄迦谶",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p135",
+      "ontology_label": "支娄迦谶",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "竺法护",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p136",
+      "ontology_label": "竺法护",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "佛驮跋陀罗",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p137",
+      "ontology_label": "佛驮跋陀罗",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "法显",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p138",
+      "ontology_label": "法显",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "昙无谶",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p139",
+      "ontology_label": "昙无谶",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "菩提流支",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p140",
+      "ontology_label": "菩提流支",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "真谛",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p141",
+      "ontology_label": "真谛",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "义净",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p143",
+      "ontology_label": "义净法师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "实叉难陀",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p144",
+      "ontology_label": "实叉难陀",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "善无畏",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p145",
+      "ontology_label": "善无畏",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "金刚智",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p146",
+      "ontology_label": "金刚智",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "道生",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p152",
+      "ontology_label": "道生法师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "僧肇",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p153",
+      "ontology_label": "僧肇大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "神秀",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p155",
+      "ontology_label": "神秀大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "惠能",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p156",
+      "ontology_label": "惠能大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "吉藏",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p157",
+      "ontology_label": "吉藏大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "灌顶",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p159",
+      "ontology_label": "灌顶大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "杜顺",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p160",
+      "ontology_label": "杜顺大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "智俨",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p161",
+      "ontology_label": "智俨大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "法藏",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p162",
+      "ontology_label": "法藏大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "澄观",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p163",
+      "ontology_label": "澄观大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "宗密",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p164",
+      "ontology_label": "宗密大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "窥基",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p165",
+      "ontology_label": "窥基大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "一行",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p167",
+      "ontology_label": "一行禅师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "一行禅师",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p167",
+      "ontology_label": "一行禅师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "百丈怀海",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p168",
+      "ontology_label": "百丈怀海",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "马祖道一",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p169",
+      "ontology_label": "马祖道一",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "临济义玄",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p170",
+      "ontology_label": "临济义玄",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "洞山良价",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p171",
+      "ontology_label": "洞山良价",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "永明延寿",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p172",
+      "ontology_label": "永明延寿",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "蕅益",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p173",
+      "ontology_label": "蕅益大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "蕅益大师",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p173",
+      "ontology_label": "蕅益大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "欧阳竟无",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p175",
+      "ontology_label": "欧阳竟无",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "太虚",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p176",
+      "ontology_label": "太虚大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "太虚大师",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p176",
+      "ontology_label": "太虚大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "南怀瑾",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p177",
+      "ontology_label": "南怀瑾",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "摩诃迦叶",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p201",
+      "ontology_label": "摩诃迦叶",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "迦叶",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p201",
+      "ontology_label": "摩诃迦叶",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "迦叶尊者",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p201",
+      "ontology_label": "摩诃迦叶",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "多闻第一",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p202",
+      "ontology_label": "阿难尊者",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "阿难",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p202",
+      "ontology_label": "阿难尊者",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "阿难陀",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p202",
+      "ontology_label": "阿难尊者",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "舍利子",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p203",
+      "ontology_label": "舍利弗",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "大目犍连",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p204",
+      "ontology_label": "目犍连",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "目连",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p204",
+      "ontology_label": "目犍连",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "龙树",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p301",
+      "ontology_label": "龙树菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "龙猛",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p301",
+      "ontology_label": "龙树菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "龙胜",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p301",
+      "ontology_label": "龙树菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "无著",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p303",
+      "ontology_label": "无著菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "世亲",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p304",
+      "ontology_label": "世亲菩萨",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "童寿",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p305",
+      "ontology_label": "鸠摩罗什",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "鸠摩罗什",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p305",
+      "ontology_label": "鸠摩罗什",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "真谛三藏",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p306",
+      "ontology_label": "真谛三藏",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三藏法师",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p307",
+      "ontology_label": "玄奘法师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "唐三藏",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p307",
+      "ontology_label": "玄奘法师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "玄奘",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p307",
+      "ontology_label": "玄奘法师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "慧可",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p310",
+      "ontology_label": "慧可大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "僧璨",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p311",
+      "ontology_label": "僧璨大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "道信",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p312",
+      "ontology_label": "道信大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "五祖",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p313",
+      "ontology_label": "弘忍大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "弘忍",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p313",
+      "ontology_label": "弘忍大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "六祖慧能",
+      "dict_clean": null,
+      "dict_category": "禅宗",
+      "ontology_id": "p314",
+      "ontology_label": "慧能大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "慧能",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p314",
+      "ontology_label": "慧能大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "曹溪",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p314",
+      "ontology_label": "慧能大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "天台",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p315",
+      "ontology_label": "智者大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "智者",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p315",
+      "ontology_label": "智者大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "智者大师",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p315",
+      "ontology_label": "智者大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "贤首",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p316",
+      "ontology_label": "贤首国师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "贤首国师",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p316",
+      "ontology_label": "贤首国师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "道宣",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p317",
+      "ontology_label": "道宣律师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "道宣律师",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p317",
+      "ontology_label": "道宣律师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "善导",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p318",
+      "ontology_label": "善导大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "善导大师",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p318",
+      "ontology_label": "善导大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "慧远",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "p319",
+      "ontology_label": "慧远大师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "支恭明",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p403",
+      "ontology_label": "支谦",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "支谦",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p403",
+      "ontology_label": "支谦",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "印顺",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "p503",
+      "ontology_label": "印顺法师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "印顺法师",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "p503",
+      "ontology_label": "印顺法师",
+      "ontology_type": "person",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "三论宗",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "sec001",
+      "ontology_label": "三论宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "法性宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec001",
+      "ontology_label": "三论宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "空宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec001",
+      "ontology_label": "三论宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "唯识宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec002",
+      "ontology_label": "唯识宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "慈恩宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec002",
+      "ontology_label": "唯识宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "法相宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec002",
+      "ontology_label": "唯识宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "相宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec002",
+      "ontology_label": "唯识宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "台宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec003",
+      "ontology_label": "天台宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "天台宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec003",
+      "ontology_label": "天台宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "止观宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec003",
+      "ontology_label": "天台宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "法华宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec003",
+      "ontology_label": "天台宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "华严宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec004",
+      "ontology_label": "华严宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "法界宗",
+      "dict_clean": null,
+      "dict_category": "参见",
+      "ontology_id": "sec004",
+      "ontology_label": "华严宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "贤首宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec004",
+      "ontology_label": "华严宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "佛心宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec005",
+      "ontology_label": "禅宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "宗门",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "sec005",
+      "ontology_label": "禅宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "心宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec005",
+      "ontology_label": "禅宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "禅宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec005",
+      "ontology_label": "禅宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "净土宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec006",
+      "ontology_label": "净土宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "念佛宗",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "sec006",
+      "ontology_label": "净土宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "莲宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec006",
+      "ontology_label": "净土宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "南山宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec007",
+      "ontology_label": "律宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "律宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec007",
+      "ontology_label": "律宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "密宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec008",
+      "ontology_label": "密宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "密教",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "sec008",
+      "ontology_label": "密宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "真言宗",
+      "dict_clean": null,
+      "dict_category": "汉传宗派",
+      "ontology_id": "sec008",
+      "ontology_label": "密宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "金刚乘",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "sec008",
+      "ontology_label": "密宗",
+      "ontology_type": "sect",
+      "match_method": "exact",
+      "match_via": "alias"
+    },
+    {
+      "dict_word": "长阿含经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s001",
+      "ontology_label": "长阿含经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "中阿含经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s002",
+      "ontology_label": "中阿含经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "杂阿含经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s003",
+      "ontology_label": "杂阿含经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "增一阿含经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s004",
+      "ontology_label": "增一阿含经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "金刚般若波罗蜜经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s006",
+      "ontology_label": "金刚般若波罗蜜经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "般若波罗蜜多心经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s007",
+      "ontology_label": "般若波罗蜜多心经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "妙法莲华经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s008",
+      "ontology_label": "妙法莲华经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "大方广佛华严经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s009",
+      "ontology_label": "大方广佛华严经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "大般涅槃经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s010",
+      "ontology_label": "大般涅槃经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "维摩诘所说经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s011",
+      "ontology_label": "维摩诘所说经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "佛说阿弥陀经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s015",
+      "ontology_label": "佛说阿弥陀经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "佛说观无量寿佛经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s016",
+      "ontology_label": "佛说观无量寿佛经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "佛说无量寿经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s017",
+      "ontology_label": "佛说无量寿经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "中论",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s018",
+      "ontology_label": "中论",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "成唯识论",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s019",
+      "ontology_label": "成唯识论",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "大智度论",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s020",
+      "ontology_label": "大智度论",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "仁王护国般若经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s027",
+      "ontology_label": "仁王护国般若经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "解深密经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s051",
+      "ontology_label": "解深密经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "地藏菩萨本愿经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s059",
+      "ontology_label": "地藏菩萨本愿经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "药师琉璃光如来本愿功德经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s060",
+      "ontology_label": "药师琉璃光如来本愿功德经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "百论",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s066",
+      "ontology_label": "百论",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "十二门论",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s067",
+      "ontology_label": "十二门论",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "俱舍论",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s068",
+      "ontology_label": "俱舍论",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "大乘起信论",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s069",
+      "ontology_label": "大乘起信论",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "四分律",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "s077",
+      "ontology_label": "四分律",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "佛说弥勒上生经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s078",
+      "ontology_label": "佛说弥勒上生经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "梵网经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s093",
+      "ontology_label": "梵网经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "六祖坛经",
+      "dict_clean": null,
+      "dict_category": "经论典籍",
+      "ontology_id": "s095",
+      "ontology_label": "六祖坛经",
+      "ontology_type": "sutra",
+      "match_method": "exact",
+      "match_via": "label"
+    },
+    {
+      "dict_word": "烦恼",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c222",
+      "ontology_label": "烦恼",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "智慧",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c223",
+      "ontology_label": "智慧",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "诸法",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c224",
+      "ontology_label": "诸法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "生死",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c225",
+      "ontology_label": "生死",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "世界",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c226",
+      "ontology_label": "世界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "大乘",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c227",
+      "ontology_label": "大乘",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "修行",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c228",
+      "ontology_label": "修行",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "小乘",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c229",
+      "ontology_label": "小乘",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "清净",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c230",
+      "ontology_label": "清净",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "佛法",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c231",
+      "ontology_label": "佛法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "菩提",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c232",
+      "ontology_label": "菩提",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "禅定",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c233",
+      "ontology_label": "禅定",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "净土",
+      "dict_clean": null,
+      "dict_category": "净土宗",
+      "ontology_id": "c234",
+      "ontology_label": "净土",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "功德",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c235",
+      "ontology_label": "功德",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "世间",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c236",
+      "ontology_label": "世间",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "真理",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c237",
+      "ontology_label": "真理",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "成佛",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c238",
+      "ontology_label": "成佛",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "声闻",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c239",
+      "ontology_label": "声闻",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "弥陀",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c240",
+      "ontology_label": "弥陀",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "色界",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c241",
+      "ontology_label": "色界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "三界",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c242",
+      "ontology_label": "三界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "般若",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c243",
+      "ontology_label": "般若",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "无量",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c244",
+      "ontology_label": "无量",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "地狱",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c245",
+      "ontology_label": "地狱",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "分别",
+      "dict_clean": null,
+      "dict_category": "大乘义理",
+      "ontology_id": "c246",
+      "ontology_label": "分别",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "金刚",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c247",
+      "ontology_label": "金刚",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "教法",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c248",
+      "ontology_label": "教法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "说法",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c249",
+      "ontology_label": "说法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "一切法",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c250",
+      "ontology_label": "一切法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "道理",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c251",
+      "ontology_label": "道理",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "无明",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c252",
+      "ontology_label": "无明",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "法华",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c253",
+      "ontology_label": "法华",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "自在",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c254",
+      "ontology_label": "自在",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "罗汉",
+      "dict_clean": null,
+      "dict_category": "人物圣众",
+      "ontology_id": "c255",
+      "ontology_label": "罗汉",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "出家",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c256",
+      "ontology_label": "出家",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "三昧",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c257",
+      "ontology_label": "三昧",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "欲界",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c258",
+      "ontology_label": "欲界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "极乐",
+      "dict_clean": null,
+      "dict_category": "净土宗",
+      "ontology_id": "c259",
+      "ontology_label": "极乐",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "六道",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c260",
+      "ontology_label": "六道",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "无色界",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c261",
+      "ontology_label": "无色界",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "四大",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c262",
+      "ontology_label": "四大",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "法相",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c263",
+      "ontology_label": "法相",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "无碍",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c264",
+      "ontology_label": "无碍",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "相应",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c265",
+      "ontology_label": "相应",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "法门",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c266",
+      "ontology_label": "法门",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "虚空",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c267",
+      "ontology_label": "虚空",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "化身",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c268",
+      "ontology_label": "化身",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "戒律",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c269",
+      "ontology_label": "戒律",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "平等",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c270",
+      "ontology_label": "平等",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "缘觉",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c271",
+      "ontology_label": "缘觉",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "不生",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c272",
+      "ontology_label": "不生",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "供养",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c273",
+      "ontology_label": "供养",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "受持",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c274",
+      "ontology_label": "受持",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "赖耶",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c275",
+      "ontology_label": "赖耶",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "阿赖耶",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c276",
+      "ontology_label": "阿赖耶",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "唯识",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c277",
+      "ontology_label": "唯识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "国土",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c278",
+      "ontology_label": "国土",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "心所",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c279",
+      "ontology_label": "心所",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "出世",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c280",
+      "ontology_label": "出世",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "真言",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c281",
+      "ontology_label": "真言",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "凡夫",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c282",
+      "ontology_label": "凡夫",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "方便",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c283",
+      "ontology_label": "方便",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "应身",
+      "dict_clean": null,
+      "dict_category": "基础教义",
+      "ontology_id": "c284",
+      "ontology_label": "应身",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "具足戒",
+      "dict_clean": null,
+      "dict_category": "戒律",
+      "ontology_id": "c285",
+      "ontology_label": "具足戒",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "赖耶识",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c286",
+      "ontology_label": "赖耶识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "陀罗尼",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c287",
+      "ontology_label": "陀罗尼",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "恶业",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c288",
+      "ontology_label": "恶业",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "慈悲",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c289",
+      "ontology_label": "慈悲",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "十住",
+      "dict_clean": null,
+      "dict_category": "法数名数",
+      "ontology_id": "c290",
+      "ontology_label": "十住",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "有情",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c291",
+      "ontology_label": "有情",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "善恶",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c292",
+      "ontology_label": "善恶",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "差别",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c293",
+      "ontology_label": "差别",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "执著",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c294",
+      "ontology_label": "执著",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "正法",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c295",
+      "ontology_label": "正法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "饿鬼",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c296",
+      "ontology_label": "饿鬼",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "十六观",
+      "dict_clean": null,
+      "dict_category": "修行法门",
+      "ontology_id": "c297",
+      "ontology_label": "十六观",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "意识",
+      "dict_clean": null,
+      "dict_category": "唯识宗",
+      "ontology_id": "c298",
+      "ontology_label": "意识",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "布施",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c299",
+      "ontology_label": "布施",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "善根",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c300",
+      "ontology_label": "善根",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "六尘",
+      "dict_clean": null,
+      "dict_category": "法数名数",
+      "ontology_id": "c301",
+      "ontology_label": "六尘",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "万法",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c302",
+      "ontology_label": "万法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "六根",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c303",
+      "ontology_label": "六根",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "有为",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c304",
+      "ontology_label": "有为",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "行法",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c305",
+      "ontology_label": "行法",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "邪见",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c306",
+      "ontology_label": "邪见",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "不二",
+      "dict_clean": null,
+      "dict_category": "大乘义理",
+      "ontology_id": "c307",
+      "ontology_label": "不二",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "精进",
+      "dict_clean": null,
+      "dict_category": "阿毗达磨",
+      "ontology_id": "c308",
+      "ontology_label": "精进",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "三宝",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c309",
+      "ontology_label": "三宝",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "比丘尼",
+      "dict_clean": null,
+      "dict_category": "戒律",
+      "ontology_id": "c310",
+      "ontology_label": "比丘尼",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    },
+    {
+      "dict_word": "二乘",
+      "dict_clean": null,
+      "dict_category": "名相术语",
+      "ontology_id": "c311",
+      "ontology_label": "二乘",
+      "ontology_type": "concept",
+      "match_method": "exact",
+      "match_via": "name"
+    }
+  ]
+}

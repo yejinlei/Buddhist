@@ -1,0 +1,21 @@
+{
+  "id": "s027",
+  "old_id": "s019",
+  "taisho_id": "T0236",
+  "category": "般若部",
+  "name": "仁王护国般若经",
+  "volume_count": 0,
+  "volume": "T08",
+  "translator_brief": "鸠摩罗什",
+  "translations": [
+    {
+      "id": "s027_1",
+      "name": "仁王护国般若经",
+      "translator": "鸠摩罗什"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

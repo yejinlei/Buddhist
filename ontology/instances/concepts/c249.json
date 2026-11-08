@@ -1,0 +1,16 @@
+{
+  "id": "c249",
+  "layer": "L3",
+  "layer_label": "L3 宗派/法门/修证层",
+  "name": "说法",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "演说佛的教义。",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch1_dict_expansion"
+}

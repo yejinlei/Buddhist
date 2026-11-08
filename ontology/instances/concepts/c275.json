@@ -1,0 +1,17 @@
+{
+  "id": "c275",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "赖耶",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "阿赖耶的简称。",
+  "sutra_source": [
+    "《成唯识论》（t1585）",
+    "《解深密经》（t0676）"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch2_dict_expansion"
+}

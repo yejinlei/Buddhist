@@ -1,0 +1,21 @@
+{
+  "id": "s046",
+  "old_id": "s040",
+  "taisho_id": "T0277",
+  "category": "华严部",
+  "name": "维摩诘所说经",
+  "volume_count": 0,
+  "volume": "T14",
+  "translator_brief": "玄奘",
+  "translations": [
+    {
+      "id": "s046_1",
+      "name": "维摩诘所说经",
+      "translator": "玄奘"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

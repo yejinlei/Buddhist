@@ -1,0 +1,17 @@
+{
+  "id": "c234",
+  "layer": "L3",
+  "layer_label": "L3 宗派/法门/修证层",
+  "name": "净土",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "梵文 Kṣetra-pariśuddhi，清净佛土，佛所居住无烦恼垢染之世界",
+  "sutra_source": [
+    "《佛说阿弥陀经》（t0366）",
+    "《佛说无量寿经》（t0360）"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "净土宗",
+  "_source": "M2_batch1_dict_expansion"
+}

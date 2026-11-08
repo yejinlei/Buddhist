@@ -1,0 +1,16 @@
+{
+  "id": "c242",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "三界",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "欲界、色界、无色界。欲界是有淫食二欲的众生所住的世界，上自六欲天，中自人畜所居的四大洲，下至无间地狱皆属之；色界是无淫食二欲但还有色相的众生所住的世界，四禅十八天皆属之；无色界是色相俱无但住心识于深妙禅定的众生所住的世界，四空天属之。此三界都是凡夫生死往来的境界，所以佛教行者是以跳出三界为目的。",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch1_dict_expansion"
+}

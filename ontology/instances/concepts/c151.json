@@ -1,0 +1,18 @@
+{
+  "id": "c151",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "五重唯识观",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "窥基大师提出的修行观法：遣虚存实识、舍滥留纯识、摄末归本识、隐劣显胜识、遣相证性识",
+  "primary_sect": "唯识宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "唯识宗": "窥基大师提出的修行观法：遣虚存实识、舍滥留纯识、摄末归本识、隐劣显胜识、遣相证性识"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

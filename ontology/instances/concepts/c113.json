@@ -1,0 +1,18 @@
+{
+  "id": "c113",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "三论",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "《中论》《百论》《十二门论》，三论宗所依根本经典",
+  "primary_sect": "三论宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "三论宗": "《中论》《百论》《十二门论》，三论宗所依根本经典"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

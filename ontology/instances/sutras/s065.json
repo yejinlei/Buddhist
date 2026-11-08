@@ -1,0 +1,21 @@
+{
+  "id": "s065",
+  "old_id": "s065",
+  "taisho_id": "T1565",
+  "category": "论部",
+  "name": "成唯识论",
+  "volume_count": 0,
+  "volume": "T31",
+  "translator_brief": "玄奘",
+  "translations": [
+    {
+      "id": "s065_1",
+      "name": "成唯识论",
+      "translator": "玄奘"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

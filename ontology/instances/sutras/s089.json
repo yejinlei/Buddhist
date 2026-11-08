@@ -1,0 +1,21 @@
+{
+  "id": "s089",
+  "old_id": "s094",
+  "taisho_id": "T0273",
+  "category": "华严部",
+  "name": "大方广圆觉经",
+  "volume_count": 0,
+  "volume": "T17",
+  "translator_brief": "佛陀多罗",
+  "translations": [
+    {
+      "id": "s089_1",
+      "name": "大方广圆觉经",
+      "translator": "佛陀多罗"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

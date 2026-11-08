@@ -1,0 +1,16 @@
+{
+  "id": "c229",
+  "layer": "L3",
+  "layer_label": "L3 宗派/法门/修证层",
+  "name": "小乘",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "声闻缘觉的法门，以修身自利为宗旨，其最高果位为阿罗汉果及辟支佛果。声闻乘修四谛法，自凡夫至阿罗汉，论时间，速者三生，迟者六十劫，其修行的方便有七，得果有四。见声闻乘条。缘觉乘修十二因缘，自凡夫至辟支佛，论时间，速者四生，迟者一百劫，其修行重在悟证，悟所到处，便是证所到处，故无明显的位阶可言。",
+  "sutra_source": [
+    "《妙法莲华经》（t0262）"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch1_dict_expansion"
+}

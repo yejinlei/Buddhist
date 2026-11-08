@@ -1,0 +1,24 @@
+{
+  "id": "c017",
+  "layer": "L2",
+  "name": "十二处",
+  "sanskrit": "Āyatanadvādaśa",
+  "alias": [
+    "十二入",
+    "十二入处"
+  ],
+  "definition": "三科之一，六根六境合为十二处，是认识产生的十二个处所",
+  "structure": [
+    "六根（内六处）：眼、耳、鼻、舌、身、意",
+    "六境（外六处）：色、声、香、味、触、法"
+  ],
+  "sutra_source": [
+    "《阿含经》（t0001）",
+    "《俱舍论》（t1558）"
+  ],
+  "primary_sect": "大乘通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": "",
+  "dict_alias_sources": "佛学大词典参见链"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "s010",
+  "taisho_id": "T0374",
+  "category": "涅槃部",
+  "name": "大般涅槃经",
+  "volume_count": 40,
+  "abbreviation": "涅槃经",
+  "translations": [
+    {
+      "id": "t010_1",
+      "name": "六卷泥洹经",
+      "translator": "法显",
+      "translate_time": "东晋义熙十三年（417年）",
+      "volume_count": 6,
+      "differences": "略本，缺后半部分"
+    },
+    {
+      "id": "t010_2",
+      "name": "大般涅槃经",
+      "translator": "昙无谶",
+      "translate_time": "北凉玄始十年（421年）",
+      "volume_count": 40,
+      "text_length": "约60万字",
+      "differences": "南本北本之分，北本40卷，南本36卷，为完整版本",
+      "open_line": "如是我闻。一时，佛在拘尸那国力士生地阿利罗跋提河边娑罗双树间。"
+    },
+    {
+      "id": "t010_3",
+      "name": "大般涅槃经后分",
+      "translator": "若那跋陀罗",
+      "translate_time": "唐初",
+      "volume_count": 2,
+      "differences": "补译佛涅槃后的荼毗等内容"
+    }
+  ],
+  "core_content": "佛陀涅槃前所说的最后一部经，阐发“常乐我净”涅槃四德，“一切众生皆有佛性，一阐提也能成佛”思想，对中国佛教影响深远",
+  "core_concept": [
+    "佛性",
+    "一阐提成佛",
+    "涅槃四德",
+    "常乐我净"
+  ],
+  "translator_brief": "昙无谶",
+  "alias": [
+    "大涅槃经",
+    "大涅盘"
+  ],
+  "dict_alias_sources": "佛学大词典参见链"
+}

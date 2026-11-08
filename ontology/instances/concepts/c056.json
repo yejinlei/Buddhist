@@ -1,0 +1,18 @@
+{
+  "id": "c056",
+  "layer": "L2",
+  "layer_label": "L2 义理范畴层",
+  "name": "四无量心",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "慈、悲、喜、舍四种广大的利他心",
+  "primary_sect": "大乘通途",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "大乘通途": "慈、悲、喜、舍四种广大的利他心"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

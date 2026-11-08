@@ -1,0 +1,21 @@
+{
+  "id": "s070",
+  "old_id": "s071",
+  "taisho_id": "T1851",
+  "category": "论部",
+  "name": "摩诃止观",
+  "volume_count": 0,
+  "volume": "T46",
+  "translator_brief": "智顗说、灌顶记",
+  "translations": [
+    {
+      "id": "s070_1",
+      "name": "摩诃止观",
+      "translator": "智顗说、灌顶记"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "s055",
+  "old_id": "s050",
+  "taisho_id": "T0350",
+  "category": "宝积部",
+  "name": "大方便佛报恩经",
+  "volume_count": 0,
+  "volume": "T03",
+  "translator_brief": "失译",
+  "translations": [
+    {
+      "id": "s055_1",
+      "name": "大方便佛报恩经",
+      "translator": "失译"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

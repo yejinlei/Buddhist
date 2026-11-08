@@ -1,0 +1,16 @@
+{
+  "id": "c311",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "二乘",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "声闻乘和缘觉乘。凡属修四谛法门而悟道的人，总称为声闻乘；凡属修十二因缘而悟道的人，总称为缘觉乘。以上二乘又分为愚法二乘和不愚法二乘两种，愚法二乘是声闻缘觉二小乘，迷执自法，而愚于大乘法空之妙理；不愚法二乘是与愚法二乘相反，他们善知理法，进入大乘的境界。",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch3_dict_expansion"
+}

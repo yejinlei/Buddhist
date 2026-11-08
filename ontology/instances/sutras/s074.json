@@ -1,0 +1,21 @@
+{
+  "id": "s074",
+  "old_id": "s075",
+  "taisho_id": "T1510",
+  "category": "论部",
+  "name": "般若灯论释",
+  "volume_count": 0,
+  "volume": "T30",
+  "translator_brief": "波罗颇蜜多罗",
+  "translations": [
+    {
+      "id": "s074_1",
+      "name": "般若灯论释",
+      "translator": "波罗颇蜜多罗"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

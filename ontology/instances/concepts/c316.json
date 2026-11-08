@@ -1,0 +1,17 @@
+{
+  "id": "c316",
+  "layer": "L2",
+  "layer_label": "义理层",
+  "name": "律宗",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "唐道宣创立，以《四分律》为正依，立化制二教、南山律宗",
+  "sutra_source": [
+    "《《四分律行事钞》》"
+  ],
+  "sect_interpretation": {
+    "律宗": "依《四分律》立宗，南山道宣开创，重戒律持守"
+  },
+  "modern_interpretation": "",
+  "primary_sect": "sec004"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "s059",
+  "old_id": "s056",
+  "taisho_id": "T0402",
+  "category": "大集部",
+  "name": "地藏菩萨本愿经",
+  "volume_count": 0,
+  "volume": "T13",
+  "translator_brief": "实叉难陀",
+  "translations": [
+    {
+      "id": "s059_1",
+      "name": "地藏菩萨本愿经",
+      "translator": "实叉难陀"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js",
+  "alias": [
+    "地藏本愿经",
+    "地藏本行经",
+    "地藏本誓力经"
+  ],
+  "dict_alias_sources": "佛学大词典参见链"
+}

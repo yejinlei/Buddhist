@@ -1,0 +1,18 @@
+{
+  "id": "c076",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "六因四缘",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "说一切有部的缘起理论：能作因、俱有因、同类因、相应因、遍行因、异熟因；因缘、等无间缘、所缘缘、增上缘",
+  "primary_sect": "说一切有部",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "说一切有部": "说一切有部的缘起理论：能作因、俱有因、同类因、相应因、遍行因、异熟因；因缘、等无间缘、所缘缘、增上缘"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

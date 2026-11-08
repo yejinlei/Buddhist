@@ -1,0 +1,18 @@
+{
+  "id": "c096",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "八忍八智",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "见道位所生的十六种无漏心",
+  "primary_sect": "说一切有部",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "说一切有部": "见道位所生的十六种无漏心"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

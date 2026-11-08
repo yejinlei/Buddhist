@@ -1,0 +1,26 @@
+{
+  "id": "s018",
+  "taisho_id": "T1509",
+  "category": "论部",
+  "name": "中论",
+  "volume_count": 4,
+  "abbreviation": "中观论",
+  "author": "龙树菩萨造，青目菩萨释，鸠摩罗什译",
+  "translations": [
+    {
+      "id": "t018_1",
+      "name": "中论",
+      "translator": "鸠摩罗什",
+      "translate_time": "后秦弘始十一年（409年）",
+      "volume_count": 4,
+      "differences": "共27品，三论宗核心论典",
+      "open_line": "不生亦不灭，不常亦不断，不一亦不异，不来亦不出。"
+    }
+  ],
+  "core_content": "中观宗根本论典，系统阐发缘起性空、八不中道思想，破斥一切边见，是大乘佛教最重要的论典之一",
+  "translator_brief": "鸠摩罗什",
+  "alias": [
+    "正观论"
+  ],
+  "dict_alias_sources": "佛学大词典参见链"
+}

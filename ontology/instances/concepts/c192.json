@@ -1,0 +1,18 @@
+{
+  "id": "c192",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "托事显法",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "依托具体事相显发圆融佛法",
+  "primary_sect": "华严宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "华严宗": "依托具体事相显发圆融佛法"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "c185",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "一多相即",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "一即多、多即一，相即相入",
+  "primary_sect": "华严宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "华严宗": "一即多、多即一，相即相入"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

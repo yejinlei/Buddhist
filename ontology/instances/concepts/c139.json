@@ -1,0 +1,18 @@
+{
+  "id": "c139",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "种现互生",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "种子生现行，现行熏种子，刹那同时，因果同时",
+  "primary_sect": "唯识宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "唯识宗": "种子生现行，现行熏种子，刹那同时，因果同时"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

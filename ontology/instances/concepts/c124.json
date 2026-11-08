@@ -1,0 +1,18 @@
+{
+  "id": "c124",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "一心二门",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "《大乘起信论》核心：一心开真如门与生灭门",
+  "primary_sect": "大乘起信论",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "大乘起信论": "《大乘起信论》核心：一心开真如门与生灭门"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

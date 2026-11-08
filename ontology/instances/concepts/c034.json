@@ -1,0 +1,23 @@
+{
+  "id": "c034",
+  "layer": "L2",
+  "name": "三谛圆融",
+  "sanskrit": "",
+  "alias": [
+    "圆融三谛"
+  ],
+  "definition": "天台宗核心义理，空谛、假谛、中谛三谛相即不二，一空一切空，一假一切假，一中一切中",
+  "structure": [
+    "空谛：诸法缘起无自性",
+    "假谛：诸法假名施设",
+    "中谛：诸法即空即假，非空非假"
+  ],
+  "sutra_source": [
+    "《法华经》（t0262）",
+    "《摩诃止观》（t1911）"
+  ],
+  "primary_sect": "通途",
+  "layer_label": "L2 义理范畴层",
+  "sect_interpretation": [],
+  "modern_interpretation": ""
+}

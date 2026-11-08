@@ -1,0 +1,21 @@
+{
+  "id": "s094",
+  "old_id": "s099",
+  "taisho_id": "T2035",
+  "category": "禅宗部",
+  "name": "禅源诸诠集都序",
+  "volume_count": 0,
+  "volume": "T48",
+  "translator_brief": "宗密",
+  "translations": [
+    {
+      "id": "s094_1",
+      "name": "禅源诸诠集都序",
+      "translator": "宗密"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

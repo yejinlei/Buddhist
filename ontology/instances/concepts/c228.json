@@ -1,0 +1,16 @@
+{
+  "id": "c228",
+  "layer": "L3",
+  "layer_label": "L3 宗派/法门/修证层",
+  "name": "修行",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "依佛法的路线去行持实践。",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch1_dict_expansion"
+}

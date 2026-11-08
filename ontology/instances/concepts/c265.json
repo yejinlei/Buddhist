@@ -1,0 +1,16 @@
+{
+  "id": "c265",
+  "layer": "L2",
+  "layer_label": "L2 基础法相层",
+  "name": "相应",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "互相呼应。依瑜伽论之意，有三种相应，一者，一切所缘之境，与心相应，名境相应；二者，行与理相应，名行相应；三者，三乘圣者，所修诸功德法，因果相符，名果相应，此三种相应，摄尽一切法。",
+  "sutra_source": [
+    "通途教义"
+  ],
+  "sect_interpretation": {},
+  "modern_interpretation": "",
+  "primary_sect": "通途",
+  "_source": "M2_batch2_dict_expansion"
+}

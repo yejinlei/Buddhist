@@ -1,0 +1,25 @@
+{
+  "id": "s051",
+  "old_id": "s045",
+  "taisho_id": "T0285",
+  "category": "华严部",
+  "name": "解深密经",
+  "volume_count": 0,
+  "volume": "T16",
+  "translator_brief": "玄奘",
+  "translations": [
+    {
+      "id": "s051_1",
+      "name": "解深密经",
+      "translator": "玄奘"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js",
+  "alias": [
+    "深密经"
+  ],
+  "dict_alias_sources": "佛学大词典参见链"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "s011",
+  "taisho_id": "T0475",
+  "category": "经集部",
+  "name": "维摩诘所说经",
+  "volume_count": 3,
+  "abbreviation": "维摩经",
+  "translations": [
+    {
+      "id": "t011_1",
+      "name": "维摩诘经",
+      "translator": "支谦",
+      "translate_time": "三国吴",
+      "volume_count": 2,
+      "differences": "最早译本"
+    },
+    {
+      "id": "t011_2",
+      "name": "维摩诘所说经",
+      "translator": "鸠摩罗什",
+      "translate_time": "后秦弘始八年（406年）",
+      "volume_count": 3,
+      "differences": "流传最广，文字优美，14品",
+      "open_line": "如是我闻。一时，佛在毗耶离庵罗树园，与大比丘众八千人俱，菩萨三万二千。"
+    },
+    {
+      "id": "t011_3",
+      "name": "说无垢称经",
+      "translator": "玄奘",
+      "translate_time": "唐永徽元年（650年）",
+      "volume_count": 6,
+      "differences": "逐字直译，最接近梵本"
+    }
+  ],
+  "core_content": "讲述维摩诘居士与文殊菩萨等辩论大乘义理，“不二法门”思想核心，阐述“烦恼即菩提”“在欲而行禅”的大乘居士佛教精神",
+  "core_concept": [
+    "不二法门",
+    "烦恼即菩提",
+    "居士佛教",
+    "不可思议解脱"
+  ],
+  "translator_brief": "竺法护"
+}

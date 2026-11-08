@@ -1,0 +1,18 @@
+{
+  "id": "c143",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "我执",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "执著有实我存在，为末那识所执",
+  "primary_sect": "唯识宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "唯识宗": "执著有实我存在，为末那识所执"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}

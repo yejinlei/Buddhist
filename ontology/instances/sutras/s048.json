@@ -1,0 +1,21 @@
+{
+  "id": "s048",
+  "old_id": "s042",
+  "taisho_id": "T0275",
+  "category": "华严部",
+  "name": "楞伽阿跋多罗宝经",
+  "volume_count": 0,
+  "volume": "T16",
+  "translator_brief": "求那跋陀罗",
+  "translations": [
+    {
+      "id": "s048_1",
+      "name": "楞伽阿跋多罗宝经",
+      "translator": "求那跋陀罗"
+    }
+  ],
+  "core_content": "（待考，已从旧版迁入）",
+  "core_concept": [],
+  "core_practice": [],
+  "_source": "merged_from_old_js"
+}

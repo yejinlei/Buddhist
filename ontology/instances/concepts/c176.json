@@ -1,0 +1,18 @@
+{
+  "id": "c176",
+  "layer": "L3",
+  "layer_label": "L3 宗派行持层",
+  "name": "五重玄义",
+  "sanskrit": "",
+  "alias": [],
+  "definition": "天台宗解经体例：释名、辨体、明宗、论用、判教相",
+  "primary_sect": "天台宗",
+  "sutra_source": [
+    "（待考）"
+  ],
+  "sect_interpretation": {
+    "天台宗": "天台宗解经体例：释名、辨体、明宗、论用、判教相"
+  },
+  "modern_interpretation": "（待考，已从旧版迁入）",
+  "_source": "merged_from_old_js"
+}
