@@ -13,3 +13,4 @@ __pycache__/
 ontology/dharma_assemblies_raw.json
 ontology/instances/t*.json
 ontology/instances/t*.json
+ontology/paragraph_chunks.jsonl
