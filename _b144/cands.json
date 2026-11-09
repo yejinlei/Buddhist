@@ -1,0 +1,587 @@
+[
+ {
+  "id": "t2794",
+  "segs": 124,
+  "chars": 11725,
+  "title": "律抄",
+  "translator": "",
+  "vol": "T85",
+  "cov": 1.0
+ },
+ {
+  "id": "t1159",
+  "segs": 103,
+  "chars": 11761,
+  "title": "佛說地藏菩薩陀羅尼經",
+  "translator": "",
+  "vol": "T20",
+  "cov": 1.0
+ },
+ {
+  "id": "t1190",
+  "segs": 109,
+  "chars": 11826,
+  "title": "聖妙吉祥真實名經",
+  "translator": "元 釋智譯",
+  "vol": "T20",
+  "cov": 1.0
+ },
+ {
+  "id": "t0433",
+  "segs": 118,
+  "chars": 12568,
+  "title": "佛說寶網經",
+  "translator": "西晉 竺法護譯",
+  "vol": "T14",
+  "cov": 1.0
+ },
+ {
+  "id": "t0824",
+  "segs": 123,
+  "chars": 12573,
+  "title": "諸法最上王經",
+  "translator": "隋 闍那崛多譯",
+  "vol": "T17",
+  "cov": 1.0
+ },
+ {
+  "id": "t0233",
+  "segs": 123,
+  "chars": 12704,
+  "title": "文殊師利所說般若波羅蜜經",
+  "translator": "梁 僧伽婆羅譯",
+  "vol": "T08",
+  "cov": 1.0
+ },
+ {
+  "id": "t1980",
+  "segs": 125,
+  "chars": 12834,
+  "title": "往生禮讚偈",
+  "translator": "唐 善導集記",
+  "vol": "T47",
+  "cov": 1.0
+ },
+ {
+  "id": "t2012",
+  "segs": 140,
+  "chars": 12946,
+  "title": "黃檗山斷際禪師傳心法要",
+  "translator": "唐 裴休集",
+  "vol": "T48",
+  "cov": 1.0
+ },
+ {
+  "id": "t1278",
+  "segs": 135,
+  "chars": 13465,
+  "title": "迦樓羅及諸天密言經",
+  "translator": "唐 般若力譯",
+  "vol": "T21",
+  "cov": 1.0
+ },
+ {
+  "id": "t0150",
+  "segs": 130,
+  "chars": 13482,
+  "title": "七處三觀經",
+  "translator": "後漢 安世高譯",
+  "vol": "T02",
+  "cov": 1.0
+ },
+ {
+  "id": "t2761",
+  "segs": 143,
+  "chars": 13551,
+  "title": "勝鬘經記",
+  "translator": "",
+  "vol": "T85",
+  "cov": 1.0
+ },
+ {
+  "id": "t0904",
+  "segs": 123,
+  "chars": 13567,
+  "title": "念誦結護法普通諸部",
+  "translator": "唐 金剛智述",
+  "vol": "T18",
+  "cov": 1.0
+ },
+ {
+  "id": "t0817",
+  "segs": 134,
+  "chars": 13618,
+  "title": "佛說大淨法門經",
+  "translator": "西晉 竺法護譯",
+  "vol": "T17",
+  "cov": 1.0
+ },
+ {
+  "id": "t0205",
+  "segs": 133,
+  "chars": 13626,
+  "title": "雜譬喻經",
+  "translator": "失譯",
+  "vol": "T04",
+  "cov": 1.0
+ },
+ {
+  "id": "t1790",
+  "segs": 130,
+  "chars": 13670,
+  "title": "入楞伽心玄義",
+  "translator": "唐 法藏撰",
+  "vol": "T39",
+  "cov": 1.0
+ },
+ {
+  "id": "t2098",
+  "segs": 148,
+  "chars": 13709,
+  "title": "古清涼傳",
+  "translator": "唐 慧祥撰",
+  "vol": "T51",
+  "cov": 1.0
+ },
+ {
+  "id": "t0130",
+  "segs": 122,
+  "chars": 13710,
+  "title": "佛說給孤長者女得度因緣經",
+  "translator": "宋 施護譯",
+  "vol": "T02",
+  "cov": 1.0
+ },
+ {
+  "id": "t0818",
+  "segs": 131,
+  "chars": 13736,
+  "title": "大莊嚴法門經",
+  "translator": "隋 那連提耶舍譯",
+  "vol": "T17",
+  "cov": 1.0
+ },
+ {
+  "id": "t2013",
+  "segs": 149,
+  "chars": 13744,
+  "title": "禪宗永嘉集",
+  "translator": "唐 玄覺撰",
+  "vol": "T48",
+  "cov": 1.0
+ },
+ {
+  "id": "t2119",
+  "segs": 147,
+  "chars": 13748,
+  "title": "寺沙門玄奘上表記",
+  "translator": "",
+  "vol": "T52",
+  "cov": 1.0
+ },
+ {
+  "id": "t1185b",
+  "segs": 126,
+  "chars": 13813,
+  "title": "文殊師利寶藏陀羅尼經",
+  "translator": "唐 菩提流志譯",
+  "vol": "",
+  "cov": 1.0
+ },
+ {
+  "id": "t2111",
+  "segs": 147,
+  "chars": 13828,
+  "title": "十門辯惑論",
+  "translator": "唐 復禮撰",
+  "vol": "T52",
+  "cov": 1.0
+ },
+ {
+  "id": "t0339",
+  "segs": 134,
+  "chars": 13834,
+  "title": "得無垢女經",
+  "translator": "元魏 瞿曇般若流支譯",
+  "vol": "T12",
+  "cov": 1.0
+ },
+ {
+  "id": "t1659",
+  "segs": 126,
+  "chars": 13837,
+  "title": "發菩提心經論",
+  "translator": "天親菩薩造　後秦 鳩摩羅什譯",
+  "vol": "T32",
+  "cov": 1.0
+ },
+ {
+  "id": "t0327",
+  "segs": 134,
+  "chars": 13847,
+  "title": "發覺淨心經",
+  "translator": "隋 闍那崛多譯",
+  "vol": "T12",
+  "cov": 1.0
+ },
+ {
+  "id": "t0843",
+  "segs": 131,
+  "chars": 13849,
+  "title": "佛說大乘不思議神通境界經",
+  "translator": "宋 施護譯",
+  "vol": "T17",
+  "cov": 1.0
+ },
+ {
+  "id": "t2818",
+  "segs": 149,
+  "chars": 13935,
+  "title": "大乘二十二問本",
+  "translator": "",
+  "vol": "T85",
+  "cov": 1.0
+ },
+ {
+  "id": "t1737",
+  "segs": 131,
+  "chars": 13947,
+  "title": "大華嚴經略策",
+  "translator": "唐 澄觀述",
+  "vol": "T36",
+  "cov": 1.0
+ },
+ {
+  "id": "t0652",
+  "segs": 129,
+  "chars": 14002,
+  "title": "佛說大乘隨轉宣說諸法經",
+  "translator": "宋 紹德等譯",
+  "vol": "T15",
+  "cov": 1.0
+ },
+ {
+  "id": "t0363",
+  "segs": 127,
+  "chars": 14043,
+  "title": "佛說大乘無量壽莊嚴經",
+  "translator": "宋 法賢譯",
+  "vol": "T12",
+  "cov": 1.0
+ },
+ {
+  "id": "t0405",
+  "segs": 123,
+  "chars": 14118,
+  "title": "虛空藏菩薩經",
+  "translator": "姚秦 佛陀耶舍譯",
+  "vol": "T13",
+  "cov": 1.0
+ },
+ {
+  "id": "t1427",
+  "segs": 142,
+  "chars": 14242,
+  "title": "摩訶僧祇比丘尼戒本",
+  "translator": "東晉 法顯共覺賢譯",
+  "vol": "T22",
+  "cov": 1.0
+ },
+ {
+  "id": "t0273",
+  "segs": 144,
+  "chars": 14320,
+  "title": "金剛三昧經",
+  "translator": "失譯",
+  "vol": "T09",
+  "cov": 1.0
+ },
+ {
+  "id": "t1027a",
+  "segs": 140,
+  "chars": 14336,
+  "title": "金剛光焰止風雨陀羅尼經",
+  "translator": "唐 菩提流志譯",
+  "vol": "T19",
+  "cov": 1.0
+ },
+ {
+  "id": "t0849",
+  "segs": 141,
+  "chars": 14353,
+  "title": "大毘盧遮那佛說要略念誦經",
+  "translator": "唐 菩提金剛譯",
+  "vol": "T18",
+  "cov": 1.0
+ },
+ {
+  "id": "t0757",
+  "segs": 135,
+  "chars": 14429,
+  "title": "佛說身毛喜豎經",
+  "translator": "宋 惟淨等譯",
+  "vol": "T17",
+  "cov": 1.0
+ },
+ {
+  "id": "t1898",
+  "segs": 144,
+  "chars": 14465,
+  "title": "律相感通傳",
+  "translator": "唐 道宣撰",
+  "vol": "T45",
+  "cov": 1.0
+ },
+ {
+  "id": "t0566",
+  "segs": 142,
+  "chars": 14514,
+  "title": "樂瓔珞莊嚴方便品經",
+  "translator": "姚秦 曇摩耶舍譯",
+  "vol": "T14",
+  "cov": 1.0
+ },
+ {
+  "id": "t1301",
+  "segs": 142,
+  "chars": 14525,
+  "title": "舍頭諫太子二十八宿經",
+  "translator": "西晉 竺法護譯",
+  "vol": "T21",
+  "cov": 1.0
+ },
+ {
+  "id": "t1837",
+  "segs": 138,
+  "chars": 14552,
+  "title": "大乘百法明門論疏",
+  "translator": "唐 大乘光撰",
+  "vol": "T44",
+  "cov": 1.0
+ },
+ {
+  "id": "t1664",
+  "segs": 139,
+  "chars": 14553,
+  "title": "廣釋菩提心論",
+  "translator": "蓮華戒菩薩造　宋 施護譯",
+  "vol": "T32",
+  "cov": 1.0
+ },
+ {
+  "id": "t0451",
+  "segs": 129,
+  "chars": 14567,
+  "title": "藥師琉璃光七佛本願功德經",
+  "translator": "唐 義淨譯",
+  "vol": "T14",
+  "cov": 1.0
+ },
+ {
+  "id": "t1455",
+  "segs": 145,
+  "chars": 14612,
+  "title": "根本說一切有部苾芻尼戒經",
+  "translator": "唐 義淨譯",
+  "vol": "T24",
+  "cov": 1.0
+ },
+ {
+  "id": "t1560",
+  "segs": 145,
+  "chars": 14660,
+  "title": "阿毘達磨俱舍論本頌",
+  "translator": "世親菩薩造　唐 玄奘譯",
+  "vol": "T29",
+  "cov": 1.0
+ },
+ {
+  "id": "t2802",
+  "segs": 150,
+  "chars": 14660,
+  "title": "瑜伽論手記",
+  "translator": "唐 法成述．福慧記",
+  "vol": "T85",
+  "cov": 1.0
+ },
+ {
+  "id": "t0545",
+  "segs": 123,
+  "chars": 14675,
+  "title": "佛說德護長者經",
+  "translator": "隋 那連提耶舍譯",
+  "vol": "T14",
+  "cov": 1.0
+ },
+ {
+  "id": "t1513",
+  "segs": 148,
+  "chars": 14713,
+  "title": "能斷金剛般若波羅蜜多經論釋",
+  "translator": "無著菩薩造頌　世親菩薩釋　唐 義淨譯",
+  "vol": "T25",
+  "cov": 1.0
+ },
+ {
+  "id": "t1519",
+  "segs": 146,
+  "chars": 14720,
+  "title": "妙法蓮華經憂波提舍",
+  "translator": "大乘論師婆藪槃豆釋　後魏 菩提留支共曇林等譯",
+  "vol": "T26",
+  "cov": 1.0
+ },
+ {
+  "id": "t0207",
+  "segs": 140,
+  "chars": 14742,
+  "title": "雜譬喻經",
+  "translator": "道略集",
+  "vol": "T04",
+  "cov": 1.0
+ },
+ {
+  "id": "t1431",
+  "segs": 148,
+  "chars": 14879,
+  "title": "四分比丘尼戒本",
+  "translator": "後秦 佛陀耶舍譯",
+  "vol": "T22",
+  "cov": 1.0
+ },
+ {
+  "id": "t0565",
+  "segs": 141,
+  "chars": 15032,
+  "title": "順權方便經",
+  "translator": "西晉 竺法護譯",
+  "vol": "T14",
+  "cov": 1.0
+ },
+ {
+  "id": "t0989",
+  "segs": 145,
+  "chars": 15118,
+  "title": "大雲輪請雨經",
+  "translator": "唐 不空譯",
+  "vol": "T19",
+  "cov": 1.0
+ },
+ {
+  "id": "t1698",
+  "segs": 142,
+  "chars": 15222,
+  "title": "金剛般若經疏",
+  "translator": "隋 智顗說",
+  "vol": "T33",
+  "cov": 1.0
+ },
+ {
+  "id": "t0620",
+  "segs": 137,
+  "chars": 15272,
+  "title": "治禪病祕要法",
+  "translator": "劉宋 沮渠京聲譯",
+  "vol": "T15",
+  "cov": 1.0
+ },
+ {
+  "id": "t0234",
+  "segs": 149,
+  "chars": 15391,
+  "title": "佛說濡首菩薩無上清淨分衛經",
+  "translator": "宋 翔公譯",
+  "vol": "T08",
+  "cov": 1.0
+ },
+ {
+  "id": "t1875",
+  "segs": 149,
+  "chars": 15393,
+  "title": "華嚴經義海百門",
+  "translator": "唐 法藏述",
+  "vol": "T45",
+  "cov": 1.0
+ },
+ {
+  "id": "t0408",
+  "segs": 132,
+  "chars": 15422,
+  "title": "虛空孕菩薩經",
+  "translator": "隋 闍那崛多譯",
+  "vol": "T13",
+  "cov": 1.0
+ },
+ {
+  "id": "t0383",
+  "segs": 141,
+  "chars": 15447,
+  "title": "摩訶摩耶經",
+  "translator": "蕭齊 曇景譯",
+  "vol": "T12",
+  "cov": 1.0
+ },
+ {
+  "id": "t0669",
+  "segs": 143,
+  "chars": 15457,
+  "title": "佛說無上依經",
+  "translator": "梁 真諦譯",
+  "vol": "T16",
+  "cov": 1.0
+ },
+ {
+  "id": "t1865",
+  "segs": 149,
+  "chars": 15470,
+  "title": "八識規矩補註",
+  "translator": "明 普泰補註",
+  "vol": "T45",
+  "cov": 1.0
+ },
+ {
+  "id": "t0839",
+  "segs": 148,
+  "chars": 15599,
+  "title": "占察善惡業報經",
+  "translator": "隋 菩提燈譯",
+  "vol": "T17",
+  "cov": 1.0
+ },
+ {
+  "id": "t0260",
+  "segs": 150,
+  "chars": 15756,
+  "title": "佛說開覺自性般若波羅蜜多經",
+  "translator": "宋 惟淨等譯",
+  "vol": "T08",
+  "cov": 1.0
+ },
+ {
+  "id": "t1738",
+  "segs": 150,
+  "chars": 16056,
+  "title": "新譯華嚴經七處九會頌釋章",
+  "translator": "唐 澄觀述",
+  "vol": "T36",
+  "cov": 1.0
+ },
+ {
+  "id": "t2885",
+  "segs": 140,
+  "chars": 16349,
+  "title": "佛性海藏智慧解脫破心相經",
+  "translator": "",
+  "vol": "T85",
+  "cov": 1.0
+ },
+ {
+  "id": "t0636",
+  "segs": 144,
+  "chars": 16638,
+  "title": "無極寶三昧經",
+  "translator": "西晉 竺法護譯",
+  "vol": "T15",
+  "cov": 1.0
+ }
+]
