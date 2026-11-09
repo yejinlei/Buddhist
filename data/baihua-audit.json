@@ -1652,10 +1652,10 @@
   {
    "id": "t1545",
    "status": "fail",
-   "cover": 0.24,
-   "sections": 918,
+   "cover": 0.261,
+   "sections": 1000,
    "problems": [
-    "cover=0.24",
+    "cover=0.26",
     "bad_modern@[258, 259, 260]"
    ]
   }
