@@ -1,7 +1,7 @@
 {
  "total": 1636,
- "ok": 1633,
- "fail": 3,
+ "ok": 1636,
+ "fail": 0,
  "ok_ids": [
   "t0002",
   "t0003",
@@ -700,6 +700,7 @@
   "t0936",
   "t0937",
   "t0938",
+  "t0939",
   "t0940",
   "t0941",
   "t0942",
@@ -783,6 +784,7 @@
   "t1024",
   "t1025",
   "t1026",
+  "t1027b",
   "t1028",
   "t1028a",
   "t1028b",
@@ -1226,6 +1228,7 @@
   "t1533",
   "t1534",
   "t1535",
+  "t1545",
   "t1554",
   "t1555",
   "t1556",
@@ -1637,36 +1640,5 @@
   "t2919",
   "t2920"
  ],
- "fail_detail": [
-  {
-   "id": "t0939",
-   "status": "fail",
-   "cover": 1.003,
-   "sections": 42,
-   "problems": [
-    "preview_not_substring",
-    "bad_modern@[0, 1, 2]"
-   ]
-  },
-  {
-   "id": "t1027b",
-   "status": "fail",
-   "cover": 1.01,
-   "sections": 34,
-   "problems": [
-    "preview_not_substring",
-    "bad_modern@[0, 1, 2]"
-   ]
-  },
-  {
-   "id": "t1545",
-   "status": "fail",
-   "cover": 0.208,
-   "sections": 798,
-   "problems": [
-    "cover=0.21",
-    "bad_modern@[258, 259, 260]"
-   ]
-  }
- ]
+ "fail_detail": []
 }
