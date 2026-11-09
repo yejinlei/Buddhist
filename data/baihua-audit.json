@@ -1,7 +1,7 @@
 {
- "total": 1633,
- "ok": 1623,
- "fail": 10,
+ "total": 1635,
+ "ok": 1626,
+ "fail": 9,
  "ok_ids": [
   "t0002",
   "t0003",
@@ -156,7 +156,6 @@
   "t0170",
   "t0171",
   "t0172",
-  "t0173",
   "t0174",
   "t0175a",
   "t0175b",
@@ -235,7 +234,6 @@
   "t0314",
   "t0315b",
   "t0317",
-  "t0322",
   "t0323",
   "t0324",
   "t0325",
@@ -329,6 +327,7 @@
   "t0471",
   "t0472",
   "t0473",
+  "t0477",
   "t0478",
   "t0479",
   "t0480",
@@ -865,6 +864,7 @@
   "t1109",
   "t1110",
   "t1111",
+  "t1112",
   "t1113",
   "t1113a",
   "t1113b",
@@ -1159,8 +1159,10 @@
   "t1422b",
   "t1423",
   "t1426",
+  "t1429",
   "t1430",
   "t1434",
+  "t1436",
   "t1437",
   "t1438",
   "t1439",
@@ -1398,6 +1400,7 @@
   "t1978",
   "t1984",
   "t1989",
+  "t1990",
   "t1991",
   "t1994a",
   "t1994b",
@@ -1629,13 +1632,44 @@
  ],
  "fail_detail": [
   {
-   "id": "t0477",
+   "id": "t0173",
    "status": "fail",
-   "cover": 0.352,
-   "sections": 40,
+   "cover": 0.501,
+   "sections": 61,
    "problems": [
-    "cover=0.35",
+    "preview_not_substring",
+    "cover=0.50",
+    "bad_modern@[60]"
+   ]
+  },
+  {
+   "id": "t0315a",
+   "status": "fail",
+   "cover": 0.175,
+   "sections": 18,
+   "problems": [
+    "cover=0.18",
     "bad_modern@[0, 1, 2]"
+   ]
+  },
+  {
+   "id": "t0322",
+   "status": "fail",
+   "cover": 0.547,
+   "sections": 68,
+   "problems": [
+    "preview_not_substring",
+    "cover=0.55",
+    "bad_modern@[67]"
+   ]
+  },
+  {
+   "id": "t0338",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 120,
+   "problems": [
+    "bad_modern@[74, 75, 76]"
    ]
   },
   {
@@ -1654,7 +1688,7 @@
    "cover": 1.0,
    "sections": 107,
    "problems": [
-    "bad_modern@[22, 23, 24]"
+    "bad_modern@[26, 27, 28]"
    ]
   },
   {
@@ -1668,33 +1702,6 @@
    ]
   },
   {
-   "id": "t1112",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 34,
-   "problems": [
-    "preview_not_substring"
-   ]
-  },
-  {
-   "id": "t1429",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 44,
-   "problems": [
-    "preview_not_substring"
-   ]
-  },
-  {
-   "id": "t1436",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 45,
-   "problems": [
-    "preview_not_substring"
-   ]
-  },
-  {
    "id": "t1545",
    "status": "fail",
    "cover": 0.208,
@@ -1702,15 +1709,6 @@
    "problems": [
     "cover=0.21",
     "bad_modern@[258, 259, 260]"
-   ]
-  },
-  {
-   "id": "t1990",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 47,
-   "problems": [
-    "preview_not_substring"
    ]
   },
   {
