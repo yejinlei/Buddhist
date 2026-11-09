@@ -1,7 +1,7 @@
 {
  "total": 1636,
- "ok": 1628,
- "fail": 8,
+ "ok": 1633,
+ "fail": 3,
  "ok_ids": [
   "t0002",
   "t0003",
@@ -156,6 +156,7 @@
   "t0170",
   "t0171",
   "t0172",
+  "t0173",
   "t0174",
   "t0175a",
   "t0175b",
@@ -232,8 +233,10 @@
   "t0307",
   "t0308",
   "t0314",
+  "t0315a",
   "t0315b",
   "t0317",
+  "t0322",
   "t0323",
   "t0324",
   "t0325",
@@ -749,6 +752,7 @@
   "t0990",
   "t0991",
   "t0992",
+  "t0993",
   "t0994",
   "t0995",
   "t0996",
@@ -1324,6 +1328,7 @@
   "t1761",
   "t1770",
   "t1773",
+  "t1792",
   "t1793",
   "t1794",
   "t1817",
@@ -1634,33 +1639,6 @@
  ],
  "fail_detail": [
   {
-   "id": "t0173",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 124,
-   "problems": [
-    "bad_modern@[60]"
-   ]
-  },
-  {
-   "id": "t0315a",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 105,
-   "problems": [
-    "bad_modern@[0, 1, 2]"
-   ]
-  },
-  {
-   "id": "t0322",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 123,
-   "problems": [
-    "bad_modern@[67]"
-   ]
-  },
-  {
    "id": "t0939",
    "status": "fail",
    "cover": 1.003,
@@ -1668,15 +1646,6 @@
    "problems": [
     "preview_not_substring",
     "bad_modern@[0, 1, 2]"
-   ]
-  },
-  {
-   "id": "t0993",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 107,
-   "problems": [
-    "bad_modern@[31, 32, 47]"
    ]
   },
   {
@@ -1697,15 +1666,6 @@
    "problems": [
     "cover=0.21",
     "bad_modern@[258, 259, 260]"
-   ]
-  },
-  {
-   "id": "t1792",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 129,
-   "problems": [
-    "bad_modern@[33]"
    ]
   }
  ]
