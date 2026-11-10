@@ -1,6 +1,6 @@
 {
- "total": 1666,
- "ok": 1665,
+ "total": 1667,
+ "ok": 1666,
  "fail": 1,
  "ok_ids": [
   "t0002",
@@ -1425,6 +1425,7 @@
   "t1994a",
   "t1994b",
   "t1995",
+  "t1999",
   "t2002a",
   "t2002b",
   "t2005",
@@ -1673,10 +1674,11 @@
   {
    "id": "t1545",
    "status": "fail",
-   "cover": 0.311,
-   "sections": 1200,
+   "cover": 0.316,
+   "sections": 1240,
    "problems": [
-    "cover=0.31",
+    "preview_not_substring",
+    "cover=0.32",
     "bad_modern@[258, 259, 260]"
    ]
   }
