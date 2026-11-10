@@ -161,6 +161,7 @@
         .ov-link { display:block; padding:5px 8px; border-radius:6px; font-size:13px; color:#3E2723; text-decoration:none; transition:all .12s; border:1px solid transparent; cursor:pointer; }
         .ov-link:hover { background:rgba(184,134,11,.1); border-color:#e5d9c3; color:#8B4513; }
         .ov-link .m { font-size:11px; color:#8B4513; opacity:.65; margin-left:4px; }
+.ov-link .yi { font-size:9px; color:#d32f2f; font-weight:600; margin-left:2px; vertical-align:1px; }
         /* ===== 本体下钻浮层 ===== */
         #onto-drill-mask { position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:200; opacity:0; pointer-events:none; transition:opacity .25s ease; }
         #onto-drill-mask.open { opacity:1; pointer-events:auto; }
@@ -1379,7 +1380,7 @@ function renderOverview(){
     t.vols.forEach(v=>{
       h += `<div class="ov-vol"><div class="ov-vol-title">📚 ${v.vol}<span class="v-cnt">${v.list.length} 部</span></div><div class="ov-grid">`;
       v.list.forEach(s=>{
-        h += `<a class="ov-link" data-ovid="${s.id}"><span>${s.title}</span><span class="m">${(s._trans&&s._trans!=='失译')?String(s._trans).substring(0,4):''}</span></a>`;
+        h += `<a class="ov-link" data-ovid="${s.id}"><span>${s.title}</span><span class="m">${(s._trans&&s._trans!=='失译')?String(s._trans).substring(0,4):''}</span>${BAIHUA_AVAILABLE.has(s.id)?'<span class="yi" title="已有白话翻译">（译）</span>':''}</a>`;
       });
       h += `</div></div>`;
     });
