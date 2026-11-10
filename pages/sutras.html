@@ -1047,8 +1047,10 @@ function applyBaihua() {
         if (target) {
             const card = document.createElement('div');
             card.className = 'baihua-card';
-            const sect = tr.section ? `<div class="baihua-section">${esc(tr.section)}</div>` : '';
-            card.innerHTML = `${sect}<div class="baihua-text">${esc(tr.modern || '')}</div>`;
+            const sectLabel = tr.title || (tr.section ? '第 ' + tr.section + ' 节' : (tr.section_id ? '第 ' + tr.section_id + ' 节' : ''));
+            const sect = sectLabel ? `<div class="baihua-section">${esc(sectLabel)}</div>` : '';
+            const modernText = tr.modern || tr.explanation || tr.content || '';
+            card.innerHTML = `${sect}<div class="baihua-text">${esc(modernText)}</div>`;
             target.after(card);
         }
     });
@@ -1099,7 +1101,7 @@ function jumpToChapter(i){
     document.getElementById('toc-panel')?.classList.add('hidden');
 }
 
-function esc(s){ return (s||'').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function esc(s){ return String(s ?? '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
 function toSimp(s){ return [...(s||'')].map(c => H2S[c] || c).join(''); }
 
 async function loadExtras() {
