@@ -4,13 +4,14 @@
   "name": "真如",
   "sanskrit": "Bhūtatathatā",
   "alias": [
+    "佛性",
     "如",
     "如如",
-    "真实",
-    "真性",
     "实相",
-    "佛性",
-    "法身"
+    "法身",
+    "法身大士",
+    "真实",
+    "真性"
   ],
   "definition": "诸法的真实本性，不变随缘、随缘不变，非有非无，离一切言说分别",
   "sutra_source": [
@@ -25,5 +26,6 @@
   },
   "modern_interpretation": "吕澂《印度佛学源流略讲》：真如就是诸法的真实相，是通过般若观照所证得的境界",
   "primary_sect": "通途",
-  "layer_label": "L1 教理本体层"
+  "layer_label": "L1 教理本体层",
+  "dict_alias_sources": "佛学大词典参见链"
 }

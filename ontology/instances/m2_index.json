@@ -1546,6 +1546,636 @@
       "layer": "L3",
       "primary_sect": "通途",
       "definition_short": "（待考，从旧拼音id补）"
+    },
+    {
+      "id": "c222",
+      "name": "烦恼",
+      "layer": "L1",
+      "primary_sect": "通途",
+      "definition_short": "烦是扰义，恼是乱义，能扰乱众生身心，令使心烦意乱的见思惑，叫做烦恼。"
+    },
+    {
+      "id": "c223",
+      "name": "智慧",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "智与慧。明白一切事相叫做智；了解一切事理叫做慧。"
+    },
+    {
+      "id": "c224",
+      "name": "诸法",
+      "layer": "L1",
+      "primary_sect": "通途",
+      "definition_short": "指森罗万象的一切事物。"
+    },
+    {
+      "id": "c225",
+      "name": "生死",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "谓一切众生因惑业所招，生了又死，死了又生。有分段生死与变易生死的分别"
+    },
+    {
+      "id": "c226",
+      "name": "世界",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "又名世间，即有情众生所住的国土。佛经以过去现在未来为世，东西南北上下为界，由此可见有情众生所居住的国土，不但有东西南北上下的分界，而且是有生灭的，不是永恒存在的"
+    },
+    {
+      "id": "c227",
+      "name": "大乘",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "梵语摩诃衍，华译为大乘，即菩萨的法门，以救世利他为宗旨，最高的果位是佛果。大乘从凡夫修到成佛，立五十二个阶位，即十信、十住、十行、十回向、十地、等觉、妙觉。十信"
+    },
+    {
+      "id": "c228",
+      "name": "修行",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "依佛法的路线去行持实践。"
+    },
+    {
+      "id": "c229",
+      "name": "小乘",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "声闻缘觉的法门，以修身自利为宗旨，其最高果位为阿罗汉果及辟支佛果。声闻乘修四谛法，自凡夫至阿罗汉，论时间，速者三生，迟者六十劫，其修行的方便有七，得果有四。见声"
+    },
+    {
+      "id": "c230",
+      "name": "清净",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "１．离恶行的过失，断烦恼的垢染，叫做清净，这是障尽解脱的离垢清净。２．指超诸善恶无对待的清净，这是性净解脱的自性清净。"
+    },
+    {
+      "id": "c231",
+      "name": "佛法",
+      "layer": "L1",
+      "primary_sect": "通途",
+      "definition_short": "１．佛所说之法，即八万四千法门是。２．佛所得之法，即无上之真理是。３．佛所知之法，即一切诸法是。"
+    },
+    {
+      "id": "c232",
+      "name": "菩提",
+      "layer": "L1",
+      "primary_sect": "通途",
+      "definition_short": "梵文 bodhi，觉、觉悟、智，断烦恼证涅槃之智"
+    },
+    {
+      "id": "c233",
+      "name": "禅定",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "梵文 dhyāna/samādhi，六度第五，摄心一境"
+    },
+    {
+      "id": "c234",
+      "name": "净土",
+      "layer": "L3",
+      "primary_sect": "净土宗",
+      "definition_short": "梵文 Kṣetra-pariśuddhi，清净佛土，佛所居住无烦恼垢染之世界"
+    },
+    {
+      "id": "c235",
+      "name": "功德",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "功是指善行，德是指善心。又世人拜佛诵经布施供养等，都叫功德。"
+    },
+    {
+      "id": "c236",
+      "name": "世间",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "时间和空间之谓，说明过去、现在、未来等三世的时间叫做世；指出东、西、南、北、上、下等十方的空间叫做间。所谓世间，也就是宇宙的意思。在佛教里，不光是指森罗万象的大"
+    },
+    {
+      "id": "c237",
+      "name": "真理",
+      "layer": "L1",
+      "primary_sect": "通途",
+      "definition_short": "永真实不变的道理。"
+    },
+    {
+      "id": "c238",
+      "name": "成佛",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "成就佛道。菩萨修六度万行究竟圆满而成办阿耨多罗三藐三菩提，叫做成佛。"
+    },
+    {
+      "id": "c239",
+      "name": "声闻",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "闻佛之声教而悟道之修行者，最高果位为阿罗汉"
+    },
+    {
+      "id": "c240",
+      "name": "弥陀",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "阿弥陀佛的简称。"
+    },
+    {
+      "id": "c241",
+      "name": "色界",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "三界之一，在欲界之上，因此界的众生，但有色相，而无男女诸欲，故名色界，色界的范围包括初禅至四禅等一共十八层天。"
+    },
+    {
+      "id": "c242",
+      "name": "三界",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "欲界、色界、无色界。欲界是有淫食二欲的众生所住的世界，上自六欲天，中自人畜所居的四大洲，下至无间地狱皆属之；色界是无淫食二欲但还有色相的众生所住的世界，四禅十八"
+    },
+    {
+      "id": "c243",
+      "name": "般若",
+      "layer": "L1",
+      "primary_sect": "通途",
+      "definition_short": "梵文 prajñā 音译，六度第六，智慧，照见诸法实相"
+    },
+    {
+      "id": "c244",
+      "name": "无量",
+      "layer": "L1",
+      "primary_sect": "通途",
+      "definition_short": "多到不可计量。"
+    },
+    {
+      "id": "c245",
+      "name": "地狱",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "１．六道中最苦的地方，因其位置在地下，故名地狱。分为三类：一名根本地狱，有八热及八寒之别，是为十六大地狱。二名近边地狱，即八热四门的十六游增地狱。三名孤独地狱，"
+    },
+    {
+      "id": "c246",
+      "name": "分别",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "五法之一，虚妄分别，即妄心"
+    },
+    {
+      "id": "c247",
+      "name": "金刚",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "金刚石，其性坚利，坚故不为他物所坏，利故能损坏他物，故佛经常以之比喻坚利。"
+    },
+    {
+      "id": "c248",
+      "name": "教法",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "指佛所说的十二部经典，为四法之一。"
+    },
+    {
+      "id": "c249",
+      "name": "说法",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "演说佛的教义。"
+    },
+    {
+      "id": "c250",
+      "name": "一切法",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "一切道理或一切事物的意思。智度论说：‘一切法略说有三种：一者有为法，二者无为法，三者不可说法。此三已摄一切法。’"
+    },
+    {
+      "id": "c251",
+      "name": "道理",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "道法的义理。"
+    },
+    {
+      "id": "c252",
+      "name": "无明",
+      "layer": "L2",
+      "primary_sect": "说一切有部",
+      "definition_short": "即痴，不明缘起真理的迷惑，生死根本，十二因缘之首"
+    },
+    {
+      "id": "c253",
+      "name": "法华",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "大乘妙法莲华经的简称。"
+    },
+    {
+      "id": "c254",
+      "name": "自在",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "１．进退无碍的意思。２．指吾人的心完全脱离了烦恼的系缚而通达无碍。"
+    },
+    {
+      "id": "c255",
+      "name": "罗汉",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "阿罗汉的简称"
+    },
+    {
+      "id": "c256",
+      "name": "出家",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "出离烦恼之家，亦即出离在家的生活，去修沙门的净行。"
+    },
+    {
+      "id": "c257",
+      "name": "三昧",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "又名三摩提，或三摩地，华译为正定，即离诸邪乱，摄心不散的意思。"
+    },
+    {
+      "id": "c258",
+      "name": "欲界",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "三界之一，即有色欲与食欲的众生所住的世界，上自六欲天，中至人界的四大部洲，下至八大地狱等，都属于欲界的范围。"
+    },
+    {
+      "id": "c259",
+      "name": "极乐",
+      "layer": "L2",
+      "primary_sect": "净土宗",
+      "definition_short": "极乐世界"
+    },
+    {
+      "id": "c260",
+      "name": "六道",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "六凡：天道、人道、阿修罗道、畜生道、饿鬼道、地狱道"
+    },
+    {
+      "id": "c261",
+      "name": "无色界",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "无形色的世界，四天：空无边处、识无边处、无所有处、非想非非想处"
+    },
+    {
+      "id": "c262",
+      "name": "四大",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "地大、水大、火大、风大。地以坚硬为性，水以潮湿为性，火以温暖为性，风以流动为性。世间的一切有形物质，都是由四大所造，如人体的毛发爪牙，皮骨筋肉等是坚硬性的地大；"
+    },
+    {
+      "id": "c263",
+      "name": "法相",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "诸法显现于外各别不同的相。"
+    },
+    {
+      "id": "c264",
+      "name": "无碍",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "没有障碍。"
+    },
+    {
+      "id": "c265",
+      "name": "相应",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "互相呼应。依瑜伽论之意，有三种相应，一者，一切所缘之境，与心相应，名境相应；二者，行与理相应，名行相应；三者，三乘圣者，所修诸功德法，因果相符，名果相应，此三种"
+    },
+    {
+      "id": "c266",
+      "name": "法门",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "佛所说的法，因是众生超凡入圣的门户，故称法门。"
+    },
+    {
+      "id": "c267",
+      "name": "虚空",
+      "layer": "L2",
+      "primary_sect": "说一切有部",
+      "definition_short": "1. 无为法之一，无碍为性；2. 色法中之间隔"
+    },
+    {
+      "id": "c268",
+      "name": "化身",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "即应身，应化众生所现之身"
+    },
+    {
+      "id": "c269",
+      "name": "戒律",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "防止佛教徒邪恶的法律，如五戒、十善乃至二百五十戒是。"
+    },
+    {
+      "id": "c270",
+      "name": "平等",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "没有高下贵贱深浅等的差别。"
+    },
+    {
+      "id": "c271",
+      "name": "缘觉",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "又名独觉，或辟支佛，于佛世听佛说十二因缘之理而悟道者，名为缘觉，若生于无佛之世，观诸法生灭因缘而自行悟道者，名为独觉。"
+    },
+    {
+      "id": "c272",
+      "name": "不生",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "１．阿罗汉的译名，因阿罗汉已经了脱生死，不再生于三界六趣之中。２．如来的别名，因如来常住在不生不灭的境界之中。"
+    },
+    {
+      "id": "c273",
+      "name": "供养",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "奉养的意思，对上含有亲近、奉事、尊敬的意思，对下含有同情、怜措、爱护的意思。"
+    },
+    {
+      "id": "c274",
+      "name": "受持",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "领受忆持。"
+    },
+    {
+      "id": "c275",
+      "name": "赖耶",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "阿赖耶的简称。"
+    },
+    {
+      "id": "c276",
+      "name": "阿赖耶",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "心识名，八识中的第八识，华译为藏识，藏字有三义，即能藏、所藏、执藏。能藏谓阿赖耶识能含藏一切法的善恶种子；所藏谓阿赖耶识为前七识熏习的杂染法所覆藏；执藏谓阿赖耶"
+    },
+    {
+      "id": "c277",
+      "name": "唯识",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "又名唯心，谓世间诸法，唯心识所现，因一切法皆不离心识，故名唯识。"
+    },
+    {
+      "id": "c278",
+      "name": "国土",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "一切有情的住处，有净土和秽土的分别。"
+    },
+    {
+      "id": "c279",
+      "name": "心所",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "心所有法的简称，也就是为心所有的各种思想现象，共有五十一法，即遍行五，别境五，善心所十一，烦恼六，随烦恼二十，不定四。兹列表说明如下：┌遍行（触、作意、受、想、"
+    },
+    {
+      "id": "c280",
+      "name": "出世",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "１．诸佛为救济众生而出现于世。２．跳出世间不再受生死。"
+    },
+    {
+      "id": "c281",
+      "name": "真言",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "真实的言语，又是神圣的言语的意思，为如来三密中之语密。"
+    },
+    {
+      "id": "c282",
+      "name": "凡夫",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "迷惑事理和流转生死的平常人。"
+    },
+    {
+      "id": "c283",
+      "name": "方便",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "梵文 upāya，随机化度众生之善巧方法"
+    },
+    {
+      "id": "c284",
+      "name": "应身",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "梵文 nirmāṇakāya，三身之一，应机示现之身，即释迦牟尼佛之肉身等"
+    },
+    {
+      "id": "c285",
+      "name": "具足戒",
+      "layer": "L3",
+      "primary_sect": "律宗",
+      "definition_short": "比丘比丘尼所受之完整戒条，比丘250戒、比丘尼348戒（四分律）"
+    },
+    {
+      "id": "c286",
+      "name": "赖耶识",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "阿赖耶识的简称。"
+    },
+    {
+      "id": "c287",
+      "name": "陀罗尼",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "华译为总持，即总一切法，持无量义。原有四种，咒陀罗尼，不过是其中一种，但通常皆以咒为陀罗尼。"
+    },
+    {
+      "id": "c288",
+      "name": "恶业",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "恶劣的行为或作业。"
+    },
+    {
+      "id": "c289",
+      "name": "慈悲",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "慈与悲。愿给一切众生安乐叫做慈；愿拔一切众生痛苦叫做悲。"
+    },
+    {
+      "id": "c290",
+      "name": "十住",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "菩萨五十二位中第二组：发心住、治地住、修行住、生贵住、方便具足住、正心住、不退住、童真住、法王子住、灌顶住，初入圣位"
+    },
+    {
+      "id": "c291",
+      "name": "有情",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "又名众生，即一切有情识的动物。"
+    },
+    {
+      "id": "c292",
+      "name": "善恶",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "合于理的叫做善；乖于理的叫做恶。"
+    },
+    {
+      "id": "c293",
+      "name": "差别",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "同类相殊叫做差，异类相殊叫做别。"
+    },
+    {
+      "id": "c294",
+      "name": "执著",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "坚持或固执的意思。"
+    },
+    {
+      "id": "c295",
+      "name": "正法",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "１．真理的道法。２．正法时期"
+    },
+    {
+      "id": "c296",
+      "name": "饿鬼",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "六道之一，即时常遭受饥饿的鬼类。其中略有威德的，成为山林冢庙之神，能得祭品或人间的弃食，无威德的，则常不得食，甚至口因渴出火。"
+    },
+    {
+      "id": "c297",
+      "name": "十六观",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "《观无量寿经》所说十六种观想极乐世界之法"
+    },
+    {
+      "id": "c298",
+      "name": "意识",
+      "layer": "L2",
+      "primary_sect": "唯识宗",
+      "definition_short": "第六识，依意根缘法境而起之分别认识"
+    },
+    {
+      "id": "c299",
+      "name": "布施",
+      "layer": "L3",
+      "primary_sect": "通途",
+      "definition_short": "以自己的财物，分施给别人。布施有三种，即一、财施，即以财物去救济疾病贫苦的人；二、法施，即以正法去劝人修善断恶；三、无畏施，即不顾虑自己的安危去解除别人的怖畏。"
+    },
+    {
+      "id": "c300",
+      "name": "善根",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "好的根性。"
+    },
+    {
+      "id": "c301",
+      "name": "六尘",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "即六境：色声香味触法，能染污净心"
+    },
+    {
+      "id": "c302",
+      "name": "万法",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "一切的事物。"
+    },
+    {
+      "id": "c303",
+      "name": "六根",
+      "layer": "L2",
+      "primary_sect": "说一切有部",
+      "definition_short": "眼根、耳根、鼻根、舌根、身根、意根，六种感觉和思维认识器官"
+    },
+    {
+      "id": "c304",
+      "name": "有为",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "有因缘造作之法。"
+    },
+    {
+      "id": "c305",
+      "name": "行法",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "修行的方法。"
+    },
+    {
+      "id": "c306",
+      "name": "邪见",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "１．五见使中，拨无因果之见叫做邪见。２．凡是不合正法的外道之见都可叫做邪见。"
+    },
+    {
+      "id": "c307",
+      "name": "不二",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "超越相对分别之绝对真理，即不二法门"
+    },
+    {
+      "id": "c308",
+      "name": "精进",
+      "layer": "L3",
+      "primary_sect": "说一切有部",
+      "definition_short": "善心所之一，于善恶品修断事中勇悍为性，对治懈怠满善为业"
+    },
+    {
+      "id": "c309",
+      "name": "三宝",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "佛宝、法宝、僧宝。一切之佛，即佛宝；佛所说之法，即法宝；奉行佛所说之法的人，即僧宝。佛者觉知之义，法者法轨之义，僧者和合之义。"
+    },
+    {
+      "id": "c310",
+      "name": "比丘尼",
+      "layer": "L2",
+      "primary_sect": "律宗",
+      "definition_short": "梵文 bhikṣuṇī，受具足戒之女性出家人"
+    },
+    {
+      "id": "c311",
+      "name": "二乘",
+      "layer": "L2",
+      "primary_sect": "通途",
+      "definition_short": "声闻乘和缘觉乘。凡属修四谛法门而悟道的人，总称为声闻乘；凡属修十二因缘而悟道的人，总称为缘觉乘。以上二乘又分为愚法二乘和不愚法二乘两种，愚法二乘是声闻缘觉二小乘"
     }
   ],
   "persons": [
@@ -2423,6 +3053,419 @@
       "category": "现代学者",
       "era": "1893-1964年，现代",
       "sect": ""
+    },
+    {
+      "id": "p506",
+      "name": "帝释天",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p507",
+      "name": "大梵天王",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p508",
+      "name": "多闻天王",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p509",
+      "name": "持国天王",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p510",
+      "name": "增长天王",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p511",
+      "name": "广目天王",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p512",
+      "name": "韦驮天神",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p513",
+      "name": "伽蓝神",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p514",
+      "name": "阎魔王",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p515",
+      "name": "鬼子母神",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p516",
+      "name": "吉祥天女",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p517",
+      "name": "辩才天女",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p518",
+      "name": "摩利支天",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p519",
+      "name": "散脂大将",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p520",
+      "name": "大功德天",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p521",
+      "name": "日天",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p522",
+      "name": "月天",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p523",
+      "name": "龙王",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p524",
+      "name": "夜叉",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p525",
+      "name": "乾闼婆",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p526",
+      "name": "阿修罗",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p527",
+      "name": "迦楼罗",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p528",
+      "name": "紧那罗",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p529",
+      "name": "摩睺罗伽",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p530",
+      "name": "四大天王",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p531",
+      "name": "八部众",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p532",
+      "name": "金刚力士",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p533",
+      "name": "大自在天",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p534",
+      "name": "散脂夜叉大将",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p535",
+      "name": "菩提树神",
+      "category": "护法诸天",
+      "era": "（天界长期护法）",
+      "sect": "通途"
+    },
+    {
+      "id": "p536",
+      "name": "关帝",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p537",
+      "name": "二十八宿",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p538",
+      "name": "十二药叉大将",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p539",
+      "name": "雷公",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p540",
+      "name": "电母",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p541",
+      "name": "风伯",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p542",
+      "name": "雨师",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p543",
+      "name": "城隍",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p544",
+      "name": "土地公",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p545",
+      "name": "山神",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p546",
+      "name": "水神",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p547",
+      "name": "火神",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p548",
+      "name": "妈祖",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p549",
+      "name": "玄天上帝",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p550",
+      "name": "文昌帝君",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p551",
+      "name": "财神",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p552",
+      "name": "灶神",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p553",
+      "name": "门神",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p554",
+      "name": "东岳大帝",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p555",
+      "name": "酆都大帝",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p556",
+      "name": "十殿阎罗",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p557",
+      "name": "黑白无常",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p558",
+      "name": "牛头马面",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p559",
+      "name": "孟婆神",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p560",
+      "name": "送子观音化身",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p561",
+      "name": "韦陀护法分身",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p562",
+      "name": "值日功曹",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p563",
+      "name": "关平太子",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
+    },
+    {
+      "id": "p564",
+      "name": "周仓将军",
+      "category": "护法诸天",
+      "era": "（护法神祇）",
+      "sect": "民间护法"
     }
   ],
   "sutras": [
@@ -3158,11 +4201,13 @@
     }
   ],
   "meta": {
-    "version": "3.1.0-M2",
-    "total_concepts": 221,
-    "total_persons": 125,
+    "version": "3.3.0-L6-batch2",
+    "total_concepts": 311,
+    "total_persons": 184,
     "total_sutras": 96,
     "total_sects": 8,
-    "total_relations": 1088
-  }
+    "total_relations": 1203,
+    "total_dict_links": 0
+  },
+  "dict_links": []
 }

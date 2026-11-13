@@ -4,11 +4,13 @@
   "name": "阿赖耶识",
   "sanskrit": "Ālayavijñāna",
   "alias": [
-    "藏识",
+    "异熟识",
     "本识",
     "种子识",
     "第八识",
-    "异熟识"
+    "藏识",
+    "阿剌耶识",
+    "阿罗耶识"
   ],
   "definition": "唯识宗根本识，含藏一切业种，为万法所依，有能藏、所藏、我爱执藏三义",
   "sutra_source": [
@@ -23,5 +25,6 @@
   },
   "modern_interpretation": "《成唯识论直解》：阿赖耶识相似于心理学的潜意识，但更根本，含藏一切经验种子",
   "primary_sect": "唯识宗",
-  "layer_label": "L1 教理本体层"
+  "layer_label": "L1 教理本体层",
+  "dict_alias_sources": "佛学大词典参见链"
 }

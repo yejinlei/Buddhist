@@ -4,10 +4,11 @@
   "name": "法界",
   "sanskrit": "Dharmadhātu",
   "alias": [
-    "法性",
     "实相",
+    "实际",
+    "法性",
     "真如",
-    "实际"
+    "达摩驮睹"
   ],
   "definition": "一切诸法的总体，含摄万有的真实理体，华严宗以法界缘起为核心，分四法界：事法界、理法界、理事无碍法界、事事无碍法界",
   "sutra_source": [
@@ -21,5 +22,6 @@
   },
   "modern_interpretation": "印顺《佛法概论》：法界是一切法的本性与总和，是宇宙万有的本体",
   "primary_sect": "通途",
-  "layer_label": "L1 教理本体层"
+  "layer_label": "L1 教理本体层",
+  "dict_alias_sources": "佛学大词典参见链"
 }

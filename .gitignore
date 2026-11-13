@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 .xmlcache/
 __pycache__/
 *.pyc
@@ -14,3 +15,7 @@ ontology/dharma_assemblies_raw.json
 ontology/instances/t*.json
 ontology/instances/t*.json
 ontology/paragraph_chunks.jsonl
+=======
+_*/
+data/baihua-tasks/
+>>>>>>> Stashed changes

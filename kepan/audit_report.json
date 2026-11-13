@@ -1,13 +1,13 @@
 {
  "summary": {
-  "total": 2501,
+  "total": 2506,
   "ancient": 73,
-  "structural": 2428,
-  "sanfen_complete": 2501,
+  "structural": 2433,
+  "sanfen_complete": 2506,
   "sanfen_incomplete": 0,
   "xu_flag_empty": 0,
   "liu_flag_empty": 0,
-  "bad_points": 0,
+  "bad_points": 3,
   "xu_no_sig": 0,
   "liu_no_sig": 0,
   "issues_total": 0,
@@ -20,7 +20,11 @@
   "liu_flag_empty": [],
   "xu_no_sig": [],
   "liu_no_sig": [],
-  "bad_points": []
+  "bad_points": [
+   "t0399",
+   "t1509",
+   "t1545"
+  ]
  },
  "ancient_detail": [
   {
@@ -585,7 +589,7 @@
    "xu": 2,
    "zheng": 6,
    "liu": 2,
-   "points": 7
+   "points": 8
   },
   {
    "id": "t1558",

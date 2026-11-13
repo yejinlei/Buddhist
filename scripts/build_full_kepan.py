@@ -526,6 +526,11 @@ STATS = {
 # 全部经id列表（从sutras目录拿）
 all_sutra_files = sorted(glob.glob(str(SUTRA_DIR / 't*.json')))
 all_sids = [Path(f).stem for f in all_sutra_files]
+# 别译/别行单行本（非 t 号命名，读经页以这些 id 加载），按自身经文生成结构科判
+EXTRA_IDS = ['xinjing_xuanzang', 'xinjing_jiumo', 'xinjing_fayue', 'yaoshi_xuanzang', 'yulan_pen']
+for _e in EXTRA_IDS:
+    if (SUTRA_DIR / f'{_e}.json').exists() and _e not in all_sids:
+        all_sids.append(_e)
 print(f"  正文文件数: {len(all_sids)}")
 
 # 先把别名id（如puxian_xingyuan/jingang_jiumo等）转成对应的t号

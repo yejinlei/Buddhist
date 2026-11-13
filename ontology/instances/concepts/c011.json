@@ -4,8 +4,10 @@
   "name": "五蕴",
   "sanskrit": "Pañca-skandha",
   "alias": [
+    "五盛阴",
+    "五聚",
     "五阴",
-    "五聚"
+    "色受想行识"
   ],
   "definition": "构成众生身心的五种积聚：色、受、想、行、识，是佛教分析众生无我的基础框架",
   "structure": [
@@ -27,5 +29,6 @@
   "primary_sect": "通途",
   "layer_label": "L2 义理范畴层",
   "sect_interpretation": [],
-  "modern_interpretation": ""
+  "modern_interpretation": "",
+  "dict_alias_sources": "佛学大词典参见链"
 }

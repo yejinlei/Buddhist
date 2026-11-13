@@ -5,8 +5,10 @@
   "sanskrit": "Dharmakāya",
   "alias": [
     "佛身",
-    "自性身",
-    "真身"
+    "实佛",
+    "真身",
+    "第一身",
+    "自性身"
   ],
   "definition": "佛的真身，以正法为体，遍一切处，即是真如理体",
   "sutra_source": [
@@ -20,5 +22,6 @@
   },
   "modern_interpretation": "",
   "primary_sect": "大乘通途",
-  "layer_label": "L1 教理本体层"
+  "layer_label": "L1 教理本体层",
+  "dict_alias_sources": "佛学大词典参见链"
 }

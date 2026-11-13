@@ -1,6 +1,6 @@
 {
   "meta": {
-    "total": 1088
+    "total": 1203
   },
   "relations": [
     {
@@ -49,7 +49,8 @@
     {
       "source": "c033",
       "target": "c032",
-      "description": "通过二谛方便说中道，二谛是入中道的方法"
+      "description": "通过二谛方便说中道，二谛是入中道的方法",
+      "type": "fangbian"
     },
     {
       "source": "c034",
@@ -9488,9 +9489,1240 @@
       "label": "亦称/异名",
       "evidence_source": "佛学大词典参见链",
       "evidence": "「地藏菩萨」参见「地藏王菩萨」"
+    },
+    {
+      "source": "c222",
+      "target": "c232",
+      "type": "opposite_to",
+      "description": "烦恼与菩提为对待法，转烦恼即菩提"
+    },
+    {
+      "source": "c222",
+      "target": "c225",
+      "type": "cause_of",
+      "description": "烦恼为因，招感生死之果"
+    },
+    {
+      "source": "c222",
+      "target": "c243",
+      "type": "removed_by",
+      "description": "般若智慧能断除烦恼"
+    },
+    {
+      "source": "c232",
+      "target": "c222",
+      "type": "opposite_to",
+      "description": "烦恼与菩提为对待法"
+    },
+    {
+      "source": "c232",
+      "target": "c228",
+      "type": "result_of",
+      "description": "修行圆满成就菩提"
+    },
+    {
+      "source": "c223",
+      "target": "c243",
+      "type": "synonym_of",
+      "description": "般若即智慧，六度之第六度"
+    },
+    {
+      "source": "c243",
+      "target": "c223",
+      "type": "synonym_of",
+      "description": "般若译曰智慧，照见诸法实相"
+    },
+    {
+      "source": "c225",
+      "target": "c222",
+      "type": "result_of",
+      "description": "烦恼为因，生死为果"
+    },
+    {
+      "source": "c236",
+      "target": "c226",
+      "type": "synonym_of",
+      "description": "世间即世界，三世十方之合称"
+    },
+    {
+      "source": "c226",
+      "target": "c236",
+      "type": "synonym_of",
+      "description": "世界又名世间"
+    },
+    {
+      "source": "c227",
+      "target": "c229",
+      "type": "opposite_to",
+      "description": "大乘利他，小乘自利，各有宗趣"
+    },
+    {
+      "source": "c229",
+      "target": "c227",
+      "type": "opposite_to",
+      "description": "小乘自利，大乘利他"
+    },
+    {
+      "source": "c229",
+      "target": "c239",
+      "type": "contains",
+      "description": "小乘含声闻乘、缘觉乘"
+    },
+    {
+      "source": "c239",
+      "target": "c229",
+      "type": "belongs_to",
+      "description": "声闻乘属小乘"
+    },
+    {
+      "source": "c234",
+      "target": "c240",
+      "type": "residence_of",
+      "description": "西方极乐净土为阿弥陀佛所居"
+    },
+    {
+      "source": "c242",
+      "target": "c241",
+      "type": "contains",
+      "description": "三界包含欲界、色界、无色界"
+    },
+    {
+      "source": "c242",
+      "target": "c245",
+      "type": "contains",
+      "description": "地狱位于欲界之中，为三界所摄"
+    },
+    {
+      "source": "c241",
+      "target": "c242",
+      "type": "part_of",
+      "description": "色界为三界之一"
+    },
+    {
+      "source": "c245",
+      "target": "c242",
+      "type": "located_in",
+      "description": "地狱位于三界内欲界之下"
+    },
+    {
+      "source": "c224",
+      "target": "c250",
+      "type": "synonym_of",
+      "description": "诸法即一切法"
+    },
+    {
+      "source": "c250",
+      "target": "c224",
+      "type": "synonym_of",
+      "description": "一切法即诸法"
+    },
+    {
+      "source": "c233",
+      "target": "c243",
+      "type": "cooperates_with",
+      "description": "禅定与般若相资，定慧等持"
+    },
+    {
+      "source": "c238",
+      "target": "c227",
+      "type": "fruit_of",
+      "description": "成佛为大乘菩萨道究竟果位"
+    },
+    {
+      "source": "c246",
+      "target": "c222",
+      "type": "type_of",
+      "description": "虚妄分别为根本烦恼之一"
+    },
+    {
+      "source": "c252",
+      "target": "c222",
+      "type": "cause_of",
+      "description": "无明为烦恼根本"
+    },
+    {
+      "source": "c252",
+      "target": "c223",
+      "type": "opposite_to",
+      "description": "智慧破无明"
+    },
+    {
+      "source": "c252",
+      "target": "c222",
+      "type": "type_of",
+      "description": "无明为根本烦恼之一"
+    },
+    {
+      "source": "c253",
+      "target": "c227",
+      "type": "belongs_to",
+      "description": "法华经为大乘经"
+    },
+    {
+      "source": "c255",
+      "target": "c239",
+      "type": "fruit_of",
+      "description": "阿罗汉为声闻乘最高果位"
+    },
+    {
+      "source": "c255",
+      "target": "c229",
+      "type": "belongs_to",
+      "description": "阿罗汉属小乘果位"
+    },
+    {
+      "source": "c256",
+      "target": "c228",
+      "type": "leads_to",
+      "description": "出家为修行初门"
+    },
+    {
+      "source": "c257",
+      "target": "c233",
+      "type": "synonym_of",
+      "description": "三昧即正定"
+    },
+    {
+      "source": "c258",
+      "target": "c242",
+      "type": "part_of",
+      "description": "欲界为三界之一"
+    },
+    {
+      "source": "c258",
+      "target": "c245",
+      "type": "contains",
+      "description": "地狱在欲界中"
+    },
+    {
+      "source": "c259",
+      "target": "c234",
+      "type": "synonym_of",
+      "description": "极乐世界即阿弥陀佛净土"
+    },
+    {
+      "source": "c260",
+      "target": "c245",
+      "type": "contains",
+      "description": "六道含地狱"
+    },
+    {
+      "source": "c261",
+      "target": "c242",
+      "type": "part_of",
+      "description": "无色界为三界之一"
+    },
+    {
+      "source": "c263",
+      "target": "c277",
+      "type": "basis_of",
+      "description": "法相宗又名唯识宗"
+    },
+    {
+      "source": "c266",
+      "target": "c248",
+      "type": "part_of",
+      "description": "法门为教法之门户"
+    },
+    {
+      "source": "c267",
+      "target": "c001",
+      "type": "metaphor_for",
+      "description": "虚空常比喻法界广大"
+    },
+    {
+      "source": "c269",
+      "target": "c028",
+      "type": "part_of",
+      "description": "戒定慧三学之一"
+    },
+    {
+      "source": "c270",
+      "target": "c223",
+      "type": "result_of",
+      "description": "智慧现前证平等性"
+    },
+    {
+      "source": "c271",
+      "target": "c229",
+      "type": "belongs_to",
+      "description": "缘觉乘属二乘"
+    },
+    {
+      "source": "c271",
+      "target": "c085",
+      "type": "synonym_of",
+      "description": ""
+    },
+    {
+      "source": "c272",
+      "target": "c008",
+      "type": "synonym_of",
+      "description": "涅槃即不生不灭"
+    },
+    {
+      "source": "c272",
+      "target": "c100",
+      "type": "aspect_of",
+      "description": "不生不灭是无为法相"
+    },
+    {
+      "source": "c273",
+      "target": "c228",
+      "type": "part_of",
+      "description": "供养为修行方便"
+    },
+    {
+      "source": "c275",
+      "target": "c276",
+      "type": "short_for",
+      "description": "赖耶为阿赖耶识简称"
+    },
+    {
+      "source": "c275",
+      "target": "c276",
+      "type": "synonym_of",
+      "description": ""
+    },
+    {
+      "source": "c276",
+      "target": "c004",
+      "type": "short_for",
+      "description": ""
+    },
+    {
+      "source": "c276",
+      "target": "c277",
+      "type": "core_of",
+      "description": "阿赖耶识为唯识宗核心"
+    },
+    {
+      "source": "c277",
+      "target": "c227",
+      "type": "belongs_to",
+      "description": "唯识宗为大乘宗派"
+    },
+    {
+      "source": "c277",
+      "target": "c263",
+      "type": "based_on",
+      "description": ""
+    },
+    {
+      "source": "c278",
+      "target": "c066",
+      "type": "synonym_of",
+      "description": "佛所化度国土"
+    },
+    {
+      "source": "c279",
+      "target": "c263",
+      "type": "belongs_to",
+      "description": "心所为心王所属心所有法"
+    },
+    {
+      "source": "p530",
+      "target": "p509",
+      "type": "contains",
+      "description": "四大天王成员"
+    },
+    {
+      "source": "p530",
+      "target": "p510",
+      "type": "contains",
+      "description": "四大天王成员"
+    },
+    {
+      "source": "p530",
+      "target": "p511",
+      "type": "contains",
+      "description": "四大天王成员"
+    },
+    {
+      "source": "p530",
+      "target": "p508",
+      "type": "contains",
+      "description": "四大天王成员"
+    },
+    {
+      "source": "p531",
+      "target": "p506",
+      "type": "contains",
+      "description": "八部众成员，以天众为首"
+    },
+    {
+      "source": "p531",
+      "target": "p523",
+      "type": "contains",
+      "description": "八部众成员，以天众为首"
+    },
+    {
+      "source": "p531",
+      "target": "p524",
+      "type": "contains",
+      "description": "八部众成员，以天众为首"
+    },
+    {
+      "source": "p531",
+      "target": "p525",
+      "type": "contains",
+      "description": "八部众成员，以天众为首"
+    },
+    {
+      "source": "p531",
+      "target": "p526",
+      "type": "contains",
+      "description": "八部众成员，以天众为首"
+    },
+    {
+      "source": "p531",
+      "target": "p527",
+      "type": "contains",
+      "description": "八部众成员，以天众为首"
+    },
+    {
+      "source": "p531",
+      "target": "p528",
+      "type": "contains",
+      "description": "八部众成员，以天众为首"
+    },
+    {
+      "source": "p531",
+      "target": "p529",
+      "type": "contains",
+      "description": "八部众成员，以天众为首"
+    },
+    {
+      "source": "p530",
+      "target": "c258",
+      "type": "resides_in",
+      "description": "居欲界"
+    },
+    {
+      "source": "p509",
+      "target": "c258",
+      "type": "resides_in",
+      "description": "居欲界"
+    },
+    {
+      "source": "p510",
+      "target": "c258",
+      "type": "resides_in",
+      "description": "居欲界"
+    },
+    {
+      "source": "p511",
+      "target": "c258",
+      "type": "resides_in",
+      "description": "居欲界"
+    },
+    {
+      "source": "p508",
+      "target": "c258",
+      "type": "resides_in",
+      "description": "居欲界"
+    },
+    {
+      "source": "p506",
+      "target": "c258",
+      "type": "resides_in",
+      "description": "居欲界"
+    },
+    {
+      "source": "p507",
+      "target": "c241",
+      "type": "resides_in",
+      "description": "居色界初禅天"
+    },
+    {
+      "source": "p514",
+      "target": "c245",
+      "type": "rules_over",
+      "description": "阎魔王主管地狱界"
+    },
+    {
+      "source": "p512",
+      "target": "c231",
+      "type": "guards",
+      "description": "护持佛法僧三宝"
+    },
+    {
+      "source": "p513",
+      "target": "c231",
+      "type": "guards",
+      "description": "护持佛法僧三宝"
+    },
+    {
+      "source": "p532",
+      "target": "c231",
+      "type": "guards",
+      "description": "护持佛法僧三宝"
+    },
+    {
+      "source": "p519",
+      "target": "c231",
+      "type": "guards",
+      "description": "护持佛法僧三宝"
+    },
+    {
+      "source": "p534",
+      "target": "c231",
+      "type": "guards",
+      "description": "护持佛法僧三宝"
+    },
+    {
+      "source": "p508",
+      "target": "p516",
+      "type": "accompanied_by",
+      "description": "毗沙门天王与吉祥天女常同受供奉"
+    },
+    {
+      "source": "p535",
+      "target": "c232",
+      "type": "associated_with",
+      "description": "守护菩提道场"
+    },
+    {
+      "source": "p521",
+      "target": "c234",
+      "type": "guards",
+      "description": "护法善神"
+    },
+    {
+      "source": "p522",
+      "target": "c234",
+      "type": "guards",
+      "description": "护法善神"
+    },
+    {
+      "source": "c285",
+      "target": "c269",
+      "type": "belongs_to",
+      "description": "具足戒为比丘比丘尼所受大戒"
+    },
+    {
+      "source": "c286",
+      "target": "c276",
+      "type": "short_for",
+      "description": ""
+    },
+    {
+      "source": "c286",
+      "target": "c277",
+      "type": "core_of",
+      "description": ""
+    },
+    {
+      "source": "c287",
+      "target": "c281",
+      "type": "belongs_to",
+      "description": "陀罗尼即总持法门"
+    },
+    {
+      "source": "c288",
+      "target": "c225",
+      "type": "cause_of",
+      "description": "恶业招感苦果"
+    },
+    {
+      "source": "c289",
+      "target": "c025",
+      "type": "part_of",
+      "description": "慈悲为大乘根本"
+    },
+    {
+      "source": "c291",
+      "target": "c065",
+      "type": "synonym_of",
+      "description": "有情即众生"
+    },
+    {
+      "source": "c292",
+      "target": "c288",
+      "type": "pair_with",
+      "description": "善恶为业之二分"
+    },
+    {
+      "source": "c293",
+      "target": "c270",
+      "type": "opposite_to",
+      "description": "差别对平等"
+    },
+    {
+      "source": "c294",
+      "target": "c222",
+      "type": "type_of",
+      "description": "执著为烦恼所摄"
+    },
+    {
+      "source": "c294",
+      "target": "c243",
+      "type": "removed_by",
+      "description": "般若能破执著"
+    },
+    {
+      "source": "c295",
+      "target": "c306",
+      "type": "opposite_to",
+      "description": "正法对治邪见"
+    },
+    {
+      "source": "c296",
+      "target": "c260",
+      "type": "part_of",
+      "description": "饿鬼为六道之一"
+    },
+    {
+      "source": "c298",
+      "target": "c277",
+      "type": "belongs_to",
+      "description": "意识为八识之第六识"
+    },
+    {
+      "source": "c299",
+      "target": "c025",
+      "type": "part_of",
+      "description": "布施为六度第一度"
+    },
+    {
+      "source": "c300",
+      "target": "c228",
+      "type": "result_of",
+      "description": "修行增长善根"
+    },
+    {
+      "source": "c301",
+      "target": "c303",
+      "type": "object_of",
+      "description": "六根缘六尘"
+    },
+    {
+      "source": "c302",
+      "target": "c224",
+      "type": "synonym_of",
+      "description": "万法即诸法"
+    },
+    {
+      "source": "c303",
+      "target": "c301",
+      "type": "contacts",
+      "description": "六根触六尘而起识"
+    },
+    {
+      "source": "c306",
+      "target": "c222",
+      "type": "type_of",
+      "description": "邪见为根本烦恼之一"
+    },
+    {
+      "source": "c306",
+      "target": "c295",
+      "type": "opposite_to",
+      "description": ""
+    },
+    {
+      "source": "c307",
+      "target": "c062",
+      "type": "synonym_of",
+      "description": "不二法门即中道义"
+    },
+    {
+      "source": "c308",
+      "target": "c025",
+      "type": "part_of",
+      "description": "精进度为六度之一"
+    },
+    {
+      "source": "c309",
+      "target": "c231",
+      "type": "core_of",
+      "description": "佛法僧三宝为佛教归依处"
+    },
+    {
+      "source": "c311",
+      "target": "c229",
+      "type": "synonym_of",
+      "description": "二乘即声闻缘觉"
+    },
+    {
+      "source": "p536",
+      "target": "p513",
+      "type": "synonym_of",
+      "description": "关帝为伽蓝神之一"
+    },
+    {
+      "source": "p556",
+      "target": "p514",
+      "type": "collectively_contains",
+      "description": "阎罗王为第五殿，十殿为整体"
+    },
+    {
+      "source": "p563",
+      "target": "p536",
+      "type": "attendant_of",
+      "description": "关平为关帝胁侍"
+    },
+    {
+      "source": "p564",
+      "target": "p536",
+      "type": "attendant_of",
+      "description": "周仓为关帝胁侍"
+    },
+    {
+      "source": "c312",
+      "target": "c019",
+      "type": "has_part",
+      "description": "佛之法、报、应三身"
+    },
+    {
+      "source": "c312",
+      "target": "c267",
+      "type": "has_part",
+      "description": "三身之一"
+    },
+    {
+      "source": "c312",
+      "target": "c313",
+      "type": "has_part",
+      "description": "三身之一"
+    },
+    {
+      "source": "c313",
+      "target": "c312",
+      "type": "subClassOf",
+      "description": "佛三身之一"
+    },
+    {
+      "source": "c313",
+      "target": "c081",
+      "type": "related_to",
+      "description": "报身依法身显现"
+    },
+    {
+      "source": "c314",
+      "target": "c052",
+      "type": "related_to",
+      "description": "缘起性空核心义理"
+    },
+    {
+      "source": "c315",
+      "target": "c228",
+      "type": "related_to",
+      "description": "三法印之一"
+    },
+    {
+      "source": "c316",
+      "target": "c031",
+      "type": "subClassOf",
+      "description": "汉传八宗之一"
+    },
+    {
+      "source": "c317",
+      "target": "c031",
+      "type": "subClassOf",
+      "description": "汉传八宗之一，法华宗"
+    },
+    {
+      "source": "c318",
+      "target": "c031",
+      "type": "subClassOf",
+      "description": "汉传八宗之一，贤首宗"
+    },
+    {
+      "source": "c319",
+      "target": "c031",
+      "type": "subClassOf",
+      "description": "汉传八宗之一，空宗"
+    },
+    {
+      "source": "c320",
+      "target": "c052",
+      "type": "related_to",
+      "description": "华严宗核心概念"
+    },
+    {
+      "source": "c321",
+      "target": "c264",
+      "type": "practiced_by",
+      "description": "禅宗参究方法"
+    },
+    {
+      "source": "c322",
+      "target": "c021",
+      "type": "subClassOf",
+      "description": "三昧之一，净业核心"
+    },
+    {
+      "source": "c323",
+      "target": "c028",
+      "type": "subClassOf",
+      "description": "善业之一"
+    },
+    {
+      "source": "c324",
+      "target": "c073",
+      "type": "subClassOf",
+      "description": "菩萨戒三大类"
+    },
+    {
+      "source": "c325",
+      "target": "c052",
+      "type": "related_to",
+      "description": "二谛之一"
+    },
+    {
+      "source": "c326",
+      "target": "c052",
+      "type": "related_to",
+      "description": "二谛之一，胜义谛"
+    },
+    {
+      "source": "c327",
+      "target": "c044",
+      "type": "subClassOf",
+      "description": "六度之一"
+    },
+    {
+      "source": "c328",
+      "target": "c294",
+      "type": "part_of",
+      "description": "三十七道品之一"
+    },
+    {
+      "source": "c329",
+      "target": "c294",
+      "type": "part_of",
+      "description": "三十七道品之一"
+    },
+    {
+      "source": "c330",
+      "target": "c294",
+      "type": "part_of",
+      "description": "三十七道品之一"
+    },
+    {
+      "source": "c331",
+      "target": "c028",
+      "type": "subClassOf",
+      "description": "重罪之一"
+    },
+    {
+      "source": "c332",
+      "target": "c028",
+      "type": "subClassOf",
+      "description": "恶业之一"
+    },
+    {
+      "source": "c333",
+      "target": "c233",
+      "type": "related_to",
+      "description": "苦谛之八相"
+    },
+    {
+      "source": "c334",
+      "target": "c222",
+      "type": "subClassOf",
+      "description": "三毒根本烦恼"
+    },
+    {
+      "source": "c335",
+      "target": "c316",
+      "type": "core_of",
+      "description": "天台宗核心义理"
+    },
+    {
+      "source": "c336",
+      "target": "c021",
+      "type": "subClassOf",
+      "description": "世间禅定"
+    },
+    {
+      "source": "c337",
+      "target": "c052",
+      "type": "related_to",
+      "description": "大乘一法印"
+    },
+    {
+      "source": "c338",
+      "target": "c085",
+      "type": "part_of",
+      "description": "佛教法会仪轨"
+    },
+    {
+      "source": "c339",
+      "target": "c085",
+      "type": "part_of",
+      "description": "施食仪轨"
+    },
+    {
+      "source": "c340",
+      "target": "c073",
+      "type": "subClassOf",
+      "description": "在家戒法"
+    },
+    {
+      "source": "c341",
+      "target": "c085",
+      "type": "part_of",
+      "description": "孝亲超度法会"
+    },
+    {
+      "source": "p565",
+      "target": "p507",
+      "type": "associated_with",
+      "description": "佛教伽蓝护法"
+    },
+    {
+      "source": "p565",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p566",
+      "target": "p509",
+      "type": "part_of",
+      "description": "药师十二药叉大将"
+    },
+    {
+      "source": "p566",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p567",
+      "target": "p554",
+      "type": "supervised_by",
+      "description": "酆都大帝下属冥司主"
+    },
+    {
+      "source": "p567",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p568",
+      "target": "p019",
+      "type": "same_as",
+      "description": "地藏菩萨化身于幽冥界"
+    },
+    {
+      "source": "p568",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p569",
+      "target": "p019",
+      "type": "disciple_of",
+      "description": "释迦弟子，救母盂兰盆会缘起"
+    },
+    {
+      "source": "p569",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p570",
+      "target": "p523",
+      "type": "same_as",
+      "description": "地天，大地守护神"
+    },
+    {
+      "source": "p570",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p571",
+      "target": "p509",
+      "type": "same_as",
+      "description": "吉祥天女"
+    },
+    {
+      "source": "p571",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p572",
+      "target": "p510",
+      "type": "same_as",
+      "description": "辩才天女"
+    },
+    {
+      "source": "p572",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p573",
+      "target": "p506",
+      "type": "protects",
+      "description": "守护佛陀成道处"
+    },
+    {
+      "source": "p573",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p574",
+      "target": "p508",
+      "type": "also_known_as",
+      "description": "爱子母、诃利帝母"
+    },
+    {
+      "source": "p574",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p575",
+      "target": "p511",
+      "type": "incarnated_as",
+      "description": "斗母元君，隐身消灾本尊"
+    },
+    {
+      "source": "p575",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p576",
+      "target": "p512",
+      "type": "also_known_as",
+      "description": "散脂大将"
+    },
+    {
+      "source": "p576",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p577",
+      "target": "p513",
+      "type": "same_as",
+      "description": "日天、太阳神"
+    },
+    {
+      "source": "p577",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p578",
+      "target": "p514",
+      "type": "same_as",
+      "description": "月天、月神"
+    },
+    {
+      "source": "p578",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p579",
+      "target": "p515",
+      "type": "subClassOf",
+      "description": "八大龙王之首"
+    },
+    {
+      "source": "p579",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p580",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p581",
+      "target": "p580",
+      "type": "subClassOf",
+      "description": "八大龙王之一，海龙王"
+    },
+    {
+      "source": "p581",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p582",
+      "target": "p580",
+      "type": "subClassOf",
+      "description": "八大龙王之一"
+    },
+    {
+      "source": "p582",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p583",
+      "target": "p580",
+      "type": "subClassOf",
+      "description": "八大龙王之一"
+    },
+    {
+      "source": "p583",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p584",
+      "target": "p580",
+      "type": "subClassOf",
+      "description": "八大龙王之一"
+    },
+    {
+      "source": "p584",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p585",
+      "target": "p580",
+      "type": "subClassOf",
+      "description": "八大龙王之一"
+    },
+    {
+      "source": "p585",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p586",
+      "target": "p580",
+      "type": "subClassOf",
+      "description": "八大龙王之一"
+    },
+    {
+      "source": "p586",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p587",
+      "target": "p515",
+      "type": "subClassOf",
+      "description": "龙族护法首领"
+    },
+    {
+      "source": "p587",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p588",
+      "target": "p522",
+      "type": "same_as",
+      "description": "金刚力士，哼哈二将之本"
+    },
+    {
+      "source": "p588",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p589",
+      "target": "p523",
+      "type": "same_as",
+      "description": "摩醯首罗天，色界顶天"
+    },
+    {
+      "source": "p589",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p590",
+      "target": "p506",
+      "type": "part_of",
+      "description": "护法二十天之一"
+    },
+    {
+      "source": "p590",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p591",
+      "target": "p587",
+      "type": "same_as",
+      "description": "密迹金刚"
+    },
+    {
+      "source": "p591",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p592",
+      "target": "p588",
+      "type": "same_as",
+      "description": "大自在天"
+    },
+    {
+      "source": "p592",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p593",
+      "target": "p582",
+      "type": "same_as",
+      "description": "娑伽罗龙王，海龙王"
+    },
+    {
+      "source": "p593",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
+    },
+    {
+      "source": "p594",
+      "target": "p537",
+      "type": "associated_with",
+      "description": "道教四御之一，佛教护法天"
+    },
+    {
+      "source": "p594",
+      "target": "p001",
+      "type": "protects",
+      "description": "护持佛法"
     }
   ],
   "summary": {
-    "total": 1090
+    "total": 1203,
+    "total_relations": 1295
   }
 }
