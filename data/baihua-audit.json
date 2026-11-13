@@ -1,7 +1,7 @@
 {
- "total": 1719,
- "ok": 1718,
- "fail": 1,
+ "total": 1725,
+ "ok": 1720,
+ "fail": 5,
  "ok_ids": [
   "t0002",
   "t0003",
@@ -172,6 +172,7 @@
   "t0182a",
   "t0182b",
   "t0183",
+  "t0185",
   "t0188",
   "t0195",
   "t0196",
@@ -466,6 +467,7 @@
   "t0599",
   "t0600",
   "t0601",
+  "t0602",
   "t0603",
   "t0604",
   "t0605",
@@ -1724,6 +1726,10 @@
  ],
  "fail_detail": [
   {
+   "id": "t0598",
+   "status": "no_sections"
+  },
+  {
    "id": "t1545",
    "status": "fail",
    "cover": 0.328,
@@ -1733,6 +1739,24 @@
     "cover=0.33",
     "bad_modern@[258, 259, 260]"
    ]
+  },
+  {
+   "id": "t1564",
+   "status": "fail",
+   "cover": 0.071,
+   "sections": 2,
+   "problems": [
+    "preview_not_substring",
+    "cover=0.07"
+   ]
+  },
+  {
+   "id": "t1986a",
+   "status": "no_sections"
+  },
+  {
+   "id": "t2099",
+   "status": "no_sections"
   }
  ]
 }
