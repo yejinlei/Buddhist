@@ -1,12 +1,20 @@
 {
- "total": 1,
- "ok": 0,
- "fail": 1,
- "ok_ids": [],
- "fail_detail": [
-  {
-   "id": "--help",
-   "status": "missing_file"
-  }
- ]
+ "total": 12,
+ "ok": 12,
+ "fail": 0,
+ "ok_ids": [
+  "t0818",
+  "t1278",
+  "t1185b",
+  "t1154",
+  "t0339",
+  "t1659",
+  "t0327",
+  "t0843",
+  "t2818",
+  "t1737",
+  "t0652",
+  "t0405"
+ ],
+ "fail_detail": []
 }
