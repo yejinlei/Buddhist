@@ -1,126 +1,102 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import json, os, sys, re
-ROOT = os.path.dirname(os.path.abspath(__file__))
-os.chdir(ROOT)
+"""
+机械切段：把经文原文切成若干段，供翻译 worker 逐段译白话。
+核心保证：每段 original_preview 都是原文的【连续子串】（一字不差）。
+用法：
+  python3 scripts/segment_baihua.py t0014 t0027 ...        # 生成骨架
+  python3 scripts/segment_baihua.py --check t0014 ...      # 校验预览子串性
+"""
+import json, os, re, sys
 
-def segment_sutra(sid):
-    sutra_path = f"sutras/{sid}.json"
-    if not os.path.exists(sutra_path):
-        print(f"错误：找不到经文文件 {sutra_path}")
-        return False
-    with open(sutra_path, encoding="utf-8") as f:
-        sutra = json.load(f)
-    
-    # 获取完整原文
-    content = sutra.get("content", [])
-    full_text_parts = []
-    for c in content:
-        if isinstance(c, dict):
-            txt = c.get("text", "")
+ROOT = os.path.dirname(os.path.abspath(__file__))
+SUT  = os.path.join(ROOT, "sutras")
+TASK = os.path.join(ROOT, "data", "baihua-tasks")
+
+def norm(s): return re.sub(r"\s+", "", s)
+
+def load_raw(tid):
+    p = os.path.join(SUT, tid + ".json")
+    d = json.load(open(p, encoding="utf-8"))
+    if isinstance(d, list):
+        texts = [c["text"] if isinstance(c, dict) else str(c) for c in d]
+        meta = {}
+    else:
+        texts = [c["text"] if isinstance(c, dict) else str(c) for c in d.get("content", [])]
+        meta = d
+    raw = "\n".join(texts)
+    return raw, meta
+
+SPLIT_RE = re.compile(r'(?<=[。！？；：」』）\)\n])')
+
+def segment(raw, lo=90, hi=400):
+    parts = [p for p in SPLIT_RE.split(raw) if p != ""]
+    segs, buf = [], ""
+    for p in parts:
+        # 单句过长时按逗号再切
+        if len(norm(p)) > hi:
+            sub = re.split(r'(?<=[，、])', p)
+            for q in sub:
+                if not q: continue
+                buf += q
+                if len(norm(buf)) >= lo:
+                    segs.append(buf); buf = ""
+            continue
+        buf += p
+        if len(norm(buf)) >= lo:
+            segs.append(buf); buf = ""
+    if buf.strip():
+        if segs and len(norm(buf)) < 30:
+            segs[-1] += buf
         else:
-            txt = str(c)
-        full_text_parts.append(txt)
-    full_text = "".join(full_text_parts)
-    # 去除多余空白但保留换行
-    full_text = full_text.replace("\r\n", "\n").replace("\r", "\n")
-    full_clean = "".join(full_text.split())
-    
-    # 强制按句子切分，每段200-300字，保证原文连续
-    sentences = []
-    sent = ""
-    for char in full_text:
-        sent += char
-        if char in "。！？" and len(sent) > 50:
-            sentences.append(sent.strip())
-            sent = ""
-    if sent.strip():
-        sentences.append(sent.strip())
-    
-    # 合并句子到每段200-300字
-    segments = []
-    current_seg = ""
-    for s in sentences:
-        if len(current_seg) + len(s) < 300:
-            current_seg += s
-        else:
-            if current_seg:
-                segments.append(current_seg.strip())
-            current_seg = s
-    if current_seg:
-        segments.append(current_seg.strip())
-    
-    # 过滤空段
-    segments = [s for s in segments if s.strip()]
-    
-    translations = []
-    for seg in segments:
-        translations.append({
-            "section": "",
-            "original_preview": seg,
-            "modern": ""
-        })
-    
-    # 验证覆盖率
-    preview_text = "".join(t["original_preview"] for t in translations)
-    preview_clean = "".join(preview_text.split())
-    coverage = len(preview_clean) / len(full_clean) if len(full_clean) > 0 else 0
-    
-    # 如果覆盖率不足，退回按原始content分段
-    if coverage < 0.999:
-        print(f"警告：{sid} 按句切分覆盖率不足 {coverage:.3f}，退回原始分段")
-        translations = []
-        for c in content:
-            if isinstance(c, dict):
-                txt = c.get("text", "").strip()
-            else:
-                txt = str(c).strip()
-            if txt:
-                translations.append({
-                    "section": "",
-                    "original_preview": txt,
-                    "modern": ""
-                })
-    
-    # 构建任务骨架
+            segs.append(buf)
+    return segs
+
+def build_task(tid):
+    raw, meta = load_raw(tid)
+    segs = segment(raw)
+    total = norm(raw)
+    cov = sum(len(norm(s)) for s in segs)
+    print(f"{tid:6s}  {meta.get('title','')[:30]:30s}  段={len(segs)}  覆盖={cov/len(total):.3f}")
+    os.makedirs(TASK, exist_ok=True)
     task = {
-        "id": sid,
-        "title": sutra.get("title", ""),
-        "translator": sutra.get("translator", ""),
-        "mode": "baihua",
-        "intro": "",
-        "sutraPath": f"../sutras/{sid}.json",
-        "translations": translations
+        "id": tid,
+        "title": meta.get("title", ""),
+        "translator": meta.get("translator", ""),
+        "vol": meta.get("vol", ""),
+        "translations": [{"original_preview": s, "modern": ""} for s in segs]
     }
-    
-    # 保存到baihua-tasks
-    os.makedirs("data/baihua-tasks", exist_ok=True)
-    task_path = f"data/baihua-tasks/{sid}.skel.json"
-    with open(task_path, "w", encoding="utf-8") as f:
-        json.dump(task, f, ensure_ascii=False, indent=2)
-    
-    # 计算覆盖率
-    preview_text = "".join(t["original_preview"] for t in translations)
-    preview_clean = "".join(preview_text.split())
-    coverage = len(preview_clean) / len(full_clean) if len(full_clean) > 0 else 0
-    print(f"{sid}: {len(translations)}段，覆盖率{coverage:.3f}，{sutra.get('title','')}")
-    return coverage >= 0.999
+    json.dump(task, open(os.path.join(TASK, tid+".json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    return len(segs), cov/len(total)
+
+def check_task(tid):
+    task = json.load(open(os.path.join(TASK, tid+".json"), encoding="utf-8"))
+    raw, _ = load_raw(tid)
+    raw_norm = norm(raw)
+    pos = 0
+    ok = True
+    for i, t in enumerate(task["translations"]):
+        op = norm(t["original_preview"])
+        idx = raw_norm.find(op, pos)
+        if idx < 0:
+            print(f"  ❌ 段{i}: 预览不是原文连续子串")
+            ok = False
+        else:
+            pos = idx + len(op)
+    if pos != len(raw_norm):
+        print(f"  ❌ 总长度不匹配: 拼接={pos}, 原文={len(raw_norm)}")
+        ok = False
+    if ok:
+        print(f"  ✅ {tid} 校验通过")
+    return ok
 
 if __name__ == "__main__":
-    sids = sys.argv[1:]
-    if not sids:
-        print("用法：python segment_baihua.py <经号1> <经号2> ...")
-        # 从selected_batch.txt读取
-        if os.path.exists("selected_batch.txt"):
-            with open("selected_batch.txt", encoding="utf-8") as f:
-                sids = f.read().strip().split()
-            print(f"自动读取selected_batch.txt：{' '.join(sids)}")
-    all_ok = True
-    for sid in sids:
-        ok = segment_sutra(sid)
-        if not ok:
-            all_ok = False
-    if all_ok:
-        print("\n所有经文切段完成，覆盖率100%")
+    args = sys.argv[1:]
+    if not args:
+        print("用法: python3 segment_baihua.py t0014 t0027 ...")
+        sys.exit(1)
+    if args[0] == "--check":
+        for tid in args[1:]:
+            check_task(tid)
     else:
-        print("\n部分经文切段存在问题，请检查")
+        for tid in args:
+            build_task(tid)
