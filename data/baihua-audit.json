@@ -1,7 +1,7 @@
 {
- "total": 1869,
- "ok": 1857,
- "fail": 12,
+ "total": 1881,
+ "ok": 1881,
+ "fail": 0,
  "ok_ids": [
   "t0002",
   "t0003",
@@ -259,6 +259,7 @@
   "t0315a",
   "t0315b",
   "t0317",
+  "t0318",
   "t0322",
   "t0323",
   "t0324",
@@ -326,6 +327,7 @@
   "t0417",
   "t0418",
   "t0419",
+  "t0420",
   "t0422",
   "t0423",
   "t0426",
@@ -521,6 +523,7 @@
   "t0632",
   "t0633",
   "t0634",
+  "t0636",
   "t0640",
   "t0641",
   "t0642",
@@ -707,6 +710,7 @@
   "t0844",
   "t0845",
   "t0846",
+  "t0849",
   "t0854",
   "t0855",
   "t0856",
@@ -717,11 +721,14 @@
   "t0861",
   "t0862",
   "t0863",
+  "t0864",
+  "t0864a",
   "t0864b",
   "t0869",
   "t0870",
   "t0871",
   "t0872",
+  "t0873",
   "t0874",
   "t0875",
   "t0876",
@@ -764,6 +771,7 @@
   "t0924a",
   "t0924b",
   "t0924c",
+  "t0925",
   "t0926",
   "t0928",
   "t0929",
@@ -821,6 +829,7 @@
   "t0979",
   "t0980",
   "t0981",
+  "t0983",
   "t0983a",
   "t0983b",
   "t0986",
@@ -861,6 +870,7 @@
   "t1024",
   "t1025",
   "t1026",
+  "t1027a",
   "t1027b",
   "t1028",
   "t1028a",
@@ -892,6 +902,7 @@
   "t1053",
   "t1054",
   "t1055",
+  "t1057a",
   "t1057b",
   "t1058",
   "t1059",
@@ -932,6 +943,8 @@
   "t1093",
   "t1094",
   "t1095",
+  "t1097",
+  "t1098",
   "t1099",
   "t1100",
   "t1101",
@@ -1029,6 +1042,7 @@
   "t1181",
   "t1182",
   "t1183",
+  "t1184",
   "t1185a",
   "t1185b",
   "t1186",
@@ -1062,6 +1076,7 @@
   "t1218",
   "t1219",
   "t1220",
+  "t1222b",
   "t1223",
   "t1224",
   "t1225",
@@ -1254,6 +1269,7 @@
   "t1422b",
   "t1423",
   "t1426",
+  "t1427",
   "t1429",
   "t1430",
   "t1431",
@@ -1315,6 +1331,7 @@
   "t1510a",
   "t1513",
   "t1514",
+  "t1515",
   "t1516",
   "t1518",
   "t1519",
@@ -1440,6 +1457,7 @@
   "t1697",
   "t1698",
   "t1703",
+  "t1711",
   "t1712",
   "t1714",
   "t1725",
@@ -1515,6 +1533,7 @@
   "t1906",
   "t1907",
   "t1908",
+  "t1910",
   "t1914",
   "t1915",
   "t1917",
@@ -1560,6 +1579,7 @@
   "t1968",
   "t1969b",
   "t1971",
+  "t1972",
   "t1974",
   "t1975",
   "t1977",
@@ -1588,6 +1608,7 @@
   "t2005",
   "t2007",
   "t2008",
+  "t2009",
   "t2010",
   "t2011",
   "t2012",
@@ -1636,6 +1657,7 @@
   "t2072",
   "t2074",
   "t2079",
+  "t2080",
   "t2081",
   "t2082",
   "t2083",
@@ -1669,7 +1691,9 @@
   "t2132",
   "t2133",
   "t2133a",
+  "t2133b",
   "t2134",
+  "t2135",
   "t2136",
   "t2138",
   "t2139",
@@ -1861,114 +1885,5 @@
   "t2919",
   "t2920"
  ],
- "fail_detail": [
-  {
-   "id": "t0849",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 141,
-   "problems": [
-    "legacy_sections_no_translations"
-   ]
-  },
-  {
-   "id": "t0864",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 109,
-   "problems": [
-    "legacy_sections_no_translations"
-   ]
-  },
-  {
-   "id": "t0864a",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 75,
-   "problems": [
-    "legacy_sections_no_translations"
-   ]
-  },
-  {
-   "id": "t0873",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 141,
-   "problems": [
-    "legacy_sections_no_translations"
-   ]
-  },
-  {
-   "id": "t0925",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 121,
-   "problems": [
-    "legacy_sections_no_translations"
-   ]
-  },
-  {
-   "id": "t0983",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 79,
-   "problems": [
-    "legacy_sections_no_translations"
-   ]
-  },
-  {
-   "id": "t1027a",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 140,
-   "problems": [
-    "legacy_sections_no_translations"
-   ]
-  },
-  {
-   "id": "t1057a",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 95,
-   "problems": [
-    "legacy_sections_no_translations"
-   ]
-  },
-  {
-   "id": "t1184",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 72,
-   "problems": [
-    "legacy_sections_no_translations"
-   ]
-  },
-  {
-   "id": "t1427",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 142,
-   "problems": [
-    "legacy_sections_no_translations"
-   ]
-  },
-  {
-   "id": "t2133b",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 133,
-   "problems": [
-    "legacy_sections_no_translations"
-   ]
-  },
-  {
-   "id": "t2135",
-   "status": "fail",
-   "cover": 1.0,
-   "sections": 116,
-   "problems": [
-    "legacy_sections_no_translations"
-   ]
-  }
- ]
+ "fail_detail": []
 }
