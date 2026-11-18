@@ -1,1303 +1,239 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>全藏原典 - 佛学本体论</title>
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/tailwind.min.css">
-    <link rel="stylesheet" href="../css/tailwind-extra.css">
-    <link rel="stylesheet" href="../css/custom.css">
-    <link rel="stylesheet" href="../css/mobile.css">
-    <link rel="stylesheet" href="../css/tailwind-fixes.css">
-    <style>
-        body { font-family: -apple-system, "Noto Serif SC", "Songti SC", serif; background-color: #F5F0E1; color: #2C1810; }
-        .nav-active { background-color: rgba(184,134,11,0.2); }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-thumb { background: #d4c8b0; border-radius: 3px; }
-        /* ====== 生僻字 ruby 旁注 ====== */
-        .pr-ruby { ruby-position: over; ruby-align: center; margin: 0 1px; cursor: help; }
-        .pr-ruby rt { font-size: 0.55em; color: #B8860B; font-weight: 500; font-family: "Noto Sans SC", "PingFang SC", sans-serif; letter-spacing: 0; line-height: 1; opacity: 0.85; user-select: none; }
-        .pr-ruby:hover { background: rgba(184,134,11,.08); border-radius: 2px; }
-        .pr-ruby:hover rt { opacity: 1; color: #8B4513; }
-        /* 关闭注音按钮 */
-        .pr-toggle { background:none;border:1px solid #d9c89a;border-radius:4px;color:#8B4513;padding:2px 8px;font-size:12px;cursor:pointer; }
-        .pr-toggle.off { opacity:.5; }
-        /* ====== 划词查询弹窗 ====== */
-        .sel-pop { position: absolute; z-index: 9999; background:#fffdf6; border:1px solid #d9c89a; border-radius:10px; box-shadow:0 6px 24px rgba(90,62,27,.18); padding:10px 12px; min-width:220px; max-width:320px; font-size:13px; line-height:1.55; color:#3e2723; }
-        .sel-pop.hidden { display:none; }
-        .sel-pop-arrow { position:absolute; bottom:-6px; left:50%; transform:translateX(-50%) rotate(45deg); width:12px; height:12px; background:#fffdf6; border-right:1px solid #d9c89a; border-bottom:1px solid #d9c89a; }
-        .sel-pop .sel-section + .sel-section { margin-top:8px; padding-top:8px; border-top:1px dashed #eadfbf; }
-        .sel-pop .sel-title { font-size:13px; color:#5a3e1b; margin-bottom:3px; }
-        .sel-pop .sel-cat { font-size:11px; color:#a08755; font-weight:400; margin-left:4px; }
-        .sel-pop .sel-py { color:#B8860B; font-weight:600; font-family:"Noto Sans SC",sans-serif; }
-        .sel-pop .sel-def { color:#4a3a1e; font-size:12.5px; }
-        .sel-pop .sel-more { display:inline-block; margin-top:4px; color:#B8860B; font-size:12px; text-decoration:none; border-bottom:1px dashed #d9c89a; }
-        .sel-pop .sel-more:hover { color:#8B4513; }
-        /* 关闭注音时隐藏 rt（不拆毁 DOM，切换时即时生效） */
-        .sutra-container.pron-off .pr-ruby rt { display: none; }
-        .sutra-container.pron-off .pr-ruby { margin: 0; }
-        .sel-pop code { background:#f6efd9; padding:0 4px; border-radius:3px; font-size:11.5px; color:#6d4f1d; }
-        .scholar-hi { background: linear-gradient(transparent 62%, #f3e2a9 62%); }
-        .scholar-mark { color:#B8860B; cursor:pointer; font-size:.68em; vertical-align:super; margin:0 2px; font-weight:700; }
-        .dict-term { color:#8B4513; border-bottom:1px dashed #B8860B; cursor:pointer; transition:background .15s; }
-        .dict-term:hover { background: rgba(184,134,11,.15); border-bottom-style:solid; }
-        .para-wrap { position: relative; }
-        .para-tools { position:absolute; right:2px; top:2px; display:none; gap:2px; background:rgba(255,255,255,.95); border-radius:4px; padding:2px; box-shadow:0 1px 4px rgba(0,0,0,.1); z-index:5; }
-        .para-wrap:hover .para-tools { display:inline-flex; }
-        .para-tools button { background:none; border:0; font-size:13px; padding:4px 6px; cursor:pointer; color:#8B4513; border-radius:3px; min-width:28px; min-height:28px; }
-        .para-tools button:hover { background:rgba(184,134,11,.15); }
-        .para-tools .on { color:#DAA520; }
-        .note-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:#DAA520; margin-left:3px; vertical-align:middle; }
-        #note-pop { position:fixed; right:20px; bottom:20px; width:340px; max-width:calc(100vw - 40px); max-height:60vh; overflow:auto; background:#fff; border:1px solid #e5d9c3; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.12); padding:16px; z-index:80; }
-        #dict-pop { position:absolute; background:#fff; border:1px solid #e5d9c3; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.15); padding:14px 16px; max-width:320px; z-index:90; font-size:14px; line-height:1.7; }
-        #dict-pop .dt-name { font-size:16px; font-weight:700; color:#2C1810; margin-right:8px; }
-        #dict-pop .dt-type { font-size:11px; background:rgba(139,69,19,.1); color:#8B4513; padding:1px 8px; border-radius:8px; }
-        #dict-pop .dt-desc { color:#3E2723; margin-top:8px; }
-        #dict-pop .dt-close { position:absolute; top:6px; right:10px; color:#999; cursor:pointer; font-size:18px; line-height:1; }
-        #dict-pop .dt-close:hover { color:#333; }
-        #dict-pop .dict-hint { text-align:center; color:#999; font-size:12px; padding:10px 8px; }
-        /* 学术工具侧栏 */
-        #study-sidebar { position:fixed; top:0; right:-400px; width:380px; max-width:88vw; height:100vh; background:#fffaf0; z-index:180; box-shadow:-4px 0 20px rgba(0,0,0,.2); transition:right .28s ease; display:flex; flex-direction:column; }
-        #study-sidebar.open { right:0; }
-        #study-sidebar-mask { position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:179; opacity:0; pointer-events:none; transition:opacity .28s ease; }
-        #study-sidebar-mask.open { opacity:1; pointer-events:auto; }
-        #study-sidebar .sb-head { padding:14px 16px; border-bottom:1px solid #e5d9c3; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(135deg,#8B4513,#B8860B); color:#F5F0E1; }
-        #study-sidebar .sb-head h3 { font-size:17px; font-weight:600; margin:0; }
-        #study-sidebar .sb-head button { background:none; border:0; color:#F5F0E1; font-size:22px; cursor:pointer; min-width:40px; min-height:40px; }
-        #study-sidebar .sb-tabs { display:flex; border-bottom:1px solid #e5d9c3; }
-        #study-sidebar .sb-tabs button { flex:1; padding:12px 4px; background:none; border:0; border-bottom:2px solid transparent; font-size:14px; cursor:pointer; color:#3E2723; }
-        #study-sidebar .sb-tabs button.active { border-bottom-color:#B8860B; color:#B8860B; font-weight:600; }
-        #study-sidebar .sb-body { flex:1; overflow-y:auto; padding:12px; }
-        .sb-item { padding:10px 8px; border-bottom:1px solid #f0e6d0; }
-        .sb-item .sb-sutra { font-size:12px; color:#8B4513; margin-bottom:4px; }
-        .sb-item .sb-text { font-size:14px; line-height:1.6; color:#2C1810; margin-bottom:6px; max-height:4.8em; overflow:hidden; }
-        .sb-item .sb-note { font-size:13px; color:#5c4033; background:#fff8e7; padding:8px; border-radius:6px; border-left:3px solid #B8860B; }
-        .sb-item .sb-actions { margin-top:6px; display:flex; gap:8px; }
-        .sb-item .sb-actions button { background:none; border:0; color:#8B4513; font-size:12px; cursor:pointer; padding:4px 8px; border-radius:4px; }
-        .sb-item .sb-actions button:hover { background:rgba(184,134,11,.12); }
-        .sb-empty { text-align:center; color:#999; padding:40px 20px; font-size:14px; }
-        .read-toolbar { display:flex; align-items:center; gap:8px; padding:10px 12px; background:#fdf8ec; border-radius:8px; border:1px solid #e5d9c3; margin-bottom:12px; flex-wrap:wrap; }
-        .read-toolbar button { padding:6px 12px; border:1px solid #d4c8b0; background:#fff; border-radius:6px; cursor:pointer; font-size:14px; color:#3E2723; }
-        .read-toolbar button:hover { background:#f5ecd0; border-color:#B8860B; }
-        .read-toolbar button.active { background:#B8860B; color:#fff; border-color:#B8860B; }
-        .rt-label { font-size:13px; color:#8B4513; }
-        #toc-panel { background:#fff; border:1px solid #e5d9c3; border-radius:8px; padding:8px 0; max-height:50vh; overflow-y:auto; box-shadow:0 4px 16px rgba(0,0,0,.08); }
-        #toc-panel a { display:block; padding:8px 14px; font-size:14px; color:#3E2723; text-decoration:none; border-bottom:1px solid #f5ecd9; }
-        #toc-panel a:hover { background:#fdf8ec; color:#B8860B; }
-        .sutra-container { max-width:880px; margin:0 auto; }
-        .sutra-content { font-size:16px; line-height:2; color:#2C1810; }
-        /* ===== 经目树形目录 ===== */
-        .cat-seg { display:flex; border:1px solid #e5d9c3; border-radius:8px; overflow:hidden; }
-        .cat-seg-btn { flex:1; padding:6px 4px; background:#fff; border:0; font-size:12.5px; color:#3E2723; cursor:pointer; font-family:inherit; }
-        .cat-seg-btn.active { background:#B8860B; color:#fff; font-weight:600; }
-        .tree-mini-btn { flex:1; padding:4px 6px; background:#fdf8ec; border:1px solid #e5d9c3; border-radius:6px; color:#8B4513; cursor:pointer; font-size:12px; font-family:inherit; }
-        .tree-mini-btn:hover { background:#f5ecd0; }
-        .tcat { display:flex; align-items:center; gap:6px; padding:7px 8px; cursor:pointer; border-radius:6px; font-weight:600; color:#2C1810; user-select:none; }
-        .tcat:hover { background:rgba(184,134,11,.1); }
-        .tcat .caret { transition:transform .15s; font-size:10px; color:#B8860B; width:12px; flex-shrink:0; }
-        .tcat.open .caret { transform:rotate(90deg); }
-        .tcat .cnt { font-weight:400; font-size:11px; color:#8B4513; background:rgba(184,134,11,.12); border-radius:8px; padding:0 6px; margin-left:auto; flex-shrink:0; }
-        .tvol { display:flex; align-items:center; gap:6px; padding:5px 8px 5px 22px; cursor:pointer; border-radius:6px; font-size:13px; color:#5c4033; user-select:none; }
-        .tvol:hover { background:rgba(184,134,11,.08); }
-        .tvol .caret { transition:transform .15s; font-size:9px; color:#B8860B; width:10px; flex-shrink:0; }
-        .tvol.open .caret { transform:rotate(90deg); }
-        .tvol .cnt { font-weight:400; font-size:11px; color:#8B4513; margin-left:auto; flex-shrink:0; }
-        .tleaf { display:flex; justify-content:space-between; align-items:center; gap:6px; padding:5px 8px 5px 38px; cursor:pointer; border-radius:6px; font-size:13px; }
-        .tleaf:hover { background:rgba(184,134,11,.08); }
-        .tleaf.flat { padding-left:8px; }
-        .tleaf.sel { background:rgba(218,165,32,.22); }
-        .tleaf .tl-title { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-        .tleaf .tl-meta { font-size:11px; color:rgba(44,24,16,.4); flex-shrink:0; }
-        .tleaf .tl-tag { font-size:10px; color:#8B4513; background:rgba(139,69,19,.08); border-radius:6px; padding:0 5px; margin-left:4px; flex-shrink:0; }
-        .flat-crumb { font-size:11px; color:#8B4513; margin-bottom:1px; }
-        /* ===== 筛选栏 ===== */
-        .filter-row { display:flex; gap:6px; margin-bottom:6px; }
-        .filter-row select { flex:1; padding:5px 6px; font-size:12px; border:1px solid #e5d9c3; border-radius:6px; background:#fff; color:#3E2723; font-family:inherit; cursor:pointer; }
-        .filter-row select:focus { outline:none; border-color:#B8860B; }
-        .filter-hint { font-size:11px; color:#8B4513; margin:-2px 0 4px; padding:2px 4px; background:#fdf8ec; border-radius:4px; }
-        .filter-chip { display:inline-flex; align-items:center; gap:3px; font-size:11px; background:rgba(184,134,11,.15); color:#8B4513; border-radius:10px; padding:1px 8px; margin:1px 2px; }
-        .filter-chip .x { cursor:pointer; font-weight:700; opacity:.6; }
-        .filter-chip .x:hover { opacity:1; }
-        /* ===== 检索结果分组 ===== */
-        .grp-head { display:flex; align-items:center; gap:8px; padding:10px 8px 6px; margin-top:8px; border-bottom:1px dashed #d4b88a; font-weight:600; color:#5c3317; cursor:pointer; user-select:none; }
-        .grp-head .g-caret { transition:transform .15s; font-size:10px; color:#B8860B; }
-        .grp-head.open .g-caret { transform:rotate(90deg); }
-        .grp-head .g-name { flex:1; }
-        .grp-head .g-cnt { font-weight:400; font-size:12px; color:#8B4513; background:rgba(184,134,11,.12); border-radius:8px; padding:0 8px; }
-        .grp-body { padding:2px 0; }
-        .grp-body.collapsed { display:none; }
-        /* ===== 部类总览树形 ===== */
-        .cat-tree-head { display:flex; align-items:center; gap:8px; padding:10px 14px; background:linear-gradient(90deg,#fdf8ec,#fff); border:1px solid #e5d9c3; border-radius:10px; cursor:pointer; margin-bottom:4px; user-select:none; }
-        .cat-tree-head:hover { background:#f5ecd0; }
-        .cat-tree-head .t-caret { transition:transform .15s; font-size:10px; color:#B8860B; width:12px; }
-        .cat-tree-head.open .t-caret { transform:rotate(90deg); }
-        .cat-tree-head .t-name { flex:1; font-weight:600; color:#3E2723; font-size:15px; }
-        .cat-tree-head .t-cnt { font-size:12px; color:#8B4513; background:rgba(184,134,11,.12); border-radius:8px; padding:1px 8px; }
-        .cat-tree-body { margin:0 0 10px 16px; padding:6px 10px; border-left:2px solid #e5d9c3; }
-        .cat-tree-body.collapsed { display:none; }
-        .vol-chunk { margin-bottom:8px; }
-        .vol-chunk-title { font-size:12px; color:#8B4513; padding:3px 6px; font-weight:600; }
-        .vol-sutras { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:4px; }
-        /* ===== 部类总览（与全藏原典合并） ===== */
-        .ov-summary { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin:0 0 18px; }
-        .ov-card { background:#fff; border:1px solid #e5d9c3; border-radius:10px; padding:8px 20px; text-align:center; min-width:96px; }
-        .ov-card .n { font-size:22px; font-weight:700; color:#B8860B; }
-        .ov-card .l { font-size:12px; color:#8B4513; }
-        .ov-tree-head { display:flex; align-items:center; gap:10px; padding:11px 15px; background:linear-gradient(90deg,#fdf8ec,#fff); border:1px solid #e5d9c3; border-radius:12px; cursor:pointer; margin-bottom:6px; user-select:none; transition:all .15s; }
-        .ov-tree-head:hover { background:#f5ecd0; box-shadow:0 4px 12px rgba(139,69,19,.08); }
-        .ov-tree-head .t-caret { transition:transform .18s; font-size:11px; color:#B8860B; width:14px; flex-shrink:0; }
-        .ov-tree-head.open .t-caret { transform:rotate(90deg); }
-        .ov-tree-head .t-ico { font-size:20px; }
-        .ov-tree-head .t-name { flex:1; font-weight:700; color:#3E2723; font-size:16px; }
-        .ov-tree-head .t-desc { font-size:12px; color:#8B4513; font-weight:400; margin-left:6px; }
-        .ov-tree-head .t-cnt { font-size:12px; color:#8B4513; background:rgba(184,134,11,.12); border-radius:8px; padding:2px 10px; font-weight:600; }
-        .ov-tree-body { margin:0 0 14px 18px; padding:10px 14px; border-left:2px solid #e5d9c3; background:#fffdf7; border-radius:0 8px 8px 0; }
-        .ov-tree-body.collapsed { display:none; }
-        .ov-vol { margin-bottom:10px; }
-        .ov-vol-title { font-size:13px; color:#8B4513; padding:4px 8px; font-weight:600; border-bottom:1px dashed #e5d9c3; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
-        .ov-vol-title .v-cnt { margin-left:auto; font-size:11px; font-weight:400; opacity:.8; }
-        .ov-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:4px; }
-        .ov-link { display:block; padding:5px 8px; border-radius:6px; font-size:13px; color:#3E2723; text-decoration:none; transition:all .12s; border:1px solid transparent; cursor:pointer; }
-        .ov-link:hover { background:rgba(184,134,11,.1); border-color:#e5d9c3; color:#8B4513; }
-        .ov-link .m { font-size:11px; color:#8B4513; opacity:.65; margin-left:4px; }
-        /* ===== 本体下钻浮层 ===== */
-        #onto-drill-mask { position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:200; opacity:0; pointer-events:none; transition:opacity .25s ease; }
-        #onto-drill-mask.open { opacity:1; pointer-events:auto; }
-        #onto-drill { position:fixed; top:0; right:-520px; width:500px; max-width:92vw; height:100vh; background:#fffaf0; z-index:201; display:flex; flex-direction:column; box-shadow:-6px 0 28px rgba(0,0,0,.25); transition:right .3s ease; }
-        #onto-drill.open { right:0; }
-        #onto-drill .od-head { padding:14px 16px; background:linear-gradient(135deg,#6a3d10,#b8860b); color:#f5edcc; display:flex; align-items:center; gap:10px; }
-        #onto-drill .od-head h3 { margin:0; font-size:17px; font-weight:600; flex:1; }
-        #onto-drill .od-head .od-meta { font-size:12px; opacity:.9; margin-top:3px; }
-        #onto-drill .od-head button { background:none; border:0; color:#f5edcc; font-size:24px; cursor:pointer; min-width:36px; min-height:36px; }
-        #onto-drill .od-stats { display:flex; gap:6px; padding:10px 12px; border-bottom:1px solid #e5d9c3; flex-wrap:wrap; background:#fdf8ec; }
-        #onto-drill .od-stat { font-size:12px; padding:4px 10px; border-radius:12px; background:#fff; border:1px solid #e5d9c3; color:#5d3610; }
-        #onto-drill .od-stat b { color:#b8860b; margin:0 2px; }
-        #onto-drill .od-body { flex:1; overflow-y:auto; padding:8px 6px 16px; }
-        .od-sec { margin:6px 8px; border:1px solid #e5d9c3; border-radius:8px; overflow:hidden; background:#fff; }
-        .od-sec-head { padding:10px 12px; background:linear-gradient(90deg,#f5ecd0,#fffaf0); color:#5d3610; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:14px; user-select:none; }
-        .od-sec-head .arrow { transition:transform .2s; font-size:10px; color:#b8860b; }
-        .od-sec.open .od-sec-head .arrow { transform:rotate(90deg); }
-        .od-sec-head .od-sec-cnt { margin-left:auto; font-size:11px; color:#8b5a2b; opacity:.7; font-weight:400; }
-        .od-sec-body { display:none; padding:4px 0; }
-        .od-sec.open .od-sec-body { display:block; }
-        .od-ch { margin:0; border-top:1px dashed #f0e3c4; }
-        .od-ch:first-child { border-top:0; }
-        .od-ch-head { padding:8px 12px 8px 28px; cursor:pointer; font-size:13px; color:#3e2723; display:flex; align-items:center; gap:6px; }
-        .od-ch-head:hover { background:#fdf8ec; }
-        .od-ch-head .ch-name { flex:1; }
-        .od-ch-head .ch-tags { font-size:11px; display:flex; gap:4px; flex-wrap:wrap; }
-        .od-ch-head .tag { padding:1px 7px; border-radius:8px; font-size:11px; }
-        .od-ch.open .od-ch-head { background:#fbf3dd; color:#5d3610; font-weight:500; }
-        .od-ch-body { display:none; padding:4px 12px 8px 40px; font-size:12px; }
-        .od-ch.open .od-ch-body { display:block; }
-        .tag-gatha { background:#f0e0b0; color:#6a3d10; }
-        .tag-mantra { background:#e6d4f0; color:#4a148c; }
-        .tag-fig { background:#c8e6c9; color:#1b5e20; }
-        .tag-doc { background:#bbdefb; color:#0d47a1; }
-        .tag-para { background:#f5f5f5; color:#555; }
-        .od-subgroup { margin:6px 0; }
-        .od-subgroup-title { font-size:12px; color:#8b5a2b; margin:6px 0 3px; display:flex; align-items:center; gap:6px; }
-        .od-subgroup-title::before { content:''; width:14px; height:1px; background:#d4b878; }
-        .od-items { display:flex; flex-wrap:wrap; gap:4px; }
-        .od-item { padding:3px 8px; border-radius:10px; font-size:11px; cursor:pointer; background:#fff; border:1px solid #e5d9c3; color:#3e2723; transition:all .12s; }
-        .od-item:hover { background:#f5ecd0; border-color:#b8860b; }
-        .od-item.gatha { background:#fbf4df; border-color:#e0c988; }
-        .od-item.mantra { background:#f4ebfa; border-color:#c9a8e2; }
-        .od-item.fig { background:#edf7ee; border-color:#a5d6a7; }
-        .od-item.doc { background:#e8f2fc; border-color:#90caf9; }
-        .od-item.para { background:#f5f5f5; }
-        /* ====== 本体实例详情弹窗（点击人物/佛理标签弹出） ====== */
-        .od-entity-mask { position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:250; opacity:0; pointer-events:none; transition:opacity .2s; }
-        .od-entity-mask.open { opacity:1; pointer-events:auto; }
-        .od-entity-pop { position:fixed; right:520px; top:50%; transform:translateY(-50%) translateX(20px); width:360px; max-width:calc(92vw - 520px); max-height:80vh; background:#fffdf6; border:1px solid #d9c89a; border-radius:12px; box-shadow:-4px 0 20px rgba(90,62,27,.2); z-index:251; display:flex; flex-direction:column; opacity:0; pointer-events:none; transition:all .25s ease; }
-        .od-entity-pop.open { opacity:1; pointer-events:auto; transform:translateY(-50%) translateX(0); }
-        .od-entity-head { padding:12px 14px; background:linear-gradient(135deg,#6a3d10,#b8860b); color:#f5edcc; border-radius:11px 11px 0 0; display:flex; align-items:center; gap:8px; }
-        .od-entity-head .e-type { font-size:11px; padding:2px 8px; background:rgba(255,255,255,.2); border-radius:10px; }
-        .od-entity-head h4 { margin:0; font-size:15px; font-weight:600; flex:1; }
-        .od-entity-head button { background:none; border:0; color:#f5edcc; font-size:20px; cursor:pointer; }
-        .od-entity-body { padding:12px 14px; overflow-y:auto; font-size:13px; line-height:1.7; color:#3e2723; }
-        .od-entity-body .e-label { font-weight:600; color:#5d3610; margin-top:8px; font-size:12.5px; }
-        .od-entity-body .e-label:first-child { margin-top:0; }
-        .od-entity-body .e-def { background:#fbf4df; border-left:3px solid #b8860b; padding:6px 10px; border-radius:0 6px 6px 0; margin:4px 0; color:#4a3a1e; }
-        .od-entity-body .e-aliases, .od-entity-body .e-rels { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px; }
-        .od-entity-body .e-chip { padding:2px 8px; border-radius:10px; font-size:11px; background:#fff; border:1px solid #e5d9c3; color:#5d4037; cursor:pointer; }
-        .od-entity-body .e-chip.concept { background:#e8f2fc; border-color:#90caf9; }
-        .od-entity-body .e-chip.person { background:#edf7ee; border-color:#a5d6a7; }
-        .od-entity-body .e-chip:hover { background:#f5ecd0; }
-        .od-entity-body .e-meta { font-size:11.5px; color:#8b5a2b; opacity:.85; }
-        .od-entity-foot { padding:8px 14px; border-top:1px solid #f0e3c4; display:flex; gap:8px; font-size:12px; }
-        .od-entity-foot a { flex:1; text-align:center; padding:6px; background:#fbf4df; border:1px solid #e0c988; border-radius:6px; color:#8b4513; text-decoration:none; }
-        .od-entity-foot a:hover { background:#f3e2a9; }
-        .od-loading, .od-empty { text-align:center; padding:30px 10px; color:#8b5a2b; font-size:13px; }
-        .od-empty { padding:6px 12px; font-size:12px; color:#999; font-style:italic; }
-        .od-gatha-mantra-item { padding:6px 10px; margin:4px 0; border-radius:6px; font-size:12px; cursor:pointer; border-left:3px solid transparent; transition:all .12s; }
-        .od-gatha-mantra-item:hover { background:#fdf8ec; }
-        .od-gatha-mantra-item.gatha { border-left-color:#b8860b; }
-        .od-gatha-mantra-item.mantra { border-left-color:#7b1fa2; background:#f9f2fd; }
-        .od-gatha-mantra-item .gm-label { font-size:10px; padding:1px 6px; border-radius:8px; margin-right:6px; }
-        .od-gatha-mantra-item.gatha .gm-label { background:#b8860b; color:#fff; }
-        .od-gatha-mantra-item.mantra .gm-label { background:#7b1fa2; color:#fff; }
-        .od-gatha-mantra-item .gm-meter { color:#8b5a2b; font-size:11px; margin-left:4px; }
-        .od-gatha-mantra-item .gm-preview { color:#5d4037; margin-top:2px; line-height:1.5; }
-        /* ===== 科判弹窗 ===== */
-        .kepan-type { display:inline-block; font-size:11px; padding:1px 7px; border-radius:9px; margin-right:6px; background:#b8860b; color:#fff; vertical-align:middle; }
-        .kepan-badge { display:inline-block; font-size:11px; padding:1px 7px; border-radius:9px; margin-left:6px; vertical-align:middle; }
-        .kepan-badge.auto { color:#8a6d42; border:1px solid #d8c9a8; }
-        .kepan-badge.ancient { color:#8a5a2b; border:1px solid #d8b48a; background:#fbf3e6; }
-        .kepan-node { margin:5px 0; }
-        .kepan-name { font-weight:600; color:#3A2E1F; font-size:14px; line-height:1.7; }
-        .kepan-desc { color:#6b5840; font-size:12px; line-height:1.65; margin:2px 0; }
-        .kepan-content { color:#5c3c1a; background:rgba(196,154,108,0.12); padding:5px 9px; border-radius:5px; font-family:serif; font-size:12px; line-height:1.7; margin:3px 0; }
-        .kepan-children { padding-left:16px; border-left:1px dashed rgba(139,90,43,0.28); margin-left:6px; }
-        .kepan-cc { font-size:10px; color:#a08a68; margin-left:6px; font-weight:400; }
-        .kepan-points { display:flex; flex-wrap:wrap; gap:5px; margin:4px 0; }
-        .kepan-point { font-size:11px; padding:1px 8px; border-radius:9px; background:#f2e6cf; color:#8a5a2b; border:1px solid #e2cfa8; }
-    </style>
-</head>
-<body class="min-h-screen">
-    <!-- 导航栏 -->
-    <nav class="bg-ink text-paper py-4 px-6 flex items-center gap-6 sticky top-0 z-50">
-        <a href="../index.html" class="text-xl font-bold flex items-center gap-2 text-gold">
-            <span>🍃</span> 佛学本体论
-        </a>
-        <span class="text-paper/60">|</span>
-        <a href="sutras.html" class="text-paper font-medium hover:text-gold nav-active">全藏原典</a>
-        <div class="ml-auto flex gap-4 text-sm text-paper/80 flex-wrap">
-            <a href="../index.html" class="hover:text-gold">首页</a>
-            <a href="sutras.html" class="hover:text-gold">全藏原典</a>
-            <a href="search.html" class="hover:text-gold">全文检索</a>
-            <a href="dict.html" class="hover:text-yellow-400">佛学词典</a>
-            <a href="parallel.html" class="hover:text-gold">异译对照</a>
-            <a href="graph.html" class="hover:text-gold">义理图谱</a><a href="ontology.html" class="hover:text-gold">本体总纲</a>
-            <a href="kepan.html" class="hover:text-gold">科判导航</a>
-            <div class="nav-dropdown"><a href="javascript:void(0)" class="hover:text-gold nav-dropdown-toggle" role="button" aria-haspopup="true">佛学知识<span class="nav-caret">▾</span></a><div class="nav-dropdown-menu nav-dropdown-menu--dark"><a href="panjiao.html">宗派判教</a><a href="translation.html">佛典译学</a><a href="timeline.html">译传时间轴</a></div></div>
-            <a href="inference.html" class="hover:text-gold">概念推演</a>
-        </div>
-    </nav>
-
-    <div id="note-pop" class="hidden"></div>
-    <div id="dict-pop" class="hidden"></div>
-    <!-- 本体实例详情弹窗（点击下钻面板中的人物/佛理/术语标签弹出） -->
-    <div id="od-entity-mask" class="od-entity-mask" onclick="closeEntityPop()"></div>
-    <div id="od-entity-pop" class="od-entity-pop">
-        <div class="od-entity-head">
-            <span class="e-type" id="od-e-type">概念</span>
-            <h4 id="od-e-name">—</h4>
-            <button onclick="closeEntityPop()" title="关闭">×</button>
-        </div>
-        <div class="od-entity-body" id="od-e-body"><div class="od-loading">加载中…</div></div>
-        <div class="od-entity-foot" id="od-e-foot"></div>
-    </div>
-
-    <!-- 学术工具侧栏 -->
-    <div id="study-sidebar-mask"></div>
-    <div id="study-sidebar">
-        <div class="sb-head">
-            <h3><i class="fa fa-star"></i> 我的学术工具</h3>
-            <button id="sb-close" aria-label="关闭"><i class="fa fa-times"></i></button>
-        </div>
-        <div class="sb-tabs">
-            <button data-tab="fav" class="active">⭐ 收藏 <span id="fav-count" class="text-xs opacity-70"></span></button>
-            <button data-tab="note">📝 笔记 <span id="note-count" class="text-xs opacity-70"></span></button>
-            <button data-tab="bm">🔖 书签 <span id="bm-count" class="text-xs opacity-70"></span></button>
-        </div>
-        <div class="sb-body" id="sb-body"></div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
-        <!-- 左侧经目（树形目录） -->
-        <div class="w-72 flex-shrink-0">
-            <div class="bg-white rounded-xl shadow-md p-4 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
-                <div class="flex items-center justify-between mb-3">
-                    <h2 class="text-lg font-bold text-ink flex items-center gap-2"><span class="text-primary">📖</span>大正藏经目</h2>
-                    <span id="loading-status" class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">加载中</span>
-                </div>
-                <input id="search-input" type="text" placeholder="搜索经名 / 译者 / 经号..." class="w-full border border-primary/20 rounded-lg px-3 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary/30 text-sm">
-                <div class="filter-row">
-                    <select id="filter-dynasty"><option value="">全部朝代</option></select>
-                    <select id="filter-translator"><option value="">全部译者</option></select>
-                </div>
-                <div id="filter-active" class="mb-1"></div>
-                <div class="cat-seg mb-2">
-                    <button class="cat-seg-btn active" data-mode="tree">🌳 树形目录</button>
-                    <button class="cat-seg-btn" data-mode="flat">📋 平铺列表</button>
-                </div>
-                <div class="flex gap-1 mb-2 text-xs">
-                    <button id="tree-expand" class="tree-mini-btn">全部展开</button>
-                    <button id="tree-collapse" class="tree-mini-btn">全部折叠</button>
-                </div>
-                <div id="sutra-tree" class="flex-1 overflow-y-auto text-sm pr-1">
-                    <div class="text-center text-ink/50 py-8">正在加载经目...</div>
-                </div>
-                <div id="list-stats" class="text-xs text-ink/50 mt-2 pt-2 border-t border-paper"></div>
-            </div>
-        </div>
-
-        <!-- 右侧经文内容 -->
-        <div class="flex-1">
-            <div id="content-area" class="bg-white rounded-xl shadow-md p-8 min-h-[70vh]">
-                <div class="text-center py-20">
-                    <div class="text-6xl mb-4 opacity-30">📜</div>
-                    <h1 class="text-3xl font-bold text-ink mb-4">CBETA大正藏全文在线阅读</h1>
-                    <p class="text-lg text-ink/70 mb-2">从左侧选择一部经典开始阅读。</p>
-                    <p class="text-ink/50">共收录 <span class="text-primary font-bold">2,425 部</span> 佛典原文，总计约 <span class="text-primary font-bold">9,183 万字</span>。</p>
-                    <p class="text-sm text-ink/40 mt-4">数据来自 CBETA 电子佛典，按经独立加载，秒开阅读。</p>
-                </div>
-            </div>
-            <div id="load-more" class="hidden mt-4 text-center py-4">
-                <button id="load-more-btn" class="bg-primary/10 text-primary px-6 py-2 rounded-lg hover:bg-primary/20">加载更多经文</button>
-            </div>
-        </div>
-    </div>
-
-<script>
-let allSutras = [];
-let currentSutra = null;
-let loadedChapters = 0;
-let NOTES = {};   // 学者注解：sutra_id -> {anchors:[...]}
-let KEPAN = null; // 科判数据
-let H2S = {};     // 繁->简单字映射
-let DICT_TERMS = null;
-let DICT_MAP = new Map();
-let DICT_AUTO_SET = new Set(); // 自动划线用的词条（不含人物/地名/太通用词）
-let DICT_MAX_LEN = 8;
-let CROSS = null; // 跨页关联数据，懒加载
-const CHAPTERS_PER_PAGE = 10; // 每次加载10章（大约几卷）
-
-// ====== 生僻字/异体字/音译注音（ruby 旁注） ======
-let PRONOUNCE = null;  // {chars:{字:{py,mean,cat}, 词组:{...}}}
-let PRONOUNCE_LOADED = false;
-let PRONOUNCE_SINGLE = {};  // 单字 map
-let PRONOUNCE_PHRASES = []; // 词组数组（长→短）
-let ONTO_DICT_TERMS = null; // 本体词典 (dict-links.json 中词 -> entry)，划词时合并使用
-
-async function loadPronounce(){
-  if(PRONOUNCE_LOADED) return PRONOUNCE;
-  try{
-    const r = await fetch('../data/buddhist-pronounce.json?v=1',{cache:'no-cache'});
-    PRONOUNCE = await r.json();
-    PRONOUNCE_SINGLE = {}; PRONOUNCE_PHRASES = [];
-    Object.entries(PRONOUNCE.chars||{}).forEach(([k,v])=>{
-      if(k.length===1) PRONOUNCE_SINGLE[k]=v;
-      else PRONOUNCE_PHRASES.push({w:k,...v});
-    });
-    PRONOUNCE_PHRASES.sort((a,b)=>b.w.length-a.w.length); // 长词优先
-    // 本体词典（术语/人物/地名）
-    try{
-      const lr = await fetch('../ontology/dict-links.json',{cache:'no-cache'});
-      const ld = await lr.json();
-      ONTO_DICT_TERMS = {};
-      (ld.links||[]).forEach(l=>{ ONTO_DICT_TERMS[l.dict_word]=l; });
-    }catch(e){ ONTO_DICT_TERMS={}; }
-  }catch(e){ console.warn('注音数据加载失败',e); PRONOUNCE={chars:{}}; PRONOUNCE_SINGLE={}; PRONOUNCE_PHRASES=[]; ONTO_DICT_TERMS={}; }
-  PRONOUNCE_LOADED = true;
-  return PRONOUNCE;
-}
-
-// 对已渲染好的 DOM（.sutra-content 段落）扫描文本节点，注入 ruby 注音
-// 规则：词组精确匹配优先 → 单字命中才注（且要落在生僻字集合里，现代汉语常用字不标）
-function annotatePronounceIn(container){
-  if(!PRONOUNCE_SINGLE) return;
-  const paras = container.querySelectorAll ? container.querySelectorAll('.sutra-content') : [];
-  paras.forEach(p=>{
-    if(p.dataset.pronounced==='1') return; // 已处理过不重复
-    rubyWalk(p);
-    p.dataset.pronounced='1';
-  });
-}
-function rubyWalk(el){
-  // 收集文本节点
-  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
-    acceptNode: n=>{
-      if(!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-      const p = n.parentNode;
-      if(!p) return NodeFilter.FILTER_REJECT;
-      const tag = p.nodeName;
-      if(tag==='RUBY'||tag==='RT'||tag==='RP') return NodeFilter.FILTER_REJECT;
-      if(p.closest && p.closest('sup,a,button,.scholar-mark,.para-tools')) return NodeFilter.FILTER_REJECT;
-      return NodeFilter.FILTER_ACCEPT;
-    }
-  });
-  const nodes=[];
-  let n; while((n=walker.nextNode())) nodes.push(n);
-  nodes.forEach(tn=>{
-    const txt = tn.nodeValue;
-    const frag = document.createDocumentFragment();
-    const html = pronounceHtml(txt);
-    const tmp = document.createElement('span');
-    tmp.innerHTML = html;
-    while(tmp.firstChild) frag.appendChild(tmp.firstChild);
-    tn.parentNode.replaceChild(frag, tn);
-  });
-}
-function escapeHtml(s){ return s.replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function pronounceHtml(txt){
-  // 先做词组匹配，用占位符保护；再对单字注音
-  const placeholders = [];
-  let work = txt;
-  PRONOUNCE_PHRASES.forEach(ph=>{
-    const w = ph.w;
-    let idx;
-    while((idx = work.indexOf(w)) !== -1){
-      const key = '\u0001PH'+placeholders.length+'\u0001';
-      placeholders.push(`<ruby class="pr-ruby" data-cat="${ph.cat||''}" title="${escapeHtml(ph.mean||'')}">${escapeHtml(w)}<rt>${escapeHtml(ph.py)}</rt></ruby>`);
-      work = work.slice(0,idx) + key + work.slice(idx+w.length);
-    }
-  });
-  // 单字注音
-  let out = '';
-  for(let i=0;i<work.length;i++){
-    const ch = work[i];
-    if(ch==='\u0001'){
-      // 占位符读取
-      let j=i+1; while(j<work.length && work[j]!=='\u0001') j++;
-      const idx = parseInt(work.slice(i+2,j),10);
-      out += placeholders[idx] || '';
-      i=j; continue;
-    }
-    const m = PRONOUNCE_SINGLE[ch];
-    if(m){
-      out += `<ruby class="pr-ruby" data-cat="${m.cat||''}" title="${escapeHtml(m.mean||'')}">${escapeHtml(ch)}<rt>${escapeHtml(m.py)}</rt></ruby>`;
-    }else{
-      out += escapeHtml(ch);
-    }
-  }
-  return out;
-}
-
-// ====== 划词显示本体/词典信息 ======
-function initSelectionPopup(){
-  if(document.getElementById('sel-pop')) return;
-  const pop = document.createElement('div');
-  pop.id = 'sel-pop';
-  pop.className = 'sel-pop hidden';
-  pop.innerHTML = `
-    <div class="sel-pop-arrow"></div>
-    <div class="sel-pop-body" id="sel-pop-body">…</div>
-  `;
-  document.body.appendChild(pop);
-  document.addEventListener('mouseup', onSelMouseUp, true);
-  document.addEventListener('mousedown', e=>{
-    if(!pop.contains(e.target)) pop.classList.add('hidden');
-  }, true);
-}
-function onSelMouseUp(e){
-  const pop = document.getElementById('sel-pop');
-  const sel = window.getSelection();
-  if(!sel || sel.isCollapsed){ pop.classList.add('hidden'); return; }
-  const text = sel.toString().trim();
-  if(text.length<1 || text.length>30){ pop.classList.add('hidden'); return; }
-  // 仅在经文区域内响应
-  const range = sel.getRangeAt(0);
-  const inSutra = range.commonAncestorContainer.parentElement &&
-                  range.commonAncestorContainer.parentElement.closest('#sutra-text');
-  if(!inSutra){ pop.classList.add('hidden'); return; }
-  const rect = range.getBoundingClientRect();
-  const body = document.getElementById('sel-pop-body');
-  body.innerHTML = buildSelPopContent(text);
-  pop.classList.remove('hidden');
-  const top = window.scrollY + rect.top - pop.offsetHeight - 10;
-  const left = window.scrollX + rect.left + rect.width/2 - pop.offsetWidth/2;
-  pop.style.top = Math.max(window.scrollY+8, top) + 'px';
-  pop.style.left = Math.max(8, Math.min(window.innerWidth - pop.offsetWidth - 8, left)) + 'px';
-}
-function buildSelPopContent(text){
-  // 优先级：佛学词典 → 注音字典 → 本体索引
-  const parts = [];
-  if(DICT_MAP && DICT_MAP.has(text)){
-    const t = DICT_MAP.get(text);
-    const shortDef = (t.definition||'').slice(0,260);
-    parts.push(`<div class="sel-section sel-dict">
-      <div class="sel-title">📖 佛学大词典 · <b>${escapeHtml(t.name)}</b> <span class="sel-cat">${escapeHtml(t.category||'')}</span></div>
-      <div class="sel-def">${escapeHtml(shortDef)}${(t.definition||'').length>260?'…':''}</div>
-      <a class="sel-more" href="dict.html?q=${encodeURIComponent(t.name)}" target="_blank">完整释义 →</a>
-    </div>`);
-  }
-  if(PRONOUNCE && PRONOUNCE.chars && PRONOUNCE.chars[text]){
-    const m = PRONOUNCE.chars[text];
-    parts.push(`<div class="sel-section sel-pron">
-      <div class="sel-title">🔤 读音 · <b>${escapeHtml(text)}</b> <span class="sel-py">${escapeHtml(m.py)}</span> <span class="sel-cat">${escapeHtml(m.cat||'')}</span></div>
-      <div class="sel-def">${escapeHtml(m.mean||'')}</div>
-    </div>`);
-  }
-  if(ONTO_DICT_TERMS && ONTO_DICT_TERMS[text]){
-    const o = ONTO_DICT_TERMS[text];
-    parts.push(`<div class="sel-section sel-onto">
-      <div class="sel-title">🏛️ 本体实例 · <b>${escapeHtml(text)}</b> <span class="sel-cat">${escapeHtml(o.dict_category||o.ontology_id||'')}</span></div>
-      <div class="sel-def">本体 ID：<code>${escapeHtml(o.ontology_id||'')}</code>，在「本体下钻」面板可查看层级、关系、注疏。</div>
-      <a class="sel-more" href="ontology.html#cls=${encodeURIComponent(o.ontology_id||'')}" target="_blank">本体详情 →</a>
-    </div>`);
-  }
-  if(parts.length===0){
-    parts.push(`<div class="sel-section sel-tip">
-      <div class="sel-title">🔍 「${escapeHtml(text)}」</div>
-      <div class="sel-def">暂无词典收录；可使用顶部「全文检索」或「佛学词典」搜索完整词条。</div>
-      <a class="sel-more" href="search.html?q=${encodeURIComponent(text)}" target="_blank">全文检索 →</a>
-      <a class="sel-more" href="dict.html?q=${encodeURIComponent(text)}" target="_blank" style="margin-left:8px;">词典搜索 →</a>
-    </div>`);
-  }
-  return parts.join('');
-}
-
-
-// ===== 学术工具：收藏/笔记/引用/书签 =====
-const LS_FAV = 'buddhist_favs';
-const LS_NOTE = 'buddhist_notes';
-const LS_BM = 'buddhist_bookmarks';
-function LS_get(k){ try{ return JSON.parse(localStorage.getItem(k)||'[]'); }catch(e){return [];} }
-function LS_set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
-let favs = LS_get(LS_FAV);
-let notes = LS_get(LS_NOTE);
-let bookmarks = LS_get(LS_BM);
-let curSBtab = 'fav';
-
-// 段落唯一 ID：经号-章序-段序（用于收藏/笔记/引用定位）
-function paraId(sutraId, chapIdx, paraIdx){ return `${sutraId}-c${chapIdx}-p${paraIdx}`; }
-
-// ===== 跨页关联 =====
-let CROSS_LOADED = false;
-async function ensureCrossLoaded(){
-  if(!CROSS){
-    try{
-      const r = await fetch('../data/cross-links.json');
-      CROSS = await r.json();
-      // 按sutra_id建立科判索引方便查找
-      if(CROSS.kepan_to_sutra){
-        CROSS._kepanBySutra = {};
-        Object.values(CROSS.kepan_to_sutra).forEach(k=>{
-          if(!CROSS._kepanBySutra[k.sutra_id]) CROSS._kepanBySutra[k.sutra_id] = [];
-          CROSS._kepanBySutra[k.sutra_id].push(k);
-        });
-      }
-      CROSS_LOADED = true;
-    }catch(e){
-      console.warn('跨页关联加载失败', e);
-      CROSS = {};
-      CROSS_LOADED = true;
-    }
-  }
-  return CROSS;
-}
-
-// 异译本提示条
-function updateParallelBar(){
-  const bar = document.getElementById('parallel-bar');
-  if(!bar || !currentSutra || !CROSS) return;
-  const parallels = (CROSS.sutra_to_parallel && CROSS.sutra_to_parallel[currentSutra.id]) || [];
-  if(!parallels.length){ bar.innerHTML = ''; return; }
-  const g = parallels[0]; // 通常一部经只在一个异译组
-  bar.innerHTML = `<div class="mt-3 p-3 bg-amber-100/70 border border-amber-300 rounded-lg flex items-center flex-wrap gap-2 text-sm">
-    <i class="fa fa-exchange text-amber-700"></i>
-    <span class="text-amber-900"><b>${g.group_name}</b> 共有 <b>${parallels.length}</b> 个译本：</span>
-    ${parallels.map(p=>{
-      const isSelf = p.translator === currentSutra.translator;
-      return `<span class="text-amber-800 ${isSelf?'font-bold':''}">${p.translator||''}${isSelf?'（当前）':''}</span>`;
-    }).join(' · ')}
-    <a href="parallel.html?grp=${encodeURIComponent(g.group_name)}" target="_blank" class="ml-2 text-amber-700 hover:underline">打开段级对照 →</a>
-  </div>`;
-}
-
-// 段末加所属科判小标签
-function annotateParaKepanTags(){
-  if(!CROSS || !currentSutra) return;
-  const sutraKepan = (CROSS._kepanBySutra && CROSS._kepanBySutra[currentSutra.id]) || [];
-  if(!sutraKepan.length) return;
-  // 对每个科判节点，quote在段落里出现就给该段加标签
-  const wraps = document.querySelectorAll('.para-wrap');
-  wraps.forEach(wrap => {
-    const p = wrap.querySelector('.sutra-content');
-    if(!p) return;
-    const ptxt = p.textContent;
-    const hits = [];
-    sutraKepan.forEach(k=>{
-      if(!k.quote) return;
-      // 截取科判原文前20字作为匹配key
-      const key = k.quote.replace(/\s+/g,'').slice(0, Math.min(20, k.quote.length));
-      if(key && ptxt.replace(/\s+/g,'').includes(key)){
-        hits.push(k);
-      }
-    });
-    if(hits.length){
-      // 去重
-      const seen = new Set();
-      const tags = [];
-      hits.forEach(h=>{
-        if(!seen.has(h.kepan_id)){
-          seen.add(h.kepan_id);
-          tags.push(h);
-        }
-      });
-      const tagHtml = `<span class="kepan-tag-wrap" style="margin-left:8px;display:inline-flex;gap:4px;flex-wrap:wrap;">${
-        tags.slice(0,3).map(t=>`<a class="kepan-pill" href="kepan.html?sid=${currentSutra.id}&node=${encodeURIComponent(t.kepan_id)}" target="_blank" title="${(t.path||t.title).replace(/"/g,'&quot;')}"><i class="fa fa-sitemap"></i> ${t.title}</a>`).join('')
-      }</span>`;
-      const tools = wrap.querySelector('.para-tools');
-      if(tools){
-        // 在工具按钮前插入标签
-        tools.insertAdjacentHTML('beforebegin', tagHtml);
-      }
-    }
-  });
-}
-
-
-
-function getParaText(pid) {
-  const el = document.getElementById(pid);
-  return el ? el.textContent.trim().replace(/\s+/g,' ') : '';
-}
-function getSutraTitle() {
-  return currentSutra ? (currentSutra.title || currentSutra.sutra_title || currentSutra.id) : '';
-}
-function getTranslator() {
-  return currentSutra ? (currentSutra.translator || '失译') : '';
-}
-
-function toggleFav(pid) {
-  const idx = favs.findIndex(f => f.pid === pid);
-  if (idx >= 0) { favs.splice(idx,1); }
-  else {
-    favs.unshift({
-      pid, sutra: currentSutra.id, sutraTitle: getSutraTitle(),
-      text: getParaText(pid).slice(0,80), ts: Date.now()
-    });
-  }
-  LS_set(LS_FAV, favs);
-  updateParaUI(pid);
-  if (curSBtab==='fav') renderSB();
-}
-
-function openNoteEditor(pid) {
-  const existing = notes.find(n => n.pid === pid);
-  const txt = prompt('写笔记：\n（留空则删除该段笔记）', existing ? existing.note : '');
-  if (txt === null) return;
-  if (txt.trim() === '') {
-    notes = notes.filter(n => n.pid !== pid);
-  } else {
-    if (existing) existing.note = txt;
-    else notes.unshift({
-      pid, sutra: currentSutra.id, sutraTitle: getSutraTitle(),
-      text: getParaText(pid).slice(0,80), note: txt, ts: Date.now()
-    });
-  }
-  LS_set(LS_NOTE, notes);
-  updateParaUI(pid);
-  if (curSBtab==='note') renderSB();
-}
-
-function getParaKepanPath(pid) {
-  const el = document.getElementById(pid);
-  if(!el) return null;
-  const p = el.closest('.para-wrap');
-  if(!p) return null;
-  // 优先读已加在段末的 kepan-pill
-  const pill = p.querySelector('.kepan-pill');
-  if(pill && pill.title) return pill.title;
-  // 兜底：实时匹配
-  const sutraKepan = (CROSS && CROSS._kepanBySutra && CROSS._kepanBySutra[currentSutra.id]) || [];
-  const ptxt = p.querySelector('.sutra-content')?.textContent?.replace(/\s+/g,'') || '';
-  for(const k of sutraKepan){
-    if(!k.quote) continue;
-    const key = k.quote.replace(/\s+/g,'').slice(0, 20);
-    if(key && ptxt.includes(key)) return k.path || k.title;
-  }
-  return null;
-}
-function getSutraTaishoVol(sid) {
-  // 从经号算大正藏册号：T01-T17 阿含、T18-T33 本缘、T34-T55 般若等
-  const num = parseInt((sid||'').replace(/^t/i,'').replace(/[a-z].*$/i,''),10);
-  if(isNaN(num)) return null;
-  const volMap = [
-    [122,1],[219,2],[322,3],[452,4],[573,5],[784,6],[912,7],[1041,8],
-    [1163,9],[1274,10],[1338,11],[1404,12],[1462,13],[1526,14],[1586,15],
-    [1692,16],[1803,17],[1886,18],[1955,19],[2027,20],[2084,21],[2127,22],
-    [2144,23],[2157,24],[2184,25],[2201,26],[2220,27],[2250,28],[2290,29],
-    [2342,30],[2409,31],[2472,32],[2603,33],[2646,34],[2698,35],[2723,36],
-    [2753,37],[2773,38],[2788,39],[2823,40],[2848,41],[2866,42],[2896,43],
-    [2920,44],[2942,45],[2961,46],[2980,47],[3048,48],[3048,49],[3048,50],
-    [3048,51],[3048,52],[3048,53],[3048,54],[3048,55]
-  ];
-  for(const [end, vol] of volMap){ if(num<=end) return vol; }
-  return 55;
-}
-
-function citePara(pid) {
-  const paraText = getParaText(pid);
-  const sutraId = currentSutra ? (currentSutra.id || '').toUpperCase() : '';
-  const title = getSutraTitle();
-  const transRaw = getTranslator() || '失译';
-  // 译者朝代解析：形如 "[姚秦]鸠摩罗什 译" / "[唐]玄奘 译"
-  const transM = transRaw.match(/^\s*\[?([^\]\s]*)?\]?\s*([^\s译]+)/);
-  const dynasty = transM ? (transM[1]||'') : '';
-  const translator = transM ? transM[2] : transRaw.replace(/译$/,'').trim();
-  // 章节号：cN_pN → §(N+1).(N+1)
-  const m = pid.match(/c(\d+)_p(\d+)/);
-  const chIdx = m ? parseInt(m[1]) : -1;
-  const pIdx = m ? parseInt(m[2]) : -1;
-  const chapterName = (chIdx>=0 && currentSutra && currentSutra.chapters && currentSutra.chapters[chIdx])
-    ? currentSutra.chapters[chIdx].title : '';
-  const sec = m ? `§${chIdx+1}.${pIdx+1}` : '';
-  // 科判位置
-  const kepanPath = getParaKepanPath(pid);
-  // 大正藏册号（T08n0251 → 册8）
-  const vol = getSutraTaishoVol(sutraId);
-  const taishoLoc = vol ? `T${vol}, ${sutraId}` : sutraId;
-
-  // 三种格式
-  const quotePart = paraText.length>180 ? paraText.slice(0,178)+'……' : paraText;
-  const transLabel = dynasty ? `[${dynasty}]${translator}` : translator;
-  const locParts = [taishoLoc];
-  if(chapterName) locParts.push(`〈${chapterName}〉`);
-  if(sec) locParts.push(sec);
-  if(kepanPath) locParts.push(`[科判：${kepanPath}]`);
-
-  // 1. 纯文本标准学术引用（默认）
-  const plainCite = `「${quotePart}」——《${title}》，${transLabel}译，${locParts.join('，')}。`;
-
-  // 2. Markdown（适合笔记软件/Obsidian/Notion）
-  const mdCite = `> ${quotePart}
->
-> ——《${title}》，${transLabel}译，${locParts.join('，')}。`;
-
-  // 3. 国际佛学界引用格式（近似 CBETA 引用法）
-  const intlCite = `"${quotePart.slice(0,150)}${quotePart.length>150?'…':''}"《${title}》, tr. ${translator} (${dynasty||'—'}), ${taishoLoc}${chapterName?' 〈'+chapterName+'〉':''}${sec?' '+sec:''}${kepanPath?' [Kepan: '+kepanPath+']':''}. CBETA.`;
-
-  // 弹出格式选择菜单
-  showCiteMenu(pid, {plainCite, mdCite, intlCite});
-}
-
-function showCiteMenu(pid, cites){
-  let menu = document.getElementById('cite-menu');
-  if(menu) menu.remove();
-  const el = document.getElementById(pid);
-  if(!el) return;
-  const r = el.getBoundingClientRect();
-  menu = document.createElement('div');
-  menu.id = 'cite-menu';
-  menu.style.cssText = `position:fixed;z-index:400;background:#fff;border:1px solid #d4b58a;border-radius:10px;box-shadow:0 6px 20px rgba(93,54,16,.25);padding:8px;font-size:13px;width:240px;left:${Math.min(r.left, window.innerWidth-250)}px;top:${Math.min(r.bottom+6, window.innerHeight-200)}px;`;
-  menu.innerHTML = `
-    <div style="font-weight:bold;color:#5d3610;padding:6px 8px 4px;border-bottom:1px dashed #e6d2a9;margin-bottom:4px;">📋 选择引用格式</div>
-    <button class="cite-opt" data-fmt="plain" style="display:block;width:100%;text-align:left;padding:8px 10px;border:none;background:none;cursor:pointer;border-radius:6px;color:#3d2914;">📄 纯文本（标准学术引用）</button>
-    <button class="cite-opt" data-fmt="md" style="display:block;width:100%;text-align:left;padding:8px 10px;border:none;background:none;cursor:pointer;border-radius:6px;color:#3d2914;">📝 Markdown（Obsidian/Notion）</button>
-    <button class="cite-opt" data-fmt="intl" style="display:block;width:100%;text-align:left;padding:8px 10px;border:none;background:none;cursor:pointer;border-radius:6px;color:#3d2914;">🌐 国际佛学引用格式</button>
-    <div style="border-top:1px dashed #e6d2a9;margin-top:4px;padding-top:6px;"><button class="cite-opt" data-fmt="preview" style="display:block;width:100%;text-align:left;padding:6px 10px;border:none;background:none;cursor:pointer;border-radius:6px;color:#8b7b55;font-size:12px;">👁 预览完整引文</button></div>
-  `;
-  document.body.appendChild(menu);
-  menu.querySelectorAll('.cite-opt').forEach(b=>{
-    b.addEventListener('mouseenter', ()=>b.style.background='#faf3e2');
-    b.addEventListener('mouseleave', ()=>b.style.background='none');
-    b.addEventListener('click', ()=>{
-      const fmt = b.dataset.fmt;
-      if(fmt==='preview'){
-        alert(
-`【纯文本】
-${cites.plainCite}
-
-【Markdown】
-${cites.mdCite}
-
-【国际佛学格式】
-${cites.intlCite}`);
-        return;
-      }
-      const text = cites[fmt==='plain'?'plainCite':fmt==='md'?'mdCite':'intlCite'];
-      doCopy(text);
-      menu.remove();
-      document.removeEventListener('click', outsideClose);
-    });
-  });
-  const outsideClose = (e)=>{ if(!menu.contains(e.target)){ menu.remove(); document.removeEventListener('click', outsideClose); }};
-  setTimeout(()=>document.addEventListener('click', outsideClose), 10);
-}
-function doCopy(text){
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(text).then(()=>toast('✅ 引用已复制到剪贴板')).catch(()=>fallbackCopy(text));
-  } else fallbackCopy(text);
-}
-function fallbackCopy(text) {
-  const ta = document.createElement('textarea');
-  ta.value = text; document.body.appendChild(ta); ta.select();
-  try{ document.execCommand('copy'); toast('✅ 引用已复制'); }catch(e){alert(text);}
-  ta.remove();
-}
-let toastTimer;
-function toast(msg) {
-  let t = document.getElementById('buddha-toast');
-  if (!t) {
-    t = document.createElement('div');
-    t.id = 'buddha-toast';
-    t.style.cssText='position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:rgba(62,39,35,.92);color:#fff;padding:10px 18px;border-radius:22px;font-size:14px;z-index:300;box-shadow:0 4px 16px rgba(0,0,0,.25);max-width:80vw;';
-    document.body.appendChild(t);
-  }
-  t.textContent = msg; t.style.opacity='1';
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>{ t.style.transition='opacity .4s'; t.style.opacity='0'; },1800);
-}
-
-function addBookmark() {
-  if (!currentSutra) return;
-  const sutraId = currentSutra.id;
-  const chap = loadedChapters > 0 ? Math.min(loadedChapters-1, (currentSutra.content||[]).length-1) : 0;
-  const scrollY = window.scrollY;
-  // 每经只保留一个书签，覆盖旧的
-  bookmarks = bookmarks.filter(b => b.sutra !== sutraId);
-  bookmarks.unshift({
-    sutra: sutraId, sutraTitle: getSutraTitle(), chap, scrollY, ts: Date.now()
-  });
-  LS_set(LS_BM, bookmarks);
-  toast('🔖 已添加书签（当前位置）');
-  updateBookmarkBtn();
-  if (curSBtab==='bm') renderSB();
-}
-
-function gotoBookmark(b) {
-  const hit = allSutras.find(s => s.id === b.sutra || s.file === b.sutra+'.json');
-  if (hit) {
-    closeSB();
-    loadSutra(hit).then(()=>{
-      setTimeout(()=>{ window.scrollTo({top:b.scrollY||0, behavior:'smooth'}); },300);
-    });
-  }
-}
-function delItem(list, key, pid, storageKey){
-  const arr = (list==='fav')?favs:(list==='note'?notes:bookmarks);
-  const idx = arr.findIndex(x=>x[key]===pid);
-  if (idx>=0){ arr.splice(idx,1); LS_set(storageKey,arr); renderSB(); updateParaUI(pid); }
-}
-function updateBookmarkBtn() {
-  const btn = document.getElementById('bookmark-btn');
-  if (!btn || !currentSutra) return;
-  const has = bookmarks.some(b => b.sutra === currentSutra.id);
-  btn.classList.toggle('active', has);
-  btn.title = has ? '已加书签（点击更新位置）' : '添加书签';
-}
-function updateParaUI(pid) {
-  const el = document.getElementById(pid);
-  if (!el) return;
-  const favBtn = el.querySelector('.pt-fav');
-  const noteBtn = el.querySelector('.pt-note');
-  if (favBtn) {
-    const on = favs.some(f=>f.pid===pid);
-    favBtn.classList.toggle('on', on);
-    favBtn.innerHTML = on ? '★' : '☆';
-    favBtn.title = on ? '取消收藏' : '收藏该段';
-  }
-  if (noteBtn) {
-    const on = notes.some(n=>n.pid===pid);
-    noteBtn.classList.toggle('on', on);
-    noteBtn.innerHTML = on ? '📝<span class="note-dot"></span>' : '📝';
-    noteBtn.title = on ? '编辑笔记' : '添加笔记';
-  }
-}
-function openSB() { document.getElementById('study-sidebar').classList.add('open'); document.getElementById('study-sidebar-mask').classList.add('open'); document.body.style.overflow='hidden'; renderSB(); }
-function closeSB() { document.getElementById('study-sidebar').classList.remove('open'); document.getElementById('study-sidebar-mask').classList.remove('open'); document.body.style.overflow=''; }
-function switchTab(tab) {
-  curSBtab = tab;
-  document.querySelectorAll('#study-sidebar .sb-tabs button').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
-  renderSB();
-}
-function renderSB() {
-  const body = document.getElementById('sb-body');
-  document.getElementById('fav-count').textContent = favs.length ? `(${favs.length})` : '';
-  document.getElementById('note-count').textContent = notes.length ? `(${notes.length})` : '';
-  document.getElementById('bm-count').textContent = bookmarks.length ? `(${bookmarks.length})` : '';
-  let html = '';
-  if (curSBtab==='fav') {
-    if (!favs.length) html = '<div class="sb-empty">还没有收藏<br><br>段落末尾的 ☆ 按钮即可收藏</div>';
-    else favs.forEach(f=>{
-      html += `<div class="sb-item">
-        <div class="sb-sutra">📜 ${f.sutraTitle} · ${(f.sutra||'').toUpperCase()}</div>
-        <div class="sb-text">"${f.text}…"</div>
-        <div class="sb-actions">
-          <button onclick="jumpToPara('${f.pid}')"><i class="fa fa-arrow-right"></i> 跳转</button>
-          <button onclick="delItem('fav','pid','${f.pid}',LS_FAV)"><i class="fa fa-trash"></i> 删除</button>
-        </div></div>`;
-    });
-  } else if (curSBtab==='note') {
-    if (!notes.length) html = '<div class="sb-empty">还没有笔记<br><br>段落末尾的 📝 按钮即可添加</div>';
-    else notes.forEach(n=>{
-      html += `<div class="sb-item">
-        <div class="sb-sutra">📜 ${n.sutraTitle} · ${(n.sutra||'').toUpperCase()}</div>
-        <div class="sb-text">"${n.text}…"</div>
-        <div class="sb-note">${(n.note||'').replace(/</g,'&lt;')}</div>
-        <div class="sb-actions">
-          <button onclick="jumpToPara('${n.pid}')"><i class="fa fa-arrow-right"></i> 跳转</button>
-          <button onclick="delItem('note','pid','${n.pid}',LS_NOTE)"><i class="fa fa-trash"></i> 删除</button>
-        </div></div>`;
-    });
-  } else {
-    if (!bookmarks.length) html = '<div class="sb-empty">还没有书签<br><br>工具栏「🔖 书签」记录阅读位置</div>';
-    else bookmarks.forEach(b=>{
-      html += `<div class="sb-item">
-        <div class="sb-sutra">🔖 ${b.sutraTitle} · ${(b.sutra||'').toUpperCase()}</div>
-        <div class="sb-text">第 ${b.chap+1} 章附近</div>
-        <div class="sb-actions">
-          <button onclick="gotoBookmark({sutra:'${b.sutra}',scrollY:${b.scrollY||0},chap:${b.chap||0}})"><i class="fa fa-arrow-right"></i> 继续阅读</button>
-          <button onclick="delItem('bm','sutra','${b.sutra}',LS_BM)"><i class="fa fa-trash"></i> 删除</button>
-        </div></div>`;
-    });
-  }
-  body.innerHTML = html;
-}
-function jumpToPara(pid) {
-  const [,sutra,c,p] = pid.match(/^(.+)_c(\d+)_p(\d+)$/) || [];
-  if (!sutra) return;
-  const needLoad = !currentSutra || currentSutra.id !== sutra;
-  const go = () => {
-    // 确保目标章节已加载
-    const chapIdx = parseInt(c);
-    const need = chapIdx + 1;
-    function ensure() {
-      if (loadedChapters < need && loadedChapters < currentSutra.content.length) {
-        loadMoreChapters();
-        setTimeout(ensure,80);
-      } else {
-        closeSB();
-        setTimeout(()=>{
-          const el = document.getElementById(pid);
-          if (el) { el.scrollIntoView({behavior:'smooth',block:'center'}); el.style.background='#fff4c4'; setTimeout(()=>el.style.background='',1500); }
-        },100);
-      }
-    }
-    ensure();
-  };
-  if (needLoad) {
-    const hit = allSutras.find(s=>s.id===sutra||s.file===sutra+'.json');
-    if (hit) loadSutra(hit).then(go);
-  } else go();
-}
-
-// ===== 白话文翻译 =====
-const BAIHUA_KEY = 'buddhist_show_baihua';
-let showBaihua = false;
-try { showBaihua = localStorage.getItem(BAIHUA_KEY) === '1'; } catch(e) {}
-let baihuaData = null;
-let baihuaLoadedFor = null;   // 记录当前 baihuaData 对应哪部经，切换经时自动失效
-
-async function toggleBaihua() {
-    showBaihua = !showBaihua;
-    try { localStorage.setItem(BAIHUA_KEY, showBaihua?'1':'0'); } catch(e) {}
-    const btn = document.getElementById('btn-baihua');
-    if (btn) btn.classList.toggle('active', showBaihua);
-    if (showBaihua) {
-        if (!baihuaData || baihuaLoadedFor !== currentSutra.id) await loadBaihua(currentSutra.id);
-        applyBaihua();
-    } else {
-        removeBaihua();
-    }
-}
-
-// 已有白话翻译的经 id 清单（与 data/modern-translation/ 目录一致，由 scripts/gen_baihua_index.py 维护）
-// 先判断再请求，避免对没有白话数据的经发起无谓请求（404）
-const BAIHUA_AVAILABLE = new Set([  'amituo_jiumo', 'bada_renjue', 'fo_yijiao', 'jingang_jiumo', 'puxian_xingyuan', 'sishi_erzhang', 'xinjing_fayue', 'xinjing_jiumo', 'xinjing_xuanzang', 'yaoshi_xuanzang', 'yulan_pen',
-  't0002', 't0003', 't0004', 't0008', 't0009', 't0010',
-  't0011', 't0012', 't0013', 't0014', 't0015', 't0016',
-  't0017', 't0018', 't0019', 't0020', 't0021', 't0022',
-  't0027', 't0028', 't0029', 't0030', 't0031', 't0032',
-  't0033', 't0034', 't0035', 't0036', 't0037', 't0038',
-  't0039', 't0040', 't0041', 't0042', 't0043', 't0044',
-  't0045', 't0046', 't0047', 't0048', 't0049', 't0050',
-  't0051', 't0052', 't0053', 't0054', 't0055', 't0056',
-  't0057', 't0058', 't0059', 't0060', 't0061', 't0062',
-  't0063', 't0064', 't0065', 't0066', 't0067', 't0068',
-  't0069', 't0070', 't0071', 't0072', 't0073', 't0074',
-  't0075', 't0076', 't0077', 't0078', 't0079', 't0080',
-  't0081', 't0082', 't0083', 't0084', 't0085', 't0086',
-  't0087', 't0088', 't0089', 't0090', 't0091', 't0092',
-  't0093', 't0094', 't0095', 't0096', 't0097', 't0098',
-  't0101', 't0102', 't0103', 't0104', 't0105', 't0106',
-  't0107', 't0108', 't0109', 't0110', 't0111', 't0112',
-  't0113', 't0114', 't0115', 't0116', 't0117', 't0118',
-  't0119', 't0121', 't0122', 't0123', 't0124', 't0126',
-  't0127', 't0128a', 't0128b', 't0129', 't0130', 't0131',
-  't0132a', 't0132b', 't0133', 't0134', 't0135', 't0136',
-  't0137', 't0138', 't0139', 't0140', 't0141', 't0142a',
-  't0142b', 't0143', 't0144', 't0145', 't0146', 't0147',
-  't0148', 't0149', 't0150', 't0150a', 't0150b', 't0151',
-  't0153', 't0161', 't0162', 't0163', 't0164', 't0166',
-  't0167', 't0168', 't0169', 't0170', 't0171', 't0172',
-  't0173', 't0174', 't0175a', 't0175b', 't0175c', 't0176',
-  't0177', 't0178', 't0179', 't0180', 't0181a', 't0181b',
-  't0182a', 't0182b', 't0183', 't0184', 't0185', 't0188',
-  't0192', 't0195', 't0196', 't0197', 't0198', 't0199',
-  't0204', 't0205', 't0206', 't0207', 't0208', 't0209',
-  't0210', 't0214', 't0215', 't0216', 't0217', 't0218',
-  't0219', 't0229', 't0230', 't0232', 't0233', 't0234',
-  't0235', 't0236a', 't0236b', 't0237', 't0238', 't0239',
-  't0240', 't0241', 't0242', 't0243', 't0245', 't0246',
-  't0247', 't0248', 't0249', 't0250', 't0251', 't0252',
-  't0253', 't0254', 't0255', 't0256', 't0257', 't0258',
-  't0259', 't0260', 't0265', 't0266', 't0269', 't0270',
-  't0273', 't0274', 't0275', 't0276', 't0277', 't0280',
-  't0281', 't0282', 't0283', 't0284', 't0289', 't0290',
-  't0295', 't0296', 't0297', 't0298', 't0300', 't0301',
-  't0302', 't0303', 't0304', 't0306', 't0307', 't0308',
-  't0314', 't0315a', 't0315b', 't0317', 't0322', 't0323',
-  't0324', 't0325', 't0326', 't0327', 't0328', 't0329',
-  't0330', 't0331', 't0332', 't0333', 't0334', 't0335',
-  't0336', 't0337', 't0338', 't0339', 't0340', 't0343',
-  't0344', 't0345', 't0347', 't0348', 't0349', 't0350',
-  't0351', 't0353', 't0354', 't0355', 't0356', 't0358',
-  't0360', 't0363', 't0364', 't0365', 't0366', 't0367',
-  't0368', 't0369', 't0370', 't0371', 't0372', 't0373',
-  't0383', 't0385', 't0386', 't0388', 't0389', 't0390',
-  't0391', 't0392', 't0393', 't0394', 't0395', 't0396',
-  't0405', 't0406', 't0407', 't0408', 't0409', 't0412',
-  't0413', 't0417', 't0418', 't0419', 't0422', 't0423',
-  't0426', 't0427', 't0428', 't0429', 't0430', 't0431',
-  't0432', 't0433', 't0435', 't0436', 't0437', 't0438',
-  't0439', 't0442', 't0444', 't0445', 't0446a', 't0446b',
-  't0447a', 't0447b', 't0448a', 't0448b', 't0449', 't0450',
-  't0451', 't0452', 't0453', 't0454', 't0455', 't0456',
-  't0457', 't0458', 't0459', 't0460', 't0463', 't0464',
-  't0465', 't0466', 't0467', 't0468', 't0469', 't0470',
-  't0471', 't0472', 't0473', 't0474', 't0475', 't0477',
-  't0478', 't0479', 't0480', 't0483', 't0484', 't0486',
-  't0487', 't0488', 't0490', 't0491', 't0492a', 't0492b',
-  't0493', 't0494', 't0495', 't0496', 't0497', 't0498',
-  't0499', 't0500', 't0501', 't0502', 't0503', 't0504',
-  't0505', 't0506', 't0507', 't0508', 't0509', 't0510',
-  't0511', 't0512', 't0513', 't0514', 't0515', 't0516',
-  't0517', 't0518', 't0519', 't0520', 't0521', 't0522',
-  't0523', 't0524', 't0525', 't0526', 't0527', 't0528',
-  't0529', 't0530', 't0531', 't0532', 't0533', 't0534',
-  't0535', 't0536', 't0537', 't0538', 't0539', 't0540a',
-  't0540b', 't0541', 't0542', 't0543', 't0544', 't0545',
-  't0546', 't0547', 't0548', 't0549', 't0551', 't0552',
-  't0553', 't0554', 't0555a', 't0555b', 't0556', 't0557',
-  't0558', 't0559', 't0560', 't0561', 't0562', 't0563',
-  't0564', 't0565', 't0566', 't0567', 't0568', 't0569',
-  't0570', 't0571', 't0572', 't0573', 't0574', 't0575',
-  't0576', 't0577', 't0578', 't0579', 't0580', 't0581',
-  't0582', 't0583', 't0584', 't0585', 't0586', 't0589',
-  't0590', 't0591', 't0592', 't0593', 't0594', 't0595',
-  't0596', 't0597', 't0598', 't0599', 't0600', 't0601',
-  't0602', 't0603', 't0604', 't0605', 't0607', 't0608',
-  't0609', 't0610', 't0611', 't0612', 't0614', 't0615',
-  't0617', 't0618', 't0619', 't0620', 't0621', 't0622',
-  't0623', 't0629', 't0630', 't0631', 't0632', 't0633',
-  't0634', 't0640', 't0641', 't0642', 't0644', 't0645',
-  't0646', 't0648', 't0650', 't0652', 't0654', 't0655',
-  't0661', 't0662', 't0663', 't0666', 't0667', 't0668',
-  't0669', 't0670', 't0673', 't0674', 't0676', 't0677',
-  't0678', 't0679', 't0680', 't0681', 't0683', 't0684',
-  't0685', 't0686', 't0687', 't0688', 't0689', 't0690',
-  't0691', 't0692', 't0693', 't0694', 't0695', 't0696',
-  't0697', 't0698', 't0699', 't0700', 't0701', 't0702',
-  't0703', 't0704', 't0705', 't0706', 't0707', 't0708',
-  't0709', 't0710', 't0711', 't0712', 't0713', 't0714',
-  't0715', 't0716', 't0717', 't0718', 't0719', 't0720',
-  't0723', 't0724', 't0725', 't0726', 't0727', 't0729',
-  't0730', 't0731', 't0732', 't0733', 't0734', 't0735',
-  't0736', 't0737', 't0738', 't0739', 't0740', 't0741',
-  't0742', 't0743', 't0744', 't0745', 't0746', 't0747a',
-  't0747b', 't0748', 't0749', 't0750', 't0751a', 't0751b',
-  't0752', 't0753', 't0755', 't0756', 't0757', 't0758',
-  't0759', 't0760', 't0762', 't0763', 't0764', 't0766',
-  't0767', 't0768', 't0769', 't0770', 't0771', 't0772',
-  't0773', 't0774', 't0775', 't0776', 't0777', 't0778',
-  't0779', 't0780', 't0781', 't0782', 't0783', 't0784',
-  't0785', 't0786', 't0787', 't0788', 't0789', 't0790',
-  't0791', 't0792', 't0793', 't0794a', 't0794b', 't0795',
-  't0796', 't0797a', 't0797b', 't0798', 't0799', 't0800',
-  't0801', 't0802', 't0803', 't0804', 't0805', 't0806',
-  't0807', 't0808', 't0809', 't0811', 't0812', 't0813',
-  't0814', 't0817', 't0818', 't0819', 't0820', 't0821',
-  't0822', 't0823', 't0824', 't0825', 't0826', 't0827',
-  't0828', 't0829', 't0830', 't0831', 't0832', 't0833',
-  't0834', 't0835', 't0836', 't0837', 't0838', 't0839',
-  't0840', 't0841', 't0842', 't0843', 't0844', 't0845',
-  't0846', 't0854', 't0855', 't0856', 't0857', 't0858',
-  't0859', 't0860', 't0861', 't0862', 't0863', 't0864b',
-  't0869', 't0870', 't0871', 't0872', 't0874', 't0875',
-  't0876', 't0877', 't0878', 't0879', 't0880', 't0881',
-  't0884', 't0886', 't0888', 't0891', 't0894b', 't0896',
-  't0898', 't0899', 't0900', 't0902', 't0903', 't0904',
-  't0905', 't0906', 't0907', 't0908', 't0909', 't0910',
-  't0911', 't0912', 't0913', 't0914', 't0915', 't0916',
-  't0917', 't0918', 't0919', 't0921', 't0922', 't0923',
-  't0924', 't0924a', 't0924b', 't0924c', 't0926', 't0928',
-  't0929', 't0930', 't0931', 't0932', 't0933', 't0934',
-  't0935', 't0936', 't0937', 't0938', 't0939', 't0940',
-  't0941', 't0942', 't0943', 't0944', 't0944a', 't0944b',
-  't0947', 't0948', 't0949', 't0954', 't0954a', 't0954b',
-  't0955', 't0956', 't0957', 't0958', 't0959', 't0960',
-  't0961', 't0962', 't0963', 't0964', 't0965', 't0966',
-  't0967', 't0968', 't0969', 't0970', 't0971', 't0972',
-  't0974a', 't0974b', 't0974c', 't0974d', 't0974e', 't0974f',
-  't0975', 't0976', 't0977', 't0978', 't0979', 't0980',
-  't0981', 't0983a', 't0983b', 't0986', 't0987', 't0988',
-  't0989', 't0990', 't0991', 't0992', 't0993', 't0994',
-  't0995', 't0996', 't0998', 't1000', 't1001', 't1002',
-  't1004', 't1005b', 't1008', 't1009', 't1010', 't1011',
-  't1012', 't1013', 't1014', 't1015', 't1016', 't1017',
-  't1018', 't1019', 't1020', 't1021', 't1022', 't1022a',
-  't1022b', 't1023', 't1024', 't1025', 't1026', 't1027b',
-  't1028', 't1028a', 't1028b', 't1029', 't1030', 't1031',
-  't1032', 't1033', 't1034', 't1035', 't1036', 't1037',
-  't1038', 't1039', 't1040', 't1041', 't1042', 't1043',
-  't1044', 't1045a', 't1045b', 't1046', 't1047', 't1048',
-  't1049', 't1051', 't1052', 't1053', 't1054', 't1055',
-  't1057b', 't1058', 't1059', 't1060', 't1061', 't1062',
-  't1062a', 't1062b', 't1063', 't1064', 't1065', 't1066',
-  't1067', 't1068', 't1069', 't1070', 't1071', 't1072b',
-  't1073', 't1074', 't1075', 't1076', 't1077', 't1078',
-  't1079', 't1080', 't1081', 't1082', 't1083', 't1084',
-  't1085', 't1086', 't1087', 't1088', 't1089', 't1090',
-  't1091', 't1093', 't1094', 't1095', 't1099', 't1100',
-  't1101', 't1102', 't1103a', 't1103b', 't1104', 't1105',
-  't1106', 't1107', 't1108', 't1108a', 't1108b', 't1109',
-  't1110', 't1111', 't1112', 't1113', 't1113a', 't1113b',
-  't1114', 't1115', 't1116', 't1117', 't1118', 't1119',
-  't1120', 't1120a', 't1120b', 't1121', 't1122', 't1123',
-  't1124', 't1125', 't1126', 't1127', 't1128', 't1130',
-  't1131', 't1132', 't1133', 't1134', 't1134a', 't1134b',
-  't1135', 't1136', 't1137', 't1138a', 't1138b', 't1139',
-  't1140', 't1141', 't1142', 't1143', 't1144', 't1145',
-  't1146', 't1147', 't1148', 't1149', 't1150', 't1151',
-  't1152', 't1154', 't1155', 't1156', 't1156a', 't1156b',
-  't1157', 't1158', 't1159', 't1159a', 't1159b', 't1160',
-  't1161', 't1162', 't1163', 't1164', 't1165', 't1166',
-  't1167', 't1168', 't1168a', 't1168b', 't1171', 't1172',
-  't1173', 't1174', 't1175', 't1176', 't1177b', 't1178',
-  't1179', 't1180', 't1181', 't1182', 't1183', 't1185a',
-  't1185b', 't1186', 't1187', 't1188', 't1189', 't1190',
-  't1193', 't1194', 't1195', 't1196', 't1197', 't1198',
-  't1199', 't1200', 't1201', 't1202', 't1203', 't1204',
-  't1205', 't1206', 't1207', 't1208', 't1209', 't1210',
-  't1211', 't1213', 't1214', 't1215', 't1216', 't1218',
-  't1219', 't1220', 't1223', 't1224', 't1225', 't1226',
-  't1228', 't1229', 't1230', 't1231', 't1232', 't1233',
-  't1234', 't1235', 't1236', 't1237', 't1238', 't1240',
-  't1241', 't1242', 't1243', 't1244', 't1245', 't1246',
-  't1247', 't1248', 't1249', 't1250', 't1252a', 't1252b',
-  't1253', 't1254', 't1255a', 't1255b', 't1256', 't1258',
-  't1259', 't1260', 't1261', 't1262', 't1263', 't1264a',
-  't1264b', 't1265', 't1266', 't1267', 't1268', 't1269',
-  't1270', 't1271', 't1273', 't1274', 't1275', 't1276',
-  't1277', 't1278', 't1279', 't1280', 't1281', 't1282',
-  't1283', 't1284', 't1285', 't1286', 't1287', 't1288',
-  't1289', 't1290', 't1291', 't1292', 't1293', 't1294',
-  't1295', 't1296', 't1297', 't1298', 't1300', 't1301',
-  't1302', 't1303', 't1304', 't1305', 't1306', 't1307',
-  't1309', 't1310', 't1311', 't1312', 't1313', 't1314',
-  't1315', 't1316', 't1317', 't1318', 't1319', 't1320',
-  't1321', 't1322', 't1323', 't1324', 't1325', 't1326',
-  't1327', 't1328', 't1329', 't1330', 't1333', 't1334',
-  't1337', 't1338', 't1342', 't1343', 't1344', 't1345',
-  't1346', 't1347', 't1348', 't1349', 't1350', 't1351',
-  't1352', 't1353', 't1354', 't1355', 't1356', 't1357',
-  't1358', 't1359', 't1360', 't1361', 't1362', 't1363',
-  't1364', 't1365', 't1366', 't1367', 't1368', 't1369a',
-  't1369b', 't1370', 't1371', 't1372', 't1373', 't1374',
-  't1375', 't1376', 't1377', 't1378a', 't1378b', 't1379',
-  't1380', 't1381', 't1382', 't1383', 't1384', 't1385',
-  't1386', 't1387', 't1388', 't1389', 't1390', 't1391',
-  't1392', 't1393', 't1394', 't1395', 't1396', 't1397',
-  't1398', 't1399', 't1400', 't1401', 't1402', 't1403',
-  't1404', 't1405', 't1406', 't1407', 't1408', 't1409',
-  't1410', 't1411', 't1412', 't1413', 't1414', 't1415',
-  't1416', 't1417', 't1418', 't1422a', 't1422b', 't1423',
-  't1426', 't1429', 't1430', 't1431', 't1434', 't1436',
-  't1437', 't1438', 't1439', 't1445', 't1446', 't1447',
-  't1449', 't1454', 't1455', 't1456', 't1457', 't1460',
-  't1461', 't1465', 't1466', 't1467a', 't1467b', 't1468',
-  't1469', 't1471', 't1472', 't1473', 't1474', 't1475',
-  't1476', 't1477', 't1478', 't1479', 't1480', 't1481',
-  't1483a', 't1483b', 't1484', 't1486', 't1487', 't1489',
-  't1490', 't1491', 't1492', 't1493', 't1494', 't1495',
-  't1496', 't1497', 't1498', 't1499', 't1500', 't1501',
-  't1502', 't1503', 't1504', 't1506', 't1508', 't1513',
-  't1514', 't1516', 't1518', 't1519', 't1520', 't1524',
-  't1526', 't1527', 't1528', 't1529', 't1531', 't1533',
-  't1534', 't1535', 't1538', 't1540', 't1553', 't1554',
-  't1555', 't1556', 't1557', 't1560', 't1561', 't1564',
-  't1565', 't1568', 't1569', 't1570', 't1572', 't1573',
-  't1574', 't1575', 't1576', 't1577', 't1578', 't1580',
-  't1583', 't1586', 't1587', 't1588', 't1589', 't1590',
-  't1593', 't1594', 't1600', 't1601', 't1603', 't1607',
-  't1608', 't1609', 't1610', 't1611', 't1612', 't1613',
-  't1614', 't1615', 't1616', 't1617', 't1618', 't1619',
-  't1620', 't1621', 't1622', 't1623', 't1624', 't1625',
-  't1626', 't1627', 't1628', 't1629', 't1630', 't1631',
-  't1632', 't1633', 't1637', 't1638', 't1639', 't1640',
-  't1641', 't1642', 't1643', 't1649', 't1650', 't1651',
-  't1652', 't1653', 't1654', 't1655', 't1656', 't1657',
-  't1658', 't1659', 't1661', 't1663', 't1664', 't1665',
-  't1666', 't1667', 't1669', 't1670a', 't1672', 't1673',
-  't1674', 't1675', 't1676', 't1677', 't1678', 't1679',
-  't1680', 't1681', 't1682', 't1683', 't1684', 't1685',
-  't1686', 't1687', 't1688', 't1689', 't1690', 't1691',
-  't1692', 't1693', 't1696', 't1697', 't1698', 't1703',
-  't1712', 't1714', 't1725', 't1737', 't1740', 't1742',
-  't1743', 't1746', 't1747', 't1750', 't1755', 't1756',
-  't1759', 't1760', 't1761', 't1768', 't1770', 't1771',
-  't1773', 't1790', 't1792', 't1793', 't1794', 't1802',
-  't1811', 't1817', 't1826', 't1836', 't1837', 't1847',
-  't1852', 't1855', 't1856', 't1857', 't1858', 't1865',
-  't1867', 't1868', 't1869', 't1871', 't1872', 't1874',
-  't1875', 't1876', 't1877', 't1878', 't1879a', 't1879b',
-  't1880', 't1881', 't1882', 't1883', 't1884', 't1886',
-  't1887a', 't1888', 't1889', 't1891', 't1892', 't1893',
-  't1894', 't1897', 't1898', 't1900', 't1901', 't1902',
-  't1903', 't1904', 't1905', 't1906', 't1907', 't1908',
-  't1914', 't1915', 't1917', 't1919', 't1920', 't1922',
-  't1925', 't1926', 't1927', 't1930', 't1931', 't1932',
-  't1933', 't1934', 't1935', 't1938', 't1939', 't1940',
-  't1941', 't1942', 't1943', 't1944', 't1945', 't1946',
-  't1947', 't1948', 't1949', 't1950', 't1951', 't1952',
-  't1953', 't1954', 't1956', 't1957', 't1959', 't1961',
-  't1962', 't1963', 't1964', 't1965', 't1966', 't1967',
-  't1968', 't1969b', 't1971', 't1975', 't1977', 't1978',
-  't1980', 't1981', 't1982', 't1984', 't1985', 't1986a',
-  't1986b', 't1987a', 't1987b', 't1989', 't1990', 't1991',
-  't1992', 't1993', 't1994', 't1994a', 't1994b', 't1995',
-  't1999', 't2002a', 't2002b', 't2005', 't2007', 't2008',
-  't2010', 't2011', 't2012', 't2012a', 't2012b', 't2013',
-  't2014', 't2015', 't2018', 't2019', 't2019a', 't2019b',
-  't2020', 't2021', 't2024', 't2026', 't2027', 't2028',
-  't2029', 't2030', 't2031', 't2032', 't2033', 't2041',
-  't2042', 't2043', 't2044', 't2045', 't2046', 't2047a',
-  't2047b', 't2048', 't2049', 't2050', 't2052', 't2054',
-  't2055', 't2056', 't2057', 't2063', 't2065', 't2066',
-  't2069', 't2070', 't2071', 't2074', 't2079', 't2081',
-  't2082', 't2083', 't2084', 't2085', 't2086', 't2090',
-  't2091', 't2092', 't2093', 't2094', 't2095', 't2096',
-  't2098', 't2099', 't2100', 't2101', 't2105', 't2106',
-  't2107', 't2108', 't2111', 't2114', 't2116', 't2118',
-  't2119', 't2120', 't2124', 't2125', 't2126', 't2132',
-  't2133', 't2133a', 't2134', 't2136', 't2138', 't2139',
-  't2140', 't2141', 't2141a', 't2141b', 't2142', 't2143',
-  't2144', 't2150', 't2152', 't2158', 't2159', 't2160',
-  't2161', 't2162', 't2163', 't2164', 't2165', 't2166',
-  't2167', 't2168', 't2168a', 't2168b', 't2169', 't2170',
-  't2171', 't2172', 't2173', 't2174', 't2174a', 't2174b',
-  't2175', 't2177', 't2178', 't2179', 't2180', 't2181',
-  't2182', 't2184', 't2732', 't2738', 't2739', 't2740',
-  't2742', 't2743', 't2744', 't2745', 't2746', 't2749',
-  't2750', 't2751', 't2752', 't2753', 't2756', 't2757',
-  't2758', 't2759', 't2760', 't2761', 't2763', 't2765',
-  't2766', 't2773', 't2774', 't2775', 't2776', 't2779',
-  't2780', 't2781', 't2783', 't2784', 't2785', 't2786',
-  't2789', 't2790', 't2791', 't2794', 't2796', 't2802',
-  't2811', 't2815', 't2816', 't2817', 't2818', 't2819',
-  't2820', 't2821', 't2822', 't2824', 't2826', 't2828',
-  't2829', 't2830', 't2830b', 't2831', 't2832', 't2833',
-  't2834', 't2835', 't2836', 't2837', 't2838', 't2839',
-  't2840', 't2841', 't2842', 't2843', 't2844', 't2845',
-  't2847', 't2848', 't2849', 't2850', 't2851', 't2852',
-  't2853', 't2854', 't2855', 't2856', 't2857', 't2858',
-  't2859', 't2860', 't2861', 't2862', 't2863', 't2864',
-  't2865', 't2866', 't2867', 't2868', 't2869', 't2870',
-  't2872', 't2873', 't2874', 't2875', 't2876', 't2877',
-  't2878', 't2879', 't2881', 't2882', 't2883', 't2884',
-  't2886', 't2887', 't2888', 't2889', 't2890', 't2891',
-  't2892', 't2893', 't2894', 't2895', 't2896', 't2897',
-  't2898', 't2899', 't2900', 't2901', 't2903', 't2904',
-  't2905', 't2907', 't2908', 't2909', 't2910', 't2911',
-  't2912', 't2913', 't2914', 't2915', 't2916', 't2917',
-  't2917a', 't2917b', 't2918', 't2919', 't2920'
-]);
+const BAIHUA_AVAILABLE = new Set([
+    'amituo_jiumo', 'bada_renjue', 'fo_yijiao', 'jingang_jiumo', 'puxian_xingyuan', 'sishi_erzhang', 'xinjing_fayue', 'xinjing_jiumo',
+    'xinjing_xuanzang', 'yaoshi_xuanzang', 'yulan_pen', 't0002', 't0003', 't0004', 't0008', 't0009',
+    't0010', 't0011', 't0012', 't0013', 't0014', 't0015', 't0016', 't0017',
+    't0018', 't0019', 't0020', 't0021', 't0022', 't0027', 't0028', 't0029',
+    't0030', 't0031', 't0032', 't0033', 't0034', 't0035', 't0036', 't0037',
+    't0038', 't0039', 't0040', 't0041', 't0042', 't0043', 't0044', 't0045',
+    't0046', 't0047', 't0048', 't0049', 't0050', 't0051', 't0052', 't0053',
+    't0054', 't0055', 't0056', 't0057', 't0058', 't0059', 't0060', 't0061',
+    't0062', 't0063', 't0064', 't0065', 't0066', 't0067', 't0068', 't0069',
+    't0070', 't0071', 't0072', 't0073', 't0074', 't0075', 't0076', 't0077',
+    't0078', 't0079', 't0080', 't0081', 't0082', 't0083', 't0084', 't0085',
+    't0086', 't0087', 't0088', 't0089', 't0090', 't0091', 't0092', 't0093',
+    't0094', 't0095', 't0096', 't0097', 't0098', 't0101', 't0102', 't0103',
+    't0104', 't0105', 't0106', 't0107', 't0108', 't0109', 't0110', 't0111',
+    't0112', 't0113', 't0114', 't0115', 't0116', 't0117', 't0118', 't0119',
+    't0121', 't0122', 't0123', 't0124', 't0126', 't0127', 't0128a', 't0128b',
+    't0129', 't0130', 't0131', 't0132a', 't0132b', 't0133', 't0134', 't0135',
+    't0136', 't0137', 't0138', 't0139', 't0140', 't0141', 't0142a', 't0142b',
+    't0143', 't0144', 't0145', 't0146', 't0147', 't0148', 't0149', 't0150',
+    't0150a', 't0150b', 't0151', 't0153', 't0161', 't0162', 't0163', 't0164',
+    't0166', 't0167', 't0168', 't0169', 't0170', 't0171', 't0172', 't0173',
+    't0174', 't0175a', 't0175b', 't0175c', 't0176', 't0177', 't0178', 't0179',
+    't0180', 't0181a', 't0181b', 't0182a', 't0182b', 't0183', 't0184', 't0185',
+    't0188', 't0192', 't0195', 't0196', 't0197', 't0198', 't0199', 't0204',
+    't0205', 't0206', 't0207', 't0208', 't0209', 't0210', 't0214', 't0215',
+    't0216', 't0217', 't0218', 't0219', 't0229', 't0230', 't0232', 't0233',
+    't0234', 't0235', 't0236a', 't0236b', 't0237', 't0238', 't0239', 't0240',
+    't0241', 't0242', 't0243', 't0245', 't0246', 't0247', 't0248', 't0249',
+    't0250', 't0251', 't0252', 't0253', 't0254', 't0255', 't0256', 't0257',
+    't0258', 't0259', 't0260', 't0265', 't0266', 't0269', 't0270', 't0273',
+    't0274', 't0275', 't0276', 't0277', 't0280', 't0281', 't0282', 't0283',
+    't0284', 't0289', 't0290', 't0295', 't0296', 't0297', 't0298', 't0300',
+    't0301', 't0302', 't0303', 't0304', 't0306', 't0307', 't0308', 't0314',
+    't0315a', 't0315b', 't0317', 't0322', 't0323', 't0324', 't0325', 't0326',
+    't0327', 't0328', 't0329', 't0330', 't0331', 't0332', 't0333', 't0334',
+    't0335', 't0336', 't0337', 't0338', 't0339', 't0340', 't0343', 't0344',
+    't0345', 't0347', 't0348', 't0349', 't0350', 't0351', 't0353', 't0354',
+    't0355', 't0356', 't0358', 't0360', 't0363', 't0364', 't0365', 't0366',
+    't0367', 't0368', 't0369', 't0370', 't0371', 't0372', 't0373', 't0383',
+    't0385', 't0386', 't0388', 't0389', 't0390', 't0391', 't0392', 't0393',
+    't0394', 't0395', 't0396', 't0405', 't0406', 't0407', 't0408', 't0409',
+    't0412', 't0413', 't0416', 't0417', 't0418', 't0419', 't0422', 't0423',
+    't0426', 't0427', 't0428', 't0429', 't0430', 't0431', 't0432', 't0433',
+    't0435', 't0436', 't0437', 't0438', 't0439', 't0442', 't0444', 't0445',
+    't0446a', 't0446b', 't0447a', 't0447b', 't0448a', 't0448b', 't0449', 't0450',
+    't0451', 't0452', 't0453', 't0454', 't0455', 't0456', 't0457', 't0458',
+    't0459', 't0460', 't0463', 't0464', 't0465', 't0466', 't0467', 't0468',
+    't0469', 't0470', 't0471', 't0472', 't0473', 't0474', 't0475', 't0477',
+    't0478', 't0479', 't0480', 't0483', 't0484', 't0486', 't0487', 't0488',
+    't0490', 't0491', 't0492a', 't0492b', 't0493', 't0494', 't0495', 't0496',
+    't0497', 't0498', 't0499', 't0500', 't0501', 't0502', 't0503', 't0504',
+    't0505', 't0506', 't0507', 't0508', 't0509', 't0510', 't0511', 't0512',
+    't0513', 't0514', 't0515', 't0516', 't0517', 't0518', 't0519', 't0520',
+    't0521', 't0522', 't0523', 't0524', 't0525', 't0526', 't0527', 't0528',
+    't0529', 't0530', 't0531', 't0532', 't0533', 't0534', 't0535', 't0536',
+    't0537', 't0538', 't0539', 't0540a', 't0540b', 't0541', 't0542', 't0543',
+    't0544', 't0545', 't0546', 't0547', 't0548', 't0549', 't0551', 't0552',
+    't0553', 't0554', 't0555a', 't0555b', 't0556', 't0557', 't0558', 't0559',
+    't0560', 't0561', 't0562', 't0563', 't0564', 't0565', 't0566', 't0567',
+    't0568', 't0569', 't0570', 't0571', 't0572', 't0573', 't0574', 't0575',
+    't0576', 't0577', 't0578', 't0579', 't0580', 't0581', 't0582', 't0583',
+    't0584', 't0585', 't0586', 't0589', 't0590', 't0591', 't0592', 't0593',
+    't0594', 't0595', 't0596', 't0597', 't0598', 't0599', 't0600', 't0601',
+    't0602', 't0603', 't0604', 't0605', 't0607', 't0608', 't0609', 't0610',
+    't0611', 't0612', 't0614', 't0615', 't0617', 't0618', 't0619', 't0620',
+    't0621', 't0622', 't0623', 't0629', 't0630', 't0631', 't0632', 't0633',
+    't0634', 't0640', 't0641', 't0642', 't0644', 't0645', 't0646', 't0648',
+    't0650', 't0652', 't0654', 't0655', 't0661', 't0662', 't0663', 't0666',
+    't0667', 't0668', 't0669', 't0670', 't0673', 't0674', 't0676', 't0677',
+    't0678', 't0679', 't0680', 't0681', 't0683', 't0684', 't0685', 't0686',
+    't0687', 't0688', 't0689', 't0690', 't0691', 't0692', 't0693', 't0694',
+    't0695', 't0696', 't0697', 't0698', 't0699', 't0700', 't0701', 't0702',
+    't0703', 't0704', 't0705', 't0706', 't0707', 't0708', 't0709', 't0710',
+    't0711', 't0712', 't0713', 't0714', 't0715', 't0716', 't0717', 't0718',
+    't0719', 't0720', 't0723', 't0724', 't0725', 't0726', 't0727', 't0729',
+    't0730', 't0731', 't0732', 't0733', 't0734', 't0735', 't0736', 't0737',
+    't0738', 't0739', 't0740', 't0741', 't0742', 't0743', 't0744', 't0745',
+    't0746', 't0747a', 't0747b', 't0748', 't0749', 't0750', 't0751a', 't0751b',
+    't0752', 't0753', 't0755', 't0756', 't0757', 't0758', 't0759', 't0760',
+    't0762', 't0763', 't0764', 't0766', 't0767', 't0768', 't0769', 't0770',
+    't0771', 't0772', 't0773', 't0774', 't0775', 't0776', 't0777', 't0778',
+    't0779', 't0780', 't0781', 't0782', 't0783', 't0784', 't0785', 't0786',
+    't0787', 't0788', 't0789', 't0790', 't0791', 't0792', 't0793', 't0794a',
+    't0794b', 't0795', 't0796', 't0797a', 't0797b', 't0798', 't0799', 't0800',
+    't0801', 't0802', 't0803', 't0804', 't0805', 't0806', 't0807', 't0808',
+    't0809', 't0811', 't0812', 't0813', 't0814', 't0817', 't0818', 't0819',
+    't0820', 't0821', 't0822', 't0823', 't0824', 't0825', 't0826', 't0827',
+    't0828', 't0829', 't0830', 't0831', 't0832', 't0833', 't0834', 't0835',
+    't0836', 't0837', 't0838', 't0839', 't0840', 't0841', 't0842', 't0843',
+    't0844', 't0845', 't0846', 't0854', 't0855', 't0856', 't0857', 't0858',
+    't0859', 't0860', 't0861', 't0862', 't0863', 't0864b', 't0869', 't0870',
+    't0871', 't0872', 't0874', 't0875', 't0876', 't0877', 't0878', 't0879',
+    't0880', 't0881', 't0884', 't0886', 't0888', 't0891', 't0894b', 't0896',
+    't0898', 't0899', 't0900', 't0902', 't0903', 't0904', 't0905', 't0906',
+    't0907', 't0908', 't0909', 't0910', 't0911', 't0912', 't0913', 't0914',
+    't0915', 't0916', 't0917', 't0918', 't0919', 't0921', 't0922', 't0923',
+    't0924', 't0924a', 't0924b', 't0924c', 't0926', 't0928', 't0929', 't0930',
+    't0931', 't0932', 't0933', 't0934', 't0935', 't0936', 't0937', 't0938',
+    't0939', 't0940', 't0941', 't0942', 't0943', 't0944', 't0944a', 't0944b',
+    't0947', 't0948', 't0949', 't0954', 't0954a', 't0954b', 't0955', 't0956',
+    't0957', 't0958', 't0959', 't0960', 't0961', 't0962', 't0963', 't0964',
+    't0965', 't0966', 't0967', 't0968', 't0969', 't0970', 't0971', 't0972',
+    't0974a', 't0974b', 't0974c', 't0974d', 't0974e', 't0974f', 't0975', 't0976',
+    't0977', 't0978', 't0979', 't0980', 't0981', 't0983a', 't0983b', 't0986',
+    't0987', 't0988', 't0989', 't0990', 't0991', 't0992', 't0993', 't0994',
+    't0995', 't0996', 't0998', 't1000', 't1001', 't1002', 't1004', 't1005b',
+    't1008', 't1009', 't1010', 't1011', 't1012', 't1013', 't1014', 't1015',
+    't1016', 't1017', 't1018', 't1019', 't1020', 't1021', 't1022', 't1022a',
+    't1022b', 't1023', 't1024', 't1025', 't1026', 't1027b', 't1028', 't1028a',
+    't1028b', 't1029', 't1030', 't1031', 't1032', 't1033', 't1034', 't1035',
+    't1036', 't1037', 't1038', 't1039', 't1040', 't1041', 't1042', 't1043',
+    't1044', 't1045a', 't1045b', 't1046', 't1047', 't1048', 't1049', 't1051',
+    't1052', 't1053', 't1054', 't1055', 't1057b', 't1058', 't1059', 't1060',
+    't1061', 't1062', 't1062a', 't1062b', 't1063', 't1064', 't1065', 't1066',
+    't1067', 't1068', 't1069', 't1070', 't1071', 't1072b', 't1073', 't1074',
+    't1075', 't1076', 't1077', 't1078', 't1079', 't1080', 't1081', 't1082',
+    't1083', 't1084', 't1085', 't1086', 't1087', 't1088', 't1089', 't1090',
+    't1091', 't1093', 't1094', 't1095', 't1099', 't1100', 't1101', 't1102',
+    't1103a', 't1103b', 't1104', 't1105', 't1106', 't1107', 't1108', 't1108a',
+    't1108b', 't1109', 't1110', 't1111', 't1112', 't1113', 't1113a', 't1113b',
+    't1114', 't1115', 't1116', 't1117', 't1118', 't1119', 't1120', 't1120a',
+    't1120b', 't1121', 't1122', 't1123', 't1124', 't1125', 't1126', 't1127',
+    't1128', 't1130', 't1131', 't1132', 't1133', 't1134', 't1134a', 't1134b',
+    't1135', 't1136', 't1137', 't1138a', 't1138b', 't1139', 't1140', 't1141',
+    't1142', 't1143', 't1144', 't1145', 't1146', 't1147', 't1148', 't1149',
+    't1150', 't1151', 't1152', 't1154', 't1155', 't1156', 't1156a', 't1156b',
+    't1157', 't1158', 't1159', 't1159a', 't1159b', 't1160', 't1161', 't1162',
+    't1163', 't1164', 't1165', 't1166', 't1167', 't1168', 't1168a', 't1168b',
+    't1171', 't1172', 't1173', 't1174', 't1175', 't1176', 't1177b', 't1178',
+    't1179', 't1180', 't1181', 't1182', 't1183', 't1185a', 't1185b', 't1186',
+    't1187', 't1188', 't1189', 't1190', 't1193', 't1194', 't1195', 't1196',
+    't1197', 't1198', 't1199', 't1200', 't1201', 't1202', 't1203', 't1204',
+    't1205', 't1206', 't1207', 't1208', 't1209', 't1210', 't1211', 't1213',
+    't1214', 't1215', 't1216', 't1218', 't1219', 't1220', 't1223', 't1224',
+    't1225', 't1226', 't1228', 't1229', 't1230', 't1231', 't1232', 't1233',
+    't1234', 't1235', 't1236', 't1237', 't1238', 't1240', 't1241', 't1242',
+    't1243', 't1244', 't1245', 't1246', 't1247', 't1248', 't1249', 't1250',
+    't1252a', 't1252b', 't1253', 't1254', 't1255a', 't1255b', 't1256', 't1258',
+    't1259', 't1260', 't1261', 't1262', 't1263', 't1264a', 't1264b', 't1265',
+    't1266', 't1267', 't1268', 't1269', 't1270', 't1271', 't1273', 't1274',
+    't1275', 't1276', 't1277', 't1278', 't1279', 't1280', 't1281', 't1282',
+    't1283', 't1284', 't1285', 't1286', 't1287', 't1288', 't1289', 't1290',
+    't1291', 't1292', 't1293', 't1294', 't1295', 't1296', 't1297', 't1298',
+    't1300', 't1301', 't1302', 't1303', 't1304', 't1305', 't1306', 't1307',
+    't1309', 't1310', 't1311', 't1312', 't1313', 't1314', 't1315', 't1316',
+    't1317', 't1318', 't1319', 't1320', 't1321', 't1322', 't1323', 't1324',
+    't1325', 't1326', 't1327', 't1328', 't1329', 't1330', 't1333', 't1334',
+    't1337', 't1338', 't1342', 't1343', 't1344', 't1345', 't1346', 't1347',
+    't1348', 't1349', 't1350', 't1351', 't1352', 't1353', 't1354', 't1355',
+    't1356', 't1357', 't1358', 't1359', 't1360', 't1361', 't1362', 't1363',
+    't1364', 't1365', 't1366', 't1367', 't1368', 't1369a', 't1369b', 't1370',
+    't1371', 't1372', 't1373', 't1374', 't1375', 't1376', 't1377', 't1378a',
+    't1378b', 't1379', 't1380', 't1381', 't1382', 't1383', 't1384', 't1385',
+    't1386', 't1387', 't1388', 't1389', 't1390', 't1391', 't1392', 't1393',
+    't1394', 't1395', 't1396', 't1397', 't1398', 't1399', 't1400', 't1401',
+    't1402', 't1403', 't1404', 't1405', 't1406', 't1407', 't1408', 't1409',
+    't1410', 't1411', 't1412', 't1413', 't1414', 't1415', 't1416', 't1417',
+    't1418', 't1419', 't1422a', 't1422b', 't1423', 't1426', 't1429', 't1430',
+    't1431', 't1434', 't1436', 't1437', 't1438', 't1439', 't1445', 't1446',
+    't1447', 't1449', 't1454', 't1455', 't1456', 't1457', 't1460', 't1461',
+    't1465', 't1466', 't1467a', 't1467b', 't1468', 't1469', 't1471', 't1472',
+    't1473', 't1474', 't1475', 't1476', 't1477', 't1478', 't1479', 't1480',
+    't1481', 't1483a', 't1483b', 't1484', 't1486', 't1487', 't1489', 't1490',
+    't1491', 't1492', 't1493', 't1494', 't1495', 't1496', 't1497', 't1498',
+    't1499', 't1500', 't1501', 't1502', 't1503', 't1504', 't1506', 't1508',
+    't1510a', 't1513', 't1514', 't1516', 't1518', 't1519', 't1520', 't1524',
+    't1526', 't1527', 't1528', 't1529', 't1531', 't1533', 't1534', 't1535',
+    't1538', 't1540', 't1553', 't1554', 't1555', 't1556', 't1557', 't1560',
+    't1561', 't1564', 't1565', 't1568', 't1569', 't1570', 't1572', 't1573',
+    't1574', 't1575', 't1576', 't1577', 't1578', 't1580', 't1583', 't1586',
+    't1587', 't1588', 't1589', 't1590', 't1593', 't1594', 't1600', 't1601',
+    't1603', 't1607', 't1608', 't1609', 't1610', 't1611', 't1612', 't1613',
+    't1614', 't1615', 't1616', 't1617', 't1618', 't1619', 't1620', 't1621',
+    't1622', 't1623', 't1624', 't1625', 't1626', 't1627', 't1628', 't1629',
+    't1630', 't1631', 't1632', 't1633', 't1637', 't1638', 't1639', 't1640',
+    't1641', 't1642', 't1643', 't1649', 't1650', 't1651', 't1652', 't1653',
+    't1654', 't1655', 't1656', 't1657', 't1658', 't1659', 't1661', 't1663',
+    't1664', 't1665', 't1666', 't1667', 't1669', 't1670a', 't1672', 't1673',
+    't1674', 't1675', 't1676', 't1677', 't1678', 't1679', 't1680', 't1681',
+    't1682', 't1683', 't1684', 't1685', 't1686', 't1687', 't1688', 't1689',
+    't1690', 't1691', 't1692', 't1693', 't1696', 't1697', 't1698', 't1703',
+    't1712', 't1714', 't1725', 't1734', 't1737', 't1738', 't1740', 't1742',
+    't1743', 't1746', 't1747', 't1750', 't1755', 't1756', 't1759', 't1760',
+    't1761', 't1768', 't1770', 't1771', 't1773', 't1790', 't1792', 't1793',
+    't1794', 't1800', 't1802', 't1811', 't1817', 't1826', 't1836', 't1837',
+    't1847', 't1852', 't1855', 't1856', 't1857', 't1858', 't1865', 't1867',
+    't1868', 't1869', 't1871', 't1872', 't1874', 't1875', 't1876', 't1877',
+    't1878', 't1879a', 't1879b', 't1880', 't1881', 't1882', 't1883', 't1884',
+    't1886', 't1887a', 't1888', 't1889', 't1891', 't1892', 't1893', 't1894',
+    't1897', 't1898', 't1900', 't1901', 't1902', 't1903', 't1904', 't1905',
+    't1906', 't1907', 't1908', 't1914', 't1915', 't1917', 't1919', 't1920',
+    't1922', 't1925', 't1926', 't1927', 't1930', 't1931', 't1932', 't1933',
+    't1934', 't1935', 't1938', 't1939', 't1940', 't1941', 't1942', 't1943',
+    't1944', 't1945', 't1946', 't1947', 't1948', 't1949', 't1950', 't1951',
+    't1952', 't1953', 't1954', 't1956', 't1957', 't1959', 't1961', 't1962',
+    't1963', 't1964', 't1965', 't1966', 't1967', 't1968', 't1969b', 't1971',
+    't1974', 't1975', 't1977', 't1978', 't1980', 't1981', 't1982', 't1984',
+    't1985', 't1986a', 't1986b', 't1987a', 't1987b', 't1989', 't1990', 't1991',
+    't1992', 't1993', 't1994', 't1994a', 't1994b', 't1995', 't1999', 't2002a',
+    't2002b', 't2005', 't2007', 't2008', 't2010', 't2011', 't2012', 't2012a',
+    't2012b', 't2013', 't2014', 't2015', 't2018', 't2019', 't2019a', 't2019b',
+    't2020', 't2021', 't2024', 't2026', 't2027', 't2028', 't2029', 't2030',
+    't2031', 't2032', 't2033', 't2041', 't2042', 't2043', 't2044', 't2045',
+    't2046', 't2047a', 't2047b', 't2048', 't2049', 't2050', 't2052', 't2054',
+    't2055', 't2056', 't2057', 't2063', 't2065', 't2066', 't2069', 't2070',
+    't2071', 't2072', 't2074', 't2079', 't2081', 't2082', 't2083', 't2084',
+    't2085', 't2086', 't2090', 't2091', 't2092', 't2093', 't2094', 't2095',
+    't2096', 't2098', 't2099', 't2100', 't2101', 't2105', 't2106', 't2107',
+    't2108', 't2111', 't2114', 't2116', 't2118', 't2119', 't2120', 't2124',
+    't2125', 't2126', 't2132', 't2133', 't2133a', 't2134', 't2136', 't2138',
+    't2139', 't2140', 't2141', 't2141a', 't2141b', 't2142', 't2143', 't2144',
+    't2150', 't2152', 't2158', 't2159', 't2160', 't2161', 't2162', 't2163',
+    't2164', 't2165', 't2166', 't2167', 't2168', 't2168a', 't2168b', 't2169',
+    't2170', 't2171', 't2172', 't2173', 't2174', 't2174a', 't2174b', 't2175',
+    't2177', 't2178', 't2179', 't2180', 't2181', 't2182', 't2184', 't2732',
+    't2736', 't2737', 't2738', 't2739', 't2740', 't2742', 't2743', 't2744',
+    't2745', 't2746', 't2749', 't2750', 't2751', 't2752', 't2753', 't2754',
+    't2756', 't2757', 't2758', 't2759', 't2760', 't2761', 't2763', 't2764b',
+    't2765', 't2766', 't2770', 't2773', 't2774', 't2775', 't2776', 't2779',
+    't2780', 't2781', 't2783', 't2784', 't2785', 't2786', 't2789', 't2790',
+    't2791', 't2794', 't2796', 't2802', 't2809', 't2811', 't2815', 't2816',
+    't2817', 't2818', 't2819', 't2820', 't2821', 't2822', 't2824', 't2825',
+    't2826', 't2828', 't2829', 't2830', 't2830b', 't2831', 't2832', 't2833',
+    't2834', 't2835', 't2836', 't2837', 't2838', 't2839', 't2840', 't2841',
+    't2842', 't2843', 't2844', 't2845', 't2847', 't2848', 't2849', 't2850',
+    't2851', 't2852', 't2853', 't2854', 't2855', 't2856', 't2857', 't2858',
+    't2859', 't2860', 't2861', 't2862', 't2863', 't2864', 't2865', 't2866',
+    't2867', 't2868', 't2869', 't2870', 't2872', 't2873', 't2874', 't2875',
+    't2876', 't2877', 't2878', 't2879', 't2881', 't2882', 't2883', 't2884',
+    't2886', 't2887', 't2888', 't2889', 't2890', 't2891', 't2892', 't2893',
+    't2894', 't2895', 't2896', 't2897', 't2898', 't2899', 't2900', 't2901',
+    't2902', 't2903', 't2904', 't2905', 't2907', 't2908', 't2909', 't2910',
+    't2911', 't2912', 't2913', 't2914', 't2915', 't2916', 't2917', 't2917a',
+    't2917b', 't2918', 't2919', 't2920',
+  ]);
 
 async function loadBaihua(tid) {
     baihuaData = null;

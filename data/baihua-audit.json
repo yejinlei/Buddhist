@@ -1,7 +1,7 @@
 {
- "total": 1865,
- "ok": 1865,
- "fail": 0,
+ "total": 1869,
+ "ok": 1857,
+ "fail": 12,
  "ok_ids": [
   "t0002",
   "t0003",
@@ -322,6 +322,7 @@
   "t0409",
   "t0412",
   "t0413",
+  "t0416",
   "t0417",
   "t0418",
   "t0419",
@@ -706,7 +707,6 @@
   "t0844",
   "t0845",
   "t0846",
-  "t0849",
   "t0854",
   "t0855",
   "t0856",
@@ -717,14 +717,11 @@
   "t0861",
   "t0862",
   "t0863",
-  "t0864",
-  "t0864a",
   "t0864b",
   "t0869",
   "t0870",
   "t0871",
   "t0872",
-  "t0873",
   "t0874",
   "t0875",
   "t0876",
@@ -767,7 +764,6 @@
   "t0924a",
   "t0924b",
   "t0924c",
-  "t0925",
   "t0926",
   "t0928",
   "t0929",
@@ -825,7 +821,6 @@
   "t0979",
   "t0980",
   "t0981",
-  "t0983",
   "t0983a",
   "t0983b",
   "t0986",
@@ -866,7 +861,6 @@
   "t1024",
   "t1025",
   "t1026",
-  "t1027a",
   "t1027b",
   "t1028",
   "t1028a",
@@ -898,7 +892,6 @@
   "t1053",
   "t1054",
   "t1055",
-  "t1057a",
   "t1057b",
   "t1058",
   "t1059",
@@ -1036,7 +1029,6 @@
   "t1181",
   "t1182",
   "t1183",
-  "t1184",
   "t1185a",
   "t1185b",
   "t1186",
@@ -1257,11 +1249,11 @@
   "t1416",
   "t1417",
   "t1418",
+  "t1419",
   "t1422a",
   "t1422b",
   "t1423",
   "t1426",
-  "t1427",
   "t1429",
   "t1430",
   "t1431",
@@ -1568,6 +1560,7 @@
   "t1968",
   "t1969b",
   "t1971",
+  "t1974",
   "t1975",
   "t1977",
   "t1978",
@@ -1640,6 +1633,7 @@
   "t2069",
   "t2070",
   "t2071",
+  "t2072",
   "t2074",
   "t2079",
   "t2081",
@@ -1675,9 +1669,7 @@
   "t2132",
   "t2133",
   "t2133a",
-  "t2133b",
   "t2134",
-  "t2135",
   "t2136",
   "t2138",
   "t2139",
@@ -1869,5 +1861,114 @@
   "t2919",
   "t2920"
  ],
- "fail_detail": []
+ "fail_detail": [
+  {
+   "id": "t0849",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 141,
+   "problems": [
+    "legacy_sections_no_translations"
+   ]
+  },
+  {
+   "id": "t0864",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 109,
+   "problems": [
+    "legacy_sections_no_translations"
+   ]
+  },
+  {
+   "id": "t0864a",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 75,
+   "problems": [
+    "legacy_sections_no_translations"
+   ]
+  },
+  {
+   "id": "t0873",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 141,
+   "problems": [
+    "legacy_sections_no_translations"
+   ]
+  },
+  {
+   "id": "t0925",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 121,
+   "problems": [
+    "legacy_sections_no_translations"
+   ]
+  },
+  {
+   "id": "t0983",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 79,
+   "problems": [
+    "legacy_sections_no_translations"
+   ]
+  },
+  {
+   "id": "t1027a",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 140,
+   "problems": [
+    "legacy_sections_no_translations"
+   ]
+  },
+  {
+   "id": "t1057a",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 95,
+   "problems": [
+    "legacy_sections_no_translations"
+   ]
+  },
+  {
+   "id": "t1184",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 72,
+   "problems": [
+    "legacy_sections_no_translations"
+   ]
+  },
+  {
+   "id": "t1427",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 142,
+   "problems": [
+    "legacy_sections_no_translations"
+   ]
+  },
+  {
+   "id": "t2133b",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 133,
+   "problems": [
+    "legacy_sections_no_translations"
+   ]
+  },
+  {
+   "id": "t2135",
+   "status": "fail",
+   "cover": 1.0,
+   "sections": 116,
+   "problems": [
+    "legacy_sections_no_translations"
+   ]
+  }
+ ]
 }
