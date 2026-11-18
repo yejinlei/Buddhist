@@ -44,6 +44,7 @@ def check(tid, cover_min=0.95):
              if not re.match(r"^【.+?】", s.get("modern", "")) or "【义解】" not in s.get("modern", "")
              or s.get("modern", "").rstrip().endswith("【义解】")]
     problems = []
+    if not d.get("translations"): problems.append("legacy_sections_no_translations")
     if not substring: problems.append("preview_not_substring")
     if cover < cover_min: problems.append(f"cover={cover:.2f}")
     if bad_y: problems.append(f"bad_modern@{bad_y[:3]}")
