@@ -1,42 +1,33 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import json, os, re
-ROOT = os.path.dirname(os.path.abspath(__file__))
-os.chdir(ROOT)
+"""修正modern格式顺序：【小标题】+正文白话+【义解】+义解说明"""
+import json, os, re, sys
 
-SIDS = "t2732 t1681 t1057b t1894 t0994 t1238 t0010 t1940 t0884 t1949 t1900 t1956".split()
+BASE = "/home/user/workspace/13511660557912876654/buddhist-ontology"
+TR = os.path.join(BASE, "data/modern-translation")
+BATCH = "t2764a t1169 t1185 t1272 t1592 t2002 t0378 t2803 t1839 t2109 t0588 t1482 ".split()
 
-for sid in SIDS:
-    path = f"data/modern-translation/{sid}.json"
-    with open(path, encoding="utf-8") as f:
-        d = json.load(f)
+def fix_one(sid):
+    p = os.path.join(TR, sid+".json")
+    d = json.load(open(p, encoding="utf-8"))
     fixed = 0
-    for sec in d["translations"]:
-        modern = sec.get("modern", "")
-        # 替换繁体義解为简体义解
-        modern = modern.replace("【義解】", "【义解】")
-        # 检查是否以【小标题】开头
-        if not re.match(r"^【.+?】", modern):
-            # 提取开头内容补一个小标题
-            first_part = modern.split("【义解】")[0].strip()
-            if first_part:
-                title = first_part[:20]
-                modern = f"【{title}】【义解】" + modern.split("【义解】")[-1].strip()
-            else:
-                modern = "【经文内容】【义解】" + modern.strip()
-        # 检查【义解】后是否有正文
-        if "【义解】" in modern:
-            parts = modern.split("【义解】", 1)
-            after = parts[1].strip()
-            if not after:
-                # 义解后没有内容，补上说明
-                modern = parts[0] + "【义解】本段经文内容如原文所述。"
-        else:
-            # 缺少【义解】标签，补上
-            modern = modern + "【义解】"
-        sec["modern"] = modern
-        fixed += 1
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(d, f, ensure_ascii=False, indent=2)
-    print(f"{sid}: 已修正{fixed}段的格式问题")
-print("\n所有格式问题修正完成")
+    for i, sec in enumerate(d["translations"]):
+        m = sec.get("modern", "")
+        # 匹配：【小标题】\n【义解】...\n【正文】...
+        m1 = re.match(r"^【(.+?)】\n【义解】(.+?)\n【正文】(.+)$", m, re.DOTALL)
+        if m1:
+            title = m1.group(1)
+            yj = m1.group(2).strip()
+            body = m1.group(3).strip()
+            new_m = f"【{title}】{body}\n【义解】{yj}"
+            sec["modern"] = new_m
+            fixed += 1
+    json.dump(d, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    # 同步到baihua-tasks
+    tp = os.path.join(BASE, "data/baihua-tasks", sid+".json")
+    json.dump(d, open(tp, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    print(f"{sid}: 修正 {fixed} 段格式")
+
+for sid in BATCH:
+    fix_one(sid)
+print("格式修正完成")
