@@ -145,6 +145,10 @@ def parse_links(sutras_text):
         _, href_id, data_id, text = m.groups()
         # 去掉开头的 "t0007 "
         title = re.sub(r'^t\d+[a-z]?\s*', '', text).strip()
+        # 幂等：剥离标题中可能已存在的（译）标记（含正常与 HTML 转义两种形式）
+        title = title.replace('&lt;span class="yi"&gt;', '').replace('&lt;/span&gt;', '')
+        title = title.replace('<span class="yi">', '').replace('</span>', '')
+        title = title.replace('（译）', '').strip()
         items.append((data_id, title))
     return items
 
