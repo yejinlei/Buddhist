@@ -1,0 +1,218 @@
+[
+  {
+    "worker": "worker_A",
+    "tid": "t1227",
+    "sections": 225,
+    "issues": []
+  },
+  {
+    "worker": "worker_B",
+    "tid": "t1227",
+    "sections": 225,
+    "issues": []
+  },
+  {
+    "worker": "worker_C",
+    "tid": "t1227",
+    "sections": 225,
+    "issues": []
+  },
+  {
+    "worker": "worker_A",
+    "tid": "t1433",
+    "sections": 252,
+    "issues": []
+  },
+  {
+    "worker": "worker_B",
+    "tid": "t1433",
+    "sections": 252,
+    "issues": []
+  },
+  {
+    "worker": "worker_C",
+    "tid": "t1433",
+    "sections": 252,
+    "issues": []
+  },
+  {
+    "worker": "worker_A",
+    "tid": "t1983",
+    "sections": 251,
+    "issues": []
+  },
+  {
+    "worker": "worker_B",
+    "tid": "t1983",
+    "sections": 251,
+    "issues": []
+  },
+  {
+    "worker": "worker_C",
+    "tid": "t1983",
+    "sections": 251,
+    "issues": []
+  },
+  {
+    "worker": "worker_A",
+    "tid": "t0006",
+    "sections": 244,
+    "issues": []
+  },
+  {
+    "worker": "worker_B",
+    "tid": "t0006",
+    "sections": 244,
+    "issues": []
+  },
+  {
+    "worker": "worker_C",
+    "tid": "t0006",
+    "sections": 244,
+    "issues": []
+  },
+  {
+    "worker": "worker_A",
+    "tid": "t1787",
+    "sections": 257,
+    "issues": []
+  },
+  {
+    "worker": "worker_B",
+    "tid": "t1787",
+    "sections": 257,
+    "issues": []
+  },
+  {
+    "worker": "worker_C",
+    "tid": "t1787",
+    "sections": 257,
+    "issues": []
+  },
+  {
+    "worker": "worker_A",
+    "tid": "t1511",
+    "sections": 254,
+    "issues": []
+  },
+  {
+    "worker": "worker_B",
+    "tid": "t1511",
+    "sections": 254,
+    "issues": []
+  },
+  {
+    "worker": "worker_C",
+    "tid": "t1511",
+    "sections": 254,
+    "issues": []
+  },
+  {
+    "worker": "worker_A",
+    "tid": "t1701",
+    "sections": 262,
+    "issues": []
+  },
+  {
+    "worker": "worker_B",
+    "tid": "t1701",
+    "sections": 262,
+    "issues": []
+  },
+  {
+    "worker": "worker_C",
+    "tid": "t1701",
+    "sections": 262,
+    "issues": []
+  },
+  {
+    "worker": "worker_A",
+    "tid": "t1896",
+    "sections": 258,
+    "issues": []
+  },
+  {
+    "worker": "worker_B",
+    "tid": "t1896",
+    "sections": 258,
+    "issues": []
+  },
+  {
+    "worker": "worker_C",
+    "tid": "t1896",
+    "sections": 258,
+    "issues": []
+  },
+  {
+    "worker": "worker_A",
+    "tid": "t0311",
+    "sections": 247,
+    "issues": []
+  },
+  {
+    "worker": "worker_B",
+    "tid": "t0311",
+    "sections": 247,
+    "issues": []
+  },
+  {
+    "worker": "worker_C",
+    "tid": "t0311",
+    "sections": 247,
+    "issues": []
+  },
+  {
+    "worker": "worker_A",
+    "tid": "t0155",
+    "sections": 235,
+    "issues": []
+  },
+  {
+    "worker": "worker_B",
+    "tid": "t0155",
+    "sections": 235,
+    "issues": []
+  },
+  {
+    "worker": "worker_C",
+    "tid": "t0155",
+    "sections": 235,
+    "issues": []
+  },
+  {
+    "worker": "worker_A",
+    "tid": "t1728",
+    "sections": 246,
+    "issues": []
+  },
+  {
+    "worker": "worker_B",
+    "tid": "t1728",
+    "sections": 246,
+    "issues": []
+  },
+  {
+    "worker": "worker_C",
+    "tid": "t1728",
+    "sections": 246,
+    "issues": []
+  },
+  {
+    "worker": "worker_A",
+    "tid": "t0005",
+    "sections": 257,
+    "issues": []
+  },
+  {
+    "worker": "worker_B",
+    "tid": "t0005",
+    "sections": 257,
+    "issues": []
+  },
+  {
+    "worker": "worker_C",
+    "tid": "t0005",
+    "sections": 257,
+    "issues": []
+  }
+]

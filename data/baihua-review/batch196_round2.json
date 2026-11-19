@@ -1,0 +1,182 @@
+[
+  {
+    "worker": "worker_D",
+    "tid": "t1227",
+    "issues": []
+  },
+  {
+    "worker": "worker_E",
+    "tid": "t1227",
+    "issues": []
+  },
+  {
+    "worker": "worker_F",
+    "tid": "t1227",
+    "issues": []
+  },
+  {
+    "worker": "worker_D",
+    "tid": "t1433",
+    "issues": []
+  },
+  {
+    "worker": "worker_E",
+    "tid": "t1433",
+    "issues": []
+  },
+  {
+    "worker": "worker_F",
+    "tid": "t1433",
+    "issues": []
+  },
+  {
+    "worker": "worker_D",
+    "tid": "t1983",
+    "issues": []
+  },
+  {
+    "worker": "worker_E",
+    "tid": "t1983",
+    "issues": []
+  },
+  {
+    "worker": "worker_F",
+    "tid": "t1983",
+    "issues": []
+  },
+  {
+    "worker": "worker_D",
+    "tid": "t0006",
+    "issues": []
+  },
+  {
+    "worker": "worker_E",
+    "tid": "t0006",
+    "issues": []
+  },
+  {
+    "worker": "worker_F",
+    "tid": "t0006",
+    "issues": []
+  },
+  {
+    "worker": "worker_D",
+    "tid": "t1787",
+    "issues": []
+  },
+  {
+    "worker": "worker_E",
+    "tid": "t1787",
+    "issues": []
+  },
+  {
+    "worker": "worker_F",
+    "tid": "t1787",
+    "issues": []
+  },
+  {
+    "worker": "worker_D",
+    "tid": "t1511",
+    "issues": []
+  },
+  {
+    "worker": "worker_E",
+    "tid": "t1511",
+    "issues": []
+  },
+  {
+    "worker": "worker_F",
+    "tid": "t1511",
+    "issues": []
+  },
+  {
+    "worker": "worker_D",
+    "tid": "t1701",
+    "issues": []
+  },
+  {
+    "worker": "worker_E",
+    "tid": "t1701",
+    "issues": []
+  },
+  {
+    "worker": "worker_F",
+    "tid": "t1701",
+    "issues": []
+  },
+  {
+    "worker": "worker_D",
+    "tid": "t1896",
+    "issues": []
+  },
+  {
+    "worker": "worker_E",
+    "tid": "t1896",
+    "issues": []
+  },
+  {
+    "worker": "worker_F",
+    "tid": "t1896",
+    "issues": []
+  },
+  {
+    "worker": "worker_D",
+    "tid": "t0311",
+    "issues": []
+  },
+  {
+    "worker": "worker_E",
+    "tid": "t0311",
+    "issues": []
+  },
+  {
+    "worker": "worker_F",
+    "tid": "t0311",
+    "issues": []
+  },
+  {
+    "worker": "worker_D",
+    "tid": "t0155",
+    "issues": []
+  },
+  {
+    "worker": "worker_E",
+    "tid": "t0155",
+    "issues": []
+  },
+  {
+    "worker": "worker_F",
+    "tid": "t0155",
+    "issues": []
+  },
+  {
+    "worker": "worker_D",
+    "tid": "t1728",
+    "issues": []
+  },
+  {
+    "worker": "worker_E",
+    "tid": "t1728",
+    "issues": []
+  },
+  {
+    "worker": "worker_F",
+    "tid": "t1728",
+    "issues": []
+  },
+  {
+    "worker": "worker_D",
+    "tid": "t0005",
+    "issues": []
+  },
+  {
+    "worker": "worker_E",
+    "tid": "t0005",
+    "issues": []
+  },
+  {
+    "worker": "worker_F",
+    "tid": "t0005",
+    "issues": []
+  }
+]
