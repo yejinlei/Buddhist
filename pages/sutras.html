@@ -31,9 +31,9 @@
 }
         .sutra-item {
   transition: all .15s ease;
-  padding: 2px 4px !important;
+  padding: 1px 3px !important;
   border-bottom: 1px dotted #EDE0C8;
-  line-height: 1.5;
+  line-height: 1.35;
 }
         .sutra-item:hover {
   background: #FBF4E3 !important;
@@ -239,44 +239,44 @@
 
     <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
         <!-- 左侧经目 -->
-        <div class="w-[230px] flex-shrink-0">
-            <div class="rounded-xl p-3 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col" style="min-width:230px;max-width:230px;background:linear-gradient(180deg,#FFFCF5 0%,#FBF4E3 100%);border:1px solid #E8D8BA;box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 2px 8px rgba(92,51,23,.06);">
-                <div class="flex items-center justify-between mb-1">
-                    <h2 class="flex items-center gap-1.5 mb-1" style="font-family:'Ma Shan Zheng','Noto Serif SC',serif;font-size:20px;font-weight:400;color:#5C3317;letter-spacing:4px;"><span style="font-size:17px;">📖</span>大正藏經目</h2>
-                    <span id="loading-status" class="text-[10px] px-2 py-[2px] rounded" style="background:#E8D8BA;color:#8B5A2B;font-family:'Noto Sans SC',sans-serif;letter-spacing:1px;">加載中</span>
+        <div class="w-[210px] flex-shrink-0">
+            <div class="rounded-lg p-2 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col" style="min-width:210px;max-width:210px;background:linear-gradient(180deg,#FFFCF5 0%,#FBF4E3 100%);border:1px solid #E8D8BA;box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 2px 8px rgba(92,51,23,.06);">
+                <div class="flex items-center justify-between mb-0.5">
+                    <h2 class="flex items-center gap-1 mb-0" style="font-family:'Ma Shan Zheng','Noto Serif SC',serif;font-size:14px;font-weight:400;color:#5C3317;letter-spacing:2px;line-height:1.2;"><span style="font-size:12px;">📖</span>大正藏經目</h2>
+                    <span id="loading-status" class="text-[8px] px-1.5 py-px rounded" style="background:#E8D8BA;color:#8B5A2B;font-family:'Noto Sans SC',sans-serif;letter-spacing:.5px;line-height:1.3;">加載中</span>
                 </div>
-                <input id="search-input" type="text" placeholder="搜經名·譯者·經號…" class="w-full rounded-md px-2 py-[5px] mb-1 focus:outline-none focus:ring-2 focus:ring-[#B8894A]/40 text-[11px]" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3;background:#FFFCF5;color:#3A2418;letter-spacing:.5px;">
-                <div class="flex flex-col gap-1.5 mb-2">
+                <input id="search-input" type="text" placeholder="搜經名·譯者·經號…" class="w-full rounded px-2 py-[2px] mb-0.5 focus:outline-none focus:ring-1 focus:ring-[#B8894A]/40 text-[10px]" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3;background:#FFFCF5;color:#3A2418;letter-spacing:.3px;line-height:1.4;">
+                <div class="flex flex-col gap-0.5 mb-1">
                     <div>
-                        <label class="block mb-0.5" style="font-size:10.5px;color:#8B7355;font-family:'Noto Serif SC',serif;letter-spacing:4px;padding-left:2px;">按册</label>
-                        <select id="vol-filter" class="w-full rounded px-2 py-1 text-[11.5px] focus:outline-none transition" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3!important;background:#FFFCF5!important;color:#3A2418!important;letter-spacing:.5px;">
+                        <label class="block mb-0" style="font-size:9px;color:#8B7355;font-family:'Noto Serif SC',serif;letter-spacing:2px;padding-left:1px;line-height:1.2;">按册</label>
+                        <select id="vol-filter" class="w-full rounded px-1.5 py-0 text-[10px] focus:outline-none transition" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3!important;background:#FFFCF5!important;color:#3A2418!important;letter-spacing:.3px;line-height:1.4;">
                             <option value="">全部册</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block mb-0.5" style="font-size:10.5px;color:#8B7355;font-family:'Noto Serif SC',serif;letter-spacing:4px;padding-left:2px;">按部类</label>
-                        <select id="cat-filter" class="w-full rounded px-2 py-1 text-[11.5px] focus:outline-none transition" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3!important;background:#FFFCF5!important;color:#3A2418!important;letter-spacing:.5px;">
+                        <label class="block mb-0" style="font-size:9px;color:#8B7355;font-family:'Noto Serif SC',serif;letter-spacing:2px;padding-left:1px;line-height:1.2;">按部类</label>
+                        <select id="cat-filter" class="w-full rounded px-1.5 py-0 text-[10px] focus:outline-none transition" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3!important;background:#FFFCF5!important;color:#3A2418!important;letter-spacing:.3px;line-height:1.4;">
                             <option value="">全部部类</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block mb-0.5" style="font-size:10.5px;color:#8B7355;font-family:'Noto Serif SC',serif;letter-spacing:4px;padding-left:2px;">按朝代</label>
-                        <select id="dyn-filter" class="w-full rounded px-2 py-1 text-[11.5px] focus:outline-none transition" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3!important;background:#FFFCF5!important;color:#3A2418!important;letter-spacing:.5px;">
+                        <label class="block mb-0" style="font-size:9px;color:#8B7355;font-family:'Noto Serif SC',serif;letter-spacing:2px;padding-left:1px;line-height:1.2;">按朝代</label>
+                        <select id="dyn-filter" class="w-full rounded px-1.5 py-0 text-[10px] focus:outline-none transition" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3!important;background:#FFFCF5!important;color:#3A2418!important;letter-spacing:.3px;line-height:1.4;">
                             <option value="">全部朝代</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block mb-0.5" style="font-size:10.5px;color:#8B7355;font-family:'Noto Serif SC',serif;letter-spacing:4px;padding-left:2px;">按译者</label>
-                        <select id="tr-filter" class="w-full rounded px-2 py-1 text-[11.5px] focus:outline-none transition" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3!important;background:#FFFCF5!important;color:#3A2418!important;letter-spacing:.5px;">
+                        <label class="block mb-0" style="font-size:9px;color:#8B7355;font-family:'Noto Serif SC',serif;letter-spacing:2px;padding-left:1px;line-height:1.2;">按译者</label>
+                        <select id="tr-filter" class="w-full rounded px-1.5 py-0 text-[10px] focus:outline-none transition" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3!important;background:#FFFCF5!important;color:#3A2418!important;letter-spacing:.3px;line-height:1.4;">
                             <option value="">全部译者</option>
                         </select>
                     </div>
                 </div>
-                <button id="filter-reset" class="w-full text-[11px] mb-1 py-[3px] rounded-full transition hover:opacity-80" style="font-family:'Noto Serif SC',serif;color:#8B5A2B;background:#F3E6CC;border:1px dashed #C9A876;letter-spacing:3px;">重置篩選</button>
+                <button id="filter-reset" class="w-full text-[9px] mb-0.5 py-[1px] rounded-full transition hover:opacity-80" style="font-family:'Noto Serif SC',serif;color:#8B5A2B;background:#F3E6CC;border:1px dashed #C9A876;letter-spacing:2px;line-height:1.4;">重置篩選</button>
                 <div id="sutra-list" class="flex-1 overflow-y-auto">
-                    <div class="text-center text-ink/50 py-6 text-[12px]">正在加载经目...</div>
+                    <div class="text-center text-ink/50 py-4 text-[10px]" style="font-family:'Noto Serif SC',serif;color:#8B7355;">正在加载经目...</div>
                 </div>
-                <div id="list-stats" style="font-family:'Noto Serif SC',serif;color:#8B7355;border-top:1px dashed #E3D3B2;padding-top:4px;margin-top:4px;font-size:10px;letter-spacing:2px;" class="text-[11px] text-ink/50 mt-2 pt-2 border-t border-paper"></div>
+                <div id="list-stats" style="font-family:'Noto Serif SC',serif;color:#8B7355;border-top:1px dashed #E3D3B2;padding-top:2px;margin-top:2px;font-size:9px;letter-spacing:1px;line-height:1.2;" class="text-ink/50"></div>
             </div>
         </div>
 
