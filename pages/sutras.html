@@ -272,7 +272,6 @@
                         </select>
                     </div>
                 </div>
-                <button id="filter-reset" class="w-full text-[9px] mb-0.5 py-[1px] rounded-full transition hover:opacity-80" style="font-family:'Noto Serif SC',serif;color:#8B5A2B;background:#F3E6CC;border:1px dashed #C9A876;letter-spacing:2px;line-height:1.4;">重置篩選</button>
                 <div id="sutra-list" class="flex-1 overflow-y-auto">
                     <div class="text-center text-ink/50 py-4 text-[10px]" style="font-family:'Noto Serif SC',serif;color:#8B7355;">正在加载经目...</div>
                 </div>
@@ -1023,15 +1022,6 @@ function initFilters() {
         searchTimer = setTimeout(applyFilters, 200);
     });
 
-    // 重置按钮
-    document.getElementById('filter-reset').addEventListener('click', () => {
-        document.getElementById('search-input').value = '';
-        document.getElementById('vol-filter').value = '';
-        document.getElementById('cat-filter').value = '';
-        document.getElementById('dyn-filter').value = '';
-        document.getElementById('tr-filter').value = '';
-        applyFilters();
-    });
 }
 
 // 3. 渲染经目列表（分批渲染，避免卡顿）
