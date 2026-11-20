@@ -14,14 +14,65 @@
     <link rel="stylesheet" href="../css/mobile.css">
     <link rel="stylesheet" href="../css/tailwind-fixes.css">
     <style>
-        body { font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", -apple-system, serif; background-color: #F5F0E1; color: #2C1810; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-        #sutra-list { font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif; }
-        .sutra-item { transition: all .15s ease; padding: 6px 8px; }
-        .sutra-item:hover { background: rgba(139,69,19,.08) !important; transform: translateX(2px); }
-        .sutra-item .sn-title { font-size: 12px; color: #3E2723; letter-spacing: .2px; font-weight: 500; font-family: 'Noto Serif SC','Source Han Serif SC','SimSun','Songti SC',serif; }
-        .sutra-item .sn-meta { font-size: 10px; color: #8B7355; font-family: "PingFang SC","Microsoft YaHei",sans-serif; letter-spacing: 0; opacity: .8; }
-        .sutra-item .sn-yi { color: #C0392B; font-size: 9px; font-weight: 700; margin-left: 3px; padding: 0 3px; border-radius: 2px; background: rgba(192,57,43,.08); font-family: "PingFang SC","Microsoft YaHei",sans-serif; vertical-align: 1px; }
-        select, input, button { font-family: "PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif; }
+        body {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  background-color: #F5F0E1;
+  color: #2C1810;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern","palt";
+  font-kerning: normal;
+}
+        #sutra-list {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  font-weight: 400;
+  margin-top: 6px;
+}
+        .sutra-item {
+  transition: all .2s ease;
+  padding: 7px 6px;
+  border-bottom: 1px dotted #E8D8BA;
+}
+        .sutra-item:hover {
+  background: #FBF4E3 !important;
+  transform: translateX(2px);
+}
+        .sutra-item .sn-title {
+  font-size: 12.5px;
+  color: #3A2418;
+  letter-spacing: .6px;
+  font-weight: 400;
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  text-shadow: 0 0 0.3px rgba(58,36,24,.25);
+  transition: color .2s ease;
+}
+.sutra-item:hover .sn-title { color: #8B2E1C; }
+        .sutra-item .sn-meta {
+  font-size: 10px;
+  color: #8B7355;
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  letter-spacing: .4px;
+  font-weight: 300;
+  opacity: .8;
+}
+        .sutra-item .sn-yi {
+  color: #B23A2A;
+  font-size: 9px;
+  font-weight: 500;
+  margin-left: 4px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, rgba(178,58,42,.1), rgba(178,58,42,.05));
+  font-family: "Noto Sans SC", "PingFang SC", sans-serif;
+  vertical-align: 2px;
+  letter-spacing: 1px;
+  border: 1px solid rgba(178,58,42,.15);
+}
+        select, input, button {
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-weight: 400;
+}
         .nav-active { background-color: rgba(184,134,11,0.2); }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-thumb { background: #d4c8b0; border-radius: 3px; }
@@ -134,7 +185,14 @@
             margin:2px 0 8px 0;
         }
         .read-toolbar button#btn-pron.on { background:#B8860B; color:#fff; border-color:#B8860B; }
-    </style>
+    /* 细滚动条 */
+#sutra-list::-webkit-scrollbar, .content::-webkit-scrollbar { width:6px; }
+#sutra-list::-webkit-scrollbar-thumb, .content::-webkit-scrollbar-thumb { background:#D9C5A3; border-radius:3px; }
+#sutra-list::-webkit-scrollbar-track, .content::-webkit-scrollbar-track { background:transparent; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 </head>
 <body class="min-h-screen">
     <!-- 导航栏 -->
@@ -181,43 +239,43 @@
     <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
         <!-- 左侧经目 -->
         <div class="w-[230px] flex-shrink-0">
-            <div class="bg-white rounded-xl shadow-md p-3 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
+            <div class="rounded-xl p-3 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col" style="min-width:230px;max-width:230px;background:linear-gradient(180deg,#FFFCF5 0%,#FBF4E3 100%);border:1px solid #E8D8BA;box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 2px 8px rgba(92,51,23,.06);">
                 <div class="flex items-center justify-between mb-3">
-                    <h2 class="text-[16px] font-bold text-ink flex items-center gap-1.5" style="font-family:'Noto Serif SC',serif;letter-spacing:1.5px;"><span class="text-primary">📖</span>大正藏经目</h2>
-                    <span id="loading-status" class="text-[10px] bg-primary/10 text-primary px-1.5 py-0.5 rounded">加载中</span>
+                    <h2 class="flex items-center gap-1.5 mb-1" style="font-family:'Ma Shan Zheng','Noto Serif SC',serif;font-size:20px;font-weight:400;color:#5C3317;letter-spacing:4px;"><span style="font-size:17px;">📖</span>大正藏經目</h2>
+                    <span id="loading-status" class="text-[10px] px-2 py-[2px] rounded" style="background:#E8D8BA;color:#8B5A2B;font-family:'Noto Sans SC',sans-serif;letter-spacing:1px;">加載中</span>
                 </div>
-                <input id="search-input" type="text" placeholder="搜索经名/译者/经号..." class="w-full border border-primary/20 rounded-md px-2 py-1.5 mb-2 focus:outline-none focus:ring-2 focus:ring-primary/30 text-[12px]" style="font-family:'PingFang SC','Microsoft YaHei',sans-serif;">
+                <input id="search-input" type="text" placeholder="搜索經名·譯者·經號…" class="w-full rounded-md px-2.5 py-[7px] mb-1 focus:outline-none focus:ring-2 focus:ring-[#B8894A]/40 text-[12px]" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3;background:#FFFCF5;color:#3A2418;letter-spacing:.5px;">
                 <div class="flex flex-col gap-1.5 mb-2">
                     <div>
-                        <label class="text-[10px] text-ink/60 block mb-0.5 tracking-wider">按册</label>
-                        <select id="vol-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-[11px] bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <label class="block mb-0.5" style="font-size:10.5px;color:#8B7355;font-family:'Noto Serif SC',serif;letter-spacing:4px;padding-left:2px;">按册</label>
+                        <select id="vol-filter" class="w-full rounded px-2 py-1 text-[11.5px] focus:outline-none transition" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3!important;background:#FFFCF5!important;color:#3A2418!important;letter-spacing:.5px;">
                             <option value="">全部册</option>
                         </select>
                     </div>
                     <div>
-                        <label class="text-[10px] text-ink/60 block mb-0.5 tracking-wider">按部类</label>
-                        <select id="cat-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-[11px] bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <label class="block mb-0.5" style="font-size:10.5px;color:#8B7355;font-family:'Noto Serif SC',serif;letter-spacing:4px;padding-left:2px;">按部类</label>
+                        <select id="cat-filter" class="w-full rounded px-2 py-1 text-[11.5px] focus:outline-none transition" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3!important;background:#FFFCF5!important;color:#3A2418!important;letter-spacing:.5px;">
                             <option value="">全部部类</option>
                         </select>
                     </div>
                     <div>
-                        <label class="text-[10px] text-ink/60 block mb-0.5 tracking-wider">按朝代</label>
-                        <select id="dyn-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-[11px] bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <label class="block mb-0.5" style="font-size:10.5px;color:#8B7355;font-family:'Noto Serif SC',serif;letter-spacing:4px;padding-left:2px;">按朝代</label>
+                        <select id="dyn-filter" class="w-full rounded px-2 py-1 text-[11.5px] focus:outline-none transition" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3!important;background:#FFFCF5!important;color:#3A2418!important;letter-spacing:.5px;">
                             <option value="">全部朝代</option>
                         </select>
                     </div>
                     <div>
-                        <label class="text-[10px] text-ink/60 block mb-0.5 tracking-wider">按译者</label>
-                        <select id="tr-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-[11px] bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <label class="block mb-0.5" style="font-size:10.5px;color:#8B7355;font-family:'Noto Serif SC',serif;letter-spacing:4px;padding-left:2px;">按译者</label>
+                        <select id="tr-filter" class="w-full rounded px-2 py-1 text-[11.5px] focus:outline-none transition" style="font-family:'Noto Serif SC',serif;border:1px solid #D9C5A3!important;background:#FFFCF5!important;color:#3A2418!important;letter-spacing:.5px;">
                             <option value="">全部译者</option>
                         </select>
                     </div>
                 </div>
-                <button id="filter-reset" class="w-full text-[11px] text-primary/80 hover:text-primary mb-2 py-1">重置筛选</button>
+                <button id="filter-reset" class="w-full text-[11px] mb-2 py-[5px] rounded-full transition hover:opacity-80" style="font-family:'Noto Serif SC',serif;color:#8B5A2B;background:#F3E6CC;border:1px dashed #C9A876;letter-spacing:3px;">重置篩選</button>
                 <div id="sutra-list" class="flex-1 overflow-y-auto">
                     <div class="text-center text-ink/50 py-6 text-[12px]">正在加载经目...</div>
                 </div>
-                <div id="list-stats" class="text-[11px] text-ink/50 mt-2 pt-2 border-t border-paper"></div>
+                <div id="list-stats" style="font-family:'Noto Serif SC',serif;color:#8B7355;border-top:1px dashed #E3D3B2;padding-top:8px;margin-top:8px;font-size:11px;letter-spacing:2px;" class="text-[11px] text-ink/50 mt-2 pt-2 border-t border-paper"></div>
             </div>
         </div>
 
@@ -856,7 +914,7 @@ async function loadLightIndex() {
     allSutras = Array.isArray(data) ? data : (data.items || []);
     console.log(`轻量索引加载完成：${allSutras.length}部经`);
     document.getElementById('loading-status').textContent = '已就绪';
-    document.getElementById('loading-status').className = 'text-xs bg-green-100 text-green-700 px-2 py-1 rounded';
+    document.getElementById('loading-status').textContent='已就緒'; document.getElementById('loading-status').style.background='#EAF2DB'; document.getElementById('loading-status').style.color='#6B8E23';
     initFilters();
     renderSutraList(allSutras);
     document.getElementById('list-stats').textContent = `共 ${allSutras.length} 部经`;
