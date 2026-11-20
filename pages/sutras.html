@@ -235,7 +235,7 @@ async function loadSutra(id, e){
       ${data.translator?`<span><i class="fa fa-user-o mr-1"></i>${data.translator}</span>`:''}
       ${data.juan_count||data.juan?`<span><i class="fa fa-bookmark-o mr-1"></i>${data.juan_count||data.juan}卷</span>`:''}
       ${data.chars?`<span><i class="fa fa-file-text-o mr-1"></i>${(data.chars/10000).toFixed(1)}万字</span>`:''}
-      ${baihua?`<span class="text-red-600"><i class="fa fa-language mr-1"></i>含白话译文 ${baihua.total_segments} 段</span>`:''}
+      ${baihua?`<span class="text-red-600"><i class="fa fa-language mr-1"></i>含白话译文 ${baihua.translations?baihua.translations.length:(baihua.total_segments||0)} 段</span>`:''}
     </div>`;
   localStorage.setItem('lastSutra', id);
   renderContent(id, data, baihua);
@@ -246,91 +246,169 @@ function renderContent(id, data, baihua){
   c.style.fontSize = '17px';
   let html = '';
   const segs = baihua && baihua.translations ? baihua.translations : [];
-  const baihuaMap = {};
+  // 构建白话段列表：{ key, subtitle, explanation, text, raw_preview }
+  const bhList = [];
   segs.forEach(s=>{
-    const key = (s.original_preview||'').replace(/\s/g,'').slice(0,12);
-    if(key){
-      // 解析modern字段里的三段式
-      const m = s.modern || '';
-      const xb = m.match(/【小标题】([\s\S]*?)(?=【义解】|$)/);
-      const yj = m.match(/【义解】([\s\S]*?)(?=【正文】|$)/);
-      const zw = m.match(/【正文】([\s\S]*)$/);
-      baihuaMap[key] = {
-        subtitle: xb ? xb[1].trim() : '',
-        explanation: yj ? yj[1].trim() : '',
-        text: zw ? zw[1].trim() : m.replace(/【小标题】[\s\S]*?【义解】[\s\S]*?【正文】/,'').trim()
-      };
+    const raw = (s.original_preview||'').replace(/\u3000/g,' ');
+    const key = raw.replace(/\s/g,'');
+    if(!key) return;
+    const m = s.modern || '';
+    const xb = m.match(/【[^】]*小标题[^】]*】([\s\S]*?)(?=【[^】]*义解[^】]*】|$)/);
+    const yj = m.match(/【[^】]*义解[^】]*】([\s\S]*?)(?=【[^】]*正文[^】]*】|$)/);
+    const zw = m.match(/【[^】]*正文[^】]*】([\s\S]*)$/);
+    let subtitle = xb ? xb[1].trim() : '';
+    let explanation = yj ? yj[1].trim() : '';
+    let text = zw ? zw[1].trim() : m.replace(/【[^】]*】[^【]*(?=【|$)/g,'').trim();
+    // 兼容：若没有【正文】标记，则modern中除小标题/义解外全部当正文
+    if(!zw){
+      let rest = m;
+      rest = rest.replace(/【[^】]*小标题[^】]*】[\s\S]*?(?=【|$)/,'');
+      rest = rest.replace(/【[^】]*义解[^】]*】[\s\S]*?(?=【|$)/,'');
+      rest = rest.replace(/【[^】]*译者题记[^】]*】[\s\S]*?(?=【|$)/,'');
+      rest = rest.replace(/【[^】]*题记[^】]*】[\s\S]*?(?=【|$)/,'');
+      rest = rest.replace(/【[^】]*】/g,'');
+      if(rest.trim()) text = rest.trim();
     }
+    bhList.push({ key, subtitle, explanation, text, raw });
   });
-  let buf = [];
-  const flush = (juanTitle)=>{
-    if(juanTitle) html += `<div class="juan-title">${juanTitle}</div>`;
-    const text = buf.join('');
-    if(text.trim()){
-      html += renderDual(text, baihuaMap);
+
+  // 渲染一段卷文：按原文位置切分，把白话插入到对应位置
+  function renderChapter(text){
+    if(!text) return '';
+    // 把空白（含全角空格）规范化，便于 key 匹配，但保留原文展示
+    const norm = text.replace(/\s+/g,'');
+    // 对每个白话段，在norm里查找key的位置
+    const positions = [];
+    bhList.forEach(bh=>{
+      // 取key前15字作为匹配探针（兼顾长度与准确性），失败再退化到前8字
+      let probe = bh.key.slice(0,15);
+      let idx = norm.indexOf(probe);
+      if(idx < 0){ probe = bh.key.slice(0,8); idx = norm.indexOf(probe); }
+      if(idx < 0){ probe = bh.key.slice(0,20); idx = norm.indexOf(probe); }
+      if(idx >= 0) positions.push({ pos: idx, bh });
+    });
+    // 按pos排序去重
+    positions.sort((a,b)=>a.pos-b.pos);
+    const seen = new Set();
+    const uniq = [];
+    positions.forEach(p=>{
+      if(seen.has(p.pos)) return;
+      seen.add(p.pos);
+      uniq.push(p);
+    });
+    // 根据位置把原文切成段（原文保留空白，norm切分时映射回原文位置）
+    // 简单方案：在原文text上，以 bh.raw（去空白）为探针逐段查找并切分
+    let out = '';
+    let src = text;
+    let srcNorm = src.replace(/\s+/g,'');
+    let consumed = 0; // 已消费的norm字符数
+    let matchedIdx = new Set();
+    // 先按 bhList 顺序扫描，用贪婪匹配找原文起点
+    for(let i=0;i<bhList.length;i++){
+      const bh = bhList[i];
+      let probeLen = Math.min(15, bh.key.length);
+      let probe = bh.key.slice(0, probeLen);
+      // 在srcNorm里，从consumed之后找probe
+      let p = srcNorm.indexOf(probe, consumed);
+      if(p < 0){
+        probe = bh.key.slice(0, 8);
+        p = srcNorm.indexOf(probe, consumed);
+      }
+      if(p < 0){
+        probe = bh.key.slice(0, Math.min(25, bh.key.length));
+        p = srcNorm.indexOf(probe, consumed);
+      }
+      if(p < 0) continue;
+      // 本白话段原文起点=p，结束点：看下一个白话段的起点，若没有则取整个 key 长 + 一段上下文
+      let end;
+      if(i+1 < bhList.length){
+        const nextBh = bhList[i+1];
+        let np = srcNorm.indexOf(nextBh.key.slice(0,15), p+1);
+        if(np < 0) np = srcNorm.indexOf(nextBh.key.slice(0,8), p+1);
+        end = np >= 0 ? np : Math.min(p + 3000, srcNorm.length);
+      } else {
+        end = srcNorm.length;
+      }
+      // 把 [consumed, p) 当作未匹配原文
+      if(p > consumed){
+        const origRaw = extractRaw(src, consumed, p);
+        if(origRaw.trim()){
+          out += `<div class="sutra-block"><p class="pin">${origRaw}</p></div>`;
+        }
+      }
+      // [p, end) 是本白话段对应的原文
+      const origSeg = extractRaw(src, p, end);
+      out += renderSeg(origSeg, bh);
+      consumed = end;
     }
-    buf = [];
-  };
+    // 剩余原文
+    if(consumed < srcNorm.length){
+      const rest = extractRaw(src, consumed, srcNorm.length);
+      if(rest.trim()){
+        out += `<div class="sutra-block"><p class="pin">${rest}</p></div>`;
+      }
+    }
+    return out;
+  }
+
+  // 从src中提取norm区间[a,b)对应的原始文本（跳过空白）
+  function extractRaw(src, a, b){
+    // 逐字符遍历，维护 norm 计数
+    let n = 0, start = -1, end = -1;
+    for(let i=0;i<src.length;i++){
+      const ch = src[i];
+      const isSpace = /\s/.test(ch) || ch === '\u3000';
+      if(!isSpace){
+        if(n === a && start < 0) start = i;
+        n++;
+        if(n === b){ end = i+1; break; }
+      }
+    }
+    if(start < 0) return '';
+    if(end < 0) end = src.length;
+    return src.slice(start, end);
+  }
+
+  function renderSeg(orig, bh){
+    let s = `<div class="seg-block">`;
+    if(CURRENT_VIEW !== 'baihua'){
+      s += `<div class="sutra-block"><p class="pin">${orig}</p></div>`;
+    }
+    if(CURRENT_VIEW !== 'original'){
+      s += `<div class="baihua-block">`;
+      if(bh.subtitle) s += `<div class="xb">${bh.subtitle}</div>`;
+      if(bh.explanation) s += `<div class="yj">${bh.explanation}</div>`;
+      if(bh.text) s += `<div class="zw">${bh.text}</div>`;
+      s += `</div>`;
+    }
+    s += `</div>`;
+    return s;
+  }
+
   const content = data.content || [];
   content.forEach(p=>{
     if(typeof p === 'string'){
-      if(/^卷[第一二三四五六七八九十百千0-9]+$/.test(p.trim()) || /^[A-Za-z\s·]+$/.test(p.trim())){
-        flush(null);
+      if(/^卷[第零一二三四五六七八九十百千0-9]+$/.test(p.trim())){
         html += `<div class="juan-title">${p}</div>`;
       } else {
-        buf.push(p);
+        html += renderChapter(p);
       }
     } else if(p && typeof p === 'object'){
-      if(p.title || p.juan){
-        flush(null);
-        html += `<div class="juan-title">${p.title||p.juan}</div>`;
-      } else if(p.text){
-        buf.push(p.text);
-      }
+      if(p.chapter){ html += `<div class="juan-title">${p.chapter}</div>`; }
+      else if(p.title){ html += `<div class="juan-title">${p.title}</div>`; }
+      else if(p.juan){ html += `<div class="juan-title">${p.juan}</div>`; }
+      if(p.text) html += renderChapter(p.text);
     }
   });
-  flush(null);
   c.innerHTML = html;
-  // 绑定原文折叠
-  c.querySelectorAll('.original-toggle').forEach(el=>{
-    el.addEventListener('click', ()=>{
-      const t = el.nextElementSibling;
-      t.classList.toggle('show');
-      el.textContent = t.classList.contains('show') ? '▲ 收起原文' : '▼ 查看原文';
-    });
-  });
-  setView(CURRENT_VIEW);
-}
-
-function renderDual(origText, baihuaMap){
-  // 将原文分段（按。！？换行），逐段匹配白话
-  const paras = origText.split(/(?<=[。！？])\s*/).filter(x=>x.trim());
-  let pending = '', out = '';
-  paras.forEach(p=>{
-    pending += p;
-    const key = pending.replace(/\s/g,'').slice(0,12);
-    if(baihuaMap[key]){
-      const bh = baihuaMap[key];
-      out += `<div class="seg-block">`;
-      if(CURRENT_VIEW !== 'baihua'){
-        out += `<div class="sutra-block"><p class="pin">${pending}</p></div>`;
-      }
-      if(CURRENT_VIEW !== 'original'){
-        out += `<div class="baihua-block">`;
-        if(bh.subtitle) out += `<div class="xb">${bh.subtitle}</div>`;
-        if(bh.explanation) out += `<div class="yj">${bh.explanation}</div>`;
-        if(bh.text) out += `<div class="zw">${bh.text}</div>`;
-        if(CURRENT_VIEW !== 'baihua') out += `<div class="original-toggle">▼ 查看原文（《大正藏》原典）</div><div class="original-text">${pending}</div>`;
-        out += `</div>`;
-      }
-      out += `</div>`;
-      pending = '';
-    }
-  });
-  if(pending.trim()){
-    out += `<div class="sutra-block"><p class="pin">${pending}</p></div>`;
+  // 标题里的"undefined 段"也一起修：刷新header里的段数
+  const segCountEl = document.querySelector('#sutraHeader .text-red-600');
+  if(segCountEl && baihua){
+    segCountEl.innerHTML = `<i class="fa fa-language mr-1"></i>含白话译文 ${segs.length} 段`;
+    // 有白话时默认切到"对照"模式
+    if(CURRENT_VIEW === 'original') CURRENT_VIEW = 'dual';
   }
-  return out;
+  setView(CURRENT_VIEW);
 }
 
 function setView(v){
