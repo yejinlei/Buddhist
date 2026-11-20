@@ -972,7 +972,7 @@ async function loadSutra(meta) {
     // 没有缓存就从服务器拉
     if(!sutraData) {
         try {
-            const res = await fetch(`../sutras/${meta.file}?v=2`);
+            const res = await fetch(`../sutras/${meta.id}.json?v=2`);
             sutraData = await res.json();
             // 写入缓存
             try {
