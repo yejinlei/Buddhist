@@ -79,22 +79,23 @@
         .kepan-desc { color:#8a6d42; font-size:13px; margin:2px 0; line-height:1.6; }
         .kepan-content { color:#5c4033; font-size:13px; line-height:1.7; padding:4px 0; }
         .kepan-children { margin-left:6px; }
-        /* 注音 ruby —— 拼音显示在汉字顶部 */
-        ruby.pr-ruby { ruby-position: over; -webkit-ruby-position: over; display: inline-ruby; }
+        /* 注音 ruby —— 拼音显示在汉字顶部（经典样式） */
+        ruby.pr-ruby { ruby-position: over; -webkit-ruby-position: over; display: inline-ruby; font-size: inherit; line-height: 2.0; }
         ruby.pr-ruby rt {
-            display: block;
+            display: ruby-text;
+            display: -webkit-ruby-text;
             ruby-align: center;
-            font-size: 10px;
+            font-size: 0.55em;
             color: #A0522D;
             font-weight: 400;
-            line-height: 1;
-            opacity: .85;
-            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.1;
+            opacity: .88;
+            font-family: "PingFang SC", "Microsoft YaHei", "BiauKai", "Noto Sans CJK SC", sans-serif;
             letter-spacing: 0;
             text-align: center;
         }
-        /* 默认显示注音（用户记忆：拼音在字顶部常驻） */
-        body ruby.pr-ruby rt { display: block; }
+        /* 默认显示注音（拼音常驻字顶） */
+        body ruby.pr-ruby rt { display: ruby-text; display: -webkit-ruby-text; }
         body.mode-no-pron ruby.pr-ruby rt { display: none; }
 
         /* 白话译文样式：绿色系 */
