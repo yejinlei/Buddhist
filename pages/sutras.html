@@ -173,23 +173,40 @@
 
     <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
         <!-- 左侧经目 -->
-        <div class="w-72 flex-shrink-0">
+        <div class="w-[300px] flex-shrink-0">
             <div class="bg-white rounded-xl shadow-md p-4 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
                 <div class="flex items-center justify-between mb-4">
                     <h2 class="text-lg font-bold text-ink flex items-center gap-2"><span class="text-primary">📖</span>大正藏经目</h2>
                     <span id="loading-status" class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">加载中</span>
                 </div>
-                <input id="search-input" type="text" placeholder="搜索经名/译者/经号..." class="w-full border border-primary/20 rounded-lg px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-primary/30">
-                <div class="mb-3">
-                    <div class="text-sm text-ink/70 mb-1">按部类筛选：</div>
-                    <div id="category-filters" class="flex flex-wrap gap-1"></div>
+                <input id="search-input" type="text" placeholder="搜索经名/译者/经号..." class="w-full border border-primary/20 rounded-lg px-3 py-2 mb-3 focus:outline-none focus:ring-2 focus:ring-primary/30">
+                <div class="grid grid-cols-2 gap-2 mb-2">
+                    <div>
+                        <label class="text-xs text-ink/70 block mb-1">按册</label>
+                        <select id="vol-filter" class="w-full border border-primary/20 rounded px-2 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                            <option value="">全部册</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs text-ink/70 block mb-1">按部类</label>
+                        <select id="cat-filter" class="w-full border border-primary/20 rounded px-2 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                            <option value="">全部部类</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs text-ink/70 block mb-1">按朝代</label>
+                        <select id="dyn-filter" class="w-full border border-primary/20 rounded px-2 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                            <option value="">全部朝代</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs text-ink/70 block mb-1">按译者</label>
+                        <select id="tr-filter" class="w-full border border-primary/20 rounded px-2 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                            <option value="">全部译者</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <div class="text-sm text-ink/70 mb-1">按册筛选：</div>
-                    <select id="vol-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-sm">
-                        <option value="">全部册</option>
-                    </select>
-                </div>
+                <button id="filter-reset" class="w-full text-xs text-primary/80 hover:text-primary mb-2 py-1">重置筛选</button>
                 <div id="sutra-list" class="flex-1 overflow-y-auto text-sm">
                     <div class="text-center text-ink/50 py-8">正在加载经目...</div>
                 </div>
@@ -845,45 +862,109 @@ async function loadLightIndex() {
 }
 
 // 2. 初始化筛选器
+function parseTranslator(raw) {
+    // 从 "朝代 译者譯/造/集" 等格式中拆出朝代与首译者
+    const t = (raw || '').trim();
+    if (!t || t === '失譯' || t === '失译') return { dynasty: '失译', translator: '失译' };
+    const m = t.match(/^(\S+)\s+(.+)$/);
+    let dyn = '其他', tr = t;
+    if (m) { dyn = m[1]; tr = m[2]; }
+    // 去掉尾缀
+    tr = tr.replace(/(譯|译|造|集|撰|說|说|作|糅|製|制|頌|本)$/g, '').trim();
+    // 多人译者取首位
+    const first = tr.split(/共|及|等/)[0].trim();
+    return { dynasty: dyn, translator: first || '其他' };
+}
 function initFilters() {
-    // 部类筛选
-    const cats = [...new Set(allSutras.map(s => s.category).filter(Boolean))].sort();
-    const catContainer = document.getElementById('category-filters');
-    catContainer.innerHTML = `<button class="cat-btn px-2 py-1 rounded bg-primary text-white text-xs" data-cat="">全部</button>`;
-    cats.forEach(cat => {
-        const btn = document.createElement('button');
-        btn.className = 'cat-btn px-2 py-1 rounded bg-gray-100 hover:bg-primary/10 text-xs';
-        btn.dataset.cat = cat;
-        btn.textContent = cat.length > 6 ? cat.substring(0,5)+'…' : cat;
-        btn.title = cat;
-        catContainer.appendChild(btn);
-    });
-    catContainer.addEventListener('click', e => {
-        if(e.target.classList.contains('cat-btn')) {
-            document.querySelectorAll('.cat-btn').forEach(b => {
-                b.className = 'cat-btn px-2 py-1 rounded bg-gray-100 hover:bg-primary/10 text-xs';
-            });
-            e.target.className = 'cat-btn px-2 py-1 rounded bg-primary text-white text-xs';
-            applyFilters();
-        }
+    // 预计算每部经的朝代/译者
+    allSutras.forEach(s => {
+        const p = parseTranslator(s.translator);
+        s._dyn = p.dynasty;
+        s._tr = p.translator;
     });
 
-    // 册号筛选
-    const vols = [...new Set(allSutras.map(s => s.vol).filter(Boolean))].sort();
+    // 部类下拉（去掉敦煌重复标签，主部类优先）
+    const cats = [...new Set(allSutras.map(s => s.category).filter(Boolean))];
+    // 排序：先单部类（按经数倒序），再多部类
+    const catCount = {};
+    cats.forEach(c => { catCount[c] = allSutras.filter(s => s.category === c).length; });
+    cats.sort((a,b) => {
+        const am = (a.match(/,/g)||[]).length, bm = (b.match(/,/g)||[]).length;
+        if (am !== bm) return am - bm;
+        return catCount[b] - catCount[a];
+    });
+    const catSel = document.getElementById('cat-filter');
+    cats.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = `${c}（${catCount[c]}）`;
+        catSel.appendChild(opt);
+    });
+    catSel.addEventListener('change', applyFilters);
+
+    // 册号下拉
+    const vols = [...new Set(allSutras.map(s => s.vol).filter(Boolean))].sort((a,b)=>{
+        const na = parseInt(a.replace(/\D/g,''),10), nb = parseInt(b.replace(/\D/g,''),10);
+        return na-nb;
+    });
     const volSelect = document.getElementById('vol-filter');
     vols.forEach(v => {
         const opt = document.createElement('option');
         opt.value = v;
-        opt.textContent = v + '册';
+        const n = allSutras.filter(s => s.vol === v).length;
+        opt.textContent = `${v}（${n}部）`;
         volSelect.appendChild(opt);
     });
     volSelect.addEventListener('change', applyFilters);
+
+    // 朝代下拉（按年代顺序）
+    const DYN_ORDER = ['後漢','後汉','曹魏','吳','吴','西晉','西晋','東晉','东晋','前秦','符秦','姚秦','後秦','后秦','西秦','乞伏秦','前涼','北涼','北凉','元魏','後魏','北魏','東魏','西魏','北周','宇文周','北齊','北齐','高齊','蕭齊','梁','陳','陈','隋','唐','宋','劉宋','元','清','高麗','失译','其他'];
+    const dyns = [...new Set(allSutras.map(s => s._dyn).filter(Boolean))];
+    dyns.sort((a,b) => {
+        const ia = DYN_ORDER.indexOf(a), ib = DYN_ORDER.indexOf(b);
+        if (ia >= 0 && ib >= 0) return ia - ib;
+        if (ia >= 0) return -1;
+        if (ib >= 0) return 1;
+        return catCountDyn(b)-catCountDyn(a);
+    });
+    function catCountDyn(d){ return allSutras.filter(s=>s._dyn===d).length; }
+    const dynSel = document.getElementById('dyn-filter');
+    dyns.forEach(d => {
+        const opt = document.createElement('option');
+        opt.value = d;
+        opt.textContent = `${d}（${catCountDyn(d)}）`;
+        dynSel.appendChild(opt);
+    });
+    dynSel.addEventListener('change', applyFilters);
+
+    // 译者下拉（按经数倒序，前80）
+    const trCount = {};
+    allSutras.forEach(s => { if(s._tr) trCount[s._tr] = (trCount[s._tr]||0)+1; });
+    const trs = Object.keys(trCount).sort((a,b)=>trCount[b]-trCount[a]).slice(0, 120);
+    const trSel = document.getElementById('tr-filter');
+    trs.forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t;
+        opt.textContent = `${t}（${trCount[t]}）`;
+        trSel.appendChild(opt);
+    });
+    trSel.addEventListener('change', applyFilters);
 
     // 搜索框：防抖
     let searchTimer;
     document.getElementById('search-input').addEventListener('input', e => {
         clearTimeout(searchTimer);
         searchTimer = setTimeout(applyFilters, 200);
+    });
+
+    // 重置按钮
+    document.getElementById('filter-reset').addEventListener('click', () => {
+        document.getElementById('search-input').value = '';
+        document.getElementById('vol-filter').value = '';
+        document.getElementById('cat-filter').value = '';
+        document.getElementById('dyn-filter').value = '';
+        document.getElementById('tr-filter').value = '';
+        applyFilters();
     });
 }
 
@@ -902,7 +983,7 @@ function renderSutraList(list) {
             item.className = 'py-1.5 px-2 rounded cursor-pointer hover:bg-primary/5 border-b border-gray-100 flex justify-between items-center sutra-item';
             item.dataset.id = s.id;
             const yiTag = TRANSLATED_IDS.has(s.id) ? '<span class="text-red-600 font-bold ml-1">（译）</span>' : '';
-            item.innerHTML = `<span class="truncate">${s.title}${yiTag}</span><span class="text-xs text-ink/40 ml-2 flex-shrink-0">${s.dynasty||''}${s.translator?.substring(0,4)||''}</span>`;
+            item.innerHTML = `<span class="truncate flex-1">${s.title}${yiTag}</span><span class="text-xs text-ink/50 ml-2 flex-shrink-0 whitespace-nowrap">${s.vol||''}·${s._dyn||''}</span>`;
             item.addEventListener('click', () => loadSutra(s));
             container.appendChild(item);
         }
@@ -922,13 +1003,17 @@ function renderSutraList(list) {
 // 4. 筛选逻辑
 function applyFilters() {
     const keyword = document.getElementById('search-input').value.trim().toLowerCase();
-    const cat = document.querySelector('.cat-btn.bg-primary')?.dataset.cat || '';
     const vol = document.getElementById('vol-filter').value;
+    const cat = document.getElementById('cat-filter').value;
+    const dyn = document.getElementById('dyn-filter').value;
+    const tr  = document.getElementById('tr-filter').value;
     let filtered = allSutras.filter(s => {
         if(cat && s.category !== cat) return false;
         if(vol && s.vol !== vol) return false;
+        if(dyn && s._dyn !== dyn) return false;
+        if(tr && s._tr !== tr) return false;
         if(keyword) {
-            const match = (s.title||'').toLowerCase().includes(keyword) 
+            const match = (s.title||'').toLowerCase().includes(keyword)
                 || (s.translator||'').toLowerCase().includes(keyword)
                 || (s.id||'').toLowerCase().includes(keyword);
             if(!match) return false;
