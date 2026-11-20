@@ -64,6 +64,24 @@
         #toc-panel a:hover { background:#fdf8ec; color:#B8860B; }
         .sutra-container { max-width:880px; margin:0 auto; }
         .sutra-content { font-size:16px; line-height:2; color:#2C1810; }
+        /* 科判弹窗与小标签 */
+        .kepan-pill { display:inline-flex; align-items:center; gap:3px; padding:2px 8px; background:rgba(184,134,11,.12); color:#8B4513; border-radius:10px; font-size:12px; text-decoration:none; border:1px solid rgba(184,134,11,.3); transition:background .15s; }
+        .kepan-pill:hover { background:rgba(184,134,11,.25); color:#6b3410; }
+        .kepan-tag-wrap { vertical-align:middle; }
+        .kepan-panel { max-height:70vh; overflow-y:auto; }
+        .kepan-node { padding:4px 0 4px 14px; border-left:2px solid #e0cfaa; margin:4px 0; position:relative; }
+        .kepan-node::before { content:''; position:absolute; left:-6px; top:12px; width:10px; height:2px; background:#d4b87a; }
+        .kepan-name { font-weight:600; color:#5c3910; font-size:15px; font-family:"Noto Serif SC",serif; }
+        .kepan-type { display:inline-block; font-size:11px; background:#8B4513; color:#fff; padding:1px 6px; border-radius:4px; margin-right:6px; font-weight:400; vertical-align:middle; }
+        .kepan-desc { color:#8a6d42; font-size:13px; margin:2px 0; line-height:1.6; }
+        .kepan-content { color:#5c4033; font-size:13px; line-height:1.7; padding:4px 0; }
+        .kepan-children { margin-left:6px; }
+        /* 注音 ruby */
+        ruby.pr-ruby { ruby-position: over; }
+        ruby.pr-ruby rt { font-size: 10px; color: #8B4513; font-weight: normal; line-height: 1; opacity: .82; font-family: -apple-system, sans-serif; letter-spacing: 0; }
+        body:not(.mode-pinyin) ruby.pr-ruby rt { display: none; }
+        body.mode-pinyin ruby.pr-ruby rt { display: block; }
+        .read-toolbar button#btn-pron.on { background:#B8860B; color:#fff; border-color:#B8860B; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -520,12 +538,13 @@ function toSimp(s){ return [...(s||'')].map(c => H2S[c] || c).join(''); }
 
 async function loadExtras() {
     try {
-        const [n, h, d, k, autoTerms] = await Promise.all([
+        const [n, h, d, k, autoTerms, pdata] = await Promise.all([
             fetch('../data/scholar-notes.json?' + Date.now()).then(r => r.json()),
             fetch('../sutras/hant2simp.json').then(r => r.json()),
             fetch('../data/buddhist_dict.json?' + Date.now()).then(r => r.json()),
             fetch('../kepan/core.json?' + Date.now()).then(r => r.json()).catch(()=>null),
-            fetch('../data/dict_autoterms.json?' + Date.now()).then(r => r.json()).catch(()=>null)
+            fetch('../data/dict_autoterms.json?' + Date.now()).then(r => r.json()).catch(()=>null),
+            fetch('../data/buddhist-pronounce.json?' + Date.now()).then(r => r.json()).catch(()=>null)
         ]);
         H2S = h || {};
         KEPAN = k || null;
@@ -550,6 +569,15 @@ async function loadExtras() {
         if (currentSutra && (NOTES[currentSutra.id] || (KEPAN && KEPAN[currentSutra.id]))) { loadedChapters = 0; const c = document.getElementById('sutra-text'); if (c) c.innerHTML = ''; if (c) loadMoreChapters(); }
         // 更新科判按钮状态
         updateKepanBtn();
+        // 处理注音数据
+        if (pdata && pdata.chars) {
+            PRONOUNCE = pdata;
+            PRONOUNCE_SINGLE = pdata.chars || {};
+            PRONOUNCE_PHRASES = (pdata.phrases || []).slice().sort((a,b) => (b.w||'').length - (a.w||'').length);
+            // 初始状态：若localStorage中已开启，则立即对已渲染段落注 ruby
+            initPronounceUI();
+            if (isPronOn()) annotateAllPron();
+        }
     } catch (e) { console.warn('注解/词典加载失败', e); }
 }
 
@@ -973,6 +1001,7 @@ async function loadSutra(meta) {
             <button data-fs="xl">特大</button>
             <button id="bookmark-btn" title="添加书签" style="margin-left:.5rem"><i class="fa fa-bookmark"></i> <span class="rt-label">书签</span></button>
             <button id="btn-kepan" title="本科判结构" style="display:none;margin-left:.3rem"><i class="fa fa-sitemap"></i> <span class="rt-label">科判</span></button>
+            <button id="btn-pron" title="生僻字/音译字旁注读音"><i class="fa fa-font"></i> <span class="rt-label">注音</span></button>
             <button id="study-btn" title="我的收藏与笔记"><i class="fa fa-star"></i> <span class="rt-label">学术工具</span></button>
             <span class="rt-label" id="read-progress" style="margin-left:auto"></span>
         </div>
@@ -1180,6 +1209,115 @@ document.querySelectorAll('#study-sidebar .sb-tabs button').forEach(b=>{
 });
 document.getElementById('bookmark-btn')?.addEventListener('click', addBookmark);
 document.getElementById('btn-kepan')?.addEventListener('click', showKepanPanel);
+
+// ===== 生僻字/音译字注音（ruby 旁注）=====
+const PRON_KEY = 'buddhist_read_pron';
+let PRONOUNCE = null;
+let PRONOUNCE_SINGLE = {};
+let PRONOUNCE_PHRASES = [];
+function isPronOn(){
+  try { return localStorage.getItem(PRON_KEY)==='1'; }catch(e){ return false; }
+}
+function setPronOn(on){
+  try { localStorage.setItem(PRON_KEY, on?'1':'0'); }catch(e){}
+  document.body.classList.toggle('mode-pinyin', !!on);
+  const btn = document.getElementById('btn-pron');
+  if(btn) btn.classList.toggle('on', !!on);
+}
+function initPronounceUI(){
+  const btn = document.getElementById('btn-pron');
+  if(!btn || btn._bound) return;
+  btn._bound = true;
+  btn.addEventListener('click', () => {
+    const on = !document.body.classList.contains('mode-pinyin');
+    setPronOn(on);
+    if(on){
+      // 开启时：给所有尚未注音的段注入ruby
+      annotateAllPron();
+    }
+  });
+  // 初始状态
+  setPronOn(isPronOn());
+}
+function escHtml(s){ return (s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function pronounceHtml(txt){
+  // 词组优先匹配（用占位符保护已替换的ruby）
+  const placeholders = [];
+  let work = txt;
+  (PRONOUNCE_PHRASES||[]).forEach(ph=>{
+    const w = ph.w; if(!w) return;
+    let idx;
+    while((idx = work.indexOf(w)) !== -1){
+      const key = '\u0001PH'+placeholders.length+'\u0001';
+      placeholders.push(`<ruby class="pr-ruby" data-cat="${escHtml(ph.cat||'')}" title="${escHtml(ph.mean||'')}">${escHtml(w)}<rt>${escHtml(ph.py)}</rt></ruby>`);
+      work = work.slice(0,idx) + key + work.slice(idx+w.length);
+    }
+  });
+  let out = '';
+  for(let i=0;i<work.length;i++){
+    const ch = work[i];
+    if(ch==='\u0001'){
+      let j=i+1; while(j<work.length && work[j]!=='\u0001') j++;
+      const idx = parseInt(work.slice(i+2,j),10);
+      out += placeholders[idx] || '';
+      i = j; continue;
+    }
+    const m = PRONOUNCE_SINGLE[ch];
+    if(m){
+      out += `<ruby class="pr-ruby" data-cat="${escHtml(m.cat||'')}" title="${escHtml(m.mean||'')}">${escHtml(ch)}<rt>${escHtml(m.py)}</rt></ruby>`;
+    } else {
+      out += escHtml(ch);
+    }
+  }
+  return out;
+}
+function rubyWalk(el){
+  // 遍历文本节点，跳过已在ruby/rt/sup/a/按钮/.scholar-mark/.para-tools 内的节点
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+    acceptNode(n){
+      if(!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      const p = n.parentNode; if(!p) return NodeFilter.FILTER_REJECT;
+      const tag = p.nodeName;
+      if(tag==='RUBY'||tag==='RT'||tag==='RP') return NodeFilter.FILTER_REJECT;
+      if(p.closest && p.closest('sup,a,button,.scholar-mark,.para-tools,.chapter-title,.dict-term,rt,ruby')) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes=[]; let nd;
+  while((nd=walker.nextNode())) nodes.push(nd);
+  nodes.forEach(tn=>{
+    const frag = document.createDocumentFragment();
+    const tmp = document.createElement('span');
+    tmp.innerHTML = pronounceHtml(tn.nodeValue);
+    while(tmp.firstChild) frag.appendChild(tmp.firstChild);
+    tn.parentNode.replaceChild(frag, tn);
+  });
+}
+function annotatePronIn(container){
+  if(!PRONOUNCE_SINGLE) return;
+  const paras = container.querySelectorAll ? container.querySelectorAll('.sutra-content.para-orig, .para-modern .sutra-content, .para-modern') : [];
+  paras.forEach(p=>{
+    if(p.dataset.pronounced==='1') return;
+    rubyWalk(p);
+    p.dataset.pronounced='1';
+  });
+}
+function annotateAllPron(){
+  const area = document.getElementById('sutra-text');
+  if(!area) return;
+  annotatePronIn(area);
+}
+// 每次懒加载新章后，如果注音开启，就给新加载的段注入ruby
+const _origLoadMore = loadMoreChapters;
+// 使用 MutationObserver 监听新段落插入（避免侵入原函数）
+(function(){
+  const area = document.getElementById('sutra-text');
+  if(!area) return;
+  const mo = new MutationObserver(()=>{
+    if(isPronOn() && PRONOUNCE_SINGLE) annotatePronIn(area);
+  });
+  mo.observe(area, {childList:true, subtree:true});
+})();
 
 // ===== 手机端：左侧经目可折叠 =====
 (function () {
