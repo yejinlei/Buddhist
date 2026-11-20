@@ -173,7 +173,7 @@
 
     <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
         <!-- 左侧经目 -->
-        <div class="w-[220px] flex-shrink-0">
+        <div class="w-[260px] flex-shrink-0">
             <div class="bg-white rounded-xl shadow-md p-3 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
                 <div class="flex items-center justify-between mb-3">
                     <h2 class="text-base font-bold text-ink flex items-center gap-1"><span class="text-primary">📖</span>大正藏经目</h2>
@@ -969,35 +969,90 @@ function initFilters() {
 }
 
 // 3. 渲染经目列表（分批渲染，避免卡顿）
+// 按"大正藏传统顺序"排列的部类：阿含 → 般若 → 法华 → 华严 → 涅槃 → 宝积 → 经集 → 密教 → 律 → 释经论 → 毗昙 → 中观 → 瑜伽 → 论集 → 史传 → 禅 → 净土 → 疑伪 → 目录 → 事汇 → 外教 → 敦煌 → 图像 → 悉昙；其余按拼音顺序附后
+const CAT_ORDER = ['阿含部类','本缘部类','般若部类','法华部类','华严部类','涅槃部类','宝积部类','大集部类','经集部类','密教部类','律部类','释经论部类','毗昙部类','中观部类','瑜伽部类','论集部类','史传部类','事汇部类','诸宗部类','禅宗部类','净土宗部类','疑伪部类','目录部类','外教部类','敦煌部类','图像部类','悉昙部类'];
+
+function catOrderKey(c){
+    const i = CAT_ORDER.indexOf(c);
+    return i >= 0 ? i : 999;
+}
+
 function renderSutraList(list) {
     const container = document.getElementById('sutra-list');
     container.innerHTML = '';
-    // 只渲染前200条，滚动时再渲染更多
-    const batchSize = 200;
-    let renderCount = Math.min(batchSize, list.length);
-    function renderBatch(start) {
-        const end = Math.min(start + batchSize, list.length);
-        for(let i = start; i < end; i++) {
-            const s = list[i];
-            const item = document.createElement('div');
-            item.className = 'py-1.5 px-2 rounded cursor-pointer hover:bg-primary/5 border-b border-gray-100 flex justify-between items-center sutra-item';
-            item.dataset.id = s.id;
-            const yiTag = TRANSLATED_IDS.has(s.id) ? '<span class="text-red-600 font-bold ml-1">（译）</span>' : '';
-            item.innerHTML = `<span class="truncate flex-1">${s.title}${yiTag}</span><span class="text-xs text-ink/50 ml-2 flex-shrink-0 whitespace-nowrap">${s.vol||''}·${s._dyn||''}</span>`;
-            item.addEventListener('click', () => loadSutra(s));
-            container.appendChild(item);
-        }
-    }
-    renderBatch(0);
-    // 滚动加载更多经目
-    container.addEventListener('scroll', () => {
-        if(container.scrollTop + container.clientHeight > container.scrollHeight - 100) {
-            if(renderCount < list.length) {
-                renderBatch(renderCount);
-                renderCount += batchSize;
+    const hasFilter = !!(document.getElementById('search-input').value.trim()
+        || document.getElementById('vol-filter').value
+        || document.getElementById('cat-filter').value
+        || document.getElementById('dyn-filter').value
+        || document.getElementById('tr-filter').value);
+
+    // ===== 有筛选：普通列表（带滚动分批加载） =====
+    if(hasFilter){
+        const batchSize = 200;
+        let renderCount = Math.min(batchSize, list.length);
+        function renderBatch(start){
+            const end = Math.min(start + batchSize, list.length);
+            for(let i=start;i<end;i++){
+                const s = list[i];
+                const item = document.createElement('div');
+                item.className = 'py-1.5 px-2 rounded cursor-pointer hover:bg-primary/5 border-b border-gray-100 flex justify-between items-center sutra-item text-[13px]';
+                item.dataset.id = s.id;
+                const yiTag = TRANSLATED_IDS.has(s.id) ? '<span class="text-red-600 font-bold ml-1">（译）</span>' : '';
+                item.innerHTML = `<span class="truncate flex-1">${s.title}${yiTag}</span><span class="text-[11px] text-ink/50 ml-2 flex-shrink-0 whitespace-nowrap">${s.vol||''}·${s._dyn||''}</span>`;
+                item.addEventListener('click', ()=>loadSutra(s));
+                container.appendChild(item);
             }
         }
+        renderBatch(0);
+        container.onscroll = () => {
+            if(container.scrollTop + container.clientHeight > container.scrollHeight - 100){
+                if(renderCount < list.length){
+                    renderBatch(renderCount);
+                    renderCount += batchSize;
+                }
+            }
+        };
+        return;
+    }
+
+    // ===== 无筛选：部类总览（按部类分区，经名按钮平铺） =====
+    container.onscroll = null; // 关闭分批滚动
+    const groups = new Map();
+    for(const s of list){
+        const c = s.category || '其他';
+        if(!groups.has(c)) groups.set(c, []);
+        groups.get(c).push(s);
+    }
+    const cats = [...groups.keys()].sort((a,b)=>{
+        const oa = catOrderKey(a), ob = catOrderKey(b);
+        if(oa !== ob) return oa - ob;
+        return groups.get(b).length - groups.get(a).length;
     });
+    for(const cat of cats){
+        const arr = groups.get(cat);
+        const sec = document.createElement('section');
+        sec.className = 'mb-3';
+        sec.innerHTML = `<h3 class="text-[12px] font-bold text-primary/90 border-b border-primary/20 pb-1 mb-1.5 flex items-center justify-between">
+            <span>${cat}</span><span class="text-[10px] font-normal text-ink/40">${arr.length}部</span>
+        </h3>`;
+        const grid = document.createElement('div');
+        grid.className = 'flex flex-wrap gap-1';
+        for(const s of arr){
+            const btn = document.createElement('span');
+            const isYi = TRANSLATED_IDS.has(s.id);
+            btn.className = 'inline-block px-1.5 py-0.5 rounded text-[11px] cursor-pointer border sutra-item transition-colors '
+                + (isYi
+                    ? 'border-red-200 bg-red-50 text-red-700 hover:bg-red-100'
+                    : 'border-primary/15 bg-paper/60 text-ink/80 hover:bg-primary/10 hover:text-primary');
+            btn.dataset.id = s.id;
+            btn.title = `${s.id.toUpperCase()} · ${s.vol||''} · ${s.translator||s._dyn||''}`;
+            btn.innerHTML = isYi ? `${s.title}<b class="ml-0.5 text-red-600">译</b>` : s.title;
+            btn.addEventListener('click', ()=>loadSutra(s));
+            grid.appendChild(btn);
+        }
+        sec.appendChild(grid);
+        container.appendChild(sec);
+    }
 }
 
 // 4. 筛选逻辑
