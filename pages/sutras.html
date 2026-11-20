@@ -574,8 +574,9 @@ async function loadExtras() {
             PRONOUNCE = pdata;
             PRONOUNCE_SINGLE = pdata.chars || {};
             PRONOUNCE_PHRASES = (pdata.phrases || []).slice().sort((a,b) => (b.w||'').length - (a.w||'').length);
-            // 初始状态：若localStorage中已开启，则立即对已渲染段落注 ruby
+            PRON_READY = true;
             initPronounceUI();
+            // 若初始已开启注音，立即对已渲染段落注 ruby
             if (isPronOn()) annotateAllPron();
         }
     } catch (e) { console.warn('注解/词典加载失败', e); }
@@ -1216,8 +1217,10 @@ document.getElementById('btn-kepan')?.addEventListener('click', showKepanPanel);
 // ===== 生僻字/音译字注音（ruby 旁注）=====
 const PRON_KEY = 'buddhist_read_pron';
 let PRONOUNCE = null;
-let PRONOUNCE_SINGLE = {};
+let PRONOUNCE_SINGLE = null;
 let PRONOUNCE_PHRASES = [];
+let PRON_READY = false;
+let PRON_PENDING = false;
 function isPronOn(){
   try { return localStorage.getItem(PRON_KEY)==='1'; }catch(e){ return false; }
 }
@@ -1231,16 +1234,32 @@ function initPronounceUI(){
   const btn = document.getElementById('btn-pron');
   if(!btn || btn._bound) return;
   btn._bound = true;
-  btn.addEventListener('click', () => {
+  // 初始按钮状态
+  setPronOn(isPronOn());
+  btn.addEventListener('click', async () => {
     const on = !document.body.classList.contains('mode-pinyin');
     setPronOn(on);
     if(on){
-      // 开启时：给所有尚未注音的段注入ruby
+      // 开启时：等数据就绪后注入ruby
+      if(!PRON_READY){
+        btn.title = '注音数据加载中...';
+        await waitForPronData();
+        btn.title = '生僻字/音译字旁注读音';
+      }
       annotateAllPron();
     }
   });
-  // 初始状态
-  setPronOn(isPronOn());
+}
+function waitForPronData(){
+  if(PRON_READY) return Promise.resolve();
+  if(PRON_PENDING) return PRON_PENDING;
+  PRON_PENDING = new Promise(resolve=>{
+    const t0 = Date.now();
+    const tick = setInterval(()=>{
+      if(PRON_READY || Date.now()-t0>8000){ clearInterval(tick); resolve(); }
+    },100);
+  });
+  return PRON_PENDING;
 }
 function escHtml(s){ return (s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function pronounceHtml(txt){
@@ -1297,8 +1316,8 @@ function rubyWalk(el){
   });
 }
 function annotatePronIn(container){
-  if(!PRONOUNCE_SINGLE) return;
-  const paras = container.querySelectorAll ? container.querySelectorAll('.sutra-content.para-orig, .para-modern .sutra-content, .para-modern') : [];
+  if(!PRON_READY || !PRONOUNCE_SINGLE) return;
+  const paras = container.querySelectorAll ? container.querySelectorAll('.para-orig, .para-modern') : [];
   paras.forEach(p=>{
     if(p.dataset.pronounced==='1') return;
     rubyWalk(p);
@@ -1354,6 +1373,8 @@ const _origLoadMore = loadMoreChapters;
 // 启动
 loadExtras();
 loadLightIndex();
+// 立即绑定注音按钮（数据未到也能先显示正确状态）
+initPronounceUI();
 </script>
     <script src="../js/mobile-nav.js"></script>
 </body>
