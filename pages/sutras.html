@@ -139,7 +139,6 @@
         <a href="sutras.html" class="text-paper font-medium hover:text-gold nav-active">全藏原典</a>
         <div class="ml-auto flex gap-4 text-sm text-paper/80 flex-wrap">
             <a href="../index.html" class="hover:text-gold">首页</a>
-            <a href="categories.html" class="hover:text-gold">部类总览</a>
             <a href="sutras.html" class="hover:text-gold">全藏原典</a>
             <a href="search.html" class="hover:text-gold">全文检索</a>
             <a href="dict.html" class="hover:text-yellow-400">佛学词典</a>
@@ -171,62 +170,61 @@
         <div class="sb-body" id="sb-body"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
-        <!-- 左侧经目 -->
-        <div class="w-[260px] flex-shrink-0">
-            <div class="bg-white rounded-xl shadow-md p-3 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
-                <div class="flex items-center justify-between mb-3">
-                    <h2 class="text-base font-bold text-ink flex items-center gap-1"><span class="text-primary">📖</span>大正藏经目</h2>
-                    <span id="loading-status" class="text-[10px] bg-primary/10 text-primary px-1.5 py-0.5 rounded">加载中</span>
+    <div class="max-w-7xl mx-auto px-4 py-6 flex gap-5">
+        <!-- 左侧筛选栏（窄） -->
+        <div class="w-[160px] flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-md p-2 sticky top-24 flex flex-col gap-1">
+                <div class="flex items-center justify-between mb-1">
+                    <h2 class="text-sm font-bold text-ink flex items-center gap-1"><span class="text-primary">📖</span>经目筛选</h2>
+                    <span id="loading-status" class="text-[10px] bg-primary/10 text-primary px-1 rounded">加载中</span>
                 </div>
-                <input id="search-input" type="text" placeholder="搜索经名/译者/经号..." class="w-full border border-primary/20 rounded px-2 py-1.5 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-primary/30">
-                <div class="flex flex-col gap-1.5 mb-2">
-                    <div>
-                        <label class="text-[11px] text-ink/70 block mb-0.5">按册</label>
-                        <select id="vol-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
-                            <option value="">全部册</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="text-[11px] text-ink/70 block mb-0.5">按部类</label>
-                        <select id="cat-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
-                            <option value="">全部部类</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="text-[11px] text-ink/70 block mb-0.5">按朝代</label>
-                        <select id="dyn-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
-                            <option value="">全部朝代</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="text-[11px] text-ink/70 block mb-0.5">按译者</label>
-                        <select id="tr-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
-                            <option value="">全部译者</option>
-                        </select>
-                    </div>
+                <input id="search-input" type="text" placeholder="搜索经名/译者/经号..." class="w-full border border-primary/20 rounded px-2 py-1 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                <div>
+                    <label class="text-[10px] text-ink/70 block mb-0.5">按册</label>
+                    <select id="vol-filter" class="w-full border border-primary/20 rounded px-1.5 py-0.5 text-[11px] bg-white focus:outline-none focus:ring-1 focus:ring-primary/30">
+                        <option value="">全部册</option>
+                    </select>
                 </div>
-                <button id="filter-reset" class="w-full text-[11px] text-primary/80 hover:text-primary mb-2 py-0.5">重置筛选</button>
-                <div id="sutra-list" class="flex-1 overflow-y-auto text-[13px] leading-relaxed">
-                    <div class="text-center text-ink/50 py-8">正在加载经目...</div>
+                <div>
+                    <label class="text-[10px] text-ink/70 block mb-0.5">按部类</label>
+                    <select id="cat-filter" class="w-full border border-primary/20 rounded px-1.5 py-0.5 text-[11px] bg-white focus:outline-none focus:ring-1 focus:ring-primary/30">
+                        <option value="">全部部类</option>
+                    </select>
                 </div>
-                <div id="list-stats" class="text-[11px] text-ink/50 mt-2 pt-2 border-t border-paper"></div>
+                <div>
+                    <label class="text-[10px] text-ink/70 block mb-0.5">按朝代</label>
+                    <select id="dyn-filter" class="w-full border border-primary/20 rounded px-1.5 py-0.5 text-[11px] bg-white focus:outline-none focus:ring-1 focus:ring-primary/30">
+                        <option value="">全部朝代</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-[10px] text-ink/70 block mb-0.5">按译者</label>
+                    <select id="tr-filter" class="w-full border border-primary/20 rounded px-1.5 py-0.5 text-[11px] bg-white focus:outline-none focus:ring-1 focus:ring-primary/30">
+                        <option value="">全部译者</option>
+                    </select>
+                </div>
+                <button id="filter-reset" class="w-full text-[11px] text-primary/80 hover:text-primary py-0.5 mt-0.5">重置筛选</button>
+                <div id="list-stats" class="text-[10px] text-ink/50 pt-1 border-t border-paper/60 mt-0.5"></div>
             </div>
         </div>
 
-        <!-- 右侧经文内容 -->
-        <div class="flex-1">
-            <div id="content-area" class="bg-white rounded-xl shadow-md p-8 min-h-[70vh]">
-                <div class="text-center py-20">
-                    <div class="text-6xl mb-4 opacity-30">📜</div>
-                    <h1 class="text-3xl font-bold text-ink mb-4">CBETA大正藏全文在线阅读</h1>
-                    <p class="text-lg text-ink/70 mb-2">从左侧选择一部经典开始阅读。</p>
-                    <p class="text-ink/50">共收录 <span class="text-primary font-bold">2400+部</span> 佛典原文，总计约 7880 万字。</p>
-                    <p class="text-sm text-ink/40 mt-4">数据来自 CBETA 电子佛典，按经独立加载，秒开阅读。</p>
-                </div>
+        <!-- 右侧主区 -->
+        <div class="flex-1 min-w-0">
+            <!-- 顶部：阅读中时显示"返回总览" -->
+            <div id="reading-bar" class="hidden mb-3 flex items-center justify-between">
+                <button id="back-to-overview" class="text-xs text-primary/80 hover:text-primary flex items-center gap-1">← 返回经目总览</button>
+                <span id="reading-title" class="text-sm font-bold text-ink"></span>
             </div>
-            <div id="load-more" class="hidden mt-4 text-center py-4">
-                <button id="load-more-btn" class="bg-primary/10 text-primary px-6 py-2 rounded-lg hover:bg-primary/20">加载更多经文</button>
+
+            <!-- 部类总览（默认显示） -->
+            <div id="overview-area" class="bg-white rounded-xl shadow-md p-4 max-h-[calc(100vh-120px)] overflow-y-auto">
+                <div class="text-center py-10 text-ink/40 text-xs">正在加载经目...</div>
+            </div>
+
+            <!-- 经文阅读区（点开经后显示） -->
+            <div id="content-area" class="hidden bg-white rounded-xl shadow-md p-8">
+                <div id="sutra-text"></div>
+                <div id="chapter-sentinel" class="h-4"></div>
             </div>
         </div>
     </div>
@@ -978,7 +976,7 @@ function catOrderKey(c){
 }
 
 function renderSutraList(list) {
-    const container = document.getElementById('sutra-list');
+    const container = document.getElementById('overview-area');
     container.innerHTML = '';
     const hasFilter = !!(document.getElementById('search-input').value.trim()
         || document.getElementById('vol-filter').value
@@ -986,37 +984,39 @@ function renderSutraList(list) {
         || document.getElementById('dyn-filter').value
         || document.getElementById('tr-filter').value);
 
-    // ===== 有筛选：普通列表（带滚动分批加载） =====
+    // ===== 有筛选：紧凑列表 =====
     if(hasFilter){
-        const batchSize = 200;
-        let renderCount = Math.min(batchSize, list.length);
-        function renderBatch(start){
-            const end = Math.min(start + batchSize, list.length);
-            for(let i=start;i<end;i++){
-                const s = list[i];
-                const item = document.createElement('div');
-                item.className = 'py-1.5 px-2 rounded cursor-pointer hover:bg-primary/5 border-b border-gray-100 flex justify-between items-center sutra-item text-[13px]';
-                item.dataset.id = s.id;
-                const yiTag = TRANSLATED_IDS.has(s.id) ? '<span class="text-red-600 font-bold ml-1">（译）</span>' : '';
-                item.innerHTML = `<span class="truncate flex-1">${s.title}${yiTag}</span><span class="text-[11px] text-ink/50 ml-2 flex-shrink-0 whitespace-nowrap">${s.vol||''}·${s._dyn||''}</span>`;
-                item.addEventListener('click', ()=>loadSutra(s));
-                container.appendChild(item);
-            }
+        const listDiv = document.createElement('div');
+        listDiv.className = 'text-[12px] leading-relaxed';
+        const tip = document.createElement('div');
+        tip.className = 'text-[11px] text-ink/50 mb-2 pb-2 border-b border-paper/60';
+        tip.textContent = `筛选结果：${list.length} 部`;
+        listDiv.appendChild(tip);
+        for(const s of list){
+            const item = document.createElement('div');
+            item.className = 'py-1 px-1 rounded cursor-pointer hover:bg-primary/5 border-b border-gray-50 flex justify-between items-center sutra-item';
+            item.dataset.id = s.id;
+            const isYi = TRANSLATED_IDS.has(s.id);
+            const nameCls = isYi ? 'text-red-700 font-semibold' : 'text-ink/80';
+            item.innerHTML = `<span class="truncate flex-1 ${nameCls}">${s.title}${isYi?'<b class="ml-0.5 text-red-600 text-[10px]">译</b>':''}</span><span class="text-[10px] text-ink/40 ml-2 flex-shrink-0 whitespace-nowrap">${s.vol||''}·${s._dyn||''}</span>`;
+            item.title = `${s.id.toUpperCase()} · ${s.translator||''}`;
+            item.addEventListener('click', ()=>loadSutra(s));
+            listDiv.appendChild(item);
         }
-        renderBatch(0);
-        container.onscroll = () => {
-            if(container.scrollTop + container.clientHeight > container.scrollHeight - 100){
-                if(renderCount < list.length){
-                    renderBatch(renderCount);
-                    renderCount += batchSize;
-                }
-            }
-        };
+        if(list.length===0){
+            listDiv.innerHTML += '<div class="text-center py-10 text-ink/40 text-sm">无匹配结果</div>';
+        }
+        container.appendChild(listDiv);
         return;
     }
 
-    // ===== 无筛选：部类总览（按部类分区，经名按钮平铺） =====
-    container.onscroll = null; // 关闭分批滚动
+    // ===== 无筛选：部类总览（按部类分区，按钮平铺，字小） =====
+    const head = document.createElement('div');
+    head.className = 'text-center pb-3 mb-3 border-b border-paper/60';
+    head.innerHTML = `<h1 class="text-base font-bold text-ink mb-0.5">CBETA大正藏 · 全藏经目</h1>
+        <p class="text-[11px] text-ink/50">共收录 <b class="text-primary">${allSutras.length}</b> 部佛典 · 红色带「译」为已完成白话译文</p>`;
+    container.appendChild(head);
+
     const groups = new Map();
     for(const s of list){
         const c = s.category || '其他';
@@ -1031,22 +1031,22 @@ function renderSutraList(list) {
     for(const cat of cats){
         const arr = groups.get(cat);
         const sec = document.createElement('section');
-        sec.className = 'mb-3';
-        sec.innerHTML = `<h3 class="text-[12px] font-bold text-primary/90 border-b border-primary/20 pb-1 mb-1.5 flex items-center justify-between">
+        sec.className = 'mb-2';
+        sec.innerHTML = `<h3 class="text-[12px] font-bold text-primary/90 border-b border-primary/15 pb-0.5 mb-1 flex items-center justify-between">
             <span>${cat}</span><span class="text-[10px] font-normal text-ink/40">${arr.length}部</span>
         </h3>`;
         const grid = document.createElement('div');
-        grid.className = 'flex flex-wrap gap-1';
+        grid.className = 'flex flex-wrap gap-[2px]';
         for(const s of arr){
             const btn = document.createElement('span');
             const isYi = TRANSLATED_IDS.has(s.id);
-            btn.className = 'inline-block px-1.5 py-0.5 rounded text-[11px] cursor-pointer border sutra-item transition-colors '
+            btn.className = 'inline-block px-1.5 py-[1px] rounded-[3px] text-[12px] cursor-pointer border sutra-item transition-colors leading-[1.4] '
                 + (isYi
                     ? 'border-red-200 bg-red-50 text-red-700 hover:bg-red-100'
-                    : 'border-primary/15 bg-paper/60 text-ink/80 hover:bg-primary/10 hover:text-primary');
+                    : 'border-primary/10 bg-paper/40 text-ink/75 hover:bg-primary/10 hover:text-primary');
             btn.dataset.id = s.id;
             btn.title = `${s.id.toUpperCase()} · ${s.vol||''} · ${s.translator||s._dyn||''}`;
-            btn.innerHTML = isYi ? `${s.title}<b class="ml-0.5 text-red-600">译</b>` : s.title;
+            btn.innerHTML = isYi ? `${s.title}<b class="ml-0.5 text-red-600 text-[10px]">译</b>` : s.title;
             btn.addEventListener('click', ()=>loadSutra(s));
             grid.appendChild(btn);
         }
@@ -1054,6 +1054,30 @@ function renderSutraList(list) {
         container.appendChild(sec);
     }
 }
+
+// 切换视图：总览 / 阅读
+function showOverview(){
+    document.getElementById('overview-area').classList.remove('hidden');
+    document.getElementById('content-area').classList.add('hidden');
+    document.getElementById('reading-bar').classList.add('hidden');
+    // 清掉选中态
+    document.querySelectorAll('.sutra-item').forEach(i => i.classList.remove('ring-2','ring-primary/40'));
+    window.scrollTo({top:0,behavior:'instant'});
+}
+function showReading(meta){
+    document.getElementById('overview-area').classList.add('hidden');
+    document.getElementById('content-area').classList.remove('hidden');
+    document.getElementById('reading-bar').classList.remove('hidden');
+    document.getElementById('reading-title').textContent = '《'+meta.title+'》';
+    // 高亮选中
+    document.querySelectorAll('.sutra-item').forEach(i => i.classList.remove('ring-2','ring-primary/40'));
+    document.querySelector(`.sutra-item[data-id="${meta.id}"]`)?.classList.add('ring-2','ring-primary/40');
+}
+
+// 返回总览按钮
+document.addEventListener('DOMContentLoaded', ()=>{
+    document.getElementById('back-to-overview').addEventListener('click', showOverview);
+});
 
 // 4. 筛选逻辑
 function applyFilters() {
@@ -1081,10 +1105,8 @@ function applyFilters() {
 
 // 5. 加载单部经文（用户点击才加载，不预加载）
 async function loadSutra(meta) {
-    // 高亮当前选中
-    document.querySelectorAll('.sutra-item').forEach(i => i.classList.remove('bg-gold/10'));
-    document.querySelector(`[data-id="${meta.id}"]`)?.classList.add('bg-gold/10');
-    
+    showReading(meta);
+
     // 先检查缓存
     const cacheKey = CACHE_KEY + meta.id;
     let sutraData = null;
@@ -1094,7 +1116,6 @@ async function loadSutra(meta) {
             const { data, timestamp } = JSON.parse(cached);
             if(Date.now() - timestamp < CACHE_EXPIRY) {
                 sutraData = data;
-                console.log('从缓存加载：' + meta.title);
             }
         }
     } catch(e) {}
@@ -1108,7 +1129,7 @@ async function loadSutra(meta) {
             <p class="text-sm text-ink/40 mt-2">${meta.word_count}字，首次加载需几秒，后续秒开</p>
         </div>
     `;
-    document.getElementById('load-more').classList.add('hidden');
+    document.getElementById('load-more')?.classList.add('hidden');
 
     // 没有缓存就从服务器拉
     if(!sutraData) {
@@ -1194,6 +1215,7 @@ async function loadSutra(meta) {
         </div>
         <div id="toc-panel" class="hidden mb-4"></div>
         <div id="sutra-text" class="sutra-container"></div>
+        <div id="chapter-sentinel" class="h-4"></div>
     `;
     // 绑定阅读工具条
     document.getElementById('toc-toggle')?.addEventListener('click', () => {
@@ -1230,14 +1252,17 @@ async function loadSutra(meta) {
     // 先加载前N章
     loadMoreChapters();
     // 监听滚动，懒加载更多章节
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting && loadedChapters < currentSutra.content.length) {
-                loadMoreChapters();
-            }
-        });
-    }, { rootMargin: '500px' }); // 提前500px加载
-    observer.observe(document.getElementById('load-more'));
+    const sentinel = document.getElementById('chapter-sentinel');
+    if(sentinel){
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting && loadedChapters < currentSutra.content.length) {
+                    loadMoreChapters();
+                }
+            });
+        }, { rootMargin: '500px' });
+        observer.observe(sentinel);
+    }
 }
 
 // 6. 分批加载章节（大经如大般若经不会一次渲染所有DOM）
@@ -1296,24 +1321,20 @@ function loadMoreChapters() {
     // 更新阅读进度
     const progEl = document.getElementById('read-progress');
     if(progEl) progEl.textContent = `已读 ${loadedChapters}/${currentSutra.content.length} 章`;
-    // 显示/隐藏加载更多按钮
-    const loadMore = document.getElementById('load-more');
-    if(loadedChapters < currentSutra.content.length) {
-        loadMore.classList.remove('hidden');
-        document.getElementById('load-more-btn').textContent = `继续加载后续内容（${loadedChapters}/${currentSutra.content.length}）`;
-    } else {
-        loadMore.classList.add('hidden');
-        // 全文加载完提示
-        if(currentSutra.content.length > CHAPTERS_PER_PAGE) {
+    // 全文加载完提示
+    if(loadedChapters >= currentSutra.content.length) {
+        if(currentSutra.content.length > CHAPTERS_PER_PAGE && !document.getElementById('end-tip')) {
             const endTip = document.createElement('div');
+            endTip.id = 'end-tip';
             endTip.className = 'text-center text-ink/40 py-8 mt-8 border-t border-paper';
             endTip.textContent = '—— 全文完 ——';
             textContainer.appendChild(endTip);
         }
+    } else {
+        const endTip = document.getElementById('end-tip');
+        if(endTip) endTip.remove();
     }
 }
-
-document.getElementById('load-more-btn').addEventListener('click', loadMoreChapters);
 
 // 「注」标记点击 → 弹出学者解读
 document.addEventListener('click', e => {
