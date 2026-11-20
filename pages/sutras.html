@@ -1053,6 +1053,8 @@ async function loadSutra(meta) {
 }
 
 // 6. 分批加载章节（大经如大般若经不会一次渲染所有DOM）
+function paraId(tid, ci, pi){ return 'p-'+tid+'-'+ci+'-'+pi; }
+
 function loadMoreChapters() {
     if(!currentSutra) return;
     const textContainer = document.getElementById('sutra-text');
