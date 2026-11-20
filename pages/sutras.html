@@ -16,11 +16,11 @@
     <style>
         body { font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", -apple-system, serif; background-color: #F5F0E1; color: #2C1810; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
         #sutra-list { font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif; }
-        .sutra-item { transition: all .15s ease; }
+        .sutra-item { transition: all .15s ease; padding: 6px 8px; }
         .sutra-item:hover { background: rgba(139,69,19,.08) !important; transform: translateX(2px); }
-        .sutra-item .sn-title { font-size: 12.5px; color: #3E2723; letter-spacing: .3px; font-weight: 500; }
-        .sutra-item .sn-meta { font-size: 10.5px; color: #8B7355; font-family: "PingFang SC","Microsoft YaHei",sans-serif; letter-spacing: 0; opacity: .85; }
-        .sutra-item .sn-yi { color: #C0392B; font-size: 10px; font-weight: 700; margin-left: 4px; padding: 0 4px; border-radius: 3px; background: rgba(192,57,43,.08); font-family: "PingFang SC","Microsoft YaHei",sans-serif; }
+        .sutra-item .sn-title { font-size: 12px; color: #3E2723; letter-spacing: .2px; font-weight: 500; font-family: 'Noto Serif SC','Source Han Serif SC','SimSun','Songti SC',serif; }
+        .sutra-item .sn-meta { font-size: 10px; color: #8B7355; font-family: "PingFang SC","Microsoft YaHei",sans-serif; letter-spacing: 0; opacity: .8; }
+        .sutra-item .sn-yi { color: #C0392B; font-size: 9px; font-weight: 700; margin-left: 3px; padding: 0 3px; border-radius: 2px; background: rgba(192,57,43,.08); font-family: "PingFang SC","Microsoft YaHei",sans-serif; vertical-align: 1px; }
         select, input, button { font-family: "PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif; }
         .nav-active { background-color: rgba(184,134,11,0.2); }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -180,44 +180,44 @@
 
     <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
         <!-- 左侧经目 -->
-        <div class="w-[300px] flex-shrink-0">
-            <div class="bg-white rounded-xl shadow-md p-4 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-[17px] font-bold text-ink flex items-center gap-2" style="font-family:'Noto Serif SC',serif;letter-spacing:2px;"><span class="text-primary">📖</span>大正藏经目</h2>
-                    <span id="loading-status" class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">加载中</span>
+        <div class="w-[230px] flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-md p-3 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-[16px] font-bold text-ink flex items-center gap-1.5" style="font-family:'Noto Serif SC',serif;letter-spacing:1.5px;"><span class="text-primary">📖</span>大正藏经目</h2>
+                    <span id="loading-status" class="text-[10px] bg-primary/10 text-primary px-1.5 py-0.5 rounded">加载中</span>
                 </div>
-                <input id="search-input" type="text" placeholder="搜索经名/译者/经号..." class="w-full border border-primary/20 rounded-lg px-3 py-2 mb-3 focus:outline-none focus:ring-2 focus:ring-primary/30 text-[13px]" style="font-family:'PingFang SC','Microsoft YaHei',sans-serif;">
-                <div class="grid grid-cols-2 gap-2 mb-3">
+                <input id="search-input" type="text" placeholder="搜索经名/译者/经号..." class="w-full border border-primary/20 rounded-md px-2 py-1.5 mb-2 focus:outline-none focus:ring-2 focus:ring-primary/30 text-[12px]" style="font-family:'PingFang SC','Microsoft YaHei',sans-serif;">
+                <div class="flex flex-col gap-1.5 mb-2">
                     <div>
-                        <label class="text-[11px] text-ink/60 block mb-1 tracking-wider">按册</label>
-                        <select id="vol-filter" class="w-full border border-primary/20 rounded-md px-2 py-1.5 text-[12px] bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <label class="text-[10px] text-ink/60 block mb-0.5 tracking-wider">按册</label>
+                        <select id="vol-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-[11px] bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
                             <option value="">全部册</option>
                         </select>
                     </div>
                     <div>
-                        <label class="text-[11px] text-ink/60 block mb-1 tracking-wider">按部类</label>
-                        <select id="cat-filter" class="w-full border border-primary/20 rounded-md px-2 py-1.5 text-[12px] bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <label class="text-[10px] text-ink/60 block mb-0.5 tracking-wider">按部类</label>
+                        <select id="cat-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-[11px] bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
                             <option value="">全部部类</option>
                         </select>
                     </div>
                     <div>
-                        <label class="text-[11px] text-ink/60 block mb-1 tracking-wider">按朝代</label>
-                        <select id="dyn-filter" class="w-full border border-primary/20 rounded-md px-2 py-1.5 text-[12px] bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <label class="text-[10px] text-ink/60 block mb-0.5 tracking-wider">按朝代</label>
+                        <select id="dyn-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-[11px] bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
                             <option value="">全部朝代</option>
                         </select>
                     </div>
                     <div>
-                        <label class="text-[11px] text-ink/60 block mb-1 tracking-wider">按译者</label>
-                        <select id="tr-filter" class="w-full border border-primary/20 rounded-md px-2 py-1.5 text-[12px] bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <label class="text-[10px] text-ink/60 block mb-0.5 tracking-wider">按译者</label>
+                        <select id="tr-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-[11px] bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
                             <option value="">全部译者</option>
                         </select>
                     </div>
                 </div>
-                <button id="filter-reset" class="w-full text-xs text-primary/80 hover:text-primary mb-2 py-1">重置筛选</button>
+                <button id="filter-reset" class="w-full text-[11px] text-primary/80 hover:text-primary mb-2 py-1">重置筛选</button>
                 <div id="sutra-list" class="flex-1 overflow-y-auto">
-                    <div class="text-center text-ink/50 py-8">正在加载经目...</div>
+                    <div class="text-center text-ink/50 py-6 text-[12px]">正在加载经目...</div>
                 </div>
-                <div id="list-stats" class="text-xs text-ink/50 mt-2 pt-2 border-t border-paper"></div>
+                <div id="list-stats" class="text-[11px] text-ink/50 mt-2 pt-2 border-t border-paper"></div>
             </div>
         </div>
 
