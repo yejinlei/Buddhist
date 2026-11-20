@@ -173,44 +173,44 @@
 
     <div class="max-w-7xl mx-auto px-4 py-6 flex gap-6">
         <!-- 左侧经目 -->
-        <div class="w-[300px] flex-shrink-0">
-            <div class="bg-white rounded-xl shadow-md p-4 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-lg font-bold text-ink flex items-center gap-2"><span class="text-primary">📖</span>大正藏经目</h2>
-                    <span id="loading-status" class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">加载中</span>
+        <div class="w-[220px] flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-md p-3 sticky top-24 max-h-[calc(100vh-120px)] flex flex-col">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-base font-bold text-ink flex items-center gap-1"><span class="text-primary">📖</span>大正藏经目</h2>
+                    <span id="loading-status" class="text-[10px] bg-primary/10 text-primary px-1.5 py-0.5 rounded">加载中</span>
                 </div>
-                <input id="search-input" type="text" placeholder="搜索经名/译者/经号..." class="w-full border border-primary/20 rounded-lg px-3 py-2 mb-3 focus:outline-none focus:ring-2 focus:ring-primary/30">
-                <div class="grid grid-cols-2 gap-2 mb-2">
+                <input id="search-input" type="text" placeholder="搜索经名/译者/经号..." class="w-full border border-primary/20 rounded px-2 py-1.5 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-primary/30">
+                <div class="flex flex-col gap-1.5 mb-2">
                     <div>
-                        <label class="text-xs text-ink/70 block mb-1">按册</label>
-                        <select id="vol-filter" class="w-full border border-primary/20 rounded px-2 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <label class="text-[11px] text-ink/70 block mb-0.5">按册</label>
+                        <select id="vol-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
                             <option value="">全部册</option>
                         </select>
                     </div>
                     <div>
-                        <label class="text-xs text-ink/70 block mb-1">按部类</label>
-                        <select id="cat-filter" class="w-full border border-primary/20 rounded px-2 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <label class="text-[11px] text-ink/70 block mb-0.5">按部类</label>
+                        <select id="cat-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
                             <option value="">全部部类</option>
                         </select>
                     </div>
                     <div>
-                        <label class="text-xs text-ink/70 block mb-1">按朝代</label>
-                        <select id="dyn-filter" class="w-full border border-primary/20 rounded px-2 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <label class="text-[11px] text-ink/70 block mb-0.5">按朝代</label>
+                        <select id="dyn-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
                             <option value="">全部朝代</option>
                         </select>
                     </div>
                     <div>
-                        <label class="text-xs text-ink/70 block mb-1">按译者</label>
-                        <select id="tr-filter" class="w-full border border-primary/20 rounded px-2 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <label class="text-[11px] text-ink/70 block mb-0.5">按译者</label>
+                        <select id="tr-filter" class="w-full border border-primary/20 rounded px-2 py-1 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-primary/30">
                             <option value="">全部译者</option>
                         </select>
                     </div>
                 </div>
-                <button id="filter-reset" class="w-full text-xs text-primary/80 hover:text-primary mb-2 py-1">重置筛选</button>
-                <div id="sutra-list" class="flex-1 overflow-y-auto text-sm">
+                <button id="filter-reset" class="w-full text-[11px] text-primary/80 hover:text-primary mb-2 py-0.5">重置筛选</button>
+                <div id="sutra-list" class="flex-1 overflow-y-auto text-[13px] leading-relaxed">
                     <div class="text-center text-ink/50 py-8">正在加载经目...</div>
                 </div>
-                <div id="list-stats" class="text-xs text-ink/50 mt-2 pt-2 border-t border-paper"></div>
+                <div id="list-stats" class="text-[11px] text-ink/50 mt-2 pt-2 border-t border-paper"></div>
             </div>
         </div>
 
@@ -1489,7 +1489,7 @@ const _origLoadMore = loadMoreChapters;
 // ===== 手机端：左侧经目可折叠 =====
 (function () {
   if (window.matchMedia('(min-width: 768px)').matches) return;
-  const left = document.querySelector('.w-72.flex-shrink-0');
+  const left = document.querySelector('#sutra-list')?.closest('div.flex-shrink-0');
   const right = document.querySelector('.flex-1');
   if (!left || !right) return;
   // 包裹成上下结构
