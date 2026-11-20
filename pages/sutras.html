@@ -245,12 +245,22 @@ function renderContent(id, data, baihua){
   const c = document.getElementById('sutraContent');
   c.style.fontSize = '17px';
   let html = '';
-  // 简单处理content（每段一个pin），同时匹配白话
-  const segs = baihua && baihua.segments ? baihua.segments : [];
+  const segs = baihua && baihua.translations ? baihua.translations : [];
   const baihuaMap = {};
   segs.forEach(s=>{
     const key = (s.original_preview||'').replace(/\s/g,'').slice(0,12);
-    if(key) baihuaMap[key] = s;
+    if(key){
+      // 解析modern字段里的三段式
+      const m = s.modern || '';
+      const xb = m.match(/【小标题】([\s\S]*?)(?=【义解】|$)/);
+      const yj = m.match(/【义解】([\s\S]*?)(?=【正文】|$)/);
+      const zw = m.match(/【正文】([\s\S]*)$/);
+      baihuaMap[key] = {
+        subtitle: xb ? xb[1].trim() : '',
+        explanation: yj ? yj[1].trim() : '',
+        text: zw ? zw[1].trim() : m.replace(/【小标题】[\s\S]*?【义解】[\s\S]*?【正文】/,'').trim()
+      };
+    }
   });
   let buf = [];
   const flush = (juanTitle)=>{
