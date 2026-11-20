@@ -76,11 +76,52 @@
         .kepan-desc { color:#8a6d42; font-size:13px; margin:2px 0; line-height:1.6; }
         .kepan-content { color:#5c4033; font-size:13px; line-height:1.7; padding:4px 0; }
         .kepan-children { margin-left:6px; }
-        /* 注音 ruby */
-        ruby.pr-ruby { ruby-position: over; }
-        ruby.pr-ruby rt { font-size: 10px; color: #8B4513; font-weight: normal; line-height: 1; opacity: .82; font-family: -apple-system, sans-serif; letter-spacing: 0; }
-        body:not(.mode-pinyin) ruby.pr-ruby rt { display: none; }
-        body.mode-pinyin ruby.pr-ruby rt { display: block; }
+        /* 注音 ruby —— 拼音显示在汉字顶部 */
+        ruby.pr-ruby { ruby-position: over; -webkit-ruby-position: over; display: inline-ruby; }
+        ruby.pr-ruby rt {
+            display: block;
+            ruby-align: center;
+            font-size: 10px;
+            color: #A0522D;
+            font-weight: 400;
+            line-height: 1;
+            opacity: .85;
+            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+            letter-spacing: 0;
+            text-align: center;
+        }
+        /* 默认显示注音（用户记忆：拼音在字顶部常驻） */
+        body ruby.pr-ruby rt { display: block; }
+        body.mode-no-pron ruby.pr-ruby rt { display: none; }
+
+        /* 白话译文样式：绿色系 */
+        .para-modern {
+            background: #f3faf0 !important;
+            border-left: 3px solid #2e8b57 !important;
+            padding: 10px 14px;
+            margin: 6px 0 14px 0;
+            border-radius: 0 6px 6px 0;
+            line-height: 1.9;
+            font-size: 15px;
+        }
+        .para-modern .modern-tag-yijie { color:#2d6a4f; font-weight:600; }
+        .para-modern .modern-yijie-body {
+            color:#2d6a4f;
+            background: rgba(46,139,87,.07);
+            padding:6px 10px;
+            border-radius:4px;
+            margin:4px 0 8px 0;
+            font-size:14px; line-height:1.8;
+        }
+        .para-modern .modern-xiaobiaoti {
+            color:#1b6b3c;
+            font-weight:700;
+            margin:6px 0 2px 0;
+        }
+        .para-modern .modern-zhengwen {
+            color:#1f4d2f;
+            margin:2px 0 8px 0;
+        }
         .read-toolbar button#btn-pron.on { background:#B8860B; color:#fff; border-color:#B8860B; }
     </style>
 </head>
@@ -672,13 +713,13 @@ function parseModern(text) {
         let body = escHtml(curText.trim()).replace(/\n/g,'<br>');
         if (!body) { curType=null; curText=''; return; }
         if (curType === null) {
-            html += `<div style="margin:4px 0;">${body}</div>`;
+            html += `<div class="modern-zhengwen" style="margin:4px 0;color:#1f4d2f;">${body}</div>`;
         } else if (curType === '义解') {
-            html += `<div style="margin:4px 0 8px 0; color:#5c4033; font-size:14px; line-height:1.8; padding:6px 10px; background:rgba(184,134,11,.08); border-radius:4px;"><b style="color:#8B4513;">【义解】</b>${body.replace(/^【义解】/,'')}</div>`;
+            html += `<div class="modern-yijie-body"><b class="modern-tag-yijie">【义解】</b>${body.replace(/^【义解】/,'')}</div>`;
         } else {
-            // 小标题 + 正文；小标题红色加粗
-            html += `<div style="margin:6px 0 2px 0;"><b style="color:#8B0000;">【${curType}】</b></div>`;
-            html += `<div style="margin:2px 0 8px 0; color:#2C1810;">${body}</div>`;
+            // 小标题 + 正文；小标题绿色加粗
+            html += `<div class="modern-xiaobiaoti"><b>【${curType}】</b></div>`;
+            html += `<div class="modern-zhengwen" style="color:#1f4d2f;margin:2px 0 8px 0;">${body}</div>`;
         }
         curType=null; curText='';
     }
@@ -1081,7 +1122,7 @@ function loadMoreChapters() {
                 const hit = currentSutra._modern._map.get(key);
                 if (hit && hit.modern) {
                     const parsed = parseModern(hit.modern);
-                    modHtml = `<div class="para-modern" style="background:#fff8e7; border-left:3px solid #B8860B; padding:10px 14px; margin:6px 0 14px 0; border-radius:0 6px 6px 0; line-height:1.9; font-size:15px;">${parsed}</div>`;
+                    modHtml = `<div class="para-modern">${parsed}</div>`;
                 }
             }
             const mode = window._viewMode || 'orig';
@@ -1226,10 +1267,17 @@ let PRONOUNCE_PHRASES = [];
 let PRON_READY = false;
 let PRON_PENDING = false;
 function isPronOn(){
-  try { return localStorage.getItem(PRON_KEY)==='1'; }catch(e){ return false; }
+  try {
+    const v = localStorage.getItem(PRON_KEY);
+    // 默认开启（拼音显示在字顶）
+    if(v===null) return true;
+    return v==='1';
+  }catch(e){ return true; }
 }
 function setPronOn(on){
   try { localStorage.setItem(PRON_KEY, on?'1':'0'); }catch(e){}
+  // 默认显示，只有关闭时加 mode-no-pron 类隐藏 rt
+  document.body.classList.toggle('mode-no-pron', !on);
   document.body.classList.toggle('mode-pinyin', !!on);
   const btn = document.getElementById('btn-pron');
   if(btn) btn.classList.toggle('on', !!on);
@@ -1241,16 +1289,20 @@ function initPronounceUI(){
   // 初始按钮状态
   setPronOn(isPronOn());
   btn.addEventListener('click', async () => {
-    const on = !document.body.classList.contains('mode-pinyin');
+    const on = !isPronOn();
     setPronOn(on);
     if(on){
       // 开启时：等数据就绪后注入ruby
       if(!PRON_READY){
         btn.title = '注音数据加载中...';
         await waitForPronData();
-        btn.title = '生僻字/音译字旁注读音';
+        btn.title = '点击可关闭注音';
+      } else {
+        btn.title = '点击可关闭注音';
       }
       annotateAllPron();
+    } else {
+      btn.title = '点击开启注音';
     }
   });
 }
