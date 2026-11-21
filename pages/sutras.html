@@ -165,8 +165,8 @@ select{font-family:inherit;}
         <div id="welcome">
           <div class="welcome-title">大正藏白话原典库</div>
           <div class="welcome-sub">
-            左侧按册次、部类、朝代、译者筛选，已完成白话精译 <b id="w-count" class="text-[#8B5A2B]"></b> 部，
-            每部经名均带 <span class="text-[#C0392B] font-semibold">（译）</span> 标记，
+            左侧按册次、部类、朝代、译者筛选，已完成白话精译 <b id="w-count" class="text-[#8B5A2B]"></b> / <b id="total-count" class="text-[#8B5A2B]"></b> 部，
+            已译经名带 <span class="text-[#C0392B] font-semibold">（译）</span> 标记，
             点击经名即在右侧加载白话译文。
           </div>
           <!-- 册次快览 -->
@@ -229,16 +229,23 @@ let pinyinOn=false;
 let PINYIN_CHARS={};
 
 async function loadData(){
-  const idx=await fetch('../sutras/index-light.json').then(r=>r.json());
+  const idx=await fetch('../sutras/index-light.json',{cache:'no-store'}).then(r=>r.json());
   SUTRAS=idx.items;
-  // 加载翻译状态
+  // 加载已译清单（modern-index 由脚本生成，列出所有已有白话的经id）
+  let translatedSet=new Set();
   try{
-    // 简单探测：哪些经已译，直接通过检查 translations 字段是否存在——但数量太多，改用本地标记，先扫描经名里已标的(译)不现实。
-    // 改为：尝试逐个fetch不存在会慢，这里只标记总数，列表中已译的用(译)标记由数据本身不支持，改为加载modern索引
+    const mi=await fetch('../data/modern-index.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>null);
+    if(mi && Array.isArray(mi))translatedSet=new Set(mi);
   }catch(e){}
-  // 译状态：通过存在的 modern-translation 文件列表不可直接前端判断，改为展示 总经数
-  document.getElementById('w-count').textContent=SUTRAS.length;
-  document.getElementById('count-badge').textContent=SUTRAS.length+' / '+SUTRAS.length;
+  if(translatedSet.size===0){
+    // 兜底：直接扫 modern-translation 目录无法在前端做，回退为总数
+    translatedSet=null;
+  }
+  window._TRANSLATED_SET=translatedSet;
+  const translatedCount=translatedSet?translatedSet.size:SUTRAS.length;
+  document.getElementById('w-count').textContent=translatedCount;
+  document.getElementById('total-count').textContent=SUTRAS.length;
+  document.getElementById('count-badge').textContent=translatedCount+' / '+SUTRAS.length;
   buildFilters();
   renderList();
   renderOverview();
@@ -307,14 +314,15 @@ function renderList(){
     n++;
     const div=document.createElement('div');
     div.className='sutra-item';
-    div.innerHTML=`<span><span class="text-[#8B7355] text-xs mr-1">${s.id}</span>${s.title}<span class="trans-mark">（译）</span></span><span class="meta">${s.vol}</span>`;
+    const isTrans=window._TRANSLATED_SET?window._TRANSLATED_SET.has(s.id):true;
+    const mark=isTrans?'<span class="trans-mark">（译）</span>':'';
+    div.innerHTML=`<span><span class="text-[#8B7355] text-xs mr-1">${s.id}</span>${s.title}${mark}</span><span class="meta">${s.vol}</span>`;
     div.addEventListener('click',()=>openSutra(s));
     frag.appendChild(div);
-    if(n>=500)break;
   }
   list.appendChild(frag);
   document.getElementById('count-badge').textContent=n+' / '+SUTRAS.length;
-  document.getElementById('list-foot').textContent=n>SUTRAS.length?'':'显示 '+n+' / '+SUTRAS.length+' 部经';
+  document.getElementById('list-foot').textContent=n>0?'共显示 '+n+' 部经':'';
 }
 
 function renderOverview(){
@@ -371,8 +379,12 @@ function renderSutra(orig,mod,s){
     if(ch.chapter){
       paras.push({type:'ch',text:ch.chapter});
     }
-    (ch.text||[]).forEach(p=>{
-      if(p && p.trim())paras.push({type:'p',text:p});
+    const text=ch.text||'';
+    // ch.text 是字符串，按双换行拆成段落（单换行不拆，保留段落内自然换行）
+    const blocks=text.split(/\n\n+/);
+    blocks.forEach(block=>{
+      const p=block.trim();
+      if(p)paras.push({type:'p',text:p});
     });
   });
   paras.forEach((p,i)=>{
