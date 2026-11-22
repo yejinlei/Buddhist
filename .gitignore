@@ -22,3 +22,8 @@ _b*.py
 _audit_q/*.pyc
 __pycache__/
 *.pyc
+# 临时脚本
+_b*.py
+_audit_q/*.pyc
+__pycache__/
+*.pyc
