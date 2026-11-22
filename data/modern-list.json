@@ -966,6 +966,12 @@
   "sections": 696
  },
  {
+  "id": "t0159",
+  "title": "大乘本生心地觀經",
+  "translator": "唐·般若、利言等 譯",
+  "sections": 180
+ },
+ {
   "id": "t0161",
   "title": "長壽王經",
   "translator": "失譯",
@@ -1308,6 +1314,12 @@
   "sections": 6
  },
  {
+  "id": "t0231",
+  "title": "勝天王般若波羅蜜經",
+  "translator": "陳 月婆首那譯",
+  "sections": 626
+ },
+ {
   "id": "t0232",
   "title": "文殊師利所說摩訶般若波羅蜜經",
   "translator": "梁 曼陀羅仙譯",
@@ -1590,10 +1602,22 @@
   "sections": 30
  },
  {
+  "id": "t0285",
+  "title": "漸備一切智德經",
+  "translator": "西晉·竺法護 譯",
+  "sections": 172
+ },
+ {
   "id": "t0286",
   "title": "十住經",
   "translator": "姚秦 鳩摩羅什譯",
   "sections": 492
+ },
+ {
+  "id": "t0287",
+  "title": "佛說十地經",
+  "translator": "唐·尸羅達摩 譯",
+  "sections": 181
  },
  {
   "id": "t0288",
@@ -1618,6 +1642,12 @@
   "title": "佛說如來興顯經",
   "translator": "西晉 竺法護譯",
   "sections": 342
+ },
+ {
+  "id": "t0292",
+  "title": "度世品經",
+  "translator": "西晉 竺法護譯",
+  "sections": 625
  },
  {
   "id": "t0294",
@@ -1652,8 +1682,8 @@
  {
   "id": "t0299",
   "title": "大方廣總持寶光明經",
-  "translator": "白话文编译组",
-  "sections": 99
+  "translator": "宋 法天譯",
+  "sections": 305
  },
  {
   "id": "t0300",
@@ -1735,8 +1765,8 @@
  },
  {
   "id": "t0315b",
-  "title": "佛說普門品經",
-  "translator": "西晉 竺法護譯",
+  "title": "佛说普门品经",
+  "translator": "西晋 竺法护译",
   "sections": 52
  },
  {
@@ -1886,8 +1916,8 @@
  {
   "id": "t0342",
   "title": "佛說如幻三昧經",
-  "translator": "白话文编译组",
-  "sections": 98
+  "translator": "西晉 竺法護譯",
+  "sections": 297
  },
  {
   "id": "t0343",
@@ -1915,9 +1945,9 @@
  },
  {
   "id": "t0347",
-  "title": "大乘顯識經",
-  "translator": "唐 地婆訶羅譯",
-  "sections": 114
+  "title": "t0347",
+  "translator": "唐 地婆诃罗译",
+  "sections": 54
  },
  {
   "id": "t0348",
@@ -2118,6 +2148,12 @@
   "sections": 141
  },
  {
+  "id": "t0384",
+  "title": "菩薩從兜術天降神母胎說廣普經",
+  "translator": "姚秦·竺佛念 译",
+  "sections": 187
+ },
+ {
   "id": "t0385",
   "title": "中陰經",
   "translator": "姚秦 竺佛念譯",
@@ -2190,6 +2226,12 @@
   "sections": 17
  },
  {
+  "id": "t0398",
+  "title": "大哀經",
+  "translator": "西晉·竺法護 譯",
+  "sections": 185
+ },
+ {
   "id": "t0399",
   "title": "寶女所問經",
   "translator": "西晉 竺法護譯",
@@ -2244,6 +2286,12 @@
   "sections": 46
  },
  {
+  "id": "t0410",
+  "title": "大方廣十輪經",
+  "translator": "失譯",
+  "sections": 505
+ },
+ {
   "id": "t0412",
   "title": "地藏菩薩本願經",
   "translator": "唐 實叉難陀譯",
@@ -2260,6 +2308,12 @@
   "title": "菩薩念佛三昧經",
   "translator": "劉宋 功德直譯",
   "sections": 477
+ },
+ {
+  "id": "t0415",
+  "title": "大方等大集經菩薩念佛三昧分",
+  "translator": "隋 達磨笈多譯",
+  "sections": 602
  },
  {
   "id": "t0416",
@@ -2312,8 +2366,8 @@
  {
   "id": "t0424",
   "title": "大集會正法經",
-  "translator": "白话文编译组",
-  "sections": 99
+  "translator": "宋 施護譯",
+  "sections": 306
  },
  {
   "id": "t0426",
@@ -3656,8 +3710,8 @@
  {
   "id": "t0649",
   "title": "觀察諸法行經",
-  "translator": "白话文编译组",
-  "sections": 100
+  "translator": "隋 闍那崛多譯",
+  "sections": 296
  },
  {
   "id": "t0650",
@@ -3681,7 +3735,7 @@
   "id": "t0653",
   "title": "佛藏經",
   "translator": "姚秦 鳩摩羅什譯",
-  "sections": 356
+  "sections": 102
  },
  {
   "id": "t0654",
@@ -3718,6 +3772,12 @@
   "title": "金光明经",
   "translator": "北凉 昙无谶译",
   "sections": 21
+ },
+ {
+  "id": "t0664",
+  "title": "合部金光明經",
+  "translator": "隋 寶貴合",
+  "sections": 605
  },
  {
   "id": "t0666",
@@ -4072,6 +4132,12 @@
   "title": "十不善業道經",
   "translator": "馬鳴菩薩集　宋 日稱等譯",
   "sections": 7
+ },
+ {
+  "id": "t0728",
+  "title": "諸法集要經",
+  "translator": "宋·日稱等 譯",
+  "sections": 173
  },
  {
   "id": "t0729",
@@ -4621,8 +4687,8 @@
  },
  {
   "id": "t0817",
-  "title": "佛說大淨法門經",
-  "translator": "西晉 竺法護譯",
+  "title": "佛说大净法门经",
+  "translator": "西晋 竺法护译",
   "sections": 134
  },
  {
@@ -5167,8 +5233,8 @@
  },
  {
   "id": "t0904",
-  "title": "念誦結護法普通諸部",
-  "translator": "唐 金剛智述",
+  "title": "念诵结护法普通诸部",
+  "translator": "唐 金刚智述",
   "sections": 123
  },
  {
@@ -5470,6 +5536,12 @@
   "title": "菩提場所說一字頂輪王經",
   "translator": "唐 不空譯",
   "sections": 386
+ },
+ {
+  "id": "t0951",
+  "title": "一字佛頂輪王經",
+  "translator": "唐·菩提流志 译",
+  "sections": 190
  },
  {
   "id": "t0952",
@@ -5864,8 +5936,8 @@
  {
   "id": "t1006",
   "title": "廣大寶樓閣善住祕密陀羅尼經",
-  "translator": "白话文编译组",
-  "sections": 103
+  "translator": "唐 菩提流志譯",
+  "sections": 310
  },
  {
   "id": "t1007",
@@ -7992,6 +8064,12 @@
   "sections": 50
  },
  {
+  "id": "t1331",
+  "title": "佛說灌頂經",
+  "translator": "東晉·帛尸梨蜜多羅 譯",
+  "sections": 177
+ },
+ {
   "id": "t1332",
   "title": "七佛八菩薩所說大陀羅尼神呪經",
   "translator": "失譯",
@@ -8030,8 +8108,8 @@
  {
   "id": "t1339",
   "title": "大方等陀羅尼經",
-  "translator": "白话文编译组",
-  "sections": 100
+  "translator": "北涼 法眾譯",
+  "sections": 315
  },
  {
   "id": "t1342",
@@ -8646,6 +8724,12 @@
   "sections": 31
  },
  {
+  "id": "t1452",
+  "title": "根本說一切有部尼陀那目得迦",
+  "translator": "唐 義淨譯",
+  "sections": 670
+ },
+ {
   "id": "t1454",
   "title": "根本說一切有部戒經",
   "translator": "唐 義淨譯",
@@ -9036,6 +9120,12 @@
   "sections": 36
  },
  {
+  "id": "t1525",
+  "title": "彌勒菩薩所問經論",
+  "translator": "後魏 菩提流支譯",
+  "sections": 635
+ },
+ {
   "id": "t1526",
   "title": "寶髻經四法憂波提舍",
   "translator": "天親菩薩造　元魏 毘目智仙譯",
@@ -9058,6 +9148,12 @@
   "title": "遺教經論",
   "translator": "天親菩薩造　陳 真諦譯",
   "sections": 133
+ },
+ {
+  "id": "t1530",
+  "title": "佛地經論",
+  "translator": "親光菩薩等造　唐 玄奘譯",
+  "sections": 542
  },
  {
   "id": "t1531",
@@ -9846,6 +9942,12 @@
   "sections": 232
  },
  {
+  "id": "t1695",
+  "title": "大般若波羅蜜多經般若理趣分述讚",
+  "translator": "唐·窺基 撰",
+  "sections": 186
+ },
+ {
   "id": "t1696",
   "title": "大品經遊意",
   "translator": "隋 吉藏撰",
@@ -9886,6 +9988,12 @@
   "title": "金剛般若波羅蜜經略疏",
   "translator": "唐 智儼述",
   "sections": 211
+ },
+ {
+  "id": "t1705",
+  "title": "仁王護國般若經疏",
+  "translator": "隋 智顗說　灌頂記",
+  "sections": 562
  },
  {
   "id": "t1706",
@@ -9996,6 +10104,12 @@
   "sections": 25
  },
  {
+  "id": "t1741",
+  "title": "略釋新華嚴經修行次第決疑論",
+  "translator": "唐·李通玄 撰",
+  "sections": 183
+ },
+ {
   "id": "t1742",
   "title": "大方广佛华严经愿行观门骨目",
   "translator": "唐 湛然撰",
@@ -10024,6 +10138,12 @@
   "title": "兩卷無量壽經宗要",
   "translator": "新羅 元曉撰",
   "sections": 102
+ },
+ {
+  "id": "t1748",
+  "title": "無量壽經連義述文贊",
+  "translator": "新羅 璟興撰",
+  "sections": 682
  },
  {
   "id": "t1749",
@@ -10076,8 +10196,8 @@
  {
   "id": "t1758",
   "title": "阿彌陀經通贊疏",
-  "translator": "白话文编译组",
-  "sections": 97
+  "translator": "唐 窺基撰",
+  "sections": 317
  },
  {
   "id": "t1759",
@@ -10164,6 +10284,18 @@
   "sections": 188
  },
  {
+  "id": "t1784",
+  "title": "金光明經玄義拾遺記",
+  "translator": "宋 知禮述",
+  "sections": 576
+ },
+ {
+  "id": "t1785",
+  "title": "金光明經文句",
+  "translator": "隋·智顗 說，灌頂 記",
+  "sections": 179
+ },
+ {
   "id": "t1787",
   "title": "金光明經疏",
   "translator": "隋 吉藏撰",
@@ -10248,6 +10380,12 @@
   "sections": 492
  },
  {
+  "id": "t1809",
+  "title": "僧羯磨",
+  "translator": "唐 懷素集",
+  "sections": 570
+ },
+ {
   "id": "t1810",
   "title": "尼羯磨",
   "translator": "唐 懷素集",
@@ -10266,6 +10404,12 @@
   "sections": 397
  },
  {
+  "id": "t1814",
+  "title": "菩薩戒本疏",
+  "translator": "新羅 義寂述",
+  "sections": 557
+ },
+ {
   "id": "t1815",
   "title": "梵網經古迹記",
   "translator": "新羅 太賢集",
@@ -10276,6 +10420,12 @@
   "title": "略明般若末後一頌讚述",
   "translator": "唐 義淨述",
   "sections": 13
+ },
+ {
+  "id": "t1818",
+  "title": "法華論疏",
+  "translator": "隋 吉藏撰",
+  "sections": 660
  },
  {
   "id": "t1819",
@@ -10374,6 +10524,12 @@
   "sections": 9
  },
  {
+  "id": "t1854",
+  "title": "二諦義",
+  "translator": "隋 吉藏撰",
+  "sections": 657
+ },
+ {
   "id": "t1855",
   "title": "三論遊意義",
   "translator": "隋 碩法師撰",
@@ -10398,10 +10554,16 @@
   "sections": 28
  },
  {
+  "id": "t1862",
+  "title": "勸發菩提心集",
+  "translator": "唐 慧沼撰",
+  "sections": 539
+ },
+ {
   "id": "t1864",
   "title": "大乘入道次第",
-  "translator": "白话文编译组",
-  "sections": 96
+  "translator": "唐 智周撰",
+  "sections": 324
  },
  {
   "id": "t1865",
@@ -10668,6 +10830,12 @@
   "sections": 12
  },
  {
+  "id": "t1909",
+  "title": "慈悲道場懺法",
+  "translator": "梁 諸大法師集撰",
+  "sections": 545
+ },
+ {
   "id": "t1910",
   "title": "慈悲水懺法",
   "translator": "",
@@ -10714,6 +10882,12 @@
   "title": "觀心論",
   "translator": "隋 智顗述",
   "sections": 35
+ },
+ {
+  "id": "t1921",
+  "title": "觀心論疏",
+  "translator": "隋 灌頂撰",
+  "sections": 564
  },
  {
   "id": "t1922",
@@ -10986,6 +11160,12 @@
   "sections": 130
  },
  {
+  "id": "t1970",
+  "title": "龍舒增廣淨土文",
+  "translator": "宋 王日休撰",
+  "sections": 545
+ },
+ {
   "id": "t1971",
   "title": "淨土境觀要門",
   "translator": "元 懷則述",
@@ -11008,6 +11188,12 @@
   "title": "淨土生無生論",
   "translator": "明 傳燈撰",
   "sections": 46
+ },
+ {
+  "id": "t1976",
+  "title": "西方合論",
+  "translator": "明 袁宏道撰",
+  "sections": 568
  },
  {
   "id": "t1977",
@@ -11098,6 +11284,12 @@
   "title": "撫州曹山本寂禪師語錄",
   "translator": "日本 玄契編",
   "sections": 183
+ },
+ {
+  "id": "t1988",
+  "title": "雲門匡真禪師廣錄",
+  "translator": "宋·守堅 集",
+  "sections": 177
  },
  {
   "id": "t1989",
@@ -11260,6 +11452,12 @@
   "title": "禪源諸詮集都序",
   "translator": "唐 宗密述",
   "sections": 9
+ },
+ {
+  "id": "t2017",
+  "title": "萬善同歸集",
+  "translator": "宋 延壽述",
+  "sections": 656
  },
  {
   "id": "t2018",
@@ -11490,6 +11688,12 @@
   "sections": 52
  },
  {
+  "id": "t2067",
+  "title": "弘贊法華傳",
+  "translator": "唐 惠詳撰",
+  "sections": 629
+ },
+ {
   "id": "t2069",
   "title": "天台九祖傳",
   "translator": "宋 士衡編",
@@ -11516,8 +11720,8 @@
  {
   "id": "t2073",
   "title": "華嚴經傳記",
-  "translator": "白话文编译组",
-  "sections": 94
+  "translator": "唐 法藏集",
+  "sections": 345
  },
  {
   "id": "t2074",
@@ -11632,6 +11836,12 @@
   "title": "天台山記",
   "translator": "唐 徐靈府撰",
   "sections": 63
+ },
+ {
+  "id": "t2097",
+  "title": "南嶽總勝集",
+  "translator": "宋 陳田夫撰",
+  "sections": 598
  },
  {
   "id": "t2098",
@@ -11906,8 +12116,8 @@
  {
   "id": "t2156",
   "title": "大唐貞元續開元釋教錄",
-  "translator": "白话文编译组",
-  "sections": 97
+  "translator": "唐 圓照集",
+  "sections": 325
  },
  {
   "id": "t2158",
@@ -12106,6 +12316,12 @@
   "title": "金剛暎卷上",
   "translator": "唐 寶達集",
   "sections": 250
+ },
+ {
+  "id": "t2735",
+  "title": "金剛般若經旨贊",
+  "translator": "唐 曇曠撰",
+  "sections": 710
  },
  {
   "id": "t2736",
@@ -12482,8 +12698,8 @@
  {
   "id": "t2800",
   "title": "廣百論疏卷第一",
-  "translator": "白话文编译组",
-  "sections": 98
+  "translator": "唐 文軌撰",
+  "sections": 349
  },
  {
   "id": "t2802",
@@ -12548,8 +12764,8 @@
  {
   "id": "t2812",
   "title": "大乘百法明門論開宗義決",
-  "translator": "白话文编译组",
-  "sections": 94
+  "translator": "唐 曇曠撰",
+  "sections": 339
  },
  {
   "id": "t2813",
