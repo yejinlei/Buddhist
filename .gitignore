@@ -17,3 +17,8 @@ ontology/paragraph_chunks.jsonl
 # 本地工作目录与切段任务
 _*/
 data/baihua-tasks/
+# 临时脚本
+_b*.py
+_audit_q/*.pyc
+__pycache__/
+*.pyc
