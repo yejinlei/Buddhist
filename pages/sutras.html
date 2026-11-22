@@ -286,7 +286,7 @@
                     <div class="text-6xl mb-4 opacity-30">📜</div>
                     <h1 class="text-3xl font-bold text-ink mb-4">大正藏白话原典库</h1>
                     <p class="text-lg text-ink/70 mb-2">从左侧选择一部经典开始阅读。</p>
-                    <p class="text-ink/50">共收录 <span class="text-primary font-bold" id="welcome-total">2495部</span> 佛典原文，已完成白话精译 <span class="font-bold" style="color:#2e8b57" id="welcome-done">2207部</span>，总计约 9000 万字。</p>
+                    <p class="text-ink/50" id="welcome-count">共收录 <b>2495</b> 部佛典原文，已完成白话精译 <b style="color:#2E7D32">—</b> 部。</p>
                     <p class="text-sm text-ink/40 mt-4">原文 + 白话对照阅读，带注音、科判、词典、笔记功能。</p>
                 </div>
             </div>
@@ -297,8 +297,11 @@
     </div>
 
 <script>const TRANSLATED_IDS = new Set();
-// 异步加载已译经号列表
-fetch("../data/modern-translation-index.json?v="+Date.now()).then(r=>r.json()).then(arr=>{arr.forEach(id=>TRANSLATED_IDS.add(id));if(window._onTrLoaded)window._onTrLoaded();}).catch(()=>{});</script>
+window._onTrLoaded = null;
+fetch("../data/modern-translation-index.json?v="+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(arr=>{
+  arr.forEach(id=>TRANSLATED_IDS.add(String(id)));
+  if(window._onTrLoaded) window._onTrLoaded();
+}).catch(()=>{});</script>
 <script>
 let allSutras = [];
 let currentSutra = null;
@@ -916,11 +919,14 @@ async function loadLightIndex() {
     allSutras = Array.isArray(data) ? data : (data.items || []);
     console.log(`轻量索引加载完成：${allSutras.length}部经`);
     document.getElementById('loading-status').textContent = '已就绪';
+    const yiCount = TRANSLATED_IDS.size;
+    const wel = document.getElementById('welcome-count');
+    if(wel) wel.innerHTML = '共收录 <b>'+allSutras.length+'</b> 部佛典原文，已完成白话精译 <b style="color:#2E7D32">'+yiCount+'</b> 部。';
+    const sy = document.getElementById('stat-yi'); if(sy) sy.textContent = yiCount;
     document.getElementById('loading-status').textContent='已就緒'; document.getElementById('loading-status').style.background='#EAF2DB'; document.getElementById('loading-status').style.color='#6B8E23';
     initFilters();
     renderSutraList(allSutras);
-    window._onTrLoaded = ()=>{renderSutraList(allSutras);const wd=document.getElementById('welcome-done');if(wd)wd.textContent=TRANSLATED_IDS.size+'部';};
-    document.getElementById('list-stats').textContent = `共 ${allSutras.length} 部经，已白话精译 ${TRANSLATED_IDS.size} 部`;
+    document.getElementById('list-stats').textContent = `共 ${allSutras.length} 部经`;
     // 支持 ?load=文件名 直接打开指定经文（部类总览 / 全文检索跳转）
     const loadParam = new URLSearchParams(location.search).get('load');
     if (loadParam) {
@@ -1032,6 +1038,7 @@ function renderSutraList(list) {
     const container = document.getElementById('sutra-list');
     container.innerHTML = '';
     // 一次性平铺全部经名
+    const frag = document.createDocumentFragment();
     for(let i = 0; i < list.length; i++) {
         const s = list[i];
         const item = document.createElement('div');
@@ -1040,17 +1047,9 @@ function renderSutraList(list) {
         const yiTag = TRANSLATED_IDS.has(s.id) ? '<span class="sn-yi">译</span>' : '';
         item.innerHTML = `<span class="truncate flex-1 sn-title">${s.title}${yiTag}</span><span class="sn-meta ml-2 flex-shrink-0 whitespace-nowrap">${s.vol||''}·${s._dyn||''}</span>`;
         item.addEventListener('click', () => loadSutra(s));
-        container.appendChild(item);
+        frag.appendChild(item);
     }
-    if(0){// 关闭滚动分批
-    container.addEventListener('scroll', () => {
-        if(container.scrollTop + container.clientHeight > container.scrollHeight - 100) {
-            if(renderCount < list.length) {
-                renderBatch(renderCount);
-                renderCount += batchSize;
-            }
-        }
-    });
+    container.appendChild(frag);
 }
 
 // 4. 筛选逻辑
@@ -1074,7 +1073,7 @@ function applyFilters() {
         return true;
     });
     renderSutraList(filtered);
-    document.getElementById('list-stats').textContent = `显示 ${filtered.length} / ${allSutras.length} 部经 · 已译 ${TRANSLATED_IDS.size}`;
+    document.getElementById('list-stats').textContent = `显示 ${filtered.length} / ${allSutras.length} 部经`;
 }
 
 // 5. 加载单部经文（用户点击才加载，不预加载）
@@ -1175,9 +1174,9 @@ async function loadSutra(meta) {
             <button id="toc-toggle" title="章节目录"><i class="fa fa-list-ul"></i> <span class="rt-label">章节目录</span></button>
             <span id="view-group" class="flex items-center gap-1" style="margin-left:.5rem">
                 <span class="rt-label">视图</span>
-                <button data-view="orig">原文</button>
-                <button data-view="both">对照</button>
-                <button data-view="modern">白话</button>
+                <button data-view="orig">传统原文</button>
+                <button data-view="both" class="active">原文白话对照</button>
+                <button data-view="modern">白话译文</button>
             </span>
             <span class="rt-label" style="margin-left:.5rem">字号</span>
             <button data-fs="sm">小</button>
