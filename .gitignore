@@ -32,3 +32,8 @@ _b*.py
 _audit_q/*.pyc
 __pycache__/
 *.pyc
+
+# 已作废脚本（会覆盖项目样式，禁止运行/提交）
+_rebuild_pages.py
+_rebuild_sutras_page.py
+render_all_pages.py
