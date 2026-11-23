@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import sys; sys.exit("此脚本已作废——pages/sutras.html 是项目唯一的富客户端SPA经目/经页入口，请勿用静态生成器覆盖。如需更新白话译文，只需更新data/modern-translation/下JSON，SPA会动态加载。");
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """统一经页生成器 v3.1（性能优化版）。
 - 不重复做繁简转换（modern字段本身已是简体）

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import sys; sys.exit("此脚本已作废——pages/sutras.html 是项目唯一的富客户端SPA经目/经页入口，请勿用静态生成器覆盖。如需更新白话译文，只需更新data/modern-translation/下JSON，SPA会动态加载。");
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """重建 pages/sutras.html 经目页（项目标准样式）。
 - 真实统计已译数量（不含 tree 条目）
@@ -179,8 +181,24 @@ def main():
                class="w-full px-3 py-2 border border-buddha-primary/20 rounded text-sm focus:outline-none focus:border-buddha-primary">
       </div>
 
-      <div class="mb-3 flex flex-wrap gap-1 text-xs" id="volFilters">
-        <button class="vol-filter px-2 py-1 rounded border border-buddha-primary/30 hover:bg-buddha-primary/10 active" data-vol="">全部</button>
+      <!-- 1×4 下拉筛选 -->
+      <div class="grid grid-cols-4 gap-1 mb-3 text-xs">
+        <select id="fVol" class="col-span-4 sm:col-span-2 lg:col-span-4 px-2 py-1.5 border border-buddha-primary/30 rounded bg-white text-[11px] focus:outline-none focus:border-buddha-primary">
+          <option value="">全部部类</option>
+        </select>
+        <select id="fDyn" class="col-span-2 sm:col-span-1 lg:col-span-4 px-2 py-1.5 border border-buddha-primary/30 rounded bg-white text-[11px] focus:outline-none focus:border-buddha-primary">
+          <option value="">全部朝代</option>
+        </select>
+        <select id="fLen" class="col-span-2 sm:col-span-1 lg:col-span-4 px-2 py-1.5 border border-buddha-primary/30 rounded bg-white text-[11px] focus:outline-none focus:border-buddha-primary">
+          <option value="">全部篇幅</option>
+          <option value="short">短篇（&lt;50段）</option>
+          <option value="mid">中篇（50-300段）</option>
+          <option value="long">长篇（300-1000段）</option>
+          <option value="huge">大部（≥1000段）</option>
+        </select>
+        <select id="fTrans" class="col-span-4 sm:col-span-2 lg:col-span-4 px-2 py-1.5 border border-buddha-primary/30 rounded bg-white text-[11px] focus:outline-none focus:border-buddha-primary">
+          <option value="">全部译者</option>
+        </select>
       </div>
 
       <div id="sutraList" class="space-y-0 text-sm"></div>
