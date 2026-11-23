@@ -1,3 +1,5 @@
+# ⚠️ 此脚本已作废：会覆盖项目标准样式，请勿运行。统一使用 build_sutra_pages.py。
+import sys; sys.exit("此脚本已作废，请使用 build_sutra_pages.py");
 #!/usr/bin/env python3
 """重建 pages/sutras.html：恢复原版三栏布局（左分类+搜索+经目，右内嵌阅读），经目列表取2043条带（译），并兼容 translations 字段格式。"""
 import json, os, re

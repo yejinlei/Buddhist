@@ -1,3 +1,5 @@
+# ⚠️ 此脚本已作废：会覆盖项目标准样式，请勿运行。统一使用 build_sutra_pages.py。
+import sys; sys.exit("此脚本已作废，请使用 build_sutra_pages.py");
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """批量生成2043部已译佛经的经页HTML，并更新sutras.html加上（译）标记。"""

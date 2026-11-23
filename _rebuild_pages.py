@@ -1,3 +1,5 @@
+# ⚠️ 此脚本已作废：会覆盖项目标准样式，请勿运行。统一使用 build_sutra_pages.py。
+import sys; sys.exit("此脚本已作废，请使用 build_sutra_pages.py");
 #!/usr/bin/env python3
 """按线上原版样式(t0002.html)重建全部2043部经页。"""
 import json, os, re, html
