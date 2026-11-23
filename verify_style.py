@@ -76,23 +76,20 @@ def main():
     if bad_root:
         errors.append(f"根目录 {len(bad_root)} 部经页样式异常: {bad_root[:10]}{'...' if len(bad_root)>10 else ''}")
 
-    # 5. pages/ 经页
+    # 5. pages/ 经页（可选：主入口在根目录，pages/ 下有则校验样式，缺失不报错）
     bad_pages = []
-    miss_pages = []
-    for fn in os.listdir(TRANS):
-        if not fn.endswith(".json") or fn == "tree.json": continue
-        tid = fn[:-5]
-        p = OUT_PAGES / f"{tid}.html"
-        if not p.exists():
-            miss_pages.append(tid)
+    for fn in os.listdir(OUT_PAGES):
+        if not re.match(r't\d+[a-z]*\.html$', fn) and fn not in (
+            "amituo_jiumo.html","bada_renjue.html","fo_yijiao.html","jingang_jiumo.html",
+            "puxian_xingyuan.html","sishi_erzhang.html","xinjing_fayue.html","xinjing_jiumo.html",
+            "xinjing_xuanzang.html","yaoshi_xuanzang.html","yulan_pen.html"):
             continue
+        p = OUT_PAGES / fn
         c = p.read_text(encoding="utf-8", errors="ignore")
         if PAGE_MARK not in c:
-            bad_pages.append(tid)
-    if miss_pages:
-        warnings.append(f"pages/ 下缺少 {len(miss_pages)} 部经页: {miss_pages[:5]}{'...' if len(miss_pages)>5 else ''}")
+            bad_pages.append(fn)
     if bad_pages:
-        errors.append(f"pages/ 下 {len(bad_pages)} 部经页样式异常（多为旧简陋样式残留）: {bad_pages[:10]}{'...' if len(bad_pages)>10 else ''}")
+        errors.append(f"pages/ 下 {len(bad_pages)} 个经页样式异常（主入口已在根目录，建议删除这些旧残留）: {bad_pages[:10]}{'...' if len(bad_pages)>10 else ''}")
 
     # 报告
     print(f"真实已译：{real_count} 部")
