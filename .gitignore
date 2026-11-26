@@ -37,3 +37,4 @@ __pycache__/
 _rebuild_pages.py
 _rebuild_sutras_page.py
 render_all_pages.py
+_redo/
