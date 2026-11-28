@@ -38,3 +38,11 @@ _rebuild_pages.py
 _rebuild_sutras_page.py
 render_all_pages.py
 _redo/
+
+# 第226批分析脚本/中间数据
+_audit_*.py
+_audit_*.json
+_merge_*.py
+_prep_*.py
+_*_tids.txt
+_audit_result.json
